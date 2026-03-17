@@ -1,0 +1,1231 @@
+/* ───────────────────────────────────────────
+   column.css — 칼럼 공통 컴포넌트 스타일
+─────────────────────────────────────────── */
+
+/* ── 페이지 래퍼 ── */
+.col-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 헤더 ── */
+.col-hero {
+  padding: 28px 0 12px;
+}
+
+.col-hero-tag {
+  display: inline-block;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+
+.col-hero-title {
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  color: var(--ink);
+  word-break: keep-all;
+}
+
+.col-hero-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ── 콜아웃 카드 (결론 / 주의 / 관점 제시) ── */
+.col-callout {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.col-callout-label {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.col-callout-text {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ── 통계 그리드 ── */
+.col-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .col-stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col-stat-card {
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.col-stat-value {
+  font-size: clamp(22px, calc(20.6px + 0.38vw), 26px);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.col-stat-label {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.col-stat-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* ── 섹션 제목 ── */
+.col-section-title {
+  font-size: clamp(16px, calc(13.4px + 0.7vw), 20px);
+  font-weight: 700;
+  color: var(--ink);
+  padding-top: 4px;
+}
+
+/* ── 카드 목록 ── */
+.col-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col-card {
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.col-card-header {
+  padding: 16px 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.col-card-header.divided {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.col-card-name {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+  word-break: keep-all;
+}
+
+.col-card-sub {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.col-card-badge {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.col-card-body {
+  padding: 0 18px 18px;
+}
+
+.col-card-header.divided + .col-card-body {
+  padding-top: 14px;
+}
+
+.col-card-detail {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 12px;
+  word-break: keep-all;
+}
+
+.col-card-source {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── 인용구 ── */
+.col-quote {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 14px 0 8px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+  font-style: normal;
+  word-break: keep-all;
+}
+
+.col-quote-en {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 12px;
+  padding-left: 14px;
+  line-height: 1.5;
+}
+
+/* ── 하이라이트 박스 ── */
+.col-highlight {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  background: var(--panel-2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.col-highlight-dot {
+  color: var(--accent-2);
+  font-size: 8px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* ── 주의 카드 ── */
+.col-warning-card {
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+}
+
+.col-warning-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.col-warning-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 10px;
+  word-break: keep-all;
+}
+
+.col-warning-example {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  background: var(--panel-2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ── 정보 카드 (개념 설명 / 메커니즘) ── */
+.col-info-card {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
+.col-info-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.col-info-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+  word-break: keep-all;
+}
+
+/* ── 해법 박스 (액센트 강조) ── */
+.col-solution {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--ink);
+  line-height: 1.65;
+  margin: 0;
+  word-break: keep-all;
+  padding: 12px 16px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+}
+
+/* ── 계산 예제 박스 ── */
+.col-decay-example {
+  background: var(--panel-2);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.col-decay-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+
+.col-decay-label {
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 72px;
+}
+
+.col-decay-arrow {
+  color: var(--muted);
+}
+
+.col-decay-val {
+  color: var(--ink);
+}
+
+.col-decay-val.bad {
+  color: var(--red, #e05c5c);
+}
+
+.col-decay-val.good {
+  color: var(--accent);
+}
+
+.col-decay-note {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  margin-top: 4px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* ── 플로우 카드 (단계 시각화) ── */
+.col-flow-card {
+  background: var(--panel-2);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.col-flow-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.col-flow-step {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.col-flow-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.col-flow-label {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.col-flow-sub {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.col-flow-arrow {
+  font-size: 20px;
+  color: var(--muted);
+  text-align: center;
+  padding: 6px 0;
+}
+
+.col-flow-branches {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .col-flow-branches {
+    flex-direction: column;
+  }
+}
+
+.col-flow-branch-item {
+  flex: 1;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  line-height: 1.5;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  word-break: keep-all;
+}
+
+.col-flow-branch-item.good {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--ink);
+}
+
+.col-flow-branch-item.bad {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.col-flow-branch-item.neutral {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.col-flow-tag {
+  display: inline-block;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-bottom: 6px;
+}
+
+.col-flow-tag.good {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--accent);
+}
+
+.col-flow-tag.bad {
+  background: var(--panel-2);
+  color: var(--muted);
+}
+
+.col-flow-tag.neutral {
+  background: var(--panel-2);
+  color: var(--muted);
+}
+
+.col-flow-branch-text {
+  display: block;
+}
+
+/* ── CTA 카드 ── */
+.col-cta-card {
+  background: var(--panel-2);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+}
+
+.col-cta-title {
+  font-size: clamp(17px, calc(14.4px + 0.7vw), 21px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  word-break: keep-all;
+}
+
+.col-cta-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 18px;
+  word-break: keep-all;
+}
+
+.col-cta-btn {
+  display: inline-block;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  padding: 11px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.col-cta-btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.col-cta-btn.secondary {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.col-cta-btn:hover {
+  opacity: 0.82;
+}
+
+/* ── 뒤로가기 ── */
+.col-back-row {
+  text-align: center;
+}
+
+.col-back-link {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.col-back-link:hover {
+  color: var(--accent);
+}
+
+/* ── 면책조항 ── */
+.col-disclaimer {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+  padding: 16px 12px 0;
+  border-top: 1px solid var(--line);
+  word-break: keep-all;
+  opacity: 0.7;
+}
+
+/* ── 타임라인 ── */
+.col-timeline {
+  position: relative;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.col-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--line);
+}
+
+.col-timeline-item {
+  position: relative;
+  padding: 0 0 20px 20px;
+}
+
+.col-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.col-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--panel, #fff);
+}
+
+.col-timeline-year {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.col-timeline-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  word-break: keep-all;
+}
+
+.col-timeline-body {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0;
+}
+
+/* ── 핵심 팩트 ── */
+.col-key-fact {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.col-key-fact-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.col-key-fact-value {
+  font-size: clamp(26px, calc(24.6px + 0.38vw), 30px);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.col-key-fact-value.bad {
+  color: var(--red, #e05c5c);
+}
+
+.col-key-fact-value.good {
+  color: var(--accent);
+}
+
+.col-key-fact-label {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+  word-break: keep-all;
+}
+
+.col-key-fact-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.col-key-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .col-key-fact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── A vs B 비교 행 ── */
+.col-compare-row {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.col-compare-sides {
+  display: flex;
+  align-items: stretch;
+}
+
+.col-compare-side {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+}
+
+.col-compare-side.good {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.col-compare-side.bad {
+  background: var(--panel);
+}
+
+.col-compare-side.neutral {
+  background: var(--panel-2);
+}
+
+.col-compare-vs {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--panel-2);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.col-compare-value {
+  font-size: clamp(22px, calc(20.6px + 0.38vw), 26px);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.col-compare-side.good .col-compare-value {
+  color: var(--accent);
+}
+
+.col-compare-side.bad .col-compare-value {
+  color: var(--red, #e05c5c);
+}
+
+.col-compare-side.neutral .col-compare-value {
+  color: var(--ink);
+}
+
+.col-compare-label {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+  word-break: keep-all;
+}
+
+.col-compare-sub {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.col-compare-period {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  text-align: center;
+  padding: 7px 14px;
+  border-top: 1px solid var(--line);
+  background: var(--panel-2);
+  word-break: keep-all;
+}
+
+/* ── 비교 테이블 ── */
+.col-compare-table-wrap {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
+.col-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+
+.col-compare-table th {
+  background: var(--panel-2);
+  padding: 10px 14px;
+  text-align: center;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  word-break: keep-all;
+}
+
+.col-compare-table th:first-child {
+  text-align: left;
+}
+
+.col-compare-table td {
+  padding: 10px 14px;
+  text-align: center;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  word-break: keep-all;
+}
+
+.col-compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.col-compare-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.col-compare-table td.highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.col-compare-table td.bad {
+  color: var(--red, #e05c5c);
+  font-weight: 600;
+}
+
+.col-compare-table td.dim {
+  color: var(--muted);
+}
+
+/* ── 연구/논문 인용 카드 ── */
+.col-research-card {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--accent);
+}
+
+.col-research-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.col-research-source {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.col-research-year {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+}
+
+.col-research-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+
+.col-research-author {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.col-research-body {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--ink);
+  line-height: 1.65;
+  word-break: keep-all;
+  margin: 0;
+}
+
+.col-research-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-top: 12px;
+}
+
+/* ── 단계 목록 ── */
+.col-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.col-step-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.col-step-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.col-step-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  word-break: keep-all;
+}
+
+.col-step-body {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0;
+}
+
+/* ── 팁 박스 ── */
+.col-tip-box {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.col-tip-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.col-tip-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.col-tip-body {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--ink);
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0;
+}
+
+/* ── 포트폴리오 배분 바 ── */
+.col-allocation {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+}
+
+.col-allocation-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.col-allocation-bar {
+  display: flex;
+  height: 20px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  gap: 2px;
+}
+
+.col-allocation-segment {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.col-allocation-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.col-allocation-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+
+.col-allocation-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.col-allocation-legend-label {
+  flex: 1;
+  color: var(--ink);
+}
+
+.col-allocation-legend-pct {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+
+/* ── 통설 vs 사실 ── */
+.col-myth-fact {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.col-myth {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.col-myth-badge {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: var(--panel-2);
+  padding: 3px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.col-myth-text {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+  text-decoration: line-through;
+  text-decoration-color: var(--line);
+}
+
+.col-fact {
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.col-fact-badge {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  padding: 3px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.col-fact-text {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--ink);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+/* ── 위기/폭락 이벤트 카드 ── */
+.col-crisis-card {
+  background: var(--panel);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.col-crisis-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.col-crisis-name-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.col-crisis-year {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.col-crisis-name {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  word-break: keep-all;
+}
+
+.col-crisis-drawdown {
+  font-size: clamp(18px, calc(16.6px + 0.38vw), 22px);
+  font-weight: 700;
+  color: var(--red, #e05c5c);
+  flex-shrink: 0;
+}
+
+.col-crisis-body {
+  padding: 14px 18px;
+}
+
+.col-crisis-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.col-crisis-meta-item {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+}
+
+.col-crisis-meta-item span {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.col-crisis-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0;
+}
+
+/* ── 풀 인용구 ── */
+.col-pull-quote {
+  padding: 28px;
+  border-radius: var(--radius-md);
+  background: var(--panel-2);
+  text-align: center;
+}
+
+.col-pull-quote-mark {
+  display: block;
+  font-size: 44px;
+  color: var(--accent);
+  line-height: 0.6;
+  margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  opacity: 0.5;
+}
+
+.col-pull-quote-text {
+  font-size: clamp(18px, calc(16.6px + 0.38vw), 22px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  word-break: keep-all;
+  margin-bottom: 16px;
+}
+
+.col-pull-quote-attribution {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+}
+
+.col-pull-quote-attribution strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.col-pull-quote-text em {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+/* ── 출처/참고 카드 ── */
+.col-source-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--panel);
+}
+
+.col-source-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.col-source-title {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+  word-break: keep-all;
+}
+
+.col-source-desc {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: keep-all;
+  margin: 0;
+}

@@ -1,0 +1,218 @@
+{
+  "type": "스타일",
+  "items": [
+    {
+      "type": "성장",
+      "asset_type": "스타일",
+      "ticker": "IVW",
+      "name": "iShares S&P 500 Growth ETF",
+      "name_ko": "S&P 성장주",
+      "business_area": "S&P 500 성장주",
+      "heatmap_label": "S&P성장",
+      "short_description": "S&P 500 중 성장주. 기술·헬스케어 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["성장", "대형주", "팩터", "S&P500"]
+    },
+    {
+      "type": "성장",
+      "asset_type": "스타일",
+      "ticker": "IWF",
+      "name": "iShares Russell 1000 Growth ETF",
+      "name_ko": "러셀 성장주",
+      "business_area": "미국 대형 성장주",
+      "heatmap_label": "대형성장",
+      "short_description": "대형주 1000개 중 성장주. IVW보다 종목 넓음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["성장", "대형주", "팩터", "러셀"]
+    },
+    {
+      "type": "성장",
+      "asset_type": "스타일",
+      "ticker": "VUG",
+      "name": "Vanguard Growth ETF",
+      "name_ko": "뱅가드 성장주",
+      "business_area": "미국 대형 성장주",
+      "heatmap_label": "성장",
+      "short_description": "미국 대형 성장주 전체. 기술주 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["성장", "대형주", "팩터", "뱅가드"]
+    },
+    {
+      "type": "밸류",
+      "asset_type": "스타일",
+      "ticker": "IVE",
+      "name": "iShares S&P 500 Value ETF",
+      "name_ko": "S&P 가치주",
+      "business_area": "S&P 500 가치주",
+      "heatmap_label": "S&P밸류",
+      "short_description": "S&P 500 중 가치주. 금융·에너지 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["밸류", "대형주", "팩터", "S&P500"]
+    },
+    {
+      "type": "밸류",
+      "asset_type": "스타일",
+      "ticker": "IWD",
+      "name": "iShares Russell 1000 Value ETF",
+      "name_ko": "러셀 가치주",
+      "business_area": "미국 대형 가치주",
+      "heatmap_label": "대형밸류",
+      "short_description": "대형주 1000개 중 가치주. IVE보다 종목 넓음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["밸류", "대형주", "팩터", "러셀"]
+    },
+    {
+      "type": "밸류",
+      "asset_type": "스타일",
+      "ticker": "VLUE",
+      "name": "iShares MSCI USA Value Factor ETF",
+      "name_ko": "MSCI 가치주",
+      "business_area": "미국 밸류 팩터",
+      "heatmap_label": "밸류팩터",
+      "short_description": "저평가 지표로 선별한 가치주.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["밸류", "팩터", "저평가"]
+    },
+    {
+      "type": "밸류",
+      "asset_type": "스타일",
+      "ticker": "VTV",
+      "name": "Vanguard Value ETF",
+      "name_ko": "뱅가드 가치주",
+      "business_area": "미국 대형 가치주",
+      "heatmap_label": "밸류",
+      "short_description": "미국 대형 가치주 전체. 배당 성향 높은 종목 다수.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["밸류", "대형주", "팩터", "뱅가드", "배당"]
+    },
+    {
+      "type": "저변동성",
+      "asset_type": "스타일",
+      "ticker": "SPLV",
+      "name": "Invesco S&P 500 Low Volatility ETF",
+      "name_ko": "S&P 저변동",
+      "business_area": "S&P 500 저변동성 종목",
+      "heatmap_label": "저변동성",
+      "short_description": "S&P 500 중 변동성 가장 낮은 100개. 방어적.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["저변동성", "방어주", "팩터", "S&P500"]
+    },
+    {
+      "type": "저변동성",
+      "asset_type": "스타일",
+      "ticker": "USMV",
+      "name": "iShares MSCI USA Min Vol Factor ETF",
+      "name_ko": "MSCI 저변동",
+      "business_area": "미국 최소변동성 종목",
+      "heatmap_label": "최소변동성",
+      "short_description": "변동성을 최소화하도록 설계. 하락장 방어에 유리.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["저변동성", "방어주", "팩터", "최소변동성"]
+    },
+    {
+      "type": "퀄리티",
+      "asset_type": "스타일",
+      "ticker": "QUAL",
+      "name": "iShares MSCI USA Quality Factor ETF",
+      "name_ko": "우량주",
+      "business_area": "고ROE·저부채 우량 종목",
+      "heatmap_label": "퀄리티",
+      "short_description": "높은 ROE, 낮은 부채, 안정적 이익 기업 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["퀄리티", "팩터", "우량주", "ROE"]
+    },
+    {
+      "type": "동일가중",
+      "asset_type": "스타일",
+      "ticker": "EUSA",
+      "name": "iShares MSCI USA Equal Weighted ETF",
+      "name_ko": "MSCI 동일비중",
+      "business_area": "MSCI 미국 동일가중",
+      "heatmap_label": "동일가중MSCI",
+      "short_description": "모든 종목을 같은 비중으로. 대형주 쏠림 완화.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["동일가중", "분산", "팩터"]
+    },
+    {
+      "type": "동일가중",
+      "asset_type": "스타일",
+      "ticker": "RSP",
+      "name": "Invesco S&P 500 Equal Weight ETF",
+      "name_ko": "S&P 동일비중",
+      "business_area": "S&P 500 동일가중",
+      "heatmap_label": "동일가중S&P",
+      "short_description": "S&P 500을 같은 비중으로. 중소형주 비중 높아짐.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["동일가중", "분산", "S&P500"]
+    },
+    {
+      "type": "모멘텀",
+      "asset_type": "스타일",
+      "ticker": "MTUM",
+      "name": "iShares MSCI USA Momentum Factor ETF",
+      "name_ko": "모멘텀",
+      "business_area": "최근 상승 모멘텀 종목",
+      "heatmap_label": "모멘텀",
+      "short_description": "최근 상승세가 강한 종목 중심. 추세추종 성격.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["모멘텀", "팩터", "추세"]
+    }
+  ],
+  "type_profile": {
+    "description": "성장·가치·저변동성·퀄리티·모멘텀·동일가중 등 투자 스타일/팩터 기반 자산군",
+    "up_cycle": "해당 팩터가 시장 환경과 맞아떨어지는 구간 (성장→금리인하, 밸류→경기회복 등)",
+    "down_cycle": "반대 팩터가 주도하거나 팩터 간 순환이 빠른 구간"
+  }
+}

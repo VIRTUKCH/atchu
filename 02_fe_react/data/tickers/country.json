@@ -1,0 +1,320 @@
+{
+  "type": "국가",
+  "items": [
+    {
+      "type": "호주",
+      "asset_type": "국가",
+      "ticker": "EWA",
+      "name": "iShares MSCI Australia ETF",
+      "name_ko": "호주",
+      "business_area": "호주 대형주·중형주",
+      "heatmap_label": "호주",
+      "short_description": "광업·금융 비중 큼. 원자재 가격에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "호주",
+        "선진국",
+        "오세아니아",
+        "원자재"
+      ]
+    },
+    {
+      "type": "캐나다",
+      "asset_type": "국가",
+      "ticker": "EWC",
+      "name": "iShares MSCI Canada ETF",
+      "name_ko": "캐나다",
+      "business_area": "캐나다 대형주·중형주",
+      "heatmap_label": "캐나다",
+      "short_description": "에너지·금융·광업 비중 큼. 미국 경제와 밀접.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "캐나다",
+        "선진국",
+        "북미",
+        "에너지"
+      ]
+    },
+    {
+      "type": "일본",
+      "asset_type": "국가",
+      "ticker": "EWJ",
+      "name": "iShares MSCI Japan ETF",
+      "name_ko": "일본",
+      "business_area": "일본 대형주·중형주",
+      "heatmap_label": "일본",
+      "short_description": "자동차·전자·금융 중심. 엔화 환율 영향 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "일본",
+        "선진국",
+        "아시아"
+      ]
+    },
+    {
+      "type": "대만",
+      "asset_type": "국가",
+      "ticker": "EWT",
+      "name": "iShares MSCI Taiwan ETF",
+      "name_ko": "대만",
+      "business_area": "대만 대형주·중형주",
+      "heatmap_label": "대만",
+      "short_description": "TSMC 비중이 압도적. 반도체 사이클에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "대만",
+        "신흥국",
+        "반도체",
+        "아시아"
+      ]
+    },
+    {
+      "type": "유럽",
+      "asset_type": "국가",
+      "ticker": "EWU",
+      "name": "iShares MSCI United Kingdom ETF",
+      "name_ko": "영국",
+      "business_area": "영국 대형주·중형주",
+      "heatmap_label": "영국",
+      "short_description": "금융·에너지 비중 큼. 파운드 환율 영향.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "영국",
+        "선진국",
+        "유럽"
+      ]
+    },
+    {
+      "type": "멕시코",
+      "asset_type": "국가",
+      "ticker": "EWW",
+      "name": "iShares MSCI Mexico ETF",
+      "name_ko": "멕시코",
+      "business_area": "멕시코 대형주·중형주",
+      "heatmap_label": "멕시코",
+      "short_description": "미국 경제·무역 정책과 밀접. 소비재·금융 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "멕시코",
+        "신흥국",
+        "북미"
+      ]
+    },
+    {
+      "type": "한국",
+      "asset_type": "국가",
+      "ticker": "EWY",
+      "name": "iShares MSCI South Korea ETF",
+      "name_ko": "한국",
+      "business_area": "한국 대형주·중형주",
+      "heatmap_label": "한국",
+      "short_description": "반도체·자동차 비중 큼. 원화 환율 영향.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "한국",
+        "신흥국",
+        "아시아",
+        "반도체"
+      ]
+    },
+    {
+      "type": "브라질",
+      "asset_type": "국가",
+      "ticker": "EWZ",
+      "name": "iShares MSCI Brazil ETF",
+      "name_ko": "브라질",
+      "business_area": "브라질 대형주·중형주",
+      "heatmap_label": "브라질",
+      "short_description": "원자재·금융 중심. 환율 변동성 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "브라질",
+        "신흥국",
+        "남미",
+        "원자재"
+      ]
+    },
+    {
+      "type": "선진국",
+      "asset_type": "국가",
+      "ticker": "IEFA",
+      "name": "iShares Core MSCI EAFE ETF",
+      "name_ko": "선진국",
+      "business_area": "미국 제외 선진국 주식",
+      "heatmap_label": "선진국",
+      "short_description": "미국 제외 선진국. 유럽·일본 비중 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형(또는 폭넓은 지역지수)은 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "선진국",
+        "유럽",
+        "일본",
+        "분산"
+      ]
+    },
+    {
+      "type": "신흥국",
+      "asset_type": "국가",
+      "ticker": "IEMG",
+      "name": "iShares Core MSCI Emerging Markets ETF",
+      "name_ko": "신흥국",
+      "business_area": "신흥국 전체 주식시장",
+      "heatmap_label": "신흥국",
+      "short_description": "중국·대만·인도·한국 등 신흥국 전체.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형(또는 폭넓은 지역지수)은 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "신흥국",
+        "중국",
+        "인도",
+        "대만"
+      ]
+    },
+    {
+      "type": "인도",
+      "asset_type": "국가",
+      "ticker": "INDA",
+      "name": "iShares MSCI India ETF",
+      "name_ko": "인도",
+      "business_area": "인도 대형주·중형주",
+      "heatmap_label": "인도",
+      "short_description": "인구·경제 성장 수혜. IT·금융 비중 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "인도",
+        "신흥국",
+        "아시아",
+        "성장"
+      ]
+    },
+    {
+      "type": "중국",
+      "asset_type": "국가",
+      "ticker": "KWEB",
+      "name": "KraneShares CSI China Internet ETF",
+      "name_ko": "중국 인터넷",
+      "business_area": "중국 인터넷·기술 기업",
+      "heatmap_label": "중국인터넷",
+      "short_description": "알리바바·텐센트 등. 규제 리스크와 성장성 공존.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "중국",
+        "인터넷",
+        "기술",
+        "신흥국"
+      ]
+    },
+    {
+      "type": "중국",
+      "asset_type": "국가",
+      "ticker": "MCHI",
+      "name": "iShares MSCI China ETF",
+      "name_ko": "중국",
+      "business_area": "중국 대형주·중형주",
+      "heatmap_label": "중국",
+      "short_description": "중국 대형주 전체. 정책·규제 리스크 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "단일국가 신흥/프런티어는 갭(급등락)과 정책·유동성 리스크로 추세 신호가 급격히 무너질 수 있다.",
+        "operation_notes": "비중 상한을 낮게, 재진입을 보수적으로, 가능하면 코어 지수와 분리해 위성으로 운용."
+      },
+      "tags": [
+        "중국",
+        "신흥국",
+        "아시아"
+      ]
+    },
+    {
+      "type": "유럽",
+      "asset_type": "국가",
+      "ticker": "VGK",
+      "name": "Vanguard FTSE Europe ETF",
+      "name_ko": "유럽",
+      "business_area": "유럽 선진국 주식",
+      "heatmap_label": "유럽",
+      "short_description": "영국·프랑스·독일 중심. 금융·산업 비중 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "유럽",
+        "선진국",
+        "분산"
+      ]
+    },
+    {
+      "type": "글로벌",
+      "asset_type": "국가",
+      "ticker": "VT",
+      "name": "Vanguard Total World Stock ETF",
+      "name_ko": "글로벌",
+      "business_area": "전 세계 주식시장",
+      "heatmap_label": "글로벌",
+      "short_description": "전 세계 주식시장을 하나로. 궁극의 분산.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형(또는 폭넓은 지역지수)은 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "글로벌",
+        "전세계",
+        "분산",
+        "지수"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "국가별 통화·정책·산업 구조 차이를 반영하는 자산군",
+    "up_cycle": "국가별 정책 차별화, 달러 사이클 전환, 지역 경기 회복 구간",
+    "down_cycle": "지정학 리스크 확대, 통화 급변, 국가 리스크 집중 구간"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "type": "채권",
+  "items": [
+    {
+      "asset_type": "채권",
+      "ticker": "SGOV",
+      "name": "iShares 0-3 Month Treasury Bond ETF",
+      "name_ko": "초단기 국채",
+      "business_area": "만기 0~3개월 미국 국채",
+      "heatmap_label": "초단기국채",
+      "short_description": "만기 0~3개월. 사실상 현금 대용.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "데이터와 구조를 확인한 뒤 사용 권장.",
+        "operation_notes": "보수적 신호/낮은 비중 권장."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "단기",
+        "현금성",
+        "안전자산"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "SHY",
+      "name": "iShares 1-3 Year Treasury Bond ETF",
+      "name_ko": "단기 국채",
+      "business_area": "만기 1~3년 미국 국채",
+      "heatmap_label": "단기국채",
+      "short_description": "만기 1~3년. 금리 민감도 낮음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "단기",
+        "안전자산"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "IEF",
+      "name": "iShares 7-10 Year Treasury Bond ETF",
+      "name_ko": "중기 국채",
+      "business_area": "만기 7~10년 미국 국채",
+      "heatmap_label": "중기국채",
+      "short_description": "만기 7~10년. 금리 변동에 중간 수준 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "중기"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "TLT",
+      "name": "iShares 20+ Year Treasury Bond ETF",
+      "name_ko": "장기 국채",
+      "business_area": "만기 20년+ 미국 국채",
+      "heatmap_label": "장기국채",
+      "short_description": "만기 20년 이상. 금리에 매우 민감, 변동성 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "장기 국채는 듀레이션이 길어 금리 변화에 민감해 변동성이 커질 수 있다. 추세추종 자체는 가능하지만, 방향 전환 구간에서 손실 폭이 커질 수 있어 비중·필터가 중요하다.",
+        "operation_notes": "중장기 MA+확인필터 권장. 급변 구간에서 포지션 전환이 잦지 않도록 재진입 조건을 보수적으로 둔다."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "장기",
+        "금리민감"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "LQD",
+      "name": "iShares iBoxx $ Investment Grade Corporate Bond ETF",
+      "name_ko": "투자등급 회사채",
+      "business_area": "투자등급 미국 회사채",
+      "heatmap_label": "투자등급",
+      "short_description": "우량 기업 회사채. 국채보다 높은 수익률.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "회사채",
+        "투자등급"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "EMB",
+      "name": "iShares J.P. Morgan USD Emerging Markets Bond ETF",
+      "name_ko": "신흥국 채권",
+      "business_area": "신흥국 달러표시 채권",
+      "heatmap_label": "신흥국채권",
+      "short_description": "신흥국 달러표시 채권. 높은 수익률, 높은 리스크.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "크레딧/신흥국 채권은 스트레스 국면에서 주식처럼 급락할 수 있어 ‘방어 자산’으로 착각하면 위험하다. 그래도 장기 추세 신호는 만들 수 있다.",
+        "operation_notes": "리스크 온 자산군으로 분류하고, 변동성 확대 시 비중을 줄이거나 코어 방어(국채/현금성)와 함께 운용."
+      },
+      "tags": [
+        "채권",
+        "신흥국",
+        "달러표시"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "TIP",
+      "name": "iShares TIPS Bond ETF",
+      "name_ko": "물가연동 국채",
+      "business_area": "미국 물가연동 국채(TIPS)",
+      "heatmap_label": "물가연동",
+      "short_description": "물가에 연동되는 국채. 인플레이션 헤지 수단.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "물가연동",
+        "인플레이션"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "HYG",
+      "name": "iShares iBoxx $ High Yield Corporate Bond ETF",
+      "name_ko": "하이일드 채권",
+      "business_area": "미국 고수익(투기등급) 회사채",
+      "heatmap_label": "하이일드",
+      "short_description": "고수익 회사채. 주식처럼 등락이 크다.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "크레딧/신흥국 채권은 스트레스 국면에서 주식처럼 급락할 수 있어 ‘방어 자산’으로 착각하면 위험하다. 그래도 장기 추세 신호는 만들 수 있다.",
+        "operation_notes": "리스크 온 자산군으로 분류하고, 변동성 확대 시 비중을 줄이거나 코어 방어(국채/현금성)와 함께 운용."
+      },
+      "tags": [
+        "채권",
+        "회사채",
+        "하이일드",
+        "고수익"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "금리·신용 스프레드 변화에 반응하는 방어/완충 자산군",
+    "up_cycle": "기준금리 인하 기대 확대, 실제 인하 사이클, 물가 안정 구간",
+    "down_cycle": "금리 급등, 신용경색, 인플레이션 재가속 우려 구간"
+  }
+}

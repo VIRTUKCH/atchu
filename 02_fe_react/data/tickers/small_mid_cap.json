@@ -1,0 +1,106 @@
+{
+  "type": "중소형",
+  "items": [
+    {
+      "asset_type": "중소형",
+      "ticker": "IJH",
+      "name": "iShares Core S&P Mid-Cap ETF",
+      "name_ko": "S&P 중형주",
+      "business_area": "S&P 400 중형주",
+      "heatmap_label": "S&P중형",
+      "short_description": "S&P 400 중형주. 대형주보다 성장성, 소형주보다 안정.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "중형주",
+        "S&P400",
+        "지수"
+      ]
+    },
+    {
+      "asset_type": "중소형",
+      "ticker": "IJR",
+      "name": "iShares Core S&P Small-Cap ETF",
+      "name_ko": "S&P 소형주",
+      "business_area": "S&P 600 소형주",
+      "heatmap_label": "S&P소형",
+      "short_description": "S&P 600 소형주. 변동성 크지만 성장 잠재력.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "소형주",
+        "S&P600",
+        "지수"
+      ]
+    },
+    {
+      "asset_type": "중소형",
+      "ticker": "IWM",
+      "name": "iShares Russell 2000 ETF",
+      "name_ko": "러셀 소형주",
+      "business_area": "미국 소형주 2000개",
+      "heatmap_label": "러셀2000",
+      "short_description": "미국 소형주 2000개. 내수 경기와 밀접.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "소형주",
+        "러셀2000",
+        "내수",
+        "지수"
+      ]
+    },
+    {
+      "asset_type": "중소형",
+      "ticker": "MDY",
+      "name": "SPDR S&P MidCap 400 ETF Trust",
+      "name_ko": "S&P 중형주",
+      "business_area": "S&P 400 중형주",
+      "heatmap_label": "중형400",
+      "short_description": "S&P 400 중형주. IJH와 같은 지수 추종.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "중형주",
+        "S&P400",
+        "지수"
+      ]
+    },
+    {
+      "asset_type": "중소형",
+      "ticker": "VTWO",
+      "name": "Vanguard Russell 2000 ETF",
+      "name_ko": "러셀 소형주",
+      "business_area": "미국 소형주",
+      "heatmap_label": "소형주",
+      "short_description": "러셀 2000 소형주. IWM과 같은 지수 추종.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "소형주",
+        "러셀2000",
+        "뱅가드"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "대형주 대비 경기 민감도와 변동성이 높은 중소형 자산군",
+    "up_cycle": "유동성 완화, 금리 인하 기대, 경기 회복 초입 구간",
+    "down_cycle": "경기 둔화, 신용 경색, 리스크 회피 심화 구간"
+  }
+}

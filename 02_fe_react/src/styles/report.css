@@ -1,0 +1,390 @@
+.report-content {
+  margin: 0;
+  border: 1px solid var(--line);
+  background: #f8f9ff;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+}
+.report-date-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+a.report-date-button {
+  text-decoration: none;
+  color: inherit;
+}
+.report-date-button {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--text);
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+}
+.report-date-button strong {
+  font-size: 18px;
+  color: #2a2f70;
+}
+.report-actions {
+  margin-bottom: 12px;
+}
+.report-window-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.report-window-tab {
+  min-width: 92px;
+  text-align: center;
+}
+.report-market-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+/* 요약 바 */
+.report-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+.report-summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.report-summary-label {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  color: var(--muted);
+}
+.report-summary-value {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.report-summary-up {
+  color: rgba(214, 71, 59, 0.9);
+}
+.report-summary-down {
+  color: rgba(29, 91, 255, 0.9);
+}
+.report-summary-gainers,
+.report-summary-losers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.report-summary-chip {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.report-summary-chip--up {
+  background: rgba(214, 71, 59, 0.15);
+  color: rgba(180, 50, 40, 1);
+}
+.report-summary-chip--down {
+  background: rgba(29, 91, 255, 0.15);
+  color: rgba(20, 60, 200, 1);
+}
+[data-theme="dark"] .report-summary-chip--up {
+  color: rgba(255, 130, 110, 1);
+}
+[data-theme="dark"] .report-summary-chip--down {
+  color: rgba(110, 150, 255, 1);
+}
+/* 히트맵 섹션 (수직 스택) */
+.report-heat-section {
+  width: 100%;
+}
+/* Accordion */
+.report-overview-details {
+  width: 100%;
+}
+.report-overview-details > summary {
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  color: var(--muted);
+  padding: 8px 4px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+.report-overview-details > summary::-webkit-details-marker {
+  display: none;
+}
+.report-overview-details > summary::before {
+  content: "▶";
+  font-size: 9px;
+  transition: transform 0.15s;
+}
+.report-overview-details[open] > summary::before {
+  content: "▼";
+}
+.report-overview-details > .report-heat-section:first-of-type {
+  padding-top: 10px;
+}
+/* 섹션 avg */
+.report-section-avg {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+.report-section-avg.pos {
+  color: rgba(214, 71, 59, 0.85);
+}
+.report-section-avg.neg {
+  color: rgba(29, 91, 255, 0.85);
+}
+.report-overview-title {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.report-overview-grid {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 140px));
+  justify-content: start;
+}
+.market-overview-page .report-overview-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+a.report-overview-card {
+  text-decoration: none;
+  color: inherit;
+}
+.report-overview-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-2);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+.report-overview-card-title {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  color: var(--tile-text, var(--ink));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.report-overview-card-ticker {
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  color: var(--tile-text, var(--muted));
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.report-overview-card-value {
+  margin-top: 4px;
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--tile-text, var(--ink));
+}
+.report-overview-card-ma {
+  margin-top: 2px;
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--tile-text, var(--muted));
+  opacity: 0.75;
+}
+.report-overview-card-sub {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.report-overview-card-days {
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  color: var(--tile-text, var(--muted));
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.report-overview-card-filter-ratio {
+  margin-left: 2px;
+  opacity: 0.85;
+}
+.report-overview-card-change {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--tile-text, var(--muted));
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.report-overview-card-period {
+  font-size: 18px;
+  opacity: 0.7;
+}
+.atchu-badge {
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.atchu-badge--qualified {
+  color: var(--tile-text, #16a34a);
+}
+.atchu-badge--caution {
+  color: var(--tile-text, #ea580c);
+}
+.atchu-badge--down {
+  color: var(--tile-text, #1d5bff);
+}
+
+/* ── Dark Mode ── */
+[data-theme="dark"] .report-content {
+  background: var(--panel);
+  color: var(--ink);
+}
+[data-theme="dark"] .report-date-button strong {
+  color: #a5b4fc;
+}
+
+@media (max-width: 768px) {
+  .report-window-tabs {
+    gap: 10px;
+  }
+
+  .report-window-tab {
+    min-width: calc(50% - 5px);
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  .report-market-overview {
+    gap: 10px;
+  }
+
+  .report-summary-bar {
+    gap: 14px;
+  }
+
+  .report-heat-section {
+    margin-bottom: 12px;
+  }
+
+  .report-content {
+    font-size: 15px;
+  }
+
+  .report-date-button {
+    font-size: 15px;
+  }
+
+  .report-date-button strong {
+    font-size: 15px;
+  }
+
+  .report-summary-label {
+    font-size: 15px;
+  }
+
+  .report-summary-value {
+    font-size: 15px;
+  }
+
+  .report-summary-chip {
+    font-size: 15px;
+  }
+
+  .report-overview-details > summary {
+    font-size: 15px;
+  }
+
+  .report-section-avg {
+    font-size: 15px;
+  }
+
+  .report-overview-title {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .report-overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px;
+  }
+
+  .report-overview-card {
+    padding: 8px;
+  }
+
+  .report-overview-card-title {
+    font-size: 15px;
+  }
+
+  .report-overview-card-ticker {
+    font-size: 13px;
+  }
+
+  .report-overview-card-value {
+    font-size: 15px;
+  }
+
+  .report-overview-card-ma {
+    font-size: 15px;
+  }
+  .report-overview-card-change {
+    font-size: 15px;
+  }
+  .report-overview-card-period {
+    font-size: 15px;
+  }
+  .atchu-badge {
+    font-size: 15px;
+  }
+  .report-overview-card-days {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .report-overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}

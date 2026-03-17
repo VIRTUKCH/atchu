@@ -1,0 +1,306 @@
+{
+  "type": "섹터",
+  "items": [
+    {
+      "type": "소재",
+      "asset_type": "섹터",
+      "ticker": "XLB",
+      "name": "Materials Select Sector SPDR Fund",
+      "name_ko": "소재",
+      "business_area": "화학·건자재·금속·포장",
+      "heatmap_label": "소재",
+      "short_description": "화학·건자재·금속 기업. 경기 사이클과 원자재 가격에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "소재",
+        "화학",
+        "원자재",
+        "경기민감"
+      ]
+    },
+    {
+      "type": "통신",
+      "asset_type": "섹터",
+      "ticker": "XLC",
+      "name": "Communication Services Select Sector SPDR Fund",
+      "name_ko": "통신",
+      "business_area": "미디어·인터넷·통신",
+      "heatmap_label": "통신",
+      "short_description": "Meta, Alphabet 등 대형 인터넷·미디어 기업 포함.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "통신",
+        "미디어",
+        "인터넷"
+      ]
+    },
+    {
+      "type": "에너지",
+      "asset_type": "섹터",
+      "ticker": "XLE",
+      "name": "Energy Select Sector SPDR Fund",
+      "name_ko": "에너지",
+      "business_area": "석유·가스·에너지",
+      "heatmap_label": "에너지",
+      "short_description": "석유·가스 기업 중심. 유가와 강한 상관관계.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "에너지",
+        "석유",
+        "가스"
+      ]
+    },
+    {
+      "type": "금융",
+      "asset_type": "섹터",
+      "ticker": "XLF",
+      "name": "Financial Select Sector SPDR Fund",
+      "name_ko": "금융",
+      "business_area": "은행·보험·자산운용",
+      "heatmap_label": "금융",
+      "short_description": "은행·보험·자산운용 기업. 금리 사이클에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "금융",
+        "은행",
+        "보험"
+      ]
+    },
+    {
+      "type": "산업",
+      "asset_type": "섹터",
+      "ticker": "XLI",
+      "name": "Industrial Select Sector SPDR Fund",
+      "name_ko": "산업재",
+      "business_area": "항공우주·방산·운송·기계",
+      "heatmap_label": "산업",
+      "short_description": "항공우주·방산·운송·기계 기업. 경기 회복기에 강세.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "산업",
+        "방산",
+        "운송",
+        "기계"
+      ]
+    },
+    {
+      "type": "기술",
+      "asset_type": "섹터",
+      "ticker": "XLK",
+      "name": "Technology Select Sector SPDR Fund",
+      "name_ko": "기술",
+      "business_area": "소프트웨어·하드웨어·반도체",
+      "heatmap_label": "기술",
+      "short_description": "Apple, Microsoft 등 대형 기술주 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "기술",
+        "소프트웨어",
+        "하드웨어"
+      ]
+    },
+    {
+      "type": "필수소비재",
+      "asset_type": "섹터",
+      "ticker": "XLP",
+      "name": "Consumer Staples Select Sector SPDR Fund",
+      "name_ko": "필수소비재",
+      "business_area": "식품·음료·생활용품·유통",
+      "heatmap_label": "필수소비재",
+      "short_description": "식품·음료·생활용품 기업. 경기와 무관하게 안정적.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "필수소비재",
+        "식품",
+        "방어주"
+      ]
+    },
+    {
+      "type": "유틸리티",
+      "asset_type": "섹터",
+      "ticker": "XLU",
+      "name": "Utilities Select Sector SPDR Fund",
+      "name_ko": "유틸리티",
+      "business_area": "전력·가스·수도",
+      "heatmap_label": "유틸리티",
+      "short_description": "전력·가스·수도 기업. 금리에 민감한 방어 섹터.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "유틸리티",
+        "전력",
+        "방어주"
+      ]
+    },
+    {
+      "type": "헬스케어",
+      "asset_type": "섹터",
+      "ticker": "XLV",
+      "name": "Health Care Select Sector SPDR Fund",
+      "name_ko": "헬스케어",
+      "business_area": "제약·의료기기·헬스케어 서비스",
+      "heatmap_label": "헬스케어",
+      "short_description": "제약·의료기기 기업. 방어 성격과 성장성 공존.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "헬스케어",
+        "제약",
+        "의료기기"
+      ]
+    },
+    {
+      "type": "임의소비재",
+      "asset_type": "섹터",
+      "ticker": "XLY",
+      "name": "Consumer Discretionary Select Sector SPDR Fund",
+      "name_ko": "임의소비재",
+      "business_area": "유통·자동차·레저·의류",
+      "heatmap_label": "임의소비재",
+      "short_description": "유통·자동차·레저 기업. 소비 심리와 경기에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "임의소비재",
+        "유통",
+        "자동차"
+      ]
+    },
+    {
+      "type": "부동산",
+      "asset_type": "섹터",
+      "ticker": "VNQ",
+      "name": "Vanguard Real Estate ETF",
+      "name_ko": "부동산",
+      "business_area": "리츠·부동산 투자신탁",
+      "heatmap_label": "부동산",
+      "short_description": "부동산 투자신탁(리츠). 장기금리와 경기에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "섹터",
+        "부동산",
+        "리츠",
+        "금리민감"
+      ]
+    },
+    {
+      "type": "반도체",
+      "asset_type": "섹터",
+      "ticker": "SMH",
+      "name": "VanEck Semiconductor ETF",
+      "name_ko": "반도체",
+      "business_area": "반도체 설계·제조·장비",
+      "heatmap_label": "반도체",
+      "short_description": "반도체 설계·제조·장비 기업. AI·데이터센터 수요와 직결.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "반도체",
+        "AI",
+        "기술"
+      ]
+    },
+    {
+      "type": "사이버보안",
+      "asset_type": "섹터",
+      "ticker": "CIBR",
+      "name": "First Trust NASDAQ Cybersecurity ETF",
+      "name_ko": "사이버보안",
+      "business_area": "사이버보안 솔루션",
+      "heatmap_label": "사이버보안",
+      "short_description": "사이버보안 솔루션 기업. 구조적 성장 테마.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "사이버보안",
+        "보안",
+        "기술"
+      ]
+    },
+    {
+      "type": "소프트웨어",
+      "asset_type": "섹터",
+      "ticker": "IGV",
+      "name": "iShares Expanded Tech-Software Sector ETF",
+      "name_ko": "소프트웨어",
+      "business_area": "소프트웨어·클라우드",
+      "heatmap_label": "소프트웨어",
+      "short_description": "소프트웨어·클라우드 기업 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "소프트웨어",
+        "클라우드",
+        "SaaS"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "업종별 경기·금리·정책 환경 변화에 따라 상대강도가 달라지는 로테이션 자산군",
+    "up_cycle": "정책/경기 변화로 업종 리더십이 명확히 전환되는 구간",
+    "down_cycle": "방향성 부재 횡보, 업종 순환이 잦은 노이즈 구간"
+  }
+}

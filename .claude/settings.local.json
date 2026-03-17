@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "WebFetch",
+      "WebSearch",
+      "Bash(*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "found=$(find . -maxdepth 3 -name 'AGENTS.md' | head -1); [ -n \"$found\" ] && cat \"$found\""
+          }
+        ]
+      }
+    ]
+  },
+  "outputStyle": "verbose",
+  "effortLevel": "high",
+  "alwaysThinkingEnabled": true,
+  "language": "ko",
+  "model": "claude-opus-4-6"
+}

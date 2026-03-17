@@ -1,0 +1,70 @@
+{
+  "type": "배당",
+  "items": [
+    {
+      "asset_type": "배당",
+      "ticker": "HDV",
+      "name": "iShares Core High Dividend ETF",
+      "name_ko": "고배당",
+      "business_area": "고배당 미국 대형주",
+      "heatmap_label": "고배당",
+      "short_description": "배당 높은 대형주 중심. 에너지·헬스케어 비중 큼.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "고배당",
+        "인컴",
+        "대형주"
+      ]
+    },
+    {
+      "asset_type": "배당",
+      "ticker": "SCHD",
+      "name": "Schwab U.S. Dividend Equity ETF",
+      "name_ko": "배당 성장",
+      "business_area": "배당 성장 미국 대형주",
+      "heatmap_label": "배당성장",
+      "short_description": "배당을 꾸준히 늘려온 기업 중심. 성장성도 고려.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "배당성장",
+        "인컴",
+        "대형주"
+      ]
+    },
+    {
+      "asset_type": "배당",
+      "ticker": "VYM",
+      "name": "Vanguard High Dividend Yield ETF",
+      "name_ko": "고배당",
+      "business_area": "고배당수익률 미국 대형주",
+      "heatmap_label": "고배당수익률",
+      "short_description": "배당수익률 높은 대형주. HDV보다 종목 넓음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "고배당",
+        "인컴",
+        "뱅가드"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "배당 성향과 현금흐름 안정성이 높은 기업 중심 자산군",
+    "up_cycle": "금리 하락 기대, 변동성 장세, 안정 현금흐름 선호 구간",
+    "down_cycle": "성장주 급등장, 실적 악화로 배당 지속성 우려가 커지는 구간"
+  }
+}

@@ -1,0 +1,52 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Logs
+*.log
+
+# 전역 gitignore 오버라이드 — Context Engineering 공개용
+!.claude/settings.local.json
+
+# FE data directory (CSV, snapshots, logs 등 생성물 제외, scripts/tickers는 추적)
+02_fe_react/data/*
+!02_fe_react/data/scripts/
+!02_fe_react/data/tickers/
+
+# Vercel
+02_fe_react/.vercel/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Env files (secrets)
+.env
+.env.*
+05_db_psql/.env
+
+# Postgres data
+05_db_psql/data/
+
+# TLS certificates
+01_proxy_nginx/pem/
+
+# Node / Vite
+node_modules/
+dist/
+.venv/
+
+# Gradle / Java
+.gradle/
+build/
+out/
+target/
+
+# IDE metadata
+.classpath
+.project
+.settings/
