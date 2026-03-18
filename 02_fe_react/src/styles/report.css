@@ -221,9 +221,9 @@ a.report-overview-card {
   text-overflow: ellipsis;
 }
 .report-overview-card-name-ko {
-  font-size: clamp(11px, calc(9.4px + 0.4vw), 13px);
+  font-size: clamp(13px, calc(10.4px + 0.7vw), 16px);
   color: var(--tile-text, var(--muted));
-  opacity: 0.8;
+  opacity: 0.85;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -376,7 +376,7 @@ a.report-overview-card {
   }
 
   .report-overview-card-name-ko {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .report-overview-card-value {
