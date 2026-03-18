@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/bento.css";
 import "../styles/report.css";
 import MainMarketStatusGrid from "../components/main/MainMarketStatusGrid";
-import MarketHeatmap from "../components/market/MarketHeatmap";
+import StockHeatmap from "../components/market/StockHeatmap";
 import {
   stockSnapshotPayload,
   stockTrendNotificationPayload,
@@ -52,7 +52,11 @@ export default function StockOverviewPage() {
     return Object.entries(sectorMap)
       .map(([type, data]) => [type, { above: data.qualified, total: data.total }])
       .filter(([, data]) => data.total > 0)
-      .sort((a, b) => (SECTOR_ORDER_MAP[a[0]] ?? 999) - (SECTOR_ORDER_MAP[b[0]] ?? 999));
+      .sort((a, b) => {
+        const pctA = a[1].total > 0 ? a[1].above / a[1].total : 0;
+        const pctB = b[1].total > 0 ? b[1].above / b[1].total : 0;
+        return pctB - pctA;
+      });
   }, [snapshotTickersData]);
 
   // 전체 시장 폭 요약
@@ -185,7 +189,7 @@ export default function StockOverviewPage() {
             </button>
           ))}
         </div>
-        <MarketHeatmap
+        <StockHeatmap
           snapshotPayload={stockSnapshotPayload}
           overviewTickers={stockOverviewTickers}
           periodKey={selectedPeriod}

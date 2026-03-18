@@ -55,7 +55,8 @@ async function fetchFromDatahub() {
     return {
       Symbol: parts[0] || "",
       Security: parts[1] || "",
-      "GICS Sector": parts[2] || ""
+      "GICS Sector": parts[2] || "",
+      "GICS Sub-Industry": parts[3] || ""
     };
   });
 }
@@ -72,6 +73,7 @@ async function main() {
       const sector = comp["GICS Sector"] || "";
       const sectorKo = SECTOR_KO[sector] || sector;
       const name = (comp.Security || "").trim();
+      const industry = (comp["GICS Sub-Industry"] || "").trim();
       return {
         ticker,
         name,
@@ -79,6 +81,7 @@ async function main() {
         asset_type: "개별주",
         type: sectorKo,
         sector,
+        industry,
         heatmap_label: ticker
       };
     })
