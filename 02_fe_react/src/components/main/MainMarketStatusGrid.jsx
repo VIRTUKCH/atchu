@@ -11,20 +11,12 @@ function SubSectorGrid({ subSectors }) {
   if (!subSectors?.length) return null;
   return (
     <div className="sub-sector-grid">
-      {subSectors.map((sub) => {
-        const pct = sub.total > 0 ? (sub.above / sub.total) * 100 : 0;
-        return (
-          <div key={sub.name} className="sub-sector-cell">
-            <div className="sub-sector-cell-head">
-              <span className="sub-sector-cell-name">{sub.name}</span>
-              <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
-            </div>
-            <div className="sub-sector-cell-bar">
-              <div className="sub-sector-cell-bar-fill" style={{ width: `${pct}%` }} />
-            </div>
-          </div>
-        );
-      })}
+      {subSectors.map((sub) => (
+        <div key={sub.name} className="sub-sector-cell">
+          <span className="sub-sector-cell-name">{sub.name}</span>
+          <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
+        </div>
+      ))}
     </div>
   );
 }
