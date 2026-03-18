@@ -76,7 +76,7 @@ export default function AppTopNav() {
               key={tab.key}
               to={tab.path}
               className={`topnav-tab ${location.pathname === tab.path ? "active" : ""}`}
-              style={{ opacity: 0.6 }}
+              style={{ color: "var(--muted)" }}
             >
               {tab.label}
             </Link>
@@ -146,7 +146,7 @@ export default function AppTopNav() {
               key={tab.key}
               to={tab.path}
               className={`topnav-mobile-item ${location.pathname === tab.path ? "active" : ""}`}
-              style={{ opacity: 0.6 }}
+              style={{ color: "var(--muted)" }}
               onClick={() => setMobileMenuOpen(false)}
             >
               {tab.label}

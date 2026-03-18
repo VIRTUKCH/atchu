@@ -28,19 +28,23 @@ export default function DevPage() {
             style={{
               display: "block",
               padding: "16px 20px",
-              borderRadius: 10,
-              background: "var(--card-bg, #f8f9fa)",
-              border: "1px solid var(--border-color, #e5e7eb)",
+              borderRadius: "var(--radius-sm)",
+              background: "var(--panel-2)",
+              border: "1px solid var(--line)",
               textDecoration: "none",
-              color: "inherit"
+              color: "var(--ink)"
             }}
           >
             <div style={{ fontWeight: 600, marginBottom: 4 }}>{link.label}</div>
-            <div style={{ fontSize: 13, opacity: 0.6 }}>{link.desc}</div>
+            <div style={{ fontSize: 13, color: "var(--muted)" }}>{link.desc}</div>
           </Link>
         ))}
       </div>
-      <button className="ghost" onClick={handleLogout}>
+      <button
+        className="ghost"
+        onClick={handleLogout}
+        style={{ color: "var(--ink)", border: "1px solid var(--line)" }}
+      >
         로그아웃
       </button>
     </div>
