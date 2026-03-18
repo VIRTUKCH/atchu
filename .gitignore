@@ -41,6 +41,9 @@ node_modules/
 dist/
 .venv/
 
+# 개별주 CSV 정적 에셋 (파이프라인이 생성, 빌드에만 필요)
+02_fe_react/public/csv_stock/
+
 # Gradle / Java
 .gradle/
 build/
