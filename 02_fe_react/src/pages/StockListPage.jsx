@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import EtfSummaryCard from "../components/etf/EtfSummaryCard";
-import TypeFilter from "../components/etf/TypeFilter";
 import {
   stockTickerMetaMap,
   stockSnapshotMap,
@@ -89,16 +88,60 @@ function SortDropdown({ sortMode, setSortMode }) {
   );
 }
 
+// 섹터 → 서브섹터 그룹형 필터
+function SectorGroupFilter({ sectorGroups, selectedSector, selectedSubSector, onSelectSector, onSelectSub }) {
+  return (
+    <div className="sector-group-filter">
+      <button
+        type="button"
+        className={`type-button ${selectedSector === "ALL" ? "active" : ""}`}
+        onClick={() => onSelectSector("ALL")}
+      >
+        전체
+      </button>
+      <div className="sector-group-list">
+        {sectorGroups.map(({ sector, subSectors }) => {
+          const isSectorSelected = selectedSector === sector;
+          return (
+            <div key={sector} className={`sector-group-row ${isSectorSelected ? "selected" : ""}`}>
+              <button
+                type="button"
+                className={`sector-group-name ${isSectorSelected && selectedSubSector === "ALL" ? "active" : ""}`}
+                onClick={() => onSelectSector(sector)}
+              >
+                {sector}
+              </button>
+              <div className="sector-group-subs">
+                {subSectors.map((sub) => (
+                  <button
+                    key={sub}
+                    type="button"
+                    className={`sector-sub-chip ${isSectorSelected && selectedSubSector === sub ? "active" : ""}`}
+                    onClick={() => onSelectSub(sector, sub)}
+                  >
+                    {sub}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function StockListPage() {
   const [searchParams] = useSearchParams();
   const sectorParam = searchParams.get("sector") || "ALL";
+  const subParam = searchParams.get("sub") || "ALL";
   const [selectedSector, setSelectedSector] = useState(sectorParam);
-  const [selectedSubSector, setSelectedSubSector] = useState("ALL");
+  const [selectedSubSector, setSelectedSubSector] = useState(subParam);
 
   useEffect(() => {
     setSelectedSector(sectorParam);
-    setSelectedSubSector("ALL");
-  }, [sectorParam]);
+    setSelectedSubSector(subParam);
+  }, [sectorParam, subParam]);
   const [sortMode, setSortMode] = useState("sector");
   const [tickerQuery, setTickerQuery] = useState("");
 
@@ -107,29 +150,30 @@ export default function StockListPage() {
     []
   );
 
-  const availableSectors = useMemo(() => {
-    const sectors = new Set();
+  // 섹터 → 서브섹터 그룹 데이터
+  const sectorGroups = useMemo(() => {
+    const map = {};
     stockTickerMetaMap.forEach((meta) => {
-      if (meta.group) sectors.add(meta.group);
+      if (!meta.group) return;
+      if (!map[meta.group]) map[meta.group] = new Set();
+      if (meta.subGroup) map[meta.group].add(meta.subGroup);
     });
-    return SECTOR_ORDER.filter((s) => sectors.has(s));
+    return SECTOR_ORDER
+      .filter((s) => map[s])
+      .map((sector) => ({
+        sector,
+        subSectors: Array.from(map[sector]).sort()
+      }));
   }, []);
-
-  // 선택된 섹터의 서브섹터 목록
-  const availableSubSectors = useMemo(() => {
-    if (selectedSector === "ALL") return [];
-    const subs = new Set();
-    stockTickerMetaMap.forEach((meta) => {
-      if (meta.group === selectedSector && meta.subGroup) {
-        subs.add(meta.subGroup);
-      }
-    });
-    return Array.from(subs).sort();
-  }, [selectedSector]);
 
   const handleSectorSelect = (sector) => {
     setSelectedSector(sector);
     setSelectedSubSector("ALL");
+  };
+
+  const handleSubSelect = (sector, sub) => {
+    setSelectedSector(sector);
+    setSelectedSubSector(sub);
   };
 
   const trendSummary = useMemo(() => {
@@ -211,18 +255,13 @@ export default function StockListPage() {
           )}
         </div>
       </div>
-      <TypeFilter
-        types={availableSectors}
-        selectedType={selectedSector}
-        onSelect={handleSectorSelect}
+      <SectorGroupFilter
+        sectorGroups={sectorGroups}
+        selectedSector={selectedSector}
+        selectedSubSector={selectedSubSector}
+        onSelectSector={handleSectorSelect}
+        onSelectSub={handleSubSelect}
       />
-      {availableSubSectors.length > 1 && (
-        <TypeFilter
-          types={availableSubSectors}
-          selectedType={selectedSubSector}
-          onSelect={setSelectedSubSector}
-        />
-      )}
       <div className="ticker-search-wrap">
         <input
           type="text"

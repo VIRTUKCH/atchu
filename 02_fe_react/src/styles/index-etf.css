@@ -10,6 +10,94 @@
   overflow: hidden;
   margin-top: 12px;
 }
+/* 섹터 + 서브섹터 그룹형 필터 */
+.sector-group-filter {
+  margin-top: 12px;
+}
+.sector-group-filter > .type-button {
+  margin-bottom: 8px;
+}
+.sector-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sector-group-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+.sector-group-row.selected {
+  background: rgba(95, 104, 255, 0.04);
+}
+.sector-group-name {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: left;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.sector-group-name:hover {
+  background: rgba(95, 104, 255, 0.06);
+}
+.sector-group-name.active {
+  color: #2a2f70;
+  background: rgba(95, 104, 255, 0.1);
+}
+.sector-group-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.sector-sub-chip {
+  font-size: clamp(13px, calc(11px + 0.53vw), 15px);
+  padding: 3px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.sector-sub-chip:hover {
+  border-color: rgba(95, 104, 255, 0.3);
+  color: var(--text);
+}
+.sector-sub-chip.active {
+  border-color: rgba(95, 104, 255, 0.5);
+  background: rgba(95, 104, 255, 0.12);
+  color: #2a2f70;
+  font-weight: 600;
+}
+[data-theme="dark"] .sector-group-row.selected {
+  background: rgba(88, 101, 242, 0.06);
+}
+[data-theme="dark"] .sector-group-name {
+  color: var(--text);
+}
+[data-theme="dark"] .sector-group-name:hover {
+  background: rgba(88, 101, 242, 0.1);
+}
+[data-theme="dark"] .sector-group-name.active {
+  color: #a5b4fc;
+  background: rgba(88, 101, 242, 0.15);
+}
+[data-theme="dark"] .sector-sub-chip.active {
+  border-color: rgba(88, 101, 242, 0.5);
+  background: rgba(88, 101, 242, 0.15);
+  color: #a5b4fc;
+}
 .type-button-group {
   display: flex;
   flex-wrap: wrap;
