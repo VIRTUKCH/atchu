@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import EtfSummaryCard from "../components/etf/EtfSummaryCard";
+import TypeFilter from "../components/etf/TypeFilter";
 import {
   stockTickerMetaMap,
   stockSnapshotMap,
@@ -83,30 +84,6 @@ function SortDropdown({ sortMode, setSortMode }) {
           </ul>
         )}
       </div>
-    </div>
-  );
-}
-
-function SectorFilter({ sectors, selectedSector, onSelect }) {
-  return (
-    <div className="type-filter">
-      <button
-        type="button"
-        className={`type-filter-chip ${selectedSector === "ALL" ? "selected" : ""}`}
-        onClick={() => onSelect("ALL")}
-      >
-        전체
-      </button>
-      {sectors.map((sector) => (
-        <button
-          key={sector}
-          type="button"
-          className={`type-filter-chip ${selectedSector === sector ? "selected" : ""}`}
-          onClick={() => onSelect(sector)}
-        >
-          {sector}
-        </button>
-      ))}
     </div>
   );
 }
@@ -215,9 +192,9 @@ export default function StockListPage() {
           )}
         </div>
       </div>
-      <SectorFilter
-        sectors={availableSectors}
-        selectedSector={selectedSector}
+      <TypeFilter
+        types={availableSectors}
+        selectedType={selectedSector}
         onSelect={setSelectedSector}
       />
       <div className="ticker-search-wrap">
