@@ -45,29 +45,44 @@ export default function StockOverviewPage() {
       const group = item.group;
       const subGroup = item.subGroup;
       if (!group) return;
-      if (!sectorMap[group]) sectorMap[group] = { qualified: 0, total: 0, subs: {} };
+      if (!sectorMap[group]) sectorMap[group] = { qualified: 0, total: 0, diffSum: 0, diffCount: 0, subs: {} };
       const tickerKey = String(item.ticker || "").toUpperCase();
       const snap = snapshotTickersData[tickerKey]?.snapshot;
       if (!snap) return;
       sectorMap[group].total += 1;
       if (snap.isAtchuQualified200 === true) sectorMap[group].qualified += 1;
+      const diff200 = snap.percentDiff200;
+      if (typeof diff200 === "number" && isFinite(diff200)) {
+        sectorMap[group].diffSum += diff200;
+        sectorMap[group].diffCount += 1;
+      }
       // 서브섹터 집계
       if (subGroup) {
-        if (!sectorMap[group].subs[subGroup]) sectorMap[group].subs[subGroup] = { qualified: 0, total: 0 };
+        if (!sectorMap[group].subs[subGroup]) sectorMap[group].subs[subGroup] = { qualified: 0, total: 0, diffSum: 0, diffCount: 0 };
         sectorMap[group].subs[subGroup].total += 1;
         if (snap.isAtchuQualified200 === true) sectorMap[group].subs[subGroup].qualified += 1;
+        if (typeof diff200 === "number" && isFinite(diff200)) {
+          sectorMap[group].subs[subGroup].diffSum += diff200;
+          sectorMap[group].subs[subGroup].diffCount += 1;
+        }
       }
     });
     return Object.entries(sectorMap)
       .map(([type, data]) => {
+        const avgDiff200 = data.diffCount > 0 ? +(data.diffSum / data.diffCount).toFixed(2) : null;
         const subSectors = Object.entries(data.subs)
-          .map(([name, s]) => ({ name, above: s.qualified, total: s.total }))
+          .map(([name, s]) => ({
+            name,
+            above: s.qualified,
+            total: s.total,
+            avgDiff200: s.diffCount > 0 ? +(s.diffSum / s.diffCount).toFixed(2) : null,
+          }))
           .sort((a, b) => {
             const pctA = a.total > 0 ? a.above / a.total : 0;
             const pctB = b.total > 0 ? b.above / b.total : 0;
             return pctB - pctA;
           });
-        return [type, { above: data.qualified, total: data.total, subSectors }];
+        return [type, { above: data.qualified, total: data.total, avgDiff200, subSectors }];
       })
       .filter(([, data]) => data.total > 0)
       .sort((a, b) => {
