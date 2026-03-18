@@ -192,6 +192,7 @@ export default function StockOverviewPage() {
         <MainMarketStatusGrid
           items={sectorStatusItems}
           onTypeSelect={(type) => navigate(`/_stocks?sector=${encodeURIComponent(type)}`)}
+          onSubSelect={(sector, sub) => navigate(`/_stocks?sector=${encodeURIComponent(sector)}&sub=${encodeURIComponent(sub)}`)}
         />
       </div>
 

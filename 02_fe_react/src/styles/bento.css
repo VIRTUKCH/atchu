@@ -925,6 +925,18 @@ a.trend-signal-item {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: background 0.12s ease;
+}
+.sub-sector-cell:hover {
+  background: rgba(95, 104, 255, 0.08);
+}
+[data-theme="dark"] .sub-sector-cell:hover {
+  background: rgba(88, 101, 242, 0.12);
 }
 .sub-sector-cell-name {
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);

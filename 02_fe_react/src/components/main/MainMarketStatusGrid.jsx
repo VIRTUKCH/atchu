@@ -7,21 +7,29 @@ const TYPE_DISPLAY_ORDER = [
 ];
 const TYPE_ORDER_MAP = new Map(TYPE_DISPLAY_ORDER.map((t, i) => [t, i]));
 
-function SubSectorGrid({ subSectors }) {
+function SubSectorGrid({ subSectors, onSubClick }) {
   if (!subSectors?.length) return null;
   return (
     <div className="sub-sector-grid">
       {subSectors.map((sub) => (
-        <div key={sub.name} className="sub-sector-cell">
+        <button
+          key={sub.name}
+          type="button"
+          className="sub-sector-cell"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSubClick?.(sub.name);
+          }}
+        >
           <span className="sub-sector-cell-name">{sub.name}</span>
           <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
-        </div>
+        </button>
       ))}
     </div>
   );
 }
 
-export default function MainMarketStatusGrid({ items, onTypeSelect }) {
+export default function MainMarketStatusGrid({ items, onTypeSelect, onSubSelect }) {
   const hasSubSectors = items.some(([, counts]) => counts.subSectors?.length > 0);
 
   const sortedItems = useMemo(() => {
@@ -55,7 +63,7 @@ export default function MainMarketStatusGrid({ items, onTypeSelect }) {
               <span className="sector-wide-ratio">{toPercent(ratio)}</span>
               <span className="sector-wide-count">{counts.above}/{counts.total}</span>
             </div>
-            <SubSectorGrid subSectors={counts.subSectors} />
+            <SubSectorGrid subSectors={counts.subSectors} onSubClick={(sub) => onSubSelect?.(type, sub)} />
           </button>
         ))}
       </div>

@@ -209,10 +209,13 @@ export default function StockListPage() {
     if (!filteredTickers.length) return [];
     return [...filteredTickers].sort((a, b) => {
       if (sortMode === "sector") {
-        const aRank = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
-        const bRank = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
-        if (aRank !== bRank) return aRank - bRank;
-        return a.localeCompare(b);
+        const aSector = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
+        const bSector = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
+        if (aSector !== bSector) return aSector - bSector;
+        // 같은 섹터 내에서 시가총액 순위(rank)로 정렬
+        const aCapRank = stockTickerMetaMap.get(a)?.rank ?? 9999;
+        const bCapRank = stockTickerMetaMap.get(b)?.rank ?? 9999;
+        return aCapRank - bCapRank;
       }
       const getVal = (ticker) => {
         if (sortMode === "ma200_desc" || sortMode === "ma200_asc") {
