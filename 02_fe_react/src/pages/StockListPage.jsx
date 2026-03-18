@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import EtfSummaryCard from "../components/etf/EtfSummaryCard";
 import {
   stockTickerMetaMap,
@@ -111,7 +112,9 @@ function SectorFilter({ sectors, selectedSector, onSelect }) {
 }
 
 export default function StockListPage() {
-  const [selectedSector, setSelectedSector] = useState("ALL");
+  const [searchParams] = useSearchParams();
+  const initialSector = searchParams.get("sector") || "ALL";
+  const [selectedSector, setSelectedSector] = useState(initialSector);
   const [sortMode, setSortMode] = useState("sector");
   const [tickerQuery, setTickerQuery] = useState("");
 

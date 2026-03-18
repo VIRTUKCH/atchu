@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/bento.css";
 import "../styles/report.css";
 import MainMarketStatusGrid from "../components/main/MainMarketStatusGrid";
@@ -33,6 +33,7 @@ const formatShortDate = (dateStr) => {
 };
 
 export default function StockOverviewPage() {
+  const navigate = useNavigate();
   const [selectedPeriod, setSelectedPeriod] = useState("ma200");
   const snapshotTickersData = stockSnapshotPayload?.tickers || {};
 
@@ -171,7 +172,10 @@ export default function StockOverviewPage() {
         <div className="bento-card-subtitle">
           앗추 필터를 통과한 종목 비율로 섹터별 추세를 파악합니다
         </div>
-        <MainMarketStatusGrid items={sectorStatusItems} />
+        <MainMarketStatusGrid
+          items={sectorStatusItems}
+          onTypeSelect={(type) => navigate(`/_stocks?sector=${encodeURIComponent(type)}`)}
+        />
       </div>
 
       {/* 시장 히트맵 */}
