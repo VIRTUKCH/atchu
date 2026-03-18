@@ -10,7 +10,8 @@ const discordInviteUrl =
   "";
 
 const DEV_TABS = [
-  { key: "dev", label: "관리자", path: "/_dev" }
+  { key: "stocks", label: "관리자 추세 조회", path: "/_stocks" },
+  { key: "stocks_overview", label: "관리자 시장 개요", path: "/_stocks_overview" }
 ];
 
 export default function AppTopNav() {
