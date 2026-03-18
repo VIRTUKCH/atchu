@@ -19,7 +19,7 @@ const SORT_OPTIONS = [
 ];
 
 const SECTOR_ORDER = [
-  "기술", "헬스케어", "금융", "임의소비재", "통신",
+  "기술", "반도체", "헬스케어", "바이오텍", "금융", "임의소비재", "통신",
   "산업재", "필수소비재", "에너지", "유틸리티", "부동산", "소재"
 ];
 const sectorRank = new Map(SECTOR_ORDER.map((s, i) => [s, i]));
@@ -113,8 +113,12 @@ function SectorFilter({ sectors, selectedSector, onSelect }) {
 
 export default function StockListPage() {
   const [searchParams] = useSearchParams();
-  const initialSector = searchParams.get("sector") || "ALL";
-  const [selectedSector, setSelectedSector] = useState(initialSector);
+  const sectorParam = searchParams.get("sector") || "ALL";
+  const [selectedSector, setSelectedSector] = useState(sectorParam);
+
+  useEffect(() => {
+    setSelectedSector(sectorParam);
+  }, [sectorParam]);
   const [sortMode, setSortMode] = useState("sector");
   const [tickerQuery, setTickerQuery] = useState("");
 
