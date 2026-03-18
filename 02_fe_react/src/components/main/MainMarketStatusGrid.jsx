@@ -7,6 +7,26 @@ const TYPE_DISPLAY_ORDER = [
 ];
 const TYPE_ORDER_MAP = new Map(TYPE_DISPLAY_ORDER.map((t, i) => [t, i]));
 
+function SubSectorBars({ subSectors }) {
+  if (!subSectors?.length) return null;
+  return (
+    <div className="sub-sector-bars">
+      {subSectors.map((sub) => {
+        const pct = sub.total > 0 ? (sub.above / sub.total) * 100 : 0;
+        return (
+          <div key={sub.name} className="sub-sector-row">
+            <span className="sub-sector-label">{sub.name}</span>
+            <div className="sub-sector-bar">
+              <div className="sub-sector-bar-fill" style={{ width: `${pct}%` }} />
+            </div>
+            <span className="sub-sector-count">{sub.above}/{sub.total}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function MainMarketStatusGrid({ items, onTypeSelect }) {
   const sortedItems = useMemo(() => {
     const withRatio = items.map(([type, counts]) => {
@@ -43,6 +63,7 @@ export default function MainMarketStatusGrid({ items, onTypeSelect }) {
                 <div className="main-market-bar-fill" style={{ width: `${ratio}%` }} />
               </div>
               <div className="main-market-ratio">{toPercent(ratio)}</div>
+              <SubSectorBars subSectors={counts.subSectors} />
             </button>
           );
         })}

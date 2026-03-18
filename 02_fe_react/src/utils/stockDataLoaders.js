@@ -32,7 +32,8 @@ function buildStockTickerMeta() {
           ...item,
           ticker: key,
           nameKo: item.name_ko || item.name || key,
-          group: item.type || "기타"
+          group: item.type || "기타",
+          subGroup: item.subType || null
         });
       }
     });
@@ -127,6 +128,7 @@ function buildStockOverviewTickers() {
     heatmap_label: meta.heatmap_label || meta.ticker,
     heatmap_group: meta.group || meta.type || "기타",
     group: meta.group || meta.type || "기타",
+    subGroup: meta.subGroup || meta.subType || null,
     type: meta.group || meta.type || "기타",
     asset_type: "개별주"
   }));

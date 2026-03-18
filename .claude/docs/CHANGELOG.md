@@ -1,5 +1,15 @@
 # 작업 기록
 
+### 2026-03-18 (66)
+- **GICS 11개 섹터 + 46개 서브섹터 구조 도입**
+  - 반도체 → 기술의 서브섹터, 바이오텍 → 헬스케어의 서브섹터로 통합
+  - sp500.json: 503종목 전체에 `subType` 필드 추가 (industry → subType 매핑)
+  - 섹터 추세 강도 카드: 서브섹터별 미니 바 표시 (MainMarketStatusGrid)
+  - 히트맵: 섹터 내 서브섹터별 소제목 구분 (StockHeatmap)
+  - 리스트 페이지: 섹터 선택 시 서브섹터 필터 칩 추가 (StockListPage)
+  - SECTOR_ORDER 13개 → 11개로 정리 (GICS 원본)
+  - dev_market_overview.md 기획 문서 전면 개편
+
 ### 2026-03-18 (65)
 - **개별주(S&P 500) 추세추종 기능 추가 — 개발자 전용 비공개**
   - 데이터 파이프라인: `pipeline_stock.sh`, `generate_stock_snapshot.mjs` — 503종목 CSV 다운로드 + 스냅샷/추세 알림 생성

@@ -173,6 +173,21 @@ a.report-date-button {
   align-items: center;
   gap: 4px;
 }
+.report-heat-subsection {
+  margin-bottom: 12px;
+}
+.report-overview-subtitle {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(12px, calc(10px + 0.5vw), 14px);
+  margin-bottom: 6px;
+  margin-top: 4px;
+  color: var(--muted);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 2px;
+}
 .report-overview-grid {
   display: grid;
   gap: 6px;

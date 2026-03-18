@@ -134,7 +134,7 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
     return Number.isFinite(Number(raw)) ? Number(raw) : null;
   };
 
-  // 섹터별 타일 빌드
+  // 섹터별·서브섹터별 타일 빌드
   const { sectorGroups, allTiles } = useMemo(() => {
     const tickersData = snapshotPayload?.tickers || {};
     const sectorMap = {};
@@ -146,8 +146,10 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
       if (!data?.snapshot) return;
       const snap = data.snapshot;
       const sector = item.group || item.type || "기타";
+      const subSector = item.subGroup || null;
       const tile = {
         ticker,
+        subSector,
         maDist: Number.isFinite(Number(snap.percentDiff200)) ? Number(snap.percentDiff200) : null,
         isAtchuQualified: snap.isAtchuQualified200 === true,
         aboveDays200: Number.isFinite(Number(snap.aboveDays200)) ? Number(snap.aboveDays200) : null,
@@ -163,11 +165,24 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
       tiles.push(tile);
     });
 
-    // 섹터별 앗추 필터 통과 비율 내림차순 정렬
+    // 섹터별 앗추 필터 통과 비율 내림차순 정렬 + 서브섹터 그룹핑
     const groups = Object.entries(sectorMap)
       .map(([sector, items]) => {
         const qualified = items.filter((t) => t.isAtchuQualified).length;
-        return { sector, items, qualified, total: items.length, pct: items.length > 0 ? qualified / items.length : 0 };
+        // 서브섹터별 그룹핑
+        const subMap = {};
+        items.forEach((t) => {
+          const key = t.subSector || "_none";
+          if (!subMap[key]) subMap[key] = [];
+          subMap[key].push(t);
+        });
+        const subGroups = Object.entries(subMap)
+          .map(([name, subItems]) => {
+            const subQ = subItems.filter((t) => t.isAtchuQualified).length;
+            return { name: name === "_none" ? null : name, items: subItems, qualified: subQ, total: subItems.length, pct: subItems.length > 0 ? subQ / subItems.length : 0 };
+          })
+          .sort((a, b) => b.pct - a.pct);
+        return { sector, items, subGroups, qualified, total: items.length, pct: items.length > 0 ? qualified / items.length : 0 };
       })
       .sort((a, b) => b.pct - a.pct);
 
@@ -242,14 +257,29 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
         </div>
       </div>
 
-      {sectorGroups.map(({ sector, items, qualified, total }) => (
+      {sectorGroups.map(({ sector, subGroups, qualified, total }) => (
         <div key={sector} className="report-heat-section">
           <div className="report-overview-title">
             {sector} ({qualified}/{total})
           </div>
-          <div className="report-overview-grid">
-            {renderTiles(items)}
-          </div>
+          {subGroups.length > 1 ? (
+            subGroups.map((sub) => (
+              <div key={sub.name || "_none"} className="report-heat-subsection">
+                {sub.name && (
+                  <div className="report-overview-subtitle">
+                    {sub.name} ({sub.qualified}/{sub.total})
+                  </div>
+                )}
+                <div className="report-overview-grid">
+                  {renderTiles(sub.items)}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="report-overview-grid">
+              {renderTiles(subGroups[0]?.items || [])}
+            </div>
+          )}
         </div>
       ))}
     </div>

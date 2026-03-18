@@ -849,6 +849,51 @@ a.trend-signal-item {
   color: #59607c;
   font-weight: 600;
 }
+/* 서브섹터 미니 바 */
+.sub-sector-bars {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-top: 1px solid rgba(35, 49, 92, 0.1);
+  padding-top: 6px;
+}
+.sub-sector-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sub-sector-label {
+  font-size: clamp(10px, calc(8.4px + 0.42vw), 12px);
+  color: #8891ab;
+  min-width: 0;
+  flex-shrink: 0;
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.sub-sector-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(29, 91, 255, 0.1);
+  overflow: hidden;
+}
+.sub-sector-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ef5d4f 0%, #d6473b 100%);
+}
+.sub-sector-count {
+  font-size: clamp(9px, calc(7.6px + 0.37vw), 11px);
+  font-family: "Sora", sans-serif;
+  color: #8891ab;
+  white-space: nowrap;
+  min-width: 28px;
+  text-align: right;
+}
 .main-market-ma-toggle {
   display: flex;
   gap: 6px;
@@ -1055,6 +1100,18 @@ a.trend-signal-item {
 }
 [data-theme="dark"] .main-market-ratio {
   color: var(--muted);
+}
+[data-theme="dark"] .sub-sector-bars {
+  border-top-color: rgba(58, 58, 80, 0.4);
+}
+[data-theme="dark"] .sub-sector-label {
+  color: rgba(165, 180, 252, 0.6);
+}
+[data-theme="dark"] .sub-sector-bar {
+  background: rgba(88, 101, 242, 0.12);
+}
+[data-theme="dark"] .sub-sector-count {
+  color: rgba(165, 180, 252, 0.5);
 }
 [data-theme="dark"] .main-market-ma-btn {
   border-color: rgba(58, 58, 80, 0.5);

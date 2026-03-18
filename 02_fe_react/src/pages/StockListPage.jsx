@@ -19,9 +19,10 @@ const SORT_OPTIONS = [
   { value: "mdd_asc", label: "MDD 낮은순" },
 ];
 
+// GICS 11개 섹터 (반도체/바이오텍은 각각 기술/헬스케어의 서브섹터)
 const SECTOR_ORDER = [
-  "기술", "반도체", "헬스케어", "바이오텍", "금융", "임의소비재", "통신",
-  "산업재", "필수소비재", "에너지", "유틸리티", "부동산", "소재"
+  "기술", "헬스케어", "금융", "산업재", "임의소비재",
+  "필수소비재", "통신", "에너지", "유틸리티", "부동산", "소재"
 ];
 const sectorRank = new Map(SECTOR_ORDER.map((s, i) => [s, i]));
 
@@ -92,9 +93,11 @@ export default function StockListPage() {
   const [searchParams] = useSearchParams();
   const sectorParam = searchParams.get("sector") || "ALL";
   const [selectedSector, setSelectedSector] = useState(sectorParam);
+  const [selectedSubSector, setSelectedSubSector] = useState("ALL");
 
   useEffect(() => {
     setSelectedSector(sectorParam);
+    setSelectedSubSector("ALL");
   }, [sectorParam]);
   const [sortMode, setSortMode] = useState("sector");
   const [tickerQuery, setTickerQuery] = useState("");
@@ -112,6 +115,23 @@ export default function StockListPage() {
     return SECTOR_ORDER.filter((s) => sectors.has(s));
   }, []);
 
+  // 선택된 섹터의 서브섹터 목록
+  const availableSubSectors = useMemo(() => {
+    if (selectedSector === "ALL") return [];
+    const subs = new Set();
+    stockTickerMetaMap.forEach((meta) => {
+      if (meta.group === selectedSector && meta.subGroup) {
+        subs.add(meta.subGroup);
+      }
+    });
+    return Array.from(subs).sort();
+  }, [selectedSector]);
+
+  const handleSectorSelect = (sector) => {
+    setSelectedSector(sector);
+    setSelectedSubSector("ALL");
+  };
+
   const trendSummary = useMemo(() => {
     const total = allTickers.length;
     const activeCount = allTickers.filter(
@@ -125,10 +145,9 @@ export default function StockListPage() {
   const filteredTickers = useMemo(() =>
     allTickers
       .filter((ticker) => {
-        if (selectedSector !== "ALL") {
-          const meta = stockTickerMetaMap.get(ticker);
-          return meta?.group === selectedSector;
-        }
+        const meta = stockTickerMetaMap.get(ticker);
+        if (selectedSector !== "ALL" && meta?.group !== selectedSector) return false;
+        if (selectedSubSector !== "ALL" && meta?.subGroup !== selectedSubSector) return false;
         return true;
       })
       .filter((ticker) => {
@@ -139,7 +158,7 @@ export default function StockListPage() {
         if (meta?.nameKo && meta.nameKo.includes(tickerQuery.trim())) return true;
         return false;
       }),
-    [allTickers, selectedSector, normalizedQuery, tickerQuery]
+    [allTickers, selectedSector, selectedSubSector, normalizedQuery, tickerQuery]
   );
 
   const list = useMemo(() => {
@@ -195,8 +214,15 @@ export default function StockListPage() {
       <TypeFilter
         types={availableSectors}
         selectedType={selectedSector}
-        onSelect={setSelectedSector}
+        onSelect={handleSectorSelect}
       />
+      {availableSubSectors.length > 1 && (
+        <TypeFilter
+          types={availableSubSectors}
+          selectedType={selectedSubSector}
+          onSelect={setSelectedSubSector}
+        />
+      )}
       <div className="ticker-search-wrap">
         <input
           type="text"

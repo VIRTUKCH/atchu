@@ -20,9 +20,10 @@ const PERIOD_TABS = [
   { key: "1260d", label: "5년" }
 ];
 
+// GICS 11개 섹터 (서브섹터는 각 섹터 내부에서 관리)
 const SECTOR_ORDER = [
-  "기술", "헬스케어", "금융", "임의소비재", "통신",
-  "산업재", "필수소비재", "에너지", "유틸리티", "부동산", "소재"
+  "기술", "헬스케어", "금융", "산업재", "임의소비재",
+  "필수소비재", "통신", "에너지", "유틸리티", "부동산", "소재"
 ];
 const SECTOR_ORDER_MAP = Object.fromEntries(SECTOR_ORDER.map((s, i) => [s, i]));
 
@@ -37,21 +38,37 @@ export default function StockOverviewPage() {
   const [selectedPeriod, setSelectedPeriod] = useState("ma200");
   const snapshotTickersData = stockSnapshotPayload?.tickers || {};
 
-  // 섹터별 추세 강도
+  // 섹터별 추세 강도 (서브섹터 포함)
   const sectorStatusItems = useMemo(() => {
     const sectorMap = {};
     stockOverviewTickers.forEach((item) => {
       const group = item.group;
+      const subGroup = item.subGroup;
       if (!group) return;
-      if (!sectorMap[group]) sectorMap[group] = { qualified: 0, total: 0 };
+      if (!sectorMap[group]) sectorMap[group] = { qualified: 0, total: 0, subs: {} };
       const tickerKey = String(item.ticker || "").toUpperCase();
       const snap = snapshotTickersData[tickerKey]?.snapshot;
       if (!snap) return;
       sectorMap[group].total += 1;
       if (snap.isAtchuQualified200 === true) sectorMap[group].qualified += 1;
+      // 서브섹터 집계
+      if (subGroup) {
+        if (!sectorMap[group].subs[subGroup]) sectorMap[group].subs[subGroup] = { qualified: 0, total: 0 };
+        sectorMap[group].subs[subGroup].total += 1;
+        if (snap.isAtchuQualified200 === true) sectorMap[group].subs[subGroup].qualified += 1;
+      }
     });
     return Object.entries(sectorMap)
-      .map(([type, data]) => [type, { above: data.qualified, total: data.total }])
+      .map(([type, data]) => {
+        const subSectors = Object.entries(data.subs)
+          .map(([name, s]) => ({ name, above: s.qualified, total: s.total }))
+          .sort((a, b) => {
+            const pctA = a.total > 0 ? a.above / a.total : 0;
+            const pctB = b.total > 0 ? b.above / b.total : 0;
+            return pctB - pctA;
+          });
+        return [type, { above: data.qualified, total: data.total, subSectors }];
+      })
       .filter(([, data]) => data.total > 0)
       .sort((a, b) => {
         const pctA = a[1].total > 0 ? a[1].above / a[1].total : 0;
