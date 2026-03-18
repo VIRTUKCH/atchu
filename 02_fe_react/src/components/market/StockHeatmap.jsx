@@ -111,7 +111,7 @@ const Tile = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriod
   return (
     <Link to={`${baseLinkPath || "/_stocks"}/${item.ticker}`} className="report-overview-card" style={style}>
       <div className="report-overview-card-title">{item.label || item.ticker}</div>
-      <div className="report-overview-card-ticker">{item.ticker}</div>
+      {item.nameKo && <div className="report-overview-card-name-ko">{item.nameKo}</div>}
       <div className="report-overview-card-value">{formatPercent(displayValue)}</div>
       {badge && <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>}
       {trendDays !== null && trendDays !== undefined && (

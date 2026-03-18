@@ -4,7 +4,7 @@
     {
       "ticker": "A",
       "name": "Agilent Technologies",
-      "name_ko": "Agilent Technologies",
+      "name_ko": "애질런트",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -17,7 +17,7 @@
     {
       "ticker": "AAPL",
       "name": "Apple Inc.",
-      "name_ko": "Apple Inc.",
+      "name_ko": "애플",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -30,7 +30,7 @@
     {
       "ticker": "ABBV",
       "name": "AbbVie",
-      "name_ko": "AbbVie",
+      "name_ko": "애브비",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -43,7 +43,7 @@
     {
       "ticker": "ABNB",
       "name": "Airbnb",
-      "name_ko": "Airbnb",
+      "name_ko": "에어비앤비",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -56,7 +56,7 @@
     {
       "ticker": "ABT",
       "name": "Abbott Laboratories",
-      "name_ko": "Abbott Laboratories",
+      "name_ko": "애보트",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -69,7 +69,7 @@
     {
       "ticker": "ACGL",
       "name": "Arch Capital Group",
-      "name_ko": "Arch Capital Group",
+      "name_ko": "아치캐피탈",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -82,7 +82,7 @@
     {
       "ticker": "ACN",
       "name": "Accenture",
-      "name_ko": "Accenture",
+      "name_ko": "액센츄어",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -95,7 +95,7 @@
     {
       "ticker": "ADBE",
       "name": "Adobe Inc.",
-      "name_ko": "Adobe Inc.",
+      "name_ko": "어도비",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -108,7 +108,7 @@
     {
       "ticker": "ADI",
       "name": "Analog Devices",
-      "name_ko": "Analog Devices",
+      "name_ko": "아날로그디바이스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -121,7 +121,7 @@
     {
       "ticker": "ADM",
       "name": "Archer Daniels Midland",
-      "name_ko": "Archer Daniels Midland",
+      "name_ko": "ADM",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -134,7 +134,7 @@
     {
       "ticker": "ADP",
       "name": "Automatic Data Processing",
-      "name_ko": "Automatic Data Processing",
+      "name_ko": "ADP",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -147,7 +147,7 @@
     {
       "ticker": "ADSK",
       "name": "Autodesk",
-      "name_ko": "Autodesk",
+      "name_ko": "오토데스크",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -160,7 +160,7 @@
     {
       "ticker": "AEE",
       "name": "Ameren",
-      "name_ko": "Ameren",
+      "name_ko": "아메런",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -173,7 +173,7 @@
     {
       "ticker": "AEP",
       "name": "American Electric Power",
-      "name_ko": "American Electric Power",
+      "name_ko": "AEP",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -186,7 +186,7 @@
     {
       "ticker": "AES",
       "name": "AES Corporation",
-      "name_ko": "AES Corporation",
+      "name_ko": "AES",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -199,7 +199,7 @@
     {
       "ticker": "AFL",
       "name": "Aflac",
-      "name_ko": "Aflac",
+      "name_ko": "애플랙",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -212,7 +212,7 @@
     {
       "ticker": "AIG",
       "name": "American International Group",
-      "name_ko": "American International Group",
+      "name_ko": "AIG",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -225,7 +225,7 @@
     {
       "ticker": "AIZ",
       "name": "Assurant",
-      "name_ko": "Assurant",
+      "name_ko": "어슈런트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -238,7 +238,7 @@
     {
       "ticker": "AJG",
       "name": "Arthur J. Gallagher & Co.",
-      "name_ko": "Arthur J. Gallagher & Co.",
+      "name_ko": "아서J갤러거",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -251,7 +251,7 @@
     {
       "ticker": "AKAM",
       "name": "Akamai Technologies",
-      "name_ko": "Akamai Technologies",
+      "name_ko": "아카마이",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -264,7 +264,7 @@
     {
       "ticker": "ALB",
       "name": "Albemarle Corporation",
-      "name_ko": "Albemarle Corporation",
+      "name_ko": "앨버말",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -277,7 +277,7 @@
     {
       "ticker": "ALGN",
       "name": "Align Technology",
-      "name_ko": "Align Technology",
+      "name_ko": "얼라인테크놀로지",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -290,7 +290,7 @@
     {
       "ticker": "ALL",
       "name": "Allstate",
-      "name_ko": "Allstate",
+      "name_ko": "올스테이트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -303,7 +303,7 @@
     {
       "ticker": "ALLE",
       "name": "Allegion",
-      "name_ko": "Allegion",
+      "name_ko": "알레지온",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -316,7 +316,7 @@
     {
       "ticker": "AMAT",
       "name": "Applied Materials",
-      "name_ko": "Applied Materials",
+      "name_ko": "어플라이드머티리얼즈",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -329,7 +329,7 @@
     {
       "ticker": "AMCR",
       "name": "Amcor",
-      "name_ko": "Amcor",
+      "name_ko": "암코르",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -342,7 +342,7 @@
     {
       "ticker": "AMD",
       "name": "Advanced Micro Devices",
-      "name_ko": "Advanced Micro Devices",
+      "name_ko": "AMD",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -355,7 +355,7 @@
     {
       "ticker": "AME",
       "name": "Ametek",
-      "name_ko": "Ametek",
+      "name_ko": "아메텍",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -368,7 +368,7 @@
     {
       "ticker": "AMGN",
       "name": "Amgen",
-      "name_ko": "Amgen",
+      "name_ko": "암젠",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -381,7 +381,7 @@
     {
       "ticker": "AMP",
       "name": "Ameriprise Financial",
-      "name_ko": "Ameriprise Financial",
+      "name_ko": "아메리프라이즈",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -394,7 +394,7 @@
     {
       "ticker": "AMT",
       "name": "American Tower",
-      "name_ko": "American Tower",
+      "name_ko": "아메리칸타워",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -407,7 +407,7 @@
     {
       "ticker": "AMZN",
       "name": "Amazon",
-      "name_ko": "Amazon",
+      "name_ko": "아마존",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -420,7 +420,7 @@
     {
       "ticker": "ANET",
       "name": "Arista Networks",
-      "name_ko": "Arista Networks",
+      "name_ko": "아리스타네트웍스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -433,7 +433,7 @@
     {
       "ticker": "AON",
       "name": "Aon plc",
-      "name_ko": "Aon plc",
+      "name_ko": "에이온",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -446,7 +446,7 @@
     {
       "ticker": "AOS",
       "name": "A. O. Smith",
-      "name_ko": "A. O. Smith",
+      "name_ko": "AO스미스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -459,7 +459,7 @@
     {
       "ticker": "APA",
       "name": "APA Corporation",
-      "name_ko": "APA Corporation",
+      "name_ko": "APA",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -472,7 +472,7 @@
     {
       "ticker": "APD",
       "name": "Air Products",
-      "name_ko": "Air Products",
+      "name_ko": "에어프로덕츠",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -485,7 +485,7 @@
     {
       "ticker": "APH",
       "name": "Amphenol",
-      "name_ko": "Amphenol",
+      "name_ko": "앰페놀",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -498,7 +498,7 @@
     {
       "ticker": "APO",
       "name": "Apollo Global Management",
-      "name_ko": "Apollo Global Management",
+      "name_ko": "아폴로글로벌",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -511,7 +511,7 @@
     {
       "ticker": "APP",
       "name": "AppLovin",
-      "name_ko": "AppLovin",
+      "name_ko": "앱러빈",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -524,7 +524,7 @@
     {
       "ticker": "APTV",
       "name": "Aptiv",
-      "name_ko": "Aptiv",
+      "name_ko": "앱티브",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -537,7 +537,7 @@
     {
       "ticker": "ARE",
       "name": "Alexandria Real Estate Equities",
-      "name_ko": "Alexandria Real Estate Equities",
+      "name_ko": "알렉산드리아RE",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -550,7 +550,7 @@
     {
       "ticker": "ARES",
       "name": "Ares Management",
-      "name_ko": "Ares Management",
+      "name_ko": "아레스매니지먼트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -563,7 +563,7 @@
     {
       "ticker": "ATO",
       "name": "Atmos Energy",
-      "name_ko": "Atmos Energy",
+      "name_ko": "앳모스에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -576,7 +576,7 @@
     {
       "ticker": "AVB",
       "name": "AvalonBay Communities",
-      "name_ko": "AvalonBay Communities",
+      "name_ko": "아발론베이",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -589,7 +589,7 @@
     {
       "ticker": "AVGO",
       "name": "Broadcom",
-      "name_ko": "Broadcom",
+      "name_ko": "브로드컴",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -602,7 +602,7 @@
     {
       "ticker": "AVY",
       "name": "Avery Dennison",
-      "name_ko": "Avery Dennison",
+      "name_ko": "에이버리데니슨",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -615,7 +615,7 @@
     {
       "ticker": "AWK",
       "name": "American Water Works",
-      "name_ko": "American Water Works",
+      "name_ko": "아메리칸워터",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -628,7 +628,7 @@
     {
       "ticker": "AXON",
       "name": "Axon Enterprise",
-      "name_ko": "Axon Enterprise",
+      "name_ko": "액슨",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -641,7 +641,7 @@
     {
       "ticker": "AXP",
       "name": "American Express",
-      "name_ko": "American Express",
+      "name_ko": "아메리칸익스프레스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -654,7 +654,7 @@
     {
       "ticker": "AZO",
       "name": "AutoZone",
-      "name_ko": "AutoZone",
+      "name_ko": "오토존",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -667,7 +667,7 @@
     {
       "ticker": "BA",
       "name": "Boeing",
-      "name_ko": "Boeing",
+      "name_ko": "보잉",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -680,7 +680,7 @@
     {
       "ticker": "BAC",
       "name": "Bank of America",
-      "name_ko": "Bank of America",
+      "name_ko": "뱅크오브아메리카",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -693,7 +693,7 @@
     {
       "ticker": "BALL",
       "name": "Ball Corporation",
-      "name_ko": "Ball Corporation",
+      "name_ko": "볼코퍼레이션",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -706,7 +706,7 @@
     {
       "ticker": "BAX",
       "name": "Baxter International",
-      "name_ko": "Baxter International",
+      "name_ko": "백스터",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -719,7 +719,7 @@
     {
       "ticker": "BBY",
       "name": "Best Buy",
-      "name_ko": "Best Buy",
+      "name_ko": "베스트바이",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -732,7 +732,7 @@
     {
       "ticker": "BDX",
       "name": "Becton Dickinson",
-      "name_ko": "Becton Dickinson",
+      "name_ko": "벡톤디킨슨",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -745,7 +745,7 @@
     {
       "ticker": "BEN",
       "name": "Franklin Resources",
-      "name_ko": "Franklin Resources",
+      "name_ko": "프랭클린템플턴",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -758,7 +758,7 @@
     {
       "ticker": "BF-B",
       "name": "Brown–Forman",
-      "name_ko": "Brown–Forman",
+      "name_ko": "브라운포먼",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -771,7 +771,7 @@
     {
       "ticker": "BG",
       "name": "Bunge Global",
-      "name_ko": "Bunge Global",
+      "name_ko": "번지",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -784,7 +784,7 @@
     {
       "ticker": "BIIB",
       "name": "Biogen",
-      "name_ko": "Biogen",
+      "name_ko": "바이오젠",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -797,7 +797,7 @@
     {
       "ticker": "BK",
       "name": "BNY Mellon",
-      "name_ko": "BNY Mellon",
+      "name_ko": "BNY멜론",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -810,7 +810,7 @@
     {
       "ticker": "BKNG",
       "name": "Booking Holdings",
-      "name_ko": "Booking Holdings",
+      "name_ko": "부킹홀딩스",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -823,7 +823,7 @@
     {
       "ticker": "BKR",
       "name": "Baker Hughes",
-      "name_ko": "Baker Hughes",
+      "name_ko": "베이커휴즈",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -836,7 +836,7 @@
     {
       "ticker": "BLDR",
       "name": "Builders FirstSource",
-      "name_ko": "Builders FirstSource",
+      "name_ko": "빌더스퍼스트소스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -849,7 +849,7 @@
     {
       "ticker": "BLK",
       "name": "BlackRock",
-      "name_ko": "BlackRock",
+      "name_ko": "블랙록",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -862,7 +862,7 @@
     {
       "ticker": "BMY",
       "name": "Bristol Myers Squibb",
-      "name_ko": "Bristol Myers Squibb",
+      "name_ko": "브리스톨마이어스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -875,7 +875,7 @@
     {
       "ticker": "BR",
       "name": "Broadridge Financial Solutions",
-      "name_ko": "Broadridge Financial Solutions",
+      "name_ko": "브로드리지",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -888,7 +888,7 @@
     {
       "ticker": "BRK-B",
       "name": "Berkshire Hathaway",
-      "name_ko": "Berkshire Hathaway",
+      "name_ko": "버크셔해서웨이",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -901,7 +901,7 @@
     {
       "ticker": "BRO",
       "name": "Brown & Brown",
-      "name_ko": "Brown & Brown",
+      "name_ko": "브라운앤브라운",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -914,7 +914,7 @@
     {
       "ticker": "BSX",
       "name": "Boston Scientific",
-      "name_ko": "Boston Scientific",
+      "name_ko": "보스턴사이언티픽",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -927,7 +927,7 @@
     {
       "ticker": "BX",
       "name": "Blackstone Inc.",
-      "name_ko": "Blackstone Inc.",
+      "name_ko": "블랙스톤",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -940,7 +940,7 @@
     {
       "ticker": "BXP",
       "name": "BXP, Inc.",
-      "name_ko": "BXP, Inc.",
+      "name_ko": "BXP",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -953,7 +953,7 @@
     {
       "ticker": "C",
       "name": "Citigroup",
-      "name_ko": "Citigroup",
+      "name_ko": "시티그룹",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -966,7 +966,7 @@
     {
       "ticker": "CAG",
       "name": "Conagra Brands",
-      "name_ko": "Conagra Brands",
+      "name_ko": "코나그라",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -979,7 +979,7 @@
     {
       "ticker": "CAH",
       "name": "Cardinal Health",
-      "name_ko": "Cardinal Health",
+      "name_ko": "카디널헬스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -992,7 +992,7 @@
     {
       "ticker": "CARR",
       "name": "Carrier Global",
-      "name_ko": "Carrier Global",
+      "name_ko": "캐리어",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1005,7 +1005,7 @@
     {
       "ticker": "CAT",
       "name": "Caterpillar Inc.",
-      "name_ko": "Caterpillar Inc.",
+      "name_ko": "캐터필러",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1018,7 +1018,7 @@
     {
       "ticker": "CB",
       "name": "Chubb Limited",
-      "name_ko": "Chubb Limited",
+      "name_ko": "처브",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1031,7 +1031,7 @@
     {
       "ticker": "CBOE",
       "name": "Cboe Global Markets",
-      "name_ko": "Cboe Global Markets",
+      "name_ko": "CBOE",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1044,7 +1044,7 @@
     {
       "ticker": "CBRE",
       "name": "CBRE Group",
-      "name_ko": "CBRE Group",
+      "name_ko": "CBRE",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1057,7 +1057,7 @@
     {
       "ticker": "CCI",
       "name": "Crown Castle",
-      "name_ko": "Crown Castle",
+      "name_ko": "크라운캐슬",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1070,7 +1070,7 @@
     {
       "ticker": "CCL",
       "name": "Carnival",
-      "name_ko": "Carnival",
+      "name_ko": "카니발",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1083,7 +1083,7 @@
     {
       "ticker": "CDNS",
       "name": "Cadence Design Systems",
-      "name_ko": "Cadence Design Systems",
+      "name_ko": "케이던스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1096,7 +1096,7 @@
     {
       "ticker": "CDW",
       "name": "CDW Corporation",
-      "name_ko": "CDW Corporation",
+      "name_ko": "CDW",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1109,7 +1109,7 @@
     {
       "ticker": "CEG",
       "name": "Constellation Energy",
-      "name_ko": "Constellation Energy",
+      "name_ko": "콘스텔레이션에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1122,7 +1122,7 @@
     {
       "ticker": "CF",
       "name": "CF Industries",
-      "name_ko": "CF Industries",
+      "name_ko": "CF인더스트리즈",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -1135,7 +1135,7 @@
     {
       "ticker": "CFG",
       "name": "Citizens Financial Group",
-      "name_ko": "Citizens Financial Group",
+      "name_ko": "시티즌스파이낸셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1148,7 +1148,7 @@
     {
       "ticker": "CHD",
       "name": "Church & Dwight",
-      "name_ko": "Church & Dwight",
+      "name_ko": "처치앤드와이트",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1161,7 +1161,7 @@
     {
       "ticker": "CHRW",
       "name": "C.H. Robinson",
-      "name_ko": "C.H. Robinson",
+      "name_ko": "CH로빈슨",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1174,7 +1174,7 @@
     {
       "ticker": "CHTR",
       "name": "Charter Communications",
-      "name_ko": "Charter Communications",
+      "name_ko": "차터커뮤니케이션",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -1187,7 +1187,7 @@
     {
       "ticker": "CI",
       "name": "Cigna",
-      "name_ko": "Cigna",
+      "name_ko": "시그나",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1200,7 +1200,7 @@
     {
       "ticker": "CIEN",
       "name": "Ciena",
-      "name_ko": "Ciena",
+      "name_ko": "시에나",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1213,7 +1213,7 @@
     {
       "ticker": "CINF",
       "name": "Cincinnati Financial",
-      "name_ko": "Cincinnati Financial",
+      "name_ko": "신시내티파이낸셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1226,7 +1226,7 @@
     {
       "ticker": "CL",
       "name": "Colgate-Palmolive",
-      "name_ko": "Colgate-Palmolive",
+      "name_ko": "콜게이트팜올리브",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1239,7 +1239,7 @@
     {
       "ticker": "CLX",
       "name": "Clorox",
-      "name_ko": "Clorox",
+      "name_ko": "클로록스",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1252,7 +1252,7 @@
     {
       "ticker": "CMCSA",
       "name": "Comcast",
-      "name_ko": "Comcast",
+      "name_ko": "컴캐스트",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -1265,7 +1265,7 @@
     {
       "ticker": "CME",
       "name": "CME Group",
-      "name_ko": "CME Group",
+      "name_ko": "CME그룹",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1278,7 +1278,7 @@
     {
       "ticker": "CMG",
       "name": "Chipotle Mexican Grill",
-      "name_ko": "Chipotle Mexican Grill",
+      "name_ko": "치폴레",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1291,7 +1291,7 @@
     {
       "ticker": "CMI",
       "name": "Cummins",
-      "name_ko": "Cummins",
+      "name_ko": "커민스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1304,7 +1304,7 @@
     {
       "ticker": "CMS",
       "name": "CMS Energy",
-      "name_ko": "CMS Energy",
+      "name_ko": "CMS에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1317,7 +1317,7 @@
     {
       "ticker": "CNC",
       "name": "Centene Corporation",
-      "name_ko": "Centene Corporation",
+      "name_ko": "센틴",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1330,7 +1330,7 @@
     {
       "ticker": "CNP",
       "name": "CenterPoint Energy",
-      "name_ko": "CenterPoint Energy",
+      "name_ko": "센터포인트에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1343,7 +1343,7 @@
     {
       "ticker": "COF",
       "name": "Capital One",
-      "name_ko": "Capital One",
+      "name_ko": "캐피탈원",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1356,7 +1356,7 @@
     {
       "ticker": "COIN",
       "name": "Coinbase",
-      "name_ko": "Coinbase",
+      "name_ko": "코인베이스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1369,7 +1369,7 @@
     {
       "ticker": "COO",
       "name": "Cooper Companies (The)",
-      "name_ko": "Cooper Companies (The)",
+      "name_ko": "쿠퍼컴퍼니즈",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1382,7 +1382,7 @@
     {
       "ticker": "COP",
       "name": "ConocoPhillips",
-      "name_ko": "ConocoPhillips",
+      "name_ko": "코노코필립스",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -1395,7 +1395,7 @@
     {
       "ticker": "COR",
       "name": "Cencora",
-      "name_ko": "Cencora",
+      "name_ko": "센코라",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1408,7 +1408,7 @@
     {
       "ticker": "COST",
       "name": "Costco",
-      "name_ko": "Costco",
+      "name_ko": "코스트코",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1421,7 +1421,7 @@
     {
       "ticker": "CPAY",
       "name": "Corpay",
-      "name_ko": "Corpay",
+      "name_ko": "코퍼이",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -1434,7 +1434,7 @@
     {
       "ticker": "CPB",
       "name": "Campbell's Company (The)",
-      "name_ko": "Campbell's Company (The)",
+      "name_ko": "캠벨",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1447,7 +1447,7 @@
     {
       "ticker": "CPRT",
       "name": "Copart",
-      "name_ko": "Copart",
+      "name_ko": "코파트",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1460,7 +1460,7 @@
     {
       "ticker": "CPT",
       "name": "Camden Property Trust",
-      "name_ko": "Camden Property Trust",
+      "name_ko": "캠든프로퍼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1473,7 +1473,7 @@
     {
       "ticker": "CRH",
       "name": "CRH plc",
-      "name_ko": "CRH plc",
+      "name_ko": "CRH",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -1486,7 +1486,7 @@
     {
       "ticker": "CRL",
       "name": "Charles River Laboratories",
-      "name_ko": "Charles River Laboratories",
+      "name_ko": "찰스리버",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1499,7 +1499,7 @@
     {
       "ticker": "CRM",
       "name": "Salesforce",
-      "name_ko": "Salesforce",
+      "name_ko": "세일즈포스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1512,7 +1512,7 @@
     {
       "ticker": "CRWD",
       "name": "CrowdStrike",
-      "name_ko": "CrowdStrike",
+      "name_ko": "크라우드스트라이크",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1525,7 +1525,7 @@
     {
       "ticker": "CSCO",
       "name": "Cisco",
-      "name_ko": "Cisco",
+      "name_ko": "시스코",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1538,7 +1538,7 @@
     {
       "ticker": "CSGP",
       "name": "CoStar Group",
-      "name_ko": "CoStar Group",
+      "name_ko": "코스타그룹",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1551,7 +1551,7 @@
     {
       "ticker": "CSX",
       "name": "CSX Corporation",
-      "name_ko": "CSX Corporation",
+      "name_ko": "CSX",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1564,7 +1564,7 @@
     {
       "ticker": "CTAS",
       "name": "Cintas",
-      "name_ko": "Cintas",
+      "name_ko": "신타스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1577,7 +1577,7 @@
     {
       "ticker": "CTRA",
       "name": "Coterra",
-      "name_ko": "Coterra",
+      "name_ko": "코테라",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -1590,7 +1590,7 @@
     {
       "ticker": "CTSH",
       "name": "Cognizant",
-      "name_ko": "Cognizant",
+      "name_ko": "코그니전트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1603,7 +1603,7 @@
     {
       "ticker": "CTVA",
       "name": "Corteva",
-      "name_ko": "Corteva",
+      "name_ko": "코르테바",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -1616,7 +1616,7 @@
     {
       "ticker": "CVNA",
       "name": "Carvana",
-      "name_ko": "Carvana",
+      "name_ko": "카바나",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1629,7 +1629,7 @@
     {
       "ticker": "CVS",
       "name": "CVS Health",
-      "name_ko": "CVS Health",
+      "name_ko": "CVS헬스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1642,7 +1642,7 @@
     {
       "ticker": "CVX",
       "name": "Chevron Corporation",
-      "name_ko": "Chevron Corporation",
+      "name_ko": "쉐브론",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -1655,7 +1655,7 @@
     {
       "ticker": "D",
       "name": "Dominion Energy",
-      "name_ko": "Dominion Energy",
+      "name_ko": "도미니언에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1668,7 +1668,7 @@
     {
       "ticker": "DAL",
       "name": "Delta Air Lines",
-      "name_ko": "Delta Air Lines",
+      "name_ko": "델타항공",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1681,7 +1681,7 @@
     {
       "ticker": "DASH",
       "name": "DoorDash",
-      "name_ko": "DoorDash",
+      "name_ko": "도어대시",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1694,7 +1694,7 @@
     {
       "ticker": "DD",
       "name": "DuPont",
-      "name_ko": "DuPont",
+      "name_ko": "듀폰",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -1707,7 +1707,7 @@
     {
       "ticker": "DDOG",
       "name": "Datadog",
-      "name_ko": "Datadog",
+      "name_ko": "데이터독",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1720,7 +1720,7 @@
     {
       "ticker": "DE",
       "name": "Deere & Company",
-      "name_ko": "Deere & Company",
+      "name_ko": "존디어",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1733,7 +1733,7 @@
     {
       "ticker": "DECK",
       "name": "Deckers Brands",
-      "name_ko": "Deckers Brands",
+      "name_ko": "데커스",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1746,7 +1746,7 @@
     {
       "ticker": "DELL",
       "name": "Dell Technologies",
-      "name_ko": "Dell Technologies",
+      "name_ko": "델",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -1759,7 +1759,7 @@
     {
       "ticker": "DG",
       "name": "Dollar General",
-      "name_ko": "Dollar General",
+      "name_ko": "달러제너럴",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1772,7 +1772,7 @@
     {
       "ticker": "DGX",
       "name": "Quest Diagnostics",
-      "name_ko": "Quest Diagnostics",
+      "name_ko": "퀘스트다이아그노스틱스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1785,7 +1785,7 @@
     {
       "ticker": "DHI",
       "name": "D. R. Horton",
-      "name_ko": "D. R. Horton",
+      "name_ko": "DR호튼",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1798,7 +1798,7 @@
     {
       "ticker": "DHR",
       "name": "Danaher Corporation",
-      "name_ko": "Danaher Corporation",
+      "name_ko": "다나허",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1811,7 +1811,7 @@
     {
       "ticker": "DIS",
       "name": "Walt Disney Company (The)",
-      "name_ko": "Walt Disney Company (The)",
+      "name_ko": "디즈니",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -1824,7 +1824,7 @@
     {
       "ticker": "DLR",
       "name": "Digital Realty",
-      "name_ko": "Digital Realty",
+      "name_ko": "디지털리얼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1837,7 +1837,7 @@
     {
       "ticker": "DLTR",
       "name": "Dollar Tree",
-      "name_ko": "Dollar Tree",
+      "name_ko": "달러트리",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -1850,7 +1850,7 @@
     {
       "ticker": "DOC",
       "name": "Healthpeak Properties",
-      "name_ko": "Healthpeak Properties",
+      "name_ko": "헬스피크",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -1863,7 +1863,7 @@
     {
       "ticker": "DOV",
       "name": "Dover Corporation",
-      "name_ko": "Dover Corporation",
+      "name_ko": "도버",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -1876,7 +1876,7 @@
     {
       "ticker": "DOW",
       "name": "Dow Inc.",
-      "name_ko": "Dow Inc.",
+      "name_ko": "다우",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -1889,7 +1889,7 @@
     {
       "ticker": "DPZ",
       "name": "Domino's",
-      "name_ko": "Domino's",
+      "name_ko": "도미노피자",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1902,7 +1902,7 @@
     {
       "ticker": "DRI",
       "name": "Darden Restaurants",
-      "name_ko": "Darden Restaurants",
+      "name_ko": "다든레스토랑",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -1915,7 +1915,7 @@
     {
       "ticker": "DTE",
       "name": "DTE Energy",
-      "name_ko": "DTE Energy",
+      "name_ko": "DTE에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1928,7 +1928,7 @@
     {
       "ticker": "DUK",
       "name": "Duke Energy",
-      "name_ko": "Duke Energy",
+      "name_ko": "듀크에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -1941,7 +1941,7 @@
     {
       "ticker": "DVA",
       "name": "DaVita",
-      "name_ko": "DaVita",
+      "name_ko": "다비타",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1954,7 +1954,7 @@
     {
       "ticker": "DVN",
       "name": "Devon Energy",
-      "name_ko": "Devon Energy",
+      "name_ko": "데본에너지",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -1967,7 +1967,7 @@
     {
       "ticker": "DXCM",
       "name": "Dexcom",
-      "name_ko": "Dexcom",
+      "name_ko": "덱스컴",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -1980,7 +1980,7 @@
     {
       "ticker": "EA",
       "name": "Electronic Arts",
-      "name_ko": "Electronic Arts",
+      "name_ko": "일렉트로닉아츠",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -1993,7 +1993,7 @@
     {
       "ticker": "EBAY",
       "name": "eBay Inc.",
-      "name_ko": "eBay Inc.",
+      "name_ko": "이베이",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2006,7 +2006,7 @@
     {
       "ticker": "ECL",
       "name": "Ecolab",
-      "name_ko": "Ecolab",
+      "name_ko": "에코랩",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -2019,7 +2019,7 @@
     {
       "ticker": "ED",
       "name": "Consolidated Edison",
-      "name_ko": "Consolidated Edison",
+      "name_ko": "콘에디슨",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2032,7 +2032,7 @@
     {
       "ticker": "EFX",
       "name": "Equifax",
-      "name_ko": "Equifax",
+      "name_ko": "이퀴팩스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2045,7 +2045,7 @@
     {
       "ticker": "EG",
       "name": "Everest Group",
-      "name_ko": "Everest Group",
+      "name_ko": "에버레스트그룹",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2058,7 +2058,7 @@
     {
       "ticker": "EIX",
       "name": "Edison International",
-      "name_ko": "Edison International",
+      "name_ko": "에디슨인터내셔널",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2071,7 +2071,7 @@
     {
       "ticker": "EL",
       "name": "Estée Lauder Companies (The)",
-      "name_ko": "Estée Lauder Companies (The)",
+      "name_ko": "에스티로더",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -2084,7 +2084,7 @@
     {
       "ticker": "ELV",
       "name": "Elevance Health",
-      "name_ko": "Elevance Health",
+      "name_ko": "엘레반스헬스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2097,7 +2097,7 @@
     {
       "ticker": "EME",
       "name": "Emcor",
-      "name_ko": "Emcor",
+      "name_ko": "EMCOR",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2110,7 +2110,7 @@
     {
       "ticker": "EMR",
       "name": "Emerson Electric",
-      "name_ko": "Emerson Electric",
+      "name_ko": "에머슨일렉트릭",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2123,7 +2123,7 @@
     {
       "ticker": "EOG",
       "name": "EOG Resources",
-      "name_ko": "EOG Resources",
+      "name_ko": "EOG리소시즈",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -2136,7 +2136,7 @@
     {
       "ticker": "EPAM",
       "name": "EPAM Systems",
-      "name_ko": "EPAM Systems",
+      "name_ko": "EPAM시스템즈",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2149,7 +2149,7 @@
     {
       "ticker": "EQIX",
       "name": "Equinix",
-      "name_ko": "Equinix",
+      "name_ko": "에퀴닉스",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -2162,7 +2162,7 @@
     {
       "ticker": "EQR",
       "name": "Equity Residential",
-      "name_ko": "Equity Residential",
+      "name_ko": "에쿼티레지덴셜",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -2175,7 +2175,7 @@
     {
       "ticker": "EQT",
       "name": "EQT Corporation",
-      "name_ko": "EQT Corporation",
+      "name_ko": "EQT",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -2188,7 +2188,7 @@
     {
       "ticker": "ERIE",
       "name": "Erie Indemnity",
-      "name_ko": "Erie Indemnity",
+      "name_ko": "이리인뎀니티",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2201,7 +2201,7 @@
     {
       "ticker": "ES",
       "name": "Eversource Energy",
-      "name_ko": "Eversource Energy",
+      "name_ko": "에버소스에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2214,7 +2214,7 @@
     {
       "ticker": "ESS",
       "name": "Essex Property Trust",
-      "name_ko": "Essex Property Trust",
+      "name_ko": "에식스프로퍼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -2227,7 +2227,7 @@
     {
       "ticker": "ETN",
       "name": "Eaton Corporation",
-      "name_ko": "Eaton Corporation",
+      "name_ko": "이튼",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2240,7 +2240,7 @@
     {
       "ticker": "ETR",
       "name": "Entergy",
-      "name_ko": "Entergy",
+      "name_ko": "엔터지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2253,7 +2253,7 @@
     {
       "ticker": "EVRG",
       "name": "Evergy",
-      "name_ko": "Evergy",
+      "name_ko": "에버지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2266,7 +2266,7 @@
     {
       "ticker": "EW",
       "name": "Edwards Lifesciences",
-      "name_ko": "Edwards Lifesciences",
+      "name_ko": "에드워즈라이프사이언스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2279,7 +2279,7 @@
     {
       "ticker": "EXC",
       "name": "Exelon",
-      "name_ko": "Exelon",
+      "name_ko": "엑셀론",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2292,7 +2292,7 @@
     {
       "ticker": "EXE",
       "name": "Expand Energy",
-      "name_ko": "Expand Energy",
+      "name_ko": "익스팬드에너지",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -2305,7 +2305,7 @@
     {
       "ticker": "EXPD",
       "name": "Expeditors International",
-      "name_ko": "Expeditors International",
+      "name_ko": "익스페디터스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2318,7 +2318,7 @@
     {
       "ticker": "EXPE",
       "name": "Expedia Group",
-      "name_ko": "Expedia Group",
+      "name_ko": "익스피디아",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2331,7 +2331,7 @@
     {
       "ticker": "EXR",
       "name": "Extra Space Storage",
-      "name_ko": "Extra Space Storage",
+      "name_ko": "엑스트라스페이스",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -2344,7 +2344,7 @@
     {
       "ticker": "F",
       "name": "Ford Motor Company",
-      "name_ko": "Ford Motor Company",
+      "name_ko": "포드",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2357,7 +2357,7 @@
     {
       "ticker": "FANG",
       "name": "Diamondback Energy",
-      "name_ko": "Diamondback Energy",
+      "name_ko": "다이아몬드백에너지",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -2370,7 +2370,7 @@
     {
       "ticker": "FAST",
       "name": "Fastenal",
-      "name_ko": "Fastenal",
+      "name_ko": "패스트널",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2383,7 +2383,7 @@
     {
       "ticker": "FCX",
       "name": "Freeport-McMoRan",
-      "name_ko": "Freeport-McMoRan",
+      "name_ko": "프리포트맥모란",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -2396,7 +2396,7 @@
     {
       "ticker": "FDS",
       "name": "FactSet",
-      "name_ko": "FactSet",
+      "name_ko": "팩트셋",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2409,7 +2409,7 @@
     {
       "ticker": "FDX",
       "name": "FedEx",
-      "name_ko": "FedEx",
+      "name_ko": "페덱스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2422,7 +2422,7 @@
     {
       "ticker": "FE",
       "name": "FirstEnergy",
-      "name_ko": "FirstEnergy",
+      "name_ko": "퍼스트에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -2435,7 +2435,7 @@
     {
       "ticker": "FFIV",
       "name": "F5, Inc.",
-      "name_ko": "F5, Inc.",
+      "name_ko": "F5",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2448,7 +2448,7 @@
     {
       "ticker": "FICO",
       "name": "Fair Isaac",
-      "name_ko": "Fair Isaac",
+      "name_ko": "파이코",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2461,7 +2461,7 @@
     {
       "ticker": "FIS",
       "name": "Fidelity National Information Services",
-      "name_ko": "Fidelity National Information Services",
+      "name_ko": "FIS",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2474,7 +2474,7 @@
     {
       "ticker": "FISV",
       "name": "Fiserv",
-      "name_ko": "Fiserv",
+      "name_ko": "파이서브",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2487,7 +2487,7 @@
     {
       "ticker": "FITB",
       "name": "Fifth Third Bancorp",
-      "name_ko": "Fifth Third Bancorp",
+      "name_ko": "피프스서드뱅코프",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2500,7 +2500,7 @@
     {
       "ticker": "FIX",
       "name": "Comfort Systems USA",
-      "name_ko": "Comfort Systems USA",
+      "name_ko": "컴포트시스템즈",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2513,7 +2513,7 @@
     {
       "ticker": "FOX",
       "name": "Fox Corporation (Class B)",
-      "name_ko": "Fox Corporation (Class B)",
+      "name_ko": "폭스",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -2526,7 +2526,7 @@
     {
       "ticker": "FOXA",
       "name": "Fox Corporation (Class A)",
-      "name_ko": "Fox Corporation (Class A)",
+      "name_ko": "폭스",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -2539,7 +2539,7 @@
     {
       "ticker": "FRT",
       "name": "Federal Realty Investment Trust",
-      "name_ko": "Federal Realty Investment Trust",
+      "name_ko": "페더럴리얼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -2552,7 +2552,7 @@
     {
       "ticker": "FSLR",
       "name": "First Solar",
-      "name_ko": "First Solar",
+      "name_ko": "퍼스트솔라",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2565,7 +2565,7 @@
     {
       "ticker": "FTNT",
       "name": "Fortinet",
-      "name_ko": "Fortinet",
+      "name_ko": "포티넷",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2578,7 +2578,7 @@
     {
       "ticker": "FTV",
       "name": "Fortive",
-      "name_ko": "Fortive",
+      "name_ko": "포티브",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2591,7 +2591,7 @@
     {
       "ticker": "GD",
       "name": "General Dynamics",
-      "name_ko": "General Dynamics",
+      "name_ko": "제너럴다이내믹스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2604,7 +2604,7 @@
     {
       "ticker": "GDDY",
       "name": "GoDaddy",
-      "name_ko": "GoDaddy",
+      "name_ko": "고대디",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2617,7 +2617,7 @@
     {
       "ticker": "GE",
       "name": "GE Aerospace",
-      "name_ko": "GE Aerospace",
+      "name_ko": "GE에어로스페이스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2630,7 +2630,7 @@
     {
       "ticker": "GEHC",
       "name": "GE HealthCare",
-      "name_ko": "GE HealthCare",
+      "name_ko": "GE헬스케어",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2643,7 +2643,7 @@
     {
       "ticker": "GEN",
       "name": "Gen Digital",
-      "name_ko": "Gen Digital",
+      "name_ko": "젠디지털",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2656,7 +2656,7 @@
     {
       "ticker": "GEV",
       "name": "GE Vernova",
-      "name_ko": "GE Vernova",
+      "name_ko": "GE버노바",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2669,7 +2669,7 @@
     {
       "ticker": "GILD",
       "name": "Gilead Sciences",
-      "name_ko": "Gilead Sciences",
+      "name_ko": "길리어드사이언스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2682,7 +2682,7 @@
     {
       "ticker": "GIS",
       "name": "General Mills",
-      "name_ko": "General Mills",
+      "name_ko": "제너럴밀스",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -2695,7 +2695,7 @@
     {
       "ticker": "GL",
       "name": "Globe Life",
-      "name_ko": "Globe Life",
+      "name_ko": "글로브라이프",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2708,7 +2708,7 @@
     {
       "ticker": "GLW",
       "name": "Corning Inc.",
-      "name_ko": "Corning Inc.",
+      "name_ko": "코닝",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2721,7 +2721,7 @@
     {
       "ticker": "GM",
       "name": "General Motors",
-      "name_ko": "General Motors",
+      "name_ko": "제너럴모터스",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2734,7 +2734,7 @@
     {
       "ticker": "GNRC",
       "name": "Generac",
-      "name_ko": "Generac",
+      "name_ko": "제네락",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2747,7 +2747,7 @@
     {
       "ticker": "GOOG",
       "name": "Alphabet Inc. (Class C)",
-      "name_ko": "Alphabet Inc. (Class C)",
+      "name_ko": "알파벳(구글)",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -2760,7 +2760,7 @@
     {
       "ticker": "GOOGL",
       "name": "Alphabet Inc. (Class A)",
-      "name_ko": "Alphabet Inc. (Class A)",
+      "name_ko": "알파벳(구글)",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -2773,7 +2773,7 @@
     {
       "ticker": "GPC",
       "name": "Genuine Parts Company",
-      "name_ko": "Genuine Parts Company",
+      "name_ko": "지뉴인파츠",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2786,7 +2786,7 @@
     {
       "ticker": "GPN",
       "name": "Global Payments",
-      "name_ko": "Global Payments",
+      "name_ko": "글로벌페이먼츠",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2799,7 +2799,7 @@
     {
       "ticker": "GRMN",
       "name": "Garmin",
-      "name_ko": "Garmin",
+      "name_ko": "가민",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2812,7 +2812,7 @@
     {
       "ticker": "GS",
       "name": "Goldman Sachs",
-      "name_ko": "Goldman Sachs",
+      "name_ko": "골드만삭스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2825,7 +2825,7 @@
     {
       "ticker": "GWW",
       "name": "W. W. Grainger",
-      "name_ko": "W. W. Grainger",
+      "name_ko": "그레인저",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2838,7 +2838,7 @@
     {
       "ticker": "HAL",
       "name": "Halliburton",
-      "name_ko": "Halliburton",
+      "name_ko": "할리버튼",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -2851,7 +2851,7 @@
     {
       "ticker": "HAS",
       "name": "Hasbro",
-      "name_ko": "Hasbro",
+      "name_ko": "해즈브로",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2864,7 +2864,7 @@
     {
       "ticker": "HBAN",
       "name": "Huntington Bancshares",
-      "name_ko": "Huntington Bancshares",
+      "name_ko": "헌팅턴뱅크셰어즈",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2877,7 +2877,7 @@
     {
       "ticker": "HCA",
       "name": "HCA Healthcare",
-      "name_ko": "HCA Healthcare",
+      "name_ko": "HCA헬스케어",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2890,7 +2890,7 @@
     {
       "ticker": "HD",
       "name": "Home Depot (The)",
-      "name_ko": "Home Depot (The)",
+      "name_ko": "홈디포",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2903,7 +2903,7 @@
     {
       "ticker": "HIG",
       "name": "Hartford (The)",
-      "name_ko": "Hartford (The)",
+      "name_ko": "하트포드",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2916,7 +2916,7 @@
     {
       "ticker": "HII",
       "name": "Huntington Ingalls Industries",
-      "name_ko": "Huntington Ingalls Industries",
+      "name_ko": "헌팅턴잉걸스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2929,7 +2929,7 @@
     {
       "ticker": "HLT",
       "name": "Hilton Worldwide",
-      "name_ko": "Hilton Worldwide",
+      "name_ko": "힐튼",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -2942,7 +2942,7 @@
     {
       "ticker": "HOLX",
       "name": "Hologic",
-      "name_ko": "Hologic",
+      "name_ko": "홀로직",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -2955,7 +2955,7 @@
     {
       "ticker": "HON",
       "name": "Honeywell",
-      "name_ko": "Honeywell",
+      "name_ko": "하니웰",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -2968,7 +2968,7 @@
     {
       "ticker": "HOOD",
       "name": "Robinhood Markets",
-      "name_ko": "Robinhood Markets",
+      "name_ko": "로빈후드",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -2981,7 +2981,7 @@
     {
       "ticker": "HPE",
       "name": "Hewlett Packard Enterprise",
-      "name_ko": "Hewlett Packard Enterprise",
+      "name_ko": "HPE",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -2994,7 +2994,7 @@
     {
       "ticker": "HPQ",
       "name": "HP Inc.",
-      "name_ko": "HP Inc.",
+      "name_ko": "HP",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3007,7 +3007,7 @@
     {
       "ticker": "HRL",
       "name": "Hormel Foods",
-      "name_ko": "Hormel Foods",
+      "name_ko": "호멜푸즈",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3020,7 +3020,7 @@
     {
       "ticker": "HSIC",
       "name": "Henry Schein",
-      "name_ko": "Henry Schein",
+      "name_ko": "헨리샤인",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3033,7 +3033,7 @@
     {
       "ticker": "HST",
       "name": "Host Hotels & Resorts",
-      "name_ko": "Host Hotels & Resorts",
+      "name_ko": "호스트호텔",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -3046,7 +3046,7 @@
     {
       "ticker": "HSY",
       "name": "Hershey Company (The)",
-      "name_ko": "Hershey Company (The)",
+      "name_ko": "허쉬",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3059,7 +3059,7 @@
     {
       "ticker": "HUBB",
       "name": "Hubbell Incorporated",
-      "name_ko": "Hubbell Incorporated",
+      "name_ko": "허벨",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3072,7 +3072,7 @@
     {
       "ticker": "HUM",
       "name": "Humana",
-      "name_ko": "Humana",
+      "name_ko": "휴마나",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3085,7 +3085,7 @@
     {
       "ticker": "HWM",
       "name": "Howmet Aerospace",
-      "name_ko": "Howmet Aerospace",
+      "name_ko": "하우멧에어로",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3098,7 +3098,7 @@
     {
       "ticker": "IBKR",
       "name": "Interactive Brokers",
-      "name_ko": "Interactive Brokers",
+      "name_ko": "인터랙티브브로커스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3124,7 +3124,7 @@
     {
       "ticker": "ICE",
       "name": "Intercontinental Exchange",
-      "name_ko": "Intercontinental Exchange",
+      "name_ko": "인터컨티넨탈익스체인지",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3137,7 +3137,7 @@
     {
       "ticker": "IDXX",
       "name": "Idexx Laboratories",
-      "name_ko": "Idexx Laboratories",
+      "name_ko": "아이덱스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3150,7 +3150,7 @@
     {
       "ticker": "IEX",
       "name": "IDEX Corporation",
-      "name_ko": "IDEX Corporation",
+      "name_ko": "IDEX",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3163,7 +3163,7 @@
     {
       "ticker": "IFF",
       "name": "International Flavors & Fragrances",
-      "name_ko": "International Flavors & Fragrances",
+      "name_ko": "IFF",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -3176,7 +3176,7 @@
     {
       "ticker": "INCY",
       "name": "Incyte",
-      "name_ko": "Incyte",
+      "name_ko": "인사이트",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3189,7 +3189,7 @@
     {
       "ticker": "INTC",
       "name": "Intel",
-      "name_ko": "Intel",
+      "name_ko": "인텔",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3202,7 +3202,7 @@
     {
       "ticker": "INTU",
       "name": "Intuit",
-      "name_ko": "Intuit",
+      "name_ko": "인튜이트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3215,7 +3215,7 @@
     {
       "ticker": "INVH",
       "name": "Invitation Homes",
-      "name_ko": "Invitation Homes",
+      "name_ko": "인비테이션홈즈",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -3228,7 +3228,7 @@
     {
       "ticker": "IP",
       "name": "International Paper",
-      "name_ko": "International Paper",
+      "name_ko": "인터내셔널페이퍼",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -3254,7 +3254,7 @@
     {
       "ticker": "IR",
       "name": "Ingersoll Rand",
-      "name_ko": "Ingersoll Rand",
+      "name_ko": "잉거솔랜드",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3267,7 +3267,7 @@
     {
       "ticker": "IRM",
       "name": "Iron Mountain",
-      "name_ko": "Iron Mountain",
+      "name_ko": "아이언마운틴",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -3280,7 +3280,7 @@
     {
       "ticker": "ISRG",
       "name": "Intuitive Surgical",
-      "name_ko": "Intuitive Surgical",
+      "name_ko": "인튜이티브서지컬",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3293,7 +3293,7 @@
     {
       "ticker": "IT",
       "name": "Gartner",
-      "name_ko": "Gartner",
+      "name_ko": "가트너",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3306,7 +3306,7 @@
     {
       "ticker": "ITW",
       "name": "Illinois Tool Works",
-      "name_ko": "Illinois Tool Works",
+      "name_ko": "일리노이툴웍스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3319,7 +3319,7 @@
     {
       "ticker": "IVZ",
       "name": "Invesco",
-      "name_ko": "Invesco",
+      "name_ko": "인베스코",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3332,7 +3332,7 @@
     {
       "ticker": "J",
       "name": "Jacobs Solutions",
-      "name_ko": "Jacobs Solutions",
+      "name_ko": "제이콥스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3345,7 +3345,7 @@
     {
       "ticker": "JBHT",
       "name": "J.B. Hunt",
-      "name_ko": "J.B. Hunt",
+      "name_ko": "JB헌트",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3358,7 +3358,7 @@
     {
       "ticker": "JBL",
       "name": "Jabil",
-      "name_ko": "Jabil",
+      "name_ko": "제이빌",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3371,7 +3371,7 @@
     {
       "ticker": "JCI",
       "name": "Johnson Controls",
-      "name_ko": "Johnson Controls",
+      "name_ko": "존슨컨트롤즈",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3384,7 +3384,7 @@
     {
       "ticker": "JKHY",
       "name": "Jack Henry & Associates",
-      "name_ko": "Jack Henry & Associates",
+      "name_ko": "잭헨리",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3397,7 +3397,7 @@
     {
       "ticker": "JNJ",
       "name": "Johnson & Johnson",
-      "name_ko": "Johnson & Johnson",
+      "name_ko": "존슨앤드존슨",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3410,7 +3410,7 @@
     {
       "ticker": "JPM",
       "name": "JPMorgan Chase",
-      "name_ko": "JPMorgan Chase",
+      "name_ko": "JP모건",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3423,7 +3423,7 @@
     {
       "ticker": "KDP",
       "name": "Keurig Dr Pepper",
-      "name_ko": "Keurig Dr Pepper",
+      "name_ko": "큐리그닥터페퍼",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3436,7 +3436,7 @@
     {
       "ticker": "KEY",
       "name": "KeyCorp",
-      "name_ko": "KeyCorp",
+      "name_ko": "키코프",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3449,7 +3449,7 @@
     {
       "ticker": "KEYS",
       "name": "Keysight Technologies",
-      "name_ko": "Keysight Technologies",
+      "name_ko": "키사이트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3462,7 +3462,7 @@
     {
       "ticker": "KHC",
       "name": "Kraft Heinz",
-      "name_ko": "Kraft Heinz",
+      "name_ko": "크래프트하인즈",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3475,7 +3475,7 @@
     {
       "ticker": "KIM",
       "name": "Kimco Realty",
-      "name_ko": "Kimco Realty",
+      "name_ko": "킴코리얼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -3488,7 +3488,7 @@
     {
       "ticker": "KKR",
       "name": "KKR & Co.",
-      "name_ko": "KKR & Co.",
+      "name_ko": "KKR",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3501,7 +3501,7 @@
     {
       "ticker": "KLAC",
       "name": "KLA Corporation",
-      "name_ko": "KLA Corporation",
+      "name_ko": "KLA",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3514,7 +3514,7 @@
     {
       "ticker": "KMB",
       "name": "Kimberly-Clark",
-      "name_ko": "Kimberly-Clark",
+      "name_ko": "킴벌리클라크",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3527,7 +3527,7 @@
     {
       "ticker": "KMI",
       "name": "Kinder Morgan",
-      "name_ko": "Kinder Morgan",
+      "name_ko": "킨더모건",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -3540,7 +3540,7 @@
     {
       "ticker": "KO",
       "name": "Coca-Cola Company (The)",
-      "name_ko": "Coca-Cola Company (The)",
+      "name_ko": "코카콜라",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3553,7 +3553,7 @@
     {
       "ticker": "KR",
       "name": "Kroger",
-      "name_ko": "Kroger",
+      "name_ko": "크로거",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3566,7 +3566,7 @@
     {
       "ticker": "KVUE",
       "name": "Kenvue",
-      "name_ko": "Kenvue",
+      "name_ko": "켄뷰",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3579,7 +3579,7 @@
     {
       "ticker": "L",
       "name": "Loews Corporation",
-      "name_ko": "Loews Corporation",
+      "name_ko": "로이스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3592,7 +3592,7 @@
     {
       "ticker": "LDOS",
       "name": "Leidos",
-      "name_ko": "Leidos",
+      "name_ko": "레이도스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3605,7 +3605,7 @@
     {
       "ticker": "LEN",
       "name": "Lennar",
-      "name_ko": "Lennar",
+      "name_ko": "레나",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3618,7 +3618,7 @@
     {
       "ticker": "LH",
       "name": "Labcorp",
-      "name_ko": "Labcorp",
+      "name_ko": "랩코프",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3631,7 +3631,7 @@
     {
       "ticker": "LHX",
       "name": "L3Harris",
-      "name_ko": "L3Harris",
+      "name_ko": "L3해리스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3644,7 +3644,7 @@
     {
       "ticker": "LII",
       "name": "Lennox International",
-      "name_ko": "Lennox International",
+      "name_ko": "레녹스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3657,7 +3657,7 @@
     {
       "ticker": "LIN",
       "name": "Linde plc",
-      "name_ko": "Linde plc",
+      "name_ko": "린데",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -3670,7 +3670,7 @@
     {
       "ticker": "LLY",
       "name": "Lilly (Eli)",
-      "name_ko": "Lilly (Eli)",
+      "name_ko": "일라이릴리",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3683,7 +3683,7 @@
     {
       "ticker": "LMT",
       "name": "Lockheed Martin",
-      "name_ko": "Lockheed Martin",
+      "name_ko": "록히드마틴",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3696,7 +3696,7 @@
     {
       "ticker": "LNT",
       "name": "Alliant Energy",
-      "name_ko": "Alliant Energy",
+      "name_ko": "앨리언트에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -3709,7 +3709,7 @@
     {
       "ticker": "LOW",
       "name": "Lowe's",
-      "name_ko": "Lowe's",
+      "name_ko": "로우스",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3722,7 +3722,7 @@
     {
       "ticker": "LRCX",
       "name": "Lam Research",
-      "name_ko": "Lam Research",
+      "name_ko": "램리서치",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3735,7 +3735,7 @@
     {
       "ticker": "LULU",
       "name": "Lululemon Athletica",
-      "name_ko": "Lululemon Athletica",
+      "name_ko": "룰루레몬",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3748,7 +3748,7 @@
     {
       "ticker": "LUV",
       "name": "Southwest Airlines",
-      "name_ko": "Southwest Airlines",
+      "name_ko": "사우스웨스트항공",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3761,7 +3761,7 @@
     {
       "ticker": "LVS",
       "name": "Las Vegas Sands",
-      "name_ko": "Las Vegas Sands",
+      "name_ko": "라스베이거스샌즈",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3774,7 +3774,7 @@
     {
       "ticker": "LW",
       "name": "Lamb Weston",
-      "name_ko": "Lamb Weston",
+      "name_ko": "램웨스턴",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3787,7 +3787,7 @@
     {
       "ticker": "LYB",
       "name": "LyondellBasell",
-      "name_ko": "LyondellBasell",
+      "name_ko": "라이온델바젤",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -3800,7 +3800,7 @@
     {
       "ticker": "LYV",
       "name": "Live Nation Entertainment",
-      "name_ko": "Live Nation Entertainment",
+      "name_ko": "라이브네이션",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -3813,7 +3813,7 @@
     {
       "ticker": "MA",
       "name": "Mastercard",
-      "name_ko": "Mastercard",
+      "name_ko": "마스터카드",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3826,7 +3826,7 @@
     {
       "ticker": "MAA",
       "name": "Mid-America Apartment Communities",
-      "name_ko": "Mid-America Apartment Communities",
+      "name_ko": "MAA",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -3839,7 +3839,7 @@
     {
       "ticker": "MAR",
       "name": "Marriott International",
-      "name_ko": "Marriott International",
+      "name_ko": "메리어트",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3852,7 +3852,7 @@
     {
       "ticker": "MAS",
       "name": "Masco",
-      "name_ko": "Masco",
+      "name_ko": "마스코",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -3865,7 +3865,7 @@
     {
       "ticker": "MCD",
       "name": "McDonald's",
-      "name_ko": "McDonald's",
+      "name_ko": "맥도날드",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3878,7 +3878,7 @@
     {
       "ticker": "MCHP",
       "name": "Microchip Technology",
-      "name_ko": "Microchip Technology",
+      "name_ko": "마이크로칩",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -3891,7 +3891,7 @@
     {
       "ticker": "MCK",
       "name": "McKesson Corporation",
-      "name_ko": "McKesson Corporation",
+      "name_ko": "맥케슨",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3904,7 +3904,7 @@
     {
       "ticker": "MCO",
       "name": "Moody's Corporation",
-      "name_ko": "Moody's Corporation",
+      "name_ko": "무디스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3917,7 +3917,7 @@
     {
       "ticker": "MDLZ",
       "name": "Mondelez International",
-      "name_ko": "Mondelez International",
+      "name_ko": "몬델리즈",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3930,7 +3930,7 @@
     {
       "ticker": "MDT",
       "name": "Medtronic",
-      "name_ko": "Medtronic",
+      "name_ko": "메드트로닉",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -3943,7 +3943,7 @@
     {
       "ticker": "MET",
       "name": "MetLife",
-      "name_ko": "MetLife",
+      "name_ko": "메트라이프",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -3956,7 +3956,7 @@
     {
       "ticker": "META",
       "name": "Meta Platforms",
-      "name_ko": "Meta Platforms",
+      "name_ko": "메타",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -3969,7 +3969,7 @@
     {
       "ticker": "MGM",
       "name": "MGM Resorts",
-      "name_ko": "MGM Resorts",
+      "name_ko": "MGM리조트",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -3982,7 +3982,7 @@
     {
       "ticker": "MKC",
       "name": "McCormick & Company",
-      "name_ko": "McCormick & Company",
+      "name_ko": "맥코믹",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -3995,7 +3995,7 @@
     {
       "ticker": "MLM",
       "name": "Martin Marietta Materials",
-      "name_ko": "Martin Marietta Materials",
+      "name_ko": "마틴마리에타",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4021,7 +4021,7 @@
     {
       "ticker": "MNST",
       "name": "Monster Beverage",
-      "name_ko": "Monster Beverage",
+      "name_ko": "몬스터에너지",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -4034,7 +4034,7 @@
     {
       "ticker": "MO",
       "name": "Altria",
-      "name_ko": "Altria",
+      "name_ko": "알트리아",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -4047,7 +4047,7 @@
     {
       "ticker": "MOH",
       "name": "Molina Healthcare",
-      "name_ko": "Molina Healthcare",
+      "name_ko": "몰리나헬스케어",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4060,7 +4060,7 @@
     {
       "ticker": "MOS",
       "name": "Mosaic Company (The)",
-      "name_ko": "Mosaic Company (The)",
+      "name_ko": "모자이크",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4073,7 +4073,7 @@
     {
       "ticker": "MPC",
       "name": "Marathon Petroleum",
-      "name_ko": "Marathon Petroleum",
+      "name_ko": "마라톤페트롤리엄",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -4086,7 +4086,7 @@
     {
       "ticker": "MPWR",
       "name": "Monolithic Power Systems",
-      "name_ko": "Monolithic Power Systems",
+      "name_ko": "모놀리식파워",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4099,7 +4099,7 @@
     {
       "ticker": "MRK",
       "name": "Merck & Co.",
-      "name_ko": "Merck & Co.",
+      "name_ko": "머크",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4112,7 +4112,7 @@
     {
       "ticker": "MRNA",
       "name": "Moderna",
-      "name_ko": "Moderna",
+      "name_ko": "모더나",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4125,7 +4125,7 @@
     {
       "ticker": "MRSH",
       "name": "Marsh McLennan",
-      "name_ko": "Marsh McLennan",
+      "name_ko": "마시맥레넌",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4138,7 +4138,7 @@
     {
       "ticker": "MS",
       "name": "Morgan Stanley",
-      "name_ko": "Morgan Stanley",
+      "name_ko": "모건스탠리",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4151,7 +4151,7 @@
     {
       "ticker": "MSCI",
       "name": "MSCI Inc.",
-      "name_ko": "MSCI Inc.",
+      "name_ko": "MSCI",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4164,7 +4164,7 @@
     {
       "ticker": "MSFT",
       "name": "Microsoft",
-      "name_ko": "Microsoft",
+      "name_ko": "마이크로소프트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4177,7 +4177,7 @@
     {
       "ticker": "MSI",
       "name": "Motorola Solutions",
-      "name_ko": "Motorola Solutions",
+      "name_ko": "모토로라솔루션즈",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4190,7 +4190,7 @@
     {
       "ticker": "MTB",
       "name": "M&T Bank",
-      "name_ko": "M&T Bank",
+      "name_ko": "M&T뱅크",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4203,7 +4203,7 @@
     {
       "ticker": "MTCH",
       "name": "Match Group",
-      "name_ko": "Match Group",
+      "name_ko": "매치그룹",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4216,7 +4216,7 @@
     {
       "ticker": "MTD",
       "name": "Mettler Toledo",
-      "name_ko": "Mettler Toledo",
+      "name_ko": "메틀러톨레도",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4229,7 +4229,7 @@
     {
       "ticker": "MU",
       "name": "Micron Technology",
-      "name_ko": "Micron Technology",
+      "name_ko": "마이크론",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4242,7 +4242,7 @@
     {
       "ticker": "NCLH",
       "name": "Norwegian Cruise Line Holdings",
-      "name_ko": "Norwegian Cruise Line Holdings",
+      "name_ko": "노르웨이지안크루즈",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4255,7 +4255,7 @@
     {
       "ticker": "NDAQ",
       "name": "Nasdaq, Inc.",
-      "name_ko": "Nasdaq, Inc.",
+      "name_ko": "나스닥",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4268,7 +4268,7 @@
     {
       "ticker": "NDSN",
       "name": "Nordson Corporation",
-      "name_ko": "Nordson Corporation",
+      "name_ko": "노드슨",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4281,7 +4281,7 @@
     {
       "ticker": "NEE",
       "name": "NextEra Energy",
-      "name_ko": "NextEra Energy",
+      "name_ko": "넥스트에라에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4294,7 +4294,7 @@
     {
       "ticker": "NEM",
       "name": "Newmont",
-      "name_ko": "Newmont",
+      "name_ko": "뉴몬트",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4307,7 +4307,7 @@
     {
       "ticker": "NFLX",
       "name": "Netflix",
-      "name_ko": "Netflix",
+      "name_ko": "넷플릭스",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4320,7 +4320,7 @@
     {
       "ticker": "NI",
       "name": "NiSource",
-      "name_ko": "NiSource",
+      "name_ko": "나이소스",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4333,7 +4333,7 @@
     {
       "ticker": "NKE",
       "name": "Nike, Inc.",
-      "name_ko": "Nike, Inc.",
+      "name_ko": "나이키",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4346,7 +4346,7 @@
     {
       "ticker": "NOC",
       "name": "Northrop Grumman",
-      "name_ko": "Northrop Grumman",
+      "name_ko": "노스롭그루먼",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4359,7 +4359,7 @@
     {
       "ticker": "NOW",
       "name": "ServiceNow",
-      "name_ko": "ServiceNow",
+      "name_ko": "서비스나우",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4372,7 +4372,7 @@
     {
       "ticker": "NRG",
       "name": "NRG Energy",
-      "name_ko": "NRG Energy",
+      "name_ko": "NRG에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4385,7 +4385,7 @@
     {
       "ticker": "NSC",
       "name": "Norfolk Southern",
-      "name_ko": "Norfolk Southern",
+      "name_ko": "노퍽서던",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4398,7 +4398,7 @@
     {
       "ticker": "NTAP",
       "name": "NetApp",
-      "name_ko": "NetApp",
+      "name_ko": "넷앱",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4411,7 +4411,7 @@
     {
       "ticker": "NTRS",
       "name": "Northern Trust",
-      "name_ko": "Northern Trust",
+      "name_ko": "노던트러스트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4424,7 +4424,7 @@
     {
       "ticker": "NUE",
       "name": "Nucor",
-      "name_ko": "Nucor",
+      "name_ko": "뉴코어",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4437,7 +4437,7 @@
     {
       "ticker": "NVDA",
       "name": "Nvidia",
-      "name_ko": "Nvidia",
+      "name_ko": "엔비디아",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4450,7 +4450,7 @@
     {
       "ticker": "NVR",
       "name": "NVR, Inc.",
-      "name_ko": "NVR, Inc.",
+      "name_ko": "NVR",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4463,7 +4463,7 @@
     {
       "ticker": "NWS",
       "name": "News Corp (Class B)",
-      "name_ko": "News Corp (Class B)",
+      "name_ko": "뉴스코프",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4476,7 +4476,7 @@
     {
       "ticker": "NWSA",
       "name": "News Corp (Class A)",
-      "name_ko": "News Corp (Class A)",
+      "name_ko": "뉴스코프",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4489,7 +4489,7 @@
     {
       "ticker": "NXPI",
       "name": "NXP Semiconductors",
-      "name_ko": "NXP Semiconductors",
+      "name_ko": "NXP반도체",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4502,7 +4502,7 @@
     {
       "ticker": "O",
       "name": "Realty Income",
-      "name_ko": "Realty Income",
+      "name_ko": "리얼티인컴",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -4515,7 +4515,7 @@
     {
       "ticker": "ODFL",
       "name": "Old Dominion",
-      "name_ko": "Old Dominion",
+      "name_ko": "올드도미니언",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4528,7 +4528,7 @@
     {
       "ticker": "OKE",
       "name": "Oneok",
-      "name_ko": "Oneok",
+      "name_ko": "원오크",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -4541,7 +4541,7 @@
     {
       "ticker": "OMC",
       "name": "Omnicom Group",
-      "name_ko": "Omnicom Group",
+      "name_ko": "옴니컴",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4554,7 +4554,7 @@
     {
       "ticker": "ON",
       "name": "ON Semiconductor",
-      "name_ko": "ON Semiconductor",
+      "name_ko": "온세미",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4567,7 +4567,7 @@
     {
       "ticker": "ORCL",
       "name": "Oracle Corporation",
-      "name_ko": "Oracle Corporation",
+      "name_ko": "오라클",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4580,7 +4580,7 @@
     {
       "ticker": "ORLY",
       "name": "O’Reilly Automotive",
-      "name_ko": "O’Reilly Automotive",
+      "name_ko": "오라일리오토",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4593,7 +4593,7 @@
     {
       "ticker": "OTIS",
       "name": "Otis Worldwide",
-      "name_ko": "Otis Worldwide",
+      "name_ko": "오티스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4606,7 +4606,7 @@
     {
       "ticker": "OXY",
       "name": "Occidental Petroleum",
-      "name_ko": "Occidental Petroleum",
+      "name_ko": "옥시덴탈",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -4619,7 +4619,7 @@
     {
       "ticker": "PANW",
       "name": "Palo Alto Networks",
-      "name_ko": "Palo Alto Networks",
+      "name_ko": "팔로알토네트웍스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4632,7 +4632,7 @@
     {
       "ticker": "PAYC",
       "name": "Paycom",
-      "name_ko": "Paycom",
+      "name_ko": "페이컴",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4645,7 +4645,7 @@
     {
       "ticker": "PAYX",
       "name": "Paychex",
-      "name_ko": "Paychex",
+      "name_ko": "페이첵스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4658,7 +4658,7 @@
     {
       "ticker": "PCAR",
       "name": "Paccar",
-      "name_ko": "Paccar",
+      "name_ko": "팩카",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4671,7 +4671,7 @@
     {
       "ticker": "PCG",
       "name": "PG&E Corporation",
-      "name_ko": "PG&E Corporation",
+      "name_ko": "PG&E",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4684,7 +4684,7 @@
     {
       "ticker": "PEG",
       "name": "Public Service Enterprise Group",
-      "name_ko": "Public Service Enterprise Group",
+      "name_ko": "PSEG",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4697,7 +4697,7 @@
     {
       "ticker": "PEP",
       "name": "PepsiCo",
-      "name_ko": "PepsiCo",
+      "name_ko": "펩시코",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -4710,7 +4710,7 @@
     {
       "ticker": "PFE",
       "name": "Pfizer",
-      "name_ko": "Pfizer",
+      "name_ko": "화이자",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4723,7 +4723,7 @@
     {
       "ticker": "PFG",
       "name": "Principal Financial Group",
-      "name_ko": "Principal Financial Group",
+      "name_ko": "프린시펄파이낸셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4736,7 +4736,7 @@
     {
       "ticker": "PG",
       "name": "Procter & Gamble",
-      "name_ko": "Procter & Gamble",
+      "name_ko": "P&G",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -4749,7 +4749,7 @@
     {
       "ticker": "PGR",
       "name": "Progressive Corporation",
-      "name_ko": "Progressive Corporation",
+      "name_ko": "프로그레시브",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4762,7 +4762,7 @@
     {
       "ticker": "PH",
       "name": "Parker Hannifin",
-      "name_ko": "Parker Hannifin",
+      "name_ko": "파커해니핀",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4775,7 +4775,7 @@
     {
       "ticker": "PHM",
       "name": "PulteGroup",
-      "name_ko": "PulteGroup",
+      "name_ko": "펄트그룹",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4788,7 +4788,7 @@
     {
       "ticker": "PKG",
       "name": "Packaging Corporation of America",
-      "name_ko": "Packaging Corporation of America",
+      "name_ko": "PCA",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4801,7 +4801,7 @@
     {
       "ticker": "PLD",
       "name": "Prologis",
-      "name_ko": "Prologis",
+      "name_ko": "프롤로지스",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -4814,7 +4814,7 @@
     {
       "ticker": "PLTR",
       "name": "Palantir Technologies",
-      "name_ko": "Palantir Technologies",
+      "name_ko": "팔란티어",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4827,7 +4827,7 @@
     {
       "ticker": "PM",
       "name": "Philip Morris International",
-      "name_ko": "Philip Morris International",
+      "name_ko": "필립모리스",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -4840,7 +4840,7 @@
     {
       "ticker": "PNC",
       "name": "PNC Financial Services",
-      "name_ko": "PNC Financial Services",
+      "name_ko": "PNC",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4853,7 +4853,7 @@
     {
       "ticker": "PNR",
       "name": "Pentair",
-      "name_ko": "Pentair",
+      "name_ko": "펜테어",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -4866,7 +4866,7 @@
     {
       "ticker": "PNW",
       "name": "Pinnacle West Capital",
-      "name_ko": "Pinnacle West Capital",
+      "name_ko": "피너클웨스트",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4879,7 +4879,7 @@
     {
       "ticker": "PODD",
       "name": "Insulet Corporation",
-      "name_ko": "Insulet Corporation",
+      "name_ko": "인슐렛",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -4892,7 +4892,7 @@
     {
       "ticker": "POOL",
       "name": "Pool Corporation",
-      "name_ko": "Pool Corporation",
+      "name_ko": "풀코퍼레이션",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -4905,7 +4905,7 @@
     {
       "ticker": "PPG",
       "name": "PPG Industries",
-      "name_ko": "PPG Industries",
+      "name_ko": "PPG",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -4918,7 +4918,7 @@
     {
       "ticker": "PPL",
       "name": "PPL Corporation",
-      "name_ko": "PPL Corporation",
+      "name_ko": "PPL",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -4931,7 +4931,7 @@
     {
       "ticker": "PRU",
       "name": "Prudential Financial",
-      "name_ko": "Prudential Financial",
+      "name_ko": "프루덴셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -4944,7 +4944,7 @@
     {
       "ticker": "PSA",
       "name": "Public Storage",
-      "name_ko": "Public Storage",
+      "name_ko": "퍼블릭스토리지",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -4957,7 +4957,7 @@
     {
       "ticker": "PSKY",
       "name": "Paramount Skydance Corporation",
-      "name_ko": "Paramount Skydance Corporation",
+      "name_ko": "파라마운트",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -4970,7 +4970,7 @@
     {
       "ticker": "PSX",
       "name": "Phillips 66",
-      "name_ko": "Phillips 66",
+      "name_ko": "필립스66",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -4983,7 +4983,7 @@
     {
       "ticker": "PTC",
       "name": "PTC Inc.",
-      "name_ko": "PTC Inc.",
+      "name_ko": "PTC",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -4996,7 +4996,7 @@
     {
       "ticker": "PWR",
       "name": "Quanta Services",
-      "name_ko": "Quanta Services",
+      "name_ko": "퀀타서비시즈",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5009,7 +5009,7 @@
     {
       "ticker": "PYPL",
       "name": "PayPal",
-      "name_ko": "PayPal",
+      "name_ko": "페이팔",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5022,7 +5022,7 @@
     {
       "ticker": "Q",
       "name": "Qnity Electronics",
-      "name_ko": "Qnity Electronics",
+      "name_ko": "큐니티",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5035,7 +5035,7 @@
     {
       "ticker": "QCOM",
       "name": "Qualcomm",
-      "name_ko": "Qualcomm",
+      "name_ko": "퀄컴",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5048,7 +5048,7 @@
     {
       "ticker": "RCL",
       "name": "Royal Caribbean Group",
-      "name_ko": "Royal Caribbean Group",
+      "name_ko": "로열캐리비안",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5061,7 +5061,7 @@
     {
       "ticker": "REG",
       "name": "Regency Centers",
-      "name_ko": "Regency Centers",
+      "name_ko": "리전시센터스",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -5074,7 +5074,7 @@
     {
       "ticker": "REGN",
       "name": "Regeneron Pharmaceuticals",
-      "name_ko": "Regeneron Pharmaceuticals",
+      "name_ko": "리제네론",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5087,7 +5087,7 @@
     {
       "ticker": "RF",
       "name": "Regions Financial Corporation",
-      "name_ko": "Regions Financial Corporation",
+      "name_ko": "리전스파이낸셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5100,7 +5100,7 @@
     {
       "ticker": "RJF",
       "name": "Raymond James Financial",
-      "name_ko": "Raymond James Financial",
+      "name_ko": "레이먼드제임스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5113,7 +5113,7 @@
     {
       "ticker": "RL",
       "name": "Ralph Lauren Corporation",
-      "name_ko": "Ralph Lauren Corporation",
+      "name_ko": "랄프로렌",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5126,7 +5126,7 @@
     {
       "ticker": "RMD",
       "name": "ResMed",
-      "name_ko": "ResMed",
+      "name_ko": "레즈메드",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5139,7 +5139,7 @@
     {
       "ticker": "ROK",
       "name": "Rockwell Automation",
-      "name_ko": "Rockwell Automation",
+      "name_ko": "로크웰오토메이션",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5152,7 +5152,7 @@
     {
       "ticker": "ROL",
       "name": "Rollins, Inc.",
-      "name_ko": "Rollins, Inc.",
+      "name_ko": "롤린스",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5165,7 +5165,7 @@
     {
       "ticker": "ROP",
       "name": "Roper Technologies",
-      "name_ko": "Roper Technologies",
+      "name_ko": "로퍼테크놀로지",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5178,7 +5178,7 @@
     {
       "ticker": "ROST",
       "name": "Ross Stores",
-      "name_ko": "Ross Stores",
+      "name_ko": "로스스토어",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5191,7 +5191,7 @@
     {
       "ticker": "RSG",
       "name": "Republic Services",
-      "name_ko": "Republic Services",
+      "name_ko": "리퍼블릭서비시즈",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5204,7 +5204,7 @@
     {
       "ticker": "RTX",
       "name": "RTX Corporation",
-      "name_ko": "RTX Corporation",
+      "name_ko": "RTX",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5217,7 +5217,7 @@
     {
       "ticker": "RVTY",
       "name": "Revvity",
-      "name_ko": "Revvity",
+      "name_ko": "레비티",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5230,7 +5230,7 @@
     {
       "ticker": "SBAC",
       "name": "SBA Communications",
-      "name_ko": "SBA Communications",
+      "name_ko": "SBA커뮤니케이션즈",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -5243,7 +5243,7 @@
     {
       "ticker": "SBUX",
       "name": "Starbucks",
-      "name_ko": "Starbucks",
+      "name_ko": "스타벅스",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5256,7 +5256,7 @@
     {
       "ticker": "SCHW",
       "name": "Charles Schwab Corporation",
-      "name_ko": "Charles Schwab Corporation",
+      "name_ko": "찰스슈왑",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5269,7 +5269,7 @@
     {
       "ticker": "SHW",
       "name": "Sherwin-Williams",
-      "name_ko": "Sherwin-Williams",
+      "name_ko": "셔윈윌리엄스",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -5282,7 +5282,7 @@
     {
       "ticker": "SJM",
       "name": "J.M. Smucker Company (The)",
-      "name_ko": "J.M. Smucker Company (The)",
+      "name_ko": "스머커",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5295,7 +5295,7 @@
     {
       "ticker": "SLB",
       "name": "Schlumberger",
-      "name_ko": "Schlumberger",
+      "name_ko": "슐럼버거",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -5308,7 +5308,7 @@
     {
       "ticker": "SMCI",
       "name": "Supermicro",
-      "name_ko": "Supermicro",
+      "name_ko": "슈퍼마이크로",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5321,7 +5321,7 @@
     {
       "ticker": "SNA",
       "name": "Snap-on",
-      "name_ko": "Snap-on",
+      "name_ko": "스냅온",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5334,7 +5334,7 @@
     {
       "ticker": "SNDK",
       "name": "Sandisk",
-      "name_ko": "Sandisk",
+      "name_ko": "샌디스크",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5347,7 +5347,7 @@
     {
       "ticker": "SNPS",
       "name": "Synopsys",
-      "name_ko": "Synopsys",
+      "name_ko": "시놉시스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5360,7 +5360,7 @@
     {
       "ticker": "SO",
       "name": "Southern Company",
-      "name_ko": "Southern Company",
+      "name_ko": "서던컴퍼니",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -5373,7 +5373,7 @@
     {
       "ticker": "SOLV",
       "name": "Solventum",
-      "name_ko": "Solventum",
+      "name_ko": "솔벤텀",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5386,7 +5386,7 @@
     {
       "ticker": "SPG",
       "name": "Simon Property Group",
-      "name_ko": "Simon Property Group",
+      "name_ko": "사이먼프로퍼티",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -5399,7 +5399,7 @@
     {
       "ticker": "SPGI",
       "name": "S&P Global",
-      "name_ko": "S&P Global",
+      "name_ko": "S&P글로벌",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5412,7 +5412,7 @@
     {
       "ticker": "SRE",
       "name": "Sempra",
-      "name_ko": "Sempra",
+      "name_ko": "셈프라",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -5425,7 +5425,7 @@
     {
       "ticker": "STE",
       "name": "Steris",
-      "name_ko": "Steris",
+      "name_ko": "스테리스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5438,7 +5438,7 @@
     {
       "ticker": "STLD",
       "name": "Steel Dynamics",
-      "name_ko": "Steel Dynamics",
+      "name_ko": "스틸다이나믹스",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -5451,7 +5451,7 @@
     {
       "ticker": "STT",
       "name": "State Street Corporation",
-      "name_ko": "State Street Corporation",
+      "name_ko": "스테이트스트리트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5464,7 +5464,7 @@
     {
       "ticker": "STX",
       "name": "Seagate Technology",
-      "name_ko": "Seagate Technology",
+      "name_ko": "씨게이트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5477,7 +5477,7 @@
     {
       "ticker": "STZ",
       "name": "Constellation Brands",
-      "name_ko": "Constellation Brands",
+      "name_ko": "컨스텔레이션브랜즈",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5490,7 +5490,7 @@
     {
       "ticker": "SW",
       "name": "Smurfit Westrock",
-      "name_ko": "Smurfit Westrock",
+      "name_ko": "스머핏웨스트록",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -5503,7 +5503,7 @@
     {
       "ticker": "SWK",
       "name": "Stanley Black & Decker",
-      "name_ko": "Stanley Black & Decker",
+      "name_ko": "스탠리블랙앤데커",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5516,7 +5516,7 @@
     {
       "ticker": "SWKS",
       "name": "Skyworks Solutions",
-      "name_ko": "Skyworks Solutions",
+      "name_ko": "스카이웍스",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5529,7 +5529,7 @@
     {
       "ticker": "SYF",
       "name": "Synchrony Financial",
-      "name_ko": "Synchrony Financial",
+      "name_ko": "싱크로니파이낸셜",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5542,7 +5542,7 @@
     {
       "ticker": "SYK",
       "name": "Stryker Corporation",
-      "name_ko": "Stryker Corporation",
+      "name_ko": "스트라이커",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5555,7 +5555,7 @@
     {
       "ticker": "SYY",
       "name": "Sysco",
-      "name_ko": "Sysco",
+      "name_ko": "시스코푸드",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5581,7 +5581,7 @@
     {
       "ticker": "TAP",
       "name": "Molson Coors Beverage Company",
-      "name_ko": "Molson Coors Beverage Company",
+      "name_ko": "몰슨쿠어스",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5594,7 +5594,7 @@
     {
       "ticker": "TDG",
       "name": "TransDigm Group",
-      "name_ko": "TransDigm Group",
+      "name_ko": "트랜스다임",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5607,7 +5607,7 @@
     {
       "ticker": "TDY",
       "name": "Teledyne Technologies",
-      "name_ko": "Teledyne Technologies",
+      "name_ko": "테레다인",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5620,7 +5620,7 @@
     {
       "ticker": "TECH",
       "name": "Bio-Techne",
-      "name_ko": "Bio-Techne",
+      "name_ko": "바이오테크니",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5633,7 +5633,7 @@
     {
       "ticker": "TEL",
       "name": "TE Connectivity",
-      "name_ko": "TE Connectivity",
+      "name_ko": "TE커넥티비티",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5646,7 +5646,7 @@
     {
       "ticker": "TER",
       "name": "Teradyne",
-      "name_ko": "Teradyne",
+      "name_ko": "테라다인",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5659,7 +5659,7 @@
     {
       "ticker": "TFC",
       "name": "Truist Financial",
-      "name_ko": "Truist Financial",
+      "name_ko": "트루이스트",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5672,7 +5672,7 @@
     {
       "ticker": "TGT",
       "name": "Target Corporation",
-      "name_ko": "Target Corporation",
+      "name_ko": "타겟",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5685,7 +5685,7 @@
     {
       "ticker": "TJX",
       "name": "TJX Companies",
-      "name_ko": "TJX Companies",
+      "name_ko": "TJX",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5698,7 +5698,7 @@
     {
       "ticker": "TKO",
       "name": "TKO Group Holdings",
-      "name_ko": "TKO Group Holdings",
+      "name_ko": "TKO그룹",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -5711,7 +5711,7 @@
     {
       "ticker": "TMO",
       "name": "Thermo Fisher Scientific",
-      "name_ko": "Thermo Fisher Scientific",
+      "name_ko": "써모피셔사이언티픽",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5724,7 +5724,7 @@
     {
       "ticker": "TMUS",
       "name": "T-Mobile US",
-      "name_ko": "T-Mobile US",
+      "name_ko": "T모바일",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -5737,7 +5737,7 @@
     {
       "ticker": "TPL",
       "name": "Texas Pacific Land Corporation",
-      "name_ko": "Texas Pacific Land Corporation",
+      "name_ko": "텍사스퍼시픽랜드",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -5750,7 +5750,7 @@
     {
       "ticker": "TPR",
       "name": "Tapestry, Inc.",
-      "name_ko": "Tapestry, Inc.",
+      "name_ko": "태피스트리",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5763,7 +5763,7 @@
     {
       "ticker": "TRGP",
       "name": "Targa Resources",
-      "name_ko": "Targa Resources",
+      "name_ko": "타르가리소시즈",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -5776,7 +5776,7 @@
     {
       "ticker": "TRMB",
       "name": "Trimble Inc.",
-      "name_ko": "Trimble Inc.",
+      "name_ko": "트림블",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5789,7 +5789,7 @@
     {
       "ticker": "TROW",
       "name": "T. Rowe Price",
-      "name_ko": "T. Rowe Price",
+      "name_ko": "T.로위프라이스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5802,7 +5802,7 @@
     {
       "ticker": "TRV",
       "name": "Travelers Companies (The)",
-      "name_ko": "Travelers Companies (The)",
+      "name_ko": "트래블러스",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -5815,7 +5815,7 @@
     {
       "ticker": "TSCO",
       "name": "Tractor Supply",
-      "name_ko": "Tractor Supply",
+      "name_ko": "트랙터서플라이",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5828,7 +5828,7 @@
     {
       "ticker": "TSLA",
       "name": "Tesla, Inc.",
-      "name_ko": "Tesla, Inc.",
+      "name_ko": "테슬라",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5841,7 +5841,7 @@
     {
       "ticker": "TSN",
       "name": "Tyson Foods",
-      "name_ko": "Tyson Foods",
+      "name_ko": "타이슨푸즈",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -5854,7 +5854,7 @@
     {
       "ticker": "TT",
       "name": "Trane Technologies",
-      "name_ko": "Trane Technologies",
+      "name_ko": "트레인테크",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5867,7 +5867,7 @@
     {
       "ticker": "TTD",
       "name": "Trade Desk (The)",
-      "name_ko": "Trade Desk (The)",
+      "name_ko": "트레이드데스크",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -5880,7 +5880,7 @@
     {
       "ticker": "TTWO",
       "name": "Take-Two Interactive",
-      "name_ko": "Take-Two Interactive",
+      "name_ko": "테이크투",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -5893,7 +5893,7 @@
     {
       "ticker": "TXN",
       "name": "Texas Instruments",
-      "name_ko": "Texas Instruments",
+      "name_ko": "텍사스인스트루먼트",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5906,7 +5906,7 @@
     {
       "ticker": "TXT",
       "name": "Textron",
-      "name_ko": "Textron",
+      "name_ko": "텍스트론",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5919,7 +5919,7 @@
     {
       "ticker": "TYL",
       "name": "Tyler Technologies",
-      "name_ko": "Tyler Technologies",
+      "name_ko": "타일러테크",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -5932,7 +5932,7 @@
     {
       "ticker": "UAL",
       "name": "United Airlines Holdings",
-      "name_ko": "United Airlines Holdings",
+      "name_ko": "유나이티드항공",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5945,7 +5945,7 @@
     {
       "ticker": "UBER",
       "name": "Uber",
-      "name_ko": "Uber",
+      "name_ko": "우버",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -5958,7 +5958,7 @@
     {
       "ticker": "UDR",
       "name": "UDR, Inc.",
-      "name_ko": "UDR, Inc.",
+      "name_ko": "UDR",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -5971,7 +5971,7 @@
     {
       "ticker": "UHS",
       "name": "Universal Health Services",
-      "name_ko": "Universal Health Services",
+      "name_ko": "유니버설헬스서비시즈",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -5984,7 +5984,7 @@
     {
       "ticker": "ULTA",
       "name": "Ulta Beauty",
-      "name_ko": "Ulta Beauty",
+      "name_ko": "울타뷰티",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -5997,7 +5997,7 @@
     {
       "ticker": "UNH",
       "name": "UnitedHealth Group",
-      "name_ko": "UnitedHealth Group",
+      "name_ko": "유나이티드헬스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6010,7 +6010,7 @@
     {
       "ticker": "UNP",
       "name": "Union Pacific Corporation",
-      "name_ko": "Union Pacific Corporation",
+      "name_ko": "유니온퍼시픽",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6023,7 +6023,7 @@
     {
       "ticker": "UPS",
       "name": "United Parcel Service",
-      "name_ko": "United Parcel Service",
+      "name_ko": "UPS",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6036,7 +6036,7 @@
     {
       "ticker": "URI",
       "name": "United Rentals",
-      "name_ko": "United Rentals",
+      "name_ko": "유나이티드렌탈",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6049,7 +6049,7 @@
     {
       "ticker": "USB",
       "name": "U.S. Bancorp",
-      "name_ko": "U.S. Bancorp",
+      "name_ko": "US뱅코프",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6062,7 +6062,7 @@
     {
       "ticker": "V",
       "name": "Visa Inc.",
-      "name_ko": "Visa Inc.",
+      "name_ko": "비자",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6075,7 +6075,7 @@
     {
       "ticker": "VICI",
       "name": "Vici Properties",
-      "name_ko": "Vici Properties",
+      "name_ko": "비씨프로퍼티즈",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -6088,7 +6088,7 @@
     {
       "ticker": "VLO",
       "name": "Valero Energy",
-      "name_ko": "Valero Energy",
+      "name_ko": "밸레로에너지",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -6101,7 +6101,7 @@
     {
       "ticker": "VLTO",
       "name": "Veralto",
-      "name_ko": "Veralto",
+      "name_ko": "베랄토",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6114,7 +6114,7 @@
     {
       "ticker": "VMC",
       "name": "Vulcan Materials Company",
-      "name_ko": "Vulcan Materials Company",
+      "name_ko": "벌컨머티리얼즈",
       "asset_type": "개별주",
       "type": "소재",
       "sector": "Materials",
@@ -6127,7 +6127,7 @@
     {
       "ticker": "VRSK",
       "name": "Verisk Analytics",
-      "name_ko": "Verisk Analytics",
+      "name_ko": "베리스크",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6140,7 +6140,7 @@
     {
       "ticker": "VRSN",
       "name": "Verisign",
-      "name_ko": "Verisign",
+      "name_ko": "베리사인",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -6153,7 +6153,7 @@
     {
       "ticker": "VRTX",
       "name": "Vertex Pharmaceuticals",
-      "name_ko": "Vertex Pharmaceuticals",
+      "name_ko": "버텍스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6166,7 +6166,7 @@
     {
       "ticker": "VST",
       "name": "Vistra Corp.",
-      "name_ko": "Vistra Corp.",
+      "name_ko": "비스트라",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -6179,7 +6179,7 @@
     {
       "ticker": "VTR",
       "name": "Ventas",
-      "name_ko": "Ventas",
+      "name_ko": "벤타스",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -6192,7 +6192,7 @@
     {
       "ticker": "VTRS",
       "name": "Viatris",
-      "name_ko": "Viatris",
+      "name_ko": "비아트리스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6205,7 +6205,7 @@
     {
       "ticker": "VZ",
       "name": "Verizon",
-      "name_ko": "Verizon",
+      "name_ko": "버라이즌",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -6218,7 +6218,7 @@
     {
       "ticker": "WAB",
       "name": "Wabtec",
-      "name_ko": "Wabtec",
+      "name_ko": "와브텍",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6231,7 +6231,7 @@
     {
       "ticker": "WAT",
       "name": "Waters Corporation",
-      "name_ko": "Waters Corporation",
+      "name_ko": "워터스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6244,7 +6244,7 @@
     {
       "ticker": "WBD",
       "name": "Warner Bros. Discovery",
-      "name_ko": "Warner Bros. Discovery",
+      "name_ko": "워너브라더스디스커버리",
       "asset_type": "개별주",
       "type": "통신",
       "sector": "Communication Services",
@@ -6257,7 +6257,7 @@
     {
       "ticker": "WDAY",
       "name": "Workday, Inc.",
-      "name_ko": "Workday, Inc.",
+      "name_ko": "워크데이",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -6270,7 +6270,7 @@
     {
       "ticker": "WDC",
       "name": "Western Digital",
-      "name_ko": "Western Digital",
+      "name_ko": "웨스턴디지털",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -6283,7 +6283,7 @@
     {
       "ticker": "WEC",
       "name": "WEC Energy Group",
-      "name_ko": "WEC Energy Group",
+      "name_ko": "WEC에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -6296,7 +6296,7 @@
     {
       "ticker": "WELL",
       "name": "Welltower",
-      "name_ko": "Welltower",
+      "name_ko": "웰타워",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -6309,7 +6309,7 @@
     {
       "ticker": "WFC",
       "name": "Wells Fargo",
-      "name_ko": "Wells Fargo",
+      "name_ko": "웰스파고",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6322,7 +6322,7 @@
     {
       "ticker": "WM",
       "name": "Waste Management",
-      "name_ko": "Waste Management",
+      "name_ko": "웨이스트매니지먼트",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6335,7 +6335,7 @@
     {
       "ticker": "WMB",
       "name": "Williams Companies",
-      "name_ko": "Williams Companies",
+      "name_ko": "윌리엄스컴퍼니즈",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -6348,7 +6348,7 @@
     {
       "ticker": "WMT",
       "name": "Walmart",
-      "name_ko": "Walmart",
+      "name_ko": "월마트",
       "asset_type": "개별주",
       "type": "필수소비재",
       "sector": "Consumer Staples",
@@ -6361,7 +6361,7 @@
     {
       "ticker": "WRB",
       "name": "W. R. Berkley Corporation",
-      "name_ko": "W. R. Berkley Corporation",
+      "name_ko": "W.R.버클리",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6374,7 +6374,7 @@
     {
       "ticker": "WSM",
       "name": "Williams-Sonoma, Inc.",
-      "name_ko": "Williams-Sonoma, Inc.",
+      "name_ko": "윌리엄스소노마",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -6387,7 +6387,7 @@
     {
       "ticker": "WST",
       "name": "West Pharmaceutical Services",
-      "name_ko": "West Pharmaceutical Services",
+      "name_ko": "웨스트파마",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6400,7 +6400,7 @@
     {
       "ticker": "WTW",
       "name": "Willis Towers Watson",
-      "name_ko": "Willis Towers Watson",
+      "name_ko": "윌리스타워스왓슨",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6413,7 +6413,7 @@
     {
       "ticker": "WY",
       "name": "Weyerhaeuser",
-      "name_ko": "Weyerhaeuser",
+      "name_ko": "웨어하우저",
       "asset_type": "개별주",
       "type": "부동산",
       "sector": "Real Estate",
@@ -6426,7 +6426,7 @@
     {
       "ticker": "WYNN",
       "name": "Wynn Resorts",
-      "name_ko": "Wynn Resorts",
+      "name_ko": "윈리조트",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -6439,7 +6439,7 @@
     {
       "ticker": "XEL",
       "name": "Xcel Energy",
-      "name_ko": "Xcel Energy",
+      "name_ko": "엑셀에너지",
       "asset_type": "개별주",
       "type": "유틸리티",
       "sector": "Utilities",
@@ -6452,7 +6452,7 @@
     {
       "ticker": "XOM",
       "name": "ExxonMobil",
-      "name_ko": "ExxonMobil",
+      "name_ko": "엑슨모빌",
       "asset_type": "개별주",
       "type": "에너지",
       "sector": "Energy",
@@ -6465,7 +6465,7 @@
     {
       "ticker": "XYL",
       "name": "Xylem Inc.",
-      "name_ko": "Xylem Inc.",
+      "name_ko": "자일럼",
       "asset_type": "개별주",
       "type": "산업재",
       "sector": "Industrials",
@@ -6478,7 +6478,7 @@
     {
       "ticker": "XYZ",
       "name": "Block, Inc.",
-      "name_ko": "Block, Inc.",
+      "name_ko": "블록",
       "asset_type": "개별주",
       "type": "금융",
       "sector": "Financials",
@@ -6491,7 +6491,7 @@
     {
       "ticker": "YUM",
       "name": "Yum! Brands",
-      "name_ko": "Yum! Brands",
+      "name_ko": "얌브랜즈",
       "asset_type": "개별주",
       "type": "임의소비재",
       "sector": "Consumer Discretionary",
@@ -6504,7 +6504,7 @@
     {
       "ticker": "ZBH",
       "name": "Zimmer Biomet",
-      "name_ko": "Zimmer Biomet",
+      "name_ko": "짐머바이오메트",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",
@@ -6517,7 +6517,7 @@
     {
       "ticker": "ZBRA",
       "name": "Zebra Technologies",
-      "name_ko": "Zebra Technologies",
+      "name_ko": "제브라",
       "asset_type": "개별주",
       "type": "기술",
       "sector": "Information Technology",
@@ -6530,7 +6530,7 @@
     {
       "ticker": "ZTS",
       "name": "Zoetis",
-      "name_ko": "Zoetis",
+      "name_ko": "조에티스",
       "asset_type": "개별주",
       "type": "헬스케어",
       "sector": "Health Care",

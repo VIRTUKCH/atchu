@@ -220,12 +220,14 @@ a.report-overview-card {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.report-overview-card-ticker {
-  font-family: "Sora", sans-serif;
-  font-size: 15px;
+.report-overview-card-name-ko {
+  font-size: clamp(11px, calc(9.4px + 0.4vw), 13px);
   color: var(--tile-text, var(--muted));
-  opacity: 0.7;
+  opacity: 0.8;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 .report-overview-card-value {
   margin-top: 4px;
@@ -373,8 +375,8 @@ a.report-overview-card {
     font-size: 15px;
   }
 
-  .report-overview-card-ticker {
-    font-size: 13px;
+  .report-overview-card-name-ko {
+    font-size: 11px;
   }
 
   .report-overview-card-value {
