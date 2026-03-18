@@ -10,8 +10,6 @@ const discordInviteUrl =
   "";
 
 const DEV_TABS = [
-  { key: "stocks_overview", label: "개별주 개요", path: "/_stocks_overview" },
-  { key: "stocks", label: "개별주 조회", path: "/_stocks" },
   { key: "dev", label: "관리자", path: "/_dev" }
 ];
 
