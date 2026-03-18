@@ -74,12 +74,16 @@ async function main() {
       const sectorKo = SECTOR_KO[sector] || sector;
       const name = (comp.Security || "").trim();
       const industry = (comp["GICS Sub-Industry"] || "").trim();
+      // 반도체·바이오텍은 섹터에서 분리
+      let typeKo = sectorKo;
+      if (/^Semiconductor/i.test(industry)) typeKo = "반도체";
+      if (/^Biotechnology$/i.test(industry)) typeKo = "바이오텍";
       return {
         ticker,
         name,
         name_ko: name,
         asset_type: "개별주",
-        type: sectorKo,
+        type: typeKo,
         sector,
         industry,
         heatmap_label: ticker
