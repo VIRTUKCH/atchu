@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { navTabs } from "../../config/navigation";
 import { getActiveTabFromPathname, navigateByTab } from "../../utils/navigation";
@@ -9,12 +9,33 @@ const discordInviteUrl =
   import.meta.env.DISCORD_ATCHU_NEW_DAILY_SUMMARY_AND_NEW_TREND_NOTIFICATION_SERVER_URL ||
   "";
 
+const DEV_TABS = [
+  { key: "stocks_overview", label: "개별주 개요", path: "/_stocks_overview" },
+  { key: "stocks", label: "개별주 조회", path: "/_stocks" },
+  { key: "dev", label: "관리자", path: "/_dev" }
+];
+
 export default function AppTopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [devMode, setDevMode] = useState(() => sessionStorage.getItem("atchu_dev") === "1");
   const { theme, toggle: toggleTheme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const activeTab = getActiveTabFromPathname(location.pathname);
+  const toggleTimestamps = useRef([]);
+
+  const handleThemeToggle = useCallback(() => {
+    toggleTheme();
+    const now = Date.now();
+    const recent = toggleTimestamps.current.filter((t) => now - t < 3000);
+    recent.push(now);
+    toggleTimestamps.current = recent;
+    if (recent.length >= 5) {
+      toggleTimestamps.current = [];
+      setDevMode(true);
+      sessionStorage.setItem("atchu_dev", "1");
+    }
+  }, [toggleTheme]);
 
   const handleTabChange = (tab) => {
     navigateByTab(tab, navigate);
@@ -52,14 +73,24 @@ export default function AppTopNav() {
               {tab.label}
             </Link>
           ))}
+          {devMode && DEV_TABS.map((tab) => (
+            <Link
+              key={tab.key}
+              to={tab.path}
+              className={`topnav-tab ${location.pathname === tab.path ? "active" : ""}`}
+              style={{ opacity: 0.6 }}
+            >
+              {tab.label}
+            </Link>
+          ))}
         </nav>
         <div
           className={`topnav-theme-toggle ${theme === "dark" ? "topnav-theme-toggle--dark" : ""}`}
           role="button"
           tabIndex={0}
           aria-label={`테마 전환 (현재: ${theme === "dark" ? "다크" : "라이트"})`}
-          onClick={toggleTheme}
-          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleTheme()}
+          onClick={handleThemeToggle}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleThemeToggle()}
         >
           <span className="topnav-theme-toggle-slider" />
           <button
@@ -107,6 +138,17 @@ export default function AppTopNav() {
               key={tab.key}
               to={tab.path}
               className={`topnav-mobile-item ${activeTab === tab.key ? "active" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {tab.label}
+            </Link>
+          ))}
+          {devMode && DEV_TABS.map((tab) => (
+            <Link
+              key={tab.key}
+              to={tab.path}
+              className={`topnav-mobile-item ${location.pathname === tab.path ? "active" : ""}`}
+              style={{ opacity: 0.6 }}
               onClick={() => setMobileMenuOpen(false)}
             >
               {tab.label}
