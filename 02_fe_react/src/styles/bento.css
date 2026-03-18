@@ -849,50 +849,113 @@ a.trend-signal-item {
   color: #59607c;
   font-weight: 600;
 }
-/* 서브섹터 미니 바 */
-.sub-sector-bars {
-  margin-top: 8px;
+/* 섹터 와이드 레이아웃 (개별주용) */
+.sector-wide-list {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  border-top: 1px solid rgba(35, 49, 92, 0.1);
-  padding-top: 6px;
+  gap: 10px;
 }
-.sub-sector-row {
+.sector-wide-card {
+  width: 100%;
+  border: 1px solid rgba(35, 49, 92, 0.12);
+  border-radius: 11px;
+  padding: 12px 14px;
+  background: linear-gradient(170deg, #ffffff 0%, #f8fbff 100%);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.sector-wide-card:hover {
+  border-color: rgba(26, 77, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.sector-wide-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
-.sub-sector-label {
-  font-size: clamp(10px, calc(8.4px + 0.42vw), 12px);
+.sector-wide-name {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 700;
+  color: var(--ink, #23315c);
+  white-space: nowrap;
+  min-width: 72px;
+}
+.sector-wide-bar {
+  flex: 1;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(29, 91, 255, 0.12);
+  overflow: hidden;
+  min-width: 60px;
+}
+.sector-wide-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ef5d4f 0%, #d6473b 100%);
+}
+.sector-wide-ratio {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(14px, calc(11.8px + 0.6vw), 17px);
+  font-weight: 700;
+  color: #59607c;
+  white-space: nowrap;
+  min-width: 36px;
+  text-align: right;
+}
+.sector-wide-count {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(12px, calc(10px + 0.5vw), 14px);
   color: #8891ab;
+  white-space: nowrap;
+  min-width: 40px;
+  text-align: right;
+}
+/* 서브섹터 5등분 그리드 */
+.sub-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(35, 49, 92, 0.06);
+}
+.sub-sector-cell {
   min-width: 0;
-  flex-shrink: 0;
-  max-width: 72px;
+}
+.sub-sector-cell-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.sub-sector-cell-name {
+  font-size: clamp(11px, calc(9.4px + 0.42vw), 13px);
+  font-weight: 600;
+  color: #59607c;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-align: left;
+  min-width: 0;
 }
-.sub-sector-bar {
-  flex: 1;
+.sub-sector-cell-count {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(10px, calc(8.6px + 0.37vw), 12px);
+  color: #8891ab;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.sub-sector-cell-bar {
   height: 4px;
   border-radius: 999px;
   background: rgba(29, 91, 255, 0.1);
   overflow: hidden;
 }
-.sub-sector-bar-fill {
+.sub-sector-cell-bar-fill {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #ef5d4f 0%, #d6473b 100%);
-}
-.sub-sector-count {
-  font-size: clamp(9px, calc(7.6px + 0.37vw), 11px);
-  font-family: "Sora", sans-serif;
-  color: #8891ab;
-  white-space: nowrap;
-  min-width: 28px;
-  text-align: right;
 }
 .main-market-ma-toggle {
   display: flex;
@@ -1101,17 +1164,37 @@ a.trend-signal-item {
 [data-theme="dark"] .main-market-ratio {
   color: var(--muted);
 }
-[data-theme="dark"] .sub-sector-bars {
-  border-top-color: rgba(58, 58, 80, 0.4);
+[data-theme="dark"] .sector-wide-card {
+  border-color: rgba(58, 58, 80, 0.5);
+  background: linear-gradient(170deg, #1a1a2e 0%, #1e2040 100%);
 }
-[data-theme="dark"] .sub-sector-label {
-  color: rgba(165, 180, 252, 0.6);
+[data-theme="dark"] .sector-wide-card:hover {
+  border-color: rgba(88, 101, 242, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-[data-theme="dark"] .sub-sector-bar {
-  background: rgba(88, 101, 242, 0.12);
+[data-theme="dark"] .sector-wide-name {
+  color: var(--ink);
 }
-[data-theme="dark"] .sub-sector-count {
+[data-theme="dark"] .sector-wide-ratio {
+  color: var(--muted);
+}
+[data-theme="dark"] .sector-wide-count {
   color: rgba(165, 180, 252, 0.5);
+}
+[data-theme="dark"] .sector-wide-bar {
+  background: rgba(88, 101, 242, 0.15);
+}
+[data-theme="dark"] .sub-sector-grid {
+  border-top-color: rgba(58, 58, 80, 0.3);
+}
+[data-theme="dark"] .sub-sector-cell-name {
+  color: rgba(165, 180, 252, 0.7);
+}
+[data-theme="dark"] .sub-sector-cell-count {
+  color: rgba(165, 180, 252, 0.45);
+}
+[data-theme="dark"] .sub-sector-cell-bar {
+  background: rgba(88, 101, 242, 0.12);
 }
 [data-theme="dark"] .main-market-ma-btn {
   border-color: rgba(58, 58, 80, 0.5);
@@ -1381,6 +1464,22 @@ a.trend-signal-item {
   .main-market-bar {
     margin-top: 5px;
     height: 5px;
+  }
+
+  /* 와이드 섹터 모바일 */
+  .sector-wide-card {
+    padding: 10px 10px;
+  }
+  .sector-wide-header {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .sector-wide-name {
+    min-width: 56px;
+  }
+  .sub-sector-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
   }
 
   .main-market-ratio {
