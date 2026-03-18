@@ -10,7 +10,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "A",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학 분석·진단 장비 (애질런트)"
     },
     {
       "ticker": "AAPL",
@@ -21,7 +22,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "AAPL",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "아이폰·맥·에어팟 등 소비자 전자제품 및 서비스"
     },
     {
       "ticker": "ABBV",
@@ -32,7 +34,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "ABBV",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "면역학·종양학 바이오 의약품 (휴미라)"
     },
     {
       "ticker": "ABNB",
@@ -43,7 +46,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "ABNB",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "글로벌 숙박·체험 공유 플랫폼 (에어비앤비)"
     },
     {
       "ticker": "ABT",
@@ -54,7 +58,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "ABT",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "진단 장비·영양제·의료기기 (애보트)"
     },
     {
       "ticker": "ACGL",
@@ -65,7 +70,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "ACGL",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "특수 보험·재보험 (아치캐피탈)"
     },
     {
       "ticker": "ACN",
@@ -76,7 +82,8 @@
       "sector": "Information Technology",
       "industry": "IT Consulting & Other Services",
       "heatmap_label": "ACN",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "글로벌 IT 컨설팅·아웃소싱 (액센츄어)"
     },
     {
       "ticker": "ADBE",
@@ -87,7 +94,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "ADBE",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "포토샵·PDF·디지털 마케팅 소프트웨어"
     },
     {
       "ticker": "ADI",
@@ -98,7 +106,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "ADI",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "아날로그·신호처리 반도체 (아날로그디바이스)"
     },
     {
       "ticker": "ADM",
@@ -109,7 +118,8 @@
       "sector": "Consumer Staples",
       "industry": "Agricultural Products & Services",
       "heatmap_label": "ADM",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "곡물·유지종자 가공·식품원료 (ADM)"
     },
     {
       "ticker": "ADP",
@@ -120,7 +130,8 @@
       "sector": "Industrials",
       "industry": "Human Resource & Employment Services",
       "heatmap_label": "ADP",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "급여·인사관리 아웃소싱 (ADP)"
     },
     {
       "ticker": "ADSK",
@@ -131,7 +142,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "ADSK",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "CAD·3D 설계 소프트웨어 (오토데스크)"
     },
     {
       "ticker": "AEE",
@@ -142,7 +154,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "AEE",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "AEP",
@@ -153,7 +166,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "AEP",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "미국 중서부 전력 유틸리티 (AEP)"
     },
     {
       "ticker": "AES",
@@ -164,7 +178,8 @@
       "sector": "Utilities",
       "industry": "Independent Power Producers & Energy Traders",
       "heatmap_label": "AES",
-      "subType": "독립발전/기타"
+      "subType": "독립발전/기타",
+      "short_description": "독립 발전·에너지 거래"
     },
     {
       "ticker": "AFL",
@@ -175,7 +190,8 @@
       "sector": "Financials",
       "industry": "Life & Health Insurance",
       "heatmap_label": "AFL",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "암보험·생명보험 (애플랙)"
     },
     {
       "ticker": "AIG",
@@ -186,7 +202,8 @@
       "sector": "Financials",
       "industry": "Multi-line Insurance",
       "heatmap_label": "AIG",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "글로벌 보험 (상업·개인 보험)"
     },
     {
       "ticker": "AIZ",
@@ -197,7 +214,8 @@
       "sector": "Financials",
       "industry": "Multi-line Insurance",
       "heatmap_label": "AIZ",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "전문·특수 보험 (어슈런트)"
     },
     {
       "ticker": "AJG",
@@ -208,7 +226,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "AJG",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험 중개·리스크 관리 (아서 J 갤러거)"
     },
     {
       "ticker": "AKAM",
@@ -219,7 +238,8 @@
       "sector": "Information Technology",
       "industry": "Internet Services & Infrastructure",
       "heatmap_label": "AKAM",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "CDN·클라우드 보안 (아카마이)"
     },
     {
       "ticker": "ALB",
@@ -230,7 +250,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "ALB",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "특수 화학"
     },
     {
       "ticker": "ALGN",
@@ -241,7 +262,8 @@
       "sector": "Health Care",
       "industry": "Health Care Supplies",
       "heatmap_label": "ALGN",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "투명 치아교정 (인비절라인·얼라인테크놀로지)"
     },
     {
       "ticker": "ALL",
@@ -252,7 +274,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "ALL",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "자동차·주택 보험 (올스테이트)"
     },
     {
       "ticker": "ALLE",
@@ -263,7 +286,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "ALLE",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재·부품"
     },
     {
       "ticker": "AMAT",
@@ -274,7 +298,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductor Materials & Equipment",
       "heatmap_label": "AMAT",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체 제조 장비 (어플라이드 머티리얼즈)"
     },
     {
       "ticker": "AMCR",
@@ -285,7 +310,8 @@
       "sector": "Materials",
       "industry": "Paper & Plastic Packaging Products & Materials",
       "heatmap_label": "AMCR",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "종이·플라스틱 포장"
     },
     {
       "ticker": "AMD",
@@ -296,7 +322,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "AMD",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "CPU·GPU 설계 (데이터센터·PC·게이밍)"
     },
     {
       "ticker": "AME",
@@ -307,7 +334,8 @@
       "sector": "Industrials",
       "industry": "Electrical Components & Equipment",
       "heatmap_label": "AME",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "전력·전기 장비"
     },
     {
       "ticker": "AMGN",
@@ -318,7 +346,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "AMGN",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "바이오 의약품 (엔브렐·레파타·뷰포이)"
     },
     {
       "ticker": "AMP",
@@ -329,7 +358,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "AMP",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "재무 설계·자산운용 (아메리프라이즈)"
     },
     {
       "ticker": "AMT",
@@ -340,7 +370,8 @@
       "sector": "Real Estate",
       "industry": "Telecom Tower REITs",
       "heatmap_label": "AMT",
-      "subType": "인프라"
+      "subType": "인프라",
+      "short_description": "통신 타워 리츠 (아메리칸타워)"
     },
     {
       "ticker": "AMZN",
@@ -351,7 +382,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Broadline Retail",
       "heatmap_label": "AMZN",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "이커머스·AWS 클라우드·프라임 비디오"
     },
     {
       "ticker": "ANET",
@@ -362,7 +394,8 @@
       "sector": "Information Technology",
       "industry": "Communications Equipment",
       "heatmap_label": "ANET",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "클라우드 데이터센터 네트워크 스위치"
     },
     {
       "ticker": "AON",
@@ -373,7 +406,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "AON",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "글로벌 보험 중개·리스크 컨설팅 (에이온)"
     },
     {
       "ticker": "AOS",
@@ -384,7 +418,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "AOS",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재·부품"
     },
     {
       "ticker": "APA",
@@ -395,7 +430,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "APA",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "APD",
@@ -406,7 +442,8 @@
       "sector": "Materials",
       "industry": "Industrial Gases",
       "heatmap_label": "APD",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "산업용 가스 (에어프로덕츠)"
     },
     {
       "ticker": "APH",
@@ -417,7 +454,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Components",
       "heatmap_label": "APH",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "전자·통신·산업용 커넥터 (앰페놀)"
     },
     {
       "ticker": "APO",
@@ -428,7 +466,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "APO",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "대체투자·자산운용 (아폴로글로벌)"
     },
     {
       "ticker": "APP",
@@ -439,7 +478,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "APP",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "모바일 앱 광고·수익화 플랫폼 (앱러빈)"
     },
     {
       "ticker": "APTV",
@@ -450,7 +490,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automotive Parts & Equipment",
       "heatmap_label": "APTV",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "자동차 부품"
     },
     {
       "ticker": "ARE",
@@ -461,7 +502,8 @@
       "sector": "Real Estate",
       "industry": "Office REITs",
       "heatmap_label": "ARE",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "오피스 빌딩 리츠"
     },
     {
       "ticker": "ARES",
@@ -472,7 +514,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "ARES",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "대체투자·크레딧·사모 (아레스매니지먼트)"
     },
     {
       "ticker": "ATO",
@@ -483,7 +526,8 @@
       "sector": "Utilities",
       "industry": "Gas Utilities",
       "heatmap_label": "ATO",
-      "subType": "독립발전/기타"
+      "subType": "독립발전/기타",
+      "short_description": "가스 유틸리티"
     },
     {
       "ticker": "AVB",
@@ -494,7 +538,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "AVB",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "AVGO",
@@ -505,7 +550,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "AVGO",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체·인프라 소프트웨어 (VMware 인수)"
     },
     {
       "ticker": "AVY",
@@ -516,7 +562,8 @@
       "sector": "Materials",
       "industry": "Paper & Plastic Packaging Products & Materials",
       "heatmap_label": "AVY",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "종이·플라스틱 포장"
     },
     {
       "ticker": "AWK",
@@ -527,7 +574,8 @@
       "sector": "Utilities",
       "industry": "Water Utilities",
       "heatmap_label": "AWK",
-      "subType": "독립발전/기타"
+      "subType": "독립발전/기타",
+      "short_description": "미국 최대 상수도 유틸리티 (아메리칸워터)"
     },
     {
       "ticker": "AXON",
@@ -538,7 +586,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "AXON",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "테이저·바디캠·경찰 기술 플랫폼"
     },
     {
       "ticker": "AXP",
@@ -549,7 +598,8 @@
       "sector": "Financials",
       "industry": "Consumer Finance",
       "heatmap_label": "AXP",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "아메리칸 익스프레스 신용카드·금융서비스"
     },
     {
       "ticker": "AZO",
@@ -560,7 +610,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automotive Retail",
       "heatmap_label": "AZO",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "자동차 부품 유통"
     },
     {
       "ticker": "BA",
@@ -571,7 +622,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "BA",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "민간 항공기·우주·방산 (보잉)"
     },
     {
       "ticker": "BAC",
@@ -582,7 +634,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "BAC",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 2위 은행 (뱅크오브아메리카)"
     },
     {
       "ticker": "BALL",
@@ -593,7 +646,8 @@
       "sector": "Materials",
       "industry": "Metal, Glass & Plastic Containers",
       "heatmap_label": "BALL",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "금속·유리 용기"
     },
     {
       "ticker": "BAX",
@@ -604,7 +658,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "BAX",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "BBY",
@@ -615,7 +670,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Computer & Electronics Retail",
       "heatmap_label": "BBY",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "전자제품 소매"
     },
     {
       "ticker": "BDX",
@@ -626,7 +682,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "BDX",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "주사기·진단·약물주입 의료기기 (벡톤디킨슨)"
     },
     {
       "ticker": "BEN",
@@ -637,7 +694,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "BEN",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "뮤추얼펀드·ETF 운용 (프랭클린템플턴)"
     },
     {
       "ticker": "BF-B",
@@ -648,7 +706,8 @@
       "sector": "Consumer Staples",
       "industry": "Distillers & Vintners",
       "heatmap_label": "BF-B",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "증류주·와인"
     },
     {
       "ticker": "BG",
@@ -659,7 +718,8 @@
       "sector": "Consumer Staples",
       "industry": "Agricultural Products & Services",
       "heatmap_label": "BG",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "농산물 가공·유통"
     },
     {
       "ticker": "BIIB",
@@ -670,7 +730,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "BIIB",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "신경학·다발성경화증 치료제 (바이오젠)"
     },
     {
       "ticker": "BK",
@@ -681,7 +742,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "BK",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "수탁·청산·자산관리 (뱅크오브뉴욕)"
     },
     {
       "ticker": "BKNG",
@@ -692,7 +754,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "BKNG",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "호텔·항공 온라인 예약 (부킹닷컴·카약)"
     },
     {
       "ticker": "BKR",
@@ -703,7 +766,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
       "heatmap_label": "BKR",
-      "subType": "서비스/장비"
+      "subType": "서비스/장비",
+      "short_description": "석유·가스 시추 장비·서비스 (베이커휴즈)"
     },
     {
       "ticker": "BLDR",
@@ -714,7 +778,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "BLDR",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재 유통 (빌더스퍼스트소스)"
     },
     {
       "ticker": "BLK",
@@ -725,7 +790,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "BLK",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "세계 최대 자산운용사 (블랙록·iShares ETF)"
     },
     {
       "ticker": "BMY",
@@ -736,7 +802,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "BMY",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "종양학·면역학·심혈관 제약 (브리스톨마이어스)"
     },
     {
       "ticker": "BR",
@@ -747,7 +814,8 @@
       "sector": "Industrials",
       "industry": "Data Processing & Outsourced Services",
       "heatmap_label": "BR",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "데이터 처리·아웃소싱"
     },
     {
       "ticker": "BRK-B",
@@ -758,7 +826,8 @@
       "sector": "Financials",
       "industry": "Multi-Sector Holdings",
       "heatmap_label": "BRK-B",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "워런 버핏의 다각화 지주회사 (Class B)"
     },
     {
       "ticker": "BRO",
@@ -769,7 +838,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "BRO",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험 중개·리스크 관리 (브라운앤브라운)"
     },
     {
       "ticker": "BSX",
@@ -780,7 +850,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "BSX",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "심혈관·내시경 의료기기 (보스턴사이언티픽)"
     },
     {
       "ticker": "BX",
@@ -791,7 +862,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "BX",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "대체투자·사모펀드 (블랙스톤)"
     },
     {
       "ticker": "BXP",
@@ -802,7 +874,8 @@
       "sector": "Real Estate",
       "industry": "Office REITs",
       "heatmap_label": "BXP",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "오피스 빌딩 리츠"
     },
     {
       "ticker": "C",
@@ -813,7 +886,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "C",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "글로벌 투자은행·리테일 (시티그룹)"
     },
     {
       "ticker": "CAG",
@@ -824,7 +898,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "CAG",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "CAH",
@@ -835,7 +910,8 @@
       "sector": "Health Care",
       "industry": "Health Care Distributors",
       "heatmap_label": "CAH",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "의약품·의료용품 도매 (카디널헬스)"
     },
     {
       "ticker": "CARR",
@@ -846,7 +922,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "CARR",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "냉난방 공조·냉장 운송 (캐리어)"
     },
     {
       "ticker": "CAT",
@@ -857,7 +934,8 @@
       "sector": "Industrials",
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "heatmap_label": "CAT",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "건설·광업 중장비 (캐터필러)"
     },
     {
       "ticker": "CB",
@@ -868,7 +946,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "CB",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "글로벌 상업·개인 보험 (처브)"
     },
     {
       "ticker": "CBOE",
@@ -879,7 +958,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "CBOE",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "옵션·VIX·글로벌 거래소 (CBOE)"
     },
     {
       "ticker": "CBRE",
@@ -890,7 +970,8 @@
       "sector": "Real Estate",
       "industry": "Real Estate Services",
       "heatmap_label": "CBRE",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "부동산 서비스"
     },
     {
       "ticker": "CCI",
@@ -901,7 +982,8 @@
       "sector": "Real Estate",
       "industry": "Telecom Tower REITs",
       "heatmap_label": "CCI",
-      "subType": "인프라"
+      "subType": "인프라",
+      "short_description": "통신 타워·소규모 셀 리츠 (크라운캐슬)"
     },
     {
       "ticker": "CCL",
@@ -912,7 +994,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "CCL",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "호텔·리조트·크루즈"
     },
     {
       "ticker": "CDNS",
@@ -923,7 +1006,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "CDNS",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "반도체 설계 자동화(EDA)·IP 솔루션"
     },
     {
       "ticker": "CDW",
@@ -934,7 +1018,8 @@
       "sector": "Information Technology",
       "industry": "Technology Distributors",
       "heatmap_label": "CDW",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "기업용 IT 제품·솔루션 유통 (CDW)"
     },
     {
       "ticker": "CEG",
@@ -945,7 +1030,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "CEG",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "원자력·청정에너지 발전 (콘스텔레이션에너지)"
     },
     {
       "ticker": "CF",
@@ -956,7 +1042,8 @@
       "sector": "Materials",
       "industry": "Fertilizers & Agricultural Chemicals",
       "heatmap_label": "CF",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "비료·농약"
     },
     {
       "ticker": "CFG",
@@ -967,7 +1054,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "CFG",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 동북부 은행 (시티즌스파이낸셜)"
     },
     {
       "ticker": "CHD",
@@ -978,7 +1066,8 @@
       "sector": "Consumer Staples",
       "industry": "Household Products",
       "heatmap_label": "CHD",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "가정용 생활용품"
     },
     {
       "ticker": "CHRW",
@@ -989,7 +1078,8 @@
       "sector": "Industrials",
       "industry": "Air Freight & Logistics",
       "heatmap_label": "CHRW",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "항공 화물·물류"
     },
     {
       "ticker": "CHTR",
@@ -1000,7 +1090,8 @@
       "sector": "Communication Services",
       "industry": "Cable & Satellite",
       "heatmap_label": "CHTR",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "케이블TV·인터넷·모바일 (차터커뮤니케이션)"
     },
     {
       "ticker": "CI",
@@ -1011,7 +1102,8 @@
       "sector": "Health Care",
       "industry": "Health Care Services",
       "heatmap_label": "CI",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "건강보험·약국 혜택 관리 (시그나)"
     },
     {
       "ticker": "CIEN",
@@ -1022,7 +1114,8 @@
       "sector": "Information Technology",
       "industry": "Communications Equipment",
       "heatmap_label": "CIEN",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "광통신 네트워크 장비 (시에나)"
     },
     {
       "ticker": "CINF",
@@ -1033,7 +1126,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "CINF",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "상업·개인 보험 (신시내티파이낸셜)"
     },
     {
       "ticker": "CL",
@@ -1044,7 +1138,8 @@
       "sector": "Consumer Staples",
       "industry": "Household Products",
       "heatmap_label": "CL",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "치약·세제·생활용품 (콜게이트팜올리브)"
     },
     {
       "ticker": "CLX",
@@ -1055,7 +1150,8 @@
       "sector": "Consumer Staples",
       "industry": "Household Products",
       "heatmap_label": "CLX",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "가정용 생활용품"
     },
     {
       "ticker": "CMCSA",
@@ -1066,7 +1162,8 @@
       "sector": "Communication Services",
       "industry": "Cable & Satellite",
       "heatmap_label": "CMCSA",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "NBC유니버설·케이블TV·광대역 (컴캐스트)"
     },
     {
       "ticker": "CME",
@@ -1077,7 +1174,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "CME",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "선물·옵션 파생상품 거래소 (CME그룹)"
     },
     {
       "ticker": "CMG",
@@ -1088,7 +1186,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "CMG",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "멕시칸 패스트캐주얼 외식 (치폴레)"
     },
     {
       "ticker": "CMI",
@@ -1099,7 +1198,8 @@
       "sector": "Industrials",
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "heatmap_label": "CMI",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "건설·운송 중장비"
     },
     {
       "ticker": "CMS",
@@ -1110,7 +1210,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "CMS",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "CNC",
@@ -1121,7 +1222,8 @@
       "sector": "Health Care",
       "industry": "Managed Health Care",
       "heatmap_label": "CNC",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "메디케이드·메디케어 건강보험 (센틴)"
     },
     {
       "ticker": "CNP",
@@ -1132,7 +1234,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "CNP",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "COF",
@@ -1143,7 +1246,8 @@
       "sector": "Financials",
       "industry": "Consumer Finance",
       "heatmap_label": "COF",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "신용카드·디지털 뱅킹 (캐피탈원)"
     },
     {
       "ticker": "COIN",
@@ -1154,7 +1258,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "COIN",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "암호화폐 거래소 (코인베이스)"
     },
     {
       "ticker": "COO",
@@ -1165,7 +1270,8 @@
       "sector": "Health Care",
       "industry": "Health Care Supplies",
       "heatmap_label": "COO",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "콘택트렌즈·안과 수술 (쿠퍼컴퍼니즈)"
     },
     {
       "ticker": "COP",
@@ -1176,7 +1282,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "COP",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "미국 최대 독립 석유·가스 탐사 기업"
     },
     {
       "ticker": "COR",
@@ -1187,7 +1294,8 @@
       "sector": "Health Care",
       "industry": "Health Care Distributors",
       "heatmap_label": "COR",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "의약품 도매·전문약국 (코어마크)"
     },
     {
       "ticker": "COST",
@@ -1198,7 +1306,8 @@
       "sector": "Consumer Staples",
       "industry": "Consumer Staples Merchandise Retail",
       "heatmap_label": "COST",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "회원제 대형 할인매장 (코스트코)"
     },
     {
       "ticker": "CPAY",
@@ -1209,7 +1318,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "CPAY",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "기업 결제·지출관리 (코퍼이)"
     },
     {
       "ticker": "CPB",
@@ -1220,7 +1330,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "CPB",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "CPRT",
@@ -1231,7 +1342,8 @@
       "sector": "Industrials",
       "industry": "Diversified Support Services",
       "heatmap_label": "CPRT",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "다각화 비즈니스 서비스"
     },
     {
       "ticker": "CPT",
@@ -1242,7 +1354,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "CPT",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "CRH",
@@ -1253,7 +1366,8 @@
       "sector": "Materials",
       "industry": "Construction Materials",
       "heatmap_label": "CRH",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "건설 자재·골재"
     },
     {
       "ticker": "CRL",
@@ -1264,7 +1378,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "CRL",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학 연구 장비·서비스"
     },
     {
       "ticker": "CRM",
@@ -1275,7 +1390,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "CRM",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "클라우드 CRM·영업자동화 (세일즈포스)"
     },
     {
       "ticker": "CRWD",
@@ -1286,7 +1402,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "CRWD",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "클라우드 기반 엔드포인트 보안 (크라우드스트라이크)"
     },
     {
       "ticker": "CSCO",
@@ -1297,7 +1414,8 @@
       "sector": "Information Technology",
       "industry": "Communications Equipment",
       "heatmap_label": "CSCO",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "네트워크 장비·보안·협업 솔루션 (시스코)"
     },
     {
       "ticker": "CSGP",
@@ -1308,7 +1426,8 @@
       "sector": "Real Estate",
       "industry": "Real Estate Services",
       "heatmap_label": "CSGP",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "부동산 서비스"
     },
     {
       "ticker": "CSX",
@@ -1319,7 +1438,8 @@
       "sector": "Industrials",
       "industry": "Rail Transportation",
       "heatmap_label": "CSX",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 동부 철도 화물 운송 (CSX)"
     },
     {
       "ticker": "CTAS",
@@ -1330,7 +1450,8 @@
       "sector": "Industrials",
       "industry": "Diversified Support Services",
       "heatmap_label": "CTAS",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "유니폼 렌탈·시설 서비스 (신타스)"
     },
     {
       "ticker": "CTRA",
@@ -1341,7 +1462,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "CTRA",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "CTSH",
@@ -1352,7 +1474,8 @@
       "sector": "Information Technology",
       "industry": "IT Consulting & Other Services",
       "heatmap_label": "CTSH",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "IT 컨설팅·디지털 전환 (코그니전트)"
     },
     {
       "ticker": "CTVA",
@@ -1363,7 +1486,8 @@
       "sector": "Materials",
       "industry": "Fertilizers & Agricultural Chemicals",
       "heatmap_label": "CTVA",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "농업 종자·작물보호 화학 (코르테바)"
     },
     {
       "ticker": "CVNA",
@@ -1374,7 +1498,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automotive Retail",
       "heatmap_label": "CVNA",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "자동차 부품 유통"
     },
     {
       "ticker": "CVS",
@@ -1385,7 +1510,8 @@
       "sector": "Health Care",
       "industry": "Health Care Services",
       "heatmap_label": "CVS",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "약국 체인·건강보험·PBM (CVS헬스)"
     },
     {
       "ticker": "CVX",
@@ -1396,7 +1522,8 @@
       "sector": "Energy",
       "industry": "Integrated Oil & Gas",
       "heatmap_label": "CVX",
-      "subType": "통합석유"
+      "subType": "통합석유",
+      "short_description": "석유·가스 통합 기업 (쉐브론)"
     },
     {
       "ticker": "D",
@@ -1407,7 +1534,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "D",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·천연가스 복합 유틸리티 (도미니언에너지)"
     },
     {
       "ticker": "DAL",
@@ -1418,7 +1546,8 @@
       "sector": "Industrials",
       "industry": "Passenger Airlines",
       "heatmap_label": "DAL",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 항공사 (델타항공)"
     },
     {
       "ticker": "DASH",
@@ -1429,7 +1558,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Specialized Consumer Services",
       "heatmap_label": "DASH",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "음식 배달 플랫폼 (도어대시)"
     },
     {
       "ticker": "DD",
@@ -1440,7 +1570,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "DD",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "전자·산업·수처리 특수 소재 (듀폰)"
     },
     {
       "ticker": "DDOG",
@@ -1451,7 +1582,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "DDOG",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "클라우드 모니터링·APM (데이터독)"
     },
     {
       "ticker": "DE",
@@ -1462,7 +1594,8 @@
       "sector": "Industrials",
       "industry": "Agricultural & Farm Machinery",
       "heatmap_label": "DE",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "농업·건설 장비 (존디어)"
     },
     {
       "ticker": "DECK",
@@ -1473,7 +1606,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Footwear",
       "heatmap_label": "DECK",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "신발·풋웨어"
     },
     {
       "ticker": "DELL",
@@ -1484,7 +1618,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "DELL",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "PC·서버·스토리지·IT 인프라 (델)"
     },
     {
       "ticker": "DG",
@@ -1495,7 +1630,8 @@
       "sector": "Consumer Staples",
       "industry": "Consumer Staples Merchandise Retail",
       "heatmap_label": "DG",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "소형 할인매장 (달러제너럴)"
     },
     {
       "ticker": "DGX",
@@ -1506,7 +1642,8 @@
       "sector": "Health Care",
       "industry": "Health Care Services",
       "heatmap_label": "DGX",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "임상 검사·진단 서비스 (퀘스트다이아그노스틱스)"
     },
     {
       "ticker": "DHI",
@@ -1517,7 +1654,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Homebuilding",
       "heatmap_label": "DHI",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "미국 최대 주택 건설 (DR호튼)"
     },
     {
       "ticker": "DHR",
@@ -1528,7 +1666,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "DHR",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학·진단·환경 장비 (다나허)"
     },
     {
       "ticker": "DIS",
@@ -1539,7 +1678,8 @@
       "sector": "Communication Services",
       "industry": "Movies & Entertainment",
       "heatmap_label": "DIS",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "디즈니 스튜디오·테마파크·디즈니+"
     },
     {
       "ticker": "DLR",
@@ -1550,7 +1690,8 @@
       "sector": "Real Estate",
       "industry": "Data Center REITs",
       "heatmap_label": "DLR",
-      "subType": "인프라"
+      "subType": "인프라",
+      "short_description": "데이터센터 리츠 (디지털리얼티)"
     },
     {
       "ticker": "DLTR",
@@ -1561,7 +1702,8 @@
       "sector": "Consumer Staples",
       "industry": "Consumer Staples Merchandise Retail",
       "heatmap_label": "DLTR",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "균일가 할인매장 (달러트리)"
     },
     {
       "ticker": "DOC",
@@ -1572,7 +1714,8 @@
       "sector": "Real Estate",
       "industry": "Health Care REITs",
       "heatmap_label": "DOC",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "헬스케어·시니어 리츠"
     },
     {
       "ticker": "DOV",
@@ -1583,7 +1726,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "DOV",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "DOW",
@@ -1594,7 +1738,8 @@
       "sector": "Materials",
       "industry": "Commodity Chemicals",
       "heatmap_label": "DOW",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "범용 화학·플라스틱·코팅 (다우)"
     },
     {
       "ticker": "DPZ",
@@ -1605,7 +1750,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "DPZ",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "외식·레스토랑 체인"
     },
     {
       "ticker": "DRI",
@@ -1616,7 +1762,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "DRI",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "외식·레스토랑 체인"
     },
     {
       "ticker": "DTE",
@@ -1627,7 +1774,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "DTE",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "DUK",
@@ -1638,7 +1786,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "DUK",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "미국 동남부 전력·가스 (듀크에너지)"
     },
     {
       "ticker": "DVA",
@@ -1649,7 +1798,8 @@
       "sector": "Health Care",
       "industry": "Health Care Services",
       "heatmap_label": "DVA",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "투석 센터·신장 치료 (다비타)"
     },
     {
       "ticker": "DVN",
@@ -1660,7 +1810,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "DVN",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "셰일 석유·가스 탐사·생산 (데본에너지)"
     },
     {
       "ticker": "DXCM",
@@ -1671,7 +1822,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "DXCM",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "연속 혈당 측정기 (덱스컴)"
     },
     {
       "ticker": "EA",
@@ -1682,7 +1834,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Home Entertainment",
       "heatmap_label": "EA",
-      "subType": "게임/광고"
+      "subType": "게임/광고",
+      "short_description": "게임 (FIFA/EA스포츠·에이펙스레전드)"
     },
     {
       "ticker": "EBAY",
@@ -1693,7 +1846,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Broadline Retail",
       "heatmap_label": "EBAY",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "종합 유통"
     },
     {
       "ticker": "ECL",
@@ -1704,7 +1858,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "ECL",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "수처리·위생·식품안전 화학 (에코랩)"
     },
     {
       "ticker": "ED",
@@ -1715,7 +1870,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "ED",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "EFX",
@@ -1726,7 +1882,8 @@
       "sector": "Industrials",
       "industry": "Research & Consulting Services",
       "heatmap_label": "EFX",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "리서치·컨설팅"
     },
     {
       "ticker": "EG",
@@ -1737,7 +1894,8 @@
       "sector": "Financials",
       "industry": "Reinsurance",
       "heatmap_label": "EG",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "재보험·보험 (에버레스트그룹)"
     },
     {
       "ticker": "EIX",
@@ -1748,7 +1906,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "EIX",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "EL",
@@ -1759,7 +1918,8 @@
       "sector": "Consumer Staples",
       "industry": "Personal Care Products",
       "heatmap_label": "EL",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "에스티로더·맥·라메르 뷰티 브랜드"
     },
     {
       "ticker": "ELV",
@@ -1770,7 +1930,8 @@
       "sector": "Health Care",
       "industry": "Managed Health Care",
       "heatmap_label": "ELV",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "건강보험 (엘레반스헬스·앤섬)"
     },
     {
       "ticker": "EME",
@@ -1781,7 +1942,8 @@
       "sector": "Industrials",
       "industry": "Construction & Engineering",
       "heatmap_label": "EME",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "전기·기계 시공 (EMCOR그룹)"
     },
     {
       "ticker": "EMR",
@@ -1792,7 +1954,8 @@
       "sector": "Industrials",
       "industry": "Electrical Components & Equipment",
       "heatmap_label": "EMR",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업자동화·기후기술 (에머슨일렉트릭)"
     },
     {
       "ticker": "EOG",
@@ -1803,7 +1966,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "EOG",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "셰일 석유·가스 탐사·생산 (EOG리소시즈)"
     },
     {
       "ticker": "EPAM",
@@ -1814,7 +1978,8 @@
       "sector": "Information Technology",
       "industry": "IT Consulting & Other Services",
       "heatmap_label": "EPAM",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "소프트웨어 엔지니어링·디지털 서비스"
     },
     {
       "ticker": "EQIX",
@@ -1825,7 +1990,8 @@
       "sector": "Real Estate",
       "industry": "Data Center REITs",
       "heatmap_label": "EQIX",
-      "subType": "인프라"
+      "subType": "인프라",
+      "short_description": "데이터센터 코로케이션 리츠 (에퀴닉스)"
     },
     {
       "ticker": "EQR",
@@ -1836,7 +2002,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "EQR",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "EQT",
@@ -1847,7 +2014,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "EQT",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "ERIE",
@@ -1858,7 +2026,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "ERIE",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "자동차·주택 보험 (이리인뎀니티)"
     },
     {
       "ticker": "ES",
@@ -1869,7 +2038,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "ES",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "ESS",
@@ -1880,7 +2050,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "ESS",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "ETN",
@@ -1891,7 +2062,8 @@
       "sector": "Industrials",
       "industry": "Electrical Components & Equipment",
       "heatmap_label": "ETN",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "전력관리·항공·차량 부품 (이튼)"
     },
     {
       "ticker": "ETR",
@@ -1902,7 +2074,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "ETR",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "EVRG",
@@ -1913,7 +2086,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "EVRG",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "EW",
@@ -1924,7 +2098,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "EW",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "심장 판막·혈역학 모니터링 (에드워즈라이프사이언스)"
     },
     {
       "ticker": "EXC",
@@ -1935,7 +2110,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "EXC",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "EXE",
@@ -1946,7 +2122,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "EXE",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "EXPD",
@@ -1957,7 +2134,8 @@
       "sector": "Industrials",
       "industry": "Air Freight & Logistics",
       "heatmap_label": "EXPD",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "항공 화물·물류"
     },
     {
       "ticker": "EXPE",
@@ -1968,7 +2146,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "EXPE",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "호텔·리조트·크루즈"
     },
     {
       "ticker": "EXR",
@@ -1979,7 +2158,8 @@
       "sector": "Real Estate",
       "industry": "Self-Storage REITs",
       "heatmap_label": "EXR",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "셀프 스토리지 리츠"
     },
     {
       "ticker": "F",
@@ -1990,7 +2170,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automobile Manufacturers",
       "heatmap_label": "F",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "자동차 제조 (포드·F-150·머스탱 마하E)"
     },
     {
       "ticker": "FANG",
@@ -2001,7 +2182,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "FANG",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "퍼미안 분지 셰일 오일 (다이아몬드백에너지)"
     },
     {
       "ticker": "FAST",
@@ -2012,7 +2194,8 @@
       "sector": "Industrials",
       "industry": "Trading Companies & Distributors",
       "heatmap_label": "FAST",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "산업용품 유통"
     },
     {
       "ticker": "FCX",
@@ -2023,7 +2206,8 @@
       "sector": "Materials",
       "industry": "Copper",
       "heatmap_label": "FCX",
-      "subType": "금속/광업"
+      "subType": "금속/광업",
+      "short_description": "구리·금 광산 (프리포트맥모란)"
     },
     {
       "ticker": "FDS",
@@ -2034,7 +2218,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "FDS",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "금융 데이터·분석 플랫폼 (팩트셋)"
     },
     {
       "ticker": "FDX",
@@ -2045,7 +2230,8 @@
       "sector": "Industrials",
       "industry": "Air Freight & Logistics",
       "heatmap_label": "FDX",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "글로벌 항공 택배·물류 (페덱스)"
     },
     {
       "ticker": "FE",
@@ -2056,7 +2242,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "FE",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "FFIV",
@@ -2067,7 +2254,8 @@
       "sector": "Information Technology",
       "industry": "Communications Equipment",
       "heatmap_label": "FFIV",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "애플리케이션 딜리버리·보안 (F5네트웍스)"
     },
     {
       "ticker": "FICO",
@@ -2078,7 +2266,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "FICO",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "신용점수·의사결정 분석 소프트웨어"
     },
     {
       "ticker": "FIS",
@@ -2089,7 +2278,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "FIS",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "은행·결제 핀테크 인프라 (FIS)"
     },
     {
       "ticker": "FISV",
@@ -2100,7 +2290,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "FISV",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "결제·금융 기술 (파이서브)"
     },
     {
       "ticker": "FITB",
@@ -2111,7 +2302,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "FITB",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 중서부 은행 (피프스서드뱅코프)"
     },
     {
       "ticker": "FIX",
@@ -2122,7 +2314,8 @@
       "sector": "Industrials",
       "industry": "Construction & Engineering",
       "heatmap_label": "FIX",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건설 시공·엔지니어링"
     },
     {
       "ticker": "FOX",
@@ -2133,7 +2326,8 @@
       "sector": "Communication Services",
       "industry": "Broadcasting",
       "heatmap_label": "FOX",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "폭스뉴스·폭스스포츠 미디어 (Class B)"
     },
     {
       "ticker": "FOXA",
@@ -2144,7 +2338,8 @@
       "sector": "Communication Services",
       "industry": "Broadcasting",
       "heatmap_label": "FOXA",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "폭스뉴스·폭스스포츠 미디어 (Class A)"
     },
     {
       "ticker": "FRT",
@@ -2155,7 +2350,8 @@
       "sector": "Real Estate",
       "industry": "Retail REITs",
       "heatmap_label": "FRT",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "쇼핑몰·소매 리츠"
     },
     {
       "ticker": "FSLR",
@@ -2166,7 +2362,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "FSLR",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "태양광 박막 패널 제조 (퍼스트솔라)"
     },
     {
       "ticker": "FTNT",
@@ -2177,7 +2374,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "FTNT",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "네트워크 보안·방화벽 (포티넷)"
     },
     {
       "ticker": "FTV",
@@ -2188,7 +2386,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "FTV",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "GD",
@@ -2199,7 +2398,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "GD",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "잠수함·전투차량·IT 방산 (제너럴다이내믹스)"
     },
     {
       "ticker": "GDDY",
@@ -2210,7 +2410,8 @@
       "sector": "Information Technology",
       "industry": "Internet Services & Infrastructure",
       "heatmap_label": "GDDY",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "도메인·웹호스팅·웹사이트 빌더 (고대디)"
     },
     {
       "ticker": "GE",
@@ -2221,7 +2422,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "GE",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공 엔진·발전 터빈 (GE 에어로스페이스)"
     },
     {
       "ticker": "GEHC",
@@ -2232,7 +2434,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "GEHC",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "GEN",
@@ -2243,7 +2446,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "GEN",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "노턴·어베스트 사이버보안 소프트웨어"
     },
     {
       "ticker": "GEV",
@@ -2254,7 +2458,8 @@
       "sector": "Industrials",
       "industry": "Heavy Electrical Equipment",
       "heatmap_label": "GEV",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "풍력 터빈·전력 인프라 (GE버노바)"
     },
     {
       "ticker": "GILD",
@@ -2265,7 +2470,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "GILD",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "HIV·C형간염·코로나 항바이러스 치료제"
     },
     {
       "ticker": "GIS",
@@ -2276,7 +2482,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "GIS",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "시리얼·요거트·냉동식품 (제너럴밀스)"
     },
     {
       "ticker": "GL",
@@ -2287,7 +2494,8 @@
       "sector": "Financials",
       "industry": "Life & Health Insurance",
       "heatmap_label": "GL",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "생명보험·보충 건강보험 (글로브라이프)"
     },
     {
       "ticker": "GLW",
@@ -2298,7 +2506,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Components",
       "heatmap_label": "GLW",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "특수 유리·광섬유 (코닝)"
     },
     {
       "ticker": "GM",
@@ -2309,7 +2518,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automobile Manufacturers",
       "heatmap_label": "GM",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "자동차 제조 (GM·쉐보레·캐딜락·GMC)"
     },
     {
       "ticker": "GNRC",
@@ -2320,7 +2530,8 @@
       "sector": "Industrials",
       "industry": "Electrical Components & Equipment",
       "heatmap_label": "GNRC",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "전력·전기 장비"
     },
     {
       "ticker": "GOOG",
@@ -2331,7 +2542,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Media & Services",
       "heatmap_label": "GOOG",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "구글 검색·유튜브·안드로이드·클라우드 (Class C)"
     },
     {
       "ticker": "GOOGL",
@@ -2342,7 +2554,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Media & Services",
       "heatmap_label": "GOOGL",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "구글 검색·유튜브·안드로이드·클라우드 (Class A)"
     },
     {
       "ticker": "GPC",
@@ -2353,7 +2566,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Distributors",
       "heatmap_label": "GPC",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "소비재 유통"
     },
     {
       "ticker": "GPN",
@@ -2364,7 +2578,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "GPN",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "결제 처리·기술 (글로벌페이먼츠)"
     },
     {
       "ticker": "GRMN",
@@ -2375,7 +2590,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Consumer Electronics",
       "heatmap_label": "GRMN",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "소비자 전자제품"
     },
     {
       "ticker": "GS",
@@ -2386,7 +2602,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "GS",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "투자은행·트레이딩·자산운용 (골드만삭스)"
     },
     {
       "ticker": "GWW",
@@ -2397,7 +2614,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "GWW",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "HAL",
@@ -2408,7 +2626,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
       "heatmap_label": "HAL",
-      "subType": "서비스/장비"
+      "subType": "서비스/장비",
+      "short_description": "석유·가스 시추 서비스 (할리버튼)"
     },
     {
       "ticker": "HAS",
@@ -2419,7 +2638,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Leisure Products",
       "heatmap_label": "HAS",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "레저·완구 제품"
     },
     {
       "ticker": "HBAN",
@@ -2430,7 +2650,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "HBAN",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 중서부 은행 (헌팅턴뱅크셰어즈)"
     },
     {
       "ticker": "HCA",
@@ -2441,7 +2662,8 @@
       "sector": "Health Care",
       "industry": "Health Care Facilities",
       "heatmap_label": "HCA",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "미국 최대 민간 병원 체인"
     },
     {
       "ticker": "HD",
@@ -2452,7 +2674,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Home Improvement Retail",
       "heatmap_label": "HD",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "DIY·주택 개보수 자재 유통 (홈디포)"
     },
     {
       "ticker": "HIG",
@@ -2463,7 +2686,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "HIG",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "상업 보험·근로자 보상 (하트포드)"
     },
     {
       "ticker": "HII",
@@ -2474,7 +2698,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "HII",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공모함·잠수함 건조 (헌팅턴잉걸스)"
     },
     {
       "ticker": "HLT",
@@ -2485,7 +2710,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "HLT",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "글로벌 호텔 체인 (힐튼)"
     },
     {
       "ticker": "HOLX",
@@ -2496,7 +2722,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "HOLX",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "HON",
@@ -2507,7 +2734,8 @@
       "sector": "Industrials",
       "industry": "Industrial Conglomerates",
       "heatmap_label": "HON",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "항공·빌딩기술·산업자동화 (하니웰)"
     },
     {
       "ticker": "HOOD",
@@ -2518,7 +2746,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "HOOD",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "수수료 무료 주식·암호화폐 거래 (로빈후드)"
     },
     {
       "ticker": "HPE",
@@ -2529,7 +2758,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "HPE",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "서버·스토리지·엣지 컴퓨팅 (HPE)"
     },
     {
       "ticker": "HPQ",
@@ -2540,7 +2770,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "HPQ",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "PC·프린터 (HP Inc.)"
     },
     {
       "ticker": "HRL",
@@ -2551,7 +2782,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "HRL",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "HSIC",
@@ -2562,7 +2794,8 @@
       "sector": "Health Care",
       "industry": "Health Care Distributors",
       "heatmap_label": "HSIC",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "치과·의료 용품 유통 (헨리샤인)"
     },
     {
       "ticker": "HST",
@@ -2573,7 +2806,8 @@
       "sector": "Real Estate",
       "industry": "Hotel & Resort REITs",
       "heatmap_label": "HST",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "호텔·리조트 리츠"
     },
     {
       "ticker": "HSY",
@@ -2584,7 +2818,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "HSY",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "HUBB",
@@ -2595,7 +2830,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "HUBB",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "HUM",
@@ -2606,7 +2842,8 @@
       "sector": "Health Care",
       "industry": "Managed Health Care",
       "heatmap_label": "HUM",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "메디케어 건강보험 (휴마나)"
     },
     {
       "ticker": "HWM",
@@ -2617,7 +2854,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "HWM",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공우주·방산"
     },
     {
       "ticker": "IBKR",
@@ -2628,7 +2866,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "IBKR",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "글로벌 온라인 트레이딩 (인터랙티브브로커스)"
     },
     {
       "ticker": "IBM",
@@ -2639,7 +2878,8 @@
       "sector": "Information Technology",
       "industry": "IT Consulting & Other Services",
       "heatmap_label": "IBM",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "엔터프라이즈 AI·클라우드·IT 서비스"
     },
     {
       "ticker": "ICE",
@@ -2650,7 +2890,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "ICE",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "NYSE 운영·금융 데이터·모기지 기술"
     },
     {
       "ticker": "IDXX",
@@ -2661,7 +2902,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "IDXX",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "IEX",
@@ -2672,7 +2914,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "IEX",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "IFF",
@@ -2683,7 +2926,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "IFF",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "특수 화학"
     },
     {
       "ticker": "INCY",
@@ -2694,7 +2938,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "INCY",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "종양학·염증 바이오 의약품 (인사이트)"
     },
     {
       "ticker": "INTC",
@@ -2705,7 +2950,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "INTC",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "PC·서버용 CPU 설계 및 반도체 제조"
     },
     {
       "ticker": "INTU",
@@ -2716,7 +2962,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "INTU",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "터보택스·퀵북스 (세금·회계 소프트웨어)"
     },
     {
       "ticker": "INVH",
@@ -2727,7 +2974,8 @@
       "sector": "Real Estate",
       "industry": "Single-Family Residential REITs",
       "heatmap_label": "INVH",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "단독주택 임대 리츠"
     },
     {
       "ticker": "IP",
@@ -2738,7 +2986,8 @@
       "sector": "Materials",
       "industry": "Paper & Plastic Packaging Products & Materials",
       "heatmap_label": "IP",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "종이·플라스틱 포장"
     },
     {
       "ticker": "IQV",
@@ -2749,7 +2998,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "IQV",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "임상시험 CRO·헬스케어 데이터 (IQVIA)"
     },
     {
       "ticker": "IR",
@@ -2760,7 +3010,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "IR",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "IRM",
@@ -2771,7 +3022,8 @@
       "sector": "Real Estate",
       "industry": "Other Specialized REITs",
       "heatmap_label": "IRM",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "특수 목적 리츠"
     },
     {
       "ticker": "ISRG",
@@ -2782,7 +3034,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "ISRG",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "다빈치 수술 로봇 (인튜이티브 서지컬)"
     },
     {
       "ticker": "IT",
@@ -2793,7 +3046,8 @@
       "sector": "Information Technology",
       "industry": "IT Consulting & Other Services",
       "heatmap_label": "IT",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": "IT 리서치·컨설팅 (가트너)"
     },
     {
       "ticker": "ITW",
@@ -2804,7 +3058,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "ITW",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "IVZ",
@@ -2815,7 +3070,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "IVZ",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "자산운용·수탁 서비스"
     },
     {
       "ticker": "J",
@@ -2826,7 +3082,8 @@
       "sector": "Industrials",
       "industry": "Construction & Engineering",
       "heatmap_label": "J",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건설 시공·엔지니어링"
     },
     {
       "ticker": "JBHT",
@@ -2837,7 +3094,8 @@
       "sector": "Industrials",
       "industry": "Cargo Ground Transportation",
       "heatmap_label": "JBHT",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "육상 화물 운송"
     },
     {
       "ticker": "JBL",
@@ -2848,7 +3106,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Manufacturing Services",
       "heatmap_label": "JBL",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "전자제품 위탁 제조(EMS) (제이빌)"
     },
     {
       "ticker": "JCI",
@@ -2859,7 +3118,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "JCI",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "빌딩 자동화·HVAC·보안 (존슨컨트롤즈)"
     },
     {
       "ticker": "JKHY",
@@ -2870,7 +3130,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "JKHY",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "은행·신협 핵심 뱅킹 시스템 (잭헨리)"
     },
     {
       "ticker": "JNJ",
@@ -2881,7 +3142,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "JNJ",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "제약·의료기기·소비자 헬스케어"
     },
     {
       "ticker": "JPM",
@@ -2892,7 +3154,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "JPM",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 최대 은행 (투자은행·리테일·자산운용)"
     },
     {
       "ticker": "KDP",
@@ -2903,7 +3166,8 @@
       "sector": "Consumer Staples",
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "heatmap_label": "KDP",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "탄산음료·비알코올 음료"
     },
     {
       "ticker": "KEY",
@@ -2914,7 +3178,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "KEY",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 중서부·동북부 은행 (키뱅크)"
     },
     {
       "ticker": "KEYS",
@@ -2925,7 +3190,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Equipment & Instruments",
       "heatmap_label": "KEYS",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "전자 측정·테스트 장비 (키사이트테크놀로지)"
     },
     {
       "ticker": "KHC",
@@ -2936,7 +3202,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "KHC",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "KIM",
@@ -2947,7 +3214,8 @@
       "sector": "Real Estate",
       "industry": "Retail REITs",
       "heatmap_label": "KIM",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "쇼핑몰·소매 리츠"
     },
     {
       "ticker": "KKR",
@@ -2958,7 +3226,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "KKR",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "자산운용·수탁 서비스"
     },
     {
       "ticker": "KLAC",
@@ -2969,7 +3238,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductor Materials & Equipment",
       "heatmap_label": "KLAC",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체 공정 검사·계측 장비 (KLA)"
     },
     {
       "ticker": "KMB",
@@ -2980,7 +3250,8 @@
       "sector": "Consumer Staples",
       "industry": "Household Products",
       "heatmap_label": "KMB",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "휴지·기저귀·생활용품 (킴벌리클라크)"
     },
     {
       "ticker": "KMI",
@@ -2991,7 +3262,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Storage & Transportation",
       "heatmap_label": "KMI",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "천연가스 파이프라인 (킨더모건)"
     },
     {
       "ticker": "KO",
@@ -3002,7 +3274,8 @@
       "sector": "Consumer Staples",
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "heatmap_label": "KO",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "코카콜라·글로벌 음료 브랜드"
     },
     {
       "ticker": "KR",
@@ -3013,7 +3286,8 @@
       "sector": "Consumer Staples",
       "industry": "Food Retail",
       "heatmap_label": "KR",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "미국 슈퍼마켓 체인 (크로거)"
     },
     {
       "ticker": "KVUE",
@@ -3024,7 +3298,8 @@
       "sector": "Consumer Staples",
       "industry": "Personal Care Products",
       "heatmap_label": "KVUE",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "뷰티·퍼스널케어"
     },
     {
       "ticker": "L",
@@ -3035,7 +3310,8 @@
       "sector": "Financials",
       "industry": "Multi-line Insurance",
       "heatmap_label": "L",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험·부동산 지주회사 (로이스)"
     },
     {
       "ticker": "LDOS",
@@ -3046,7 +3322,8 @@
       "sector": "Industrials",
       "industry": "Diversified Support Services",
       "heatmap_label": "LDOS",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "다각화 비즈니스 서비스"
     },
     {
       "ticker": "LEN",
@@ -3057,7 +3334,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Homebuilding",
       "heatmap_label": "LEN",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "미국 2위 주택 건설 (레나)"
     },
     {
       "ticker": "LH",
@@ -3068,7 +3346,8 @@
       "sector": "Health Care",
       "industry": "Health Care Services",
       "heatmap_label": "LH",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "임상 검사·진단 서비스 (랩코프)"
     },
     {
       "ticker": "LHX",
@@ -3079,7 +3358,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "LHX",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "군용 통신·우주·센서 (L3해리스)"
     },
     {
       "ticker": "LII",
@@ -3090,7 +3370,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "LII",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재·부품"
     },
     {
       "ticker": "LIN",
@@ -3101,7 +3382,8 @@
       "sector": "Materials",
       "industry": "Industrial Gases",
       "heatmap_label": "LIN",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "산업용 가스 (린데·공기분리)"
     },
     {
       "ticker": "LLY",
@@ -3112,7 +3394,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "LLY",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "당뇨·비만 치료제(먼자로·젭바운드) 제약사"
     },
     {
       "ticker": "LMT",
@@ -3123,7 +3406,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "LMT",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "F-35 전투기·미사일 방산 (록히드마틴)"
     },
     {
       "ticker": "LNT",
@@ -3134,7 +3418,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "LNT",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "LOW",
@@ -3145,7 +3430,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Home Improvement Retail",
       "heatmap_label": "LOW",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "주택 개보수 자재 유통 (로우스)"
     },
     {
       "ticker": "LRCX",
@@ -3156,7 +3442,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductor Materials & Equipment",
       "heatmap_label": "LRCX",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체 에칭·증착 장비 (램리서치)"
     },
     {
       "ticker": "LULU",
@@ -3167,7 +3454,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel, Accessories & Luxury Goods",
       "heatmap_label": "LULU",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "요가·애슬레저 의류 (룰루레몬)"
     },
     {
       "ticker": "LUV",
@@ -3178,7 +3466,8 @@
       "sector": "Industrials",
       "industry": "Passenger Airlines",
       "heatmap_label": "LUV",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 저비용 항공사 (사우스웨스트)"
     },
     {
       "ticker": "LVS",
@@ -3189,7 +3478,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Casinos & Gaming",
       "heatmap_label": "LVS",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "카지노·리조트 (라스베이거스 샌즈·마카오)"
     },
     {
       "ticker": "LW",
@@ -3200,7 +3490,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "LW",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "LYB",
@@ -3211,7 +3502,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "LYB",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "특수 화학"
     },
     {
       "ticker": "LYV",
@@ -3222,7 +3514,8 @@
       "sector": "Communication Services",
       "industry": "Movies & Entertainment",
       "heatmap_label": "LYV",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "라이브 공연·티켓 판매 (라이브네이션·티켓마스터)"
     },
     {
       "ticker": "MA",
@@ -3233,7 +3526,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "MA",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "글로벌 결제 네트워크 (마스터카드)"
     },
     {
       "ticker": "MAA",
@@ -3244,7 +3538,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "MAA",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "MAR",
@@ -3255,7 +3550,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "MAR",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "글로벌 호텔 체인 (메리어트)"
     },
     {
       "ticker": "MAS",
@@ -3266,7 +3562,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "MAS",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재·부품"
     },
     {
       "ticker": "MCD",
@@ -3277,7 +3574,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "MCD",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "글로벌 패스트푸드 체인 (맥도날드)"
     },
     {
       "ticker": "MCHP",
@@ -3288,7 +3586,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "MCHP",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "마이크로컨트롤러·아날로그 반도체 (마이크로칩)"
     },
     {
       "ticker": "MCK",
@@ -3299,7 +3598,8 @@
       "sector": "Health Care",
       "industry": "Health Care Distributors",
       "heatmap_label": "MCK",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "의약품·의료용품 도매 유통 (맥케슨)"
     },
     {
       "ticker": "MCO",
@@ -3310,7 +3610,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "MCO",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "금융 거래소·데이터"
     },
     {
       "ticker": "MDLZ",
@@ -3321,7 +3622,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "MDLZ",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "MDT",
@@ -3332,7 +3634,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "MDT",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "심장·당뇨·척추 의료기기 (메드트로닉)"
     },
     {
       "ticker": "MET",
@@ -3343,7 +3646,8 @@
       "sector": "Financials",
       "industry": "Life & Health Insurance",
       "heatmap_label": "MET",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "생명보험·연금·임직원 복리후생 (메트라이프)"
     },
     {
       "ticker": "META",
@@ -3354,7 +3658,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Media & Services",
       "heatmap_label": "META",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "페이스북·인스타그램·왓츠앱·메타버스(VR)"
     },
     {
       "ticker": "MGM",
@@ -3365,7 +3670,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Casinos & Gaming",
       "heatmap_label": "MGM",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "카지노·게이밍"
     },
     {
       "ticker": "MKC",
@@ -3376,7 +3682,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "MKC",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "MLM",
@@ -3387,7 +3694,8 @@
       "sector": "Materials",
       "industry": "Construction Materials",
       "heatmap_label": "MLM",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "골재·건설 자재 (마틴마리에타)"
     },
     {
       "ticker": "MMM",
@@ -3398,7 +3706,8 @@
       "sector": "Industrials",
       "industry": "Industrial Conglomerates",
       "heatmap_label": "MMM",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업 복합 기업"
     },
     {
       "ticker": "MNST",
@@ -3409,7 +3718,8 @@
       "sector": "Consumer Staples",
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "heatmap_label": "MNST",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "에너지 드링크 (몬스터 에너지)"
     },
     {
       "ticker": "MO",
@@ -3420,7 +3730,8 @@
       "sector": "Consumer Staples",
       "industry": "Tobacco",
       "heatmap_label": "MO",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "미국 내 담배 (말보로·IQOS)"
     },
     {
       "ticker": "MOH",
@@ -3431,7 +3742,8 @@
       "sector": "Health Care",
       "industry": "Managed Health Care",
       "heatmap_label": "MOH",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "저소득층 메디케이드 건강보험 (몰리나)"
     },
     {
       "ticker": "MOS",
@@ -3442,7 +3754,8 @@
       "sector": "Materials",
       "industry": "Fertilizers & Agricultural Chemicals",
       "heatmap_label": "MOS",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "비료·농약"
     },
     {
       "ticker": "MPC",
@@ -3453,7 +3766,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Refining & Marketing",
       "heatmap_label": "MPC",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "석유 정제·정유 (마라톤페트롤리엄)"
     },
     {
       "ticker": "MPWR",
@@ -3464,7 +3778,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "MPWR",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "전력관리 반도체 (모놀리식파워)"
     },
     {
       "ticker": "MRK",
@@ -3475,7 +3790,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "MRK",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "제약 (키트루다 면역항암제)"
     },
     {
       "ticker": "MRNA",
@@ -3486,7 +3802,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "MRNA",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "바이오 의약품 연구·개발"
     },
     {
       "ticker": "MRSH",
@@ -3497,7 +3814,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "MRSH",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험 중개·리스크 컨설팅 (마시앤맥레넌 관계사)"
     },
     {
       "ticker": "MS",
@@ -3508,7 +3826,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "MS",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "투자은행·자산운용·트레이딩 (모건스탠리)"
     },
     {
       "ticker": "MSCI",
@@ -3519,7 +3838,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "MSCI",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "지수·ESG·리스크 분석 (MSCI)"
     },
     {
       "ticker": "MSFT",
@@ -3530,7 +3850,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "MSFT",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "윈도우·Azure 클라우드·Office 365·AI(코파일럿)"
     },
     {
       "ticker": "MSI",
@@ -3541,7 +3862,8 @@
       "sector": "Information Technology",
       "industry": "Communications Equipment",
       "heatmap_label": "MSI",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "경찰·소방 무선통신·바디캠 (모토로라솔루션즈)"
     },
     {
       "ticker": "MTB",
@@ -3552,7 +3874,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "MTB",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 동북부 은행 (M&T뱅크)"
     },
     {
       "ticker": "MTCH",
@@ -3563,7 +3886,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Media & Services",
       "heatmap_label": "MTCH",
-      "subType": "인터넷/플랫폼"
+      "subType": "인터넷/플랫폼",
+      "short_description": "틴더·힌지 등 데이팅 앱 (매치그룹)"
     },
     {
       "ticker": "MTD",
@@ -3574,7 +3898,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "MTD",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "정밀 측정·분석 기기 (메틀러톨레도)"
     },
     {
       "ticker": "MU",
@@ -3585,7 +3910,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "MU",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "메모리 반도체 DRAM·NAND (마이크론)"
     },
     {
       "ticker": "NCLH",
@@ -3596,7 +3922,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "NCLH",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "호텔·리조트·크루즈"
     },
     {
       "ticker": "NDAQ",
@@ -3607,7 +3934,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "NDAQ",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "금융 거래소·데이터"
     },
     {
       "ticker": "NDSN",
@@ -3618,7 +3946,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "NDSN",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "NEE",
@@ -3629,7 +3958,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "NEE",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "미국 최대 재생에너지·전력 유틸리티"
     },
     {
       "ticker": "NEM",
@@ -3640,7 +3970,8 @@
       "sector": "Materials",
       "industry": "Gold",
       "heatmap_label": "NEM",
-      "subType": "금속/광업"
+      "subType": "금속/광업",
+      "short_description": "세계 최대 금 광산 (뉴몬트)"
     },
     {
       "ticker": "NFLX",
@@ -3651,7 +3982,8 @@
       "sector": "Communication Services",
       "industry": "Movies & Entertainment",
       "heatmap_label": "NFLX",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "글로벌 스트리밍 플랫폼"
     },
     {
       "ticker": "NI",
@@ -3662,7 +3994,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "NI",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "NKE",
@@ -3673,7 +4006,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel, Accessories & Luxury Goods",
       "heatmap_label": "NKE",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "스포츠 신발·의류 (나이키)"
     },
     {
       "ticker": "NOC",
@@ -3684,7 +4018,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "NOC",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "스텔스 폭격기·우주·사이버 방산 (노스롭그루먼)"
     },
     {
       "ticker": "NOW",
@@ -3695,7 +4030,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "NOW",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "IT 서비스 관리(ITSM) 클라우드 플랫폼"
     },
     {
       "ticker": "NRG",
@@ -3706,7 +4042,8 @@
       "sector": "Utilities",
       "industry": "Independent Power Producers & Energy Traders",
       "heatmap_label": "NRG",
-      "subType": "독립발전/기타"
+      "subType": "독립발전/기타",
+      "short_description": "독립 발전·소매 전력 (NRG에너지)"
     },
     {
       "ticker": "NSC",
@@ -3717,7 +4054,8 @@
       "sector": "Industrials",
       "industry": "Rail Transportation",
       "heatmap_label": "NSC",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 동부 철도 화물 운송 (노퍽서던)"
     },
     {
       "ticker": "NTAP",
@@ -3728,7 +4066,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "NTAP",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "컴퓨터·스토리지 하드웨어"
     },
     {
       "ticker": "NTRS",
@@ -3739,7 +4078,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "NTRS",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "자산운용·수탁 서비스"
     },
     {
       "ticker": "NUE",
@@ -3750,7 +4090,8 @@
       "sector": "Materials",
       "industry": "Steel",
       "heatmap_label": "NUE",
-      "subType": "금속/광업"
+      "subType": "금속/광업",
+      "short_description": "미국 최대 철강 (뉴코어)"
     },
     {
       "ticker": "NVDA",
@@ -3761,7 +4102,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "NVDA",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "AI·데이터센터·게이밍용 GPU 설계"
     },
     {
       "ticker": "NVR",
@@ -3772,7 +4114,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Homebuilding",
       "heatmap_label": "NVR",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "주택 건설"
     },
     {
       "ticker": "NWS",
@@ -3783,7 +4126,8 @@
       "sector": "Communication Services",
       "industry": "Publishing",
       "heatmap_label": "NWS",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "월스트리트저널·다우존스 미디어 (Class B)"
     },
     {
       "ticker": "NWSA",
@@ -3794,7 +4138,8 @@
       "sector": "Communication Services",
       "industry": "Publishing",
       "heatmap_label": "NWSA",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "월스트리트저널·다우존스 미디어 (Class A)"
     },
     {
       "ticker": "NXPI",
@@ -3805,7 +4150,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "NXPI",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "자동차·IoT·모바일 반도체 (NXP)"
     },
     {
       "ticker": "O",
@@ -3816,7 +4162,8 @@
       "sector": "Real Estate",
       "industry": "Retail REITs",
       "heatmap_label": "O",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "넷리스 상업용 리츠 (리얼티인컴·월배당)"
     },
     {
       "ticker": "ODFL",
@@ -3827,7 +4174,8 @@
       "sector": "Industrials",
       "industry": "Cargo Ground Transportation",
       "heatmap_label": "ODFL",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "육상 화물 운송"
     },
     {
       "ticker": "OKE",
@@ -3838,7 +4186,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Storage & Transportation",
       "heatmap_label": "OKE",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "천연가스 수집·처리·파이프라인 (원오크)"
     },
     {
       "ticker": "OMC",
@@ -3849,7 +4198,8 @@
       "sector": "Communication Services",
       "industry": "Advertising",
       "heatmap_label": "OMC",
-      "subType": "게임/광고"
+      "subType": "게임/광고",
+      "short_description": "글로벌 광고·마케팅 대행 (옴니컴그룹)"
     },
     {
       "ticker": "ON",
@@ -3860,7 +4210,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "ON",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "전력·센서 반도체 (온세미컨덕터)"
     },
     {
       "ticker": "ORCL",
@@ -3871,7 +4222,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "ORCL",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "데이터베이스·클라우드 인프라·ERP"
     },
     {
       "ticker": "ORLY",
@@ -3882,7 +4234,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automotive Retail",
       "heatmap_label": "ORLY",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "자동차 부품 유통"
     },
     {
       "ticker": "OTIS",
@@ -3893,7 +4246,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "OTIS",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "OXY",
@@ -3904,7 +4258,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "OXY",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "PANW",
@@ -3915,7 +4270,8 @@
       "sector": "Information Technology",
       "industry": "Systems Software",
       "heatmap_label": "PANW",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "사이버보안·제로트러스트 (팔로알토네트웍스)"
     },
     {
       "ticker": "PAYC",
@@ -3926,7 +4282,8 @@
       "sector": "Industrials",
       "industry": "Human Resource & Employment Services",
       "heatmap_label": "PAYC",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "인사·급여 서비스"
     },
     {
       "ticker": "PAYX",
@@ -3937,7 +4294,8 @@
       "sector": "Industrials",
       "industry": "Human Resource & Employment Services",
       "heatmap_label": "PAYX",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "인사·급여 서비스"
     },
     {
       "ticker": "PCAR",
@@ -3948,7 +4306,8 @@
       "sector": "Industrials",
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "heatmap_label": "PCAR",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "건설·운송 중장비"
     },
     {
       "ticker": "PCG",
@@ -3959,7 +4318,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "PCG",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "PEG",
@@ -3970,7 +4330,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "PEG",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "PEP",
@@ -3981,7 +4342,8 @@
       "sector": "Consumer Staples",
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "heatmap_label": "PEP",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "펩시·프리토레이·게토레이 음료·스낵"
     },
     {
       "ticker": "PFE",
@@ -3992,7 +4354,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "PFE",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "코로나 백신·mRNA·종양학 제약"
     },
     {
       "ticker": "PFG",
@@ -4003,7 +4366,8 @@
       "sector": "Financials",
       "industry": "Life & Health Insurance",
       "heatmap_label": "PFG",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험·연금·자산운용 (프린시펄파이낸셜)"
     },
     {
       "ticker": "PG",
@@ -4014,7 +4378,8 @@
       "sector": "Consumer Staples",
       "industry": "Personal Care Products",
       "heatmap_label": "PG",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "세제·기저귀·생활용품 (P&G)"
     },
     {
       "ticker": "PGR",
@@ -4025,7 +4390,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "PGR",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "손해보험 (재물·배상)"
     },
     {
       "ticker": "PH",
@@ -4036,7 +4402,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "PH",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "PHM",
@@ -4047,7 +4414,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Homebuilding",
       "heatmap_label": "PHM",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "주택 건설"
     },
     {
       "ticker": "PKG",
@@ -4058,7 +4426,8 @@
       "sector": "Materials",
       "industry": "Paper & Plastic Packaging Products & Materials",
       "heatmap_label": "PKG",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "종이·플라스틱 포장"
     },
     {
       "ticker": "PLD",
@@ -4069,7 +4438,8 @@
       "sector": "Real Estate",
       "industry": "Industrial REITs",
       "heatmap_label": "PLD",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "물류·산업용 창고 리츠 (프롤로지스)"
     },
     {
       "ticker": "PLTR",
@@ -4080,7 +4450,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "PLTR",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "빅데이터 분석·AI 플랫폼 (팔란티어)"
     },
     {
       "ticker": "PM",
@@ -4091,7 +4462,8 @@
       "sector": "Consumer Staples",
       "industry": "Tobacco",
       "heatmap_label": "PM",
-      "subType": "생활용품"
+      "subType": "생활용품",
+      "short_description": "해외 담배·가열식 전자담배(IQOS)"
     },
     {
       "ticker": "PNC",
@@ -4102,7 +4474,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "PNC",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 중부·동부 은행 (PNC)"
     },
     {
       "ticker": "PNR",
@@ -4113,7 +4486,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "PNR",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "PNW",
@@ -4124,7 +4498,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "PNW",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "PODD",
@@ -4135,7 +4510,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "PODD",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "POOL",
@@ -4146,7 +4522,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Distributors",
       "heatmap_label": "POOL",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "소비재 유통"
     },
     {
       "ticker": "PPG",
@@ -4157,7 +4534,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "PPG",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "특수 화학"
     },
     {
       "ticker": "PPL",
@@ -4168,7 +4546,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "PPL",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "PRU",
@@ -4179,7 +4558,8 @@
       "sector": "Financials",
       "industry": "Life & Health Insurance",
       "heatmap_label": "PRU",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "생명보험·연금·자산운용 (프루덴셜)"
     },
     {
       "ticker": "PSA",
@@ -4190,7 +4570,8 @@
       "sector": "Real Estate",
       "industry": "Self-Storage REITs",
       "heatmap_label": "PSA",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "셀프 스토리지 리츠 (퍼블릭스토리지)"
     },
     {
       "ticker": "PSKY",
@@ -4201,7 +4582,8 @@
       "sector": "Communication Services",
       "industry": "Movies & Entertainment",
       "heatmap_label": "PSKY",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "파라마운트+ 스트리밍·CBS·MTV"
     },
     {
       "ticker": "PSX",
@@ -4212,7 +4594,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Refining & Marketing",
       "heatmap_label": "PSX",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "석유 정제·화학·미드스트림 (필립스66)"
     },
     {
       "ticker": "PTC",
@@ -4223,7 +4606,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "PTC",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "PLM·CAD·IoT 산업 소프트웨어"
     },
     {
       "ticker": "PWR",
@@ -4234,7 +4618,8 @@
       "sector": "Industrials",
       "industry": "Construction & Engineering",
       "heatmap_label": "PWR",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "전력·통신 인프라 시공 (퀸타서비시즈)"
     },
     {
       "ticker": "PYPL",
@@ -4245,7 +4630,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "PYPL",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "온라인 결제·벤모·BNPL (페이팔)"
     },
     {
       "ticker": "Q",
@@ -4256,7 +4642,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductor Materials & Equipment",
       "heatmap_label": "Q",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체 장비·소재"
     },
     {
       "ticker": "QCOM",
@@ -4267,7 +4654,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "QCOM",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "모바일 AP·5G 모뎀 칩 설계 (퀄컴)"
     },
     {
       "ticker": "RCL",
@@ -4278,7 +4666,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Hotels, Resorts & Cruise Lines",
       "heatmap_label": "RCL",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "호텔·리조트·크루즈"
     },
     {
       "ticker": "REG",
@@ -4289,7 +4678,8 @@
       "sector": "Real Estate",
       "industry": "Retail REITs",
       "heatmap_label": "REG",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "쇼핑몰·소매 리츠"
     },
     {
       "ticker": "REGN",
@@ -4300,7 +4690,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "REGN",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "안과·면역·종양 바이오 의약품 (리제네론)"
     },
     {
       "ticker": "RF",
@@ -4311,7 +4702,8 @@
       "sector": "Financials",
       "industry": "Regional Banks",
       "heatmap_label": "RF",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "지역 은행"
     },
     {
       "ticker": "RJF",
@@ -4322,7 +4714,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "RJF",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "웰스매니지먼트·투자은행 (레이먼드제임스)"
     },
     {
       "ticker": "RL",
@@ -4333,7 +4726,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel, Accessories & Luxury Goods",
       "heatmap_label": "RL",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "패션·의류·럭셔리"
     },
     {
       "ticker": "RMD",
@@ -4344,7 +4738,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "RMD",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "ROK",
@@ -4355,7 +4750,8 @@
       "sector": "Industrials",
       "industry": "Electrical Components & Equipment",
       "heatmap_label": "ROK",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "전력·전기 장비"
     },
     {
       "ticker": "ROL",
@@ -4366,7 +4762,8 @@
       "sector": "Industrials",
       "industry": "Environmental & Facilities Services",
       "heatmap_label": "ROL",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "환경·시설 관리 서비스"
     },
     {
       "ticker": "ROP",
@@ -4377,7 +4774,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Equipment & Instruments",
       "heatmap_label": "ROP",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "산업 소프트웨어·기술 (로퍼테크놀로지)"
     },
     {
       "ticker": "ROST",
@@ -4388,7 +4786,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel Retail",
       "heatmap_label": "ROST",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "의류 소매 유통"
     },
     {
       "ticker": "RSG",
@@ -4399,7 +4798,8 @@
       "sector": "Industrials",
       "industry": "Environmental & Facilities Services",
       "heatmap_label": "RSG",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "환경·시설 관리 서비스"
     },
     {
       "ticker": "RTX",
@@ -4410,7 +4810,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "RTX",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공 엔진(프랫앤휘트니)·미사일 방산"
     },
     {
       "ticker": "RVTY",
@@ -4421,7 +4822,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "RVTY",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "SBAC",
@@ -4432,7 +4834,8 @@
       "sector": "Real Estate",
       "industry": "Telecom Tower REITs",
       "heatmap_label": "SBAC",
-      "subType": "인프라"
+      "subType": "인프라",
+      "short_description": "통신 타워 리츠"
     },
     {
       "ticker": "SBUX",
@@ -4443,7 +4846,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "SBUX",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "글로벌 커피 체인 (스타벅스)"
     },
     {
       "ticker": "SCHW",
@@ -4454,7 +4858,8 @@
       "sector": "Financials",
       "industry": "Investment Banking & Brokerage",
       "heatmap_label": "SCHW",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "온라인 증권·자산관리 (찰스슈왑)"
     },
     {
       "ticker": "SHW",
@@ -4465,7 +4870,8 @@
       "sector": "Materials",
       "industry": "Specialty Chemicals",
       "heatmap_label": "SHW",
-      "subType": "화학"
+      "subType": "화학",
+      "short_description": "건축용·산업용 페인트 (셔윈윌리엄스)"
     },
     {
       "ticker": "SJM",
@@ -4476,7 +4882,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "SJM",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "SLB",
@@ -4487,7 +4894,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
       "heatmap_label": "SLB",
-      "subType": "서비스/장비"
+      "subType": "서비스/장비",
+      "short_description": "석유·가스 시추 서비스 장비 (슈럼버거)"
     },
     {
       "ticker": "SMCI",
@@ -4498,7 +4906,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "SMCI",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "AI 서버·스토리지 하드웨어 (슈퍼마이크로)"
     },
     {
       "ticker": "SNA",
@@ -4509,7 +4918,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "SNA",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "SNDK",
@@ -4520,7 +4930,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "SNDK",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "컴퓨터·스토리지 하드웨어"
     },
     {
       "ticker": "SNPS",
@@ -4531,7 +4942,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "SNPS",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "반도체 설계 자동화(EDA) 소프트웨어"
     },
     {
       "ticker": "SO",
@@ -4542,7 +4954,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "SO",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "미국 남동부 전력·가스 (서던컴퍼니)"
     },
     {
       "ticker": "SOLV",
@@ -4553,7 +4966,8 @@
       "sector": "Health Care",
       "industry": "Health Care Technology",
       "heatmap_label": "SOLV",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "제약·바이오 위탁 생산 (솔벤텀)"
     },
     {
       "ticker": "SPG",
@@ -4564,7 +4978,8 @@
       "sector": "Real Estate",
       "industry": "Retail REITs",
       "heatmap_label": "SPG",
-      "subType": "상업"
+      "subType": "상업",
+      "short_description": "프리미엄 아웃렛·쇼핑몰 리츠"
     },
     {
       "ticker": "SPGI",
@@ -4575,7 +4990,8 @@
       "sector": "Financials",
       "industry": "Financial Exchanges & Data",
       "heatmap_label": "SPGI",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "S&P 신용평가·지수·금융 데이터"
     },
     {
       "ticker": "SRE",
@@ -4586,7 +5002,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "SRE",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·천연가스·LNG (셈프라에너지)"
     },
     {
       "ticker": "STE",
@@ -4597,7 +5014,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "STE",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "의료기기·장비"
     },
     {
       "ticker": "STLD",
@@ -4608,7 +5026,8 @@
       "sector": "Materials",
       "industry": "Steel",
       "heatmap_label": "STLD",
-      "subType": "금속/광업"
+      "subType": "금속/광업",
+      "short_description": "철강"
     },
     {
       "ticker": "STT",
@@ -4619,7 +5038,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "STT",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "수탁·자산운용·인덱스 (스테이트스트리트)"
     },
     {
       "ticker": "STX",
@@ -4630,7 +5050,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "STX",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "컴퓨터·스토리지 하드웨어"
     },
     {
       "ticker": "STZ",
@@ -4641,7 +5062,8 @@
       "sector": "Consumer Staples",
       "industry": "Distillers & Vintners",
       "heatmap_label": "STZ",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "맥주·와인·증류주 (코로나·모델로)"
     },
     {
       "ticker": "SW",
@@ -4652,7 +5074,8 @@
       "sector": "Materials",
       "industry": "Paper & Plastic Packaging Products & Materials",
       "heatmap_label": "SW",
-      "subType": "포장"
+      "subType": "포장",
+      "short_description": "종이·플라스틱 포장"
     },
     {
       "ticker": "SWK",
@@ -4663,7 +5086,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "SWK",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "SWKS",
@@ -4674,7 +5098,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "SWKS",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "5G·Wi-Fi RF 반도체 (스카이웍스)"
     },
     {
       "ticker": "SYF",
@@ -4685,7 +5110,8 @@
       "sector": "Financials",
       "industry": "Consumer Finance",
       "heatmap_label": "SYF",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "리테일 신용카드·할부 (싱크로니파이낸셜)"
     },
     {
       "ticker": "SYK",
@@ -4696,7 +5122,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "SYK",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "정형외과·수술장비 의료기기 (스트라이커)"
     },
     {
       "ticker": "SYY",
@@ -4707,7 +5134,8 @@
       "sector": "Consumer Staples",
       "industry": "Food Distributors",
       "heatmap_label": "SYY",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "식자재 도매 유통 (시스코 푸드서비스)"
     },
     {
       "ticker": "T",
@@ -4718,7 +5146,8 @@
       "sector": "Communication Services",
       "industry": "Integrated Telecommunication Services",
       "heatmap_label": "T",
-      "subType": "통신사"
+      "subType": "통신사",
+      "short_description": "미국 2위 통신사 (AT&T·디렉TV)"
     },
     {
       "ticker": "TAP",
@@ -4729,7 +5158,8 @@
       "sector": "Consumer Staples",
       "industry": "Brewers",
       "heatmap_label": "TAP",
-      "subType": "음료"
+      "subType": "음료",
+      "short_description": "맥주 양조"
     },
     {
       "ticker": "TDG",
@@ -4740,7 +5170,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "TDG",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공기 부품·애프터마켓 (트랜스다임)"
     },
     {
       "ticker": "TDY",
@@ -4751,7 +5182,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Equipment & Instruments",
       "heatmap_label": "TDY",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "방산·환경·디지털 이미징 계측 (테레다인)"
     },
     {
       "ticker": "TECH",
@@ -4762,7 +5194,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "TECH",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학 연구 장비·서비스"
     },
     {
       "ticker": "TEL",
@@ -4773,7 +5206,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Manufacturing Services",
       "heatmap_label": "TEL",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "전자·산업용 커넥터·센서 (TE커넥티비티)"
     },
     {
       "ticker": "TER",
@@ -4784,7 +5218,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductor Materials & Equipment",
       "heatmap_label": "TER",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "반도체 테스트 장비 (테라다인)"
     },
     {
       "ticker": "TFC",
@@ -4795,7 +5230,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "TFC",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 동남부 은행 (트루이스트)"
     },
     {
       "ticker": "TGT",
@@ -4806,7 +5242,8 @@
       "sector": "Consumer Staples",
       "industry": "Consumer Staples Merchandise Retail",
       "heatmap_label": "TGT",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "종합 할인매장 (타겟)"
     },
     {
       "ticker": "TJX",
@@ -4817,7 +5254,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel Retail",
       "heatmap_label": "TJX",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "할인 의류·홈 유통 (TJ맥스·마샬스)"
     },
     {
       "ticker": "TKO",
@@ -4828,7 +5266,8 @@
       "sector": "Communication Services",
       "industry": "Movies & Entertainment",
       "heatmap_label": "TKO",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "WWE·UFC 종합격투기 (TKO그룹)"
     },
     {
       "ticker": "TMO",
@@ -4839,7 +5278,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "TMO",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학 연구 장비·시약·서비스"
     },
     {
       "ticker": "TMUS",
@@ -4850,7 +5290,8 @@
       "sector": "Communication Services",
       "industry": "Wireless Telecommunication Services",
       "heatmap_label": "TMUS",
-      "subType": "통신사"
+      "subType": "통신사",
+      "short_description": "미국 3위 무선통신사 (T모바일)"
     },
     {
       "ticker": "TPL",
@@ -4861,7 +5302,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Exploration & Production",
       "heatmap_label": "TPL",
-      "subType": "탐사/생산"
+      "subType": "탐사/생산",
+      "short_description": "석유·가스 탐사·생산"
     },
     {
       "ticker": "TPR",
@@ -4872,7 +5314,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Apparel, Accessories & Luxury Goods",
       "heatmap_label": "TPR",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "패션·의류·럭셔리"
     },
     {
       "ticker": "TRGP",
@@ -4883,7 +5326,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Storage & Transportation",
       "heatmap_label": "TRGP",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "석유·가스 저장·운송"
     },
     {
       "ticker": "TRMB",
@@ -4894,7 +5338,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Equipment & Instruments",
       "heatmap_label": "TRMB",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "건설·농업 GPS·위치기술 (트림블)"
     },
     {
       "ticker": "TROW",
@@ -4905,7 +5350,8 @@
       "sector": "Financials",
       "industry": "Asset Management & Custody Banks",
       "heatmap_label": "TROW",
-      "subType": "자산운용"
+      "subType": "자산운용",
+      "short_description": "자산운용·수탁 서비스"
     },
     {
       "ticker": "TRV",
@@ -4916,7 +5362,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "TRV",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "손해보험 (재물·배상)"
     },
     {
       "ticker": "TSCO",
@@ -4927,7 +5374,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Other Specialty Retail",
       "heatmap_label": "TSCO",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "전문 소매 유통"
     },
     {
       "ticker": "TSLA",
@@ -4938,7 +5386,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Automobile Manufacturers",
       "heatmap_label": "TSLA",
-      "subType": "자동차/주거"
+      "subType": "자동차/주거",
+      "short_description": "전기차·에너지 저장·자율주행·태양광"
     },
     {
       "ticker": "TSN",
@@ -4949,7 +5398,8 @@
       "sector": "Consumer Staples",
       "industry": "Packaged Foods & Meats",
       "heatmap_label": "TSN",
-      "subType": "식품"
+      "subType": "식품",
+      "short_description": "가공식품·육류"
     },
     {
       "ticker": "TT",
@@ -4960,7 +5410,8 @@
       "sector": "Industrials",
       "industry": "Building Products",
       "heatmap_label": "TT",
-      "subType": "건설"
+      "subType": "건설",
+      "short_description": "건축 자재·부품"
     },
     {
       "ticker": "TTD",
@@ -4971,7 +5422,8 @@
       "sector": "Communication Services",
       "industry": "Advertising",
       "heatmap_label": "TTD",
-      "subType": "게임/광고"
+      "subType": "게임/광고",
+      "short_description": "프로그래매틱 디지털 광고 플랫폼"
     },
     {
       "ticker": "TTWO",
@@ -4982,7 +5434,8 @@
       "sector": "Communication Services",
       "industry": "Interactive Home Entertainment",
       "heatmap_label": "TTWO",
-      "subType": "게임/광고"
+      "subType": "게임/광고",
+      "short_description": "게임 (GTA·NBA 2K·레드데드리뎀션)"
     },
     {
       "ticker": "TXN",
@@ -4993,7 +5446,8 @@
       "sector": "Information Technology",
       "industry": "Semiconductors",
       "heatmap_label": "TXN",
-      "subType": "반도체"
+      "subType": "반도체",
+      "short_description": "아날로그·임베디드 반도체 (텍사스인스트루먼트)"
     },
     {
       "ticker": "TXT",
@@ -5004,7 +5458,8 @@
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "heatmap_label": "TXT",
-      "subType": "항공우주/방산"
+      "subType": "항공우주/방산",
+      "short_description": "항공우주·방산"
     },
     {
       "ticker": "TYL",
@@ -5015,7 +5470,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "TYL",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "지방정부·공공기관 소프트웨어 (타일러테크)"
     },
     {
       "ticker": "UAL",
@@ -5026,7 +5482,8 @@
       "sector": "Industrials",
       "industry": "Passenger Airlines",
       "heatmap_label": "UAL",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 항공사 (유나이티드항공)"
     },
     {
       "ticker": "UBER",
@@ -5037,7 +5494,8 @@
       "sector": "Industrials",
       "industry": "Passenger Ground Transportation",
       "heatmap_label": "UBER",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "라이드쉐어·음식배달·화물 (우버)"
     },
     {
       "ticker": "UDR",
@@ -5048,7 +5506,8 @@
       "sector": "Real Estate",
       "industry": "Multi-Family Residential REITs",
       "heatmap_label": "UDR",
-      "subType": "주거"
+      "subType": "주거",
+      "short_description": "아파트·다세대 주거 리츠"
     },
     {
       "ticker": "UHS",
@@ -5059,7 +5518,8 @@
       "sector": "Health Care",
       "industry": "Health Care Facilities",
       "heatmap_label": "UHS",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "급성기·정신과 병원 (유니버설헬스서비시즈)"
     },
     {
       "ticker": "ULTA",
@@ -5070,7 +5530,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Other Specialty Retail",
       "heatmap_label": "ULTA",
-      "subType": "유통"
+      "subType": "유통",
+      "short_description": "전문 소매 유통"
     },
     {
       "ticker": "UNH",
@@ -5081,7 +5542,8 @@
       "sector": "Health Care",
       "industry": "Managed Health Care",
       "heatmap_label": "UNH",
-      "subType": "헬스케어서비스"
+      "subType": "헬스케어서비스",
+      "short_description": "미국 최대 건강보험·헬스케어 서비스"
     },
     {
       "ticker": "UNP",
@@ -5092,7 +5554,8 @@
       "sector": "Industrials",
       "industry": "Rail Transportation",
       "heatmap_label": "UNP",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "미국 서부 철도 화물 운송 (유니온퍼시픽)"
     },
     {
       "ticker": "UPS",
@@ -5103,7 +5566,8 @@
       "sector": "Industrials",
       "industry": "Air Freight & Logistics",
       "heatmap_label": "UPS",
-      "subType": "운송"
+      "subType": "운송",
+      "short_description": "글로벌 택배·물류 (UPS)"
     },
     {
       "ticker": "URI",
@@ -5114,7 +5578,8 @@
       "sector": "Industrials",
       "industry": "Trading Companies & Distributors",
       "heatmap_label": "URI",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "건설·산업 장비 렌탈 (유나이티드렌탈)"
     },
     {
       "ticker": "USB",
@@ -5125,7 +5590,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "USB",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 5위 은행 (US뱅코프)"
     },
     {
       "ticker": "V",
@@ -5136,7 +5602,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "V",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "글로벌 결제 네트워크 (비자카드)"
     },
     {
       "ticker": "VICI",
@@ -5147,7 +5614,8 @@
       "sector": "Real Estate",
       "industry": "Hotel & Resort REITs",
       "heatmap_label": "VICI",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "호텔·리조트 리츠"
     },
     {
       "ticker": "VLO",
@@ -5158,7 +5626,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Refining & Marketing",
       "heatmap_label": "VLO",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "석유 정제 (밸레로에너지)"
     },
     {
       "ticker": "VLTO",
@@ -5169,7 +5638,8 @@
       "sector": "Industrials",
       "industry": "Environmental & Facilities Services",
       "heatmap_label": "VLTO",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "환경·시설 관리 서비스"
     },
     {
       "ticker": "VMC",
@@ -5180,7 +5650,8 @@
       "sector": "Materials",
       "industry": "Construction Materials",
       "heatmap_label": "VMC",
-      "subType": "건자재/농화학"
+      "subType": "건자재/농화학",
+      "short_description": "골재·건설 자재 (벌컨머티리얼즈)"
     },
     {
       "ticker": "VRSK",
@@ -5191,7 +5662,8 @@
       "sector": "Industrials",
       "industry": "Research & Consulting Services",
       "heatmap_label": "VRSK",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "보험·에너지 데이터 분석 (베리스크)"
     },
     {
       "ticker": "VRSN",
@@ -5202,7 +5674,8 @@
       "sector": "Information Technology",
       "industry": "Internet Services & Infrastructure",
       "heatmap_label": "VRSN",
-      "subType": "IT서비스"
+      "subType": "IT서비스",
+      "short_description": ".com/.net 도메인 레지스트리 (베리사인)"
     },
     {
       "ticker": "VRTX",
@@ -5213,7 +5686,8 @@
       "sector": "Health Care",
       "industry": "Biotechnology",
       "heatmap_label": "VRTX",
-      "subType": "바이오텍"
+      "subType": "바이오텍",
+      "short_description": "낭포성 섬유증 치료제 전문 바이오텍"
     },
     {
       "ticker": "VST",
@@ -5224,7 +5698,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "VST",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "VTR",
@@ -5235,7 +5710,8 @@
       "sector": "Real Estate",
       "industry": "Health Care REITs",
       "heatmap_label": "VTR",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "헬스케어·시니어 리츠"
     },
     {
       "ticker": "VTRS",
@@ -5246,7 +5722,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "VTRS",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "의약품 연구·개발·제조"
     },
     {
       "ticker": "VZ",
@@ -5257,7 +5734,8 @@
       "sector": "Communication Services",
       "industry": "Integrated Telecommunication Services",
       "heatmap_label": "VZ",
-      "subType": "통신사"
+      "subType": "통신사",
+      "short_description": "미국 1위 무선통신사 (버라이즌)"
     },
     {
       "ticker": "WAB",
@@ -5268,7 +5746,8 @@
       "sector": "Industrials",
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "heatmap_label": "WAB",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "건설·운송 중장비"
     },
     {
       "ticker": "WAT",
@@ -5279,7 +5758,8 @@
       "sector": "Health Care",
       "industry": "Life Sciences Tools & Services",
       "heatmap_label": "WAT",
-      "subType": "생명과학"
+      "subType": "생명과학",
+      "short_description": "생명과학 연구 장비·서비스"
     },
     {
       "ticker": "WBD",
@@ -5290,7 +5770,8 @@
       "sector": "Communication Services",
       "industry": "Broadcasting",
       "heatmap_label": "WBD",
-      "subType": "미디어"
+      "subType": "미디어",
+      "short_description": "워너브라더스·HBO·디스커버리 미디어"
     },
     {
       "ticker": "WDAY",
@@ -5301,7 +5782,8 @@
       "sector": "Information Technology",
       "industry": "Application Software",
       "heatmap_label": "WDAY",
-      "subType": "소프트웨어"
+      "subType": "소프트웨어",
+      "short_description": "인사·재무 클라우드 ERP (워크데이)"
     },
     {
       "ticker": "WDC",
@@ -5312,7 +5794,8 @@
       "sector": "Information Technology",
       "industry": "Technology Hardware, Storage & Peripherals",
       "heatmap_label": "WDC",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "컴퓨터·스토리지 하드웨어"
     },
     {
       "ticker": "WEC",
@@ -5323,7 +5806,8 @@
       "sector": "Utilities",
       "industry": "Electric Utilities",
       "heatmap_label": "WEC",
-      "subType": "전력"
+      "subType": "전력",
+      "short_description": "전력 유틸리티"
     },
     {
       "ticker": "WELL",
@@ -5334,7 +5818,8 @@
       "sector": "Real Estate",
       "industry": "Health Care REITs",
       "heatmap_label": "WELL",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "시니어 하우징·헬스케어 리츠 (웰타워)"
     },
     {
       "ticker": "WFC",
@@ -5345,7 +5830,8 @@
       "sector": "Financials",
       "industry": "Diversified Banks",
       "heatmap_label": "WFC",
-      "subType": "은행"
+      "subType": "은행",
+      "short_description": "미국 3위 리테일 은행 (웰스파고)"
     },
     {
       "ticker": "WM",
@@ -5356,7 +5842,8 @@
       "sector": "Industrials",
       "industry": "Environmental & Facilities Services",
       "heatmap_label": "WM",
-      "subType": "비즈니스서비스"
+      "subType": "비즈니스서비스",
+      "short_description": "미국 최대 폐기물 수거·처리·재활용"
     },
     {
       "ticker": "WMB",
@@ -5367,7 +5854,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Storage & Transportation",
       "heatmap_label": "WMB",
-      "subType": "정유/운송"
+      "subType": "정유/운송",
+      "short_description": "천연가스 파이프라인 (윌리엄스컴퍼니즈)"
     },
     {
       "ticker": "WMT",
@@ -5378,7 +5866,8 @@
       "sector": "Consumer Staples",
       "industry": "Consumer Staples Merchandise Retail",
       "heatmap_label": "WMT",
-      "subType": "유통(필수)"
+      "subType": "유통(필수)",
+      "short_description": "미국 최대 유통 체인 (월마트)"
     },
     {
       "ticker": "WRB",
@@ -5389,7 +5878,8 @@
       "sector": "Financials",
       "industry": "Property & Casualty Insurance",
       "heatmap_label": "WRB",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "손해보험 (재물·배상)"
     },
     {
       "ticker": "WSM",
@@ -5400,7 +5890,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Homefurnishing Retail",
       "heatmap_label": "WSM",
-      "subType": "패션/라이프"
+      "subType": "패션/라이프",
+      "short_description": "가정용품·인테리어 유통"
     },
     {
       "ticker": "WST",
@@ -5411,7 +5902,8 @@
       "sector": "Health Care",
       "industry": "Health Care Supplies",
       "heatmap_label": "WST",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "주사제 포장·약물전달 부품 (웨스트파마)"
     },
     {
       "ticker": "WTW",
@@ -5422,7 +5914,8 @@
       "sector": "Financials",
       "industry": "Insurance Brokers",
       "heatmap_label": "WTW",
-      "subType": "보험"
+      "subType": "보험",
+      "short_description": "보험 중개·리스크 관리"
     },
     {
       "ticker": "WY",
@@ -5433,7 +5926,8 @@
       "sector": "Real Estate",
       "industry": "Timber REITs",
       "heatmap_label": "WY",
-      "subType": "특수/서비스"
+      "subType": "특수/서비스",
+      "short_description": "산림·목재 리츠"
     },
     {
       "ticker": "WYNN",
@@ -5444,7 +5938,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Casinos & Gaming",
       "heatmap_label": "WYNN",
-      "subType": "여행/레저"
+      "subType": "여행/레저",
+      "short_description": "카지노·게이밍"
     },
     {
       "ticker": "XEL",
@@ -5455,7 +5950,8 @@
       "sector": "Utilities",
       "industry": "Multi-Utilities",
       "heatmap_label": "XEL",
-      "subType": "복합유틸리티"
+      "subType": "복합유틸리티",
+      "short_description": "전력·가스 복합 유틸리티"
     },
     {
       "ticker": "XOM",
@@ -5466,7 +5962,8 @@
       "sector": "Energy",
       "industry": "Integrated Oil & Gas",
       "heatmap_label": "XOM",
-      "subType": "통합석유"
+      "subType": "통합석유",
+      "short_description": "세계 최대 석유·가스 통합 기업 (엑슨모빌)"
     },
     {
       "ticker": "XYL",
@@ -5477,7 +5974,8 @@
       "sector": "Industrials",
       "industry": "Industrial Machinery & Supplies & Components",
       "heatmap_label": "XYL",
-      "subType": "기계/장비"
+      "subType": "기계/장비",
+      "short_description": "산업용 기계·부품"
     },
     {
       "ticker": "XYZ",
@@ -5488,7 +5986,8 @@
       "sector": "Financials",
       "industry": "Transaction & Payment Processing Services",
       "heatmap_label": "XYZ",
-      "subType": "핀테크"
+      "subType": "핀테크",
+      "short_description": "결제 처리·핀테크"
     },
     {
       "ticker": "YUM",
@@ -5499,7 +5998,8 @@
       "sector": "Consumer Discretionary",
       "industry": "Restaurants",
       "heatmap_label": "YUM",
-      "subType": "외식"
+      "subType": "외식",
+      "short_description": "외식·레스토랑 체인"
     },
     {
       "ticker": "ZBH",
@@ -5510,7 +6010,8 @@
       "sector": "Health Care",
       "industry": "Health Care Equipment",
       "heatmap_label": "ZBH",
-      "subType": "의료기기"
+      "subType": "의료기기",
+      "short_description": "정형외과 인공관절 (짐머바이오메트)"
     },
     {
       "ticker": "ZBRA",
@@ -5521,7 +6022,8 @@
       "sector": "Information Technology",
       "industry": "Electronic Equipment & Instruments",
       "heatmap_label": "ZBRA",
-      "subType": "하드웨어"
+      "subType": "하드웨어",
+      "short_description": "바코드·RFID 스캐너·모바일 컴퓨터 (제브라)"
     },
     {
       "ticker": "ZTS",
@@ -5532,7 +6034,8 @@
       "sector": "Health Care",
       "industry": "Pharmaceuticals",
       "heatmap_label": "ZTS",
-      "subType": "제약"
+      "subType": "제약",
+      "short_description": "의약품 연구·개발·제조"
     }
   ]
 }
