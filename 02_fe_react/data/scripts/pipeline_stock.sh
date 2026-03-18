@@ -308,6 +308,8 @@ if (!hasAnyChanges) {
   }
 }
 bodyLines.push("");
+bodyLines.push("자세히 보기: https://atchu-fe.vercel.app/_stocks");
+bodyLines.push("");
 bodyLines.push("※ 참고용 지표이며 투자 조언이 아닙니다.");
 
 const payload = {

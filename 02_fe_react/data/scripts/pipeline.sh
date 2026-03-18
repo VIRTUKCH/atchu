@@ -94,4 +94,4 @@ fi
 run_front_build
 deploy_to_vercel
 send_all_notifications
-notify "[${RUN_ID}] ALL DONE | 관리자: https://atchu-fe.vercel.app/_dev"
+notify "[${RUN_ID}] ALL DONE | 관리자: https://atchu-fe.vercel.app/_dev | 개별주: https://atchu-fe.vercel.app/_stocks"
