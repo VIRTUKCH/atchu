@@ -1,5 +1,16 @@
 # 작업 기록
 
+### 2026-03-18 (65)
+- **개별주(S&P 500) 추세추종 기능 추가 — 개발자 전용 비공개**
+  - 데이터 파이프라인: `pipeline_stock.sh`, `generate_stock_snapshot.mjs` — 503종목 CSV 다운로드 + 스냅샷/추세 알림 생성
+  - `pipeline.sh`에서 ETF 처리 후 자동 호출 (같은 cron)
+  - 프론트엔드: `/_stocks` (리스트), `/_stocks/:ticker` (상세) — PasswordGate 보호
+  - CSV on-demand fetch (public/csv_stock/ 정적 에셋) — 빌드 메모리 영향 없음
+  - EtfSummaryCard 재사용, 섹터별 필터/검색/정렬 지원
+  - Discord 알림은 기존 관리자 채널 사용 (`[개별주]` 접두어)
+  - `sp500.json`: GitHub datasets에서 자동 생성 (fetch_sp500_tickers.mjs)
+  - CLAUDE.md에 개발자 전용 페이지 문서화
+
 ### 2026-03-17 (64)
 - **히트맵 타일: 앗추 필터 비율(X/20) 표시 추가**
   - N일째 옆에 (X/20) 형태로 최근 20일 중 200일선 위 일수 표시

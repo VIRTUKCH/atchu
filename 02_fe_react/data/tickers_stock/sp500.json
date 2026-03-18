@@ -1,0 +1,4532 @@
+{
+  "type": "S&P 500",
+  "items": [
+    {
+      "ticker": "A",
+      "name": "Agilent Technologies",
+      "name_ko": "Agilent Technologies",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "A"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "name_ko": "Apple Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "AAPL"
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "name_ko": "AbbVie",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ABBV"
+    },
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb",
+      "name_ko": "Airbnb",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "ABNB"
+    },
+    {
+      "ticker": "ABT",
+      "name": "Abbott Laboratories",
+      "name_ko": "Abbott Laboratories",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ABT"
+    },
+    {
+      "ticker": "ACGL",
+      "name": "Arch Capital Group",
+      "name_ko": "Arch Capital Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "ACGL"
+    },
+    {
+      "ticker": "ACN",
+      "name": "Accenture",
+      "name_ko": "Accenture",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ACN"
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "name_ko": "Adobe Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ADBE"
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "name_ko": "Analog Devices",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ADI"
+    },
+    {
+      "ticker": "ADM",
+      "name": "Archer Daniels Midland",
+      "name_ko": "Archer Daniels Midland",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "ADM"
+    },
+    {
+      "ticker": "ADP",
+      "name": "Automatic Data Processing",
+      "name_ko": "Automatic Data Processing",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ADP"
+    },
+    {
+      "ticker": "ADSK",
+      "name": "Autodesk",
+      "name_ko": "Autodesk",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ADSK"
+    },
+    {
+      "ticker": "AEE",
+      "name": "Ameren",
+      "name_ko": "Ameren",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "AEE"
+    },
+    {
+      "ticker": "AEP",
+      "name": "American Electric Power",
+      "name_ko": "American Electric Power",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "AEP"
+    },
+    {
+      "ticker": "AES",
+      "name": "AES Corporation",
+      "name_ko": "AES Corporation",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "AES"
+    },
+    {
+      "ticker": "AFL",
+      "name": "Aflac",
+      "name_ko": "Aflac",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AFL"
+    },
+    {
+      "ticker": "AIG",
+      "name": "American International Group",
+      "name_ko": "American International Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AIG"
+    },
+    {
+      "ticker": "AIZ",
+      "name": "Assurant",
+      "name_ko": "Assurant",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AIZ"
+    },
+    {
+      "ticker": "AJG",
+      "name": "Arthur J. Gallagher & Co.",
+      "name_ko": "Arthur J. Gallagher & Co.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AJG"
+    },
+    {
+      "ticker": "AKAM",
+      "name": "Akamai Technologies",
+      "name_ko": "Akamai Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "AKAM"
+    },
+    {
+      "ticker": "ALB",
+      "name": "Albemarle Corporation",
+      "name_ko": "Albemarle Corporation",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "ALB"
+    },
+    {
+      "ticker": "ALGN",
+      "name": "Align Technology",
+      "name_ko": "Align Technology",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ALGN"
+    },
+    {
+      "ticker": "ALL",
+      "name": "Allstate",
+      "name_ko": "Allstate",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "ALL"
+    },
+    {
+      "ticker": "ALLE",
+      "name": "Allegion",
+      "name_ko": "Allegion",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ALLE"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "name_ko": "Applied Materials",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "AMAT"
+    },
+    {
+      "ticker": "AMCR",
+      "name": "Amcor",
+      "name_ko": "Amcor",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "AMCR"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "name_ko": "Advanced Micro Devices",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "AMD"
+    },
+    {
+      "ticker": "AME",
+      "name": "Ametek",
+      "name_ko": "Ametek",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "AME"
+    },
+    {
+      "ticker": "AMGN",
+      "name": "Amgen",
+      "name_ko": "Amgen",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "AMGN"
+    },
+    {
+      "ticker": "AMP",
+      "name": "Ameriprise Financial",
+      "name_ko": "Ameriprise Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AMP"
+    },
+    {
+      "ticker": "AMT",
+      "name": "American Tower",
+      "name_ko": "American Tower",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "AMT"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "name_ko": "Amazon",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "AMZN"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "name_ko": "Arista Networks",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ANET"
+    },
+    {
+      "ticker": "AON",
+      "name": "Aon plc",
+      "name_ko": "Aon plc",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AON"
+    },
+    {
+      "ticker": "AOS",
+      "name": "A. O. Smith",
+      "name_ko": "A. O. Smith",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "AOS"
+    },
+    {
+      "ticker": "APA",
+      "name": "APA Corporation",
+      "name_ko": "APA Corporation",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "APA"
+    },
+    {
+      "ticker": "APD",
+      "name": "Air Products",
+      "name_ko": "Air Products",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "APD"
+    },
+    {
+      "ticker": "APH",
+      "name": "Amphenol",
+      "name_ko": "Amphenol",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "APH"
+    },
+    {
+      "ticker": "APO",
+      "name": "Apollo Global Management",
+      "name_ko": "Apollo Global Management",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "APO"
+    },
+    {
+      "ticker": "APP",
+      "name": "AppLovin",
+      "name_ko": "AppLovin",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "APP"
+    },
+    {
+      "ticker": "APTV",
+      "name": "Aptiv",
+      "name_ko": "Aptiv",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "APTV"
+    },
+    {
+      "ticker": "ARE",
+      "name": "Alexandria Real Estate Equities",
+      "name_ko": "Alexandria Real Estate Equities",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "ARE"
+    },
+    {
+      "ticker": "ARES",
+      "name": "Ares Management",
+      "name_ko": "Ares Management",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "ARES"
+    },
+    {
+      "ticker": "ATO",
+      "name": "Atmos Energy",
+      "name_ko": "Atmos Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "ATO"
+    },
+    {
+      "ticker": "AVB",
+      "name": "AvalonBay Communities",
+      "name_ko": "AvalonBay Communities",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "AVB"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "name_ko": "Broadcom",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "AVGO"
+    },
+    {
+      "ticker": "AVY",
+      "name": "Avery Dennison",
+      "name_ko": "Avery Dennison",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "AVY"
+    },
+    {
+      "ticker": "AWK",
+      "name": "American Water Works",
+      "name_ko": "American Water Works",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "AWK"
+    },
+    {
+      "ticker": "AXON",
+      "name": "Axon Enterprise",
+      "name_ko": "Axon Enterprise",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "AXON"
+    },
+    {
+      "ticker": "AXP",
+      "name": "American Express",
+      "name_ko": "American Express",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "AXP"
+    },
+    {
+      "ticker": "AZO",
+      "name": "AutoZone",
+      "name_ko": "AutoZone",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "AZO"
+    },
+    {
+      "ticker": "BA",
+      "name": "Boeing",
+      "name_ko": "Boeing",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "BA"
+    },
+    {
+      "ticker": "BAC",
+      "name": "Bank of America",
+      "name_ko": "Bank of America",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BAC"
+    },
+    {
+      "ticker": "BALL",
+      "name": "Ball Corporation",
+      "name_ko": "Ball Corporation",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "BALL"
+    },
+    {
+      "ticker": "BAX",
+      "name": "Baxter International",
+      "name_ko": "Baxter International",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "BAX"
+    },
+    {
+      "ticker": "BBY",
+      "name": "Best Buy",
+      "name_ko": "Best Buy",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "BBY"
+    },
+    {
+      "ticker": "BDX",
+      "name": "Becton Dickinson",
+      "name_ko": "Becton Dickinson",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "BDX"
+    },
+    {
+      "ticker": "BEN",
+      "name": "Franklin Resources",
+      "name_ko": "Franklin Resources",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BEN"
+    },
+    {
+      "ticker": "BF-B",
+      "name": "Brown–Forman",
+      "name_ko": "Brown–Forman",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "BF-B"
+    },
+    {
+      "ticker": "BG",
+      "name": "Bunge Global",
+      "name_ko": "Bunge Global",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "BG"
+    },
+    {
+      "ticker": "BIIB",
+      "name": "Biogen",
+      "name_ko": "Biogen",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "BIIB"
+    },
+    {
+      "ticker": "BK",
+      "name": "BNY Mellon",
+      "name_ko": "BNY Mellon",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BK"
+    },
+    {
+      "ticker": "BKNG",
+      "name": "Booking Holdings",
+      "name_ko": "Booking Holdings",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "BKNG"
+    },
+    {
+      "ticker": "BKR",
+      "name": "Baker Hughes",
+      "name_ko": "Baker Hughes",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "BKR"
+    },
+    {
+      "ticker": "BLDR",
+      "name": "Builders FirstSource",
+      "name_ko": "Builders FirstSource",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "BLDR"
+    },
+    {
+      "ticker": "BLK",
+      "name": "BlackRock",
+      "name_ko": "BlackRock",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BLK"
+    },
+    {
+      "ticker": "BMY",
+      "name": "Bristol Myers Squibb",
+      "name_ko": "Bristol Myers Squibb",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "BMY"
+    },
+    {
+      "ticker": "BR",
+      "name": "Broadridge Financial Solutions",
+      "name_ko": "Broadridge Financial Solutions",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "BR"
+    },
+    {
+      "ticker": "BRK-B",
+      "name": "Berkshire Hathaway",
+      "name_ko": "Berkshire Hathaway",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BRK-B"
+    },
+    {
+      "ticker": "BRO",
+      "name": "Brown & Brown",
+      "name_ko": "Brown & Brown",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BRO"
+    },
+    {
+      "ticker": "BSX",
+      "name": "Boston Scientific",
+      "name_ko": "Boston Scientific",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "BSX"
+    },
+    {
+      "ticker": "BX",
+      "name": "Blackstone Inc.",
+      "name_ko": "Blackstone Inc.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "BX"
+    },
+    {
+      "ticker": "BXP",
+      "name": "BXP, Inc.",
+      "name_ko": "BXP, Inc.",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "BXP"
+    },
+    {
+      "ticker": "C",
+      "name": "Citigroup",
+      "name_ko": "Citigroup",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "C"
+    },
+    {
+      "ticker": "CAG",
+      "name": "Conagra Brands",
+      "name_ko": "Conagra Brands",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "CAG"
+    },
+    {
+      "ticker": "CAH",
+      "name": "Cardinal Health",
+      "name_ko": "Cardinal Health",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "CAH"
+    },
+    {
+      "ticker": "CARR",
+      "name": "Carrier Global",
+      "name_ko": "Carrier Global",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CARR"
+    },
+    {
+      "ticker": "CAT",
+      "name": "Caterpillar Inc.",
+      "name_ko": "Caterpillar Inc.",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CAT"
+    },
+    {
+      "ticker": "CB",
+      "name": "Chubb Limited",
+      "name_ko": "Chubb Limited",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CB"
+    },
+    {
+      "ticker": "CBOE",
+      "name": "Cboe Global Markets",
+      "name_ko": "Cboe Global Markets",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CBOE"
+    },
+    {
+      "ticker": "CBRE",
+      "name": "CBRE Group",
+      "name_ko": "CBRE Group",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "CBRE"
+    },
+    {
+      "ticker": "CCI",
+      "name": "Crown Castle",
+      "name_ko": "Crown Castle",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "CCI"
+    },
+    {
+      "ticker": "CCL",
+      "name": "Carnival",
+      "name_ko": "Carnival",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "CCL"
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems",
+      "name_ko": "Cadence Design Systems",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CDNS"
+    },
+    {
+      "ticker": "CDW",
+      "name": "CDW Corporation",
+      "name_ko": "CDW Corporation",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CDW"
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "name_ko": "Constellation Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "CEG"
+    },
+    {
+      "ticker": "CF",
+      "name": "CF Industries",
+      "name_ko": "CF Industries",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "CF"
+    },
+    {
+      "ticker": "CFG",
+      "name": "Citizens Financial Group",
+      "name_ko": "Citizens Financial Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CFG"
+    },
+    {
+      "ticker": "CHD",
+      "name": "Church & Dwight",
+      "name_ko": "Church & Dwight",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "CHD"
+    },
+    {
+      "ticker": "CHRW",
+      "name": "C.H. Robinson",
+      "name_ko": "C.H. Robinson",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CHRW"
+    },
+    {
+      "ticker": "CHTR",
+      "name": "Charter Communications",
+      "name_ko": "Charter Communications",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "CHTR"
+    },
+    {
+      "ticker": "CI",
+      "name": "Cigna",
+      "name_ko": "Cigna",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "CI"
+    },
+    {
+      "ticker": "CIEN",
+      "name": "Ciena",
+      "name_ko": "Ciena",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CIEN"
+    },
+    {
+      "ticker": "CINF",
+      "name": "Cincinnati Financial",
+      "name_ko": "Cincinnati Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CINF"
+    },
+    {
+      "ticker": "CL",
+      "name": "Colgate-Palmolive",
+      "name_ko": "Colgate-Palmolive",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "CL"
+    },
+    {
+      "ticker": "CLX",
+      "name": "Clorox",
+      "name_ko": "Clorox",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "CLX"
+    },
+    {
+      "ticker": "CMCSA",
+      "name": "Comcast",
+      "name_ko": "Comcast",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "CMCSA"
+    },
+    {
+      "ticker": "CME",
+      "name": "CME Group",
+      "name_ko": "CME Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CME"
+    },
+    {
+      "ticker": "CMG",
+      "name": "Chipotle Mexican Grill",
+      "name_ko": "Chipotle Mexican Grill",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "CMG"
+    },
+    {
+      "ticker": "CMI",
+      "name": "Cummins",
+      "name_ko": "Cummins",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CMI"
+    },
+    {
+      "ticker": "CMS",
+      "name": "CMS Energy",
+      "name_ko": "CMS Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "CMS"
+    },
+    {
+      "ticker": "CNC",
+      "name": "Centene Corporation",
+      "name_ko": "Centene Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "CNC"
+    },
+    {
+      "ticker": "CNP",
+      "name": "CenterPoint Energy",
+      "name_ko": "CenterPoint Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "CNP"
+    },
+    {
+      "ticker": "COF",
+      "name": "Capital One",
+      "name_ko": "Capital One",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "COF"
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase",
+      "name_ko": "Coinbase",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "COIN"
+    },
+    {
+      "ticker": "COO",
+      "name": "Cooper Companies (The)",
+      "name_ko": "Cooper Companies (The)",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "COO"
+    },
+    {
+      "ticker": "COP",
+      "name": "ConocoPhillips",
+      "name_ko": "ConocoPhillips",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "COP"
+    },
+    {
+      "ticker": "COR",
+      "name": "Cencora",
+      "name_ko": "Cencora",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "COR"
+    },
+    {
+      "ticker": "COST",
+      "name": "Costco",
+      "name_ko": "Costco",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "COST"
+    },
+    {
+      "ticker": "CPAY",
+      "name": "Corpay",
+      "name_ko": "Corpay",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "CPAY"
+    },
+    {
+      "ticker": "CPB",
+      "name": "Campbell's Company (The)",
+      "name_ko": "Campbell's Company (The)",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "CPB"
+    },
+    {
+      "ticker": "CPRT",
+      "name": "Copart",
+      "name_ko": "Copart",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CPRT"
+    },
+    {
+      "ticker": "CPT",
+      "name": "Camden Property Trust",
+      "name_ko": "Camden Property Trust",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "CPT"
+    },
+    {
+      "ticker": "CRH",
+      "name": "CRH plc",
+      "name_ko": "CRH plc",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "CRH"
+    },
+    {
+      "ticker": "CRL",
+      "name": "Charles River Laboratories",
+      "name_ko": "Charles River Laboratories",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "CRL"
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "name_ko": "Salesforce",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CRM"
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike",
+      "name_ko": "CrowdStrike",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CRWD"
+    },
+    {
+      "ticker": "CSCO",
+      "name": "Cisco",
+      "name_ko": "Cisco",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CSCO"
+    },
+    {
+      "ticker": "CSGP",
+      "name": "CoStar Group",
+      "name_ko": "CoStar Group",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "CSGP"
+    },
+    {
+      "ticker": "CSX",
+      "name": "CSX Corporation",
+      "name_ko": "CSX Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CSX"
+    },
+    {
+      "ticker": "CTAS",
+      "name": "Cintas",
+      "name_ko": "Cintas",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "CTAS"
+    },
+    {
+      "ticker": "CTRA",
+      "name": "Coterra",
+      "name_ko": "Coterra",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "CTRA"
+    },
+    {
+      "ticker": "CTSH",
+      "name": "Cognizant",
+      "name_ko": "Cognizant",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "CTSH"
+    },
+    {
+      "ticker": "CTVA",
+      "name": "Corteva",
+      "name_ko": "Corteva",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "CTVA"
+    },
+    {
+      "ticker": "CVNA",
+      "name": "Carvana",
+      "name_ko": "Carvana",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "CVNA"
+    },
+    {
+      "ticker": "CVS",
+      "name": "CVS Health",
+      "name_ko": "CVS Health",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "CVS"
+    },
+    {
+      "ticker": "CVX",
+      "name": "Chevron Corporation",
+      "name_ko": "Chevron Corporation",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "CVX"
+    },
+    {
+      "ticker": "D",
+      "name": "Dominion Energy",
+      "name_ko": "Dominion Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "D"
+    },
+    {
+      "ticker": "DAL",
+      "name": "Delta Air Lines",
+      "name_ko": "Delta Air Lines",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "DAL"
+    },
+    {
+      "ticker": "DASH",
+      "name": "DoorDash",
+      "name_ko": "DoorDash",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "DASH"
+    },
+    {
+      "ticker": "DD",
+      "name": "DuPont",
+      "name_ko": "DuPont",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "DD"
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "name_ko": "Datadog",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "DDOG"
+    },
+    {
+      "ticker": "DE",
+      "name": "Deere & Company",
+      "name_ko": "Deere & Company",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "DE"
+    },
+    {
+      "ticker": "DECK",
+      "name": "Deckers Brands",
+      "name_ko": "Deckers Brands",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "DECK"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "name_ko": "Dell Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "DELL"
+    },
+    {
+      "ticker": "DG",
+      "name": "Dollar General",
+      "name_ko": "Dollar General",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "DG"
+    },
+    {
+      "ticker": "DGX",
+      "name": "Quest Diagnostics",
+      "name_ko": "Quest Diagnostics",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "DGX"
+    },
+    {
+      "ticker": "DHI",
+      "name": "D. R. Horton",
+      "name_ko": "D. R. Horton",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "DHI"
+    },
+    {
+      "ticker": "DHR",
+      "name": "Danaher Corporation",
+      "name_ko": "Danaher Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "DHR"
+    },
+    {
+      "ticker": "DIS",
+      "name": "Walt Disney Company (The)",
+      "name_ko": "Walt Disney Company (The)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "DIS"
+    },
+    {
+      "ticker": "DLR",
+      "name": "Digital Realty",
+      "name_ko": "Digital Realty",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "DLR"
+    },
+    {
+      "ticker": "DLTR",
+      "name": "Dollar Tree",
+      "name_ko": "Dollar Tree",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "DLTR"
+    },
+    {
+      "ticker": "DOC",
+      "name": "Healthpeak Properties",
+      "name_ko": "Healthpeak Properties",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "DOC"
+    },
+    {
+      "ticker": "DOV",
+      "name": "Dover Corporation",
+      "name_ko": "Dover Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "DOV"
+    },
+    {
+      "ticker": "DOW",
+      "name": "Dow Inc.",
+      "name_ko": "Dow Inc.",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "DOW"
+    },
+    {
+      "ticker": "DPZ",
+      "name": "Domino's",
+      "name_ko": "Domino's",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "DPZ"
+    },
+    {
+      "ticker": "DRI",
+      "name": "Darden Restaurants",
+      "name_ko": "Darden Restaurants",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "DRI"
+    },
+    {
+      "ticker": "DTE",
+      "name": "DTE Energy",
+      "name_ko": "DTE Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "DTE"
+    },
+    {
+      "ticker": "DUK",
+      "name": "Duke Energy",
+      "name_ko": "Duke Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "DUK"
+    },
+    {
+      "ticker": "DVA",
+      "name": "DaVita",
+      "name_ko": "DaVita",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "DVA"
+    },
+    {
+      "ticker": "DVN",
+      "name": "Devon Energy",
+      "name_ko": "Devon Energy",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "DVN"
+    },
+    {
+      "ticker": "DXCM",
+      "name": "Dexcom",
+      "name_ko": "Dexcom",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "DXCM"
+    },
+    {
+      "ticker": "EA",
+      "name": "Electronic Arts",
+      "name_ko": "Electronic Arts",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "EA"
+    },
+    {
+      "ticker": "EBAY",
+      "name": "eBay Inc.",
+      "name_ko": "eBay Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "EBAY"
+    },
+    {
+      "ticker": "ECL",
+      "name": "Ecolab",
+      "name_ko": "Ecolab",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "ECL"
+    },
+    {
+      "ticker": "ED",
+      "name": "Consolidated Edison",
+      "name_ko": "Consolidated Edison",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "ED"
+    },
+    {
+      "ticker": "EFX",
+      "name": "Equifax",
+      "name_ko": "Equifax",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "EFX"
+    },
+    {
+      "ticker": "EG",
+      "name": "Everest Group",
+      "name_ko": "Everest Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "EG"
+    },
+    {
+      "ticker": "EIX",
+      "name": "Edison International",
+      "name_ko": "Edison International",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "EIX"
+    },
+    {
+      "ticker": "EL",
+      "name": "Estée Lauder Companies (The)",
+      "name_ko": "Estée Lauder Companies (The)",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "EL"
+    },
+    {
+      "ticker": "ELV",
+      "name": "Elevance Health",
+      "name_ko": "Elevance Health",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ELV"
+    },
+    {
+      "ticker": "EME",
+      "name": "Emcor",
+      "name_ko": "Emcor",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "EME"
+    },
+    {
+      "ticker": "EMR",
+      "name": "Emerson Electric",
+      "name_ko": "Emerson Electric",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "EMR"
+    },
+    {
+      "ticker": "EOG",
+      "name": "EOG Resources",
+      "name_ko": "EOG Resources",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "EOG"
+    },
+    {
+      "ticker": "EPAM",
+      "name": "EPAM Systems",
+      "name_ko": "EPAM Systems",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "EPAM"
+    },
+    {
+      "ticker": "EQIX",
+      "name": "Equinix",
+      "name_ko": "Equinix",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "EQIX"
+    },
+    {
+      "ticker": "EQR",
+      "name": "Equity Residential",
+      "name_ko": "Equity Residential",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "EQR"
+    },
+    {
+      "ticker": "EQT",
+      "name": "EQT Corporation",
+      "name_ko": "EQT Corporation",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "EQT"
+    },
+    {
+      "ticker": "ERIE",
+      "name": "Erie Indemnity",
+      "name_ko": "Erie Indemnity",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "ERIE"
+    },
+    {
+      "ticker": "ES",
+      "name": "Eversource Energy",
+      "name_ko": "Eversource Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "ES"
+    },
+    {
+      "ticker": "ESS",
+      "name": "Essex Property Trust",
+      "name_ko": "Essex Property Trust",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "ESS"
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton Corporation",
+      "name_ko": "Eaton Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ETN"
+    },
+    {
+      "ticker": "ETR",
+      "name": "Entergy",
+      "name_ko": "Entergy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "ETR"
+    },
+    {
+      "ticker": "EVRG",
+      "name": "Evergy",
+      "name_ko": "Evergy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "EVRG"
+    },
+    {
+      "ticker": "EW",
+      "name": "Edwards Lifesciences",
+      "name_ko": "Edwards Lifesciences",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "EW"
+    },
+    {
+      "ticker": "EXC",
+      "name": "Exelon",
+      "name_ko": "Exelon",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "EXC"
+    },
+    {
+      "ticker": "EXE",
+      "name": "Expand Energy",
+      "name_ko": "Expand Energy",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "EXE"
+    },
+    {
+      "ticker": "EXPD",
+      "name": "Expeditors International",
+      "name_ko": "Expeditors International",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "EXPD"
+    },
+    {
+      "ticker": "EXPE",
+      "name": "Expedia Group",
+      "name_ko": "Expedia Group",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "EXPE"
+    },
+    {
+      "ticker": "EXR",
+      "name": "Extra Space Storage",
+      "name_ko": "Extra Space Storage",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "EXR"
+    },
+    {
+      "ticker": "F",
+      "name": "Ford Motor Company",
+      "name_ko": "Ford Motor Company",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "F"
+    },
+    {
+      "ticker": "FANG",
+      "name": "Diamondback Energy",
+      "name_ko": "Diamondback Energy",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "FANG"
+    },
+    {
+      "ticker": "FAST",
+      "name": "Fastenal",
+      "name_ko": "Fastenal",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "FAST"
+    },
+    {
+      "ticker": "FCX",
+      "name": "Freeport-McMoRan",
+      "name_ko": "Freeport-McMoRan",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "FCX"
+    },
+    {
+      "ticker": "FDS",
+      "name": "FactSet",
+      "name_ko": "FactSet",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "FDS"
+    },
+    {
+      "ticker": "FDX",
+      "name": "FedEx",
+      "name_ko": "FedEx",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "FDX"
+    },
+    {
+      "ticker": "FE",
+      "name": "FirstEnergy",
+      "name_ko": "FirstEnergy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "FE"
+    },
+    {
+      "ticker": "FFIV",
+      "name": "F5, Inc.",
+      "name_ko": "F5, Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "FFIV"
+    },
+    {
+      "ticker": "FICO",
+      "name": "Fair Isaac",
+      "name_ko": "Fair Isaac",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "FICO"
+    },
+    {
+      "ticker": "FIS",
+      "name": "Fidelity National Information Services",
+      "name_ko": "Fidelity National Information Services",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "FIS"
+    },
+    {
+      "ticker": "FISV",
+      "name": "Fiserv",
+      "name_ko": "Fiserv",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "FISV"
+    },
+    {
+      "ticker": "FITB",
+      "name": "Fifth Third Bancorp",
+      "name_ko": "Fifth Third Bancorp",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "FITB"
+    },
+    {
+      "ticker": "FIX",
+      "name": "Comfort Systems USA",
+      "name_ko": "Comfort Systems USA",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "FIX"
+    },
+    {
+      "ticker": "FOX",
+      "name": "Fox Corporation (Class B)",
+      "name_ko": "Fox Corporation (Class B)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "FOX"
+    },
+    {
+      "ticker": "FOXA",
+      "name": "Fox Corporation (Class A)",
+      "name_ko": "Fox Corporation (Class A)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "FOXA"
+    },
+    {
+      "ticker": "FRT",
+      "name": "Federal Realty Investment Trust",
+      "name_ko": "Federal Realty Investment Trust",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "FRT"
+    },
+    {
+      "ticker": "FSLR",
+      "name": "First Solar",
+      "name_ko": "First Solar",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "FSLR"
+    },
+    {
+      "ticker": "FTNT",
+      "name": "Fortinet",
+      "name_ko": "Fortinet",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "FTNT"
+    },
+    {
+      "ticker": "FTV",
+      "name": "Fortive",
+      "name_ko": "Fortive",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "FTV"
+    },
+    {
+      "ticker": "GD",
+      "name": "General Dynamics",
+      "name_ko": "General Dynamics",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "GD"
+    },
+    {
+      "ticker": "GDDY",
+      "name": "GoDaddy",
+      "name_ko": "GoDaddy",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "GDDY"
+    },
+    {
+      "ticker": "GE",
+      "name": "GE Aerospace",
+      "name_ko": "GE Aerospace",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "GE"
+    },
+    {
+      "ticker": "GEHC",
+      "name": "GE HealthCare",
+      "name_ko": "GE HealthCare",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "GEHC"
+    },
+    {
+      "ticker": "GEN",
+      "name": "Gen Digital",
+      "name_ko": "Gen Digital",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "GEN"
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "name_ko": "GE Vernova",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "GEV"
+    },
+    {
+      "ticker": "GILD",
+      "name": "Gilead Sciences",
+      "name_ko": "Gilead Sciences",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "GILD"
+    },
+    {
+      "ticker": "GIS",
+      "name": "General Mills",
+      "name_ko": "General Mills",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "GIS"
+    },
+    {
+      "ticker": "GL",
+      "name": "Globe Life",
+      "name_ko": "Globe Life",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "GL"
+    },
+    {
+      "ticker": "GLW",
+      "name": "Corning Inc.",
+      "name_ko": "Corning Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "GLW"
+    },
+    {
+      "ticker": "GM",
+      "name": "General Motors",
+      "name_ko": "General Motors",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "GM"
+    },
+    {
+      "ticker": "GNRC",
+      "name": "Generac",
+      "name_ko": "Generac",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "GNRC"
+    },
+    {
+      "ticker": "GOOG",
+      "name": "Alphabet Inc. (Class C)",
+      "name_ko": "Alphabet Inc. (Class C)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "GOOG"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc. (Class A)",
+      "name_ko": "Alphabet Inc. (Class A)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "GOOGL"
+    },
+    {
+      "ticker": "GPC",
+      "name": "Genuine Parts Company",
+      "name_ko": "Genuine Parts Company",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "GPC"
+    },
+    {
+      "ticker": "GPN",
+      "name": "Global Payments",
+      "name_ko": "Global Payments",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "GPN"
+    },
+    {
+      "ticker": "GRMN",
+      "name": "Garmin",
+      "name_ko": "Garmin",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "GRMN"
+    },
+    {
+      "ticker": "GS",
+      "name": "Goldman Sachs",
+      "name_ko": "Goldman Sachs",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "GS"
+    },
+    {
+      "ticker": "GWW",
+      "name": "W. W. Grainger",
+      "name_ko": "W. W. Grainger",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "GWW"
+    },
+    {
+      "ticker": "HAL",
+      "name": "Halliburton",
+      "name_ko": "Halliburton",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "HAL"
+    },
+    {
+      "ticker": "HAS",
+      "name": "Hasbro",
+      "name_ko": "Hasbro",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "HAS"
+    },
+    {
+      "ticker": "HBAN",
+      "name": "Huntington Bancshares",
+      "name_ko": "Huntington Bancshares",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "HBAN"
+    },
+    {
+      "ticker": "HCA",
+      "name": "HCA Healthcare",
+      "name_ko": "HCA Healthcare",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "HCA"
+    },
+    {
+      "ticker": "HD",
+      "name": "Home Depot (The)",
+      "name_ko": "Home Depot (The)",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "HD"
+    },
+    {
+      "ticker": "HIG",
+      "name": "Hartford (The)",
+      "name_ko": "Hartford (The)",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "HIG"
+    },
+    {
+      "ticker": "HII",
+      "name": "Huntington Ingalls Industries",
+      "name_ko": "Huntington Ingalls Industries",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "HII"
+    },
+    {
+      "ticker": "HLT",
+      "name": "Hilton Worldwide",
+      "name_ko": "Hilton Worldwide",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "HLT"
+    },
+    {
+      "ticker": "HOLX",
+      "name": "Hologic",
+      "name_ko": "Hologic",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "HOLX"
+    },
+    {
+      "ticker": "HON",
+      "name": "Honeywell",
+      "name_ko": "Honeywell",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "HON"
+    },
+    {
+      "ticker": "HOOD",
+      "name": "Robinhood Markets",
+      "name_ko": "Robinhood Markets",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "HOOD"
+    },
+    {
+      "ticker": "HPE",
+      "name": "Hewlett Packard Enterprise",
+      "name_ko": "Hewlett Packard Enterprise",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "HPE"
+    },
+    {
+      "ticker": "HPQ",
+      "name": "HP Inc.",
+      "name_ko": "HP Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "HPQ"
+    },
+    {
+      "ticker": "HRL",
+      "name": "Hormel Foods",
+      "name_ko": "Hormel Foods",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "HRL"
+    },
+    {
+      "ticker": "HSIC",
+      "name": "Henry Schein",
+      "name_ko": "Henry Schein",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "HSIC"
+    },
+    {
+      "ticker": "HST",
+      "name": "Host Hotels & Resorts",
+      "name_ko": "Host Hotels & Resorts",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "HST"
+    },
+    {
+      "ticker": "HSY",
+      "name": "Hershey Company (The)",
+      "name_ko": "Hershey Company (The)",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "HSY"
+    },
+    {
+      "ticker": "HUBB",
+      "name": "Hubbell Incorporated",
+      "name_ko": "Hubbell Incorporated",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "HUBB"
+    },
+    {
+      "ticker": "HUM",
+      "name": "Humana",
+      "name_ko": "Humana",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "HUM"
+    },
+    {
+      "ticker": "HWM",
+      "name": "Howmet Aerospace",
+      "name_ko": "Howmet Aerospace",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "HWM"
+    },
+    {
+      "ticker": "IBKR",
+      "name": "Interactive Brokers",
+      "name_ko": "Interactive Brokers",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "IBKR"
+    },
+    {
+      "ticker": "IBM",
+      "name": "IBM",
+      "name_ko": "IBM",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "IBM"
+    },
+    {
+      "ticker": "ICE",
+      "name": "Intercontinental Exchange",
+      "name_ko": "Intercontinental Exchange",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "ICE"
+    },
+    {
+      "ticker": "IDXX",
+      "name": "Idexx Laboratories",
+      "name_ko": "Idexx Laboratories",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "IDXX"
+    },
+    {
+      "ticker": "IEX",
+      "name": "IDEX Corporation",
+      "name_ko": "IDEX Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "IEX"
+    },
+    {
+      "ticker": "IFF",
+      "name": "International Flavors & Fragrances",
+      "name_ko": "International Flavors & Fragrances",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "IFF"
+    },
+    {
+      "ticker": "INCY",
+      "name": "Incyte",
+      "name_ko": "Incyte",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "INCY"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "name_ko": "Intel",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "INTC"
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit",
+      "name_ko": "Intuit",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "INTU"
+    },
+    {
+      "ticker": "INVH",
+      "name": "Invitation Homes",
+      "name_ko": "Invitation Homes",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "INVH"
+    },
+    {
+      "ticker": "IP",
+      "name": "International Paper",
+      "name_ko": "International Paper",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "IP"
+    },
+    {
+      "ticker": "IQV",
+      "name": "IQVIA",
+      "name_ko": "IQVIA",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "IQV"
+    },
+    {
+      "ticker": "IR",
+      "name": "Ingersoll Rand",
+      "name_ko": "Ingersoll Rand",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "IR"
+    },
+    {
+      "ticker": "IRM",
+      "name": "Iron Mountain",
+      "name_ko": "Iron Mountain",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "IRM"
+    },
+    {
+      "ticker": "ISRG",
+      "name": "Intuitive Surgical",
+      "name_ko": "Intuitive Surgical",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ISRG"
+    },
+    {
+      "ticker": "IT",
+      "name": "Gartner",
+      "name_ko": "Gartner",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "IT"
+    },
+    {
+      "ticker": "ITW",
+      "name": "Illinois Tool Works",
+      "name_ko": "Illinois Tool Works",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ITW"
+    },
+    {
+      "ticker": "IVZ",
+      "name": "Invesco",
+      "name_ko": "Invesco",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "IVZ"
+    },
+    {
+      "ticker": "J",
+      "name": "Jacobs Solutions",
+      "name_ko": "Jacobs Solutions",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "J"
+    },
+    {
+      "ticker": "JBHT",
+      "name": "J.B. Hunt",
+      "name_ko": "J.B. Hunt",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "JBHT"
+    },
+    {
+      "ticker": "JBL",
+      "name": "Jabil",
+      "name_ko": "Jabil",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "JBL"
+    },
+    {
+      "ticker": "JCI",
+      "name": "Johnson Controls",
+      "name_ko": "Johnson Controls",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "JCI"
+    },
+    {
+      "ticker": "JKHY",
+      "name": "Jack Henry & Associates",
+      "name_ko": "Jack Henry & Associates",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "JKHY"
+    },
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "name_ko": "Johnson & Johnson",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "JNJ"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "name_ko": "JPMorgan Chase",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "JPM"
+    },
+    {
+      "ticker": "KDP",
+      "name": "Keurig Dr Pepper",
+      "name_ko": "Keurig Dr Pepper",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KDP"
+    },
+    {
+      "ticker": "KEY",
+      "name": "KeyCorp",
+      "name_ko": "KeyCorp",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "KEY"
+    },
+    {
+      "ticker": "KEYS",
+      "name": "Keysight Technologies",
+      "name_ko": "Keysight Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "KEYS"
+    },
+    {
+      "ticker": "KHC",
+      "name": "Kraft Heinz",
+      "name_ko": "Kraft Heinz",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KHC"
+    },
+    {
+      "ticker": "KIM",
+      "name": "Kimco Realty",
+      "name_ko": "Kimco Realty",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "KIM"
+    },
+    {
+      "ticker": "KKR",
+      "name": "KKR & Co.",
+      "name_ko": "KKR & Co.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "KKR"
+    },
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "name_ko": "KLA Corporation",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "KLAC"
+    },
+    {
+      "ticker": "KMB",
+      "name": "Kimberly-Clark",
+      "name_ko": "Kimberly-Clark",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KMB"
+    },
+    {
+      "ticker": "KMI",
+      "name": "Kinder Morgan",
+      "name_ko": "Kinder Morgan",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "KMI"
+    },
+    {
+      "ticker": "KO",
+      "name": "Coca-Cola Company (The)",
+      "name_ko": "Coca-Cola Company (The)",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KO"
+    },
+    {
+      "ticker": "KR",
+      "name": "Kroger",
+      "name_ko": "Kroger",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KR"
+    },
+    {
+      "ticker": "KVUE",
+      "name": "Kenvue",
+      "name_ko": "Kenvue",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "KVUE"
+    },
+    {
+      "ticker": "L",
+      "name": "Loews Corporation",
+      "name_ko": "Loews Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "L"
+    },
+    {
+      "ticker": "LDOS",
+      "name": "Leidos",
+      "name_ko": "Leidos",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "LDOS"
+    },
+    {
+      "ticker": "LEN",
+      "name": "Lennar",
+      "name_ko": "Lennar",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "LEN"
+    },
+    {
+      "ticker": "LH",
+      "name": "Labcorp",
+      "name_ko": "Labcorp",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "LH"
+    },
+    {
+      "ticker": "LHX",
+      "name": "L3Harris",
+      "name_ko": "L3Harris",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "LHX"
+    },
+    {
+      "ticker": "LII",
+      "name": "Lennox International",
+      "name_ko": "Lennox International",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "LII"
+    },
+    {
+      "ticker": "LIN",
+      "name": "Linde plc",
+      "name_ko": "Linde plc",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "LIN"
+    },
+    {
+      "ticker": "LLY",
+      "name": "Lilly (Eli)",
+      "name_ko": "Lilly (Eli)",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "LLY"
+    },
+    {
+      "ticker": "LMT",
+      "name": "Lockheed Martin",
+      "name_ko": "Lockheed Martin",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "LMT"
+    },
+    {
+      "ticker": "LNT",
+      "name": "Alliant Energy",
+      "name_ko": "Alliant Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "LNT"
+    },
+    {
+      "ticker": "LOW",
+      "name": "Lowe's",
+      "name_ko": "Lowe's",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "LOW"
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "name_ko": "Lam Research",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "LRCX"
+    },
+    {
+      "ticker": "LULU",
+      "name": "Lululemon Athletica",
+      "name_ko": "Lululemon Athletica",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "LULU"
+    },
+    {
+      "ticker": "LUV",
+      "name": "Southwest Airlines",
+      "name_ko": "Southwest Airlines",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "LUV"
+    },
+    {
+      "ticker": "LVS",
+      "name": "Las Vegas Sands",
+      "name_ko": "Las Vegas Sands",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "LVS"
+    },
+    {
+      "ticker": "LW",
+      "name": "Lamb Weston",
+      "name_ko": "Lamb Weston",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "LW"
+    },
+    {
+      "ticker": "LYB",
+      "name": "LyondellBasell",
+      "name_ko": "LyondellBasell",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "LYB"
+    },
+    {
+      "ticker": "LYV",
+      "name": "Live Nation Entertainment",
+      "name_ko": "Live Nation Entertainment",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "LYV"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "name_ko": "Mastercard",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MA"
+    },
+    {
+      "ticker": "MAA",
+      "name": "Mid-America Apartment Communities",
+      "name_ko": "Mid-America Apartment Communities",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "MAA"
+    },
+    {
+      "ticker": "MAR",
+      "name": "Marriott International",
+      "name_ko": "Marriott International",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "MAR"
+    },
+    {
+      "ticker": "MAS",
+      "name": "Masco",
+      "name_ko": "Masco",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "MAS"
+    },
+    {
+      "ticker": "MCD",
+      "name": "McDonald's",
+      "name_ko": "McDonald's",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "MCD"
+    },
+    {
+      "ticker": "MCHP",
+      "name": "Microchip Technology",
+      "name_ko": "Microchip Technology",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "MCHP"
+    },
+    {
+      "ticker": "MCK",
+      "name": "McKesson Corporation",
+      "name_ko": "McKesson Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MCK"
+    },
+    {
+      "ticker": "MCO",
+      "name": "Moody's Corporation",
+      "name_ko": "Moody's Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MCO"
+    },
+    {
+      "ticker": "MDLZ",
+      "name": "Mondelez International",
+      "name_ko": "Mondelez International",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "MDLZ"
+    },
+    {
+      "ticker": "MDT",
+      "name": "Medtronic",
+      "name_ko": "Medtronic",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MDT"
+    },
+    {
+      "ticker": "MET",
+      "name": "MetLife",
+      "name_ko": "MetLife",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MET"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "name_ko": "Meta Platforms",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "META"
+    },
+    {
+      "ticker": "MGM",
+      "name": "MGM Resorts",
+      "name_ko": "MGM Resorts",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "MGM"
+    },
+    {
+      "ticker": "MKC",
+      "name": "McCormick & Company",
+      "name_ko": "McCormick & Company",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "MKC"
+    },
+    {
+      "ticker": "MLM",
+      "name": "Martin Marietta Materials",
+      "name_ko": "Martin Marietta Materials",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "MLM"
+    },
+    {
+      "ticker": "MMM",
+      "name": "3M",
+      "name_ko": "3M",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "MMM"
+    },
+    {
+      "ticker": "MNST",
+      "name": "Monster Beverage",
+      "name_ko": "Monster Beverage",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "MNST"
+    },
+    {
+      "ticker": "MO",
+      "name": "Altria",
+      "name_ko": "Altria",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "MO"
+    },
+    {
+      "ticker": "MOH",
+      "name": "Molina Healthcare",
+      "name_ko": "Molina Healthcare",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MOH"
+    },
+    {
+      "ticker": "MOS",
+      "name": "Mosaic Company (The)",
+      "name_ko": "Mosaic Company (The)",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "MOS"
+    },
+    {
+      "ticker": "MPC",
+      "name": "Marathon Petroleum",
+      "name_ko": "Marathon Petroleum",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "MPC"
+    },
+    {
+      "ticker": "MPWR",
+      "name": "Monolithic Power Systems",
+      "name_ko": "Monolithic Power Systems",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "MPWR"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "name_ko": "Merck & Co.",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MRK"
+    },
+    {
+      "ticker": "MRNA",
+      "name": "Moderna",
+      "name_ko": "Moderna",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MRNA"
+    },
+    {
+      "ticker": "MRSH",
+      "name": "Marsh McLennan",
+      "name_ko": "Marsh McLennan",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MRSH"
+    },
+    {
+      "ticker": "MS",
+      "name": "Morgan Stanley",
+      "name_ko": "Morgan Stanley",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MS"
+    },
+    {
+      "ticker": "MSCI",
+      "name": "MSCI Inc.",
+      "name_ko": "MSCI Inc.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MSCI"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "name_ko": "Microsoft",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "MSFT"
+    },
+    {
+      "ticker": "MSI",
+      "name": "Motorola Solutions",
+      "name_ko": "Motorola Solutions",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "MSI"
+    },
+    {
+      "ticker": "MTB",
+      "name": "M&T Bank",
+      "name_ko": "M&T Bank",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "MTB"
+    },
+    {
+      "ticker": "MTCH",
+      "name": "Match Group",
+      "name_ko": "Match Group",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "MTCH"
+    },
+    {
+      "ticker": "MTD",
+      "name": "Mettler Toledo",
+      "name_ko": "Mettler Toledo",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "MTD"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "name_ko": "Micron Technology",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "MU"
+    },
+    {
+      "ticker": "NCLH",
+      "name": "Norwegian Cruise Line Holdings",
+      "name_ko": "Norwegian Cruise Line Holdings",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "NCLH"
+    },
+    {
+      "ticker": "NDAQ",
+      "name": "Nasdaq, Inc.",
+      "name_ko": "Nasdaq, Inc.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "NDAQ"
+    },
+    {
+      "ticker": "NDSN",
+      "name": "Nordson Corporation",
+      "name_ko": "Nordson Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "NDSN"
+    },
+    {
+      "ticker": "NEE",
+      "name": "NextEra Energy",
+      "name_ko": "NextEra Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "NEE"
+    },
+    {
+      "ticker": "NEM",
+      "name": "Newmont",
+      "name_ko": "Newmont",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "NEM"
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix",
+      "name_ko": "Netflix",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "NFLX"
+    },
+    {
+      "ticker": "NI",
+      "name": "NiSource",
+      "name_ko": "NiSource",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "NI"
+    },
+    {
+      "ticker": "NKE",
+      "name": "Nike, Inc.",
+      "name_ko": "Nike, Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "NKE"
+    },
+    {
+      "ticker": "NOC",
+      "name": "Northrop Grumman",
+      "name_ko": "Northrop Grumman",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "NOC"
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "name_ko": "ServiceNow",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "NOW"
+    },
+    {
+      "ticker": "NRG",
+      "name": "NRG Energy",
+      "name_ko": "NRG Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "NRG"
+    },
+    {
+      "ticker": "NSC",
+      "name": "Norfolk Southern",
+      "name_ko": "Norfolk Southern",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "NSC"
+    },
+    {
+      "ticker": "NTAP",
+      "name": "NetApp",
+      "name_ko": "NetApp",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "NTAP"
+    },
+    {
+      "ticker": "NTRS",
+      "name": "Northern Trust",
+      "name_ko": "Northern Trust",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "NTRS"
+    },
+    {
+      "ticker": "NUE",
+      "name": "Nucor",
+      "name_ko": "Nucor",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "NUE"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "name_ko": "Nvidia",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "NVDA"
+    },
+    {
+      "ticker": "NVR",
+      "name": "NVR, Inc.",
+      "name_ko": "NVR, Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "NVR"
+    },
+    {
+      "ticker": "NWS",
+      "name": "News Corp (Class B)",
+      "name_ko": "News Corp (Class B)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "NWS"
+    },
+    {
+      "ticker": "NWSA",
+      "name": "News Corp (Class A)",
+      "name_ko": "News Corp (Class A)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "NWSA"
+    },
+    {
+      "ticker": "NXPI",
+      "name": "NXP Semiconductors",
+      "name_ko": "NXP Semiconductors",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "NXPI"
+    },
+    {
+      "ticker": "O",
+      "name": "Realty Income",
+      "name_ko": "Realty Income",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "O"
+    },
+    {
+      "ticker": "ODFL",
+      "name": "Old Dominion",
+      "name_ko": "Old Dominion",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ODFL"
+    },
+    {
+      "ticker": "OKE",
+      "name": "Oneok",
+      "name_ko": "Oneok",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "OKE"
+    },
+    {
+      "ticker": "OMC",
+      "name": "Omnicom Group",
+      "name_ko": "Omnicom Group",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "OMC"
+    },
+    {
+      "ticker": "ON",
+      "name": "ON Semiconductor",
+      "name_ko": "ON Semiconductor",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ON"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle Corporation",
+      "name_ko": "Oracle Corporation",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ORCL"
+    },
+    {
+      "ticker": "ORLY",
+      "name": "O’Reilly Automotive",
+      "name_ko": "O’Reilly Automotive",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "ORLY"
+    },
+    {
+      "ticker": "OTIS",
+      "name": "Otis Worldwide",
+      "name_ko": "Otis Worldwide",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "OTIS"
+    },
+    {
+      "ticker": "OXY",
+      "name": "Occidental Petroleum",
+      "name_ko": "Occidental Petroleum",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "OXY"
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "name_ko": "Palo Alto Networks",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "PANW"
+    },
+    {
+      "ticker": "PAYC",
+      "name": "Paycom",
+      "name_ko": "Paycom",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PAYC"
+    },
+    {
+      "ticker": "PAYX",
+      "name": "Paychex",
+      "name_ko": "Paychex",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PAYX"
+    },
+    {
+      "ticker": "PCAR",
+      "name": "Paccar",
+      "name_ko": "Paccar",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PCAR"
+    },
+    {
+      "ticker": "PCG",
+      "name": "PG&E Corporation",
+      "name_ko": "PG&E Corporation",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "PCG"
+    },
+    {
+      "ticker": "PEG",
+      "name": "Public Service Enterprise Group",
+      "name_ko": "Public Service Enterprise Group",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "PEG"
+    },
+    {
+      "ticker": "PEP",
+      "name": "PepsiCo",
+      "name_ko": "PepsiCo",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "PEP"
+    },
+    {
+      "ticker": "PFE",
+      "name": "Pfizer",
+      "name_ko": "Pfizer",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "PFE"
+    },
+    {
+      "ticker": "PFG",
+      "name": "Principal Financial Group",
+      "name_ko": "Principal Financial Group",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "PFG"
+    },
+    {
+      "ticker": "PG",
+      "name": "Procter & Gamble",
+      "name_ko": "Procter & Gamble",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "PG"
+    },
+    {
+      "ticker": "PGR",
+      "name": "Progressive Corporation",
+      "name_ko": "Progressive Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "PGR"
+    },
+    {
+      "ticker": "PH",
+      "name": "Parker Hannifin",
+      "name_ko": "Parker Hannifin",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PH"
+    },
+    {
+      "ticker": "PHM",
+      "name": "PulteGroup",
+      "name_ko": "PulteGroup",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "PHM"
+    },
+    {
+      "ticker": "PKG",
+      "name": "Packaging Corporation of America",
+      "name_ko": "Packaging Corporation of America",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "PKG"
+    },
+    {
+      "ticker": "PLD",
+      "name": "Prologis",
+      "name_ko": "Prologis",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "PLD"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "name_ko": "Palantir Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "PLTR"
+    },
+    {
+      "ticker": "PM",
+      "name": "Philip Morris International",
+      "name_ko": "Philip Morris International",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "PM"
+    },
+    {
+      "ticker": "PNC",
+      "name": "PNC Financial Services",
+      "name_ko": "PNC Financial Services",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "PNC"
+    },
+    {
+      "ticker": "PNR",
+      "name": "Pentair",
+      "name_ko": "Pentair",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PNR"
+    },
+    {
+      "ticker": "PNW",
+      "name": "Pinnacle West Capital",
+      "name_ko": "Pinnacle West Capital",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "PNW"
+    },
+    {
+      "ticker": "PODD",
+      "name": "Insulet Corporation",
+      "name_ko": "Insulet Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "PODD"
+    },
+    {
+      "ticker": "POOL",
+      "name": "Pool Corporation",
+      "name_ko": "Pool Corporation",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "POOL"
+    },
+    {
+      "ticker": "PPG",
+      "name": "PPG Industries",
+      "name_ko": "PPG Industries",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "PPG"
+    },
+    {
+      "ticker": "PPL",
+      "name": "PPL Corporation",
+      "name_ko": "PPL Corporation",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "PPL"
+    },
+    {
+      "ticker": "PRU",
+      "name": "Prudential Financial",
+      "name_ko": "Prudential Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "PRU"
+    },
+    {
+      "ticker": "PSA",
+      "name": "Public Storage",
+      "name_ko": "Public Storage",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "PSA"
+    },
+    {
+      "ticker": "PSKY",
+      "name": "Paramount Skydance Corporation",
+      "name_ko": "Paramount Skydance Corporation",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "PSKY"
+    },
+    {
+      "ticker": "PSX",
+      "name": "Phillips 66",
+      "name_ko": "Phillips 66",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "PSX"
+    },
+    {
+      "ticker": "PTC",
+      "name": "PTC Inc.",
+      "name_ko": "PTC Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "PTC"
+    },
+    {
+      "ticker": "PWR",
+      "name": "Quanta Services",
+      "name_ko": "Quanta Services",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "PWR"
+    },
+    {
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "name_ko": "PayPal",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "PYPL"
+    },
+    {
+      "ticker": "Q",
+      "name": "Qnity Electronics",
+      "name_ko": "Qnity Electronics",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "Q"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "name_ko": "Qualcomm",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "QCOM"
+    },
+    {
+      "ticker": "RCL",
+      "name": "Royal Caribbean Group",
+      "name_ko": "Royal Caribbean Group",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "RCL"
+    },
+    {
+      "ticker": "REG",
+      "name": "Regency Centers",
+      "name_ko": "Regency Centers",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "REG"
+    },
+    {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals",
+      "name_ko": "Regeneron Pharmaceuticals",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "REGN"
+    },
+    {
+      "ticker": "RF",
+      "name": "Regions Financial Corporation",
+      "name_ko": "Regions Financial Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "RF"
+    },
+    {
+      "ticker": "RJF",
+      "name": "Raymond James Financial",
+      "name_ko": "Raymond James Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "RJF"
+    },
+    {
+      "ticker": "RL",
+      "name": "Ralph Lauren Corporation",
+      "name_ko": "Ralph Lauren Corporation",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "RL"
+    },
+    {
+      "ticker": "RMD",
+      "name": "ResMed",
+      "name_ko": "ResMed",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "RMD"
+    },
+    {
+      "ticker": "ROK",
+      "name": "Rockwell Automation",
+      "name_ko": "Rockwell Automation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ROK"
+    },
+    {
+      "ticker": "ROL",
+      "name": "Rollins, Inc.",
+      "name_ko": "Rollins, Inc.",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "ROL"
+    },
+    {
+      "ticker": "ROP",
+      "name": "Roper Technologies",
+      "name_ko": "Roper Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ROP"
+    },
+    {
+      "ticker": "ROST",
+      "name": "Ross Stores",
+      "name_ko": "Ross Stores",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "ROST"
+    },
+    {
+      "ticker": "RSG",
+      "name": "Republic Services",
+      "name_ko": "Republic Services",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "RSG"
+    },
+    {
+      "ticker": "RTX",
+      "name": "RTX Corporation",
+      "name_ko": "RTX Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "RTX"
+    },
+    {
+      "ticker": "RVTY",
+      "name": "Revvity",
+      "name_ko": "Revvity",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "RVTY"
+    },
+    {
+      "ticker": "SBAC",
+      "name": "SBA Communications",
+      "name_ko": "SBA Communications",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "SBAC"
+    },
+    {
+      "ticker": "SBUX",
+      "name": "Starbucks",
+      "name_ko": "Starbucks",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "SBUX"
+    },
+    {
+      "ticker": "SCHW",
+      "name": "Charles Schwab Corporation",
+      "name_ko": "Charles Schwab Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "SCHW"
+    },
+    {
+      "ticker": "SHW",
+      "name": "Sherwin-Williams",
+      "name_ko": "Sherwin-Williams",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "SHW"
+    },
+    {
+      "ticker": "SJM",
+      "name": "J.M. Smucker Company (The)",
+      "name_ko": "J.M. Smucker Company (The)",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "SJM"
+    },
+    {
+      "ticker": "SLB",
+      "name": "Schlumberger",
+      "name_ko": "Schlumberger",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "SLB"
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "name_ko": "Supermicro",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "SMCI"
+    },
+    {
+      "ticker": "SNA",
+      "name": "Snap-on",
+      "name_ko": "Snap-on",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "SNA"
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "name_ko": "Sandisk",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "SNDK"
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys",
+      "name_ko": "Synopsys",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "SNPS"
+    },
+    {
+      "ticker": "SO",
+      "name": "Southern Company",
+      "name_ko": "Southern Company",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "SO"
+    },
+    {
+      "ticker": "SOLV",
+      "name": "Solventum",
+      "name_ko": "Solventum",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "SOLV"
+    },
+    {
+      "ticker": "SPG",
+      "name": "Simon Property Group",
+      "name_ko": "Simon Property Group",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "SPG"
+    },
+    {
+      "ticker": "SPGI",
+      "name": "S&P Global",
+      "name_ko": "S&P Global",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "SPGI"
+    },
+    {
+      "ticker": "SRE",
+      "name": "Sempra",
+      "name_ko": "Sempra",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "SRE"
+    },
+    {
+      "ticker": "STE",
+      "name": "Steris",
+      "name_ko": "Steris",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "STE"
+    },
+    {
+      "ticker": "STLD",
+      "name": "Steel Dynamics",
+      "name_ko": "Steel Dynamics",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "STLD"
+    },
+    {
+      "ticker": "STT",
+      "name": "State Street Corporation",
+      "name_ko": "State Street Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "STT"
+    },
+    {
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "name_ko": "Seagate Technology",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "STX"
+    },
+    {
+      "ticker": "STZ",
+      "name": "Constellation Brands",
+      "name_ko": "Constellation Brands",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "STZ"
+    },
+    {
+      "ticker": "SW",
+      "name": "Smurfit Westrock",
+      "name_ko": "Smurfit Westrock",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "SW"
+    },
+    {
+      "ticker": "SWK",
+      "name": "Stanley Black & Decker",
+      "name_ko": "Stanley Black & Decker",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "SWK"
+    },
+    {
+      "ticker": "SWKS",
+      "name": "Skyworks Solutions",
+      "name_ko": "Skyworks Solutions",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "SWKS"
+    },
+    {
+      "ticker": "SYF",
+      "name": "Synchrony Financial",
+      "name_ko": "Synchrony Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "SYF"
+    },
+    {
+      "ticker": "SYK",
+      "name": "Stryker Corporation",
+      "name_ko": "Stryker Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "SYK"
+    },
+    {
+      "ticker": "SYY",
+      "name": "Sysco",
+      "name_ko": "Sysco",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "SYY"
+    },
+    {
+      "ticker": "T",
+      "name": "AT&T",
+      "name_ko": "AT&T",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "T"
+    },
+    {
+      "ticker": "TAP",
+      "name": "Molson Coors Beverage Company",
+      "name_ko": "Molson Coors Beverage Company",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "TAP"
+    },
+    {
+      "ticker": "TDG",
+      "name": "TransDigm Group",
+      "name_ko": "TransDigm Group",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "TDG"
+    },
+    {
+      "ticker": "TDY",
+      "name": "Teledyne Technologies",
+      "name_ko": "Teledyne Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TDY"
+    },
+    {
+      "ticker": "TECH",
+      "name": "Bio-Techne",
+      "name_ko": "Bio-Techne",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "TECH"
+    },
+    {
+      "ticker": "TEL",
+      "name": "TE Connectivity",
+      "name_ko": "TE Connectivity",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TEL"
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "name_ko": "Teradyne",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TER"
+    },
+    {
+      "ticker": "TFC",
+      "name": "Truist Financial",
+      "name_ko": "Truist Financial",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "TFC"
+    },
+    {
+      "ticker": "TGT",
+      "name": "Target Corporation",
+      "name_ko": "Target Corporation",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "TGT"
+    },
+    {
+      "ticker": "TJX",
+      "name": "TJX Companies",
+      "name_ko": "TJX Companies",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "TJX"
+    },
+    {
+      "ticker": "TKO",
+      "name": "TKO Group Holdings",
+      "name_ko": "TKO Group Holdings",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "TKO"
+    },
+    {
+      "ticker": "TMO",
+      "name": "Thermo Fisher Scientific",
+      "name_ko": "Thermo Fisher Scientific",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "TMO"
+    },
+    {
+      "ticker": "TMUS",
+      "name": "T-Mobile US",
+      "name_ko": "T-Mobile US",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "TMUS"
+    },
+    {
+      "ticker": "TPL",
+      "name": "Texas Pacific Land Corporation",
+      "name_ko": "Texas Pacific Land Corporation",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "TPL"
+    },
+    {
+      "ticker": "TPR",
+      "name": "Tapestry, Inc.",
+      "name_ko": "Tapestry, Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "TPR"
+    },
+    {
+      "ticker": "TRGP",
+      "name": "Targa Resources",
+      "name_ko": "Targa Resources",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "TRGP"
+    },
+    {
+      "ticker": "TRMB",
+      "name": "Trimble Inc.",
+      "name_ko": "Trimble Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TRMB"
+    },
+    {
+      "ticker": "TROW",
+      "name": "T. Rowe Price",
+      "name_ko": "T. Rowe Price",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "TROW"
+    },
+    {
+      "ticker": "TRV",
+      "name": "Travelers Companies (The)",
+      "name_ko": "Travelers Companies (The)",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "TRV"
+    },
+    {
+      "ticker": "TSCO",
+      "name": "Tractor Supply",
+      "name_ko": "Tractor Supply",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "TSCO"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla, Inc.",
+      "name_ko": "Tesla, Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "TSLA"
+    },
+    {
+      "ticker": "TSN",
+      "name": "Tyson Foods",
+      "name_ko": "Tyson Foods",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "TSN"
+    },
+    {
+      "ticker": "TT",
+      "name": "Trane Technologies",
+      "name_ko": "Trane Technologies",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "TT"
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk (The)",
+      "name_ko": "Trade Desk (The)",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "TTD"
+    },
+    {
+      "ticker": "TTWO",
+      "name": "Take-Two Interactive",
+      "name_ko": "Take-Two Interactive",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "TTWO"
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "name_ko": "Texas Instruments",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TXN"
+    },
+    {
+      "ticker": "TXT",
+      "name": "Textron",
+      "name_ko": "Textron",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "TXT"
+    },
+    {
+      "ticker": "TYL",
+      "name": "Tyler Technologies",
+      "name_ko": "Tyler Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "TYL"
+    },
+    {
+      "ticker": "UAL",
+      "name": "United Airlines Holdings",
+      "name_ko": "United Airlines Holdings",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "UAL"
+    },
+    {
+      "ticker": "UBER",
+      "name": "Uber",
+      "name_ko": "Uber",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "UBER"
+    },
+    {
+      "ticker": "UDR",
+      "name": "UDR, Inc.",
+      "name_ko": "UDR, Inc.",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "UDR"
+    },
+    {
+      "ticker": "UHS",
+      "name": "Universal Health Services",
+      "name_ko": "Universal Health Services",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "UHS"
+    },
+    {
+      "ticker": "ULTA",
+      "name": "Ulta Beauty",
+      "name_ko": "Ulta Beauty",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "ULTA"
+    },
+    {
+      "ticker": "UNH",
+      "name": "UnitedHealth Group",
+      "name_ko": "UnitedHealth Group",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "UNH"
+    },
+    {
+      "ticker": "UNP",
+      "name": "Union Pacific Corporation",
+      "name_ko": "Union Pacific Corporation",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "UNP"
+    },
+    {
+      "ticker": "UPS",
+      "name": "United Parcel Service",
+      "name_ko": "United Parcel Service",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "UPS"
+    },
+    {
+      "ticker": "URI",
+      "name": "United Rentals",
+      "name_ko": "United Rentals",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "URI"
+    },
+    {
+      "ticker": "USB",
+      "name": "U.S. Bancorp",
+      "name_ko": "U.S. Bancorp",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "USB"
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc.",
+      "name_ko": "Visa Inc.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "V"
+    },
+    {
+      "ticker": "VICI",
+      "name": "Vici Properties",
+      "name_ko": "Vici Properties",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "VICI"
+    },
+    {
+      "ticker": "VLO",
+      "name": "Valero Energy",
+      "name_ko": "Valero Energy",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "VLO"
+    },
+    {
+      "ticker": "VLTO",
+      "name": "Veralto",
+      "name_ko": "Veralto",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "VLTO"
+    },
+    {
+      "ticker": "VMC",
+      "name": "Vulcan Materials Company",
+      "name_ko": "Vulcan Materials Company",
+      "asset_type": "개별주",
+      "type": "소재",
+      "sector": "Materials",
+      "heatmap_label": "VMC"
+    },
+    {
+      "ticker": "VRSK",
+      "name": "Verisk Analytics",
+      "name_ko": "Verisk Analytics",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "VRSK"
+    },
+    {
+      "ticker": "VRSN",
+      "name": "Verisign",
+      "name_ko": "Verisign",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "VRSN"
+    },
+    {
+      "ticker": "VRTX",
+      "name": "Vertex Pharmaceuticals",
+      "name_ko": "Vertex Pharmaceuticals",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "VRTX"
+    },
+    {
+      "ticker": "VST",
+      "name": "Vistra Corp.",
+      "name_ko": "Vistra Corp.",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "VST"
+    },
+    {
+      "ticker": "VTR",
+      "name": "Ventas",
+      "name_ko": "Ventas",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "VTR"
+    },
+    {
+      "ticker": "VTRS",
+      "name": "Viatris",
+      "name_ko": "Viatris",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "VTRS"
+    },
+    {
+      "ticker": "VZ",
+      "name": "Verizon",
+      "name_ko": "Verizon",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "VZ"
+    },
+    {
+      "ticker": "WAB",
+      "name": "Wabtec",
+      "name_ko": "Wabtec",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "WAB"
+    },
+    {
+      "ticker": "WAT",
+      "name": "Waters Corporation",
+      "name_ko": "Waters Corporation",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "WAT"
+    },
+    {
+      "ticker": "WBD",
+      "name": "Warner Bros. Discovery",
+      "name_ko": "Warner Bros. Discovery",
+      "asset_type": "개별주",
+      "type": "통신",
+      "sector": "Communication Services",
+      "heatmap_label": "WBD"
+    },
+    {
+      "ticker": "WDAY",
+      "name": "Workday, Inc.",
+      "name_ko": "Workday, Inc.",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "WDAY"
+    },
+    {
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "name_ko": "Western Digital",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "WDC"
+    },
+    {
+      "ticker": "WEC",
+      "name": "WEC Energy Group",
+      "name_ko": "WEC Energy Group",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "WEC"
+    },
+    {
+      "ticker": "WELL",
+      "name": "Welltower",
+      "name_ko": "Welltower",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "WELL"
+    },
+    {
+      "ticker": "WFC",
+      "name": "Wells Fargo",
+      "name_ko": "Wells Fargo",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "WFC"
+    },
+    {
+      "ticker": "WM",
+      "name": "Waste Management",
+      "name_ko": "Waste Management",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "WM"
+    },
+    {
+      "ticker": "WMB",
+      "name": "Williams Companies",
+      "name_ko": "Williams Companies",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "WMB"
+    },
+    {
+      "ticker": "WMT",
+      "name": "Walmart",
+      "name_ko": "Walmart",
+      "asset_type": "개별주",
+      "type": "필수소비재",
+      "sector": "Consumer Staples",
+      "heatmap_label": "WMT"
+    },
+    {
+      "ticker": "WRB",
+      "name": "W. R. Berkley Corporation",
+      "name_ko": "W. R. Berkley Corporation",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "WRB"
+    },
+    {
+      "ticker": "WSM",
+      "name": "Williams-Sonoma, Inc.",
+      "name_ko": "Williams-Sonoma, Inc.",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "WSM"
+    },
+    {
+      "ticker": "WST",
+      "name": "West Pharmaceutical Services",
+      "name_ko": "West Pharmaceutical Services",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "WST"
+    },
+    {
+      "ticker": "WTW",
+      "name": "Willis Towers Watson",
+      "name_ko": "Willis Towers Watson",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "WTW"
+    },
+    {
+      "ticker": "WY",
+      "name": "Weyerhaeuser",
+      "name_ko": "Weyerhaeuser",
+      "asset_type": "개별주",
+      "type": "부동산",
+      "sector": "Real Estate",
+      "heatmap_label": "WY"
+    },
+    {
+      "ticker": "WYNN",
+      "name": "Wynn Resorts",
+      "name_ko": "Wynn Resorts",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "WYNN"
+    },
+    {
+      "ticker": "XEL",
+      "name": "Xcel Energy",
+      "name_ko": "Xcel Energy",
+      "asset_type": "개별주",
+      "type": "유틸리티",
+      "sector": "Utilities",
+      "heatmap_label": "XEL"
+    },
+    {
+      "ticker": "XOM",
+      "name": "ExxonMobil",
+      "name_ko": "ExxonMobil",
+      "asset_type": "개별주",
+      "type": "에너지",
+      "sector": "Energy",
+      "heatmap_label": "XOM"
+    },
+    {
+      "ticker": "XYL",
+      "name": "Xylem Inc.",
+      "name_ko": "Xylem Inc.",
+      "asset_type": "개별주",
+      "type": "산업재",
+      "sector": "Industrials",
+      "heatmap_label": "XYL"
+    },
+    {
+      "ticker": "XYZ",
+      "name": "Block, Inc.",
+      "name_ko": "Block, Inc.",
+      "asset_type": "개별주",
+      "type": "금융",
+      "sector": "Financials",
+      "heatmap_label": "XYZ"
+    },
+    {
+      "ticker": "YUM",
+      "name": "Yum! Brands",
+      "name_ko": "Yum! Brands",
+      "asset_type": "개별주",
+      "type": "임의소비재",
+      "sector": "Consumer Discretionary",
+      "heatmap_label": "YUM"
+    },
+    {
+      "ticker": "ZBH",
+      "name": "Zimmer Biomet",
+      "name_ko": "Zimmer Biomet",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ZBH"
+    },
+    {
+      "ticker": "ZBRA",
+      "name": "Zebra Technologies",
+      "name_ko": "Zebra Technologies",
+      "asset_type": "개별주",
+      "type": "기술",
+      "sector": "Information Technology",
+      "heatmap_label": "ZBRA"
+    },
+    {
+      "ticker": "ZTS",
+      "name": "Zoetis",
+      "name_ko": "Zoetis",
+      "asset_type": "개별주",
+      "type": "헬스케어",
+      "sector": "Health Care",
+      "heatmap_label": "ZTS"
+    }
+  ]
+}

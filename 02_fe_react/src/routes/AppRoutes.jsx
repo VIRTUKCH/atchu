@@ -82,6 +82,8 @@ const BearMarketSignalsPage = React.lazy(() => import("../pages/columns/BearMark
 // 개발자 페이지
 const PasswordGate = React.lazy(() => import("../components/auth/PasswordGate"));
 const DevPage = React.lazy(() => import("../pages/DevPage"));
+const StockListPage = React.lazy(() => import("../pages/StockListPage"));
+const StockDetailPage = React.lazy(() => import("../pages/StockDetailPage"));
 
 // 칼럼 페이지 — 전략 심화
 const BuyHoldVsTrendPage = React.lazy(() => import("../pages/columns/BuyHoldVsTrendPage"));
@@ -227,6 +229,8 @@ export default function AppRoutes({ routeModel }) {
 
         {/* 개발자 전용 (숨김) */}
         <Route path="/_dev" element={<BentoLayout><PasswordGate><DevPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_stocks" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_stocks/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
 
         <Route
           path="/market_overview"

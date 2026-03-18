@@ -79,6 +79,18 @@ fi
 run_snapshot_generation
 run_landing_data_generation
 generate_trend_notifications_file
+
+# 개별주(S&P 500) 파이프라인 실행
+log "Starting stock pipeline"
+notify "[${RUN_ID}] STOCK PIPELINE START"
+if bash "${SCRIPT_DIR}/pipeline_stock.sh"; then
+  log "Stock pipeline completed"
+  notify "[${RUN_ID}] STOCK PIPELINE DONE"
+else
+  log "Warning: Stock pipeline failed, continuing with build"
+  notify "[${RUN_ID}] STOCK PIPELINE FAIL (continuing)"
+fi
+
 run_front_build
 deploy_to_vercel
 send_all_notifications
