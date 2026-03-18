@@ -10,6 +10,11 @@
   - Discord 알림은 기존 관리자 채널 사용 (`[개별주]` 접두어)
   - `sp500.json`: GitHub datasets에서 자동 생성 (fetch_sp500_tickers.mjs)
   - CLAUDE.md에 개발자 전용 페이지 문서화
+- **개별주 시장 개요 페이지 추가 (/_stocks_overview)**
+  - S&P 500 시장 폭 요약 (앗추 필터 통과 비율)
+  - 최근 5거래일 진입/이탈 신호
+  - 섹터별 추세 강도 (MainMarketStatusGrid 재사용)
+  - S&P 500 히트맵 (MarketHeatmap 재사용, baseLinkPath prop 추가)
 
 ### 2026-03-17 (64)
 - **히트맵 타일: 앗추 필터 비율(X/20) 표시 추가**

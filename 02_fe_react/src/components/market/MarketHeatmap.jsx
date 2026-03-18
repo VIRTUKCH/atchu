@@ -235,7 +235,7 @@ const ATCHU_BADGE_META = {
   down: { label: "하락", cls: "atchu-badge--down" }
 };
 
-const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode }) => {
+const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, baseLinkPath }) => {
   const displayValue = isPeriodMode ? periodValue : item.maDist;
   const style = isPeriodMode
     ? getPeriodHeatStyle(periodValue, periodScale)
@@ -245,7 +245,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   const trendDays = isPeriodMode ? null : item.trendDays;
   return (
     <Link
-      to={`/index_etf/${item.ticker}`}
+      to={`${baseLinkPath || "/index_etf"}/${item.ticker}`}
       className="report-overview-card"
       style={style}
     >
@@ -267,7 +267,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   );
 });
 
-export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], periodKey = "ma200" }) {
+export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], periodKey = "ma200", baseLinkPath }) {
   const isPeriodMode = periodKey !== "ma200";
   const periodField = PERIOD_SNAPSHOT_KEYS[periodKey] || null;
 
@@ -395,6 +395,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         periodValue={isPeriodMode ? getPeriodValue(item.ticker) : null}
         periodScale={periodScale}
         isPeriodMode={isPeriodMode}
+        baseLinkPath={baseLinkPath}
       />
     ));
 

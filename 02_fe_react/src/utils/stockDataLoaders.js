@@ -111,13 +111,37 @@ async function loadStockDetailAnalytics(ticker) {
   }
 }
 
+// 추세 알림 JSON (eager load)
+const stockTrendModules = import.meta.glob(
+  "../../data/summary/stock_trend/stock_trend_notifications.json",
+  { eager: true, import: "default" }
+);
+const stockTrendNotificationPayload = Object.values(stockTrendModules)[0] || null;
+
+// MarketHeatmap용 overviewTickers 배열 빌드
+function buildStockOverviewTickers() {
+  return Array.from(buildStockTickerMeta().values()).map((meta) => ({
+    ticker: meta.ticker,
+    name_ko: meta.nameKo || meta.name || meta.ticker,
+    nameKo: meta.nameKo || meta.name || meta.ticker,
+    heatmap_label: meta.heatmap_label || meta.ticker,
+    heatmap_group: meta.group || meta.type || "기타",
+    group: meta.group || meta.type || "기타",
+    type: meta.group || meta.type || "기타",
+    asset_type: "개별주"
+  }));
+}
+
 const stockTickerMetaMap = buildStockTickerMeta();
 const stockSnapshotMap = buildStockSnapshotMap();
+const stockOverviewTickers = buildStockOverviewTickers();
 
 export {
   stockTickerMetaMap,
   stockSnapshotMap,
   stockSnapshotPayload,
+  stockTrendNotificationPayload,
+  stockOverviewTickers,
   toRecentShape,
   getStockListAnalytics,
   loadStockDetailAnalytics
