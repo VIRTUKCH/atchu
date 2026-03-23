@@ -1,5 +1,11 @@
 # 작업 기록
 
+### 2026-03-23 (75)
+- **공개 ETF 상세 페이지 전략 필터링 + 문서 동기화**
+  - `IndexEtfDetailPage.jsx`: crossingHistory.periods에서 정배열/앗추+정배열 필터링 (공개 페이지에는 200일선·앗추 필터만 표시)
+  - `data_pipeline.md`: ETF 스냅샷 계산 내용에 MA50/100, maAlignment, 4개 전략 문서화
+  - `trend_detail.md`: 공개 페이지 전략 표시 범위 명시 (정배열은 개발자 전용)
+
 ### 2026-03-23 (74)
 - **/_stocks 페이지 통합 리스트 (개별주 + ETF)**
   - ETF 파이프라인 확장: `generate_summary_snapshot.mjs`에 MA50/100, 정배열, full_align/atchu_full_align 전략 추가

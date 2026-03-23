@@ -219,19 +219,27 @@ CSV 변경이 감지되면 `lib/snapshot.sh`와 `lib/notify.sh`의 함수들이 
 
 | 지표 | 설명 |
 |------|------|
+| movingAverage50 | 50일 이동평균선 |
+| movingAverage100 | 100일 이동평균선 |
 | movingAverage200 | 200일 이동평균선 |
-| percentDiff200 | 현재가와 200일 이동평균선의 괴리율 (%) |
+| percentDiff50/100/200 | 현재가와 각 이동평균선의 괴리율 (%) |
+| maAlignment | 이평선 정배열 상태 (`full` / `partial` / `reverse`) |
+| maAlignmentDays | 현재 정배열/역배열 유지 일수 (partial이면 null) |
 | percentChangeFromPreviousClose | 전일 대비 등락률 |
-| percentChange5d/21d/63d/252d/1260d | 기간별 수익률 (5일/1개월/3개월/1년/5년) |
-| trendHolding | 200일 이동평균선 위/아래 연속 일수 |
-| crossingHistory | 2가지 교차 전략의 백테스트 수익률 |
+| percentChange5d/63d/252d/1260d | 기간별 수익률 (5일/3개월/1년/5년) |
+| trendHolding | 50일/100일/200일 이동평균선 위/아래 연속 일수 |
+| crossingHistory | 4가지 교차 전략의 백테스트 수익률 |
 
-**2가지 교차 전략:**
+**4가지 교차 전략:**
 
 | 키 | 모드 | 설명 |
 |----|------|------|
 | 200 | cross | 200일선 교차 (가격이 MA200을 상향/하향 돌파할 때 진입/청산) |
 | 200-20of16 | hold_20of16 | 200일선 + 최근 20일 중 16일 이상 위에 있을 때 진입 (앗추 필터) |
+| full_align | full_alignment | 이평선 정배열 (price > MA50 > MA100 > MA200) 진입/이탈 |
+| atchu_full_align | atchu_full_alignment | 앗추 필터 + 정배열 동시 충족 시 진입, 하나라도 깨지면 이탈 |
+
+> **공개 페이지 표시**: `/index_etf/:ticker` 상세 페이지에서는 200, 200-20of16 전략만 표시. 정배열/앗추+정배열은 개발자 전용 `/_stocks/:ticker`에서만 표시.
 
 **출력 JSON 구조:**
 
@@ -240,38 +248,45 @@ CSV 변경이 감지되면 `lib/snapshot.sh`와 `lib/notify.sh`의 함수들이 
   "version": 1,
   "generated_at": "2026-02-19T22:00:53.890Z",
   "tickers": {
-    "SPY.US": {
+    "SPY": {
       "snapshot": {
-        "close": 600.12,
-        "previousClose": 598.45,
-        "percentChangeFromPreviousClose": 0.279,
-        "percentChange5d": -1.2,
-        "percentChange21d": 3.5,
-        "percentChange63d": 5.1,
-        "percentChange252d": 12.3,
-        "percentChange1260d": 85.2,
-        "movingAverage200": 560.8,
-        "percentDiff200": 7.01,
+        "close": 648.57,
+        "previousClose": 657.97,
+        "percentChangeFromPreviousClose": -1.43,
+        "movingAverage50": 682.06,
+        "movingAverage100": 679.24,
+        "movingAverage200": 656.52,
+        "percentDiff50": -4.91,
+        "percentDiff100": -4.52,
+        "percentDiff200": -1.21,
+        "maAlignment": "partial",
+        "maAlignmentDays": null,
+        "aboveDays200": 20,
         "isAtchuQualified200": true,
-        "open": 599.0,
-        "high": 601.5,
-        "low": 598.0,
-        "volume": 48575972,
-        "dataDateMarket": "2026-02-19"
+        "dataStartDate": "1993-01-29"
       },
       "trendHolding": {
         "items": [
-          { "label": "200일선", "days": 300, "direction": "up" }
+          { "label": "50일선", "days": 16, "direction": "down" },
+          { "label": "100일선", "days": 11, "direction": "down" },
+          { "label": "200일선", "days": 1, "direction": "down" }
         ]
       },
       "crossingHistory": {
         "annualizedMap": {
-          "200": 13.1,
-          "200-20of16": 10.9
+          "200": 8.23,
+          "200-20of16": 9.03,
+          "full_align": 3.07,
+          "atchu_full_align": 3.03
+        },
+        "mddMap": {
+          "200": -28.0,
+          "200-20of16": -19.03,
+          "full_align": -28.4,
+          "atchu_full_align": -28.4
         }
       }
-    },
-    "SPY": { /* .US 없는 버전도 동일 데이터로 중복 저장 */ }
+    }
   }
 }
 ```
