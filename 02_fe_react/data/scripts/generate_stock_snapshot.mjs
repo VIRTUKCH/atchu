@@ -15,7 +15,8 @@ const OUT_FILE = path.join(SUMMARY_DIR, "stock_snapshots.json");
 const CROSSING_STRATEGIES = [
   { key: 200, period: 200, mode: "cross" },
   { key: "200-20of16", period: 200, mode: "hold_20of16" },
-  { key: "full_align", mode: "full_alignment" }
+  { key: "full_align", mode: "full_alignment" },
+  { key: "atchu_full_align", mode: "atchu_full_alignment" }
 ];
 const PERIODS = [50, 100, 200];
 
@@ -260,6 +261,42 @@ const buildFromCsv = (csvText) => {
         close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
       });
       prevAligned = isAligned;
+    }
+  });
+
+  // 앗추+정배열 전략: 앗추 필터 AND 완전 정배열 동시 충족 시 매수, 하나라도 깨지면 매도
+  CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "atchu_full_alignment").forEach((strategy) => {
+    const startIdx = 199;
+    let prevQualified = null;
+    for (let i = startIdx; i <= lastIndex; i += 1) {
+      const price = adjustedSeries[i];
+      const ma50 = averageOf(adjustedSeries, 50, i);
+      const ma100 = averageOf(adjustedSeries, 100, i);
+      const ma200 = averageOf(adjustedSeries, 200, i);
+      if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
+      const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
+      const isAtchu = isHoldFilterQualified(200, i, 20, 16);
+      const isQualified = isAligned && isAtchu;
+      if (prevQualified === null) {
+        prevQualified = isQualified;
+        if (isQualified) {
+          crossingItems.push({
+            period: strategy.key,
+            date: records[i]?.Date || null,
+            direction: "up",
+            close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+          });
+        }
+        continue;
+      }
+      if (isQualified === prevQualified) continue;
+      crossingItems.push({
+        period: strategy.key,
+        date: records[i]?.Date || null,
+        direction: isQualified ? "up" : "down",
+        close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+      });
+      prevQualified = isQualified;
     }
   });
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, cagrAlignmentValue, cagrAlignmentClass, mddAlignmentValue, mddAlignmentClass, dataStartLabel }) {
+export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, cagrAlignmentValue, cagrAlignmentClass, mddAlignmentValue, mddAlignmentClass, cagrAtchuAlignValue, cagrAtchuAlignClass, mddAtchuAlignValue, mddAtchuAlignClass, dataStartLabel }) {
   const item = items[0];
   if (!item) return null;
 
@@ -64,6 +64,18 @@ export default function EtfSummaryMovingAverages({ items, formatPrice, formatSig
         <div className="index-ma-dl-row">
           <dt>최악의 낙폭 (정배열)</dt>
           <dd><strong className={mddAlignmentClass || ""}>{mddAlignmentValue}</strong></dd>
+        </div>
+      )}
+      {cagrAtchuAlignValue && (
+        <div className="index-ma-dl-row">
+          <dt>연평균 수익률 (앗추+정배열)</dt>
+          <dd><strong className={cagrAtchuAlignClass || ""}>{cagrAtchuAlignValue}</strong></dd>
+        </div>
+      )}
+      {mddAtchuAlignValue && (
+        <div className="index-ma-dl-row">
+          <dt>최악의 낙폭 (앗추+정배열)</dt>
+          <dd><strong className={mddAtchuAlignClass || ""}>{mddAtchuAlignValue}</strong></dd>
         </div>
       )}
       {dataStartLabel && (
