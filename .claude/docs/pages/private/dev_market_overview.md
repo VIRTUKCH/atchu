@@ -345,31 +345,9 @@ ETF 히트맵과 동일한 타일 구조:
 
 ## /_stocks/:ticker — 개별주 상세
 
-### 이 페이지의 역할
+→ **상세 기획: [`dev_trend_detail.md`](dev_trend_detail.md)**
 
-ETF 상세(`/index_etf/:ticker`)와 동일한 구조. 개별 종목의 차트, 교차 이력, 전략 비교를 보여준다.
-
-### 유입 경로
-
-- `/_stocks` 리스트에서 카드 클릭
-- `/_stocks_overview` 히트맵/신호에서 종목 클릭
-
-### 페이지 구조
-
-| 순서 | 컴포넌트 | 내용 |
-|---|---|---|
-| 1 | EtfSummaryCard | 현재가, 이격률, 앗추 필터 상태, CAGR, MDD |
-| 2 | PriceTrendChart (1Y) | 최근 1년 가격 + 200일선 차트 |
-| 3 | PriceTrendChart (5Y) | 최근 5년 가격 + 200일선 차트 |
-| 4 | StrategyComparisonCard | 매수후보유 vs 200일선 vs 앗추 필터 비교 |
-| 5 | TrendCrossingHistoryCard | 200일선 돌파 이력 테이블 |
-| 6 | AdvancedMetricsCard | 샤프비율, 소르티노, 승률, 평균보유일수 |
-
-### ETF 상세와의 차이
-
-- CSV 로딩: `public/csv_stock/`에서 `fetch()`로 on-demand 로드 (번들 X)
-- 메타데이터: `trend_following.suitability` 등 ETF 전용 필드 없음 (배지 미표시)
-- `short_description`: 한 줄 한국어 설명 (sp500.json에 포함)
+차트(MA50/MA100/MA200 3선), 정배열 배지, 교차 이력, 전략 비교, 심화 지표.
 
 ---
 
@@ -449,6 +427,6 @@ pipeline.sh (cron)
 
 ---
 
-**관련 페이지 기획:** [`dev_trend_list.md`](dev_trend_list.md) (/_stocks 상세)
+**관련 페이지 기획:** [`dev_trend_list.md`](dev_trend_list.md) (/_stocks 리스트) | [`dev_trend_detail.md`](dev_trend_detail.md) (/_stocks/:ticker 상세)
 **관련 컴포넌트:** `StockOverviewPage`, `StockListPage`, `StockDetailPage`, `stockDataLoaders.js`
 **관련 파이프라인:** `pipeline_stock.sh`, `generate_stock_snapshot.mjs`, `fetch_sp500_tickers.mjs`
