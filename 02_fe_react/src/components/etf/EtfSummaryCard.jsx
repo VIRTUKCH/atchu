@@ -20,8 +20,6 @@ function EtfSummaryCard({
   mddFinal,
   cagrAlignment,
   mddAlignment,
-  cagrAtchuAlign,
-  mddAtchuAlign,
   dataStartDate,
   isStaleClose,
   marketStatusLabel,
@@ -80,16 +78,6 @@ function EtfSummaryCard({
       : "change-down";
   const mddAlignmentClass =
     mddAlignment === null || mddAlignment === undefined
-      ? ""
-      : "change-down";
-  const cagrAtchuAlignClass =
-    cagrAtchuAlign === null || cagrAtchuAlign === undefined
-      ? ""
-      : Number(cagrAtchuAlign) >= 0
-      ? "change-up"
-      : "change-down";
-  const mddAtchuAlignClass =
-    mddAtchuAlign === null || mddAtchuAlign === undefined
       ? ""
       : "change-down";
   const dataStartLabel = (() => {
@@ -175,7 +163,7 @@ function EtfSummaryCard({
             <div className={`atchu-filter-indicator ma-alignment-indicator ma-alignment-${maAlignment}`}>
               <span className="atchu-filter-dot" />
               <span className="atchu-filter-text">
-                이평선 {maAlignment === "full" ? "정배열" : maAlignment === "partial" ? "부분 정배열" : "역배열"}
+                {maAlignment === "golden" ? "골든크로스" : "데드크로스"}
                 {maAlignmentDays != null && ` ${maAlignmentDays}일째`}
               </span>
             </div>
@@ -223,10 +211,6 @@ function EtfSummaryCard({
             cagrAlignmentClass={cagrAlignmentClass}
             mddAlignmentValue={mddAlignment !== null && mddAlignment !== undefined ? formatSignedPercent(mddAlignment) : null}
             mddAlignmentClass={mddAlignmentClass}
-            cagrAtchuAlignValue={cagrAtchuAlign !== null && cagrAtchuAlign !== undefined ? formatSignedPercent(cagrAtchuAlign) : null}
-            cagrAtchuAlignClass={cagrAtchuAlignClass}
-            mddAtchuAlignValue={mddAtchuAlign !== null && mddAtchuAlign !== undefined ? formatSignedPercent(mddAtchuAlign) : null}
-            mddAtchuAlignClass={mddAtchuAlignClass}
             dataStartLabel={dataStartLabel}
           />
         </div>

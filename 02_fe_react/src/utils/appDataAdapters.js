@@ -28,12 +28,10 @@ const toRecentShape = (snapshot) => {
     ma_alignment_days: snapshot.maAlignmentDays ?? null,
     moving_averages: {
       fifty_day: snapshot.movingAverage50,
-      one_hundred_day: snapshot.movingAverage100,
       two_hundred_day: snapshot.movingAverage200
     },
     percent_difference_from_moving_averages: {
       fifty_day: snapshot.percentDiff50,
-      one_hundred_day: snapshot.percentDiff100,
       two_hundred_day: snapshot.percentDiff200
     }
   };

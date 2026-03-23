@@ -54,11 +54,9 @@ const allUnifiedTickers = (() => {
 const SORT_OPTIONS = [
   { value: "group", label: "분류별" },
   { value: "atchu", label: "앗추" },
-  { value: "full_align", label: "정배열" },
-  { value: "atchu_aligned", label: "앗추+정배열" },
-  { value: "align_days_desc", label: "정배열 오래된순" },
-  { value: "cagr_align_desc", label: "정배열 수익률순" },
-  { value: "cagr_atchu_align_desc", label: "앗추+정배열 수익률순" },
+  { value: "golden_cross", label: "골든크로스" },
+  { value: "gc_days_desc", label: "골든크로스 오래된순" },
+  { value: "cagr_gc_desc", label: "골든크로스 수익률순" },
   { value: "ma200_desc", label: "이격률 높은순" },
   { value: "ma200_asc", label: "이격률 낮은순" },
   { value: "cagr_desc", label: "수익률 높은순" },
@@ -82,8 +80,7 @@ const etfGroupRank = new Map(ETF_GROUP_ORDER.map((g, i) => [g, i + 100]));
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
   "200-20of16": "앗추 필터",
-  "full_align": "정배열",
-  "atchu_full_align": "앗추+정배열"
+  "golden_cross": "골든크로스"
 };
 
 // --- 유틸 ---
@@ -346,13 +343,8 @@ export default function StockListPage() {
     // 조건 필터 (정렬 모드에 따라)
     if (sortMode === "atchu") {
       tickers = tickers.filter((t) => getSnapshot(t)?.isAtchuQualified200);
-    } else if (sortMode === "full_align" || sortMode === "align_days_desc") {
-      tickers = tickers.filter((t) => getSnapshot(t)?.maAlignment === "full");
-    } else if (sortMode === "atchu_aligned") {
-      tickers = tickers.filter((t) => {
-        const snap = getSnapshot(t);
-        return snap?.isAtchuQualified200 && snap?.maAlignment === "full";
-      });
+    } else if (sortMode === "golden_cross" || sortMode === "gc_days_desc") {
+      tickers = tickers.filter((t) => getSnapshot(t)?.maAlignment === "golden");
     }
 
     // 2차 정렬: 개별주=시가총액, ETF=기본순
@@ -388,11 +380,11 @@ export default function StockListPage() {
         return (baseRank.get(a) ?? 0) - (baseRank.get(b) ?? 0);
       }
 
-      if (sortMode === "atchu" || sortMode === "full_align" || sortMode === "atchu_aligned") {
+      if (sortMode === "atchu" || sortMode === "golden_cross") {
         return bySecondary(a, b);
       }
 
-      if (sortMode === "align_days_desc") {
+      if (sortMode === "gc_days_desc") {
         const aDays = getSnapshot(a)?.maAlignmentDays ?? 0;
         const bDays = getSnapshot(b)?.maAlignmentDays ?? 0;
         if (aDays !== bDays) return bDays - aDays;
@@ -406,11 +398,8 @@ export default function StockListPage() {
         if (sortMode === "cagr_desc") {
           return getBestOverallCagrInfo(getAnalytics(ticker)).value;
         }
-        if (sortMode === "cagr_align_desc") {
-          return getAnalytics(ticker)?.crossingHistory?.annualizedMap?.["full_align"] ?? null;
-        }
-        if (sortMode === "cagr_atchu_align_desc") {
-          return getAnalytics(ticker)?.crossingHistory?.annualizedMap?.["atchu_full_align"] ?? null;
+        if (sortMode === "cagr_gc_desc") {
+          return getAnalytics(ticker)?.crossingHistory?.annualizedMap?.["golden_cross"] ?? null;
         }
         if (sortMode === "mdd_asc") {
           return getAnalytics(ticker)?.crossingHistory?.mddMap?.["200-20of16"] ?? null;
@@ -514,10 +503,8 @@ export default function StockListPage() {
                   : null
               }
               mddFinal={mddValue}
-              cagrAlignment={analytics?.crossingHistory?.annualizedMap?.["full_align"] ?? null}
-              mddAlignment={analytics?.crossingHistory?.mddMap?.["full_align"] ?? null}
-              cagrAtchuAlign={analytics?.crossingHistory?.annualizedMap?.["atchu_full_align"] ?? null}
-              mddAtchuAlign={analytics?.crossingHistory?.mddMap?.["atchu_full_align"] ?? null}
+              cagrAlignment={analytics?.crossingHistory?.annualizedMap?.["golden_cross"] ?? null}
+              mddAlignment={analytics?.crossingHistory?.mddMap?.["golden_cross"] ?? null}
               dataStartDate={snapshot?.dataStartDate ?? null}
               isStaleClose={closeStatus.isStaleClose}
               marketStatusLabel={closeStatus.statusLabel}

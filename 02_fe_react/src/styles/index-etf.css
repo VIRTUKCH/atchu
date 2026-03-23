@@ -231,39 +231,25 @@ a.index-card {
 [data-theme="dark"] .atchu-inactive .atchu-filter-text {
   color: #f87171;
 }
-/* ── 이평선 정배열 인디케이터 (앗추 필터와 동일 형태) ── */
-.ma-alignment-full .atchu-filter-dot {
+/* ── 골든크로스/데드크로스 인디케이터 (앗추 필터와 동일 형태) ── */
+.ma-alignment-golden .atchu-filter-dot {
   background: #22c55e;
   box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
 }
-.ma-alignment-full .atchu-filter-text {
+.ma-alignment-golden .atchu-filter-text {
   color: #16a34a;
 }
-.ma-alignment-partial .atchu-filter-dot {
-  background: #eab308;
-  box-shadow: 0 0 6px rgba(234, 179, 8, 0.4);
-}
-.ma-alignment-partial .atchu-filter-text {
-  color: #a16207;
-}
-.ma-alignment-reverse .atchu-filter-dot {
+.ma-alignment-dead .atchu-filter-dot {
   background: #ef4444;
   box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
 }
-.ma-alignment-reverse .atchu-filter-text {
+.ma-alignment-dead .atchu-filter-text {
   color: #dc2626;
 }
-[data-theme="dark"] .ma-alignment-full .atchu-filter-text {
+[data-theme="dark"] .ma-alignment-golden .atchu-filter-text {
   color: #4ade80;
 }
-[data-theme="dark"] .ma-alignment-partial .atchu-filter-dot {
-  background: #facc15;
-  box-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
-}
-[data-theme="dark"] .ma-alignment-partial .atchu-filter-text {
-  color: #facc15;
-}
-[data-theme="dark"] .ma-alignment-reverse .atchu-filter-text {
+[data-theme="dark"] .ma-alignment-dead .atchu-filter-text {
   color: #f87171;
 }
 

@@ -25,7 +25,7 @@ export default function PriceTrendChart({
     );
   }
 
-  const baseValueKeys = ["close", "ma50", "ma100", "ma200"];
+  const baseValueKeys = ["close", "ma50", "ma200"];
   const candleValueKeys = ["open", "high", "low", "closeRaw", ...baseValueKeys];
   const valueKeys = variant === "candle" ? candleValueKeys : baseValueKeys;
   const values = series.flatMap((item) =>
@@ -65,10 +65,8 @@ export default function PriceTrendChart({
 
   const closeSegments = buildSegments(series, "close");
   const ma50Segments = buildSegments(series, "ma50");
-  const ma100Segments = buildSegments(series, "ma100");
   const ma200Segments = buildSegments(series, "ma200");
   const hasMa50 = ma50Segments.some((s) => s.length > 0);
-  const hasMa100 = ma100Segments.some((s) => s.length > 0);
   const candleWidth = Math.max(2, Math.min(8, plotWidth / Math.max(1, series.length) * 0.6));
   const yTicks = 4;
   const yTickValues = Array.from({ length: yTicks + 1 }, (_, index) => {
@@ -93,7 +91,6 @@ export default function PriceTrendChart({
         <div className="detail-chart-legend">
           <span className="legend-item legend-close">종가</span>
           {hasMa50 && <span className="legend-item legend-ma50">50일선</span>}
-          {hasMa100 && <span className="legend-item legend-ma100">100일선</span>}
           <span className="legend-item legend-ma200">200일선</span>
         </div>
       </div>
@@ -215,13 +212,6 @@ export default function PriceTrendChart({
             key={`ma50-${index}`}
             points={points}
             className="chart-line chart-ma50"
-          />
-        ))}
-        {ma100Segments.map((points, index) => (
-          <polyline
-            key={`ma100-${index}`}
-            points={points}
-            className="chart-line chart-ma100"
           />
         ))}
         {ma200Segments.map((points, index) => (
