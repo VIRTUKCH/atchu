@@ -1216,8 +1216,14 @@ a.topnav-brand {
 .chart-ma200 {
   stroke: #6b6f7a;
 }
+[data-theme="dark"] .chart-close {
+  stroke: #93c5fd;
+}
 [data-theme="dark"] .chart-ma50 {
   stroke: #4ade80;
+}
+[data-theme="dark"] .chart-ma200 {
+  stroke: #fdba74;
 }
 
 .chart-wick {

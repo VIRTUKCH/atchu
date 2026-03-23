@@ -61,6 +61,9 @@ const getActiveTabFromPathname = (pathname) => {
   if (COLUMN_PATHS.has(pathname)) {
     return "more";
   }
+  if (pathname.startsWith("/_")) {
+    return null;
+  }
   return "main";
 };
 
