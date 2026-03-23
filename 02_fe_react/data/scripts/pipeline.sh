@@ -80,6 +80,18 @@ run_snapshot_generation
 run_landing_data_generation
 generate_trend_notifications_file
 
+# BAA 전략 신호 생성
+log "Generating BAA signal"
+notify "[${RUN_ID}] BAA SIGNAL START"
+resolve_node_cmd
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_baa_signal.mjs"; then
+  log "BAA signal generation completed"
+  notify "[${RUN_ID}] BAA SIGNAL DONE"
+else
+  log "Warning: BAA signal generation failed, continuing"
+  notify "[${RUN_ID}] BAA SIGNAL FAIL (continuing)"
+fi
+
 # 개별주(S&P 500) 파이프라인 실행
 log "Starting stock pipeline"
 notify "[${RUN_ID}] STOCK PIPELINE START"

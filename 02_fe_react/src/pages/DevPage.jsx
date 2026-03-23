@@ -4,7 +4,8 @@ import { clearDevSession } from "../utils/devAuth";
 
 const DEV_LINKS = [
   { to: "/_stocks_overview", label: "개별주 시장 개요", desc: "S&P 500 섹터별 추세 강도, 히트맵, 최근 신호" },
-  { to: "/_stocks", label: "개별주 추세 조회", desc: "S&P 500 종목 리스트 (필터/검색/정렬)" }
+  { to: "/_stocks", label: "개별주 추세 조회", desc: "S&P 500 종목 리스트 (필터/검색/정렬)" },
+  { to: "/_quant", label: "퀀트 엿보기", desc: "BAA 전략 현재 신호, 포트폴리오 배분, 모멘텀 순위" }
 ];
 
 export default function DevPage() {

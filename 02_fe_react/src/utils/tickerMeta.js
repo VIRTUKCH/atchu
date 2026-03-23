@@ -99,6 +99,7 @@ const buildLocalTickers = (tickerModules) => {
   );
   const deduped = new Map();
   Object.values(tickerModules).forEach((mod) => {
+    if (mod?.hidden === true) return;
     const fileType = String(mod?.type || "").trim();
     const fileTypeProfile = mod?.type_profile || null;
     const items = Array.isArray(mod) ? mod : (mod?.items || []);

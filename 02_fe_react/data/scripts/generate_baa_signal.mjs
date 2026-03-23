@@ -28,6 +28,7 @@ const ALL_TICKERS = [...new Set([...CANARY, ...OFFENSIVE_G12, ...OFFENSIVE_G4, .
 
 /* ── Helpers ── */
 const round2 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100) / 100);
+const round3 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 1000) / 1000);
 
 const parseNumber = (value) => {
   const parsed = Number(value);
@@ -178,7 +179,7 @@ for (const [ticker, monthEnds] of tickerData) {
 
   metrics.set(ticker, {
     momentum13612w: round2(momentum13612w),
-    relMomentum: round2(relMomentum)
+    relMomentum: round3(relMomentum)
   });
 }
 

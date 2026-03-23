@@ -85,6 +85,7 @@ const DevPage = React.lazy(() => import("../pages/DevPage"));
 const StockListPage = React.lazy(() => import("../pages/StockListPage"));
 const StockDetailPage = React.lazy(() => import("../pages/StockDetailPage"));
 const StockOverviewPage = React.lazy(() => import("../pages/StockOverviewPage"));
+const BaaQuantPeekPage = React.lazy(() => import("../pages/BaaQuantPeekPage"));
 
 // 칼럼 페이지 — 전략 심화
 const BuyHoldVsTrendPage = React.lazy(() => import("../pages/columns/BuyHoldVsTrendPage"));
@@ -233,6 +234,7 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_stocks" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
         <Route path="/_stocks/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
         <Route path="/_stocks_overview" element={<BentoLayout><PasswordGate><StockOverviewPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_quant" element={<BentoLayout><PasswordGate><BaaQuantPeekPage /></PasswordGate></BentoLayout>} />
 
         <Route
           path="/market_overview"
