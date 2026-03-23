@@ -18,6 +18,8 @@ function EtfSummaryCard({
   cagrFinal,
   cagrFinalLabel,
   mddFinal,
+  cagrAtchu,
+  mddAtchu,
   cagrAlignment,
   mddAlignment,
   dataStartDate,
@@ -68,6 +70,16 @@ function EtfSummaryCard({
       : "change-down";
   const mddFinalClass =
     mddFinal === null || mddFinal === undefined
+      ? ""
+      : "change-down";
+  const cagrAtchuClass =
+    cagrAtchu === null || cagrAtchu === undefined
+      ? ""
+      : Number(cagrAtchu) >= 0
+      ? "change-up"
+      : "change-down";
+  const mddAtchuClass =
+    mddAtchu === null || mddAtchu === undefined
       ? ""
       : "change-down";
   const cagrAlignmentClass =
@@ -203,10 +215,10 @@ function EtfSummaryCard({
             items={displayMaItems}
             formatPrice={formatPrice}
             formatSignedPercent={formatSignedPercent}
-            cagrValue={cagrFinal !== null && cagrFinal !== undefined ? formatSignedPercent(cagrFinal) : null}
-            cagrClass={cagrFinalClass}
-            mddValue={mddFinal !== null && mddFinal !== undefined ? formatSignedPercent(mddFinal) : null}
-            mddClass={mddFinalClass}
+            cagrValue={cagrAtchu !== null && cagrAtchu !== undefined ? formatSignedPercent(cagrAtchu) : (cagrFinal !== null && cagrFinal !== undefined ? formatSignedPercent(cagrFinal) : null)}
+            cagrClass={cagrAtchu !== null && cagrAtchu !== undefined ? cagrAtchuClass : cagrFinalClass}
+            mddValue={mddAtchu !== null && mddAtchu !== undefined ? formatSignedPercent(mddAtchu) : (mddFinal !== null && mddFinal !== undefined ? formatSignedPercent(mddFinal) : null)}
+            mddClass={mddAtchu !== null && mddAtchu !== undefined ? mddAtchuClass : mddFinalClass}
             cagrAlignmentValue={cagrAlignment !== null && cagrAlignment !== undefined ? formatSignedPercent(cagrAlignment) : null}
             cagrAlignmentClass={cagrAlignmentClass}
             mddAlignmentValue={mddAlignment !== null && mddAlignment !== undefined ? formatSignedPercent(mddAlignment) : null}

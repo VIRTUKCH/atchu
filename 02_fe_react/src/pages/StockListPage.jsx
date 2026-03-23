@@ -503,6 +503,8 @@ export default function StockListPage() {
                   : null
               }
               mddFinal={mddValue}
+              cagrAtchu={analytics?.crossingHistory?.annualizedMap?.["200-20of16"] ?? null}
+              mddAtchu={analytics?.crossingHistory?.mddMap?.["200-20of16"] ?? null}
               cagrAlignment={analytics?.crossingHistory?.annualizedMap?.["golden_cross"] ?? null}
               mddAlignment={analytics?.crossingHistory?.mddMap?.["golden_cross"] ?? null}
               dataStartDate={snapshot?.dataStartDate ?? null}

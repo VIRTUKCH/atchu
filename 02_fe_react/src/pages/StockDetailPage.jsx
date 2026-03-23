@@ -115,6 +115,12 @@ export default function StockDetailPage() {
                   })()
                 : null
             }
+            cagrAtchu={crossingHistory.annualizedMap?.["200-20of16"] ?? null}
+            mddAtchu={(() => {
+              const e = crossingHistory.mddMap?.["200-20of16"];
+              if (e == null) return null;
+              return typeof e === "object" ? e.mddPercent ?? null : e;
+            })()}
             cagrAlignment={crossingHistory.annualizedMap?.["golden_cross"] ?? null}
             mddAlignment={(() => {
               const e = crossingHistory.mddMap?.["golden_cross"];
