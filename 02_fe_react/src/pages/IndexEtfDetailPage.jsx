@@ -40,7 +40,14 @@ export default function IndexEtfDetailPage({ model }) {
 
   const recentData = toRecentShape(snapshotData);
   const chartSeries = detailAnalytics?.chartSeries || {};
-  const crossingHistory = detailAnalytics?.crossingHistory || { items: [] };
+  const rawCrossingHistory = detailAnalytics?.crossingHistory || { items: [] };
+  // 공개 페이지: 200일선·앗추 필터만 표시 (정배열·앗추+정배열은 개발자 전용)
+  const PUBLIC_PERIODS = new Set([200, "200-20of16"]);
+  const crossingHistory = {
+    ...rawCrossingHistory,
+    periods: (rawCrossingHistory.periods || []).filter((p) => PUBLIC_PERIODS.has(p)),
+    items: (rawCrossingHistory.items || []).filter((item) => PUBLIC_PERIODS.has(item.period)),
+  };
   const drawdownStats = detailAnalytics?.drawdownStats || null;
   const isComputing = snapshotLoading || detailLoading;
 
