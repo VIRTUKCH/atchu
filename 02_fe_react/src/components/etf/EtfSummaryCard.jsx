@@ -22,6 +22,7 @@ function EtfSummaryCard({
   isStaleClose,
   marketStatusLabel,
   maAlignment,
+  maAlignmentDays,
   meta,
   to,
 }) {
@@ -151,6 +152,7 @@ function EtfSummaryCard({
               <span className="atchu-filter-dot" />
               <span className="atchu-filter-text">
                 이평선 {maAlignment === "full" ? "정배열" : maAlignment === "partial" ? "부분 정배열" : "역배열"}
+                {maAlignmentDays != null && ` ${maAlignmentDays}일째`}
               </span>
             </div>
           )}

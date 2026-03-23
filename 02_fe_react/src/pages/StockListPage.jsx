@@ -12,7 +12,10 @@ import "../styles/index-etf.css";
 
 const SORT_OPTIONS = [
   { value: "sector", label: "섹터별" },
+  { value: "atchu", label: "앗추" },
+  { value: "full_align", label: "정배열" },
   { value: "atchu_aligned", label: "앗추+정배열" },
+  { value: "align_days_desc", label: "정배열 오래된순" },
   { value: "ma200_desc", label: "이격률 높은순" },
   { value: "ma200_asc", label: "이격률 낮은순" },
   { value: "cagr_desc", label: "수익률 높은순" },
@@ -209,20 +212,38 @@ export default function StockListPage() {
   const list = useMemo(() => {
     if (!filteredTickers.length) return [];
     let tickers = [...filteredTickers];
-    if (sortMode === "atchu_aligned") {
+    // 필터링 (조건 미충족 종목 제거)
+    if (sortMode === "atchu") {
+      tickers = tickers.filter((t) => stockSnapshotMap[t]?.isAtchuQualified200);
+    } else if (sortMode === "full_align" || sortMode === "align_days_desc") {
+      tickers = tickers.filter((t) => stockSnapshotMap[t]?.maAlignment === "full");
+    } else if (sortMode === "atchu_aligned") {
       tickers = tickers.filter((t) => {
         const snap = stockSnapshotMap[t];
         return snap?.isAtchuQualified200 && snap?.maAlignment === "full";
       });
     }
+    // 시가총액순 비교 함수 (2차 정렬용)
+    const byCapRank = (a, b) => {
+      const aRank = stockTickerMetaMap.get(a)?.rank ?? 9999;
+      const bRank = stockTickerMetaMap.get(b)?.rank ?? 9999;
+      return aRank - bRank;
+    };
     return tickers.sort((a, b) => {
-      if (sortMode === "sector" || sortMode === "atchu_aligned") {
+      if (sortMode === "sector") {
         const aSector = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
         const bSector = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
         if (aSector !== bSector) return aSector - bSector;
-        const aCapRank = stockTickerMetaMap.get(a)?.rank ?? 9999;
-        const bCapRank = stockTickerMetaMap.get(b)?.rank ?? 9999;
-        return aCapRank - bCapRank;
+        return byCapRank(a, b);
+      }
+      if (sortMode === "atchu" || sortMode === "full_align" || sortMode === "atchu_aligned") {
+        return byCapRank(a, b);
+      }
+      if (sortMode === "align_days_desc") {
+        const aDays = stockSnapshotMap[a]?.maAlignmentDays ?? 0;
+        const bDays = stockSnapshotMap[b]?.maAlignmentDays ?? 0;
+        if (aDays !== bDays) return bDays - aDays;
+        return byCapRank(a, b);
       }
       const getVal = (ticker) => {
         if (sortMode === "ma200_desc" || sortMode === "ma200_asc") {
@@ -240,12 +261,12 @@ export default function StockListPage() {
       };
       const aVal = getVal(a);
       const bVal = getVal(b);
-      if (aVal === null && bVal === null) return a.localeCompare(b);
+      if (aVal === null && bVal === null) return byCapRank(a, b);
       if (aVal === null) return 1;
       if (bVal === null) return -1;
-      if (sortMode === "ma200_asc") return aVal - bVal;
-      if (sortMode === "mdd_asc") return bVal - aVal;
-      return bVal - aVal;
+      if (sortMode === "ma200_asc") return aVal - bVal || byCapRank(a, b);
+      if (sortMode === "mdd_asc") return bVal - aVal || byCapRank(a, b);
+      return bVal - aVal || byCapRank(a, b);
     });
   }, [filteredTickers, sortMode]);
 
@@ -320,6 +341,7 @@ export default function StockListPage() {
               isStaleClose={closeStatus.isStaleClose}
               marketStatusLabel={closeStatus.statusLabel}
               maAlignment={payload?.ma_alignment}
+              maAlignmentDays={payload?.ma_alignment_days}
               meta={stockTickerMetaMap.get(ticker)}
               to={`/_stocks/${ticker}`}
             />

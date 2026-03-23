@@ -88,6 +88,28 @@ const buildFromCsv = (csvText) => {
     }
     return "none";
   })();
+  // 정배열/역배열 연속 유지 일수 (full, reverse만 계산)
+  const maAlignmentDays = (() => {
+    if (maAlignment !== "full" && maAlignment !== "reverse") return null;
+    let days = 0;
+    for (let i = lastIndex; i >= 199; i -= 1) {
+      const p = adjustedSeries[i];
+      const m50 = averageOf(adjustedSeries, 50, i);
+      const m100 = averageOf(adjustedSeries, 100, i);
+      const m200 = averageOf(adjustedSeries, 200, i);
+      if (p === null || m50 === null || m100 === null || m200 === null) break;
+      const state = (p > m50 && m50 > m100 && m100 > m200) ? "full"
+        : (m200 > m100 && m100 > m50 && m50 > p) ? "reverse"
+        : "other";
+      if (state === maAlignment) {
+        days += 1;
+      } else {
+        break;
+      }
+    }
+    return days;
+  })();
+
   const percentChangeFromLookback = (days) => {
     const lookbackIndex = lastIndex - days;
     if (lookbackIndex < 0 || latestAdjustedClose === null) {
@@ -298,6 +320,7 @@ const buildFromCsv = (csvText) => {
       percentDiff100: round2(percentDiff(movingAverage100)),
       percentDiff200: round2(percentDiff(movingAverage200)),
       maAlignment,
+      maAlignmentDays,
       aboveDays200,
       isAtchuQualified200: aboveDays200 >= 16,
       dataStartDate: records[0]?.Date || null

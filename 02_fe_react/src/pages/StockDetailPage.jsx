@@ -118,6 +118,7 @@ export default function StockDetailPage() {
             isStaleClose={closeStatus.isStaleClose}
             marketStatusLabel={closeStatus.statusLabel}
             maAlignment={recentData.ma_alignment}
+            maAlignmentDays={recentData.ma_alignment_days}
             meta={meta}
           />
           <PriceTrendChart
