@@ -1,5 +1,14 @@
 # 작업 기록
 
+### 2026-03-23 (71)
+- **다중 이평선 정배열 기능 — 개별주 페이지**
+  - 백테스트 분석 스크립트 `analyze_ma_alignment.mjs` 신규 (6전략 비교, t-test, 섹터별 분석)
+  - 파이프라인: `generate_stock_snapshot.mjs`에 MA50/MA100 + `maAlignment` 필드 추가
+  - 차트: `PriceTrendChart`에 MA50(초록)/MA100(노랑)/MA200(주황) 3개 이평선 표시
+  - 카드: `EtfSummaryCard`에 정배열/부분 정배열/역배열 배지 추가
+  - `csvAnalytics.js`: PERIODS [200] → [50,100,200], chartItems에 ma50/ma100 포함
+  - 백테스트 결과: 완전 정배열 샤프비율 1.41 (매수후보유 0.45의 3배), t-test p < 0.0001
+
 ### 2026-03-23 (70)
 - **퀀트 엿보기 페이지 v1 구현 (`/_quant`)**
   - BAA(Bold Asset Allocation) 전략 신호/포트폴리오/모멘텀 순위를 보여주는 개발자 전용 비공개 페이지
