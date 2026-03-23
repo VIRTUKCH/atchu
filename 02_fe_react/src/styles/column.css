@@ -630,12 +630,14 @@
   margin-bottom: 3px;
 }
 
-.col-key-fact-value.bad {
+.col-key-fact-value.bad,
+.col-key-fact-value.negative {
   color: var(--red, #e05c5c);
 }
 
-.col-key-fact-value.good {
-  color: var(--accent);
+.col-key-fact-value.good,
+.col-key-fact-value.positive {
+  color: var(--green, #22c55e);
 }
 
 .col-key-fact-label {

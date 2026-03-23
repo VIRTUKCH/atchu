@@ -11,7 +11,8 @@ const discordInviteUrl =
 
 const DEV_TABS = [
   { key: "stocks", label: "관리자 추세 조회", path: "/_stocks" },
-  { key: "stocks_overview", label: "관리자 시장 개요", path: "/_stocks_overview" }
+  { key: "stocks_overview", label: "관리자 시장 개요", path: "/_stocks_overview" },
+  { key: "quant", label: "퀀트 엿보기", path: "/_quant" }
 ];
 
 export default function AppTopNav() {
