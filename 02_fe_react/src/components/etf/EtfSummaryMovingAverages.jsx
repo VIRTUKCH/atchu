@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, dataStartLabel }) {
+export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, cagrAlignmentValue, cagrAlignmentClass, mddAlignmentValue, mddAlignmentClass, dataStartLabel }) {
   const item = items[0];
   if (!item) return null;
 
@@ -52,6 +52,18 @@ export default function EtfSummaryMovingAverages({ items, formatPrice, formatSig
         <div className="index-ma-dl-row">
           <dt>최악의 낙폭 (앗추 필터)</dt>
           <dd><strong className={mddClass || ""}>{mddValue}</strong></dd>
+        </div>
+      )}
+      {cagrAlignmentValue && (
+        <div className="index-ma-dl-row">
+          <dt>연평균 수익률 (정배열)</dt>
+          <dd><strong className={cagrAlignmentClass || ""}>{cagrAlignmentValue}</strong></dd>
+        </div>
+      )}
+      {mddAlignmentValue && (
+        <div className="index-ma-dl-row">
+          <dt>최악의 낙폭 (정배열)</dt>
+          <dd><strong className={mddAlignmentClass || ""}>{mddAlignmentValue}</strong></dd>
         </div>
       )}
       {dataStartLabel && (

@@ -21,7 +21,8 @@ import {
 
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
-  "200-20of16": "앗추 필터"
+  "200-20of16": "앗추 필터",
+  "full_align": "정배열"
 };
 
 function getBestOverallCagrInfo(analytics) {
@@ -114,6 +115,12 @@ export default function StockDetailPage() {
                   })()
                 : null
             }
+            cagrAlignment={crossingHistory.annualizedMap?.["full_align"] ?? null}
+            mddAlignment={(() => {
+              const e = crossingHistory.mddMap?.["full_align"];
+              if (e == null) return null;
+              return typeof e === "object" ? e.mddPercent ?? null : e;
+            })()}
             dataStartDate={snapshot?.dataStartDate ?? null}
             isStaleClose={closeStatus.isStaleClose}
             marketStatusLabel={closeStatus.statusLabel}

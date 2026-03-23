@@ -219,6 +219,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       label: "앗추 필터 (200일)",
       mode: "hold_20of16"
     },
+    { key: "full_align", label: "정배열", mode: "full_alignment" },
   ];
   const crossingPeriods = crossingStrategies.map((strategy) => strategy.key);
   const crossingPeriodLabels = crossingStrategies.reduce((acc, strategy) => {
@@ -354,6 +355,64 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           changePercent
         });
         prevHoldQualified = isQualified;
+      }
+    });
+
+  // 정배열 전략: price > MA50 > MA100 > MA200 일 때 매수, 이탈 시 매도
+  crossingStrategies
+    .filter((strategy) => strategy.mode === "full_alignment")
+    .forEach((strategy) => {
+      const startIdx = Math.max(199, 0);
+      let prevAligned = null;
+      for (let i = startIdx; i <= lastIndex; i += 1) {
+        const price = adjustedSeries[i];
+        const ma50 = averageOf(50, i);
+        const ma100 = averageOf(100, i);
+        const ma200 = averageOf(200, i);
+        if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
+        const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
+        if (prevAligned === null) {
+          prevAligned = isAligned;
+          if (isAligned) {
+            const currentRow = records[i];
+            const prevRow = i > 0 ? records[i - 1] : null;
+            const currentClose = resolveCloseValue(currentRow);
+            const prevClose = resolveCloseValue(prevRow);
+            const changePercent =
+              currentClose !== null && prevClose !== null
+                ? ((currentClose - prevClose) / prevClose) * 100
+                : null;
+            crossingItems.push({
+              id: buildCrossingId(strategy.key, currentRow?.Date),
+              period: strategy.key,
+              date: currentRow?.Date || null,
+              direction: "up",
+              close: currentClose,
+              adjustedClose: adjustedSeries[i],
+              changePercent
+            });
+          }
+          continue;
+        }
+        if (isAligned === prevAligned) continue;
+        const currentRow = records[i];
+        const prevRow = i > 0 ? records[i - 1] : null;
+        const currentClose = resolveCloseValue(currentRow);
+        const prevClose = resolveCloseValue(prevRow);
+        const changePercent =
+          currentClose !== null && prevClose !== null
+            ? ((currentClose - prevClose) / prevClose) * 100
+            : null;
+        crossingItems.push({
+          id: buildCrossingId(strategy.key, currentRow?.Date),
+          period: strategy.key,
+          date: currentRow?.Date || null,
+          direction: isAligned ? "up" : "down",
+          close: currentClose,
+          adjustedClose: adjustedSeries[i],
+          changePercent
+        });
+        prevAligned = isAligned;
       }
     });
 
@@ -570,10 +629,18 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           mddUpdatedDate = records[i]?.Date || null;
         }
       }
-      prevSignal =
-        mode === "hold_20of16"
-          ? isHoldFilterQualified(period, i)
-          : price >= ma;
+      if (mode === "full_alignment") {
+        const ma50 = averageOf(50, i);
+        const ma100 = averageOf(100, i);
+        const ma200 = averageOf(200, i);
+        prevSignal = ma50 !== null && ma100 !== null && ma200 !== null
+          && price > ma50 && ma50 > ma100 && ma100 > ma200;
+      } else {
+        prevSignal =
+          mode === "hold_20of16"
+            ? isHoldFilterQualified(period, i)
+            : price >= ma;
+      }
       prevPrice = price;
     }
     if (!hasReturn) {
@@ -618,6 +685,12 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         currentSignal = ma !== null && price >= ma;
       } else if (strategy.mode === "hold_20of16") {
         currentSignal = isHoldFilterQualified(strategy.period, i);
+      } else if (strategy.mode === "full_alignment") {
+        const ma50 = averageOf(50, i);
+        const ma100 = averageOf(100, i);
+        const ma200 = averageOf(200, i);
+        currentSignal = ma50 !== null && ma100 !== null && ma200 !== null
+          && price > ma50 && ma50 > ma100 && ma100 > ma200;
       }
       prevSignal = currentSignal;
       prevPrice = price;
@@ -636,7 +709,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     buyHold: computeBuyHoldDrawdown(),
     movingAverage: {
       200: computeMovingAverageDrawdown(200),
-      "200-20of16": computeMovingAverageDrawdown(200, "hold_20of16")
+      "200-20of16": computeMovingAverageDrawdown(200, "hold_20of16"),
+      "full_align": computeMovingAverageDrawdown(null, "full_alignment")
     }
   };
 
@@ -689,6 +763,12 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           wasHolding = ma !== null && prevPrice >= ma;
         } else if (strategy.mode === "hold_20of16") {
           wasHolding = holdQualifiedCache[strategy.period]?.[i - 1] ?? false;
+        } else if (strategy.mode === "full_alignment") {
+          const ma50 = averageOf(50, i - 1);
+          const ma100 = averageOf(100, i - 1);
+          const ma200 = averageOf(200, i - 1);
+          wasHolding = ma50 !== null && ma100 !== null && ma200 !== null
+            && prevPrice > ma50 && ma50 > ma100 && ma100 > ma200;
         }
         stratReturns.push(wasHolding ? price / prevPrice - 1 : 0);
       }

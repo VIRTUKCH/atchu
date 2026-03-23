@@ -18,6 +18,8 @@ function EtfSummaryCard({
   cagrFinal,
   cagrFinalLabel,
   mddFinal,
+  cagrAlignment,
+  mddAlignment,
   dataStartDate,
   isStaleClose,
   marketStatusLabel,
@@ -66,6 +68,16 @@ function EtfSummaryCard({
       : "change-down";
   const mddFinalClass =
     mddFinal === null || mddFinal === undefined
+      ? ""
+      : "change-down";
+  const cagrAlignmentClass =
+    cagrAlignment === null || cagrAlignment === undefined
+      ? ""
+      : Number(cagrAlignment) >= 0
+      ? "change-up"
+      : "change-down";
+  const mddAlignmentClass =
+    mddAlignment === null || mddAlignment === undefined
       ? ""
       : "change-down";
   const dataStartLabel = (() => {
@@ -195,6 +207,10 @@ function EtfSummaryCard({
             cagrClass={cagrFinalClass}
             mddValue={mddFinal !== null && mddFinal !== undefined ? formatSignedPercent(mddFinal) : null}
             mddClass={mddFinalClass}
+            cagrAlignmentValue={cagrAlignment !== null && cagrAlignment !== undefined ? formatSignedPercent(cagrAlignment) : null}
+            cagrAlignmentClass={cagrAlignmentClass}
+            mddAlignmentValue={mddAlignment !== null && mddAlignment !== undefined ? formatSignedPercent(mddAlignment) : null}
+            mddAlignmentClass={mddAlignmentClass}
             dataStartLabel={dataStartLabel}
           />
         </div>

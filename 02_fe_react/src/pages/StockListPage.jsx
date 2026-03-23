@@ -31,7 +31,8 @@ const sectorRank = new Map(SECTOR_ORDER.map((s, i) => [s, i]));
 
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
-  "200-20of16": "앗추 필터"
+  "200-20of16": "앗추 필터",
+  "full_align": "정배열"
 };
 
 function getBestOverallCagrInfo(analytics) {
@@ -337,6 +338,8 @@ export default function StockListPage() {
                   : null
               }
               mddFinal={mddValue}
+              cagrAlignment={analytics?.crossingHistory?.annualizedMap?.["full_align"] ?? null}
+              mddAlignment={analytics?.crossingHistory?.mddMap?.["full_align"] ?? null}
               dataStartDate={snapshot?.dataStartDate ?? null}
               isStaleClose={closeStatus.isStaleClose}
               marketStatusLabel={closeStatus.statusLabel}

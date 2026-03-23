@@ -14,7 +14,8 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "stock_snapshot");
 const OUT_FILE = path.join(SUMMARY_DIR, "stock_snapshots.json");
 const CROSSING_STRATEGIES = [
   { key: 200, period: 200, mode: "cross" },
-  { key: "200-20of16", period: 200, mode: "hold_20of16" }
+  { key: "200-20of16", period: 200, mode: "hold_20of16" },
+  { key: "full_align", mode: "full_alignment" }
 ];
 const PERIODS = [50, 100, 200];
 
@@ -225,6 +226,40 @@ const buildFromCsv = (csvText) => {
         close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
       });
       prevQualified = isQualified;
+    }
+  });
+
+  // 정배열 전략: price > MA50 > MA100 > MA200 일 때 매수, 이탈 시 매도
+  CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "full_alignment").forEach((strategy) => {
+    const startIdx = 199; // MA200이 계산 가능한 첫 인덱스
+    let prevAligned = null;
+    for (let i = startIdx; i <= lastIndex; i += 1) {
+      const price = adjustedSeries[i];
+      const ma50 = averageOf(adjustedSeries, 50, i);
+      const ma100 = averageOf(adjustedSeries, 100, i);
+      const ma200 = averageOf(adjustedSeries, 200, i);
+      if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
+      const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
+      if (prevAligned === null) {
+        prevAligned = isAligned;
+        if (isAligned) {
+          crossingItems.push({
+            period: strategy.key,
+            date: records[i]?.Date || null,
+            direction: "up",
+            close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+          });
+        }
+        continue;
+      }
+      if (isAligned === prevAligned) continue;
+      crossingItems.push({
+        period: strategy.key,
+        date: records[i]?.Date || null,
+        direction: isAligned ? "up" : "down",
+        close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+      });
+      prevAligned = isAligned;
     }
   });
 
