@@ -312,6 +312,7 @@ export default function StockListPage() {
               dataStartDate={snapshot?.dataStartDate ?? null}
               isStaleClose={closeStatus.isStaleClose}
               marketStatusLabel={closeStatus.statusLabel}
+              maAlignment={payload?.ma_alignment}
               meta={stockTickerMetaMap.get(ticker)}
               to={`/_stocks/${ticker}`}
             />

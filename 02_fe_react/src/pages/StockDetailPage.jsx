@@ -117,6 +117,7 @@ export default function StockDetailPage() {
             dataStartDate={snapshot?.dataStartDate ?? null}
             isStaleClose={closeStatus.isStaleClose}
             marketStatusLabel={closeStatus.statusLabel}
+            maAlignment={recentData.ma_alignment}
             meta={meta}
           />
           <PriceTrendChart

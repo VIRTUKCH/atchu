@@ -67,10 +67,15 @@ function toRecentShape(snapshot) {
     low: snapshot.low,
     volume: snapshot.volume,
     data_date_market: snapshot.dataDateMarket,
+    ma_alignment: snapshot.maAlignment || null,
     moving_averages: {
+      fifty_day: snapshot.movingAverage50,
+      one_hundred_day: snapshot.movingAverage100,
       two_hundred_day: snapshot.movingAverage200
     },
     percent_difference_from_moving_averages: {
+      fifty_day: snapshot.percentDiff50,
+      one_hundred_day: snapshot.percentDiff100,
       two_hundred_day: snapshot.percentDiff200
     }
   };

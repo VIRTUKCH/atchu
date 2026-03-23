@@ -21,6 +21,7 @@ function EtfSummaryCard({
   dataStartDate,
   isStaleClose,
   marketStatusLabel,
+  maAlignment,
   meta,
   to,
 }) {
@@ -143,6 +144,11 @@ function EtfSummaryCard({
               <span className="atchu-filter-text">
                 앗추 필터 {isAtchuQualified ? "적용 중" : "이탈"}{aboveDays200 !== null ? ` (${aboveDays200}/20일)` : ""}
               </span>
+              {maAlignment && maAlignment !== "none" && (
+                <span className={`ma-alignment-badge ma-alignment-${maAlignment}`}>
+                  {maAlignment === "full" ? "정배열" : maAlignment === "partial" ? "부분 정배열" : maAlignment === "reverse" ? "역배열" : ""}
+                </span>
+              )}
             </div>
           )}
           <div className="index-price-row">
