@@ -12,6 +12,7 @@ import "../styles/index-etf.css";
 
 const SORT_OPTIONS = [
   { value: "sector", label: "섹터별" },
+  { value: "atchu_aligned", label: "앗추+정배열" },
   { value: "ma200_desc", label: "이격률 높은순" },
   { value: "ma200_asc", label: "이격률 낮은순" },
   { value: "cagr_desc", label: "수익률 높은순" },
@@ -207,12 +208,18 @@ export default function StockListPage() {
 
   const list = useMemo(() => {
     if (!filteredTickers.length) return [];
-    return [...filteredTickers].sort((a, b) => {
-      if (sortMode === "sector") {
+    let tickers = [...filteredTickers];
+    if (sortMode === "atchu_aligned") {
+      tickers = tickers.filter((t) => {
+        const snap = stockSnapshotMap[t];
+        return snap?.isAtchuQualified200 && snap?.maAlignment === "full";
+      });
+    }
+    return tickers.sort((a, b) => {
+      if (sortMode === "sector" || sortMode === "atchu_aligned") {
         const aSector = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
         const bSector = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
         if (aSector !== bSector) return aSector - bSector;
-        // 같은 섹터 내에서 시가총액 순위(rank)로 정렬
         const aCapRank = stockTickerMetaMap.get(a)?.rank ?? 9999;
         const bCapRank = stockTickerMetaMap.get(b)?.rank ?? 9999;
         return aCapRank - bCapRank;
