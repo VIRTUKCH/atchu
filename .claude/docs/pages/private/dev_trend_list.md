@@ -8,7 +8,7 @@ S&P 500 개별주 + ETF 85개를 **하나의 통합 리스트**로 보여주는 
 - "어떤 종목이 앗추 필터를 통과하고 있나?"
 - "기술 섹터 중 반도체는 어떤가?"
 - "이격률이 높은/낮은 종목은?"
-- "ETF 중에서 정배열인 건 뭐가 있지?"
+- "ETF 중에서 골든크로스인 건 뭐가 있지?"
 - "채권/원자재 ETF의 앗추 필터 상태는?"
 
 ---
@@ -30,7 +30,7 @@ S&P 500 개별주 + ETF 85개를 **하나의 통합 리스트**로 보여주는 
 | 1 | **최상위 필터** | [전체] [개별주] [ETF] — TypeFilter 재사용 |
 | 2 | 하위 필터 | 개별주: SectorGroupFilter / ETF: TypeFilter(자산군) |
 | 3 | 검색 | 티커명 또는 회사명 (예: AAPL, SPY, 애플) |
-| 4 | 정렬 | 통합 옵션 11개 |
+| 4 | 정렬 | 통합 옵션 8개 |
 | 5 | 카드 그리드 | EtfSummaryCard 재사용 |
 
 ---
@@ -83,11 +83,9 @@ GICS 11개 섹터 + 46개 서브섹터 그룹 레이아웃.
 |---|---|---|---|
 | `group` | 분류별 | 개별주: 섹터순 → 시총순, ETF: 자산군순 → 파일순 | 개별주 먼저, ETF 뒤 |
 | `atchu` | 앗추 | 앗추 필터 통과만 | 개별주=시총순, ETF=기본순 |
-| `full_align` | 정배열 | 완전 정배열만 | 동일 |
-| `atchu_aligned` | 앗추+정배열 | 두 조건 동시 충족만 | 동일 |
-| `align_days_desc` | 정배열 오래된순 | 정배열만 + maAlignmentDays 내림 | 동일 |
-| `cagr_align_desc` | 정배열 수익률순 | full_align CAGR 내림 | 동일 |
-| `cagr_atchu_align_desc` | 앗추+정배열 수익률순 | atchu_full_align CAGR 내림 | 동일 |
+| `golden_cross` | 골든크로스 | 골든크로스(MA50 > MA200)만 | 동일 |
+| `gc_days_desc` | 골든크로스 오래된순 | 골든크로스만 + goldenCrossDays 내림 | 동일 |
+| `cagr_gc_desc` | 골든크로스 수익률순 | golden_cross CAGR 내림 | 동일 |
 | `ma200_desc` | 이격률 높은순 | percentDiff200 내림 | 동일 |
 | `ma200_asc` | 이격률 낮은순 | percentDiff200 오름 | 동일 |
 | `cagr_desc` | 수익률 높은순 | 최적 CAGR 내림 | 동일 |
@@ -103,8 +101,8 @@ GICS 11개 섹터 + 46개 서브섹터 그룹 레이아웃.
 |---|---|---|
 | 티커 메타 | `sp500.json` | `tickers/*.json` (10개) |
 | 스냅샷 | `stock_snapshots.json` | `summary_snapshots.json` |
-| 이평선 | MA50/100/200 | MA50/100/200 (파이프라인 확장 완료) |
-| 전략 | 4개 (200, 앗추, 정배열, 앗추+정배열) | 4개 (동일) |
+| 이평선 | MA50/200 | MA50/200 |
+| 전략 | 3개 (200일선, 앗추, 골든크로스) | 3개 (동일) |
 | CSV | `public/csv_stock/` (on-demand) | `data/csv/` (번들) |
 
 ### 중복 처리

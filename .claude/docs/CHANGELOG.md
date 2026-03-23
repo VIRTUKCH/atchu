@@ -1,5 +1,12 @@
 # 작업 기록
 
+### 2026-03-23 (76)
+- **기획 문서: 정배열 → 골든크로스 용어 전환**
+  - MA100 제거, 차트 3선→2선(MA50/MA200), 정배열/역배열→골든크로스/데드크로스
+  - 전략 4개→3개 (200일선, 앗추, 골든크로스), 앗추+정배열 전략 삭제
+  - 정렬 옵션: full_align→golden_cross, align_days_desc→gc_days_desc, cagr_align_desc→cagr_gc_desc
+  - 수정 파일: dev_trend_list.md, dev_trend_detail.md, dev_market_overview.md, CLAUDE.md
+
 ### 2026-03-23 (75)
 - **공개 ETF 상세 페이지 전략 필터링 + 문서 동기화**
   - `IndexEtfDetailPage.jsx`: crossingHistory.periods에서 정배열/앗추+정배열 필터링 (공개 페이지에는 200일선·앗추 필터만 표시)
