@@ -16,7 +16,7 @@ const CROSSING_STRATEGIES = [
   { key: 200, period: 200, mode: "cross" },
   { key: "200-20of16", period: 200, mode: "hold_20of16" }
 ];
-const PERIODS = [200];
+const PERIODS = [50, 100, 200];
 
 const parseNumber = (value) => {
   const parsed = Number(value);
@@ -67,8 +67,27 @@ const buildFromCsv = (csvText) => {
   const previousAdjustedClose = adjustedSeries[lastIndex - 1];
   const close = latestAdjustedClose;
   const previousClose = previousAdjustedClose;
+  const movingAverage50 = averageOf(adjustedSeries, 50, lastIndex);
+  const movingAverage100 = averageOf(adjustedSeries, 100, lastIndex);
   const movingAverage200 = averageOf(adjustedSeries, 200, lastIndex);
   const percentDiff = (ma) => (ma && close !== null ? ((close - ma) / ma) * 100 : null);
+
+  // 이평선 정배열 상태
+  const maAlignment = (() => {
+    if (close === null || movingAverage50 === null || movingAverage100 === null || movingAverage200 === null) {
+      return null;
+    }
+    if (close > movingAverage50 && movingAverage50 > movingAverage100 && movingAverage100 > movingAverage200) {
+      return "full";
+    }
+    if (movingAverage200 > movingAverage100 && movingAverage100 > movingAverage50 && movingAverage50 > close) {
+      return "reverse";
+    }
+    if (close > movingAverage200 && movingAverage50 > movingAverage200) {
+      return "partial";
+    }
+    return "none";
+  })();
   const percentChangeFromLookback = (days) => {
     const lookbackIndex = lastIndex - days;
     if (lookbackIndex < 0 || latestAdjustedClose === null) {
@@ -272,8 +291,13 @@ const buildFromCsv = (csvText) => {
       low: round2(parseNumber(latest.Low)),
       volume: parseNumber(latest.Volume),
       dataDateMarket: latest.Date || null,
+      movingAverage50: round2(movingAverage50),
+      movingAverage100: round2(movingAverage100),
       movingAverage200: round2(movingAverage200),
+      percentDiff50: round2(percentDiff(movingAverage50)),
+      percentDiff100: round2(percentDiff(movingAverage100)),
       percentDiff200: round2(percentDiff(movingAverage200)),
+      maAlignment,
       aboveDays200,
       isAtchuQualified200: aboveDays200 >= 16,
       dataStartDate: records[0]?.Date || null
