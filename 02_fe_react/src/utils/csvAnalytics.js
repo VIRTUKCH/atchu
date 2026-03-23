@@ -8,7 +8,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     return null;
   }
   const windowDays = options.windowDays || 20;
-  const periods = options.periods || [200];
+  const periods = options.periods || [50, 100, 200];
   const lines = csvText.trim().split("\n");
   if (lines.length < 3) {
     return null;
@@ -51,6 +51,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     }
     return (prefixSum[index + 1] - prefixSum[start]) / period;
   };
+  const movingAverage50 = averageOf(50, lastIndex);
+  const movingAverage100 = averageOf(100, lastIndex);
   const movingAverage200 = averageOf(200, lastIndex);
   const percentDiff = (ma) => {
     if (!ma || close === null) {
@@ -58,6 +60,21 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     }
     return ((close - ma) / ma) * 100;
   };
+  const maAlignment = (() => {
+    if (close === null || movingAverage50 === null || movingAverage100 === null || movingAverage200 === null) {
+      return null;
+    }
+    if (close > movingAverage50 && movingAverage50 > movingAverage100 && movingAverage100 > movingAverage200) {
+      return "full";
+    }
+    if (movingAverage200 > movingAverage100 && movingAverage100 > movingAverage50 && movingAverage50 > close) {
+      return "reverse";
+    }
+    if (close > movingAverage200 && movingAverage50 > movingAverage200) {
+      return "partial";
+    }
+    return "none";
+  })();
   const percentChangeFromPreviousClose =
     close !== null && previousClose !== null
       ? ((close - previousClose) / previousClose) * 100
@@ -73,8 +90,13 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     volume: parseNumber(latest.Volume),
     dataDateMarket: latest.Date || null,
     dataTimestampUtc: latest.Date ? `${latest.Date}T00:00:00Z` : null,
+    movingAverage50,
+    movingAverage100,
     movingAverage200,
-    percentDiff200: percentDiff(movingAverage200)
+    percentDiff50: percentDiff(movingAverage50),
+    percentDiff100: percentDiff(movingAverage100),
+    percentDiff200: percentDiff(movingAverage200),
+    maAlignment
   };
 
   const supportItems = periods.map((period) => {
@@ -163,6 +185,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         low: parseNumber(records[i]?.Low),
         closeRaw: parseNumber(records[i]?.Close),
         close: closeValue ?? null,
+        ma50: averageOf(50, i),
+        ma100: averageOf(100, i),
         ma200: averageOf(200, i)
       });
     }

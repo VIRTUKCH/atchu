@@ -1125,8 +1125,20 @@ a.topnav-brand {
   color: #1b2a4e;
 }
 
+.legend-ma50 {
+  color: #16a34a;
+}
+.legend-ma100 {
+  color: #ca8a04;
+}
 .legend-ma200 {
   color: #6b6f7a;
+}
+[data-theme="dark"] .legend-ma50 {
+  color: #4ade80;
+}
+[data-theme="dark"] .legend-ma100 {
+  color: #facc15;
 }
 
 
@@ -1204,8 +1216,20 @@ a.topnav-brand {
   stroke: #1b2a4e;
 }
 
+.chart-ma50 {
+  stroke: #16a34a;
+}
+.chart-ma100 {
+  stroke: #ca8a04;
+}
 .chart-ma200 {
   stroke: #6b6f7a;
+}
+[data-theme="dark"] .chart-ma50 {
+  stroke: #4ade80;
+}
+[data-theme="dark"] .chart-ma100 {
+  stroke: #facc15;
 }
 
 .chart-wick {
