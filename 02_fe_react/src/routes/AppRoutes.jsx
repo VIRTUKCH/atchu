@@ -9,6 +9,11 @@ function AnalysisRedirect() {
   const { ticker } = useParams();
   return <Navigate to={`/index_etf/${ticker}`} replace />;
 }
+// TODO: 개발자 전용 ETF 상세 페이지 구현 후 실제 페이지로 교체
+function DevEtfDetailRedirect() {
+  const { ticker } = useParams();
+  return <Navigate to={`/index_etf/${ticker}`} replace />;
+}
 const MarketOverviewPage = React.lazy(() => import("../pages/MarketOverviewPage"));
 const MorePage = React.lazy(() => import("../pages/MorePage"));
 const FaqPage = React.lazy(() => import("../pages/FaqPage"));
@@ -233,6 +238,7 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_dev" element={<BentoLayout><PasswordGate><DevPage /></PasswordGate></BentoLayout>} />
         <Route path="/_stocks" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
         <Route path="/_stocks/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_etf/:ticker" element={<DevEtfDetailRedirect />} />
         <Route path="/_stocks_overview" element={<BentoLayout><PasswordGate><StockOverviewPage /></PasswordGate></BentoLayout>} />
         <Route path="/_quant" element={<BentoLayout><PasswordGate><BaaQuantPeekPage /></PasswordGate></BentoLayout>} />
 
