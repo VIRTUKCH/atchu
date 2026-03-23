@@ -16,6 +16,8 @@ const SORT_OPTIONS = [
   { value: "full_align", label: "정배열" },
   { value: "atchu_aligned", label: "앗추+정배열" },
   { value: "align_days_desc", label: "정배열 오래된순" },
+  { value: "cagr_align_desc", label: "정배열 수익률순" },
+  { value: "cagr_atchu_align_desc", label: "앗추+정배열 수익률순" },
   { value: "ma200_desc", label: "이격률 높은순" },
   { value: "ma200_asc", label: "이격률 낮은순" },
   { value: "cagr_desc", label: "수익률 높은순" },
@@ -254,6 +256,14 @@ export default function StockListPage() {
         if (sortMode === "cagr_desc") {
           const analytics = getStockListAnalytics(ticker);
           return getBestOverallCagrInfo(analytics).value;
+        }
+        if (sortMode === "cagr_align_desc") {
+          const analytics = getStockListAnalytics(ticker);
+          return analytics?.crossingHistory?.annualizedMap?.["full_align"] ?? null;
+        }
+        if (sortMode === "cagr_atchu_align_desc") {
+          const analytics = getStockListAnalytics(ticker);
+          return analytics?.crossingHistory?.annualizedMap?.["atchu_full_align"] ?? null;
         }
         if (sortMode === "mdd_asc") {
           const analytics = getStockListAnalytics(ticker);
