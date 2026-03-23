@@ -164,7 +164,7 @@ function EtfSummaryCard({
               <span className="atchu-filter-dot" />
               <span className="atchu-filter-text">
                 {maAlignment === "golden" ? "골든크로스" : "데드크로스"}
-                {maAlignmentDays != null && ` ${maAlignmentDays}일째`}
+                {maAlignmentDays != null && ` (${maAlignmentDays}일)`}
               </span>
             </div>
           )}

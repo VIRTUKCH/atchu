@@ -1,11 +1,15 @@
 # 작업 기록
 
 ### 2026-03-23 (76)
-- **기획 문서: 정배열 → 골든크로스 용어 전환**
-  - MA100 제거, 차트 3선→2선(MA50/MA200), 정배열/역배열→골든크로스/데드크로스
-  - 전략 4개→3개 (200일선, 앗추, 골든크로스), 앗추+정배열 전략 삭제
-  - 정렬 옵션: full_align→golden_cross, align_days_desc→gc_days_desc, cagr_align_desc→cagr_gc_desc
-  - 수정 파일: dev_trend_list.md, dev_trend_detail.md, dev_market_overview.md, CLAUDE.md
+- **MA100 제거 & 정배열→골든크로스 전환 (파이프라인+프론트+문서)**
+  - 배경: 정배열(price>MA50>MA100>MA200) 전략이 501개 개별주 중 96%에서 매수후보유보다 CAGR 열세, 연 5회 휩소. MA100은 가치 없음. 순수 골든크로스(MA50>MA200)가 CAGR 8.62%, 연 0.8회로 우수
+  - 파이프라인: generate_stock_snapshot.mjs, generate_summary_snapshot.mjs — MA100 계산 제거, CROSSING_STRATEGIES에서 full_align/atchu_full_align→golden_cross, maAlignment full/partial/reverse→golden/dead
+  - 분석: analyze_ma_alignment.mjs — strategyGoldenCross로 대체, 전략 6개→4개
+  - 프론트 유틸: csvAnalytics.js(MA100 제거, 골든크로스 신호), stockDataLoaders.js/appDataAdapters.js(MA100 필드 삭제), tickerMeta.js(라벨 매핑)
+  - 컴포넌트: PriceTrendChart(차트 3선→2선), EtfSummaryCard(배지 골든크로스/데드크로스 (N일)), EtfSummaryMovingAverages, AdvancedMetricsCard
+  - 페이지: StockListPage(정렬 11개→8개), StockDetailPage(탭 4개→3개), IndexEtfDetailPage(주석)
+  - CSS: base.css(MA100 스타일 삭제), index-etf.css(golden/dead 색상)
+  - 문서: dev_trend_list.md, dev_trend_detail.md, dev_market_overview.md, CLAUDE.md
 
 ### 2026-03-23 (75)
 - **공개 ETF 상세 페이지 전략 필터링 + 문서 동기화**

@@ -52,7 +52,6 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     return (prefixSum[index + 1] - prefixSum[start]) / period;
   };
   const movingAverage50 = averageOf(50, lastIndex);
-  const movingAverage100 = averageOf(100, lastIndex);
   const movingAverage200 = averageOf(200, lastIndex);
   const percentDiff = (ma) => {
     if (!ma || close === null) {
@@ -61,19 +60,10 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     return ((close - ma) / ma) * 100;
   };
   const maAlignment = (() => {
-    if (close === null || movingAverage50 === null || movingAverage100 === null || movingAverage200 === null) {
+    if (movingAverage50 === null || movingAverage200 === null) {
       return null;
     }
-    if (close > movingAverage50 && movingAverage50 > movingAverage100 && movingAverage100 > movingAverage200) {
-      return "full";
-    }
-    if (movingAverage200 > movingAverage100 && movingAverage100 > movingAverage50 && movingAverage50 > close) {
-      return "reverse";
-    }
-    if (close > movingAverage200 && movingAverage50 > movingAverage200) {
-      return "partial";
-    }
-    return "none";
+    return movingAverage50 > movingAverage200 ? "golden" : "dead";
   })();
   const percentChangeFromPreviousClose =
     close !== null && previousClose !== null
@@ -91,10 +81,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     dataDateMarket: latest.Date || null,
     dataTimestampUtc: latest.Date ? `${latest.Date}T00:00:00Z` : null,
     movingAverage50,
-    movingAverage100,
     movingAverage200,
     percentDiff50: percentDiff(movingAverage50),
-    percentDiff100: percentDiff(movingAverage100),
     percentDiff200: percentDiff(movingAverage200),
     maAlignment
   };
@@ -186,7 +174,6 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         closeRaw: parseNumber(records[i]?.Close),
         close: closeValue ?? null,
         ma50: averageOf(50, i),
-        ma100: averageOf(100, i),
         ma200: averageOf(200, i)
       });
     }
@@ -219,8 +206,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       label: "앗추 필터 (200일)",
       mode: "hold_20of16"
     },
-    { key: "full_align", label: "정배열", mode: "full_alignment" },
-    { key: "atchu_full_align", label: "앗추+정배열", mode: "atchu_full_alignment" },
+    { key: "golden_cross", label: "골든크로스", mode: "golden_cross" },
   ];
   const crossingPeriods = crossingStrategies.map((strategy) => strategy.key);
   const crossingPeriodLabels = crossingStrategies.reduce((acc, strategy) => {
@@ -359,22 +345,20 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       }
     });
 
-  // 정배열 전략: price > MA50 > MA100 > MA200 일 때 매수, 이탈 시 매도
+  // 골든크로스 전략: MA50 > MA200 전환 시 매수(up), MA200 > MA50 전환 시 매도(down)
   crossingStrategies
-    .filter((strategy) => strategy.mode === "full_alignment")
+    .filter((strategy) => strategy.mode === "golden_cross")
     .forEach((strategy) => {
       const startIdx = Math.max(199, 0);
-      let prevAligned = null;
+      let prevGolden = null;
       for (let i = startIdx; i <= lastIndex; i += 1) {
-        const price = adjustedSeries[i];
         const ma50 = averageOf(50, i);
-        const ma100 = averageOf(100, i);
         const ma200 = averageOf(200, i);
-        if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
-        const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
-        if (prevAligned === null) {
-          prevAligned = isAligned;
-          if (isAligned) {
+        if (ma50 === null || ma200 === null) continue;
+        const isGolden = ma50 > ma200;
+        if (prevGolden === null) {
+          prevGolden = isGolden;
+          if (isGolden) {
             const currentRow = records[i];
             const prevRow = i > 0 ? records[i - 1] : null;
             const currentClose = resolveCloseValue(currentRow);
@@ -395,7 +379,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           }
           continue;
         }
-        if (isAligned === prevAligned) continue;
+        if (isGolden === prevGolden) continue;
         const currentRow = records[i];
         const prevRow = i > 0 ? records[i - 1] : null;
         const currentClose = resolveCloseValue(currentRow);
@@ -408,72 +392,12 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           id: buildCrossingId(strategy.key, currentRow?.Date),
           period: strategy.key,
           date: currentRow?.Date || null,
-          direction: isAligned ? "up" : "down",
+          direction: isGolden ? "up" : "down",
           close: currentClose,
           adjustedClose: adjustedSeries[i],
           changePercent
         });
-        prevAligned = isAligned;
-      }
-    });
-
-  // 앗추+정배열 전략: 앗추 필터 AND 완전 정배열 동시 충족 시 매수, 하나라도 깨지면 매도
-  crossingStrategies
-    .filter((strategy) => strategy.mode === "atchu_full_alignment")
-    .forEach((strategy) => {
-      const startIdx = 199;
-      let prevQualified = null;
-      for (let i = startIdx; i <= lastIndex; i += 1) {
-        const price = adjustedSeries[i];
-        const ma50 = averageOf(50, i);
-        const ma100 = averageOf(100, i);
-        const ma200 = averageOf(200, i);
-        if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
-        const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
-        const isAtchu = holdQualifiedCache[200]?.[i] ?? false;
-        const isQualified = isAligned && isAtchu;
-        if (prevQualified === null) {
-          prevQualified = isQualified;
-          if (isQualified) {
-            const currentRow = records[i];
-            const prevRow = i > 0 ? records[i - 1] : null;
-            const currentClose = resolveCloseValue(currentRow);
-            const prevClose = resolveCloseValue(prevRow);
-            const changePercent =
-              currentClose !== null && prevClose !== null
-                ? ((currentClose - prevClose) / prevClose) * 100
-                : null;
-            crossingItems.push({
-              id: buildCrossingId(strategy.key, currentRow?.Date),
-              period: strategy.key,
-              date: currentRow?.Date || null,
-              direction: "up",
-              close: currentClose,
-              adjustedClose: adjustedSeries[i],
-              changePercent
-            });
-          }
-          continue;
-        }
-        if (isQualified === prevQualified) continue;
-        const currentRow = records[i];
-        const prevRow = i > 0 ? records[i - 1] : null;
-        const currentClose = resolveCloseValue(currentRow);
-        const prevClose = resolveCloseValue(prevRow);
-        const changePercent =
-          currentClose !== null && prevClose !== null
-            ? ((currentClose - prevClose) / prevClose) * 100
-            : null;
-        crossingItems.push({
-          id: buildCrossingId(strategy.key, currentRow?.Date),
-          period: strategy.key,
-          date: currentRow?.Date || null,
-          direction: isQualified ? "up" : "down",
-          close: currentClose,
-          adjustedClose: adjustedSeries[i],
-          changePercent
-        });
-        prevQualified = isQualified;
+        prevGolden = isGolden;
       }
     });
 
@@ -690,15 +614,10 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           mddUpdatedDate = records[i]?.Date || null;
         }
       }
-      if (mode === "full_alignment" || mode === "atchu_full_alignment") {
+      if (mode === "golden_cross") {
         const ma50 = averageOf(50, i);
-        const ma100 = averageOf(100, i);
         const ma200 = averageOf(200, i);
-        const aligned = ma50 !== null && ma100 !== null && ma200 !== null
-          && price > ma50 && ma50 > ma100 && ma100 > ma200;
-        prevSignal = mode === "atchu_full_alignment"
-          ? aligned && (holdQualifiedCache[200]?.[i] ?? false)
-          : aligned;
+        prevSignal = ma50 !== null && ma200 !== null && ma50 > ma200;
       } else {
         prevSignal =
           mode === "hold_20of16"
@@ -723,7 +642,6 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     let prevPrice = null;
     let prevSignal = false;
     let hasReturn = false;
-    let comboHolding = false;
     for (let i = 0; i <= lastIndex; i += 1) {
       const price = adjustedSeries[i];
       if (price === null) {
@@ -749,15 +667,10 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         currentSignal = ma !== null && price >= ma;
       } else if (strategy.mode === "hold_20of16") {
         currentSignal = isHoldFilterQualified(strategy.period, i);
-      } else if (strategy.mode === "full_alignment" || strategy.mode === "atchu_full_alignment") {
+      } else if (strategy.mode === "golden_cross") {
         const ma50 = averageOf(50, i);
-        const ma100 = averageOf(100, i);
         const ma200 = averageOf(200, i);
-        const aligned = ma50 !== null && ma100 !== null && ma200 !== null
-          && price > ma50 && ma50 > ma100 && ma100 > ma200;
-        currentSignal = strategy.mode === "atchu_full_alignment"
-          ? aligned && (holdQualifiedCache[200]?.[i] ?? false)
-          : aligned;
+        currentSignal = ma50 !== null && ma200 !== null && ma50 > ma200;
       }
       prevSignal = currentSignal;
       prevPrice = price;
@@ -777,8 +690,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     movingAverage: {
       200: computeMovingAverageDrawdown(200),
       "200-20of16": computeMovingAverageDrawdown(200, "hold_20of16"),
-      "full_align": computeMovingAverageDrawdown(null, "full_alignment"),
-      "atchu_full_align": computeMovingAverageDrawdown(null, "atchu_full_alignment")
+      "golden_cross": computeMovingAverageDrawdown(null, "golden_cross")
     }
   };
 
@@ -831,15 +743,10 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           wasHolding = ma !== null && prevPrice >= ma;
         } else if (strategy.mode === "hold_20of16") {
           wasHolding = holdQualifiedCache[strategy.period]?.[i - 1] ?? false;
-        } else if (strategy.mode === "full_alignment" || strategy.mode === "atchu_full_alignment") {
+        } else if (strategy.mode === "golden_cross") {
           const ma50 = averageOf(50, i - 1);
-          const ma100 = averageOf(100, i - 1);
           const ma200 = averageOf(200, i - 1);
-          const aligned = ma50 !== null && ma100 !== null && ma200 !== null
-            && prevPrice > ma50 && ma50 > ma100 && ma100 > ma200;
-          wasHolding = strategy.mode === "atchu_full_alignment"
-            ? aligned && (holdQualifiedCache[200]?.[i - 1] ?? false)
-            : aligned;
+          wasHolding = ma50 !== null && ma200 !== null && ma50 > ma200;
         }
         stratReturns.push(wasHolding ? price / prevPrice - 1 : 0);
       }

@@ -41,7 +41,7 @@ export default function IndexEtfDetailPage({ model }) {
   const recentData = toRecentShape(snapshotData);
   const chartSeries = detailAnalytics?.chartSeries || {};
   const rawCrossingHistory = detailAnalytics?.crossingHistory || { items: [] };
-  // 공개 페이지: 200일선·앗추 필터만 표시 (정배열·앗추+정배열은 개발자 전용)
+  // 공개 페이지: 200일선·앗추 필터만 표시 (골든크로스는 개발자 전용)
   const PUBLIC_PERIODS = new Set([200, "200-20of16"]);
   const crossingHistory = {
     ...rawCrossingHistory,

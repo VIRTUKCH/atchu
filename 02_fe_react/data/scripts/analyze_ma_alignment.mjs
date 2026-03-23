@@ -1,11 +1,9 @@
 /**
- * 다중 이평선 정배열 분석
+ * 다중 이평선 전략 분석
  * - 매수후보유 (Buy & Hold)
  * - 200일선 단순 교차
  * - 앗추 필터 (20일 중 16일 이상 200일선 위)
- * - 완전 정배열 (price > MA50 > MA100 > MA200)
- * - 부분 정배열 (price > MA200 AND MA50 > MA200)
- * - MA순서만 (MA50 > MA100 > MA200)
+ * - 골든크로스 (MA50 > MA200)
  *
  * 실행: node 02_fe_react/data/scripts/analyze_ma_alignment.mjs [--json] [--top100] [--sector=기술]
  */
@@ -109,46 +107,17 @@ function strategyAtchu1620(rows, mas) {
   return { signal, startIdx: startIdx + WINDOW - 1, name: "앗추 16/20" };
 }
 
-function strategyFullAlignment(rows, mas) {
-  const startIdx = 199;
-  const signal = new Array(rows.length).fill(false);
-  for (let i = startIdx; i < rows.length; i++) {
-    const ma50 = mas.ma50[i];
-    const ma100 = mas.ma100[i];
-    const ma200 = mas.ma200[i];
-    if (ma50 !== null && ma100 !== null && ma200 !== null) {
-      signal[i] =
-        rows[i].adjClose > ma50 && ma50 > ma100 && ma100 > ma200;
-    }
-  }
-  return { signal, startIdx, name: "완전 정배열" };
-}
-
-function strategyPartialAlignment(rows, mas) {
+function strategyGoldenCross(rows, mas) {
   const startIdx = 199;
   const signal = new Array(rows.length).fill(false);
   for (let i = startIdx; i < rows.length; i++) {
     const ma50 = mas.ma50[i];
     const ma200 = mas.ma200[i];
     if (ma50 !== null && ma200 !== null) {
-      signal[i] = rows[i].adjClose > ma200 && ma50 > ma200;
+      signal[i] = ma50 > ma200;
     }
   }
-  return { signal, startIdx, name: "부분 정배열" };
-}
-
-function strategyMAOrderOnly(rows, mas) {
-  const startIdx = 199;
-  const signal = new Array(rows.length).fill(false);
-  for (let i = startIdx; i < rows.length; i++) {
-    const ma50 = mas.ma50[i];
-    const ma100 = mas.ma100[i];
-    const ma200 = mas.ma200[i];
-    if (ma50 !== null && ma100 !== null && ma200 !== null) {
-      signal[i] = ma50 > ma100 && ma100 > ma200;
-    }
-  }
-  return { signal, startIdx, name: "MA순서만" };
+  return { signal, startIdx, name: "골든크로스" };
 }
 
 // === 공통 시뮬레이션 엔진 ===
@@ -289,9 +258,7 @@ const STRAT_NAMES = [
   "매수후보유",
   "200일선 교차",
   "앗추 16/20",
-  "완전 정배열",
-  "부분 정배열",
-  "MA순서만",
+  "골든크로스",
 ];
 
 function printStats(arr, label) {
@@ -370,10 +337,10 @@ function printStats(arr, label) {
 
 function printSectorStats(arr) {
   console.log(`\n${"=".repeat(90)}`);
-  console.log(`  섹터별 완전 정배열 vs 매수후보유`);
+  console.log(`  섹터별 골든크로스 vs 매수후보유`);
   console.log(`${"=".repeat(90)}`);
   console.log(
-    `\n  ${"섹터".padEnd(12)} ${"종목".padStart(4)} | ${"BH CAGR".padStart(9)} ${"정배열CAGR".padStart(10)} ${"차이".padStart(7)} ${"승률".padStart(10)} | ${"BH MDD".padStart(8)} ${"정배열MDD".padStart(9)}`
+    `\n  ${"섹터".padEnd(12)} ${"종목".padStart(4)} | ${"BH CAGR".padStart(9)} ${"GC CAGR".padStart(10)} ${"차이".padStart(7)} ${"승률".padStart(10)} | ${"BH MDD".padStart(8)} ${"GC MDD".padStart(9)}`
   );
   console.log(`  ${"─".repeat(85)}`);
 
@@ -381,13 +348,13 @@ function printSectorStats(arr) {
   for (const sector of sectors) {
     const s = arr.filter((r) => r.sector === sector);
     const avgBH = avg(s.map((r) => r["매수후보유"].cagr));
-    const avgFA = avg(s.map((r) => r["완전 정배열"].cagr));
+    const avgFA = avg(s.map((r) => r["골든크로스"].cagr));
     const diff = avgFA - avgBH;
     const beats = s.filter(
-      (r) => r["완전 정배열"].cagr > r["매수후보유"].cagr
+      (r) => r["골든크로스"].cagr > r["매수후보유"].cagr
     ).length;
     const avgBHMDD = avg(s.map((r) => r["매수후보유"].mdd));
-    const avgFAMDD = avg(s.map((r) => r["완전 정배열"].mdd));
+    const avgFAMDD = avg(s.map((r) => r["골든크로스"].mdd));
     console.log(
       `  ${sector.padEnd(10)} ${String(s.length).padStart(4)} | ${avgBH.toFixed(1).padStart(9)} ${avgFA.toFixed(1).padStart(10)} ${(diff >= 0 ? "+" : "") + diff.toFixed(1).padStart(6)} ${beats}/${s.length} (${((beats / s.length) * 100).toFixed(0)}%)`.padEnd(70) +
         ` | ${avgBHMDD.toFixed(1).padStart(8)} ${avgFAMDD.toFixed(1).padStart(9)}`
@@ -399,7 +366,7 @@ function printTTestResult(result) {
   console.log(`\n${"=".repeat(90)}`);
   console.log(`  통계적 유의성 검정 (Welch's t-test)`);
   console.log(
-    `  H0: 정배열 기간 평균 일간 수익률 = 비정배열 기간 평균 일간 수익률`
+    `  H0: 골든크로스 기간 평균 일간 수익률 = 비골든크로스 기간 평균 일간 수익률`
   );
   console.log(`${"=".repeat(90)}`);
 
@@ -409,10 +376,10 @@ function printTTestResult(result) {
   }
 
   console.log(
-    `  정배열 기간: n=${result.n1.toLocaleString()}, 평균 일간 수익률=${(result.mean1 * 100).toFixed(4)}%`
+    `  골든크로스 기간: n=${result.n1.toLocaleString()}, 평균 일간 수익률=${(result.mean1 * 100).toFixed(4)}%`
   );
   console.log(
-    `  비정배열 기간: n=${result.n2.toLocaleString()}, 평균 일간 수익률=${(result.mean2 * 100).toFixed(4)}%`
+    `  비골든크로스 기간: n=${result.n2.toLocaleString()}, 평균 일간 수익률=${(result.mean2 * 100).toFixed(4)}%`
   );
   console.log(
     `  차이: ${((result.mean1 - result.mean2) * 100).toFixed(4)}%p/일 → 연환산 ~${((result.mean1 - result.mean2) * 252 * 100).toFixed(1)}%p`
@@ -423,7 +390,7 @@ function printTTestResult(result) {
     `  p-value: ${result.pValue < 0.0001 ? "< 0.0001" : result.pValue.toFixed(4)}`
   );
   console.log(
-    `  결론: ${result.pValue < 0.05 ? "유의미 (p < 0.05) — 정배열 기간의 수익률이 통계적으로 유의하게 다름" : "유의미하지 않음 (p >= 0.05)"}`
+    `  결론: ${result.pValue < 0.05 ? "유의미 (p < 0.05) — 골든크로스 기간의 수익률이 통계적으로 유의하게 다름" : "유의미하지 않음 (p >= 0.05)"}`
   );
 }
 
@@ -445,9 +412,7 @@ function main() {
     strategyBuyHold,
     strategyMA200Cross,
     strategyAtchu1620,
-    strategyFullAlignment,
-    strategyPartialAlignment,
-    strategyMAOrderOnly,
+    strategyGoldenCross,
   ];
 
   const results = [];
@@ -469,29 +434,20 @@ function main() {
     // MA 사전 계산
     const mas = {
       ma50: calcRollingMA(rows, 50),
-      ma100: calcRollingMA(rows, 100),
       ma200: calcRollingMA(rows, 200),
     };
 
     const dailyReturns = calcDailyReturns(rows);
 
-    // t-test용 데이터 수집
+    // t-test용 데이터 수집 (골든크로스: MA50 > MA200)
     const startIdx = 199;
     for (let i = startIdx + 1; i < rows.length; i++) {
       const ret = dailyReturns[i];
       if (isNaN(ret)) continue;
-      if (
-        mas.ma50[i] === null ||
-        mas.ma100[i] === null ||
-        mas.ma200[i] === null
-      )
-        continue;
+      if (mas.ma50[i] === null || mas.ma200[i] === null) continue;
 
-      const isAligned =
-        rows[i].adjClose > mas.ma50[i] &&
-        mas.ma50[i] > mas.ma100[i] &&
-        mas.ma100[i] > mas.ma200[i];
-      if (isAligned) alignedReturns.push(ret);
+      const isGoldenCross = mas.ma50[i] > mas.ma200[i];
+      if (isGoldenCross) alignedReturns.push(ret);
       else unalignedReturns.push(ret);
     }
 

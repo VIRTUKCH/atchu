@@ -15,8 +15,7 @@ const holdFilterPeriods = ["200-20of16"];
 const cagrStrategyLabelMap = {
   200: "200일 이평선",
   "200-20of16": "앗추 필터 (200일)",
-  full_align: "정배열",
-  atchu_full_align: "앗추+정배열"
+  golden_cross: "골든크로스"
 };
 
 const getBestCagrInfoByKeys = (analytics, keys) => {
