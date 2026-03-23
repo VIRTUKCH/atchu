@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/column.css";
 import { baaSignalPayload } from "../utils/baaDataLoaders";
 import BaaSignalBadge from "../components/baa/BaaSignalBadge";
 import BaaPortfolioTab from "../components/baa/BaaPortfolioTab";
