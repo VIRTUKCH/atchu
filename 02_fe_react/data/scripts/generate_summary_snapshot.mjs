@@ -10,9 +10,11 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "snapshot");
 const OUT_FILE = path.join(SUMMARY_DIR, "summary_snapshots.json");
 const CROSSING_STRATEGIES = [
   { key: 200, period: 200, mode: "cross" },
-  { key: "200-20of16", period: 200, mode: "hold_20of16" }
+  { key: "200-20of16", period: 200, mode: "hold_20of16" },
+  { key: "full_align", mode: "full_alignment" },
+  { key: "atchu_full_align", mode: "atchu_full_alignment" }
 ];
-const PERIODS = [200];
+const PERIODS = [50, 100, 200];
 
 const parseNumber = (value) => {
   const parsed = Number(value);
@@ -63,8 +65,44 @@ const buildFromCsv = (csvText) => {
   const previousAdjustedClose = adjustedSeries[lastIndex - 1];
   const close = latestAdjustedClose;
   const previousClose = previousAdjustedClose;
+  const movingAverage50 = averageOf(adjustedSeries, 50, lastIndex);
+  const movingAverage100 = averageOf(adjustedSeries, 100, lastIndex);
   const movingAverage200 = averageOf(adjustedSeries, 200, lastIndex);
   const percentDiff = (ma) => (ma && close !== null ? ((close - ma) / ma) * 100 : null);
+
+  const maAlignment = (() => {
+    if (close === null || movingAverage50 === null || movingAverage100 === null || movingAverage200 === null) {
+      return null;
+    }
+    if (close > movingAverage50 && movingAverage50 > movingAverage100 && movingAverage100 > movingAverage200) {
+      return "full";
+    }
+    if (movingAverage200 > movingAverage100 && movingAverage100 > movingAverage50 && movingAverage50 > close) {
+      return "reverse";
+    }
+    return "partial";
+  })();
+
+  const maAlignmentDays = (() => {
+    if (maAlignment !== "full" && maAlignment !== "reverse") return null;
+    let days = 0;
+    for (let i = lastIndex; i >= 199; i -= 1) {
+      const p = adjustedSeries[i];
+      const m50 = averageOf(adjustedSeries, 50, i);
+      const m100 = averageOf(adjustedSeries, 100, i);
+      const m200 = averageOf(adjustedSeries, 200, i);
+      if (p === null || m50 === null || m100 === null || m200 === null) break;
+      const state = (p > m50 && m50 > m100 && m100 > m200) ? "full"
+        : (m200 > m100 && m100 > m50 && m50 > p) ? "reverse"
+        : "other";
+      if (state === maAlignment) {
+        days += 1;
+      } else {
+        break;
+      }
+    }
+    return days;
+  })();
   const percentChangeFromLookback = (days) => {
     const lookbackIndex = lastIndex - days;
     if (lookbackIndex < 0 || latestAdjustedClose === null) {
@@ -183,6 +221,74 @@ const buildFromCsv = (csvText) => {
     }
   });
 
+  CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "full_alignment").forEach((strategy) => {
+    const startIdx = 199;
+    let prevAligned = null;
+    for (let i = startIdx; i <= lastIndex; i += 1) {
+      const price = adjustedSeries[i];
+      const ma50 = averageOf(adjustedSeries, 50, i);
+      const ma100 = averageOf(adjustedSeries, 100, i);
+      const ma200 = averageOf(adjustedSeries, 200, i);
+      if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
+      const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
+      if (prevAligned === null) {
+        prevAligned = isAligned;
+        if (isAligned) {
+          crossingItems.push({
+            period: strategy.key,
+            date: records[i]?.Date || null,
+            direction: "up",
+            close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+          });
+        }
+        continue;
+      }
+      if (isAligned === prevAligned) continue;
+      crossingItems.push({
+        period: strategy.key,
+        date: records[i]?.Date || null,
+        direction: isAligned ? "up" : "down",
+        close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+      });
+      prevAligned = isAligned;
+    }
+  });
+
+  CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "atchu_full_alignment").forEach((strategy) => {
+    const startIdx = 199;
+    let prevQualified = null;
+    for (let i = startIdx; i <= lastIndex; i += 1) {
+      const price = adjustedSeries[i];
+      const ma50 = averageOf(adjustedSeries, 50, i);
+      const ma100 = averageOf(adjustedSeries, 100, i);
+      const ma200 = averageOf(adjustedSeries, 200, i);
+      if (price === null || ma50 === null || ma100 === null || ma200 === null) continue;
+      const isAligned = price > ma50 && ma50 > ma100 && ma100 > ma200;
+      const isAtchu = isHoldFilterQualified(200, i, 20, 16);
+      const isQualified = isAligned && isAtchu;
+      if (prevQualified === null) {
+        prevQualified = isQualified;
+        if (isQualified) {
+          crossingItems.push({
+            period: strategy.key,
+            date: records[i]?.Date || null,
+            direction: "up",
+            close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+          });
+        }
+        continue;
+      }
+      if (isQualified === prevQualified) continue;
+      crossingItems.push({
+        period: strategy.key,
+        date: records[i]?.Date || null,
+        direction: isQualified ? "up" : "down",
+        close: parseNumber(records[i]?.Adjusted_close ?? records[i]?.Close)
+      });
+      prevQualified = isQualified;
+    }
+  });
+
   const firstDate = new Date(records[0]?.Date || "");
   const lastDate = new Date(records[lastIndex]?.Date || "");
   const yearsOfData =
@@ -268,8 +374,14 @@ const buildFromCsv = (csvText) => {
       low: round2(parseNumber(latest.Low)),
       volume: parseNumber(latest.Volume),
       dataDateMarket: latest.Date || null,
+      movingAverage50: round2(movingAverage50),
+      movingAverage100: round2(movingAverage100),
       movingAverage200: round2(movingAverage200),
+      percentDiff50: round2(percentDiff(movingAverage50)),
+      percentDiff100: round2(percentDiff(movingAverage100)),
       percentDiff200: round2(percentDiff(movingAverage200)),
+      maAlignment,
+      maAlignmentDays,
       aboveDays200,
       isAtchuQualified200: aboveDays200 >= 16,
       dataStartDate: records[0]?.Date || null
