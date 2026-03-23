@@ -74,7 +74,7 @@ const buildFromCsv = (csvText) => {
   const movingAverage200 = averageOf(adjustedSeries, 200, lastIndex);
   const percentDiff = (ma) => (ma && close !== null ? ((close - ma) / ma) * 100 : null);
 
-  // 이평선 정배열 상태
+  // 이평선 정배열 상태: full / reverse / partial (그 외 전부)
   const maAlignment = (() => {
     if (close === null || movingAverage50 === null || movingAverage100 === null || movingAverage200 === null) {
       return null;
@@ -85,10 +85,7 @@ const buildFromCsv = (csvText) => {
     if (movingAverage200 > movingAverage100 && movingAverage100 > movingAverage50 && movingAverage50 > close) {
       return "reverse";
     }
-    if (close > movingAverage200 && movingAverage50 > movingAverage200) {
-      return "partial";
-    }
-    return "none";
+    return "partial";
   })();
   // 정배열/역배열 연속 유지 일수 (full, reverse만 계산)
   const maAlignmentDays = (() => {

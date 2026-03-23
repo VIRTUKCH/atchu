@@ -171,7 +171,7 @@ function EtfSummaryCard({
               </span>
             </div>
           )}
-          {maAlignment && maAlignment !== "none" && (
+          {maAlignment && (
             <div className={`atchu-filter-indicator ma-alignment-indicator ma-alignment-${maAlignment}`}>
               <span className="atchu-filter-dot" />
               <span className="atchu-filter-text">

@@ -183,8 +183,9 @@ ETF 탭은 공개 ETF 추세 조회(`/index_etf`)의 **개발자 확장 버전**
 |-------------|--------|--------------|
 | `"full"` | `이평선 정배열` | 초록 |
 | `"partial"` | `이평선 부분 정배열` | 노랑 |
-| `"none"` | (미표시) | — |
 | `"reverse"` | `이평선 역배열` | 빨강 |
+
+`none` 없음 — full/reverse가 아닌 모든 상태가 `partial`.
 
 데이터 소스:
 - 개별주: `stock_snapshots.json`의 `maAlignment` → `toRecentShape()`의 `ma_alignment`
