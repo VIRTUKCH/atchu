@@ -563,7 +563,7 @@ balMetrics.maxAnnualLoss = calcMaxAnnualLoss(yearlyReturns.balanced);
 
 const totalMonths = monthlyRecords.length;
 const defensiveMonths = monthlyRecords.filter((r) => r.mode === "defensive").length;
-const defensiveRatio = totalMonths > 0 ? round2((defensiveMonths / totalMonths) * 100) : 0;
+const defensiveRatio = totalMonths > 0 ? round2(defensiveMonths / totalMonths) : 0;
 
 const backtestStartDate = monthlyRecords.length > 0 ? monthlyRecords[0].date : null;
 const backtestEndDate = monthlyRecords.length > 0 ? monthlyRecords[monthlyRecords.length - 1].date : null;

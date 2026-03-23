@@ -1,5 +1,13 @@
 # 작업 기록
 
+### 2026-03-23 (72)
+- **퀀트 엿보기 v2: 백테스트 성과 요약 + 월별 히스토리**
+  - `generate_baa_signal.mjs`에 백테스트 로직 추가 — 과거 전체 기간 BAA 신호/수익률 계산
+  - CAGR, MDD, 샤프비율, 최대 연손실 + SPY B&H/60-40 벤치마크 비교
+  - 누적 수익률 곡선 차트 (`BaaEquityCurveChart` SVG 컴포넌트)
+  - 최근 36개월 리밸런싱 히스토리 (ColumnTimeline 재사용)
+  - `BaaQuantPeekPage`에 섹션 5(성과 요약) + 섹션 6(히스토리) 추가
+
 ### 2026-03-23 (71)
 - **다중 이평선 정배열 기능 — 개별주 페이지**
   - 백테스트 분석 스크립트 `analyze_ma_alignment.mjs` 신규 (6전략 비교, t-test, 섹터별 분석)
