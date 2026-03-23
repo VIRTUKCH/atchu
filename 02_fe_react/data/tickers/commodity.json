@@ -144,6 +144,47 @@
         "농산물",
         "곡물"
       ]
+    },
+    {
+      "type": "원자재 종합",
+      "asset_type": "원자재",
+      "ticker": "PDBC",
+      "name": "Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF",
+      "name_ko": "원자재 종합 (No K-1)",
+      "business_area": "에너지·금속·농산물 종합 (K-1 없음)",
+      "heatmap_label": "원자재NoK1",
+      "short_description": "DBC와 유사한 원자재 종합. K-1 세금 서류 없어 편리.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용과 콘탱고/백워데이션 구조가 수익률을 크게 좌우해, 현물 원자재의 '추세'와 ETF의 '성과 추세'가 분리될 수 있다. 장기 추세추종 대상으로 쓰면 구조적 왜곡이 누적될 가능성이 크다.",
+        "operation_notes": "단기 전술/테마 접근은 가능하나, 장기 코어 추세추종 풀에서는 제외하는 것을 권장한다."
+      },
+      "tags": [
+        "원자재",
+        "종합",
+        "인플레이션 헤지"
+      ]
+    },
+    {
+      "type": "금",
+      "asset_type": "원자재",
+      "ticker": "GLDM",
+      "name": "SPDR Gold MiniShares Trust",
+      "name_ko": "금 (미니)",
+      "business_area": "금 현물 가격 연동 (저비용)",
+      "heatmap_label": "금미니",
+      "short_description": "GLD의 저비용 버전. 동일한 금 현물 연동, 낮은 보수.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "금 현물 연동 상품은 장기 데이터가 비교적 안정적이며, 주식과 다른 국면에서 움직여 분산 효과도 기대할 수 있다.",
+        "operation_notes": "중장기 추세 기준(120/200일선)으로 완만하게 운용하는 편이 좋다."
+      },
+      "tags": [
+        "원자재",
+        "금",
+        "안전자산",
+        "저비용"
+      ]
     }
   ],
   "type_profile": {

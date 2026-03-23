@@ -310,6 +310,48 @@
         "분산",
         "지수"
       ]
+    },
+    {
+      "type": "선진국",
+      "asset_type": "국가",
+      "ticker": "VEA",
+      "name": "Vanguard FTSE Developed Markets ETF",
+      "name_ko": "선진국 (FTSE)",
+      "business_area": "미국 제외 선진국 주식",
+      "heatmap_label": "선진국FTSE",
+      "short_description": "미국 제외 선진국. IEFA와 유사하나 FTSE 지수 기반.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형(또는 폭넓은 지역지수)은 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "선진국",
+        "유럽",
+        "일본",
+        "분산"
+      ]
+    },
+    {
+      "type": "신흥국",
+      "asset_type": "국가",
+      "ticker": "VWO",
+      "name": "Vanguard FTSE Emerging Markets ETF",
+      "name_ko": "신흥국 (FTSE)",
+      "business_area": "신흥국 전체 주식시장",
+      "heatmap_label": "신흥국FTSE",
+      "short_description": "중국·대만·인도·브라질 등 신흥국 전체. FTSE 기반.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형(또는 폭넓은 지역지수)은 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "신흥국",
+        "중국",
+        "인도",
+        "대만"
+      ]
     }
   ],
   "type_profile": {

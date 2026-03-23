@@ -296,6 +296,27 @@
         "클라우드",
         "SaaS"
       ]
+    },
+    {
+      "type": "필수소비재",
+      "asset_type": "섹터",
+      "ticker": "VDC",
+      "name": "Vanguard Consumer Staples ETF",
+      "name_ko": "필수소비재 (뱅가드)",
+      "business_area": "식품·음료·생활용품·유통",
+      "heatmap_label": "필수소비뱅",
+      "short_description": "XLP와 유사한 필수소비재. 뱅가드 버전으로 종목 수 더 넓음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "필수소비재",
+        "식품",
+        "방어주"
+      ]
     }
   ],
   "type_profile": {

@@ -158,6 +158,109 @@
         "하이일드",
         "고수익"
       ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "VTIP",
+      "name": "Vanguard Short-Term Inflation-Protected Securities ETF",
+      "name_ko": "단기 물가연동 국채",
+      "business_area": "만기 0~5년 미국 물가연동 국채(TIPS)",
+      "heatmap_label": "단기물가연동",
+      "short_description": "단기 TIPS. 인플레이션 헤지하면서 금리 민감도 낮음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "국채",
+        "물가연동",
+        "단기",
+        "인플레이션"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "BND",
+      "name": "Vanguard Total Bond Market ETF",
+      "name_ko": "미국 종합채권",
+      "business_area": "미국 투자등급 채권 전체",
+      "heatmap_label": "종합채권",
+      "short_description": "국채·회사채·MBS 포함 미국 채권시장 전체. 채권의 SPY.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "종합",
+        "국채",
+        "회사채",
+        "분산"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "VCSH",
+      "name": "Vanguard Short-Term Corporate Bond ETF",
+      "name_ko": "단기 회사채",
+      "business_area": "만기 1~5년 투자등급 회사채",
+      "heatmap_label": "단기회사채",
+      "short_description": "단기 투자등급 회사채. 국채보다 높은 수익률, 낮은 변동성.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "회사채",
+        "단기",
+        "투자등급"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "BNDX",
+      "name": "Vanguard Total International Bond ETF",
+      "name_ko": "글로벌 채권",
+      "business_area": "미국 제외 글로벌 투자등급 채권",
+      "heatmap_label": "글로벌채권",
+      "short_description": "미국 제외 선진국·신흥국 채권. 환헤지 적용.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "국채/단기채/물가연동채는 주식과 다른 사이클을 보여 분산 효과가 있고, 일봉 추세 신호도 비교적 깔끔하게 작동한다.",
+        "operation_notes": "너무 짧은 룰보다는 120/200일선 기반의 완만한 신호가 실전에 유리하다."
+      },
+      "tags": [
+        "채권",
+        "글로벌",
+        "해외",
+        "분산",
+        "환헤지"
+      ]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "VWOB",
+      "name": "Vanguard Emerging Markets Government Bond ETF",
+      "name_ko": "신흥국 국채",
+      "business_area": "신흥국 달러표시 국채",
+      "heatmap_label": "신흥국국채",
+      "short_description": "신흥국 정부 발행 달러채. EMB와 유사하나 국채 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "크레딧/신흥국 채권은 스트레스 국면에서 주식처럼 급락할 수 있어 '방어 자산'으로 착각하면 위험하다. 그래도 장기 추세 신호는 만들 수 있다.",
+        "operation_notes": "리스크 온 자산군으로 분류하고, 변동성 확대 시 비중을 줄이거나 코어 방어(국채/현금성)와 함께 운용."
+      },
+      "tags": [
+        "채권",
+        "신흥국",
+        "국채",
+        "달러표시"
+      ]
     }
   ],
   "type_profile": {

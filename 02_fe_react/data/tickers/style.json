@@ -208,6 +208,38 @@
         "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
       },
       "tags": ["모멘텀", "팩터", "추세"]
+    },
+    {
+      "type": "모멘텀",
+      "asset_type": "스타일",
+      "ticker": "SPMO",
+      "name": "Invesco S&P 500 Momentum ETF",
+      "name_ko": "S&P 모멘텀",
+      "business_area": "S&P 500 모멘텀 종목",
+      "heatmap_label": "S&P모멘텀",
+      "short_description": "S&P 500 중 모멘텀 상위 종목. MTUM과 유사한 추세추종 성격.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["모멘텀", "팩터", "추세", "S&P500"]
+    },
+    {
+      "type": "저변동성",
+      "asset_type": "스타일",
+      "ticker": "SMMV",
+      "name": "iShares MSCI USA Small-Cap Min Vol Factor ETF",
+      "name_ko": "소형 저변동",
+      "business_area": "미국 소형주 최소변동성 종목",
+      "heatmap_label": "소형저변동",
+      "short_description": "소형주 중 변동성이 낮은 종목. 소형주 노출+하방 방어.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": ["저변동성", "소형주", "팩터", "방어주"]
     }
   ],
   "type_profile": {
