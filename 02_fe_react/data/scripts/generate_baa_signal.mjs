@@ -306,6 +306,276 @@ const defensiveRanking = DEFENSIVE
   })
   .sort((a, b) => b.relMomentum - a.relMomentum);
 
+/* ── Backtest ── */
+
+// Helper: get a ticker's month-end close for a given YM
+const getClose = (ticker, ym) => {
+  const me = tickerData.get(ticker);
+  return me?.find((m) => m.ym === ym)?.close ?? null;
+};
+
+// Helper: get the actual trading date for a given YM from SPY (or first available ticker)
+const getDate = (ym) => {
+  const spyData = tickerData.get("SPY") || [...tickerData.values()][0];
+  return spyData?.find((m) => m.ym === ym)?.date ?? `${ym}-28`;
+};
+
+// 1) Find common start: earliest month where ALL tickers have at least 13 months of prior data
+const allTickerKeys = [...tickerData.keys()];
+let commonStartYm = null;
+
+// Collect all unique YMs from all tickers, sorted
+const allUniqueYms = new Set();
+for (const [, monthEnds] of tickerData) {
+  for (const m of monthEnds) allUniqueYms.add(m.ym);
+}
+const sortedAllYms = [...allUniqueYms].sort();
+
+for (const ym of sortedAllYms) {
+  let allHaveEnoughData = true;
+  for (const ticker of allTickerKeys) {
+    const me = tickerData.get(ticker);
+    const idx = me.findIndex((m) => m.ym === ym);
+    if (idx < 12) {
+      allHaveEnoughData = false;
+      break;
+    }
+  }
+  if (allHaveEnoughData) {
+    commonStartYm = ym;
+    break;
+  }
+}
+
+if (!commonStartYm) {
+  console.warn("[WARN] Cannot find a common start month for backtest — skipping backtest");
+}
+
+// 2) Collect all months from commonStart to effectiveRefYm
+const backtestMonths = commonStartYm
+  ? sortedAllYms.filter((ym) => ym >= commonStartYm && ym <= effectiveRefYm)
+  : [];
+
+// 3) Walk through each month
+const monthlyRecords = []; // { date, ym, mode, aggressive: [{ticker, weight}], balanced: [{ticker, weight}] }
+
+for (const ym of backtestMonths) {
+  // Canary check: compute 13612W for all 4 canary tickers
+  const canaryMomentums = CANARY.map((t) => {
+    const me = tickerData.get(t);
+    if (!me) return null;
+    return calcMomentum13612W(me, ym);
+  });
+
+  // Skip months where canary data is incomplete
+  if (canaryMomentums.some((m) => m === null)) continue;
+
+  const canaryAllPositive = canaryMomentums.every((m) => m > 0);
+  const monthMode = canaryAllPositive ? "offensive" : "defensive";
+
+  // Compute relMomentum for all tickers at this month
+  const monthRelMom = new Map();
+  for (const [ticker, me] of tickerData) {
+    const rm = calcRelMomentum(me, ym);
+    if (rm !== null) monthRelMom.set(ticker, rm);
+  }
+
+  const bilRel = monthRelMom.get("BIL") ?? 0;
+
+  let aggAlloc, balAlloc;
+
+  if (monthMode === "offensive") {
+    // Aggressive: G4 top 1 by relMomentum
+    const g4Ranked = OFFENSIVE_G4
+      .filter((t) => monthRelMom.has(t))
+      .map((t) => ({ ticker: t, relMomentum: monthRelMom.get(t) }))
+      .sort((a, b) => b.relMomentum - a.relMomentum);
+
+    aggAlloc = g4Ranked.length > 0
+      ? [{ ticker: g4Ranked[0].ticker, weight: 100 }]
+      : [];
+
+    // Balanced: G12 top 6, 16.67% each
+    const g12Ranked = OFFENSIVE_G12
+      .filter((t) => monthRelMom.has(t))
+      .map((t) => ({ ticker: t, relMomentum: monthRelMom.get(t) }))
+      .sort((a, b) => b.relMomentum - a.relMomentum);
+
+    balAlloc = g12Ranked.slice(0, 6).map((item) => ({
+      ticker: item.ticker,
+      weight: round2(16.67)
+    }));
+  } else {
+    // Defensive: top 3 from DEFENSIVE universe, BIL substitution
+    const defRanked = DEFENSIVE
+      .filter((t) => monthRelMom.has(t))
+      .map((t) => ({ ticker: t, relMomentum: monthRelMom.get(t) }))
+      .sort((a, b) => b.relMomentum - a.relMomentum);
+
+    const defTop3 = defRanked.slice(0, 3).map((item) => ({
+      ticker: item.relMomentum < bilRel ? "BIL" : item.ticker,
+      weight: round2(33.33)
+    }));
+
+    aggAlloc = defTop3;
+    balAlloc = defTop3;
+  }
+
+  monthlyRecords.push({
+    date: getDate(ym),
+    ym,
+    mode: monthMode,
+    aggressive: aggAlloc,
+    balanced: balAlloc
+  });
+}
+
+// 4) Compute equity curves
+let eqAgg = 1.0;
+let eqBal = 1.0;
+let eqSpy = 1.0;
+let eq6040 = 1.0;
+
+// Determine which bond ticker to use for 60/40 benchmark
+const bond6040Ticker = tickerData.has("AGG") ? "AGG" : (tickerData.has("IEF") ? "IEF" : null);
+
+const equityCurve = [];
+const monthlyReturns = { aggressive: [], balanced: [], spy: [], sixtyForty: [] };
+const yearlyReturns = { aggressive: new Map(), balanced: new Map(), spy: new Map(), sixtyForty: new Map() };
+
+// First entry
+if (monthlyRecords.length > 0) {
+  equityCurve.push({
+    date: monthlyRecords[0].date,
+    aggressive: round3(eqAgg),
+    balanced: round3(eqBal),
+    spy: round3(eqSpy),
+    sixtyForty: round3(eq6040)
+  });
+}
+
+for (let i = 0; i < monthlyRecords.length - 1; i++) {
+  const cur = monthlyRecords[i];
+  const next = monthlyRecords[i + 1];
+
+  // Portfolio returns
+  const calcPortReturn = (alloc) => {
+    let ret = 0;
+    for (const { ticker, weight } of alloc) {
+      const c0 = getClose(ticker, cur.ym);
+      const c1 = getClose(ticker, next.ym);
+      if (c0 && c1 && c0 > 0) {
+        ret += (weight / 100) * (c1 / c0 - 1);
+      }
+    }
+    return ret;
+  };
+
+  const aggRet = calcPortReturn(cur.aggressive);
+  const balRet = calcPortReturn(cur.balanced);
+
+  // SPY B&H
+  const spyC0 = getClose("SPY", cur.ym);
+  const spyC1 = getClose("SPY", next.ym);
+  const spyRet = (spyC0 && spyC1 && spyC0 > 0) ? (spyC1 / spyC0 - 1) : 0;
+
+  // 60/40
+  let bondRet = 0;
+  if (bond6040Ticker) {
+    const bC0 = getClose(bond6040Ticker, cur.ym);
+    const bC1 = getClose(bond6040Ticker, next.ym);
+    if (bC0 && bC1 && bC0 > 0) bondRet = bC1 / bC0 - 1;
+  }
+  const sixtyFortyRet = 0.6 * spyRet + 0.4 * bondRet;
+
+  eqAgg *= (1 + aggRet);
+  eqBal *= (1 + balRet);
+  eqSpy *= (1 + spyRet);
+  eq6040 *= (1 + sixtyFortyRet);
+
+  monthlyReturns.aggressive.push(aggRet);
+  monthlyReturns.balanced.push(balRet);
+  monthlyReturns.spy.push(spyRet);
+  monthlyReturns.sixtyForty.push(sixtyFortyRet);
+
+  // Track yearly returns for max annual loss
+  const year = next.ym.slice(0, 4);
+  for (const key of ["aggressive", "balanced", "spy", "sixtyForty"]) {
+    const retVal = key === "aggressive" ? aggRet : key === "balanced" ? balRet : key === "spy" ? spyRet : sixtyFortyRet;
+    if (!yearlyReturns[key].has(year)) yearlyReturns[key].set(year, 1.0);
+    yearlyReturns[key].set(year, yearlyReturns[key].get(year) * (1 + retVal));
+  }
+
+  equityCurve.push({
+    date: next.date,
+    aggressive: round3(eqAgg),
+    balanced: round3(eqBal),
+    spy: round3(eqSpy),
+    sixtyForty: round3(eq6040)
+  });
+}
+
+// 5) Compute summary metrics
+const calcMetrics = (returns, finalEquity) => {
+  const n = returns.length;
+  if (n === 0) return { cagr: null, mdd: null, sharpe: null, maxAnnualLoss: null };
+
+  // CAGR
+  const cagr = (Math.pow(finalEquity, 12 / n) - 1) * 100;
+
+  // MDD
+  let peak = 1.0;
+  let maxDD = 0;
+  let eq = 1.0;
+  for (const r of returns) {
+    eq *= (1 + r);
+    if (eq > peak) peak = eq;
+    const dd = (eq - peak) / peak;
+    if (dd < maxDD) maxDD = dd;
+  }
+  const mdd = maxDD * 100; // negative percentage
+
+  // Sharpe
+  const mean = returns.reduce((s, r) => s + r, 0) / n;
+  const variance = returns.reduce((s, r) => s + (r - mean) ** 2, 0) / n;
+  const std = Math.sqrt(variance);
+  const sharpe = std > 0 ? (mean / std) * Math.sqrt(12) : null;
+
+  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe) };
+};
+
+const calcMaxAnnualLoss = (yearMap) => {
+  let worst = 0;
+  for (const [, cumReturn] of yearMap) {
+    const annualReturn = (cumReturn - 1) * 100;
+    if (annualReturn < worst) worst = annualReturn;
+  }
+  return round2(worst);
+};
+
+const aggMetrics = calcMetrics(monthlyReturns.aggressive, eqAgg);
+const balMetrics = calcMetrics(monthlyReturns.balanced, eqBal);
+const spyMetrics = calcMetrics(monthlyReturns.spy, eqSpy);
+const sixtyFortyMetrics = calcMetrics(monthlyReturns.sixtyForty, eq6040);
+
+aggMetrics.maxAnnualLoss = calcMaxAnnualLoss(yearlyReturns.aggressive);
+balMetrics.maxAnnualLoss = calcMaxAnnualLoss(yearlyReturns.balanced);
+
+const totalMonths = monthlyRecords.length;
+const defensiveMonths = monthlyRecords.filter((r) => r.mode === "defensive").length;
+const defensiveRatio = totalMonths > 0 ? round2((defensiveMonths / totalMonths) * 100) : 0;
+
+const backtestStartDate = monthlyRecords.length > 0 ? monthlyRecords[0].date : null;
+const backtestEndDate = monthlyRecords.length > 0 ? monthlyRecords[monthlyRecords.length - 1].date : null;
+
+/* ── History: last 36 months ── */
+const historyLast36 = monthlyRecords.slice(-36).map((r) => ({
+  date: r.date,
+  mode: r.mode,
+  aggressive: r.aggressive,
+  balanced: r.balanced
+}));
+
 /* ── Output ── */
 const payload = {
   generatedAt: new Date().toISOString(),
@@ -323,6 +593,20 @@ const payload = {
   }
 };
 
+if (backtestStartDate && monthlyRecords.length > 1) {
+  payload.backtest = {
+    startDate: backtestStartDate,
+    endDate: backtestEndDate,
+    aggressive: { cagr: aggMetrics.cagr, mdd: aggMetrics.mdd, sharpe: aggMetrics.sharpe, maxAnnualLoss: aggMetrics.maxAnnualLoss },
+    balanced: { cagr: balMetrics.cagr, mdd: balMetrics.mdd, sharpe: balMetrics.sharpe, maxAnnualLoss: balMetrics.maxAnnualLoss },
+    benchmarkSpy: { cagr: spyMetrics.cagr, mdd: spyMetrics.mdd, sharpe: spyMetrics.sharpe },
+    benchmark6040: { cagr: sixtyFortyMetrics.cagr, mdd: sixtyFortyMetrics.mdd, sharpe: sixtyFortyMetrics.sharpe },
+    defensiveRatio,
+    equityCurve
+  };
+  payload.history = historyLast36;
+}
+
 fs.mkdirSync(SUMMARY_DIR, { recursive: true });
 const body = `${JSON.stringify(payload, null, 2)}\n`;
 fs.writeFileSync(OUT_FILE, body, "utf8");
@@ -332,3 +616,10 @@ console.log(`  Tickers processed: ${processedCount}`);
 console.log(`  Signal mode: ${mode}`);
 console.log(`  Canary positive: ${canaryPositiveCount}/4`);
 console.log(`  Rebalance date: ${rebalanceDate}`);
+
+if (backtestStartDate && monthlyRecords.length > 1) {
+  console.log(`  Backtest period: ${backtestStartDate} → ${backtestEndDate} (${monthlyRecords.length} months)`);
+  console.log(`  BAA-A CAGR: ${aggMetrics.cagr}%  MDD: ${aggMetrics.mdd}%  Sharpe: ${aggMetrics.sharpe}`);
+  console.log(`  BAA-B CAGR: ${balMetrics.cagr}%  MDD: ${balMetrics.mdd}%  Sharpe: ${balMetrics.sharpe}`);
+  console.log(`  SPY   CAGR: ${spyMetrics.cagr}%  MDD: ${spyMetrics.mdd}%`);
+}
