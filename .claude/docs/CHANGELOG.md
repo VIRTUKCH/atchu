@@ -1,13 +1,12 @@
 # 작업 기록
 
 ### 2026-03-23 (74)
-- **/_stocks 페이지 ETF 탭 구현**
-  - ETF 파이프라인 확장: `generate_summary_snapshot.mjs`에 MA50/100, 정배열(maAlignment/maAlignmentDays), full_align/atchu_full_align 전략 추가
-  - ETF 데이터 로더 확장: `appDataAdapters.js` toRecentShape에 fifty_day, ma_alignment 필드 추가
-  - `tickerMeta.js`: cagrStrategyLabelMap에 정배열/앗추+정배열 라벨 추가
-  - `StockListPage.jsx` 전면 리라이트 — 개별주/ETF 탭 전환 UI, ETF TypeFilter + 10개 자산군 필터, 공통 정렬/검색
-  - `/_etf/:ticker` 라우트 추가 (임시 `/index_etf/:ticker` 리다이렉트)
-  - 탭 바 CSS 추가 (`stock-tab-bar`)
+- **/_stocks 페이지 통합 리스트 (개별주 + ETF)**
+  - ETF 파이프라인 확장: `generate_summary_snapshot.mjs`에 MA50/100, 정배열, full_align/atchu_full_align 전략 추가
+  - ETF 데이터 로더 확장: `appDataAdapters.js` toRecentShape에 fifty_day, ma_alignment 추가
+  - `StockListPage.jsx` 전면 리라이트 — 588개 통합 리스트, 최상위 필터(전체/개별주/ETF) + 하위 필터(섹터or자산군)
+  - ETF 카드 클릭 → 기존 `/index_etf/:ticker` 상세 (별도 개발자 상세 불필요)
+  - `/_etf/:ticker` 라우트 삭제, 탭 바 CSS 삭제
 
 ### 2026-03-23 (73)
 - **기획: /_stocks 페이지에 ETF 탭 추가**

@@ -41,28 +41,24 @@ const etfTickerMetaMap = new Map(
     .filter((item) => item?.ticker)
     .map((item) => [item.ticker.toUpperCase(), item])
 );
+const etfTickerSet = new Set(etfTickerMetaMap.keys());
+
+// --- 통합 티커 목록 (stock + ETF, 중복 제거) ---
+const allUnifiedTickers = (() => {
+  const stockKeys = Array.from(stockTickerMetaMap.keys());
+  const etfKeys = Array.from(etfTickerMetaMap.keys()).filter((t) => !stockTickerMetaMap.has(t));
+  return [...stockKeys.sort(), ...etfKeys.sort()];
+})();
 
 // --- 정렬 옵션 ---
-const STOCK_SORT_OPTIONS = [
-  { value: "sector", label: "섹터별" },
+const SORT_OPTIONS = [
+  { value: "group", label: "분류별" },
   { value: "atchu", label: "앗추" },
   { value: "full_align", label: "정배열" },
   { value: "atchu_aligned", label: "앗추+정배열" },
   { value: "align_days_desc", label: "정배열 오래된순" },
   { value: "cagr_align_desc", label: "정배열 수익률순" },
   { value: "cagr_atchu_align_desc", label: "앗추+정배열 수익률순" },
-  { value: "ma200_desc", label: "이격률 높은순" },
-  { value: "ma200_asc", label: "이격률 낮은순" },
-  { value: "cagr_desc", label: "수익률 높은순" },
-  { value: "mdd_asc", label: "MDD 낮은순" },
-];
-
-const ETF_SORT_OPTIONS = [
-  { value: "type", label: "분류별" },
-  { value: "atchu", label: "앗추" },
-  { value: "full_align", label: "정배열" },
-  { value: "atchu_aligned", label: "앗추+정배열" },
-  { value: "align_days_desc", label: "정배열 오래된순" },
   { value: "ma200_desc", label: "이격률 높은순" },
   { value: "ma200_asc", label: "이격률 낮은순" },
   { value: "cagr_desc", label: "수익률 높은순" },
@@ -81,7 +77,7 @@ const ETF_GROUP_ORDER = [
   "미국 대표 지수", "스타일", "배당", "섹터", "국가",
   "채권", "원자재", "중소형", "레버리지·인버스", "기타"
 ];
-const etfGroupRank = new Map(ETF_GROUP_ORDER.map((g, i) => [g, i]));
+const etfGroupRank = new Map(ETF_GROUP_ORDER.map((g, i) => [g, i + 100]));
 
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
@@ -89,6 +85,35 @@ const CAGR_STRATEGY_LABEL_MAP = {
   "full_align": "정배열",
   "atchu_full_align": "앗추+정배열"
 };
+
+// --- 유틸 ---
+function isEtf(ticker) {
+  return etfTickerSet.has(ticker) && !stockTickerMetaMap.has(ticker);
+}
+
+function getSnapshot(ticker) {
+  return isEtf(ticker) ? etfSnapshotMap[ticker] : stockSnapshotMap[ticker];
+}
+
+function getAnalytics(ticker) {
+  return isEtf(ticker)
+    ? getLocalListAnalyticsByMap(etfListAnalyticsMap, ticker)
+    : getStockListAnalytics(ticker);
+}
+
+function getRecentShape(ticker) {
+  return isEtf(ticker)
+    ? etfToRecentShape(etfSnapshotMap[ticker])
+    : toRecentShape(stockSnapshotMap[ticker]);
+}
+
+function getMeta(ticker) {
+  return isEtf(ticker) ? etfTickerMetaMap.get(ticker) : stockTickerMetaMap.get(ticker);
+}
+
+function getDetailPath(ticker) {
+  return isEtf(ticker) ? `/index_etf/${ticker}` : `/_stocks/${ticker}`;
+}
 
 function getBestOverallCagrInfo(analytics) {
   if (!analytics?.crossingHistory?.annualizedMap) return { value: null, period: null };
@@ -103,7 +128,8 @@ function getBestOverallCagrInfo(analytics) {
   return best;
 }
 
-function SortDropdown({ sortMode, setSortMode, options }) {
+// --- 공통 컴포넌트 ---
+function SortDropdown({ sortMode, setSortMode }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
@@ -113,7 +139,7 @@ function SortDropdown({ sortMode, setSortMode, options }) {
     if (open) document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
-  const currentLabel = options.find((o) => o.value === sortMode)?.label || options[0]?.label;
+  const currentLabel = SORT_OPTIONS.find((o) => o.value === sortMode)?.label || "분류별";
   return (
     <div className="sort-controls">
       <div className="sort-dropdown" ref={ref}>
@@ -130,7 +156,7 @@ function SortDropdown({ sortMode, setSortMode, options }) {
         </button>
         {open && (
           <ul className="sort-dropdown-menu" role="listbox">
-            {options.map((opt) => (
+            {SORT_OPTIONS.map((opt) => (
               <li
                 key={opt.value}
                 role="option"
@@ -148,17 +174,9 @@ function SortDropdown({ sortMode, setSortMode, options }) {
   );
 }
 
-// 섹터 → 서브섹터 그룹형 필터
 function SectorGroupFilter({ sectorGroups, selectedSector, selectedSubSector, onSelectSector, onSelectSub }) {
   return (
     <div className="sector-group-filter">
-      <button
-        type="button"
-        className={`type-button ${selectedSector === "ALL" ? "active" : ""}`}
-        onClick={() => onSelectSector("ALL")}
-      >
-        전체
-      </button>
       <div className="sector-group-list">
         {sectorGroups.map(({ sector, subSectors }) => {
           const isSectorSelected = selectedSector === sector;
@@ -191,72 +209,44 @@ function SectorGroupFilter({ sectorGroups, selectedSector, selectedSubSector, on
   );
 }
 
-// --- 탭 세그먼트 컨트롤 ---
-function TabBar({ activeTab, onTabChange }) {
-  return (
-    <div className="stock-tab-bar">
-      <button
-        type="button"
-        className={`stock-tab-btn ${activeTab === "stock" ? "active" : ""}`}
-        onClick={() => onTabChange("stock")}
-      >
-        개별주
-      </button>
-      <button
-        type="button"
-        className={`stock-tab-btn ${activeTab === "etf" ? "active" : ""}`}
-        onClick={() => onTabChange("etf")}
-      >
-        ETF
-      </button>
-    </div>
-  );
-}
-
+// --- 메인 ---
 export default function StockListPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const tabParam = searchParams.get("tab") || "stock";
-  const activeTab = tabParam === "etf" ? "etf" : "stock";
-
-  // 개별주 탭 상태
+  const [searchParams] = useSearchParams();
   const sectorParam = searchParams.get("sector") || "ALL";
   const subParam = searchParams.get("sub") || "ALL";
+
+  // 최상위 필터: 전체 / 개별주 / ETF
+  const [assetFilter, setAssetFilter] = useState("ALL");
+  // 개별주 하위 필터
   const [selectedSector, setSelectedSector] = useState(sectorParam);
   const [selectedSubSector, setSelectedSubSector] = useState(subParam);
+  // ETF 하위 필터
+  const [selectedEtfType, setSelectedEtfType] = useState("ALL");
+
+  const [sortMode, setSortMode] = useState("group");
+  const [tickerQuery, setTickerQuery] = useState("");
+
   useEffect(() => {
     setSelectedSector(sectorParam);
     setSelectedSubSector(subParam);
+    if (sectorParam !== "ALL") setAssetFilter("개별주");
   }, [sectorParam, subParam]);
 
-  // ETF 탭 상태
-  const typeParam = searchParams.get("type") || "ALL";
-  const [selectedEtfType, setSelectedEtfType] = useState(typeParam);
-  useEffect(() => {
-    setSelectedEtfType(typeParam);
-  }, [typeParam]);
+  // 최상위 필터 타입 목록
+  const topLevelTypes = ["개별주", "ETF"];
 
-  const defaultSort = activeTab === "etf" ? "type" : "sector";
-  const [sortMode, setSortMode] = useState(defaultSort);
-  const [tickerQuery, setTickerQuery] = useState("");
-
-  // 탭 전환 시 상태 초기화
-  const handleTabChange = (tab) => {
-    const params = new URLSearchParams();
-    if (tab === "etf") params.set("tab", "etf");
-    setSearchParams(params);
-    setTickerQuery("");
-    setSortMode(tab === "etf" ? "type" : "sector");
+  const handleTopLevelSelect = (type) => {
+    if (type === assetFilter) {
+      setAssetFilter("ALL");
+    } else {
+      setAssetFilter(type);
+    }
     setSelectedSector("ALL");
     setSelectedSubSector("ALL");
     setSelectedEtfType("ALL");
   };
 
-  // ========== 개별주 데이터 ==========
-  const allStockTickers = useMemo(() =>
-    Array.from(stockTickerMetaMap.keys()).sort(),
-    []
-  );
-
+  // 개별주 섹터 그룹
   const sectorGroups = useMemo(() => {
     const map = {};
     stockTickerMetaMap.forEach((meta) => {
@@ -282,14 +272,7 @@ export default function StockListPage() {
     setSelectedSubSector(sub);
   };
 
-  // ========== ETF 데이터 ==========
-  const allEtfTickers = useMemo(() =>
-    etfTickers
-      .filter((item) => item?.ticker)
-      .map((item) => item.ticker.toUpperCase()),
-    []
-  );
-
+  // ETF 자산군 목록
   const etfAvailableTypes = useMemo(() => {
     const types = Array.from(new Set(etfTickers.map((item) => item?.group).filter(Boolean)));
     return types.sort((a, b) => {
@@ -299,85 +282,58 @@ export default function StockListPage() {
     });
   }, []);
 
-  const etfTickerGroupMap = useMemo(() =>
-    new Map(allEtfTickers.map((t) => [t, etfTickerMetaMap.get(t)?.group || "기타"])),
-    [allEtfTickers]
-  );
-
   const handleEtfTypeSelect = (type) => {
     setSelectedEtfType(type);
   };
 
-  // ========== 요약 바 ==========
+  // 요약
   const trendSummary = useMemo(() => {
-    if (activeTab === "etf") {
-      const total = allEtfTickers.length;
-      const activeCount = allEtfTickers.filter(
-        (t) => etfSnapshotMap[t]?.isAtchuQualified200 === true
-      ).length;
-      return { total, activeCount, label: "ETF" };
-    }
-    const total = allStockTickers.length;
-    const activeCount = allStockTickers.filter(
-      (t) => stockSnapshotMap[t]?.isAtchuQualified200 === true
+    const total = allUnifiedTickers.length;
+    const activeCount = allUnifiedTickers.filter(
+      (t) => getSnapshot(t)?.isAtchuQualified200 === true
     ).length;
-    return { total, activeCount, label: "S&P 500" };
-  }, [activeTab, allStockTickers, allEtfTickers]);
+    return { total, activeCount };
+  }, []);
 
   const normalizedQuery = tickerQuery.trim().toUpperCase();
 
-  // ========== 필터링 ==========
+  // 필터링
   const filteredTickers = useMemo(() => {
-    if (activeTab === "etf") {
-      return allEtfTickers
-        .filter((ticker) => {
-          if (selectedEtfType === "ALL") return true;
-          return etfTickerGroupMap.get(ticker) === selectedEtfType;
-        })
-        .filter((ticker) => {
-          if (!normalizedQuery) return true;
-          if (ticker.includes(normalizedQuery)) return true;
-          const meta = etfTickerMetaMap.get(ticker);
-          if (meta?.name && meta.name.toUpperCase().includes(normalizedQuery)) return true;
-          if (meta?.nameKo && meta.nameKo.includes(tickerQuery.trim())) return true;
-          if (Array.isArray(meta?.tags) && meta.tags.some((tag) => String(tag).includes(tickerQuery.trim()))) return true;
-          return false;
-        });
-    }
-    return allStockTickers
+    return allUnifiedTickers
       .filter((ticker) => {
-        const meta = stockTickerMetaMap.get(ticker);
-        if (selectedSector !== "ALL" && meta?.group !== selectedSector) return false;
-        if (selectedSubSector !== "ALL" && meta?.subGroup !== selectedSubSector) return false;
+        // 최상위 필터
+        if (assetFilter === "개별주" && isEtf(ticker)) return false;
+        if (assetFilter === "ETF" && !isEtf(ticker)) return false;
+        return true;
+      })
+      .filter((ticker) => {
+        // 하위 필터 (개별주 섹터)
+        if (!isEtf(ticker) && assetFilter === "개별주") {
+          const meta = stockTickerMetaMap.get(ticker);
+          if (selectedSector !== "ALL" && meta?.group !== selectedSector) return false;
+          if (selectedSubSector !== "ALL" && meta?.subGroup !== selectedSubSector) return false;
+        }
+        // 하위 필터 (ETF 자산군)
+        if (isEtf(ticker) && assetFilter === "ETF") {
+          if (selectedEtfType !== "ALL") {
+            const meta = etfTickerMetaMap.get(ticker);
+            if (meta?.group !== selectedEtfType) return false;
+          }
+        }
         return true;
       })
       .filter((ticker) => {
         if (!normalizedQuery) return true;
         if (ticker.includes(normalizedQuery)) return true;
-        const meta = stockTickerMetaMap.get(ticker);
+        const meta = getMeta(ticker);
         if (meta?.name && meta.name.toUpperCase().includes(normalizedQuery)) return true;
         if (meta?.nameKo && meta.nameKo.includes(tickerQuery.trim())) return true;
+        if (Array.isArray(meta?.tags) && meta.tags.some((tag) => String(tag).includes(tickerQuery.trim()))) return true;
         return false;
       });
-  }, [activeTab, allStockTickers, allEtfTickers, selectedSector, selectedSubSector, selectedEtfType, normalizedQuery, tickerQuery, etfTickerGroupMap]);
+  }, [assetFilter, selectedSector, selectedSubSector, selectedEtfType, normalizedQuery, tickerQuery]);
 
-  // ========== 정렬 ==========
-  const getSnapshot = (ticker) =>
-    activeTab === "etf" ? etfSnapshotMap[ticker] : stockSnapshotMap[ticker];
-
-  const getAnalytics = (ticker) =>
-    activeTab === "etf"
-      ? getLocalListAnalyticsByMap(etfListAnalyticsMap, ticker)
-      : getStockListAnalytics(ticker);
-
-  const getRecentShape = (ticker) =>
-    activeTab === "etf"
-      ? etfToRecentShape(etfSnapshotMap[ticker])
-      : toRecentShape(stockSnapshotMap[ticker]);
-
-  const getMeta = (ticker) =>
-    activeTab === "etf" ? etfTickerMetaMap.get(ticker) : stockTickerMetaMap.get(ticker);
-
+  // 정렬
   const baseRank = useMemo(
     () => new Map(filteredTickers.map((value, index) => [value, index])),
     [filteredTickers]
@@ -387,7 +343,7 @@ export default function StockListPage() {
     if (!filteredTickers.length) return [];
     let tickers = [...filteredTickers];
 
-    // 필터링 (조건 미충족 종목 제거)
+    // 조건 필터 (정렬 모드에 따라)
     if (sortMode === "atchu") {
       tickers = tickers.filter((t) => getSnapshot(t)?.isAtchuQualified200);
     } else if (sortMode === "full_align" || sortMode === "align_days_desc") {
@@ -399,37 +355,43 @@ export default function StockListPage() {
       });
     }
 
-    // 2차 정렬 함수
+    // 2차 정렬: 개별주=시가총액, ETF=기본순
     const bySecondary = (a, b) => {
-      if (activeTab === "stock") {
-        const aRank = stockTickerMetaMap.get(a)?.rank ?? 9999;
-        const bRank = stockTickerMetaMap.get(b)?.rank ?? 9999;
-        return aRank - bRank;
+      const aIsEtf = isEtf(a);
+      const bIsEtf = isEtf(b);
+      // ETF를 개별주 뒤로
+      if (!aIsEtf && bIsEtf) return -1;
+      if (aIsEtf && !bIsEtf) return 1;
+      if (!aIsEtf && !bIsEtf) {
+        return (stockTickerMetaMap.get(a)?.rank ?? 9999) - (stockTickerMetaMap.get(b)?.rank ?? 9999);
       }
       return (baseRank.get(a) ?? 0) - (baseRank.get(b) ?? 0);
     };
 
     return tickers.sort((a, b) => {
-      // 기본 분류순
-      if (sortMode === "sector") {
-        const aSector = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
-        const bSector = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
-        if (aSector !== bSector) return aSector - bSector;
-        return bySecondary(a, b);
-      }
-      if (sortMode === "type") {
-        const aGroup = etfGroupRank.get(etfTickerGroupMap.get(a)) ?? 999;
-        const bGroup = etfGroupRank.get(etfTickerGroupMap.get(b)) ?? 999;
+      if (sortMode === "group") {
+        const aIsEtf = isEtf(a);
+        const bIsEtf = isEtf(b);
+        // 개별주 먼저, ETF 나중
+        if (!aIsEtf && bIsEtf) return -1;
+        if (aIsEtf && !bIsEtf) return 1;
+        if (!aIsEtf && !bIsEtf) {
+          const aSector = sectorRank.get(stockTickerMetaMap.get(a)?.group) ?? 999;
+          const bSector = sectorRank.get(stockTickerMetaMap.get(b)?.group) ?? 999;
+          if (aSector !== bSector) return aSector - bSector;
+          return (stockTickerMetaMap.get(a)?.rank ?? 9999) - (stockTickerMetaMap.get(b)?.rank ?? 9999);
+        }
+        // ETF끼리
+        const aGroup = etfGroupRank.get(etfTickerMetaMap.get(a)?.group) ?? 999;
+        const bGroup = etfGroupRank.get(etfTickerMetaMap.get(b)?.group) ?? 999;
         if (aGroup !== bGroup) return aGroup - bGroup;
-        return bySecondary(a, b);
+        return (baseRank.get(a) ?? 0) - (baseRank.get(b) ?? 0);
       }
 
-      // 필터형 정렬 (이미 필터링됨) → 시가총액/기본순
       if (sortMode === "atchu" || sortMode === "full_align" || sortMode === "atchu_aligned") {
         return bySecondary(a, b);
       }
 
-      // 정배열 오래된순
       if (sortMode === "align_days_desc") {
         const aDays = getSnapshot(a)?.maAlignmentDays ?? 0;
         const bDays = getSnapshot(b)?.maAlignmentDays ?? 0;
@@ -437,7 +399,6 @@ export default function StockListPage() {
         return bySecondary(a, b);
       }
 
-      // 값 기반 정렬
       const getVal = (ticker) => {
         if (sortMode === "ma200_desc" || sortMode === "ma200_asc") {
           return getSnapshot(ticker)?.percentDiff200 ?? null;
@@ -465,9 +426,7 @@ export default function StockListPage() {
       if (sortMode === "mdd_asc") return bVal - aVal || bySecondary(a, b);
       return bVal - aVal || bySecondary(a, b);
     });
-  }, [filteredTickers, sortMode, activeTab, baseRank, etfTickerGroupMap]);
-
-  const currentSortOptions = activeTab === "etf" ? ETF_SORT_OPTIONS : STOCK_SORT_OPTIONS;
+  }, [filteredTickers, sortMode, baseRank]);
 
   return (
     <section className="panel-card">
@@ -476,17 +435,24 @@ export default function StockListPage() {
           <div className="panel-title">관리자 추세 조회</div>
           {trendSummary.total > 0 && (
             <p className="panel-description">
-              {trendSummary.label} {trendSummary.total}개 중{" "}
+              전체 {trendSummary.total}개 중{" "}
               <strong style={{ color: trendSummary.activeCount / trendSummary.total > 0.5 ? "#16a34a" : "#dc2626" }}>
                 {trendSummary.activeCount}개
               </strong>{" "}
-              {activeTab === "etf" ? "ETF가" : "종목이"} 앗추 필터 통과
+              앗추 필터 통과
             </p>
           )}
         </div>
       </div>
-      <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
-      {activeTab === "stock" ? (
+      {/* 최상위 필터: 전체 / 개별주 / ETF */}
+      <TypeFilter
+        types={topLevelTypes}
+        selectedType={assetFilter}
+        onSelect={handleTopLevelSelect}
+        getTypeLabel={(type) => type}
+      />
+      {/* 개별주 하위 필터 */}
+      {assetFilter === "개별주" && (
         <SectorGroupFilter
           sectorGroups={sectorGroups}
           selectedSector={selectedSector}
@@ -494,7 +460,9 @@ export default function StockListPage() {
           onSelectSector={handleSectorSelect}
           onSelectSub={handleSubSelect}
         />
-      ) : (
+      )}
+      {/* ETF 하위 필터 */}
+      {assetFilter === "ETF" && (
         <TypeFilter
           types={etfAvailableTypes}
           selectedType={selectedEtfType}
@@ -506,12 +474,12 @@ export default function StockListPage() {
         <input
           type="text"
           className="ticker-search-input"
-          placeholder={activeTab === "etf" ? "ETF 검색 (예: SPY, QQQ)" : "종목 검색 (예: AAPL, Apple)"}
+          placeholder="종목 검색 (예: AAPL, SPY, 애플)"
           value={tickerQuery}
           onChange={(e) => setTickerQuery(e.target.value)}
         />
       </div>
-      <SortDropdown sortMode={sortMode} setSortMode={setSortMode} options={currentSortOptions} />
+      <SortDropdown sortMode={sortMode} setSortMode={setSortMode} />
       <div className="index-grid type-filter-gap">
         {list.map((ticker) => {
           const payload = getRecentShape(ticker);
@@ -556,7 +524,7 @@ export default function StockListPage() {
               maAlignment={payload?.ma_alignment}
               maAlignmentDays={payload?.ma_alignment_days}
               meta={getMeta(ticker)}
-              to={activeTab === "etf" ? `/_etf/${ticker}` : `/_stocks/${ticker}`}
+              to={getDetailPath(ticker)}
             />
           );
         })}
