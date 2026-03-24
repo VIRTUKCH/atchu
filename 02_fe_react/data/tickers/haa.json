@@ -1,0 +1,30 @@
+{
+  "type": "HAA 전략",
+  "hidden": true,
+  "items": [
+    {
+      "asset_type": "채권",
+      "ticker": "TIP",
+      "name": "iShares TIPS Bond ETF",
+      "name_ko": "물가연동 국채 (TIPS)",
+      "business_area": "미국 물가연동 국채",
+      "tags": ["채권", "물가연동", "HAA", "카나리아"]
+    },
+    {
+      "asset_type": "주식",
+      "ticker": "VNQ",
+      "name": "Vanguard Real Estate ETF",
+      "name_ko": "미국 부동산 (REITs)",
+      "business_area": "미국 부동산 리츠 지수",
+      "tags": ["부동산", "미국", "HAA"]
+    },
+    {
+      "asset_type": "채권",
+      "ticker": "IEF",
+      "name": "iShares 7-10 Year Treasury Bond ETF",
+      "name_ko": "중기 국채 (7-10년)",
+      "business_area": "만기 7~10년 미국 국채",
+      "tags": ["채권", "국채", "중기", "HAA"]
+    }
+  ]
+}

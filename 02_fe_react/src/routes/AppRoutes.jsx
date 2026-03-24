@@ -86,6 +86,8 @@ const StockListPage = React.lazy(() => import("../pages/StockListPage"));
 const StockDetailPage = React.lazy(() => import("../pages/StockDetailPage"));
 const StockOverviewPage = React.lazy(() => import("../pages/StockOverviewPage"));
 const BaaQuantPeekPage = React.lazy(() => import("../pages/BaaQuantPeekPage"));
+const HaaQuantPeekPage = React.lazy(() => import("../pages/HaaQuantPeekPage"));
+const FaberSectorPage = React.lazy(() => import("../pages/FaberSectorPage"));
 const QuantHubPage = React.lazy(() => import("../pages/QuantHubPage"));
 
 // 칼럼 페이지 — 전략 심화
@@ -242,6 +244,8 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_dev_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/haa" element={<BentoLayout><PasswordGate><HaaQuantPeekPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/faber-sector" element={<BentoLayout><PasswordGate><FaberSectorPage /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
         {/* 기존 URL 리다이렉트 */}
         <Route path="/_quant" element={<Navigate to="/_dev_quant" replace />} />

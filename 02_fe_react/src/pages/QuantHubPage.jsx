@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/quant-hub.css";
 import { QUANT_STRATEGIES } from "../config/quantItems";
 import { baaSignalPayload } from "../utils/baaDataLoaders";
+import { haaSignalPayload } from "../utils/haaDataLoaders";
+import { faberSignalPayload } from "../utils/faberDataLoaders";
 import QuantStrategyCard from "../components/quant/QuantStrategyCard";
 
 function calcPeriodReturns(equityCurve, curveKey) {
@@ -17,20 +19,14 @@ function calcPeriodReturns(equityCurve, curveKey) {
   return { "5Y": pct(lookup(60)), "3Y": pct(lookup(36)), "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
 }
 
-function getCardData(strategy) {
-  if (strategy.status === "coming_soon" || !strategy.id.startsWith("baa") || !baaSignalPayload) {
-    return {
-      signal: strategy.status === "coming_soon"
-        ? { text: "준비 중", variant: "coming" }
-        : { text: "데이터 없음", variant: "coming" },
-      portfolio: null,
-      backtest: null,
-      returns: null,
-    };
+function getCardDataFromPayload(strategy, payload) {
+  if (!payload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
   }
 
-  const { signal, portfolios, backtest } = baaSignalPayload;
-  const { mode, rebalanceDate } = signal || {};
+  const { signal, portfolios, backtest } = payload;
+  const rebalanceDate = signal?.rebalanceDate || signal?.rebalanceDate;
+  const mode = signal?.mode;
   const dateLabel = rebalanceDate ? rebalanceDate.slice(0, 7) + " 월말 기준" : "";
 
   const variantKey = strategy.curveKey;
@@ -50,6 +46,61 @@ function getCardData(strategy) {
       mdd: bt.mdd,
       sharpe: bt.sharpe,
       defensiveRatio: backtest.defensiveRatio,
+      startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getCardData(strategy) {
+  if (strategy.status === "coming_soon") {
+    return { signal: { text: "준비 중", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  if (strategy.id.startsWith("baa")) {
+    return getCardDataFromPayload(strategy, baaSignalPayload);
+  }
+
+  if (strategy.id === "haa") {
+    return getCardDataFromPayload(strategy, haaSignalPayload);
+  }
+
+  if (strategy.id === "faber-sector") {
+    return getFaberCardData(strategy);
+  }
+
+  return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+}
+
+function getFaberCardData(strategy) {
+  if (!faberSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { signal, portfolio, backtest } = faberSignalPayload;
+  const { mode, rebalanceDate } = signal || {};
+  const dateLabel = rebalanceDate ? rebalanceDate.slice(0, 7) + " 월말 기준" : "";
+  const isInvested = mode === "invested";
+
+  const returns = calcPeriodReturns(backtest?.equityCurve, "faberSector");
+  const bt = backtest?.faberSector;
+
+  return {
+    signal: {
+      text: isInvested ? "투자" : "현금",
+      variant: isInvested ? "offensive" : "defensive",
+      dateLabel,
+    },
+    portfolio: (portfolio || []).map((a) => ({
+      ticker: a.ticker,
+      nameKo: a.nameKo,
+      weight: a.weight,
+    })),
+    backtest: bt ? {
+      cagr: bt.cagr,
+      mdd: bt.mdd,
+      sharpe: bt.sharpe,
+      defensiveRatio: backtest.cashRatio,
       startDate: backtest.startDate,
     } : null,
     returns,

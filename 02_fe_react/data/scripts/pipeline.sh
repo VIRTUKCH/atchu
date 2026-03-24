@@ -92,6 +92,28 @@ else
   notify "[${RUN_ID}] BAA SIGNAL FAIL (continuing)"
 fi
 
+# HAA 전략 신호 생성
+log "Generating HAA signal"
+notify "[${RUN_ID}] HAA SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_haa_signal.mjs"; then
+  log "HAA signal generation completed"
+  notify "[${RUN_ID}] HAA SIGNAL DONE"
+else
+  log "Warning: HAA signal generation failed, continuing"
+  notify "[${RUN_ID}] HAA SIGNAL FAIL (continuing)"
+fi
+
+# Faber 섹터 모멘텀 전략 신호 생성
+log "Generating Faber sector signal"
+notify "[${RUN_ID}] FABER SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_faber_signal.mjs"; then
+  log "Faber signal generation completed"
+  notify "[${RUN_ID}] FABER SIGNAL DONE"
+else
+  log "Warning: Faber signal generation failed, continuing"
+  notify "[${RUN_ID}] FABER SIGNAL FAIL (continuing)"
+fi
+
 # 개별주(S&P 500) 파이프라인 실행
 log "Starting stock pipeline"
 notify "[${RUN_ID}] STOCK PIPELINE START"

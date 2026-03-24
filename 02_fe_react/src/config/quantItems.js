@@ -26,16 +26,16 @@ export const QUANT_STRATEGIES = [
     label: "HAA (Hybrid Asset Allocation)",
     description:
       "TIPS 모멘텀 필터 + 듀얼 모멘텀 top 4 분산 — BAA 저자의 간소화 후속작",
-    status: "coming_soon",
-    curveKey: null,
+    status: "active",
+    curveKey: "haa",
   },
   {
     id: "faber-sector",
     path: "/_dev_quant/faber-sector",
     label: "Faber 섹터 모멘텀",
     description: "3개월 수익률 상위 3 섹터 + 10개월 SMA 트렌드 필터 — Meb Faber 방식",
-    status: "coming_soon",
-    curveKey: null,
+    status: "active",
+    curveKey: "faberSector",
   },
   {
     id: "dual-momentum",

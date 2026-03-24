@@ -1,5 +1,27 @@
 # 작업 기록
 
+### 2026-03-24 (80)
+- **퀀트 허브: HAA (Hybrid Asset Allocation) 전략 구현**
+  - Wouter Keller(2023) 논문 기반. TIP 단일 카나리아 + 균등 평균 모멘텀 + top 4 분산
+  - 파이프라인: `generate_haa_signal.mjs` — 신호 생성, 백테스트 (CAGR 9.77%, MDD -9.76%, 샤프 1.128)
+  - 프론트엔드: `HaaQuantPeekPage.jsx`, `HaaEquityCurveChart.jsx`, `haaDataLoaders.js`
+  - 허브 통합: `QuantHubPage.jsx`에 `getCardDataFromPayload` 공통 함수 도입, HAA 카드 활성화
+  - 라우트: `/_dev_quant/haa`
+  - 데이터: `data/tickers/haa.json`, `data/summary/haa/haa_signal.json`
+  - 기획 문서: `dev_quant_haa.md` 상세화 (JSON 스키마, 페이지 구조, 컴포넌트 매핑)
+
+### 2026-03-24 (79)
+- **퀀트 허브: Faber 섹터 모멘텀 전략 구현**
+  - 전략: 3개월 ROC 상위 3 섹터 동일비중 + SPY 10개월 SMA 트렌드 필터
+  - 파이프라인: `generate_faber_signal.mjs` → `data/summary/faber/faber_signal.json`
+  - 페이지: `FaberSectorPage.jsx` — 수익률, 트렌드 필터, 포트폴리오, 11개 섹터 순위, 백테스트 차트, 36개월 히스토리
+  - 차트: `FaberEquityCurveChart.jsx` — SVG 3선 (Faber/SPY/60-40)
+  - 데이터: `faberDataLoaders.js` (import.meta.glob eager)
+  - 설정: `quantItems.js` status → active, `AppRoutes.jsx` 라우트, `QuantHubPage.jsx` 카드 연동
+  - 파이프라인: `pipeline.sh` — HAA 다음에 Faber 신호 생성 추가
+  - 티커: XLRE(2015~) → VNQ(2004~) 대체 (동일 부동산 섹터, 백테스트 10년+ 추가)
+  - 백테스트 결과: CAGR 11.54%, MDD -15.96%, Sharpe 0.894 (2019-03~2026-02)
+
 ### 2026-03-24 (78)
 - **퀀트 허브: 리서치 기반 4개 전략 카드 추가 (coming_soon)**
   - 웹 리서치: 2024-2025 퀀트 투자 전략 트렌드, 학술 논문, 업계 성과 종합 조사

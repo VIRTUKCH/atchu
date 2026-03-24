@@ -32,7 +32,7 @@
 |------|--------|----------|------|
 | BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
 | BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
-| HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) | 기획 중 |
+| HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) | 구현 완료 |
 | Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) | 기획 중 |
 | 듀얼 모멘텀 | `/_dev_quant/dual-momentum` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 기획 중 |
 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 기획 중 |
@@ -48,7 +48,7 @@
 /_dev_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
 /_dev_quant/baa-a        → BAA Aggressive 상세
 /_dev_quant/baa-b        → BAA Balanced 상세
-/_dev_quant/haa           → HAA 상세 (예정)
+/_dev_quant/haa           → HAA 상세
 /_dev_quant/faber-sector → Faber 섹터 모멘텀 상세 (예정)
 /_dev_quant/dual-momentum → 듀얼 모멘텀 상세 (예정)
 /_dev_quant/business-cycle → 경기순환 섹터 로테이션 상세 (예정)
@@ -285,11 +285,13 @@ export const QUANT_STRATEGIES = [
 |--------|----------|-----------|----------|
 | BAA 신호·배분 | `data/summary/baa/baa_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
 | BAA 전용 티커 메타 | `data/tickers/baa.json` | `import.meta.glob` eager | 수동 |
+| HAA 신호·배분 | `data/summary/haa/haa_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| HAA 전용 티커 메타 | `data/tickers/haa.json` | 파이프라인 전용 | 수동 |
 | 섹터 신호 (예정) | `data/summary/sector/sector_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
 | ETF CSV (계산용) | `data/csv/*.US_all.csv` | 프론트 미사용 (파이프라인 전용) | 매일 |
 
 ---
 
 **관련 페이지 기획:** [dev_market_overview.md](../dev_market_overview.md) (개발자 마켓 뷰)
-**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`
-**관련 파이프라인:** `generate_baa_signal.mjs`, `pipeline.sh`
+**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`
+**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `pipeline.sh`
