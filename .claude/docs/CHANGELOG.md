@@ -62,7 +62,7 @@
 ### 2026-03-23 (69)
 - **퀀트 엿보기 페이지 기획 문서 작성 (`/_quant`)**
   - BAA(Bold Asset Allocation) 전략 결과를 확인하는 개발자 전용 비공개 페이지 기획
-  - `.claude/docs/pages/private/quant_peek.md` 신규 생성
+  - `.claude/docs/pages/private/dev_quant_list.md` 신규 생성
   - v1 범위: 섹션 4개 (현재 신호 + 포트폴리오 배분 + 카나리아 모멘텀 + 유니버스별 순위)
   - baa_signal.json 스키마 설계, baa.json 티커 파일 구조 설계 (EEM, EFA, AGG, BIL 신규 4종)
   - 기존 column 컴포넌트 8개 재사용, 신규 컴포넌트 2개(BaaSignalBadge, BaaPortfolioTab)
