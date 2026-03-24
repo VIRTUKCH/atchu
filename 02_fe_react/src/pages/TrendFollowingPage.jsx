@@ -89,6 +89,33 @@ function SignalSection({ signal }) {
   );
 }
 
+/* ── CAGR 가중 비중 테이블 ── */
+function CagrWeightsSection({ cagrWeights }) {
+  if (!cagrWeights || cagrWeights.length === 0) return null;
+  const rows = cagrWeights.map((w) => [
+    { value: w.ticker, highlight: true },
+    w.nameKo,
+    `${w.cagr}%`,
+    `${w.equalWeight}%`,
+    `${w.cagrWeight}%`,
+  ]);
+  return (
+    <div className="panel-card" style={{ padding: "20px" }}>
+      <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
+        비중 배분: 동일가중 vs CAGR가중
+      </h3>
+      <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", lineHeight: 1.6, margin: "0 0 12px" }}>
+        CAGR가중은 각 자산의 전체 기간 바이앤홀드 CAGR에 비례하여 비중을 배분한다.
+        CAGR이 높은 자산(GLD, SPY)에 더 많이, 낮은 자산(DBC)에 더 적게 투자.
+      </p>
+      <ColumnCompareTable
+        columns={["자산", "이름", "CAGR", "동일가중", "CAGR가중"]}
+        rows={rows}
+      />
+    </div>
+  );
+}
+
 /* ── [3] 트렌드 팔로잉이란 ── */
 function WhatIsSection() {
   return (
@@ -242,16 +269,18 @@ function Year2022Section() {
 function PerformanceSection({ backtest }) {
   if (!backtest) return null;
   const t = backtest.trend;
+  const tc = backtest.trendCagr;
   const spy = backtest.spy;
   const sf = backtest.sixtyForty;
   const stats = [
-    { value: `${t?.cagr ?? "—"}%`, label: "CAGR", desc: "연평균 수익률" },
-    { value: `${t?.mdd ?? "—"}%`, label: "MDD", desc: "최대 낙폭" },
-    { value: `${t?.sharpe ?? "—"}`, label: "샤프비율", desc: "위험조정 수익" },
-    { value: `${backtest.avgInvestedAssets ?? "—"}/${9}`, label: "평균 투자 자산", desc: "9개 중" },
+    { value: `${t?.cagr ?? "—"}%`, label: "동일가중 CAGR", desc: "연평균 수익률" },
+    { value: `${tc?.cagr ?? "—"}%`, label: "CAGR가중 CAGR", desc: "연평균 수익률" },
+    { value: `${t?.mdd ?? "—"}%`, label: "동일가중 MDD", desc: "최대 낙폭" },
+    { value: `${tc?.mdd ?? "—"}%`, label: "CAGR가중 MDD", desc: "최대 낙폭" },
   ];
   const compareRows = [
-    ["트렌드 팔로잉", `${t?.cagr ?? "—"}%`, `${t?.mdd ?? "—"}%`, `${t?.sharpe ?? "—"}`],
+    ["동일가중", `${t?.cagr ?? "—"}%`, `${t?.mdd ?? "—"}%`, `${t?.sharpe ?? "—"}`],
+    ["CAGR가중", `${tc?.cagr ?? "—"}%`, `${tc?.mdd ?? "—"}%`, `${tc?.sharpe ?? "—"}`],
     ["SPY B&H", `${spy?.cagr ?? "—"}%`, `${spy?.mdd ?? "—"}%`, `${spy?.sharpe ?? "—"}`],
     ["60/40 B&H", `${sf?.cagr ?? "—"}%`, `${sf?.mdd ?? "—"}%`, `${sf?.sharpe ?? "—"}`],
   ];
@@ -346,11 +375,12 @@ export default function TrendFollowingPage() {
         CTA (Commodity Trading Advisor)
       </h2>
       <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", margin: 0 }}>
-        9개 자산군 ETF에 앗추 필터 적용 + 동일 비중 — 월가 방법론의 개인 투자자용 간소화
+        9개 자산군 ETF에 앗추 필터 적용 — 동일가중 vs CAGR가중 비교
       </p>
 
       <ReturnsSection equityCurve={backtest?.equityCurve} />
       <SignalSection signal={signal} />
+      <CagrWeightsSection cagrWeights={trendSignalPayload.cagrWeights} />
       <WhatIsSection />
       <WallStreetSection />
       <LimitationsSection />

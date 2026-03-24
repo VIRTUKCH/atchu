@@ -1,7 +1,7 @@
 import React from "react";
 
-const COLORS = { trend: "#3b82f6", spy: "#f59e0b", sixtyForty: "#8b5cf6" };
-const LABELS = { trend: "트렌드 팔로잉", spy: "SPY B&H", sixtyForty: "60/40" };
+const COLORS = { trend: "#3b82f6", trendCagr: "#22c55e", spy: "#f59e0b", sixtyForty: "#8b5cf6" };
+const LABELS = { trend: "동일가중", trendCagr: "CAGR가중", spy: "SPY B&H", sixtyForty: "60/40" };
 
 const W = 760;
 const H = 300;

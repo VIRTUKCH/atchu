@@ -3,7 +3,10 @@
  * 트렌드 팔로잉 (간소화) 전략 신호 생성
  *
  * 9개 자산군 ETF에 앗추 필터(200일 SMA, 20거래일 중 16일)를 적용.
- * 필터 통과 자산은 동일 비중(11.1%) 투자, 미통과 자산 비중은 BIL(단기 국채)에 투자.
+ * 두 가지 비중 방식 동시 백테스트:
+ *   - 동일가중 (각 11.1%)
+ *   - CAGR가중 (바이앤홀드 CAGR에 비례)
+ * 미통과 자산 비중은 BIL(단기 국채)에 투자.
  * 월 1회 리밸런싱. 벤치마크: SPY B&H, 60/40(SPY+AGG).
  *
  * ⚠️ 기관급 트렌드 팔로잉(60개+ 선물, 롱/숏, 레버리지)의 간소화 버전.
@@ -161,6 +164,17 @@ function calcAtchuFilter(dailyData, targetDate) {
   };
 }
 
+/* ── 자산 CAGR 계산 (전체 기간 바이앤홀드) ── */
+function calcAssetCagr(dailyData) {
+  if (!dailyData || dailyData.length < 2) return null;
+  const first = dailyData[0];
+  const last = dailyData[dailyData.length - 1];
+  const years =
+    (new Date(last.date) - new Date(first.date)) / (365.25 * 24 * 3600 * 1000);
+  if (years < 0.5) return null;
+  return (Math.pow(last.close / first.close, 1 / years) - 1) * 100;
+}
+
 /* ── Main ── */
 function main() {
   console.log("[TREND] Starting Trend Following signal generation...");
@@ -182,6 +196,24 @@ function main() {
 
   if (dailyCache.size < ASSET_COUNT) {
     console.warn(`[WARN] Only ${dailyCache.size}/${ASSET_COUNT} assets loaded`);
+  }
+
+  // CAGR 가중치 계산
+  const cagrData = [];
+  for (const u of UNIVERSE) {
+    const daily = dailyCache.get(u.ticker);
+    const cagr = daily ? calcAssetCagr(daily) : null;
+    cagrData.push({ ticker: u.ticker, cagr: cagr ?? 0 });
+  }
+  const totalCagr = cagrData.reduce((s, d) => s + Math.max(d.cagr, 0), 0);
+  const cagrWeights = new Map();
+  for (const d of cagrData) {
+    cagrWeights.set(d.ticker, totalCagr > 0 ? Math.max(d.cagr, 0) / totalCagr : 1 / ASSET_COUNT);
+  }
+
+  console.log("[TREND] CAGR weights:");
+  for (const d of cagrData.sort((a, b) => b.cagr - a.cagr)) {
+    console.log(`[TREND]   ${d.ticker}: CAGR ${round2(d.cagr)}% → weight ${round2(cagrWeights.get(d.ticker) * 100)}%`);
   }
 
   // 벤치마크/현금 월말 종가
@@ -326,18 +358,20 @@ function main() {
     });
   }
 
-  // Equity curve
+  // Equity curve (동일가중 + CAGR가중 동시)
   let eqTrend = 1.0;
+  let eqTrendCagr = 1.0;
   let eqSpy = 1.0;
   let eq6040 = 1.0;
 
   const equityCurve = [];
-  const monthlyReturns = { trend: [], spy: [], sixtyForty: [] };
+  const monthlyReturns = { trend: [], trendCagr: [], spy: [], sixtyForty: [] };
 
   if (monthlyRecords.length > 0) {
     equityCurve.push({
       date: monthlyRecords[0].ym,
       trend: round3(eqTrend),
+      trendCagr: round3(eqTrendCagr),
       spy: round3(eqSpy),
       sixtyForty: round3(eq6040),
     });
@@ -347,10 +381,11 @@ function main() {
     const cur = monthlyRecords[i];
     const next = monthlyRecords[i + 1];
 
-    // 트렌드 팔로잉 포트폴리오 수익률
+    // 동일가중 + CAGR가중 수익률 동시 계산
     let trendRet = 0;
-    let investedW = 0;
+    let trendCagrRet = 0;
     let cashW = 0;
+    let cashWCagr = 0;
 
     for (const a of cur.assets) {
       const meMap = monthEndCache.get(a.ticker);
@@ -360,22 +395,24 @@ function main() {
       if (!c0 || !c1 || c0 === 0) continue;
 
       const assetRet = c1 / c0 - 1;
+      const equalW = 1 / ASSET_COUNT;
+      const cagrW = cagrWeights.get(a.ticker) || equalW;
+
       if (a.invested) {
-        trendRet += (1 / ASSET_COUNT) * assetRet;
-        investedW += 1 / ASSET_COUNT;
+        trendRet += equalW * assetRet;
+        trendCagrRet += cagrW * assetRet;
       } else {
-        cashW += 1 / ASSET_COUNT;
+        cashW += equalW;
+        cashWCagr += cagrW;
       }
     }
 
     // 현금 비중의 BIL 수익률
-    if (cashW > 0) {
-      const bilC0 = bilMap.get(cur.ym);
-      const bilC1 = bilMap.get(next.ym);
-      if (bilC0 && bilC1 && bilC0 > 0) {
-        trendRet += cashW * (bilC1 / bilC0 - 1);
-      }
-    }
+    const bilC0 = bilMap.get(cur.ym);
+    const bilC1 = bilMap.get(next.ym);
+    const bilRet = bilC0 && bilC1 && bilC0 > 0 ? bilC1 / bilC0 - 1 : 0;
+    if (cashW > 0) trendRet += cashW * bilRet;
+    if (cashWCagr > 0) trendCagrRet += cashWCagr * bilRet;
 
     // SPY B&H
     const spyC0 = spyMeMap?.get(cur.ym);
@@ -389,16 +426,19 @@ function main() {
     const sixtyFortyRet = 0.6 * spyRet + 0.4 * aggRet;
 
     eqTrend *= 1 + trendRet;
+    eqTrendCagr *= 1 + trendCagrRet;
     eqSpy *= 1 + spyRet;
     eq6040 *= 1 + sixtyFortyRet;
 
     monthlyReturns.trend.push(trendRet);
+    monthlyReturns.trendCagr.push(trendCagrRet);
     monthlyReturns.spy.push(spyRet);
     monthlyReturns.sixtyForty.push(sixtyFortyRet);
 
     equityCurve.push({
       date: next.ym,
       trend: round3(eqTrend),
+      trendCagr: round3(eqTrendCagr),
       spy: round3(eqSpy),
       sixtyForty: round3(eq6040),
     });
@@ -431,6 +471,7 @@ function main() {
   };
 
   const trendMetrics = calcMetrics(monthlyReturns.trend, eqTrend);
+  const trendCagrMetrics = calcMetrics(monthlyReturns.trendCagr, eqTrendCagr);
   const spyMetrics = calcMetrics(monthlyReturns.spy, eqSpy);
   const sixtyFortyMetrics = calcMetrics(monthlyReturns.sixtyForty, eq6040);
 
@@ -453,11 +494,19 @@ function main() {
   }));
 
   // 6. 출력
+  const cagrWeightsArr = UNIVERSE.map((u) => ({
+    ticker: u.ticker,
+    nameKo: u.nameKo,
+    cagr: round2(cagrData.find((d) => d.ticker === u.ticker)?.cagr ?? 0),
+    equalWeight: round2(100 / ASSET_COUNT),
+    cagrWeight: round2((cagrWeights.get(u.ticker) || 0) * 100),
+  })).sort((a, b) => b.cagr - a.cagr);
+
   const output = {
     generatedAt: new Date().toISOString(),
     strategy: {
-      name: "트렌드 팔로잉 (간소화)",
-      type: "다자산 SMA 필터 + 동일 비중",
+      name: "CTA (간소화)",
+      type: "다자산 SMA 필터 — 동일가중 + CAGR가중 비교",
       signal: "앗추 필터 (200일선, 20거래일 중 16일)",
       rebalancing: "월 1회",
       cashAsset: "SGOV",
@@ -469,6 +518,7 @@ function main() {
       weight: round2(100 / ASSET_COUNT),
       role: u.role,
     })),
+    cagrWeights: cagrWeightsArr,
     signal: {
       rebalanceDate: refDate,
       investedCount,
@@ -483,6 +533,7 @@ function main() {
       startDate: monthlyRecords[0].date,
       endDate: monthlyRecords[monthlyRecords.length - 1].date,
       trend: trendMetrics,
+      trendCagr: trendCagrMetrics,
       spy: spyMetrics,
       sixtyForty: sixtyFortyMetrics,
       allCashMonths: cashMonths,
@@ -500,9 +551,10 @@ function main() {
   console.log(`[TREND] Invested: ${currentAssets.filter((a) => a.invested).map((a) => a.ticker).join(", ") || "none"}`);
   if (monthlyRecords.length > 1) {
     console.log(`[TREND] Backtest: ${monthlyRecords[0].date} → ${monthlyRecords[monthlyRecords.length - 1].date} (${monthlyRecords.length} months)`);
-    console.log(`[TREND] Trend CAGR: ${trendMetrics.cagr}%  MDD: ${trendMetrics.mdd}%  Sharpe: ${trendMetrics.sharpe}`);
-    console.log(`[TREND] SPY   CAGR: ${spyMetrics.cagr}%  MDD: ${spyMetrics.mdd}%`);
-    console.log(`[TREND] 60/40 CAGR: ${sixtyFortyMetrics.cagr}%  MDD: ${sixtyFortyMetrics.mdd}%`);
+    console.log(`[TREND] Equal  CAGR: ${trendMetrics.cagr}%  MDD: ${trendMetrics.mdd}%  Sharpe: ${trendMetrics.sharpe}`);
+    console.log(`[TREND] CAGR-W CAGR: ${trendCagrMetrics.cagr}%  MDD: ${trendCagrMetrics.mdd}%  Sharpe: ${trendCagrMetrics.sharpe}`);
+    console.log(`[TREND] SPY    CAGR: ${spyMetrics.cagr}%  MDD: ${spyMetrics.mdd}%`);
+    console.log(`[TREND] 60/40  CAGR: ${sixtyFortyMetrics.cagr}%  MDD: ${sixtyFortyMetrics.mdd}%`);
     console.log(`[TREND] Avg invested assets: ${avgInvested}/${ASSET_COUNT}`);
   }
 }
