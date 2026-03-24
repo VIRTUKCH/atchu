@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RETURN_PERIODS = ["5Y", "3Y", "1Y", "6M", "3M", "1M"];
+// 최근 → 장기 순 (사용자가 가장 궁금한 최근 수익률이 앞)
+const RETURN_PERIODS = ["1M", "3M", "6M", "1Y", "3Y", "5Y"];
 
 function ReturnBox({ period, value }) {
   const hasValue = value != null;
