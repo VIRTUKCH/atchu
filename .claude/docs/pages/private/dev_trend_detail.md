@@ -28,7 +28,8 @@ ETF 상세(`/trend_list/:ticker`)의 개별주 버전. 개별 종목의 차트, 
 | 3 | PriceTrendChart (5Y) | 최근 5년 가격 + MA50/MA200 |
 | 4 | StrategyComparisonCard | 매수후보유 vs 200일선 vs 앗추 필터 비교 |
 | 5 | TrendCrossingHistoryCard | 200일선 돌파 이력 테이블 |
-| 6 | AdvancedMetricsCard | 샤프비율, 소르티노, 승률, 평균보유일수 |
+| 6 | **MonthlyReturnsHeatmap** | **월별 수익률 히트맵** (ETF 상세와 동일, CSV 기반) |
+| 7 | AdvancedMetricsCard | 샤프비율, 소르티노, 승률, 평균보유일수 |
 
 ---
 

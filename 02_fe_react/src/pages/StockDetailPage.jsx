@@ -7,6 +7,7 @@ import PriceTrendChart from "../components/etf/PriceTrendChart";
 import StrategyComparisonCard from "../components/etf/StrategyComparisonCard";
 import TrendCrossingHistoryCard from "../components/etf/TrendCrossingHistoryCard";
 import AdvancedMetricsCard from "../components/etf/AdvancedMetricsCard";
+import MonthlyReturnsHeatmap from "../components/etf/MonthlyReturnsHeatmap";
 import {
   stockTickerMetaMap,
   stockSnapshotMap,
@@ -166,6 +167,12 @@ export default function StockDetailPage() {
             formatPrice={formatPrice}
             formatSignedPercent={formatSignedPercent}
           />
+          {detailAnalytics?.monthlyReturns && (
+            <MonthlyReturnsHeatmap
+              data={detailAnalytics.monthlyReturns}
+              formatSignedPercent={formatSignedPercent}
+            />
+          )}
           <AdvancedMetricsCard
             advancedMetrics={detailAnalytics?.advancedMetrics || null}
             buyHold={drawdownStats?.buyHold || null}
