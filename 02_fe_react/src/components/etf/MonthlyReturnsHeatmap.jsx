@@ -86,10 +86,8 @@ export default function MonthlyReturnsHeatmap({ data }) {
     return { maxYear: mx, minYear: mn, grid: strategyData, yearTotals: totals };
   }, [data, activeTab]);
 
-  // 탭 전환 시 페이지 리셋
   const handleTabChange = useCallback((key) => {
     setActiveTab(key);
-    setPage(0);
   }, []);
 
   // 페이지별 연도 배열 생성 (항상 yearsPerPage개 고정)
