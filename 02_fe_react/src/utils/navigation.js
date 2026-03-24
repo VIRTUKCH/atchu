@@ -49,7 +49,7 @@ const COLUMN_PATHS = new Set([
 ]);
 
 const getActiveTabFromPathname = (pathname) => {
-  if (pathname.startsWith("/index_etf") || pathname.startsWith("/stock_trend")) {
+  if (pathname.startsWith("/trend_list") || pathname.startsWith("/index_etf") || pathname.startsWith("/stock_trend")) {
     return "etfTrend";
   }
   if (pathname.startsWith("/market_overview")) {
@@ -70,7 +70,7 @@ const getActiveTabFromPathname = (pathname) => {
 const navigateByTab = (tab, navigate) => {
   const tabPathMap = {
     main: "/",
-    etfTrend: "/index_etf",
+    etfTrend: "/trend_list",
     marketOverview: "/market_overview",
     faq: "/faq",
     more: "/more"

@@ -58,8 +58,8 @@ export default function App() {
   });
 
   useEffect(() => {
-    if (location.pathname === "/index_etf" && location.search) {
-      navigate("/index_etf", { replace: true });
+    if (location.pathname === "/trend_list" && location.search) {
+      navigate("/trend_list", { replace: true });
     }
   }, [location.pathname, location.search, navigate]);
 

@@ -113,7 +113,7 @@ export default function AtchuStrategyPage() {
 
       <ColumnTipBox icon="[>]">
         앗추 필터 기준 실제 매매 이력은 모두 기록되어 있습니다.{" "}
-        <Link to="/index_etf/SPY">SPY 추세 조회 상세</Link>에서
+        <Link to="/trend_list/SPY">SPY 추세 조회 상세</Link>에서
         과거 매수·매도 시점과 수익률을 직접 확인할 수 있습니다.
       </ColumnTipBox>
 

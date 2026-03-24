@@ -109,7 +109,7 @@ function getMeta(ticker) {
 }
 
 function getDetailPath(ticker) {
-  return isEtf(ticker) ? `/index_etf/${ticker}` : `/_stocks/${ticker}`;
+  return isEtf(ticker) ? `/trend_list/${ticker}` : `/_dev_trend_list/${ticker}`;
 }
 
 function getBestOverallCagrInfo(analytics) {

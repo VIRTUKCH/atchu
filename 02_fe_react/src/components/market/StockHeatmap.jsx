@@ -109,7 +109,7 @@ const Tile = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriod
   const badge = level ? BADGE_META[level] : null;
   const trendDays = isPeriodMode ? null : item.trendDays;
   return (
-    <Link to={`${baseLinkPath || "/_stocks"}/${item.ticker}`} className="report-overview-card" style={style}>
+    <Link to={`${baseLinkPath || "/_dev_trend_list"}/${item.ticker}`} className="report-overview-card" style={style}>
       <div className="report-overview-card-title">{item.label || item.ticker}</div>
       {item.nameKo && <div className="report-overview-card-name-ko">{item.nameKo}</div>}
       <div className="report-overview-card-value">{formatPercent(displayValue)}</div>

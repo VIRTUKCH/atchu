@@ -7,7 +7,7 @@ const IndexEtfDetailPage = React.lazy(() => import("../pages/IndexEtfDetailPage"
 
 function AnalysisRedirect() {
   const { ticker } = useParams();
-  return <Navigate to={`/index_etf/${ticker}`} replace />;
+  return <Navigate to={`/trend_list/${ticker}`} replace />;
 }
 const MarketOverviewPage = React.lazy(() => import("../pages/MarketOverviewPage"));
 const MorePage = React.lazy(() => import("../pages/MorePage"));
@@ -135,22 +135,22 @@ export default function AppRoutes({ routeModel }) {
               latestTrendNotificationPayload={latestTrendNotificationPayload}
               onTypeSelect={(type) => {
                 indexEtfPageModel?.toggleType?.(type);
-                navigate("/index_etf");
+                navigate("/trend_list");
               }}
             />
           }
         />
         <Route
-          path="/index_etf"
+          path="/trend_list"
           element={<BentoLayout><IndexEtfPage pageTitle="추세 조회" model={indexEtfPageModel} /></BentoLayout>}
         />
-        <Route path="/index_etf/:ticker" element={<BentoLayout><IndexEtfDetailPage model={indexEtfDetailModel} /></BentoLayout>} />
+        <Route path="/trend_list/:ticker" element={<BentoLayout><IndexEtfDetailPage model={indexEtfDetailModel} /></BentoLayout>} />
         <Route path="/analysis/:ticker" element={<AnalysisRedirect />} />
         <Route path="/guide" element={<TrendGuidePage />} />
-        <Route
-          path="/stock_trend"
-          element={<Navigate to="/index_etf" replace />}
-        />
+        {/* 이전 URL 리다이렉트 */}
+        <Route path="/stock_trend" element={<Navigate to="/trend_list" replace />} />
+        <Route path="/index_etf" element={<Navigate to="/trend_list" replace />} />
+        <Route path="/index_etf/:ticker" element={<AnalysisRedirect />} />
         <Route path="/dalio_cycle_guide" element={<DalioCycleGuidePage />} />
         <Route path="/more" element={<BentoLayout><MorePage /></BentoLayout>} />
         <Route path="/faq" element={<BentoLayout><FaqPage /></BentoLayout>} />
@@ -232,9 +232,13 @@ export default function AppRoutes({ routeModel }) {
 
         {/* 개발자 전용 (숨김) */}
         <Route path="/_dev" element={<BentoLayout><PasswordGate><DevPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_stocks" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_stocks/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_stocks_overview" element={<BentoLayout><PasswordGate><StockOverviewPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_trend_list" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_trend_list/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_market_overview" element={<BentoLayout><PasswordGate><StockOverviewPage /></PasswordGate></BentoLayout>} />
+        {/* 이전 개발자 URL 리다이렉트 */}
+        <Route path="/_stocks" element={<Navigate to="/_dev_trend_list" replace />} />
+        <Route path="/_stocks/:ticker" element={<Navigate to="/_dev_trend_list" replace />} />
+        <Route path="/_stocks_overview" element={<Navigate to="/_dev_market_overview" replace />} />
         <Route path="/_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
         <Route path="/_quant/baa" element={<BentoLayout><PasswordGate><BaaQuantPeekPage /></PasswordGate></BentoLayout>} />
 
@@ -248,7 +252,7 @@ export default function AppRoutes({ routeModel }) {
                 latestTrendNotificationPayload={latestTrendNotificationPayload}
                 onTypeSelect={(type) => {
                   indexEtfPageModel?.toggleType?.(type);
-                  navigate("/index_etf");
+                  navigate("/trend_list");
                 }}
               />
             </BentoLayout>
@@ -267,7 +271,7 @@ export default function AppRoutes({ routeModel }) {
               latestTrendNotificationPayload={latestTrendNotificationPayload}
               onTypeSelect={(type) => {
                 indexEtfPageModel?.toggleType?.(type);
-                navigate("/index_etf");
+                navigate("/trend_list");
               }}
             />
           }

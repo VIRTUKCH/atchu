@@ -1,4 +1,4 @@
-# 관리자 추세 조회 — /_stocks
+# 관리자 추세 조회 — /_dev_trend_list
 
 ## 이 페이지의 역할
 
@@ -16,8 +16,8 @@ S&P 500 개별주 + ETF 85개를 **하나의 통합 리스트**로 보여주는 
 ## 유입 경로
 
 - 상단 네비 "관리자 추세 조회" 탭 (devMode 활성 시)
-- `/_stocks_overview` 섹터 추세 강도 카드 클릭 → `/_stocks?sector=기술`
-- `/_stocks_overview` **서브섹터 클릭** → `/_stocks?sector=기술&sub=반도체`
+- `/_dev_market_overview` 섹터 추세 강도 카드 클릭 → `/_dev_trend_list?sector=기술`
+- `/_dev_market_overview` **서브섹터 클릭** → `/_dev_trend_list?sector=기술&sub=반도체`
 - Discord 관리자 채널 알림 하단 링크
 
 ---
@@ -70,8 +70,8 @@ GICS 11개 섹터 + 46개 서브섹터 그룹 레이아웃.
 
 | 종목 유형 | 카드 클릭 → | 비고 |
 |-----------|------------|------|
-| 개별주 | `/_stocks/:ticker` | 개발자 전용 상세 |
-| ETF | `/index_etf/:ticker` | 기존 공개 상세 페이지 재사용 |
+| 개별주 | `/_dev_trend_list/:ticker` | 개발자 전용 상세 |
+| ETF | `/trend_list/:ticker` | 기존 공개 상세 페이지 재사용 |
 
 별도 개발자 ETF 상세 페이지는 불필요 — 공개 상세 페이지가 충분.
 

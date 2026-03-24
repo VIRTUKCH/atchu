@@ -85,11 +85,11 @@
 
 신규 방문자 전용 마케팅 페이지. 3가지 페르소나 커버. 추세 조회 페이지 진입이 주 전환 목표. Discord 가입 버튼은 보조.
 
-### 5-3. 추세 조회 (/index_etf, /index_etf/:ticker)
+### 5-3. 추세 조회 (/trend_list, /trend_list/:ticker)
 > 상세: [`.claude/docs/pages/trend_list.md`](.claude/docs/pages/trend_list.md), [`.claude/docs/pages/trend_detail.md`](.claude/docs/pages/trend_detail.md)
 
-- **리스트** (/index_etf): 전체 자산의 이평선 상태 일람. 타입 필터, 정렬, 앗추 필터 수익률·MDD·데이터 시작일. CAGR 옆에 MDD와 데이터 시작일을 함께 보여줘서 백테스트 신뢰도를 즉시 판단할 수 있게 한다. (데이터 시작일이 오래될수록, 더 많은 위기를 통과한 검증된 수치다.)
-- **상세** (/index_etf/:ticker): 개별 ETF의 가격 차트·돌파 이력·CAGR/MDD.
+- **리스트** (/trend_list): 전체 자산의 이평선 상태 일람. 타입 필터, 정렬, 앗추 필터 수익률·MDD·데이터 시작일. CAGR 옆에 MDD와 데이터 시작일을 함께 보여줘서 백테스트 신뢰도를 즉시 판단할 수 있게 한다. (데이터 시작일이 오래될수록, 더 많은 위기를 통과한 검증된 수치다.)
+- **상세** (/trend_list/:ticker): 개별 ETF의 가격 차트·돌파 이력·CAGR/MDD.
 
 ### 5-4. 시장 개요 (/market_overview)
 > 상세: [`.claude/docs/pages/market_overview.md`](.claude/docs/pages/market_overview.md)

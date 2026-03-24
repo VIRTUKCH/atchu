@@ -65,7 +65,7 @@ export default function LandingTrustSection() {
             과거 백테스트 결과이며 미래 수익을 보장하지 않습니다.<br />
             실제 거래 시 세금·수수료·슬리피지로 인해 결과가 달라질 수 있습니다. 종가 기준.
           </p>
-          <Link to="/index_etf/SPY" className="trust-backtest-detail-link">
+          <Link to="/trend_list/SPY" className="trust-backtest-detail-link">
             상세 거래 이력 보기 →
           </Link>
         </div>

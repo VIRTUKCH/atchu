@@ -186,10 +186,10 @@ export default function TrendGuidePage() {
             미국 대표 지수 SPY로 시작하는 걸 추천합니다.
           </p>
           <div className="guide-cta-buttons">
-            <Link to="/index_etf/SPY" className="guide-cta-primary">
+            <Link to="/trend_list/SPY" className="guide-cta-primary">
               SPY 상세 보러가기 →
             </Link>
-            <Link to="/index_etf" className="guide-cta-secondary">
+            <Link to="/trend_list" className="guide-cta-secondary">
               85개 ETF 전체 탐색 →
             </Link>
           </div>

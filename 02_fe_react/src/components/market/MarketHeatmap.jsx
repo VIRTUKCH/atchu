@@ -245,7 +245,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   const trendDays = isPeriodMode ? null : item.trendDays;
   return (
     <Link
-      to={`${baseLinkPath || "/index_etf"}/${item.ticker}`}
+      to={`${baseLinkPath || "/trend_list"}/${item.ticker}`}
       className="report-overview-card"
       style={style}
     >

@@ -134,7 +134,7 @@ export default function MarketOverviewPage({
               ) : (
                 <div className="trend-column-list">
                   {allEntries.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/index_etf/${item.ticker}`} className="trend-signal-item entry">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className="trend-signal-item entry">
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
@@ -149,7 +149,7 @@ export default function MarketOverviewPage({
               ) : (
                 <div className="trend-column-list">
                   {allExits.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/index_etf/${item.ticker}`} className="trend-signal-item exit">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className="trend-signal-item exit">
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>

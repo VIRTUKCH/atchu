@@ -171,7 +171,7 @@ export default function StockOverviewPage() {
               ) : (
                 <div className="trend-column-list">
                   {allEntries.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/_stocks/${item.ticker}`} className="trend-signal-item entry">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/_dev_trend_list/${item.ticker}`} className="trend-signal-item entry">
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
@@ -186,7 +186,7 @@ export default function StockOverviewPage() {
               ) : (
                 <div className="trend-column-list">
                   {allExits.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/_stocks/${item.ticker}`} className="trend-signal-item exit">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/_dev_trend_list/${item.ticker}`} className="trend-signal-item exit">
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
@@ -206,8 +206,8 @@ export default function StockOverviewPage() {
         </div>
         <MainMarketStatusGrid
           items={sectorStatusItems}
-          onTypeSelect={(type) => navigate(`/_stocks?sector=${encodeURIComponent(type)}`)}
-          onSubSelect={(sector, sub) => navigate(`/_stocks?sector=${encodeURIComponent(sector)}&sub=${encodeURIComponent(sub)}`)}
+          onTypeSelect={(type) => navigate(`/_dev_trend_list?sector=${encodeURIComponent(type)}`)}
+          onSubSelect={(sector, sub) => navigate(`/_dev_trend_list?sector=${encodeURIComponent(sector)}&sub=${encodeURIComponent(sub)}`)}
         />
       </div>
 
@@ -230,7 +230,7 @@ export default function StockOverviewPage() {
           snapshotPayload={stockSnapshotPayload}
           overviewTickers={stockOverviewTickers}
           periodKey={selectedPeriod}
-          baseLinkPath="/_stocks"
+          baseLinkPath="/_dev_trend_list"
         />
       </div>
     </div>

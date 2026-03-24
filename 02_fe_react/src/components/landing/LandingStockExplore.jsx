@@ -43,7 +43,7 @@ export default function LandingStockExplore() {
           {cards.map((card) => (
             <Link
               key={card.ticker}
-              to={`/index_etf/${card.ticker}`}
+              to={`/trend_list/${card.ticker}`}
               className="explore-card"
             >
               <span className="explore-card-ticker">{card.ticker}</span>
@@ -60,7 +60,7 @@ export default function LandingStockExplore() {
         <p className="explore-disclaimer">과거 백테스트 결과이며 미래 수익을 보장하지 않습니다. 투자 결정과 책임은 전적으로 본인에게 있습니다.</p>
 
         <div className="explore-cta-wrap">
-          <Link to="/index_etf" className="explore-cta-btn explore-cta-btn--secondary">
+          <Link to="/trend_list" className="explore-cta-btn explore-cta-btn--secondary">
             85개 ETF 추세 보기 →
           </Link>
         </div>

@@ -294,7 +294,7 @@ export default function IndexEtfPage({
               isStaleClose={closeStatus.isStaleClose}
               marketStatusLabel={closeStatus.statusLabel}
               meta={tickerMetaMap.get(ticker)}
-              to={`/index_etf/${ticker}`}
+              to={`/trend_list/${ticker}`}
             />
           );
         })}
