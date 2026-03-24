@@ -23,12 +23,12 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 티어 배지 */
+/* 티어 배지 — ticker-pill과 동일한 pill 스타일 */
 .quant-tier-badge {
-  font-size: clamp(11px, calc(9.8px + 0.3vw), 13px);
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
   font-weight: 600;
+  font-size: clamp(13px, calc(11px + 0.5vw), 15px);
   white-space: nowrap;
 }
 .quant-tier-badge--1 { background: var(--accent-green); color: white; }
