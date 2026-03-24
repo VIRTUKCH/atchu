@@ -10,12 +10,14 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "faber");
 const OUT_FILE = path.join(SUMMARY_DIR, "faber_signal.json");
 
 /* ── Universe ── */
-const SECTORS = ["XLB", "XLC", "XLE", "XLF", "XLI", "XLK", "XLP", "VNQ", "XLU", "XLV", "XLY"];
+// 10개 섹터: XLC(통신, 2018~) 제외 — 원 논문(French-Fama 10 Industry)에도 현대 통신 섹터 없음
+// XLC 제외로 백테스트 기간이 2005~로 확장 (병목: VNQ 2004-09)
+const SECTORS = ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "VNQ", "XLU", "XLV", "XLY"];
 const TREND_TICKER = "SPY";
 const ALL_TICKERS = [...SECTORS, TREND_TICKER];
 
 const NAME_KO = {
-  XLB: "소재", XLC: "통신", XLE: "에너지", XLF: "금융",
+  XLB: "소재", XLE: "에너지", XLF: "금융",
   XLI: "산업재", XLK: "기술", XLP: "필수소비재", VNQ: "부동산",
   XLU: "유틸리티", XLV: "헬스케어", XLY: "임의소비재", SPY: "S&P 500",
 };

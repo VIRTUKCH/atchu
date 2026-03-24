@@ -249,7 +249,7 @@ export default function FaberSectorPage() {
         Faber 섹터 모멘텀
       </h2>
       <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", margin: 0 }}>
-        3개월 수익률 상위 3 섹터 + 10개월 SMA 트렌드 필터 — Meb Faber
+        10개 섹터 중 3개월 수익률 상위 3 투자 + SPY 10개월 SMA 트렌드 필터 — Meb Faber
       </p>
 
       <ReturnsSection equityCurve={backtest?.equityCurve} />
@@ -259,6 +259,21 @@ export default function FaberSectorPage() {
       <PortfolioSection portfolio={portfolio} />
 
       <SectorRankingSection sectors={sectors} />
+
+      <div className="panel-card" style={{ padding: "20px" }}>
+        <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
+          유니버스 구성
+        </h3>
+        <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", lineHeight: 1.6, margin: 0 }}>
+          Faber 원 논문은 특정 ETF가 아닌 <strong>French-Fama 10 Industry Portfolios</strong> (1926~2009 학술 데이터)를 사용합니다.
+          이를 실제 투자 가능한 ETF로 매핑할 때, <strong>XLC(통신서비스, 2018~)는 제외</strong>했습니다.
+        </p>
+        <ul style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", lineHeight: 1.8, margin: "8px 0 0", paddingLeft: 20 }}>
+          <li>XLC는 2018년 GICS 재분류 때 신설 — Meta·Alphabet 등을 흡수한 현대 섹터로, 논문의 "Telecommunications"(옛 통신사)과 성격이 다름</li>
+          <li>XLC 포함 시 데이터가 7년뿐이지만, 제외하면 <strong>20년+ 백테스트</strong> 가능 (2008 금융위기 포함)</li>
+          <li>부동산은 XLRE(2015~) 대신 <strong>VNQ(2004~)</strong> 사용 — 동일 섹터, 더 긴 데이터</li>
+        </ul>
+      </div>
 
       <BacktestSection backtest={backtest} />
 
