@@ -490,9 +490,11 @@
 }
 .monthly-heatmap-table th,
 .monthly-heatmap-table td {
-  padding: 6px 8px;
+  padding: 7px 6px;
   text-align: center;
   white-space: nowrap;
+  min-width: 54px;
+  box-sizing: border-box;
 }
 .monthly-heatmap-corner {
   font-weight: 600;
@@ -513,6 +515,8 @@
   border-radius: 4px;
   font-variant-numeric: tabular-nums;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  min-width: 54px;
+  width: 54px;
 }
 .monthly-heatmap-total-row {
   border-top: 2px solid var(--line);
