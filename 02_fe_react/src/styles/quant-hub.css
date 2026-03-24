@@ -57,25 +57,18 @@
   color: var(--muted);
 }
 
-/* Body: 2열 그리드 */
-.quant-card-body {
+/* Top: 포트폴리오 + 수익률 가로 배치 */
+.quant-card-top {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .quant-card-body {
+@media (max-width: 540px) {
+  .quant-card-top {
     grid-template-columns: 1fr;
   }
-}
-
-.quant-card-left,
-.quant-card-right {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 /* 섹션 라벨 */
@@ -85,6 +78,7 @@
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  margin-bottom: 8px;
 }
 
 /* 포트폴리오 목록 */
@@ -145,7 +139,7 @@
   font-family: "Sora", sans-serif;
 }
 
-/* 우측: 백테스트 통계 (index-ma-dl-row 패턴) */
+/* 통계 박스: full-width 가로로 길게 (index-ma-dl-row 패턴) */
 .quant-stats-dl {
   margin: 0;
   display: flex;

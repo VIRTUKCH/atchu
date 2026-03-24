@@ -51,65 +51,65 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
 
       {/* Body */}
       {!disabled && portfolio && (
-        <div className="quant-card-body">
-          {/* Left: 포트폴리오 + 수익률 */}
-          <div className="quant-card-left">
-            <div className="quant-section-label">현재 포트폴리오</div>
-            <div className="quant-portfolio-list">
-              {portfolio.map((a) => (
-                <div key={a.ticker} className="quant-portfolio-item">
-                  <span>
-                    <span className="quant-portfolio-ticker">{a.ticker}</span>
-                    <span className="quant-portfolio-name">{a.nameKo}</span>
-                  </span>
-                  <span className="quant-portfolio-weight">{a.weight}%</span>
-                </div>
-              ))}
+        <>
+          {/* 포트폴리오 + 수익률: 2열 가로 배치 */}
+          <div className="quant-card-top">
+            <div>
+              <div className="quant-section-label">현재 포트폴리오</div>
+              <div className="quant-portfolio-list">
+                {portfolio.map((a) => (
+                  <div key={a.ticker} className="quant-portfolio-item">
+                    <span>
+                      <span className="quant-portfolio-ticker">{a.ticker}</span>
+                      <span className="quant-portfolio-name">{a.nameKo}</span>
+                    </span>
+                    <span className="quant-portfolio-weight">{a.weight}%</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {returns && (
-              <>
+              <div>
                 <div className="quant-section-label">기간별 수익률</div>
                 <div className="quant-returns-grid">
                   {RETURN_PERIODS.map((p) => (
                     <ReturnBox key={p} period={p} value={returns[p]} />
                   ))}
                 </div>
-              </>
+              </div>
             )}
           </div>
 
-          {/* Right: 백테스트 통계 */}
+          {/* 통계 박스: full-width 가로로 길게 */}
           {backtest && (
-            <div className="quant-card-right">
-              <dl className="quant-stats-dl">
+            <dl className="quant-stats-dl">
+              <StatsRow
+                label="CAGR"
+                value={`${backtest.cagr >= 0 ? "+" : ""}${backtest.cagr}%`}
+                color={backtest.cagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
+              />
+              <StatsRow
+                label="MDD"
+                value={`${backtest.mdd}%`}
+                color="var(--accent-red)"
+              />
+              <StatsRow label="샤프비율" value={backtest.sharpe} />
+              {backtest.defensiveRatio != null && (
                 <StatsRow
-                  label="CAGR"
-                  value={`${backtest.cagr >= 0 ? "+" : ""}${backtest.cagr}%`}
-                  color={backtest.cagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
+                  label="방어 비율"
+                  value={`${Math.round(backtest.defensiveRatio * 100)}%`}
                 />
+              )}
+              {backtest.startDate && (
                 <StatsRow
-                  label="MDD"
-                  value={`${backtest.mdd}%`}
-                  color="var(--accent-red)"
+                  label="데이터 시작"
+                  value={`${backtest.startDate.slice(0, 10)}~`}
                 />
-                <StatsRow label="샤프비율" value={backtest.sharpe} />
-                {backtest.defensiveRatio != null && (
-                  <StatsRow
-                    label="방어 비율"
-                    value={`${Math.round(backtest.defensiveRatio * 100)}%`}
-                  />
-                )}
-                {backtest.startDate && (
-                  <StatsRow
-                    label="데이터"
-                    value={`${backtest.startDate.slice(0, 7)}~`}
-                  />
-                )}
-              </dl>
-            </div>
+              )}
+            </dl>
           )}
-        </div>
+        </>
       )}
 
       {disabled && (
