@@ -14,7 +14,7 @@ function calcPeriodReturns(equityCurve, curveKey) {
     return idx >= 0 ? equityCurve[idx][curveKey] : null;
   };
   const pct = (prev) => prev != null ? ((latestVal / prev - 1) * 100).toFixed(1) : null;
-  return { "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
+  return { "5Y": pct(lookup(60)), "3Y": pct(lookup(36)), "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
 }
 
 function getCardData(strategy) {

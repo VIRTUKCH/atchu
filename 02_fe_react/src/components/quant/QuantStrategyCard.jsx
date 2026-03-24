@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RETURN_PERIODS = ["1Y", "6M", "3M", "1M"];
+const RETURN_PERIODS = ["5Y", "3Y", "1Y", "6M", "3M", "1M"];
 
 function ReturnBox({ period, value }) {
   if (value == null) return null;
