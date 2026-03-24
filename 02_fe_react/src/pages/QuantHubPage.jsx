@@ -173,13 +173,36 @@ function getTrendCardData(strategy) {
     return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
   }
 
-  const { signal, portfolio, backtest } = trendSignalPayload;
+  const { signal, portfolio, backtest, cagrWeights } = trendSignalPayload;
   const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
   const investedCount = signal?.investedCount ?? 0;
-  const totalCount = signal?.investedCount + signal?.cashCount || 9;
+  const totalCount = (signal?.investedCount ?? 0) + (signal?.cashCount ?? 0) || 9;
   const curveKey = strategy.curveKey || "trend";
   const returns = calcPeriodReturns(backtest?.equityCurve, curveKey);
   const bt = backtest?.[curveKey];
+
+  // CAGR가중이면 cagrWeights 기반 포트폴리오 구성
+  let cardPortfolio;
+  if (curveKey === "trendCagr" && cagrWeights) {
+    const assets = signal?.assets || [];
+    const invested = assets.filter((a) => a.invested);
+    const cash = assets.filter((a) => !a.invested);
+    let cashWeight = 0;
+    cardPortfolio = [];
+    for (const a of invested) {
+      const w = cagrWeights.find((c) => c.ticker === a.ticker);
+      cardPortfolio.push({ ticker: a.ticker, nameKo: w?.nameKo || a.ticker, weight: w?.cagrWeight ?? 11.1 });
+    }
+    for (const a of cash) {
+      const w = cagrWeights.find((c) => c.ticker === a.ticker);
+      cashWeight += w?.cagrWeight ?? 11.1;
+    }
+    if (cashWeight > 0) {
+      cardPortfolio.push({ ticker: "SGOV", nameKo: "초단기 국채", weight: Math.round(cashWeight * 100) / 100 });
+    }
+  } else {
+    cardPortfolio = (portfolio || []).map((a) => ({ ticker: a.ticker, nameKo: a.nameKo, weight: a.weight }));
+  }
 
   return {
     signal: {
@@ -187,11 +210,7 @@ function getTrendCardData(strategy) {
       variant: investedCount > totalCount / 2 ? "offensive" : "defensive",
       dateLabel,
     },
-    portfolio: (portfolio || []).map((a) => ({
-      ticker: a.ticker,
-      nameKo: a.nameKo,
-      weight: a.weight,
-    })),
+    portfolio: cardPortfolio,
     backtest: bt ? {
       cagr: bt.cagr,
       mdd: bt.mdd,
