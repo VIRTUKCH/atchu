@@ -28,6 +28,7 @@ export const QUANT_STRATEGIES = [
     curveKey: "trend",
     tier: 1,
     tierLabel: "1티어 (기관 검증)",
+    warning: "⚠️ CTA 구현 불가",
   },
   {
     id: "multi-factor",
