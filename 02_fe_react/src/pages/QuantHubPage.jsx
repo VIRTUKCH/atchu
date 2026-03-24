@@ -5,6 +5,9 @@ import { baaSignalPayload } from "../utils/baaDataLoaders";
 import { haaSignalPayload } from "../utils/haaDataLoaders";
 import { faberSignalPayload } from "../utils/faberDataLoaders";
 import { allwSignalPayload } from "../utils/allwDataLoaders";
+import { dmSignalPayload } from "../utils/dmDataLoaders";
+import { trendSignalPayload } from "../utils/trendDataLoaders";
+import { businessCycleSignalPayload } from "../utils/businessCycleDataLoaders";
 import QuantStrategyCard from "../components/quant/QuantStrategyCard";
 
 function calcPeriodReturns(equityCurve, curveKey) {
@@ -73,6 +76,18 @@ function getCardData(strategy) {
     return getAllwCardData(strategy);
   }
 
+  if (strategy.id.startsWith("dm-")) {
+    return getDmCardData(strategy);
+  }
+
+  if (strategy.id === "trend-following") {
+    return getTrendCardData(strategy);
+  }
+
+  if (strategy.id === "business-cycle") {
+    return getBusinessCycleCardData(strategy);
+  }
+
   return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
 }
 
@@ -96,6 +111,110 @@ function getFaberCardData(strategy) {
       dateLabel,
     },
     portfolio: (portfolio || []).map((a) => ({
+      ticker: a.ticker,
+      nameKo: a.nameKo,
+      weight: a.weight,
+    })),
+    backtest: bt ? {
+      cagr: bt.cagr,
+      mdd: bt.mdd,
+      sharpe: bt.sharpe,
+      startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getDmCardData(strategy) {
+  if (!dmSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+  const variantKey = strategy.id.replace("dm-", "");
+  const variant = dmSignalPayload.variants?.[variantKey];
+  if (!variant) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { signal, portfolio, backtest } = variant;
+  const mode = signal?.mode;
+  const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
+  const curveKey = strategy.curveKey;
+  const returns = calcPeriodReturns(backtest?.equityCurve, curveKey);
+  const bt = backtest?.[curveKey];
+
+  return {
+    signal: {
+      text: mode === "invested" ? "투자" : mode === "defensive" ? "방어" : mode,
+      variant: mode === "invested" ? "offensive" : "defensive",
+      dateLabel,
+    },
+    portfolio: (portfolio?.allocations || []).map((a) => ({
+      ticker: a.ticker,
+      nameKo: a.nameKo,
+      weight: a.weight,
+    })),
+    backtest: bt ? {
+      cagr: bt.cagr,
+      mdd: bt.mdd,
+      sharpe: bt.sharpe,
+      startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getTrendCardData(strategy) {
+  if (!trendSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { signal, portfolio, backtest } = trendSignalPayload;
+  const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
+  const investedCount = signal?.investedCount ?? 0;
+  const totalCount = signal?.investedCount + signal?.cashCount || 9;
+  const returns = calcPeriodReturns(backtest?.equityCurve, "trend");
+  const bt = backtest?.trend;
+
+  return {
+    signal: {
+      text: `${investedCount}/${totalCount} 투자`,
+      variant: investedCount > totalCount / 2 ? "offensive" : "defensive",
+      dateLabel,
+    },
+    portfolio: (portfolio || []).map((a) => ({
+      ticker: a.ticker,
+      nameKo: a.nameKo,
+      weight: a.weight,
+    })),
+    backtest: bt ? {
+      cagr: bt.cagr,
+      mdd: bt.mdd,
+      sharpe: bt.sharpe,
+      startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getBusinessCycleCardData(strategy) {
+  if (!businessCycleSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { signal, portfolio, backtest } = businessCycleSignalPayload;
+  const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
+
+  const PHASE_VARIANTS = { early: "offensive", mid: "offensive", late: "defensive", recession: "defensive" };
+  const returns = calcPeriodReturns(backtest?.equityCurve, "businessCycle");
+  const bt = backtest?.businessCycle;
+
+  return {
+    signal: {
+      text: signal?.phaseLabel || "—",
+      variant: PHASE_VARIANTS[signal?.phase] || "coming",
+      dateLabel,
+    },
+    portfolio: (portfolio?.allocations || []).map((a) => ({
       ticker: a.ticker,
       nameKo: a.nameKo,
       weight: a.weight,

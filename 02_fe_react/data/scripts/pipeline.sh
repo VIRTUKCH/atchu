@@ -125,6 +125,39 @@ else
   notify "[${RUN_ID}] ALLW SIGNAL FAIL (continuing)"
 fi
 
+# 트렌드 팔로잉 전략 신호 생성
+log "Generating Trend Following signal"
+notify "[${RUN_ID}] TREND SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_trend_signal.mjs"; then
+  log "Trend Following signal generation completed"
+  notify "[${RUN_ID}] TREND SIGNAL DONE"
+else
+  log "Warning: Trend Following signal generation failed, continuing"
+  notify "[${RUN_ID}] TREND SIGNAL FAIL (continuing)"
+fi
+
+# 듀얼 모멘텀 4변형 신호 생성
+log "Generating Dual Momentum signal"
+notify "[${RUN_ID}] DM SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_dm_signal.mjs"; then
+  log "Dual Momentum signal generation completed"
+  notify "[${RUN_ID}] DM SIGNAL DONE"
+else
+  log "Warning: Dual Momentum signal generation failed, continuing"
+  notify "[${RUN_ID}] DM SIGNAL FAIL (continuing)"
+fi
+
+# 경기순환 섹터 로테이션 신호 생성
+log "Generating Business Cycle signal"
+notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_business_cycle_signal.mjs"; then
+  log "Business Cycle signal generation completed"
+  notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL DONE"
+else
+  log "Warning: Business Cycle signal generation failed, continuing"
+  notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL FAIL (continuing)"
+fi
+
 # 개별주(S&P 500) 파이프라인 실행
 log "Starting stock pipeline"
 notify "[${RUN_ID}] STOCK PIPELINE START"

@@ -89,7 +89,10 @@ const BaaQuantPeekPage = React.lazy(() => import("../pages/BaaQuantPeekPage"));
 const HaaQuantPeekPage = React.lazy(() => import("../pages/HaaQuantPeekPage"));
 const FaberSectorPage = React.lazy(() => import("../pages/FaberSectorPage"));
 const AllWeatherPage = React.lazy(() => import("../pages/AllWeatherPage"));
+const TrendFollowingPage = React.lazy(() => import("../pages/TrendFollowingPage"));
 const QuantHubPage = React.lazy(() => import("../pages/QuantHubPage"));
+const DualMomentumPage = React.lazy(() => import("../pages/DualMomentumPage"));
+const BusinessCyclePage = React.lazy(() => import("../pages/BusinessCyclePage"));
 
 // 칼럼 페이지 — 전략 심화
 const BuyHoldVsTrendPage = React.lazy(() => import("../pages/columns/BuyHoldVsTrendPage"));
@@ -248,6 +251,13 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_dev_quant/haa" element={<BentoLayout><PasswordGate><HaaQuantPeekPage /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/faber-sector" element={<BentoLayout><PasswordGate><FaberSectorPage /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/risk-parity" element={<BentoLayout><PasswordGate><AllWeatherPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/trend-following" element={<BentoLayout><PasswordGate><TrendFollowingPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/dm-gem" element={<BentoLayout><PasswordGate><DualMomentumPage variant="gem" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/dm-adm" element={<BentoLayout><PasswordGate><DualMomentumPage variant="adm" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/dm-cdm" element={<BentoLayout><PasswordGate><DualMomentumPage variant="cdm" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/dm-sector" element={<BentoLayout><PasswordGate><DualMomentumPage variant="sector" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/business-cycle" element={<BentoLayout><PasswordGate><BusinessCyclePage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/dual-momentum" element={<Navigate to="/_dev_quant/dm-gem" replace />} />
         <Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
         {/* 기존 URL 리다이렉트 */}
         <Route path="/_quant" element={<Navigate to="/_dev_quant" replace />} />

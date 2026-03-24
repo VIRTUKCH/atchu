@@ -40,7 +40,7 @@
 | 듀얼 모멘텀 섹터 | `/_dev_quant/dm-sector` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 기획 중 |
 | 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) | 구현 완료 |
-| 트렌드 팔로잉 / CTA | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 기획 중 |
+| 트렌드 팔로잉 / CTA | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
 | 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 기획 중 |
 
 ---
@@ -293,10 +293,12 @@ export const QUANT_STRATEGIES = [
 | HAA 신호·배분 | `data/summary/haa/haa_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
 | HAA 전용 티커 메타 | `data/tickers/haa.json` | 파이프라인 전용 | 수동 |
 | 섹터 신호 (예정) | `data/summary/sector/sector_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| DM 4변형 신호 | `data/summary/dm/dm_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| DM 티커 메타 | `data/tickers/dm.json` | 파이프라인 전용 | 수동 |
 | ETF CSV (계산용) | `data/csv/*.US_all.csv` | 프론트 미사용 (파이프라인 전용) | 매일 |
 
 ---
 
 **관련 페이지 기획:** [dev_market_overview.md](../dev_market_overview.md) (개발자 마켓 뷰)
-**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`
-**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `pipeline.sh`
+**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`, `DualMomentumPage`, `DmEquityCurveChart`, `dmDataLoaders.js`
+**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `generate_dm_signal.mjs`, `pipeline.sh`

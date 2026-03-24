@@ -1,5 +1,27 @@
 # 작업 기록
 
+### 2026-03-24 (84)
+- **트렌드 팔로잉 / CTA 교육형 전략 구현 — 1티어 전략**
+  - `generate_trend_signal.mjs`: 9개 자산군 ETF(SPY/TLT/IEF/GLD/DBC/EFA/EEM/TIP/VNQ) × 앗추 필터(200일선, 20거래일 중 16일) 신호 생성 + 백테스트
+  - 결과: CAGR 5.62%, MDD -6.1%, Sharpe 1.062 (SPY MDD -50.78% 대비 극단적으로 낮은 위험)
+  - 2022년 방어 검증: 9개 중 8개 현금 전환, 포트폴리오 +0.5% (SPY -13.6%, 60/40 -12.4%)
+  - `TrendFollowingPage.jsx`: 교육형 상세 페이지 (월가 방법론 소개 + 한계 명시 + 2022년 방어 분석)
+  - `TrendEquityCurveChart.jsx`: 3선 에쿼티 커브 차트 (트렌드/SPY/60-40)
+  - `quantItems.js`: trend-following → active, curveKey "trend"
+  - `QuantHubPage.jsx`: `getTrendCardData` 핸들러, `trendDataLoaders.js` 연결
+  - `pipeline.sh`: 트렌드 신호 생성 단계 추가
+  - 전략 특성: 동일 비중(11.1%) + 이탈 시 SGOV/BIL 투자 + 숏 불가 한계 명확 인정
+
+### 2026-03-24 (83)
+- **듀얼 모멘텀 4변형 구현 (GEM/ADM/CDM/섹터) — 2티어 전략**
+  - `generate_dm_signal.mjs`: 4변형 시그널 생성 + 백테스트 (GEM CAGR 8.66%, ADM 12.96%, CDM 6.83%, Sector 14.82%)
+  - `DualMomentumPage.jsx`: variant prop 기반 상세 페이지 (GEM 비교, ADM 점수분해, CDM 모듈, 섹터 랭킹)
+  - `DmEquityCurveChart.jsx`: 에쿼티 커브 차트 (전략/SPY/60-40 3선)
+  - `quantItems.js`: 4개 active 항목 (dm-gem, dm-adm, dm-cdm, dm-sector)
+  - `QuantHubPage.jsx`: `getDmCardData` 핸들러, `dmDataLoaders.js` 연결
+  - `pipeline.sh`: DM 시그널 생성 단계 추가
+  - 티커 대체: SCZ→EFA, REM→VNQ 단독
+
 ### 2026-03-24 (82)
 - **Faber 섹터 모멘텀: XLC 제외 → 10개 섹터, 백테스트 20년+ 확장**
   - 원 논문(French-Fama 10 Industry)에 현대 통신 섹터 없음 → XLC(2018~) 제외
