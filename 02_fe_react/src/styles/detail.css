@@ -438,6 +438,100 @@
   line-height: 1.6;
 }
 
+/* ── Monthly Returns Heatmap ── */
+.monthly-heatmap-card {
+  margin-top: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #ffffff;
+  padding: 16px;
+}
+.monthly-heatmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.monthly-heatmap-title {
+  font-size: clamp(16px, calc(12.5px + 0.9vw), 20px);
+  font-weight: 700;
+}
+.monthly-heatmap-tabs {
+  display: flex;
+  gap: 4px;
+}
+.monthly-heatmap-tab {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.monthly-heatmap-tab.active {
+  background: var(--ink);
+  color: var(--panel);
+  border-color: var(--ink);
+}
+.monthly-heatmap-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 8px;
+}
+.monthly-heatmap-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 400px;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+.monthly-heatmap-table th,
+.monthly-heatmap-table td {
+  padding: 6px 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+.monthly-heatmap-corner {
+  font-weight: 600;
+  color: var(--muted);
+  text-align: left;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+.monthly-heatmap-year-header {
+  font-weight: 600;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+.monthly-heatmap-month-label {
+  font-weight: 600;
+  text-align: left;
+  color: var(--muted);
+}
+.monthly-heatmap-cell {
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+}
+.monthly-heatmap-total-row {
+  border-top: 2px solid var(--line);
+}
+.monthly-heatmap-total-cell {
+  font-weight: 600;
+}
+.monthly-heatmap-disclaimer {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  opacity: 0.7;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .monthly-heatmap-card {
+  background: var(--panel);
+}
+
 /* ── Dark Mode ── */
 [data-theme="dark"] .detail-meta-card {
   background: var(--panel);

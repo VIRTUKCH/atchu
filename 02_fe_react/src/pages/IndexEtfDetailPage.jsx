@@ -7,6 +7,7 @@ import PriceTrendChart from "../components/etf/PriceTrendChart";
 import StrategyComparisonCard from "../components/etf/StrategyComparisonCard";
 import TrendCrossingHistoryCard from "../components/etf/TrendCrossingHistoryCard";
 import AdvancedMetricsCard from "../components/etf/AdvancedMetricsCard";
+import MonthlyReturnsHeatmap from "../components/etf/MonthlyReturnsHeatmap";
 export default function IndexEtfDetailPage({ model }) {
   const {
     tickerMetaMap,
@@ -156,6 +157,12 @@ export default function IndexEtfDetailPage({ model }) {
             title="최근 5년 그래프"
             series={chartSeries.fiveYear?.items || []}
           />
+          {detailAnalytics?.monthlyReturns && (
+            <MonthlyReturnsHeatmap
+              data={detailAnalytics.monthlyReturns}
+              formatSignedPercent={formatSignedPercent}
+            />
+          )}
           <StrategyComparisonCard
             buyHold={drawdownStats?.buyHold || null}
             items={crossingHistory.items || []}

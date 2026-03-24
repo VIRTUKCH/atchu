@@ -787,6 +787,71 @@ const buildCsvAnalytics = (csvText, options = {}) => {
   };
   const advancedMetrics = computeAdvancedMetrics();
 
+  // 월별 수익률 히트맵 계산 (매수후보유 + 앗추 필터)
+  const computeMonthlyReturns = () => {
+    if (records.length < 200) return null;
+    const atchuQualified = holdQualifiedCache[200] || [];
+    // 앗추 필터 "보유 상태" 추적 (진입/이탈 신호 기반)
+    const atchuHolding = new Array(records.length).fill(false);
+    let holding = false;
+    for (let i = 0; i < records.length; i += 1) {
+      const q = atchuQualified[i] || false;
+      if (!holding && q) holding = true;
+      else if (holding && !q) holding = false;
+      atchuHolding[i] = holding;
+    }
+
+    const byMonth = {};  // { "buyHold": { 2024: { 1: x, ... }, ... }, "atchu": { ... } }
+    const strategies = ["buyHold", "atchu"];
+    strategies.forEach((s) => { byMonth[s] = {}; });
+
+    let bhEquity = 1;
+    let atchuEquity = 1;
+    let prevMonth = null;
+    let prevYear = null;
+    let bhMonthStart = 1;
+    let atchuMonthStart = 1;
+
+    for (let i = 0; i < records.length; i += 1) {
+      const d = dateObjects[i];
+      if (!d || Number.isNaN(d.getTime())) continue;
+      const price = adjustedSeries[i];
+      const prevPrice = i > 0 ? adjustedSeries[i - 1] : null;
+      if (price === null || prevPrice === null || prevPrice <= 0) continue;
+
+      const year = d.getFullYear();
+      const month = d.getMonth() + 1;
+
+      // 일별 equity 업데이트
+      const dailyReturn = price / prevPrice;
+      bhEquity *= dailyReturn;
+      if (atchuHolding[i]) {
+        atchuEquity *= dailyReturn;
+      }
+
+      // 월이 바뀌면 이전 월의 수익률 저장
+      if (prevMonth !== null && (month !== prevMonth || year !== prevYear)) {
+        if (!byMonth.buyHold[prevYear]) byMonth.buyHold[prevYear] = {};
+        if (!byMonth.atchu[prevYear]) byMonth.atchu[prevYear] = {};
+        byMonth.buyHold[prevYear][prevMonth] = (bhEquity / bhMonthStart - 1) * 100;
+        byMonth.atchu[prevYear][prevMonth] = (atchuEquity / atchuMonthStart - 1) * 100;
+        bhMonthStart = bhEquity;
+        atchuMonthStart = atchuEquity;
+      }
+      prevMonth = month;
+      prevYear = year;
+    }
+    // 마지막 월 저장
+    if (prevMonth !== null && prevYear !== null) {
+      if (!byMonth.buyHold[prevYear]) byMonth.buyHold[prevYear] = {};
+      if (!byMonth.atchu[prevYear]) byMonth.atchu[prevYear] = {};
+      byMonth.buyHold[prevYear][prevMonth] = (bhEquity / bhMonthStart - 1) * 100;
+      byMonth.atchu[prevYear][prevMonth] = (atchuEquity / atchuMonthStart - 1) * 100;
+    }
+    return byMonth;
+  };
+  const monthlyReturns = computeMonthlyReturns();
+
   return {
     snapshot,
     trendSupport: { windowDays, items: supportItems },
@@ -804,7 +869,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       mddMap: strategyDrawdownMap
     },
     drawdownStats,
-    advancedMetrics
+    advancedMetrics,
+    monthlyReturns
   };
 };
 
