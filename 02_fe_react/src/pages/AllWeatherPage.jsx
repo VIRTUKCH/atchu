@@ -33,17 +33,17 @@ function ReturnsSection({ equityCurve, curveKey }) {
     { key: "3Y", label: "3년" },
     { key: "5Y", label: "5년" },
   ];
-  const stats = periods
-    .filter((p) => returns[p.key] != null)
-    .map((p) => {
-      const num = parseFloat(returns[p.key]);
-      return {
-        value: `${num >= 0 ? "+" : ""}${returns[p.key]}%`,
-        label: p.label,
-        desc: "USD 기준",
-      };
-    });
-  if (stats.length === 0) return null;
+  const stats = periods.map((p) => {
+    if (returns[p.key] == null) {
+      return { value: "—", label: p.label, desc: "데이터 부족" };
+    }
+    const num = parseFloat(returns[p.key]);
+    return {
+      value: `${num >= 0 ? "+" : ""}${returns[p.key]}%`,
+      label: p.label,
+      desc: "USD 기준",
+    };
+  });
   return (
     <div className="panel-card" style={{ padding: "20px" }}>
       <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
