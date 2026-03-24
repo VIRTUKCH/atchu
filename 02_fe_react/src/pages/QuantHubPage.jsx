@@ -58,7 +58,7 @@ function getCardData(strategy) {
 
 export default function QuantHubPage() {
   return (
-    <section style={{ maxWidth: 800, margin: "0 auto" }}>
+    <section>
       <div className="panel-card" style={{ marginBottom: 16 }}>
         <div className="section-header">
           <div>

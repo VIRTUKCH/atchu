@@ -49,11 +49,10 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
         )}
       </div>
 
-      {/* Body */}
+      {/* Body: 좌우 2열 (데스크탑), 세로 1열 (모바일) */}
       {!disabled && portfolio && (
-        <>
-          {/* 포트폴리오 + 수익률: 2열 가로 배치 */}
-          <div className="quant-card-top">
+        <div className="quant-card-body">
+          <div className="quant-card-left">
             <div>
               <div className="quant-section-label">현재 포트폴리오</div>
               <div className="quant-portfolio-list">
@@ -81,35 +80,36 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
             )}
           </div>
 
-          {/* 통계 박스: full-width 가로로 길게 */}
-          {backtest && (
-            <dl className="quant-stats-dl">
-              <StatsRow
-                label="CAGR"
-                value={`${backtest.cagr >= 0 ? "+" : ""}${backtest.cagr}%`}
-                color={backtest.cagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
-              />
-              <StatsRow
-                label="MDD"
-                value={`${backtest.mdd}%`}
-                color="var(--accent-red)"
-              />
-              <StatsRow label="샤프비율" value={backtest.sharpe} />
-              {backtest.defensiveRatio != null && (
+          <div className="quant-card-right">
+            {backtest && (
+              <dl className="quant-stats-dl">
                 <StatsRow
-                  label="방어 비율"
-                  value={`${Math.round(backtest.defensiveRatio * 100)}%`}
+                  label="CAGR"
+                  value={`${backtest.cagr >= 0 ? "+" : ""}${backtest.cagr}%`}
+                  color={backtest.cagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
                 />
-              )}
-              {backtest.startDate && (
                 <StatsRow
-                  label="데이터 시작"
-                  value={`${backtest.startDate.slice(0, 10)}~`}
+                  label="MDD"
+                  value={`${backtest.mdd}%`}
+                  color="var(--accent-red)"
                 />
-              )}
-            </dl>
-          )}
-        </>
+                <StatsRow label="샤프비율" value={backtest.sharpe} />
+                {backtest.defensiveRatio != null && (
+                  <StatsRow
+                    label="방어 비율"
+                    value={`${Math.round(backtest.defensiveRatio * 100)}%`}
+                  />
+                )}
+                {backtest.startDate && (
+                  <StatsRow
+                    label="데이터 시작"
+                    value={`${backtest.startDate.slice(0, 10)}~`}
+                  />
+                )}
+              </dl>
+            )}
+          </div>
+        </div>
       )}
 
       {disabled && (
