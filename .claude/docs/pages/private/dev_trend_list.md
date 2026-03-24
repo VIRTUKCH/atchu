@@ -107,9 +107,25 @@ PINNED_TICKERS = ["SPY", "QQQ", "DIA"]
 
 ---
 
-## 데이터 통합
+## 데이터 로드 전략
 
-### 소스
+### 초기 로드 최적화
+
+- **기본 필터: ETF** — 페이지 진입 시 ETF 85개만 렌더링 (개별주 503개는 탭 클릭 전까지 렌더링하지 않음)
+- 모든 데이터(ETF + 개별주 스냅샷)는 빌드 시 eager load로 번들에 포함되어 있으므로, 네트워크 요청은 없음
+- 렌더링 비용이 병목: 588개 카드를 한 번에 그리면 ~1초 소요 → ETF만 먼저 보여줘서 체감 속도 개선
+- 개별주 탭 클릭 시 이미 메모리에 있는 데이터로 즉시 렌더링 (추가 fetch 없음)
+
+### 상세 페이지 데이터 로드
+
+| 종목 유형 | 로드 방식 | 비고 |
+|-----------|----------|------|
+| ETF | `buildCsvAnalytics(csvText)` — 번들된 CSV에서 동기 로드 | `appDataAdapters.loadLocalDetailAnalytics` |
+| 개별주 | `fetch(/csv_stock/{TICKER}.US_all.csv)` — on-demand | `stockDataLoaders.loadStockDetailAnalytics` |
+
+ETF CSV는 빌드에 포함 (즉시), 개별주 CSV는 `public/csv_stock/`에서 fetch (네트워크 1회).
+
+### 데이터 소스
 
 | | 개별주 | ETF |
 |---|---|---|
