@@ -41,7 +41,7 @@
 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 구현 완료 |
 | 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) | 구현 완료 |
 | 트렌드 팔로잉 / CTA | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
-| 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 기획 중 |
+| 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
 
 ---
 
@@ -300,5 +300,5 @@ export const QUANT_STRATEGIES = [
 ---
 
 **관련 페이지 기획:** [dev_market_overview.md](../dev_market_overview.md) (개발자 마켓 뷰)
-**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`, `DualMomentumPage`, `DmEquityCurveChart`, `dmDataLoaders.js`
-**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `generate_dm_signal.mjs`, `pipeline.sh`
+**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`, `DualMomentumPage`, `DmEquityCurveChart`, `dmDataLoaders.js`, `QvmPage`, `QvmEquityCurveChart`, `qvmDataLoaders.js`
+**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `generate_dm_signal.mjs`, `generate_qvm_signal.mjs`, `pipeline.sh`

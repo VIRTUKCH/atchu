@@ -84,12 +84,48 @@
 4. **개인 투자자 접근성**: 진정한 팩터 프리미엄은 롱숏으로만 추출 가능
 5. **레짐 의존**: Value는 10년간 부진 가능, Momentum crash 위험
 
-## 구현 계획
+## 구현 상태 — Phase 1: QVML ETF 추적 (완료)
 
-- [ ] 파이프라인: S&P 500 종목의 Quality/Value/Momentum 스코어 계산
-- [ ] 데이터: `data/summary/multi-factor/qvm_signal.json`
-- [ ] 프론트엔드: 팩터별 상위/하위 종목 리스트 + 팩터 성과 차트
-- [ ] 특이사항: 개별주 데이터 필요 → `csv_stock/` 활용 가능
+### 접근 방식
+개별주 펀더멘탈 데이터(ROE, PER 등) 없이는 기관 수준의 QVM 스코어링 불가.
+→ S&P가 이미 스코어링을 완료한 QVML ETF를 추적하는 방식 채택 (ALLW 패턴).
+
+### 파일 구성
+| 파일 | 용도 |
+|------|------|
+| `data/tickers/qvm.json` | QVML 티커 메타 (hidden) |
+| `data/scripts/generate_qvm_signal.mjs` | QVML+SPY 월말 종가 → 성과 지표 |
+| `data/summary/qvm/qvm_signal.json` | 신호 JSON 출력 |
+| `src/utils/qvmDataLoaders.js` | eager 데이터 로더 |
+| `src/pages/QvmPage.jsx` | 상세 페이지 |
+| `src/components/qvm/QvmEquityCurveChart.jsx` | 에쿼티 커브 차트 |
+
+### JSON 출력 구조
+```json
+{
+  "strategy": { "name", "author", "type", "rebalancing", "etf", "expenseRatio", "holdings", "methodology" },
+  "factorDefinitions": { "quality", "value", "momentum" },
+  "performance": { "qvml": { "cagr", "mdd", "sharpe", "totalReturn" }, "spy": {...} },
+  "equityCurve": [{ "date", "qvml", "spy" }],
+  "latestClose": { "date", "price", "monthReturn" },
+  "dataMonths": N
+}
+```
+
+### 페이지 구조
+1. 기간별 수익률 (1M~5Y)
+2. QVML ETF 정보 (운용사, 보수, 종목 수, 리밸런싱)
+3. 왜 멀티팩터인가 (단일 팩터 한계 → 결합 → AQR 통합 교훈)
+4. S&P QVM 스코어링 방법론 (Quality/Value/Momentum 정의)
+5. 성과 요약 + 벤치마크 비교 + 에쿼티 커브
+6. 멀티팩터 ETF의 현실 (롱숏 vs 롱온리)
+7. 한계점 + 면책 조항
+
+## 향후 계획 — Phase 2: DIY QVM (미구현)
+
+- **QVM-EW**: QUAL 33% + VLUE 33% + MTUM 33% 균등 배분, 월 리밸런싱
+- **QVM-MOM**: 3개 ETF 12-1개월 모멘텀 순위 → 50/30/20 배분
+- "기관 통합(QVML) vs 단순 혼합(EW) vs 적극 로테이션(MOM)" 3검 비교
 
 ## 참고 자료
 

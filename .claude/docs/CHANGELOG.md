@@ -1,5 +1,17 @@
 # 작업 기록
 
+### 2026-03-24 (86)
+- **멀티팩터 QVM Phase 1: QVML ETF 추적 구현 — 1티어 전략**
+  - `generate_qvm_signal.mjs`: QVML+SPY 월말 종가 → CAGR/MDD/Sharpe/에쿼티 커브 (ALLW 패턴)
+  - `QvmPage.jsx`: 교육형 상세 페이지 (멀티팩터 이론 + S&P QVM 스코어링 방법론 + 롱숏 vs 롱온리 현실)
+  - `QvmEquityCurveChart.jsx`: QVML vs SPY 2선 에쿼티 커브
+  - `qvmDataLoaders.js`: eager 데이터 로더
+  - `qvm.json`: QVML 티커 메타 (hidden)
+  - `quantItems.js`: multi-factor → active, curveKey "qvml"
+  - `QuantHubPage.jsx`: `getQvmCardData` 핸들러
+  - `pipeline.sh`: QVM 신호 생성 단계 추가
+  - Phase 2 예정: QVM-EW(균등) + QVM-MOM(모멘텀 로테이션) DIY 비교
+
 ### 2026-03-24 (85)
 - **경기순환 섹터 로테이션 전략 구현 — 2티어 전략 (Sam Stovall)**
   - `generate_business_cycle_signal.mjs`: SPY 6M 모멘텀 + IEF/SHY 비율로 경기 4국면 판단 → 국면별 강세 섹터 자동 배분 + 백테스트
