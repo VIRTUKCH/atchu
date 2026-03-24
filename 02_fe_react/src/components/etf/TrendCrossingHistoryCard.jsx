@@ -242,7 +242,7 @@ export default function TrendCrossingHistoryCard({
                         <span>{formatShortDate(item.date)}</span>
                         <span className={directionClass}>
                           {item.assumedExit
-                            ? "매도 (금일 매도 가정)"
+                            ? "매도(가정)"
                             : formatActionLabel(item.direction)}
                         </span>
                         <span className="detail-crossing-price-trade">
