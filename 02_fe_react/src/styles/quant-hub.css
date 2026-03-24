@@ -88,18 +88,22 @@
   margin-bottom: 8px;
 }
 
-/* 포트폴리오 목록 */
-.quant-portfolio-list {
+/* 포트폴리오 chip 레이아웃 */
+.quant-portfolio-chips {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.quant-portfolio-item {
+.quant-portfolio-chip {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-2);
+  font-size: clamp(14px, calc(11.8px + 0.6vw), 16px);
 }
 
 .quant-portfolio-ticker {
@@ -109,7 +113,6 @@
 
 .quant-portfolio-name {
   color: var(--muted);
-  margin-left: 6px;
 }
 
 .quant-portfolio-weight {
@@ -118,10 +121,10 @@
   white-space: nowrap;
 }
 
-/* 수익률 그리드: 2열 × 2행 박스 */
+/* 수익률 그리드: 3열 */
 .quant-returns-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 

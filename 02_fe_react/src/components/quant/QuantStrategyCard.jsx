@@ -55,13 +55,11 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
           <div className="quant-card-left">
             <div>
               <div className="quant-section-label">현재 포트폴리오</div>
-              <div className="quant-portfolio-list">
+              <div className="quant-portfolio-chips">
                 {portfolio.map((a) => (
-                  <div key={a.ticker} className="quant-portfolio-item">
-                    <span>
-                      <span className="quant-portfolio-ticker">{a.ticker}</span>
-                      <span className="quant-portfolio-name">{a.nameKo}</span>
-                    </span>
+                  <div key={a.ticker} className="quant-portfolio-chip">
+                    <span className="quant-portfolio-ticker">{a.ticker}</span>
+                    <span className="quant-portfolio-name">{a.nameKo}</span>
                     <span className="quant-portfolio-weight">{a.weight}%</span>
                   </div>
                 ))}
