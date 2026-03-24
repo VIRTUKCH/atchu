@@ -284,7 +284,7 @@ const calcSectorDmForMonth = (ym) => {
 
 const calcMetrics = (returns, finalEquity) => {
   const n = returns.length;
-  if (n === 0) return { cagr: null, mdd: null, sharpe: null, maxAnnualLoss: null };
+  if (n === 0) return { cagr: null, mdd: null, sharpe: null, sortino: null, maxAnnualLoss: null };
   const cagr = (Math.pow(finalEquity, 12 / n) - 1) * 100;
   let peak = 1.0, maxDD = 0, eq = 1.0;
   for (const r of returns) {
@@ -297,7 +297,10 @@ const calcMetrics = (returns, finalEquity) => {
   const variance = returns.reduce((s, r) => s + (r - mean) ** 2, 0) / n;
   const std = Math.sqrt(variance);
   const sharpe = std > 0 ? (mean / std) * Math.sqrt(12) : null;
-  return { cagr: round2(cagr), mdd: round2(maxDD * 100), sharpe: round3(sharpe) };
+  const downsideSq = returns.reduce((s, r) => s + Math.min(r, 0) ** 2, 0);
+  const downsideDev = Math.sqrt(downsideSq / n);
+  const sortino = downsideDev > 0 ? (mean / downsideDev) * Math.sqrt(12) : null;
+  return { cagr: round2(cagr), mdd: round2(maxDD * 100), sharpe: round3(sharpe), sortino: round3(sortino) };
 };
 
 const calcMaxAnnualLoss = (yearMap) => {

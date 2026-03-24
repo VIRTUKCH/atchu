@@ -120,16 +120,20 @@ function calcPerformance(monthlyReturns) {
 
   // Sharpe (6개월 이상이면 계산)
   let sharpe = null;
+  let sortino = null;
   if (n >= 6) {
     const mean = monthlyReturns.reduce((s, r) => s + r, 0) / n;
     const variance = monthlyReturns.reduce((s, r) => s + (r - mean) ** 2, 0) / n;
     const std = Math.sqrt(variance);
     sharpe = std > 0 ? round3((mean / std) * Math.sqrt(12)) : null;
+    const downsideSq = monthlyReturns.reduce((s, r) => s + Math.min(r, 0) ** 2, 0);
+    const downsideDev = Math.sqrt(downsideSq / n);
+    sortino = downsideDev > 0 ? round3((mean / downsideDev) * Math.sqrt(12)) : null;
   }
 
   const totalReturn = round2((equity - 1) * 100);
 
-  return { cagr, mdd, sharpe, totalReturn };
+  return { cagr, mdd, sharpe, sortino, totalReturn };
 }
 
 /* ── Main ── */
