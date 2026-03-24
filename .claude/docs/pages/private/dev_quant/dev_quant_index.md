@@ -34,7 +34,10 @@
 | BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
 | HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) | 구현 완료 |
 | Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) | 기획 중 |
-| 듀얼 모멘텀 | `/_dev_quant/dual-momentum` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 기획 중 |
+| 듀얼 모멘텀 GEM | `/_dev_quant/dm-gem` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
+| 듀얼 모멘텀 ADM | `/_dev_quant/dm-adm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
+| 듀얼 모멘텀 CDM | `/_dev_quant/dm-cdm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
+| 듀얼 모멘텀 섹터 | `/_dev_quant/dm-sector` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 기획 중 |
 | 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) | 구현 완료 |
 | 트렌드 팔로잉 / CTA | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 기획 중 |
@@ -119,6 +122,8 @@ PC:
 | 요소 | 설명 |
 |------|------|
 | **전략 이름** | `ticker-pill` 스타일 배지 (예: "BAA-A (Aggressive)") |
+| **티어 배지** | 1티어(초록) / 2티어(파랑) / 3티어(회색) |
+| **경고 배지** | `warning` 필드가 있는 전략만 티어 배지 옆에 노란색 pill로 표시 (예: "⚠️ 데이터 짧음 주의"). `quantItems.js`의 `warning` 속성으로 관리 |
 | **한줄 설명** | 전략 특성 요약 |
 | **신호 뱃지** | 공격(초록) / 방어(파랑) / 준비 중(회색) |
 | **기준일** | "2026-02 월말 기준" |
