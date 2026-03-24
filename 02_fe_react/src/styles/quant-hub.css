@@ -88,10 +88,10 @@
   margin-bottom: 8px;
 }
 
-/* 포트폴리오 chip 레이아웃 */
+/* 포트폴리오 chip 레이아웃: 2열 고정 */
 .quant-portfolio-chips {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
