@@ -19,13 +19,25 @@ export const QUANT_STRATEGIES = [
     warning: "⚠️ 데이터 짧음 주의",
   },
   {
-    id: "trend-following",
+    id: "cta-equal",
     path: "/_dev_quant/trend-following",
-    label: "CTA (Commodity Trading Advisor)",
+    label: "CTA 동일가중",
     description:
-      "9개 자산군 앗추 필터 + 동일 비중 — 월가 방법론의 개인 투자자용 간소화",
+      "9개 자산군 앗추 필터 + 동일 비중 (각 11.1%)",
     status: "active",
     curveKey: "trend",
+    tier: 1,
+    tierLabel: "1티어 (기관 검증)",
+    warning: "⚠️ 월가 CTA는 완벽 재현 불가능함",
+  },
+  {
+    id: "cta-cagr",
+    path: "/_dev_quant/trend-following",
+    label: "CTA CAGR(연평균성장률)가중",
+    description:
+      "9개 자산군 앗추 필터 + 바이앤홀드 CAGR(Compound Annual Growth Rate) 비례 비중",
+    status: "active",
+    curveKey: "trendCagr",
     tier: 1,
     tierLabel: "1티어 (기관 검증)",
     warning: "⚠️ 월가 CTA는 완벽 재현 불가능함",

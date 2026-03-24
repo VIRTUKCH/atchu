@@ -1,5 +1,11 @@
 # 작업 기록
 
+### 2026-03-24 (87)
+- **CTA 카드 2개 분리: 동일가중 + CAGR(연평균성장률)가중**
+  - `quantItems.js`: `trend-following` 1개 → `cta-equal` + `cta-cagr` 2개 카드 분리
+  - `QuantHubPage.jsx`: curveKey 기반으로 동일가중/CAGR가중 각각 지표 표시
+  - 동일가중 CAGR 5.62% MDD -6.1% / CAGR가중 CAGR 6.34% MDD -9.96%
+
 ### 2026-03-24 (86)
 - **멀티팩터 QVM Phase 1: QVML ETF 추적 구현 — 1티어 전략**
   - `generate_qvm_signal.mjs`: QVML+SPY 월말 종가 → CAGR/MDD/Sharpe/에쿼티 커브 (ALLW 패턴)

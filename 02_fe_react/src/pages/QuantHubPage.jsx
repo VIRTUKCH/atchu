@@ -81,7 +81,7 @@ function getCardData(strategy) {
     return getDmCardData(strategy);
   }
 
-  if (strategy.id === "trend-following") {
+  if (strategy.id.startsWith("cta-")) {
     return getTrendCardData(strategy);
   }
 
@@ -177,8 +177,9 @@ function getTrendCardData(strategy) {
   const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
   const investedCount = signal?.investedCount ?? 0;
   const totalCount = signal?.investedCount + signal?.cashCount || 9;
-  const returns = calcPeriodReturns(backtest?.equityCurve, "trend");
-  const bt = backtest?.trend;
+  const curveKey = strategy.curveKey || "trend";
+  const returns = calcPeriodReturns(backtest?.equityCurve, curveKey);
+  const bt = backtest?.[curveKey];
 
   return {
     signal: {
