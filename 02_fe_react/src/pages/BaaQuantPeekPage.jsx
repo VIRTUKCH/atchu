@@ -27,17 +27,19 @@ function calcPeriodReturns(equityCurve, curveKey) {
     return idx >= 0 ? equityCurve[idx][curveKey] : null;
   };
   const pct = (prev) => prev != null ? ((latestVal / prev - 1) * 100).toFixed(1) : null;
-  return { "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
+  return { "5Y": pct(lookup(60)), "3Y": pct(lookup(36)), "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
 }
 
 function ReturnsSection({ equityCurve, curveKey }) {
   const returns = calcPeriodReturns(equityCurve, curveKey);
   if (!returns) return null;
   const periods = [
-    { key: "1Y", label: "1년" },
-    { key: "6M", label: "6개월" },
-    { key: "3M", label: "3개월" },
     { key: "1M", label: "1개월" },
+    { key: "3M", label: "3개월" },
+    { key: "6M", label: "6개월" },
+    { key: "1Y", label: "1년" },
+    { key: "3Y", label: "3년" },
+    { key: "5Y", label: "5년" },
   ];
   const stats = periods
     .filter((p) => returns[p.key] != null)
