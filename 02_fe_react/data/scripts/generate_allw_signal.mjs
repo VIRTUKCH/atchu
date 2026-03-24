@@ -87,10 +87,10 @@ function calcPerformance(monthlyReturns) {
 
   const n = monthlyReturns.length;
 
-  // CAGR (12개월 이상만)
+  // CAGR (6개월 이상이면 연환산)
   let equity = 1;
   for (const r of monthlyReturns) equity *= 1 + r;
-  const cagr = n >= 12 ? round2((Math.pow(equity, 12 / n) - 1) * 100) : null;
+  const cagr = n >= 6 ? round2((Math.pow(equity, 12 / n) - 1) * 100) : null;
 
   // MDD
   let peak = 1;
@@ -104,9 +104,9 @@ function calcPerformance(monthlyReturns) {
   }
   const mdd = round2(maxDd * 100);
 
-  // Sharpe (12개월 이상만)
+  // Sharpe (6개월 이상이면 계산)
   let sharpe = null;
-  if (n >= 12) {
+  if (n >= 6) {
     const mean = monthlyReturns.reduce((s, r) => s + r, 0) / n;
     const variance = monthlyReturns.reduce((s, r) => s + (r - mean) ** 2, 0) / n;
     const std = Math.sqrt(variance);
