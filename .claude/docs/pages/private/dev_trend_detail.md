@@ -23,7 +23,7 @@ ETF 상세(`/trend_list/:ticker`)의 개별주 버전. 개별 종목의 차트, 
 
 | 순서 | 컴포넌트 | 내용 |
 |---|---|---|
-| 1 | EtfSummaryCard | 현재가, 이격률, 앗추 필터 상태, **골든크로스/데드크로스 배지**, CAGR, MDD |
+| 1 | EtfSummaryCard | 현재가, 이격률, 앗추 필터 상태, **골든크로스/데드크로스 배지**, CAGR, MDD, **기간별 수익률 (1W/3M/1Y/5Y)** |
 | 2 | PriceTrendChart (1Y) | 최근 1년 가격 + **MA50(초록)/MA200(주황)** |
 | 3 | PriceTrendChart (5Y) | 최근 5년 가격 + MA50/MA200 |
 | 4 | StrategyComparisonCard | 매수후보유 vs 200일선 vs 앗추 필터 비교 |
@@ -120,6 +120,34 @@ TrendCrossingHistoryCard에 **"골든크로스"** 탭 추가 (기존 "200일선"
 - **골든크로스 (Golden Cross)**: MA50이 MA200 위로 교차하면 강세 신호, 아래로 교차(데드크로스)하면 약세 신호. 시장에서 가장 널리 사용되는 추세 확인 기법
 - **Brock, Lakonishok, LeBaron (1992)**: 이동평균 교차 전략이 DJIA에서 통계적으로 유의미한 수익률 달성 (매수 신호 후 수익률 > 무조건적 수익률)
 - **핵심 가치**: 수익 극대화가 아닌 **위험 관리** (MDD 축소, 데드크로스 시 신속 이탈)
+
+---
+
+## 기간별 수익률
+
+EtfSummaryCard 우측 박스 목록(`index-ma-dl-row`)에 기간별 수익률을 표시한다. ETF 상세 페이지에도 동일하게 적용.
+
+### 표시 기간
+
+| 라벨 | 거래일 기준 | 데이터 필드 |
+|------|-----------|-----------|
+| 1주 | 5일 | `percentChange5d` |
+| 3개월 | 63일 | `percentChange63d` |
+| 1년 | 252일 | `percentChange252d` |
+| 5년 | 1260일 | `percentChange1260d` |
+
+### 스타일
+
+- 기존 `index-ma-dl-row` 박스와 동일한 형태
+- 양수: `change-up` (빨강) / 음수: `change-down` (파랑) — 한국식 표기
+- CAGR/MDD 행들 아래, 데이터 시작 행 위에 배치
+- `formatSignedPercent` 함수로 포맷 (기존 이격률과 동일)
+
+### 데이터 흐름
+
+```
+stock_snapshots.json → toRecentShape() → period_returns → EtfSummaryCard → EtfSummaryMovingAverages
+```
 
 ---
 

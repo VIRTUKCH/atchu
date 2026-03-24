@@ -148,6 +148,7 @@ export default function IndexEtfDetailPage({ model }) {
             isStaleClose={closeStatus.isStaleClose}
             marketStatusLabel={closeStatus.statusLabel}
             meta={meta}
+            periodReturns={recentData.period_returns}
           />
           <PriceTrendChart
             title="최근 1년 그래프"
