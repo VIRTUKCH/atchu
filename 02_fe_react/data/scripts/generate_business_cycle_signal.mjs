@@ -418,6 +418,10 @@ const calcMetrics = (returns, finalEquity) => {
   const std = Math.sqrt(variance);
   const sharpe = std > 0 ? (mean / std) * Math.sqrt(12) : null;
 
+  const downsideSq = returns.reduce((s, r) => s + Math.min(r, 0) ** 2, 0);
+  const downsideDev = Math.sqrt(downsideSq / n);
+  const sortino = downsideDev > 0 ? (mean / downsideDev) * Math.sqrt(12) : null;
+
   // Max annual loss
   let worstYear = 0;
   for (let i = 0; i < n; i += 12) {
@@ -427,7 +431,7 @@ const calcMetrics = (returns, finalEquity) => {
   }
   const maxAnnualLoss = worstYear * 100;
 
-  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe), maxAnnualLoss: round2(maxAnnualLoss) };
+  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe), sortino: round3(sortino), maxAnnualLoss: round2(maxAnnualLoss) };
 };
 
 const strategyMetrics = calcMetrics(monthlyReturns.businessCycle, eqStrategy);

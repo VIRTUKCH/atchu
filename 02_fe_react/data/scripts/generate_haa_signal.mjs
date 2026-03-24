@@ -489,7 +489,11 @@ const calcMetrics = (returns, finalEquity) => {
   const std = Math.sqrt(variance);
   const sharpe = std > 0 ? (mean / std) * Math.sqrt(12) : null;
 
-  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe) };
+  const downsideSq = returns.reduce((s, r) => s + Math.min(r, 0) ** 2, 0);
+  const downsideDev = Math.sqrt(downsideSq / n);
+  const sortino = downsideDev > 0 ? (mean / downsideDev) * Math.sqrt(12) : null;
+
+  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe), sortino: round3(sortino) };
 };
 
 const calcMaxAnnualLoss = (yearMap) => {
@@ -541,9 +545,9 @@ if (backtestStartDate && monthlyRecords.length > 1) {
   payload.backtest = {
     startDate: backtestStartDate,
     endDate: backtestEndDate,
-    haa: { cagr: haaMetrics.cagr, mdd: haaMetrics.mdd, sharpe: haaMetrics.sharpe, maxAnnualLoss: haaMetrics.maxAnnualLoss },
-    benchmarkSpy: { cagr: spyMetrics.cagr, mdd: spyMetrics.mdd, sharpe: spyMetrics.sharpe },
-    benchmark6040: { cagr: sixtyFortyMetrics.cagr, mdd: sixtyFortyMetrics.mdd, sharpe: sixtyFortyMetrics.sharpe },
+    haa: { cagr: haaMetrics.cagr, mdd: haaMetrics.mdd, sharpe: haaMetrics.sharpe, sortino: haaMetrics.sortino, maxAnnualLoss: haaMetrics.maxAnnualLoss },
+    benchmarkSpy: { cagr: spyMetrics.cagr, mdd: spyMetrics.mdd, sharpe: spyMetrics.sharpe, sortino: spyMetrics.sortino },
+    benchmark6040: { cagr: sixtyFortyMetrics.cagr, mdd: sixtyFortyMetrics.mdd, sharpe: sixtyFortyMetrics.sharpe, sortino: sixtyFortyMetrics.sortino },
     defensiveRatio,
     equityCurve
   };

@@ -375,7 +375,11 @@ const calcMetrics = (returns, finalEquity) => {
   const std = Math.sqrt(variance);
   const sharpe = std > 0 ? (mean / std) * Math.sqrt(12) : null;
 
-  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe) };
+  const downsideSq = returns.reduce((s, r) => s + Math.min(r, 0) ** 2, 0);
+  const downsideDev = Math.sqrt(downsideSq / n);
+  const sortino = downsideDev > 0 ? (mean / downsideDev) * Math.sqrt(12) : null;
+
+  return { cagr: round2(cagr), mdd: round2(mdd), sharpe: round3(sharpe), sortino: round3(sortino) };
 };
 
 const faberMetrics = calcMetrics(monthlyReturns.faberSector, eqFaber);
