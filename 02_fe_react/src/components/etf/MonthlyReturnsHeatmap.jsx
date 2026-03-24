@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -6,6 +6,10 @@ const TABS = [
   { key: "atchu", label: "앗추 필터" },
   { key: "buyHold", label: "매수후보유" }
 ];
+
+const PC_YEARS_PER_PAGE = 10;
+const MOBILE_YEARS_PER_PAGE = 5;
+const MOBILE_BREAKPOINT = 768;
 
 function getCellColor(value, theme) {
   if (value === null || value === undefined) return "transparent";
@@ -31,9 +35,24 @@ function formatValue(value) {
   return v.toFixed(2);
 }
 
-export default function MonthlyReturnsHeatmap({ data, formatSignedPercent }) {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT
+  );
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return isMobile;
+}
+
+export default function MonthlyReturnsHeatmap({ data }) {
   const [activeTab, setActiveTab] = useState("atchu");
+  const [page, setPage] = useState(0);
+  const isMobile = useIsMobile();
   const theme = document.documentElement.getAttribute("data-theme") || "light";
+  const yearsPerPage = isMobile ? MOBILE_YEARS_PER_PAGE : PC_YEARS_PER_PAGE;
 
   const { years, grid, yearTotals } = useMemo(() => {
     if (!data || !data[activeTab]) return { years: [], grid: {}, yearTotals: {} };
@@ -55,6 +74,20 @@ export default function MonthlyReturnsHeatmap({ data, formatSignedPercent }) {
     return { years: yrs, grid: strategyData, yearTotals: totals };
   }, [data, activeTab]);
 
+  // 탭 전환 시 페이지 리셋
+  const handleTabChange = useCallback((key) => {
+    setActiveTab(key);
+    setPage(0);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(years.length / yearsPerPage));
+  const pageYears = years.slice(page * yearsPerPage, (page + 1) * yearsPerPage);
+
+  // 화면 크기 변경 시 페이지 범위 보정
+  useEffect(() => {
+    if (page >= totalPages) setPage(Math.max(0, totalPages - 1));
+  }, [page, totalPages]);
+
   if (!data || years.length === 0) return null;
 
   return (
@@ -67,7 +100,7 @@ export default function MonthlyReturnsHeatmap({ data, formatSignedPercent }) {
               key={tab.key}
               type="button"
               className={`monthly-heatmap-tab${activeTab === tab.key ? " active" : ""}`}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleTabChange(tab.key)}
             >
               {tab.label}
             </button>
@@ -79,42 +112,25 @@ export default function MonthlyReturnsHeatmap({ data, formatSignedPercent }) {
           ? "앗추 필터 이탈 구간은 0.00% (현금 보유)로 표시됩니다."
           : "ETF를 매수 후 보유했을 때의 월별 수익률입니다."}
       </p>
-      <div className="monthly-heatmap-scroll">
-        <table className="monthly-heatmap-table">
-          <thead>
-            <tr>
-              <th className="monthly-heatmap-corner">월\년</th>
-              {years.map((yr) => (
-                <th key={yr} className="monthly-heatmap-year-header">{yr}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {MONTHS.map((month) => (
-              <tr key={month}>
-                <td className="monthly-heatmap-month-label">{month}</td>
-                {years.map((yr) => {
-                  const val = grid[yr]?.[month] ?? null;
-                  return (
-                    <td
-                      key={yr}
-                      className="monthly-heatmap-cell"
-                      style={{ backgroundColor: getCellColor(val, theme) }}
-                    >
-                      {formatValue(val)}
-                    </td>
-                  );
-                })}
-              </tr>
+      <table className="monthly-heatmap-table">
+        <thead>
+          <tr>
+            <th className="monthly-heatmap-corner">월\년</th>
+            {pageYears.map((yr) => (
+              <th key={yr} className="monthly-heatmap-year-header">{yr}</th>
             ))}
-            <tr className="monthly-heatmap-total-row">
-              <td className="monthly-heatmap-month-label">합계</td>
-              {years.map((yr) => {
-                const val = yearTotals[yr] ?? null;
+          </tr>
+        </thead>
+        <tbody>
+          {MONTHS.map((month) => (
+            <tr key={month}>
+              <td className="monthly-heatmap-month-label">{month}</td>
+              {pageYears.map((yr) => {
+                const val = grid[yr]?.[month] ?? null;
                 return (
                   <td
                     key={yr}
-                    className="monthly-heatmap-cell monthly-heatmap-total-cell"
+                    className="monthly-heatmap-cell"
                     style={{ backgroundColor: getCellColor(val, theme) }}
                   >
                     {formatValue(val)}
@@ -122,9 +138,47 @@ export default function MonthlyReturnsHeatmap({ data, formatSignedPercent }) {
                 );
               })}
             </tr>
-          </tbody>
-        </table>
-      </div>
+          ))}
+          <tr className="monthly-heatmap-total-row">
+            <td className="monthly-heatmap-month-label">합계</td>
+            {pageYears.map((yr) => {
+              const val = yearTotals[yr] ?? null;
+              return (
+                <td
+                  key={yr}
+                  className="monthly-heatmap-cell monthly-heatmap-total-cell"
+                  style={{ backgroundColor: getCellColor(val, theme) }}
+                >
+                  {formatValue(val)}
+                </td>
+              );
+            })}
+          </tr>
+        </tbody>
+      </table>
+      {totalPages > 1 && (
+        <div className="monthly-heatmap-pagination">
+          <button
+            type="button"
+            className="monthly-heatmap-page-btn"
+            onClick={() => setPage((p) => Math.max(0, p - 1))}
+            disabled={page <= 0}
+          >
+            ← 최신
+          </button>
+          <span className="monthly-heatmap-page-info">
+            {pageYears[pageYears.length - 1]}~{pageYears[0]}
+          </span>
+          <button
+            type="button"
+            className="monthly-heatmap-page-btn"
+            onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+            disabled={page >= totalPages - 1}
+          >
+            과거 →
+          </button>
+        </div>
+      )}
       <p className="monthly-heatmap-disclaimer">
         과거 백테스트 결과이며 미래 수익을 보장하지 않습니다. 이탈 기간은 현금 보유(수익률 0%)로 가정합니다.
       </p>

@@ -485,15 +485,14 @@
 .monthly-heatmap-table {
   border-collapse: collapse;
   width: 100%;
-  min-width: 400px;
+  table-layout: fixed;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
 }
 .monthly-heatmap-table th,
 .monthly-heatmap-table td {
-  padding: 7px 6px;
+  padding: 7px 4px;
   text-align: center;
   white-space: nowrap;
-  min-width: 64px;
   box-sizing: border-box;
 }
 .monthly-heatmap-corner {
@@ -501,6 +500,7 @@
   color: var(--muted);
   text-align: left;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  width: 48px;
 }
 .monthly-heatmap-year-header {
   font-weight: 600;
@@ -510,19 +510,44 @@
   font-weight: 600;
   text-align: left;
   color: var(--muted);
+  width: 48px;
 }
 .monthly-heatmap-cell {
   border-radius: 4px;
   font-variant-numeric: tabular-nums;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
-  min-width: 64px;
-  width: 64px;
 }
 .monthly-heatmap-total-row {
   border-top: 2px solid var(--line);
 }
 .monthly-heatmap-total-cell {
   font-weight: 600;
+}
+.monthly-heatmap-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+.monthly-heatmap-page-btn {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.monthly-heatmap-page-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.monthly-heatmap-page-info {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 .monthly-heatmap-disclaimer {
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
