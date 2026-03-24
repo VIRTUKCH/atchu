@@ -66,7 +66,7 @@ function PhaseIndicatorSection({ signal, phaseIndicators, phaseMapping }) {
   if (!signal || !phaseIndicators || !phaseMapping) return null;
 
   const currentPhase = signal.phase;
-  const phases = ["early", "mid", "recession", "late"]; // 2x2 그리드: 상단(early,mid) 하단(recession,late)
+  const phases = ["mid", "late", "early", "recession"]; // 2x2: 상단(양수: 호황/둔화) 하단(음수: 회복/침체), 좌(상승) 우(하락)
 
   return (
     <div className="panel-card" style={{ padding: "20px" }}>
@@ -96,11 +96,11 @@ function PhaseIndicatorSection({ signal, phaseIndicators, phaseMapping }) {
       </div>
 
       <ColumnCallout>
-        SPY 6개월 수익률 <strong>{phaseIndicators.spyMomentum6m >= 0 ? "+" : ""}{phaseIndicators.spyMomentum6m}%</strong>{" "}
-        → 주식 {phaseIndicators.spyMomentum6m > 0 ? "상승(↑)" : "하락(↓)"}
+        SPY 13612W 모멘텀 <strong>{phaseIndicators.momentum13612w >= 0 ? "+" : ""}{phaseIndicators.momentum13612w}</strong>{" "}
+        ({phaseIndicators.momentum13612w > 0 ? "양수" : "음수"})
         {" "}&nbsp;|&nbsp;{" "}
-        IEF/SHY 비율 변화 <strong>{phaseIndicators.rateDirection6m >= 0 ? "+" : ""}{phaseIndicators.rateDirection6m}%</strong>{" "}
-        → 금리 {phaseIndicators.rateDirectionSign === "negative" ? "하락(↓)" : "상승(↑)"}
+        방향: <strong>{phaseIndicators.direction === "rising" ? "상승 중(↑)" : "하락 중(↓)"}</strong>{" "}
+        (전월 {phaseIndicators.momentum13612wPrev >= 0 ? "+" : ""}{phaseIndicators.momentum13612wPrev})
       </ColumnCallout>
 
       {/* 2x2 국면 그리드 */}
@@ -282,7 +282,7 @@ function HistorySection({ history }) {
       <ColumnTimeline>
         {visible.map((h) => {
           const allocs = (h.portfolio || []).map((a) => `${a.ticker} ${a.weight}%`).join(" + ");
-          const indicators = `SPY 6M: ${h.spyMomentum6m >= 0 ? "+" : ""}${h.spyMomentum6m}%  |  금리: ${h.rateDirection6m >= 0 ? "+" : ""}${h.rateDirection6m}%`;
+          const indicators = `13612W: ${h.momentum13612w >= 0 ? "+" : ""}${h.momentum13612w}  ${h.direction === "rising" ? "↑" : "↓"}  (전월 ${h.momentum13612wPrev >= 0 ? "+" : ""}${h.momentum13612wPrev})`;
           return (
             <ColumnTimelineItem key={h.date} year={h.date?.slice(0, 7)} title={h.phaseLabel}>
               {allocs}
@@ -349,13 +349,14 @@ export default function BusinessCyclePage() {
           국면 판단 방법
         </h3>
         <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", lineHeight: 1.6, margin: 0 }}>
-          이 전략은 <strong>모멘텀 근사</strong> 방식으로 경기 국면을 판단합니다.
-          실제 거시경제 지표(ISM PMI, LEI) 대신 시장 가격 데이터만 사용합니다.
+          SPY의 <strong>13612W 가중 모멘텀</strong>으로 경기 국면을 판단합니다.
+          BAA 전략에서 검증된 동일한 모멘텀 공식을 사용합니다.
         </p>
         <ul style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", lineHeight: 1.8, margin: "8px 0 0", paddingLeft: 20 }}>
-          <li><strong>주식 모멘텀</strong>: SPY 6개월 수익률 (양수 = 주식시장 상승 추세)</li>
-          <li><strong>금리 방향</strong>: IEF(중기채) / SHY(단기채) 비율의 6개월 변화 (비율 상승 = 금리 하락, 장기채 강세)</li>
-          <li>두 신호의 조합으로 4국면 중 하나를 결정하고, 해당 국면의 강세 섹터에 균등 배분</li>
+          <li><strong>13612W 공식</strong>: 12×(1개월 수익) + 4×(3개월 수익) + 2×(6개월 수익) + 1×(12개월 수익)</li>
+          <li><strong>레벨</strong>: 양수 = 시장 확장기, 음수 = 시장 수축기</li>
+          <li><strong>방향</strong>: 전월 대비 상승 = 가속, 하락 = 감속</li>
+          <li>레벨(양/음) × 방향(상승/하락) 조합으로 4국면 결정 → 해당 국면 강세 섹터에 균등 배분</li>
         </ul>
       </div>
 

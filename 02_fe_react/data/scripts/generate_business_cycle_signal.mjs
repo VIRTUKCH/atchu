@@ -10,14 +10,14 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "business-cycle");
 const OUT_FILE = path.join(SUMMARY_DIR, "business_cycle_signal.json");
 
 /* ── Universe ── */
-// 국면 판단 지표
-const INDICATOR_TICKERS = ["SPY", "IEF", "SHY"];
+// 국면 판단: SPY 13612W 모멘텀만 사용
+const INDICATOR_TICKERS = ["SPY"];
 // 섹터 ETF (핵심 8개)
 const SECTORS = ["XLK", "XLF", "XLV", "XLY", "XLP", "XLE", "XLI", "XLU"];
 const ALL_TICKERS = [...new Set([...INDICATOR_TICKERS, ...SECTORS, "AGG"])];
 
 const NAME_KO = {
-  SPY: "S&P 500", IEF: "중기 국채 (7-10Y)", SHY: "단기 국채 (1-3Y)",
+  SPY: "S&P 500",
   XLK: "기술", XLF: "금융", XLV: "헬스케어", XLY: "경기소비재",
   XLP: "필수소비재", XLE: "에너지", XLI: "산업재", XLU: "유틸리티",
   AGG: "미국 종합채권",
@@ -36,8 +36,10 @@ const PHASE_LABELS = {
 };
 
 const PHASE_CONDITIONS = {
-  early: "주식↑ + 금리↓", mid: "주식↑ + 금리↑",
-  late: "주식↓ + 금리↑", recession: "주식↓ + 금리↓",
+  mid:       "모멘텀 양수 & 상승 중",
+  late:      "모멘텀 양수 & 하락 중",
+  early:     "모멘텀 음수 & 상승 중",
+  recession: "모멘텀 음수 & 하락 중",
 };
 
 /* ── Helpers ── */
@@ -98,55 +100,46 @@ const getReferenceMonth = () => {
   return `${year}-${month}`;
 };
 
-/* ── Step 3: 국면 판단 함수들 ── */
+/* ── Step 3: 국면 판단 — SPY 13612W 모멘텀 ── */
 
-/** SPY 6개월 수익률 (%) */
-const calcReturn6m = (monthEnds, refYm) => {
+/**
+ * BAA 가중 모멘텀 13612W
+ * mom = 12×(1M수익) + 4×(3M수익) + 2×(6M수익) + 1×(12M수익)
+ * 12개월 이전 데이터 필요
+ */
+const calc13612W = (monthEnds, refYm) => {
   const idx = monthEnds.findIndex((m) => m.ym === refYm);
-  if (idx < 6) return null;
+  if (idx < 12) return null;
   const p0 = monthEnds[idx].close;
+  const p1 = monthEnds[idx - 1].close;
+  const p3 = monthEnds[idx - 3].close;
   const p6 = monthEnds[idx - 6].close;
-  if (!p0 || !p6 || p6 === 0) return null;
-  return (p0 / p6 - 1) * 100;
+  const p12 = monthEnds[idx - 12].close;
+  if (!p0 || !p1 || !p3 || !p6 || !p12) return null;
+  if (p1 === 0 || p3 === 0 || p6 === 0 || p12 === 0) return null;
+  return 12 * (p0 / p1 - 1) + 4 * (p0 / p3 - 1) + 2 * (p0 / p6 - 1) + 1 * (p0 / p12 - 1);
 };
 
 /**
- * IEF/SHY 비율의 6개월 변화율 (%)
- * 비율 상승 = 장기채 아웃퍼폼 = 금리 하락기
- * 비율 하락 = 단기채 아웃퍼폼 = 금리 상승기
+ * 국면 결정: 13612W 레벨(양/음) × 방향(상승/하락)
+ *
+ *                mom 상승 중(↑)         mom 하락 중(↓)
+ * mom > 0       호황기 (Mid)           둔화기 (Late)
+ * mom < 0       회복기 (Early)         침체기 (Recession)
+ *
+ * 회복기: 모멘텀 아직 음수지만 바닥 찍고 올라오는 중
+ * 호황기: 모멘텀 양수이고 계속 상승
+ * 둔화기: 모멘텀 양수지만 꺾이기 시작
+ * 침체기: 모멘텀 음수이고 계속 하락
  */
-const calcRateDirection = (iefMonthEnds, shyMonthEnds, refYm) => {
-  const iefIdx = iefMonthEnds.findIndex((m) => m.ym === refYm);
-  const shyIdx = shyMonthEnds.findIndex((m) => m.ym === refYm);
-  if (iefIdx < 6 || shyIdx < 6) return null;
+const determinePhase = (momCurrent, momPrev) => {
+  if (momCurrent === null || momPrev === null) return null;
+  const positive = momCurrent > 0;
+  const rising = momCurrent > momPrev;
 
-  const iefNow = iefMonthEnds[iefIdx].close;
-  const iefPrev = iefMonthEnds[iefIdx - 6].close;
-  const shyNow = shyMonthEnds[shyIdx].close;
-  const shyPrev = shyMonthEnds[shyIdx - 6].close;
-
-  if (!iefNow || !iefPrev || !shyNow || !shyPrev || shyNow === 0 || shyPrev === 0) return null;
-
-  const ratioNow = iefNow / shyNow;
-  const ratioPrev = iefPrev / shyPrev;
-  return (ratioNow / ratioPrev - 1) * 100;
-};
-
-/**
- * 국면 결정
- * 주식↑ + 금리↓(IEF/SHY비율↑) → early (회복기)
- * 주식↑ + 금리↑(IEF/SHY비율↓) → mid (호황기)
- * 주식↓ + 금리↑(IEF/SHY비율↓) → late (둔화기)
- * 주식↓ + 금리↓(IEF/SHY비율↑) → recession (침체기)
- */
-const determinePhase = (spyMomentum, rateDirection) => {
-  if (spyMomentum === null || rateDirection === null) return null;
-  const stockUp = spyMomentum > 0;
-  const rateDown = rateDirection > 0; // IEF/SHY 비율 상승 = 금리 하락
-
-  if (stockUp && rateDown) return "early";
-  if (stockUp && !rateDown) return "mid";
-  if (!stockUp && !rateDown) return "late";
+  if (positive && rising) return "mid";
+  if (positive && !rising) return "late";
+  if (!positive && rising) return "early";
   return "recession";
 };
 
@@ -173,8 +166,8 @@ let processedCount = 0;
 for (const ticker of ALL_TICKERS) {
   const monthEnds = readMonthEnds(ticker);
   if (!monthEnds) continue;
-  if (monthEnds.length < 7) {
-    console.warn(`[WARN] Not enough monthly data for ${ticker} (${monthEnds.length} months, need >= 7)`);
+  if (monthEnds.length < 13) {
+    console.warn(`[WARN] Not enough monthly data for ${ticker} (${monthEnds.length} months, need >= 13)`);
     continue;
   }
   tickerData.set(ticker, monthEnds);
@@ -206,23 +199,27 @@ const getDate = (ym) => {
 
 /* ── Step 4: Current signal ── */
 const spyMonthEnds = tickerData.get("SPY");
-const iefMonthEnds = tickerData.get("IEF");
-const shyMonthEnds = tickerData.get("SHY");
 
-const spyMomentum6m = round2(calcReturn6m(spyMonthEnds, effectiveRefYm));
-const rateDirection6m = round2(calcRateDirection(iefMonthEnds, shyMonthEnds, effectiveRefYm));
-const phase = determinePhase(spyMomentum6m, rateDirection6m);
+// 현재월 + 전월 13612W 계산
+const momCurrent = round2(calc13612W(spyMonthEnds, effectiveRefYm));
+// 전월 기준 계산: effectiveRefYm에서 1개월 전
+const prevYmIdx = spyMonthEnds.findIndex((m) => m.ym === effectiveRefYm) - 1;
+const prevYm = prevYmIdx >= 0 ? spyMonthEnds[prevYmIdx].ym : null;
+const momPrev = prevYm ? round2(calc13612W(spyMonthEnds, prevYm)) : null;
 
+const phase = determinePhase(momCurrent, momPrev);
 const rebalanceDate = getDate(effectiveRefYm);
 const portfolio = buildPortfolio(phase);
 
-console.log(`  SPY 6M momentum: ${spyMomentum6m}%`);
-console.log(`  Rate direction (IEF/SHY 6M): ${rateDirection6m}%`);
+const direction = momCurrent !== null && momPrev !== null
+  ? (momCurrent > momPrev ? "rising" : "falling")
+  : null;
+
+console.log(`  SPY 13612W: ${momCurrent} (prev: ${momPrev}) → ${direction}`);
 console.log(`  Phase: ${phase} (${PHASE_LABELS[phase]})`);
 
 /* ── Step 5: Sector universe info ── */
 const sectorUniverse = SECTORS.map((t) => {
-  // 어느 국면에 속하는 섹터인지
   const belongsTo = Object.entries(PHASE_SECTORS)
     .filter(([, tickers]) => tickers.includes(t))
     .map(([p]) => p);
@@ -235,7 +232,7 @@ const sectorUniverse = SECTORS.map((t) => {
 });
 
 /* ── Step 6: Backtest ── */
-// commonStartYm: 모든 티커가 6개월 이전 데이터를 가진 최초 월
+// commonStartYm: SPY 13612W에 13개월, 섹터에 12개월 이전 데이터 필요
 const allUniqueYms = new Set();
 for (const [, monthEnds] of tickerData) {
   for (const m of monthEnds) allUniqueYms.add(m.ym);
@@ -245,12 +242,12 @@ const sortedAllYms = [...allUniqueYms].sort();
 let commonStartYm = null;
 for (const ym of sortedAllYms) {
   let allReady = true;
-  // 국면 판단에 6개월, 섹터 수익률에 최소 1개월 이전 필요
   for (const ticker of [...INDICATOR_TICKERS, ...SECTORS]) {
     const me = tickerData.get(ticker);
     if (!me) { allReady = false; break; }
     const idx = me.findIndex((m) => m.ym === ym);
-    if (idx < 6) { allReady = false; break; }
+    // 13612W에 12개월 이전 + 전월 방향 판단에 1개월 더 = 13개월
+    if (idx < 13) { allReady = false; break; }
   }
   if (allReady) { commonStartYm = ym; break; }
 }
@@ -268,13 +265,14 @@ const monthlyRecords = [];
 
 for (const ym of backtestMonths) {
   const spyMe = tickerData.get("SPY");
-  const iefMe = tickerData.get("IEF");
-  const shyMe = tickerData.get("SHY");
+  const mom = calc13612W(spyMe, ym);
 
-  const spyMom = calcReturn6m(spyMe, ym);
-  const rateDir = calcRateDirection(iefMe, shyMe, ym);
-  const monthPhase = determinePhase(spyMom, rateDir);
+  // 전월 13612W
+  const ymIdx = spyMe.findIndex((m) => m.ym === ym);
+  const prevYmBt = ymIdx > 0 ? spyMe[ymIdx - 1].ym : null;
+  const momPrevBt = prevYmBt ? calc13612W(spyMe, prevYmBt) : null;
 
+  const monthPhase = determinePhase(mom, momPrevBt);
   if (monthPhase === null) continue;
 
   const alloc = buildPortfolio(monthPhase);
@@ -284,8 +282,9 @@ for (const ym of backtestMonths) {
     ym,
     phase: monthPhase,
     phaseLabel: PHASE_LABELS[monthPhase],
-    spyMomentum6m: round2(spyMom),
-    rateDirection6m: round2(rateDir),
+    momentum13612w: round2(mom),
+    momentum13612wPrev: round2(momPrevBt),
+    direction: mom > momPrevBt ? "rising" : "falling",
     portfolio: alloc,
   });
 }
@@ -295,7 +294,7 @@ let eqStrategy = 1.0;
 let eqSpy = 1.0;
 let eq6040 = 1.0;
 
-const bond6040Ticker = tickerData.has("AGG") ? "AGG" : (tickerData.has("IEF") ? "IEF" : null);
+const bond6040Ticker = tickerData.has("AGG") ? "AGG" : null;
 
 const equityCurve = [];
 const monthlyReturns = { businessCycle: [], spy: [], sixtyForty: [] };
@@ -409,8 +408,9 @@ const historyLast36 = monthlyRecords.slice(-36).map((r) => ({
   date: r.date,
   phase: r.phase,
   phaseLabel: r.phaseLabel,
-  spyMomentum6m: r.spyMomentum6m,
-  rateDirection6m: r.rateDirection6m,
+  momentum13612w: r.momentum13612w,
+  momentum13612wPrev: r.momentum13612wPrev,
+  direction: r.direction,
   portfolio: r.portfolio,
 }));
 
@@ -423,10 +423,9 @@ const payload = {
     rebalanceDate,
   },
   phaseIndicators: {
-    spyMomentum6m,
-    rateDirection6m,
-    spyMomentumSign: spyMomentum6m > 0 ? "positive" : "negative",
-    rateDirectionSign: rateDirection6m > 0 ? "negative" : "positive", // 금리 방향: 비율↑=금리↓
+    momentum13612w: momCurrent,
+    momentum13612wPrev: momPrev,
+    direction,
   },
   phaseMapping: Object.fromEntries(
     Object.entries(PHASE_SECTORS).map(([p, tickers]) => [
@@ -466,7 +465,7 @@ fs.writeFileSync(OUT_FILE, body, "utf8");
 console.log(`\nGenerated ${OUT_FILE}`);
 console.log(`  Tickers processed: ${processedCount}`);
 console.log(`  Phase: ${phase} (${PHASE_LABELS[phase]})`);
-console.log(`  SPY 6M: ${spyMomentum6m}%  |  Rate dir (IEF/SHY): ${rateDirection6m}%`);
+console.log(`  SPY 13612W: ${momCurrent} (prev: ${momPrev}) → ${direction}`);
 console.log(`  Portfolio: ${portfolio.map((a) => `${a.ticker}(${a.weight}%)`).join(", ")}`);
 console.log(`  Rebalance date: ${rebalanceDate}`);
 
