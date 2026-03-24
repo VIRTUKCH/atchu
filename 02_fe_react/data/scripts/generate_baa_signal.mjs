@@ -290,6 +290,20 @@ const offensiveRanking = OFFENSIVE_G12
   })
   .sort((a, b) => b.relMomentum - a.relMomentum);
 
+const offensiveRankingG4 = OFFENSIVE_G4
+  .filter((t) => metrics.has(t))
+  .map((t) => {
+    const m = metrics.get(t);
+    return {
+      ticker: t,
+      nameKo: NAME_KO[t] || t,
+      momentum13612w: m.momentum13612w,
+      relMomentum: m.relMomentum,
+      selected: mode === "offensive" && aggressivePortfolio.allocations.some((a) => a.ticker === t)
+    };
+  })
+  .sort((a, b) => b.relMomentum - a.relMomentum);
+
 const defensiveRanking = DEFENSIVE
   .filter((t) => metrics.has(t))
   .map((t) => {
@@ -586,6 +600,7 @@ const payload = {
   },
   canary: canaryResults,
   offensiveRanking,
+  offensiveRankingG4,
   defensiveRanking,
   portfolios: {
     aggressive: aggressivePortfolio,

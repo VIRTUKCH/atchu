@@ -90,13 +90,12 @@ function CanarySection({ canary, mode }) {
   );
 }
 
-function RankingSection({ offensiveRanking, defensiveRanking, variantConfig }) {
-  const filterTickers = variantConfig.universeTickers;
-  const filtered = filterTickers
-    ? (offensiveRanking || []).filter((r) => filterTickers.includes(r.ticker))
+function RankingSection({ offensiveRanking, offensiveRankingG4, defensiveRanking, variantConfig }) {
+  const ranking = variantConfig.universe === "G4"
+    ? (offensiveRankingG4 || [])
     : (offensiveRanking || []);
-  const offensiveRows = filtered.map((r, i) => {
-    const isSelected = variantConfig.universe === "G4" ? r.selectedG4 : r.selectedG12;
+  const offensiveRows = ranking.map((r, i) => {
+    const isSelected = variantConfig.universe === "G4" ? r.selected : r.selectedG12;
     const ticker = isSelected ? { value: r.ticker, highlight: true } : r.ticker;
     return [
       String(i + 1), ticker, r.nameKo || "",
@@ -222,7 +221,7 @@ export default function BaaQuantPeekPage({ variant = "aggressive" }) {
     );
   }
 
-  const { signal, canary, offensiveRanking, defensiveRanking, portfolios, backtest, history } = baaSignalPayload;
+  const { signal, canary, offensiveRanking, offensiveRankingG4, defensiveRanking, portfolios, backtest, history } = baaSignalPayload;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 800, margin: "0 auto", padding: "16px" }}>
@@ -243,7 +242,7 @@ export default function BaaQuantPeekPage({ variant = "aggressive" }) {
 
       <CanarySection canary={canary} mode={signal?.mode} />
 
-      <RankingSection offensiveRanking={offensiveRanking} defensiveRanking={defensiveRanking} variantConfig={vc} />
+      <RankingSection offensiveRanking={offensiveRanking} offensiveRankingG4={offensiveRankingG4} defensiveRanking={defensiveRanking} variantConfig={vc} />
 
       <BacktestSection backtest={backtest} variantConfig={vc} />
 
