@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 const RETURN_PERIODS = ["5Y", "3Y", "1Y", "6M", "3M", "1M"];
 
 function ReturnBox({ period, value }) {
-  if (value == null) return null;
-  const num = parseFloat(value);
-  const color = num >= 0 ? "var(--accent-green)" : "var(--accent-red)";
+  const hasValue = value != null;
+  const num = hasValue ? parseFloat(value) : 0;
+  const color = hasValue
+    ? (num >= 0 ? "var(--accent-green)" : "var(--accent-red)")
+    : "var(--muted)";
   return (
     <div className="quant-return-box">
       <div className="quant-return-period">{period}</div>
       <div className="quant-return-value" style={{ color }}>
-        {num >= 0 ? "+" : ""}{value}%
+        {hasValue ? `${num >= 0 ? "+" : ""}${value}%` : "-"}
       </div>
     </div>
   );
