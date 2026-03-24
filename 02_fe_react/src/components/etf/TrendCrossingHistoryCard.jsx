@@ -98,6 +98,13 @@ export default function TrendCrossingHistoryCard({
             ].join(" ");
             const statItems = periodItems.filter((item) => !item.assumedExit);
             const stats = statsMap?.[period] || { expectedReturn: null, trades: [] };
+            const trades = stats.trades || [];
+            const wins = trades.filter((t) => t.returnPercent > 0);
+            const losses = trades.filter((t) => t.returnPercent <= 0);
+            const winRate = trades.length > 0 ? (wins.length / trades.length) * 100 : null;
+            const avgReturn = trades.length > 0 ? trades.reduce((s, t) => s + t.returnPercent, 0) / trades.length : null;
+            const avgWin = wins.length > 0 ? wins.reduce((s, t) => s + t.returnPercent, 0) / wins.length : null;
+            const avgLoss = losses.length > 0 ? losses.reduce((s, t) => s + t.returnPercent, 0) / losses.length : null;
             const avgPerYear =
               yearsOfData && yearsOfData > 0 ? statItems.length / yearsOfData : null;
             const upCount = statItems.filter((item) => item.direction === "up").length;
@@ -176,6 +183,35 @@ export default function TrendCrossingHistoryCard({
                       </span>
                     </span>
                   </div>
+                  {trades.length > 0 && (
+                  <div className="detail-crossing-stats-row detail-crossing-stats-row-bottom">
+                    <span className="detail-crossing-stat">
+                      익절{" "}
+                      <span className="detail-crossing-stat-value detail-crossing-up">{wins.length}회</span>
+                      {" / "}손절{" "}
+                      <span className="detail-crossing-stat-value detail-crossing-down">{losses.length}회</span>
+                      {winRate !== null && (
+                        <span className="detail-crossing-stat-sub"> (승률 {formatNumber(winRate, 0)}%)</span>
+                      )}
+                    </span>
+                    <span className="detail-crossing-stat">
+                      평균 수익률{" "}
+                      <span className={`detail-crossing-stat-value ${resolveValueClass(avgReturn)}`}>
+                        {formatNumber(avgReturn, 2)}%
+                      </span>
+                    </span>
+                    <span className="detail-crossing-stat">
+                      익절 평균{" "}
+                      <span className="detail-crossing-stat-value detail-crossing-up">
+                        {avgWin !== null ? `+${formatNumber(avgWin, 2)}%` : "-"}
+                      </span>
+                      {" / "}손절 평균{" "}
+                      <span className="detail-crossing-stat-value detail-crossing-down">
+                        {avgLoss !== null ? `${formatNumber(avgLoss, 2)}%` : "-"}
+                      </span>
+                    </span>
+                  </div>
+                  )}
                 </div>
                 <div className="detail-crossing-table">
                   <div className={`${rowClassName} detail-crossing-head`}>
