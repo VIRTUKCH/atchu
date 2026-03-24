@@ -9,6 +9,7 @@ import { ColumnCallout } from "../components/column/ColumnCallout";
 import { ColumnStatGrid } from "../components/column/ColumnStatGrid";
 import { ColumnWarningCard } from "../components/column/ColumnWarningCard";
 import { ColumnTimeline, ColumnTimelineItem } from "../components/column/ColumnTimeline";
+import { ColumnBackLink } from "../components/column/ColumnBackLink";
 import BaaEquityCurveChart from "../components/baa/BaaEquityCurveChart";
 
 function CanarySection({ canary, mode }) {
@@ -204,8 +205,9 @@ export default function BaaQuantPeekPage() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 800, margin: "0 auto", padding: "16px" }}>
+      <ColumnBackLink to="/_quant">← 퀀트 엿보기</ColumnBackLink>
       <h2 className="panel-title" style={{ fontSize: "clamp(20px, calc(15.8px + 1.1vw), 26px)", marginBottom: 0 }}>
-        퀀트 엿보기 — BAA 전략
+        BAA 전략
       </h2>
 
       <BaaSignalBadge

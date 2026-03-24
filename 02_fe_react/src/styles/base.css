@@ -687,6 +687,23 @@ a.topnav-brand {
   margin-bottom: 8px;
 }
 
+.more-link-card-wrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.quant-signal-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: clamp(13px, calc(11px + 0.5vw), 15px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.quant-signal-badge--offensive { background: var(--accent-green); color: #fff; }
+.quant-signal-badge--defensive { background: var(--accent-blue); color: #fff; }
+.quant-signal-badge--coming { background: var(--line); color: var(--muted); }
+
 .more-section-divider {
   margin: 20px 0 12px;
   border-top: 1px solid var(--line);

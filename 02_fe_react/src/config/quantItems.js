@@ -1,0 +1,26 @@
+/**
+ * 퀀트 전략 항목 단일 원천 (Single Source of Truth)
+ *
+ * QuantHubPage 목록과 각 전략 상세 페이지가 이 데이터를 공유한다.
+ */
+export const QUANT_STRATEGIES = [
+  {
+    id: "baa",
+    path: "/_quant/baa",
+    label: "BAA (Bold Asset Allocation)",
+    description: "전술적 자산배분 — 카나리아 모멘텀 기반 공격/방어 전환",
+    status: "active",
+  },
+  {
+    id: "sector",
+    path: "/_quant/sector",
+    label: "섹터 로테이션",
+    description: "GICS 섹터 모멘텀 기반 배분 전략",
+    status: "coming_soon",
+  },
+];
+
+/** id로 전략 메타 데이터를 찾는 헬퍼 */
+export function getQuantMeta(id) {
+  return QUANT_STRATEGIES.find((s) => s.id === id);
+}
