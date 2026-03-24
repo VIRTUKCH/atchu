@@ -4,6 +4,7 @@ import { QUANT_STRATEGIES } from "../config/quantItems";
 import { baaSignalPayload } from "../utils/baaDataLoaders";
 import { haaSignalPayload } from "../utils/haaDataLoaders";
 import { faberSignalPayload } from "../utils/faberDataLoaders";
+import { allwSignalPayload } from "../utils/allwDataLoaders";
 import QuantStrategyCard from "../components/quant/QuantStrategyCard";
 
 function calcPeriodReturns(equityCurve, curveKey) {
@@ -69,6 +70,10 @@ function getCardData(strategy) {
     return getFaberCardData(strategy);
   }
 
+  if (strategy.id === "risk-parity") {
+    return getAllwCardData(strategy);
+  }
+
   return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
 }
 
@@ -102,6 +107,38 @@ function getFaberCardData(strategy) {
       sharpe: bt.sharpe,
       defensiveRatio: backtest.cashRatio,
       startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getAllwCardData(strategy) {
+  if (!allwSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { performance, equityCurve, latestClose, allocation } = allwSignalPayload;
+  const dateLabel = latestClose?.date ? latestClose.date.slice(0, 7) + " 기준" : "";
+  const returns = calcPeriodReturns(equityCurve, "allw");
+  const allwPerf = performance?.allw;
+
+  return {
+    signal: {
+      text: "정적 배분",
+      variant: "offensive",
+      dateLabel,
+    },
+    portfolio: (allocation || []).map((a) => ({
+      ticker: a.etf,
+      nameKo: a.asset,
+      weight: a.weight,
+    })),
+    backtest: allwPerf ? {
+      cagr: allwPerf.cagr,
+      mdd: allwPerf.mdd,
+      sharpe: allwPerf.sharpe,
+      defensiveRatio: null,
+      startDate: equityCurve?.[0]?.date,
     } : null,
     returns,
   };

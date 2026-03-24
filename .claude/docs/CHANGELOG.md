@@ -1,5 +1,15 @@
 # 작업 기록
 
+### 2026-03-24 (81)
+- **퀀트 허브: 리스크 패리티 / All Weather 전략 구현 (ALLW ETF)**
+  - ALLW 티커를 `style.json`에 "리스크패리티" 타입으로 추가
+  - 파이프라인: `generate_allw_signal.mjs` — ALLW CSV 기반 수익률·MDD·Sharpe 계산, SPY 벤치마크 비교
+  - 교육형 상세 페이지: `AllWeatherPage.jsx` — Dalio의 4계절 프레임워크, 2022년 채권 하락 분석 및 반박, ALLW ETF 명목 노출 설명, 한계점
+  - 프론트엔드: `AllwEquityCurveChart.jsx`, `allwDataLoaders.js`
+  - 허브 통합: `QuantHubPage.jsx`에 `getAllwCardData` 함수 추가, 카드 활성화
+  - 라우트: `/_dev_quant/risk-parity`
+  - `pipeline.sh`에 ALLW 신호 생성 단계 추가
+
 ### 2026-03-24 (80)
 - **퀀트 허브: HAA (Hybrid Asset Allocation) 전략 구현**
   - Wouter Keller(2023) 논문 기반. TIP 단일 카나리아 + 균등 평균 모멘텀 + top 4 분산

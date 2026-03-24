@@ -114,6 +114,17 @@ else
   notify "[${RUN_ID}] FABER SIGNAL FAIL (continuing)"
 fi
 
+# All Weather (ALLW) 전략 신호 생성
+log "Generating All Weather signal"
+notify "[${RUN_ID}] ALLW SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_allw_signal.mjs"; then
+  log "All Weather signal generation completed"
+  notify "[${RUN_ID}] ALLW SIGNAL DONE"
+else
+  log "Warning: All Weather signal generation failed, continuing"
+  notify "[${RUN_ID}] ALLW SIGNAL FAIL (continuing)"
+fi
+
 # 개별주(S&P 500) 파이프라인 실행
 log "Starting stock pipeline"
 notify "[${RUN_ID}] STOCK PIPELINE START"

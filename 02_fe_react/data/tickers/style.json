@@ -241,9 +241,25 @@
       },
       "tags": ["저변동성", "소형주", "팩터", "방어주"]
     }
+    {
+      "type": "리스크패리티",
+      "asset_type": "스타일",
+      "ticker": "ALLW",
+      "name": "SPDR Bridgewater All Weather ETF",
+      "name_ko": "올웨더 (Bridgewater)",
+      "business_area": "Ray Dalio의 Risk Parity 올웨더 포트폴리오",
+      "heatmap_label": "올웨더",
+      "short_description": "다양한 경제 환경에서 균형잡힌 수익을 추구. Risk Parity 기반.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "다자산 통합 포트폴리오로 변동성이 낮고 추세가 비교적 안정적.",
+        "operation_notes": "낮은 변동성 → 긴 신호(200일선) 권장. 2025년 3월 출시로 데이터 짧음."
+      },
+      "tags": ["리스크패리티", "올웨더", "다자산", "Bridgewater", "Ray Dalio", "포트폴리오"]
+    }
   ],
   "type_profile": {
-    "description": "성장·가치·저변동성·퀄리티·모멘텀·동일가중 등 투자 스타일/팩터 기반 자산군",
+    "description": "성장·가치·저변동성·퀄리티·모멘텀·동일가중·리스크패리티 등 투자 스타일/팩터 기반 자산군",
     "up_cycle": "해당 팩터가 시장 환경과 맞아떨어지는 구간 (성장→금리인하, 밸류→경기회복 등)",
     "down_cycle": "반대 팩터가 주도하거나 팩터 간 순환이 빠른 구간"
   }

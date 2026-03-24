@@ -59,8 +59,8 @@ export const QUANT_STRATEGIES = [
     label: "리스크 패리티 / All Weather",
     description:
       "위험 기여도 균등 배분 — 경제 4계절 대응 정적 포트폴리오 (Ray Dalio)",
-    status: "coming_soon",
-    curveKey: null,
+    status: "active",
+    curveKey: "allw",
   },
   {
     id: "trend-following",

@@ -1,0 +1,254 @@
+#!/usr/bin/env node
+/**
+ * All Weather (Risk Parity) 전략 신호 생성
+ *
+ * ALLW ETF(Bridgewater All Weather)의 CSV를 읽어 성과 지표를 계산한다.
+ * 정적 배분 전략이므로 모멘텀/신호 계산 없이, 단순 수익률·MDD·Sharpe만 산출.
+ * 비교 벤치마크: SPY (S&P 500 Buy & Hold)
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
+const CSV_DIR = path.join(ROOT_DIR, "csv");
+const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "allw");
+const OUT_FILE = path.join(SUMMARY_DIR, "allw_signal.json");
+
+/* ── Helpers ── */
+const round2 = (v) =>
+  v === null || v === undefined || !Number.isFinite(v)
+    ? null
+    : Math.round(v * 100) / 100;
+const round3 = (v) =>
+  v === null || v === undefined || !Number.isFinite(v)
+    ? null
+    : Math.round(v * 1000) / 1000;
+
+const parseNumber = (value) => {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+/* ── CSV → 월말 종가 ── */
+function readMonthEnds(ticker) {
+  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
+  if (!fs.existsSync(csvPath)) {
+    console.warn(`[WARN] CSV not found: ${csvPath}`);
+    return null;
+  }
+
+  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
+  if (lines.length < 3) {
+    console.warn(`[WARN] CSV too short: ${ticker}`);
+    return null;
+  }
+
+  const headers = lines[0].split(",").map((h) => h.trim());
+  const records = lines
+    .slice(1)
+    .map((line) => {
+      const parts = line.split(",");
+      const row = {};
+      headers.forEach((h, i) => { row[h] = parts[i]; });
+      return row;
+    })
+    .filter((row) => row.Date)
+    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
+
+  const monthMap = new Map();
+  for (const row of records) {
+    const date = String(row.Date);
+    const ym = date.slice(0, 7);
+    const close = parseNumber(row.Adjusted_close ?? row.Close);
+    if (close === null) continue;
+    monthMap.set(ym, { date, close });
+  }
+
+  return [...monthMap.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
+}
+
+/* ── 기준월 결정 (전월) ── */
+function getReferenceMonth() {
+  const now = new Date();
+  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
+  const year = lastDayPrevMonth.getFullYear();
+  const month = String(lastDayPrevMonth.getMonth() + 1).padStart(2, "0");
+  return `${year}-${month}`;
+}
+
+/* ── 성과 지표 ── */
+function calcPerformance(monthlyReturns) {
+  if (!monthlyReturns || monthlyReturns.length < 2) return null;
+
+  const n = monthlyReturns.length;
+
+  // CAGR (12개월 이상만)
+  let equity = 1;
+  for (const r of monthlyReturns) equity *= 1 + r;
+  const cagr = n >= 12 ? round2((Math.pow(equity, 12 / n) - 1) * 100) : null;
+
+  // MDD
+  let peak = 1;
+  let maxDd = 0;
+  let eq = 1;
+  for (const r of monthlyReturns) {
+    eq *= 1 + r;
+    if (eq > peak) peak = eq;
+    const dd = (eq - peak) / peak;
+    if (dd < maxDd) maxDd = dd;
+  }
+  const mdd = round2(maxDd * 100);
+
+  // Sharpe (12개월 이상만)
+  let sharpe = null;
+  if (n >= 12) {
+    const mean = monthlyReturns.reduce((s, r) => s + r, 0) / n;
+    const variance = monthlyReturns.reduce((s, r) => s + (r - mean) ** 2, 0) / n;
+    const std = Math.sqrt(variance);
+    sharpe = std > 0 ? round3((mean / std) * Math.sqrt(12)) : null;
+  }
+
+  const totalReturn = round2((equity - 1) * 100);
+
+  return { cagr, mdd, sharpe, totalReturn };
+}
+
+/* ── Main ── */
+function main() {
+  console.log("[ALLW] Starting All Weather signal generation...");
+
+  const refYm = getReferenceMonth();
+  console.log(`[ALLW] Reference month: ${refYm}`);
+
+  // ALLW 월말 데이터
+  const allwMonthEnds = readMonthEnds("ALLW");
+  if (!allwMonthEnds || allwMonthEnds.length < 2) {
+    console.warn("[ALLW] Not enough ALLW data. Creating minimal output.");
+    fs.mkdirSync(SUMMARY_DIR, { recursive: true });
+    fs.writeFileSync(
+      OUT_FILE,
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          strategy: {
+            name: "All Weather",
+            author: "Ray Dalio (Bridgewater)",
+            type: "정적 배분 (리스크 패리티)",
+            rebalancing: "분기 1회",
+            etf: "ALLW",
+          },
+          allocation: [
+            { asset: "미국 주식", etf: "SPY/VTI", weight: 30, role: "성장" },
+            { asset: "장기 국채", etf: "TLT", weight: 40, role: "디플레/침체 방어" },
+            { asset: "중기 국채", etf: "IEF", weight: 15, role: "안정성" },
+            { asset: "금", etf: "GLD", weight: 7.5, role: "인플레 헤지" },
+            { asset: "원자재", etf: "DBC", weight: 7.5, role: "인플레 헤지" },
+          ],
+          performance: { allw: null, spy: null },
+          equityCurve: [],
+          latestClose: null,
+          dataMonths: 0,
+        },
+        null,
+        2
+      )
+    );
+    console.log("[ALLW] Minimal output written (no ALLW data yet).");
+    return;
+  }
+
+  // SPY 벤치마크
+  const spyMonthEnds = readMonthEnds("SPY");
+
+  // 공통 기간 결정
+  const allwStart = allwMonthEnds[0].ym;
+  const allwEnd = allwMonthEnds[allwMonthEnds.length - 1].ym;
+  const refEnd = refYm < allwEnd ? refYm : allwEnd;
+
+  const allwFiltered = allwMonthEnds.filter((m) => m.ym <= refEnd);
+  const spyFiltered = spyMonthEnds
+    ? spyMonthEnds.filter((m) => m.ym >= allwStart && m.ym <= refEnd)
+    : [];
+
+  // 월별 수익률
+  const allwReturns = [];
+  for (let i = 1; i < allwFiltered.length; i++) {
+    allwReturns.push(allwFiltered[i].close / allwFiltered[i - 1].close - 1);
+  }
+
+  const spyMap = new Map(spyFiltered.map((m) => [m.ym, m.close]));
+  const spyReturns = [];
+  for (let i = 1; i < allwFiltered.length; i++) {
+    const prev = spyMap.get(allwFiltered[i - 1].ym);
+    const cur = spyMap.get(allwFiltered[i].ym);
+    if (prev && cur) spyReturns.push(cur / prev - 1);
+    else spyReturns.push(0);
+  }
+
+  // Equity curve
+  let eqAllw = 1;
+  let eqSpy = 1;
+  const equityCurve = [{ date: allwFiltered[0].ym, allw: 1.0, spy: 1.0 }];
+  for (let i = 0; i < allwReturns.length; i++) {
+    eqAllw *= 1 + allwReturns[i];
+    eqSpy *= 1 + spyReturns[i];
+    equityCurve.push({
+      date: allwFiltered[i + 1].ym,
+      allw: round3(eqAllw),
+      spy: round3(eqSpy),
+    });
+  }
+
+  // 성과 지표
+  const allwPerf = calcPerformance(allwReturns);
+  const spyPerf = calcPerformance(spyReturns);
+
+  // 최근 종가
+  const lastEntry = allwFiltered[allwFiltered.length - 1];
+  const prevEntry = allwFiltered.length >= 2 ? allwFiltered[allwFiltered.length - 2] : null;
+  const monthReturn = prevEntry
+    ? round2((lastEntry.close / prevEntry.close - 1) * 100)
+    : null;
+
+  const output = {
+    generatedAt: new Date().toISOString(),
+    strategy: {
+      name: "All Weather",
+      author: "Ray Dalio (Bridgewater)",
+      type: "정적 배분 (리스크 패리티)",
+      rebalancing: "분기 1회",
+      etf: "ALLW",
+    },
+    allocation: [
+      { asset: "미국 주식", etf: "SPY/VTI", weight: 30, role: "성장" },
+      { asset: "장기 국채", etf: "TLT", weight: 40, role: "디플레/침체 방어" },
+      { asset: "중기 국채", etf: "IEF", weight: 15, role: "안정성" },
+      { asset: "금", etf: "GLD", weight: 7.5, role: "인플레 헤지" },
+      { asset: "원자재", etf: "DBC", weight: 7.5, role: "인플레 헤지" },
+    ],
+    performance: {
+      allw: allwPerf,
+      spy: spyPerf,
+    },
+    equityCurve,
+    latestClose: {
+      date: lastEntry.date,
+      price: round2(lastEntry.close),
+      monthReturn,
+    },
+    dataMonths: allwFiltered.length,
+  };
+
+  fs.mkdirSync(SUMMARY_DIR, { recursive: true });
+  fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
+  console.log(
+    `[ALLW] Signal written → ${OUT_FILE} (${allwFiltered.length} months, totalReturn: ${allwPerf?.totalReturn ?? "N/A"}%)`
+  );
+}
+
+main();
