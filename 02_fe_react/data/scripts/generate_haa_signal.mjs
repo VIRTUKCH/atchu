@@ -31,6 +31,20 @@ const parseNumber = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
+const readLatestClose = (ticker) => {
+  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
+  if (!fs.existsSync(csvPath)) return null;
+  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
+  if (lines.length < 2) return null;
+  const headers = lines[0].split(",").map((h) => h.trim());
+  const parts = lines[lines.length - 1].split(",");
+  const row = {};
+  headers.forEach((h, i) => { row[h] = parts[i]; });
+  const close = parseNumber(row.Adjusted_close ?? row.Close);
+  return close !== null ? { date: String(row.Date), close } : null;
+};
+
 /* ── Step 1: Read CSV → month-end adjusted close ── */
 const readMonthEnds = (ticker) => {
   const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
@@ -413,6 +427,43 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
     spy: round3(eqSpy),
     sixtyForty: round3(eq6040)
   });
+}
+
+/* ── 부분월(오늘) 포인트 ── */
+const latestSpy = readLatestClose("SPY");
+if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
+  const lastEq = equityCurve[equityCurve.length - 1];
+  const lastRecord = monthlyRecords[monthlyRecords.length - 1];
+  if (latestSpy.date > lastRecord.date) {
+    let partialRet = 0;
+    if (lastRecord.mode === "offensive") {
+      for (const { ticker, weight } of lastRecord.haa) {
+        const c0 = getClose(ticker, lastRecord.ym);
+        const latest = readLatestClose(ticker);
+        if (c0 && latest && c0 > 0) partialRet += (weight / 100) * (latest.close / c0 - 1);
+      }
+    } else {
+      for (const { ticker, weight } of lastRecord.haa) {
+        const c0 = getClose(ticker, lastRecord.ym);
+        const latest = readLatestClose(ticker);
+        if (c0 && latest && c0 > 0) partialRet += (weight / 100) * (latest.close / c0 - 1);
+      }
+    }
+    const spyRef = getClose("SPY", lastRecord.ym);
+    const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
+    let bondPartial = 0;
+    if (bond6040Ticker) {
+      const bLatest = readLatestClose(bond6040Ticker);
+      const bRef = getClose(bond6040Ticker, lastRecord.ym);
+      if (bRef && bLatest && bRef > 0) bondPartial = bLatest.close / bRef - 1;
+    }
+    equityCurve.push({
+      date: latestSpy.date,
+      haa: round3(lastEq.haa * (1 + partialRet)),
+      spy: round3(lastEq.spy * (1 + spyPartial)),
+      sixtyForty: round3(lastEq.sixtyForty * (1 + 0.6 * spyPartial + 0.4 * bondPartial)),
+    });
+  }
 }
 
 // 5) Compute summary metrics

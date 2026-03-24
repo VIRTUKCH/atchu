@@ -51,6 +51,20 @@ const parseNumber = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
+const readLatestClose = (ticker) => {
+  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
+  if (!fs.existsSync(csvPath)) return null;
+  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
+  if (lines.length < 2) return null;
+  const headers = lines[0].split(",").map((h) => h.trim());
+  const parts = lines[lines.length - 1].split(",");
+  const row = {};
+  headers.forEach((h, i) => { row[h] = parts[i]; });
+  const close = parseNumber(row.Adjusted_close ?? row.Close);
+  return close !== null ? { date: String(row.Date), close } : null;
+};
+
 /* ── CSV → 일별 종가 (+ SMA 200 계산) ── */
 function readDailyWithSma(ticker) {
   const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
@@ -442,6 +456,65 @@ function main() {
       spy: round3(eqSpy),
       sixtyForty: round3(eq6040),
     });
+  }
+
+  /* ── 부분월(오늘) 포인트 ── */
+  const latestSpy = readLatestClose("SPY");
+  if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
+    const lastEq = equityCurve[equityCurve.length - 1];
+    const lastRecord = monthlyRecords[monthlyRecords.length - 1];
+    if (latestSpy.date > lastRecord.date) {
+      // 동일가중 + CAGR가중 수익률 동시 계산
+      let partialRet = 0;
+      let partialRetCagr = 0;
+      let cashW = 0;
+      let cashWCagr = 0;
+
+      for (const a of lastRecord.assets) {
+        const meMap = monthEndCache.get(a.ticker);
+        if (!meMap) continue;
+        const c0 = meMap.get(lastRecord.ym);
+        const latest = readLatestClose(a.ticker);
+        if (!c0 || !latest || c0 === 0) continue;
+
+        const assetRet = latest.close / c0 - 1;
+        const equalW = 1 / ASSET_COUNT;
+        const cagrW = cagrWeights.get(a.ticker) || equalW;
+
+        if (a.invested) {
+          partialRet += equalW * assetRet;
+          partialRetCagr += cagrW * assetRet;
+        } else {
+          cashW += equalW;
+          cashWCagr += cagrW;
+        }
+      }
+
+      // 현금 비중의 BIL 수익률
+      const bilRef = bilMap.get(lastRecord.ym);
+      const bilLatest = readLatestClose(CASH_TICKER);
+      const bilPartialRet = bilRef && bilLatest && bilRef > 0 ? bilLatest.close / bilRef - 1 : 0;
+      if (cashW > 0) partialRet += cashW * bilPartialRet;
+      if (cashWCagr > 0) partialRetCagr += cashWCagr * bilPartialRet;
+
+      // SPY B&H
+      const spyRef = spyMeMap?.get(lastRecord.ym);
+      const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
+
+      // 60/40
+      const aggRef = aggMap.get(lastRecord.ym);
+      const aggLatest = readLatestClose("AGG");
+      const aggPartial = aggRef && aggLatest && aggRef > 0 ? aggLatest.close / aggRef - 1 : 0;
+      const sixtyFortyPartial = 0.6 * spyPartial + 0.4 * aggPartial;
+
+      equityCurve.push({
+        date: latestSpy.date,
+        trend: round3(lastEq.trend * (1 + partialRet)),
+        trendCagr: round3(lastEq.trendCagr * (1 + partialRetCagr)),
+        spy: round3(lastEq.spy * (1 + spyPartial)),
+        sixtyForty: round3(lastEq.sixtyForty * (1 + sixtyFortyPartial)),
+      });
+    }
   }
 
   // 성과 지표
