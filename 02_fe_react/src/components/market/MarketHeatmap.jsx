@@ -33,9 +33,9 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
     const data = getPayloadTicker(ticker);
     const items = data?.trendHolding?.items;
     if (!items || items.length === 0) return null;
-    const first = items[0];
-    if (!first || first.days === null || first.days === undefined) return null;
-    return { days: Number(first.days), direction: first.direction };
+    const target = items.find((i) => i.label === "200일선") || items[items.length - 1];
+    if (!target || target.days === null || target.days === undefined) return null;
+    return { days: Number(target.days), direction: target.direction };
   };
   const coreTickers = ["SPY", "QQQ", "DIA"].map((ticker) => {
     const meta = localUniverse.find((item) => String(item.ticker || "").toUpperCase() === ticker);

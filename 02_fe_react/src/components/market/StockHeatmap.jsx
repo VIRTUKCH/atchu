@@ -154,7 +154,8 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
         isAtchuQualified: snap.isAtchuQualified200 === true,
         aboveDays200: Number.isFinite(Number(snap.aboveDays200)) ? Number(snap.aboveDays200) : null,
         trendDays: (() => {
-          const h = data.trendHolding?.items?.[0];
+          const items = data.trendHolding?.items;
+          const h = items?.find((i) => i.label === "200일선") || items?.[items.length - 1];
           return h?.days != null ? { days: Number(h.days), direction: h.direction } : null;
         })(),
         label: item.heatmap_label || item.ticker,
