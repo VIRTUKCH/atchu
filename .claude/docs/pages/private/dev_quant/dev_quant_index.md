@@ -1,9 +1,9 @@
-# 퀀트 엿보기 — /_quant
+# 퀀트 엿보기 — /_dev_quant
 
 ## 접근 방법
 
 - DevPage(`/_dev`) 허브 → "퀀트 엿보기" 카드 클릭
-- 직접 URL 입력 (`/_quant`)
+- 직접 URL 입력 (`/_dev_quant`)
 - PasswordGate + BentoLayout 적용
 - 일반 사용자에게 절대 노출되지 않음. 네비게이션·사이트맵·SEO 모두 제외
 
@@ -22,7 +22,7 @@
 ## 유입 경로
 
 - DevPage(`/_dev`) 허브 → "퀀트 엿보기" 카드 클릭
-- 직접 URL (`/_quant`)
+- 직접 URL (`/_dev_quant`)
 
 ---
 
@@ -30,20 +30,20 @@
 
 | 전략 | 라우트 | 기획 문서 | 상태 |
 |------|--------|----------|------|
-| BAA-A (Aggressive) | `/_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
-| BAA-B (Balanced) | `/_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
-| 섹터 로테이션 | `/_quant/sector` | [dev_quant_sector.md](dev_quant_sector.md) | 기획 중 |
+| BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
+| BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
+| 섹터 로테이션 | `/_dev_quant/sector` | [dev_quant_sector.md](dev_quant_sector.md) | 기획 중 |
 
 ---
 
 ## 페이지 구조 — 허브 → 전략 상세
 
 ```
-/_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
-/_quant/baa-a        → BAA Aggressive 상세
-/_quant/baa-b        → BAA Balanced 상세
-/_quant/sector       → 섹터 로테이션 전략 상세 (예정)
-/_quant/...          → 추후 전략 추가 가능
+/_dev_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
+/_dev_quant/baa-a        → BAA Aggressive 상세
+/_dev_quant/baa-b        → BAA Balanced 상세
+/_dev_quant/sector       → 섹터 로테이션 전략 상세 (예정)
+/_dev_quant/...          → 추후 전략 추가 가능
 ```
 
 ### 왜 허브 → 상세 구조인가
@@ -54,7 +54,7 @@
 
 ---
 
-## 퀀트 허브 (`/_quant`) — "내 전략들이 뭐라고 하나?"
+## 퀀트 허브 (`/_dev_quant`) — "내 전략들이 뭐라고 하나?"
 
 ### 목적
 
@@ -167,7 +167,7 @@ PC:
 export const QUANT_STRATEGIES = [
   {
     id: "baa-a",
-    path: "/_quant/baa-a",
+    path: "/_dev_quant/baa-a",
     label: "BAA-A (Aggressive)",
     description: "G4 top 1 집중 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
@@ -175,7 +175,7 @@ export const QUANT_STRATEGIES = [
   },
   {
     id: "baa-b",
-    path: "/_quant/baa-b",
+    path: "/_dev_quant/baa-b",
     label: "BAA-B (Balanced)",
     description: "G12 top 6 분산 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
@@ -183,7 +183,7 @@ export const QUANT_STRATEGIES = [
   },
   {
     id: "sector",
-    path: "/_quant/sector",
+    path: "/_dev_quant/sector",
     label: "섹터 로테이션",
     description: "GICS 섹터 모멘텀 기반 배분 전략",
     status: "coming_soon",
@@ -202,7 +202,7 @@ export const QUANT_STRATEGIES = [
 
 ### 상호작용
 
-- **활성 전략 카드 클릭** → 해당 전략 상세 페이지로 이동 (예: `/_quant/baa`)
+- **활성 전략 카드 클릭** → 해당 전략 상세 페이지로 이동 (예: `/_dev_quant/baa`)
 - **준비 중 카드** → 클릭 비활성화, 회색 처리
 
 ---
@@ -211,12 +211,12 @@ export const QUANT_STRATEGIES = [
 
 ```jsx
 {/* 퀀트 허브 */}
-<Route path="/_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
+<Route path="/_dev_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
 
 {/* BAA 전략 상세 */}
-<Route path="/_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
-<Route path="/_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
-<Route path="/_quant/baa" element={<Navigate to="/_quant/baa-a" replace />} />
+<Route path="/_dev_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
+<Route path="/_dev_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
+<Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
 ```
 
 ---

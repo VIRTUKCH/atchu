@@ -1,4 +1,4 @@
-# 섹터 로테이션 — `/_quant/sector` (예정)
+# 섹터 로테이션 — `/_dev_quant/sector` (예정)
 
 > 상위 문서: [퀀트 허브](dev_quant_index.md)
 

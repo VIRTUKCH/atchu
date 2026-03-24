@@ -50,17 +50,17 @@
   - 백테스트 결과: 완전 정배열 샤프비율 1.41 (매수후보유 0.45의 3배), t-test p < 0.0001
 
 ### 2026-03-23 (70)
-- **퀀트 엿보기 페이지 v1 구현 (`/_quant`)**
+- **퀀트 엿보기 페이지 v1 구현 (`/_dev_quant`)**
   - BAA(Bold Asset Allocation) 전략 신호/포트폴리오/모멘텀 순위를 보여주는 개발자 전용 비공개 페이지
   - 데이터 파이프라인: `generate_baa_signal.mjs` — CSV에서 13612W 모멘텀, SMA13 상대 모멘텀 계산 → `baa_signal.json` 출력
   - `baa.json` 신규 티커 4종 (EEM, EFA, AGG, BIL) — `hidden: true`로 공개 페이지 미노출
   - `tickerMeta.js`에 `hidden` 플래그 필터링 추가
   - `pipeline.sh`에 BAA 신호 생성 단계 추가
   - 프론트엔드: `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab` + column 컴포넌트 재사용
-  - `AppRoutes.jsx`에 `/_quant` 라우트, `DevPage.jsx`에 허브 링크 추가
+  - `AppRoutes.jsx`에 `/_dev_quant` 라우트, `DevPage.jsx`에 허브 링크 추가
 
 ### 2026-03-23 (69)
-- **퀀트 엿보기 페이지 기획 문서 작성 (`/_quant`)**
+- **퀀트 엿보기 페이지 기획 문서 작성 (`/_dev_quant`)**
   - BAA(Bold Asset Allocation) 전략 결과를 확인하는 개발자 전용 비공개 페이지 기획
   - `.claude/docs/pages/private/dev_quant/` 디렉터리 신규 생성 (index.md, baa.md, sector.md)
   - v1 범위: 섹션 4개 (현재 신호 + 포트폴리오 배분 + 카나리아 모멘텀 + 유니버스별 순위)

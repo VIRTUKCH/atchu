@@ -6,7 +6,7 @@
 export const QUANT_STRATEGIES = [
   {
     id: "baa-a",
-    path: "/_quant/baa-a",
+    path: "/_dev_quant/baa-a",
     label: "BAA-A (Aggressive)",
     description: "G4 top 1 집중 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
@@ -14,7 +14,7 @@ export const QUANT_STRATEGIES = [
   },
   {
     id: "baa-b",
-    path: "/_quant/baa-b",
+    path: "/_dev_quant/baa-b",
     label: "BAA-B (Balanced)",
     description: "G12 top 6 분산 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
@@ -22,7 +22,7 @@ export const QUANT_STRATEGIES = [
   },
   {
     id: "sector",
-    path: "/_quant/sector",
+    path: "/_dev_quant/sector",
     label: "섹터 로테이션",
     description: "GICS 섹터 모멘텀 기반 배분 전략",
     status: "coming_soon",

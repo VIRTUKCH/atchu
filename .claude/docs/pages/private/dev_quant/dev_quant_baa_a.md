@@ -1,4 +1,4 @@
-# BAA-A (Aggressive) — `/_quant/baa-a`
+# BAA-A (Aggressive) — `/_dev_quant/baa-a`
 
 > 상위 문서: [퀀트 허브](dev_quant_index.md)
 > 관련: [BAA-B (Balanced)](dev_quant_baa_b.md)

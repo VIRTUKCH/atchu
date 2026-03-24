@@ -227,7 +227,7 @@ export default function BaaQuantPeekPage({ variant = "aggressive" }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 800, margin: "0 auto", padding: "16px" }}>
-      <ColumnBackLink to="/_quant">← 퀀트 엿보기</ColumnBackLink>
+      <ColumnBackLink to="/_dev_quant">← 퀀트 엿보기</ColumnBackLink>
       <h2 className="panel-title" style={{ fontSize: "clamp(20px, calc(15.8px + 1.1vw), 26px)", marginBottom: 0 }}>
         {vc.label}
       </h2>

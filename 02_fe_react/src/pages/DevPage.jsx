@@ -5,7 +5,7 @@ import { clearDevSession } from "../utils/devAuth";
 const DEV_LINKS = [
   { to: "/_dev_market_overview", label: "개별주 시장 개요", desc: "S&P 500 섹터별 추세 강도, 히트맵, 최근 신호" },
   { to: "/_dev_trend_list", label: "개별주 추세 조회", desc: "S&P 500 종목 리스트 (필터/검색/정렬)" },
-  { to: "/_quant", label: "퀀트 엿보기", desc: "BAA, 섹터 로테이션 등 퀀트 전략 허브" }
+  { to: "/_dev_quant", label: "퀀트 엿보기", desc: "BAA, 섹터 로테이션 등 퀀트 전략 허브" }
 ];
 
 export default function DevPage() {
