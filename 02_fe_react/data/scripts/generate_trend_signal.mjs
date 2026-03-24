@@ -246,6 +246,17 @@ function main() {
   // SPY 월말 종가 (벤치마크)
   const spyMeMap = monthEndCache.get("SPY");
 
+  // SPY 월말 종가 배열 (SMA 계산용)
+  const spyMonthEndsArr = readMonthEnds("SPY") || [];
+
+  // Helper: SPY 10-month SMA at a given YM
+  const calcSpySma10 = (ym) => {
+    const idx = spyMonthEndsArr.findIndex((m) => m.ym === ym);
+    if (idx < 9) return null;
+    const window = spyMonthEndsArr.slice(idx - 9, idx + 1);
+    return window.reduce((s, m) => s + m.close, 0) / 10;
+  };
+
   // 2. 월말 거래일 목록 (SPY 일별 데이터 기준)
   const spyDaily = dailyCache.get("SPY");
   if (!spyDaily) {
@@ -376,10 +387,11 @@ function main() {
   let eqTrend = 1.0;
   let eqTrendCagr = 1.0;
   let eqSpy = 1.0;
+  let eqSpyMa = 1.0;
   let eq6040 = 1.0;
 
   const equityCurve = [];
-  const monthlyReturns = { trend: [], trendCagr: [], spy: [], sixtyForty: [] };
+  const monthlyReturns = { trend: [], trendCagr: [], spy: [], spyMa: [], sixtyForty: [] };
 
   if (monthlyRecords.length > 0) {
     equityCurve.push({
@@ -433,6 +445,10 @@ function main() {
     const spyC1 = spyMeMap?.get(next.ym);
     const spyRet = spyC0 && spyC1 && spyC0 > 0 ? spyC1 / spyC0 - 1 : 0;
 
+    // SPY + 10-month SMA filter
+    const spySma10 = calcSpySma10(cur.ym);
+    const spyMaRet = (spySma10 && spyC0 > spySma10) ? spyRet : 0;
+
     // 60/40
     const aggC0 = aggMap.get(cur.ym);
     const aggC1 = aggMap.get(next.ym);
@@ -442,11 +458,13 @@ function main() {
     eqTrend *= 1 + trendRet;
     eqTrendCagr *= 1 + trendCagrRet;
     eqSpy *= 1 + spyRet;
+    eqSpyMa *= 1 + spyMaRet;
     eq6040 *= 1 + sixtyFortyRet;
 
     monthlyReturns.trend.push(trendRet);
     monthlyReturns.trendCagr.push(trendCagrRet);
     monthlyReturns.spy.push(spyRet);
+    monthlyReturns.spyMa.push(spyMaRet);
     monthlyReturns.sixtyForty.push(sixtyFortyRet);
 
     equityCurve.push({
@@ -550,6 +568,7 @@ function main() {
   const trendMetrics = calcMetrics(monthlyReturns.trend, eqTrend);
   const trendCagrMetrics = calcMetrics(monthlyReturns.trendCagr, eqTrendCagr);
   const spyMetrics = calcMetrics(monthlyReturns.spy, eqSpy);
+  const spyMaMetrics = calcMetrics(monthlyReturns.spyMa, eqSpyMa);
   const sixtyFortyMetrics = calcMetrics(monthlyReturns.sixtyForty, eq6040);
 
   const totalMonths = monthlyRecords.length;
@@ -612,6 +631,7 @@ function main() {
       trend: trendMetrics,
       trendCagr: trendCagrMetrics,
       spy: spyMetrics,
+      spyMa: spyMaMetrics,
       sixtyForty: sixtyFortyMetrics,
       allCashMonths: cashMonths,
       avgInvestedAssets: avgInvested,

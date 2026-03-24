@@ -31,6 +31,15 @@ const parseNumber = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+/** SPY 10개월 이동평균 */
+const calcSpySma10 = (spyData, ym) => {
+  if (!spyData) return null;
+  const idx = spyData.findIndex((m) => m.ym === ym);
+  if (idx < 9) return null;
+  const window = spyData.slice(idx - 9, idx + 1);
+  return window.reduce((s, m) => s + m.close, 0) / 10;
+};
+
 /** CSV 마지막 행에서 최신 거래일 종가 읽기 */
 const readLatestClose = (ticker) => {
   const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
@@ -201,11 +210,17 @@ function main() {
 
   const spyMap = new Map(spyFiltered.map((m) => [m.ym, m.close]));
   const spyReturns = [];
+  const spyMaReturns = [];
   for (let i = 1; i < allwFiltered.length; i++) {
     const prev = spyMap.get(allwFiltered[i - 1].ym);
     const cur = spyMap.get(allwFiltered[i].ym);
-    if (prev && cur) spyReturns.push(cur / prev - 1);
-    else spyReturns.push(0);
+    const spyRet = prev && cur ? cur / prev - 1 : 0;
+    spyReturns.push(spyRet);
+
+    // SPY + 10M SMA 필터
+    const sma10 = calcSpySma10(spyFiltered, allwFiltered[i - 1].ym);
+    const spyMaRet = (sma10 !== null && prev > sma10) ? spyRet : 0;
+    spyMaReturns.push(spyMaRet);
   }
 
   // Equity curve
@@ -243,6 +258,7 @@ function main() {
   // 성과 지표
   const allwPerf = calcPerformance(allwReturns);
   const spyPerf = calcPerformance(spyReturns);
+  const spyMaPerf = calcPerformance(spyMaReturns);
 
   // 최근 종가
   const lastEntry = allwFiltered[allwFiltered.length - 1];
@@ -270,6 +286,7 @@ function main() {
     performance: {
       allw: allwPerf,
       spy: spyPerf,
+      spyMa: spyMaPerf,
     },
     equityCurve,
     latestClose: {

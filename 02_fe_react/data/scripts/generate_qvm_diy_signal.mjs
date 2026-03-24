@@ -41,6 +41,15 @@ const parseNumber = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+/** SPY 10개월 이동평균 */
+const calcSpySma10 = (spyData, ym) => {
+  if (!spyData) return null;
+  const idx = spyData.findIndex((m) => m.ym === ym);
+  if (idx < 9) return null;
+  const window = spyData.slice(idx - 9, idx + 1);
+  return window.reduce((s, m) => s + m.close, 0) / 10;
+};
+
 /* ── CSV → 월말 종가 ── */
 function readMonthEnds(ticker) {
   const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
@@ -216,6 +225,7 @@ function main() {
   const ewReturns = [];
   const momReturns = [];
   const spyReturns = [];
+  const spyMaReturns = [];
   const equityCurve = [];
   const history = [];
   let eqEw = 1, eqMom = 1, eqSpy = 1;
@@ -269,6 +279,10 @@ function main() {
     const spyNext = spyMap.get(nextYm);
     const spyReturn = spyCur && spyNext ? spyNext / spyCur - 1 : 0;
 
+    // SPY + 10M SMA 필터
+    const spySma10 = calcSpySma10(spyFiltered, curYm);
+    const spyMaReturn = (spySma10 !== null && spyCur > spySma10) ? spyReturn : 0;
+
     // ── QVM-EW: 균등 배분 ──
     const ewReturn = factorInfo.reduce((sum, f) => sum + f.monthReturn * (EW_WEIGHT / 100), 0);
     ewReturns.push(ewReturn);
@@ -321,6 +335,7 @@ function main() {
     }
     momReturns.push(momReturn);
     spyReturns.push(spyReturn);
+    spyMaReturns.push(spyMaReturn);
 
     // Equity curve
     eqEw *= 1 + ewReturn;
@@ -353,6 +368,7 @@ function main() {
   const ewPerf = calcPerformance(ewReturns);
   const momPerf = calcPerformance(momReturns);
   const spyPerf = calcPerformance(spyReturns);
+  const spyMaPerf = calcPerformance(spyMaReturns);
 
   // BIL 비중 (QVM-MOM)
   const bilWeight = latestMomAlloc
@@ -379,6 +395,7 @@ function main() {
       qvmEw: ewPerf,
       qvmMom: momPerf,
       spy: spyPerf,
+      spyMa: spyMaPerf,
       equityCurve,
     },
     history: recentHistory,
@@ -407,6 +424,7 @@ function writeMinimalOutput() {
       qvmEw: null,
       qvmMom: null,
       spy: null,
+      spyMa: null,
       equityCurve: [],
     },
     history: [],

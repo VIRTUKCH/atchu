@@ -56,6 +56,15 @@ const round2 = (v) =>
   v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100) / 100;
 const round3 = (v) =>
   v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 1000) / 1000;
+
+/** SPY 10개월 이동평균 */
+const calcSpySma10 = (spyData, ym) => {
+  if (!spyData) return null;
+  const idx = spyData.findIndex((m) => m.ym === ym);
+  if (idx < 9) return null;
+  const window = spyData.slice(idx - 9, idx + 1);
+  return window.reduce((s, m) => s + m.close, 0) / 10;
+};
 const parseNumber = (v) => {
   const p = Number(v);
   return Number.isFinite(p) ? p : null;
@@ -355,8 +364,9 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
   }
 
   // 3) 에쿼티 커브 계산
-  let eqStrat = 1.0, eqSpy = 1.0, eq6040 = 1.0;
+  let eqStrat = 1.0, eqSpy = 1.0, eq6040 = 1.0, eqSpyMa = 1.0;
   const mRet = { strat: [], spy: [], sf: [] };
+  const mRetSpyMa = [];
   const yRet = { strat: new Map(), spy: new Map(), sf: new Map() };
   const equityCurve = [
     { date: records[0].date, [variantKey]: round3(1), spy: round3(1), sixtyForty: round3(1) },
@@ -379,6 +389,10 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
     const spyC1 = getClose("SPY", next.ym);
     const spyRet = spyC0 && spyC1 && spyC0 > 0 ? spyC1 / spyC0 - 1 : 0;
 
+    // SPY + 10M SMA 필터
+    const sma10 = calcSpySma10(tickerData.get("SPY"), cur.ym);
+    const spyMaRet = (sma10 !== null && spyC0 > sma10) ? spyRet : 0;
+
     // 60/40
     const aggC0 = getClose("AGG", cur.ym);
     const aggC1 = getClose("AGG", next.ym);
@@ -388,10 +402,12 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
     eqStrat *= 1 + stratRet;
     eqSpy *= 1 + spyRet;
     eq6040 *= 1 + sfRet;
+    eqSpyMa *= 1 + spyMaRet;
 
     mRet.strat.push(stratRet);
     mRet.spy.push(spyRet);
     mRet.sf.push(sfRet);
+    mRetSpyMa.push(spyMaRet);
 
     const year = next.ym.slice(0, 4);
     for (const [key, ret] of [["strat", stratRet], ["spy", spyRet], ["sf", sfRet]]) {
@@ -441,6 +457,7 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
   stratMetrics.maxAnnualLoss = calcMaxAnnualLoss(yRet.strat);
   const spyMetrics = calcMetrics(mRet.spy, eqSpy);
   const sfMetrics = calcMetrics(mRet.sf, eq6040);
+  const spyMaMetrics = calcMetrics(mRetSpyMa, eqSpyMa);
 
   const totalMonths = records.length;
   const defMonths = records.filter((r) => r.mode === "defensive").length;
@@ -462,6 +479,7 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
       endDate: records[records.length - 1].date,
       [variantKey]: stratMetrics,
       spy: spyMetrics,
+      spyMa: spyMaMetrics,
       sixtyForty: sfMetrics,
       defensiveRatio: round2(defMonths / totalMonths),
       equityCurve,

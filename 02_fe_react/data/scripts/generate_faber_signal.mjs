@@ -150,6 +150,16 @@ for (const [ticker, monthEnds] of tickerData) {
 }
 
 const getClose = (ticker, ym) => tickerData.get(ticker)?.find((m) => m.ym === ym)?.close ?? null;
+
+// Helper: SPY 10-month SMA at a given YM
+const calcSpySma10 = (ym) => {
+  const spyData = tickerData.get("SPY");
+  if (!spyData) return null;
+  const idx = spyData.findIndex((m) => m.ym === ym);
+  if (idx < 9) return null;
+  const window = spyData.slice(idx - 9, idx + 1);
+  return window.reduce((s, m) => s + m.close, 0) / 10;
+};
 const getDate = (ym) => {
   const spyData = tickerData.get("SPY") || [...tickerData.values()][0];
   return spyData?.find((m) => m.ym === ym)?.date ?? `${ym}-28`;
@@ -253,6 +263,7 @@ for (const ym of backtestMonths) {
 // Equity curve
 let eqFaber = 1.0;
 let eqSpy = 1.0;
+let eqSpyMa = 1.0;
 let eq6040 = 1.0;
 
 const bond6040Ticker = tickerData.has("AGG") ? "AGG" : (tickerData.has("IEF") ? "IEF" : null);
@@ -263,7 +274,7 @@ if (bond6040Ticker && !tickerData.has(bond6040Ticker)) {
 }
 
 const equityCurve = [];
-const monthlyReturns = { faberSector: [], spy: [], sixtyForty: [] };
+const monthlyReturns = { faberSector: [], spy: [], spyMa: [], sixtyForty: [] };
 
 if (monthlyRecords.length > 0) {
   equityCurve.push({
@@ -296,6 +307,11 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
   const spyC1 = getClose("SPY", next.ym);
   const spyRet = (spyC0 && spyC1 && spyC0 > 0) ? (spyC1 / spyC0 - 1) : 0;
 
+  // SPY + 10-month SMA filter
+  const spySma10 = calcSpySma10(cur.ym);
+  const spyCloseAtCur = getClose("SPY", cur.ym);
+  const spyMaRet = (spySma10 && spyCloseAtCur > spySma10) ? spyRet : 0;
+
   // 60/40
   let bondRet = 0;
   if (bond6040Ticker) {
@@ -307,10 +323,12 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
 
   eqFaber *= (1 + faberRet);
   eqSpy *= (1 + spyRet);
+  eqSpyMa *= (1 + spyMaRet);
   eq6040 *= (1 + sixtyFortyRet);
 
   monthlyReturns.faberSector.push(faberRet);
   monthlyReturns.spy.push(spyRet);
+  monthlyReturns.spyMa.push(spyMaRet);
   monthlyReturns.sixtyForty.push(sixtyFortyRet);
 
   equityCurve.push({
@@ -384,6 +402,7 @@ const calcMetrics = (returns, finalEquity) => {
 
 const faberMetrics = calcMetrics(monthlyReturns.faberSector, eqFaber);
 const spyMetrics = calcMetrics(monthlyReturns.spy, eqSpy);
+const spyMaMetrics = calcMetrics(monthlyReturns.spyMa, eqSpyMa);
 const sixtyFortyMetrics = calcMetrics(monthlyReturns.sixtyForty, eq6040);
 
 const totalMonths = monthlyRecords.length;
@@ -422,6 +441,7 @@ if (backtestStartDate && monthlyRecords.length > 1) {
     endDate: backtestEndDate,
     faberSector: faberMetrics,
     benchmarkSpy: spyMetrics,
+    benchmarkSpyMa: spyMaMetrics,
     benchmark6040: sixtyFortyMetrics,
     cashRatio,
     equityCurve,

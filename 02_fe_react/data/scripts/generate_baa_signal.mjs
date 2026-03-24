@@ -342,6 +342,16 @@ const getClose = (ticker, ym) => {
   return me?.find((m) => m.ym === ym)?.close ?? null;
 };
 
+// Helper: SPY 10-month SMA at a given YM
+const calcSpySma10 = (ym) => {
+  const spyData = tickerData.get("SPY");
+  if (!spyData) return null;
+  const idx = spyData.findIndex((m) => m.ym === ym);
+  if (idx < 9) return null;
+  const window = spyData.slice(idx - 9, idx + 1);
+  return window.reduce((s, m) => s + m.close, 0) / 10;
+};
+
 // Helper: get the actual trading date for a given YM from SPY (or first available ticker)
 const getDate = (ym) => {
   const spyData = tickerData.get("SPY") || [...tickerData.values()][0];
@@ -462,13 +472,14 @@ for (const ym of backtestMonths) {
 let eqAgg = 1.0;
 let eqBal = 1.0;
 let eqSpy = 1.0;
+let eqSpyMa = 1.0;
 let eq6040 = 1.0;
 
 // Determine which bond ticker to use for 60/40 benchmark
 const bond6040Ticker = tickerData.has("AGG") ? "AGG" : (tickerData.has("IEF") ? "IEF" : null);
 
 const equityCurve = [];
-const monthlyReturns = { aggressive: [], balanced: [], spy: [], sixtyForty: [] };
+const monthlyReturns = { aggressive: [], balanced: [], spy: [], spyMa: [], sixtyForty: [] };
 const yearlyReturns = { aggressive: new Map(), balanced: new Map(), spy: new Map(), sixtyForty: new Map() };
 
 // First entry
@@ -507,6 +518,11 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
   const spyC1 = getClose("SPY", next.ym);
   const spyRet = (spyC0 && spyC1 && spyC0 > 0) ? (spyC1 / spyC0 - 1) : 0;
 
+  // SPY + 10-month SMA filter
+  const spySma10 = calcSpySma10(cur.ym);
+  const spyCloseAtCur = getClose("SPY", cur.ym);
+  const spyMaRet = (spySma10 && spyCloseAtCur > spySma10) ? spyRet : 0;
+
   // 60/40
   let bondRet = 0;
   if (bond6040Ticker) {
@@ -519,11 +535,13 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
   eqAgg *= (1 + aggRet);
   eqBal *= (1 + balRet);
   eqSpy *= (1 + spyRet);
+  eqSpyMa *= (1 + spyMaRet);
   eq6040 *= (1 + sixtyFortyRet);
 
   monthlyReturns.aggressive.push(aggRet);
   monthlyReturns.balanced.push(balRet);
   monthlyReturns.spy.push(spyRet);
+  monthlyReturns.spyMa.push(spyMaRet);
   monthlyReturns.sixtyForty.push(sixtyFortyRet);
 
   // Track yearly returns for max annual loss
@@ -628,6 +646,7 @@ const calcMaxAnnualLoss = (yearMap) => {
 const aggMetrics = calcMetrics(monthlyReturns.aggressive, eqAgg);
 const balMetrics = calcMetrics(monthlyReturns.balanced, eqBal);
 const spyMetrics = calcMetrics(monthlyReturns.spy, eqSpy);
+const spyMaMetrics = calcMetrics(monthlyReturns.spyMa, eqSpyMa);
 const sixtyFortyMetrics = calcMetrics(monthlyReturns.sixtyForty, eq6040);
 
 aggMetrics.maxAnnualLoss = calcMaxAnnualLoss(yearlyReturns.aggressive);
@@ -673,6 +692,7 @@ if (backtestStartDate && monthlyRecords.length > 1) {
     aggressive: { cagr: aggMetrics.cagr, mdd: aggMetrics.mdd, sharpe: aggMetrics.sharpe, sortino: aggMetrics.sortino, maxAnnualLoss: aggMetrics.maxAnnualLoss },
     balanced: { cagr: balMetrics.cagr, mdd: balMetrics.mdd, sharpe: balMetrics.sharpe, sortino: balMetrics.sortino, maxAnnualLoss: balMetrics.maxAnnualLoss },
     benchmarkSpy: { cagr: spyMetrics.cagr, mdd: spyMetrics.mdd, sharpe: spyMetrics.sharpe, sortino: spyMetrics.sortino },
+    benchmarkSpyMa: { cagr: spyMaMetrics.cagr, mdd: spyMaMetrics.mdd, sharpe: spyMaMetrics.sharpe, sortino: spyMaMetrics.sortino },
     benchmark6040: { cagr: sixtyFortyMetrics.cagr, mdd: sixtyFortyMetrics.mdd, sharpe: sixtyFortyMetrics.sharpe, sortino: sixtyFortyMetrics.sortino },
     defensiveRatio,
     equityCurve
