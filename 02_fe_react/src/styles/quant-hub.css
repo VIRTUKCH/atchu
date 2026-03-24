@@ -23,6 +23,18 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* 티어 배지 */
+.quant-tier-badge {
+  font-size: clamp(11px, calc(9.8px + 0.3vw), 13px);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.quant-tier-badge--1 { background: var(--accent-green); color: white; }
+.quant-tier-badge--2 { background: var(--accent-blue); color: white; }
+.quant-tier-badge--3 { background: var(--line); color: var(--muted); }
+
 .quant-card--disabled {
   opacity: 0.5;
   cursor: default;

@@ -38,6 +38,11 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
       {/* Head */}
       <div className="quant-card-head">
         <span className="ticker-pill">{strategy.label}</span>
+        {strategy.tierLabel && (
+          <span className={`quant-tier-badge quant-tier-badge--${strategy.tier}`}>
+            {strategy.tierLabel}
+          </span>
+        )}
       </div>
       <div className="quant-card-desc">{strategy.description}</div>
       <div className="quant-card-signal-row">
