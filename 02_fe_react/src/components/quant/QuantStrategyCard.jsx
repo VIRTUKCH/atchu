@@ -20,11 +20,14 @@ function ReturnBox({ period, value }) {
   );
 }
 
-function StatsRow({ label, value, color }) {
+function StatsRow({ label, value, color, spyValue, spyColor }) {
   return (
     <div className="quant-stats-row">
       <dt>{label}</dt>
       <dd style={color ? { color } : undefined}>{value}</dd>
+      {spyValue !== undefined && (
+        <dd className="quant-stats-spy" style={spyColor ? { color: spyColor } : undefined}>{spyValue}</dd>
+      )}
     </div>
   );
 }
@@ -92,20 +95,40 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
           <div className="quant-card-right">
             {backtest && (
               <dl className="quant-stats-dl">
+                {backtest.spySharpe != null && (
+                  <div className="quant-stats-header">
+                    <span />
+                    <span>전략</span>
+                    <span>SPY</span>
+                  </div>
+                )}
                 <StatsRow
                   label="CAGR"
                   value={`${backtest.cagr >= 0 ? "+" : ""}${backtest.cagr}%`}
                   color={backtest.cagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
+                  spyValue={backtest.spyCagr != null ? `${backtest.spyCagr >= 0 ? "+" : ""}${backtest.spyCagr}%` : undefined}
+                  spyColor={backtest.spyCagr >= 0 ? "var(--accent-green)" : "var(--accent-red)"}
                 />
                 <StatsRow
                   label="MDD"
                   value={`${backtest.mdd}%`}
                   color="var(--accent-red)"
+                  spyValue={backtest.spyMdd != null ? `${backtest.spyMdd}%` : undefined}
+                  spyColor="var(--accent-red)"
                 />
-                <StatsRow label="샤프비율" value={backtest.sharpe} />
+                <StatsRow
+                  label="샤프"
+                  value={backtest.sharpe}
+                  spyValue={backtest.spySharpe}
+                />
+                <StatsRow
+                  label="소르티노"
+                  value={backtest.sortino}
+                  spyValue={backtest.spySortino}
+                />
                 {backtest.startDate && (
                   <StatsRow
-                    label="데이터 시작"
+                    label="기간"
                     value={`${backtest.startDate.slice(0, 10)}~`}
                   />
                 )}
