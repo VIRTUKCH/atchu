@@ -30,9 +30,9 @@
 
 | 전략 | 라우트 | 기획 문서 | 상태 |
 |------|--------|----------|------|
-| BAA-A (Aggressive) | `/_quant/baa-a` | [baa-a.md](baa-a.md) | 구현 완료 |
-| BAA-B (Balanced) | `/_quant/baa-b` | [baa-b.md](baa-b.md) | 구현 완료 |
-| 섹터 로테이션 | `/_quant/sector` | [sector.md](sector.md) | 기획 중 |
+| BAA-A (Aggressive) | `/_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
+| BAA-B (Balanced) | `/_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
+| 섹터 로테이션 | `/_quant/sector` | [dev_quant_sector.md](dev_quant_sector.md) | 기획 중 |
 
 ---
 

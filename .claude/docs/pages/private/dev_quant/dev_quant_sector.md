@@ -1,6 +1,6 @@
 # 섹터 로테이션 — `/_quant/sector` (예정)
 
-> 상위 문서: [퀀트 허브 index.md](index.md)
+> 상위 문서: [퀀트 허브](dev_quant_index.md)
 
 채호님이 개발 중인 자체 전략. 상세 설계는 전략 정의 후 추가 예정.
 

@@ -1,7 +1,7 @@
 # BAA-B (Balanced) — `/_quant/baa-b`
 
-> 상위 문서: [퀀트 허브 index.md](index.md)
-> 관련: [BAA-A (Aggressive)](baa-a.md)
+> 상위 문서: [퀀트 허브](dev_quant_index.md)
+> 관련: [BAA-A (Aggressive)](dev_quant_baa_a.md)
 
 ## 전략 요약
 
