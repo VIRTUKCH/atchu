@@ -170,7 +170,8 @@ function BacktestSection({ backtest, variantConfig }) {
 function HistorySection({ history, historyKey }) {
   if (!history || history.length === 0) return null;
   const [showAll, setShowAll] = React.useState(false);
-  const visible = showAll ? history : history.slice(0, 12);
+  const sorted = [...history].reverse();
+  const visible = showAll ? sorted : sorted.slice(0, 12);
   return (
     <div className="panel-card" style={{ padding: "20px" }}>
       <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
