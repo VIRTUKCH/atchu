@@ -14,11 +14,41 @@ import {
   toRecentShape,
   loadStockDetailAnalytics
 } from "../utils/stockDataLoaders";
+import {
+  tickerModules as etfTickerModules,
+  latestSnapshotPayload as etfSnapshotPayload,
+  csvModules as etfCsvModules
+} from "../utils/dataLoaders";
+import {
+  buildLocalTickers,
+  buildMockTickers
+} from "../utils/tickerMeta";
+import { toRecentShape as etfToRecentShape, createAppDataAdapters } from "../utils/appDataAdapters";
 import { isStaleCloseByUsMarketDate } from "../utils/marketDate";
 import {
   formatPrice,
   formatSignedPercent
 } from "../utils/format";
+
+// --- ETF 데이터 (빌드 시 eager load) ---
+const etfLocalTickers = buildLocalTickers(etfTickerModules);
+const etfTickers = buildMockTickers(etfLocalTickers);
+const etfTickerMetaMap = new Map(
+  etfTickers
+    .filter((item) => item?.ticker)
+    .map((item) => [item.ticker.toUpperCase(), item])
+);
+const etfSnapshotMap = (() => {
+  const map = {};
+  const tickers = etfSnapshotPayload?.tickers;
+  if (tickers && typeof tickers === "object") {
+    Object.entries(tickers).forEach(([key, val]) => {
+      map[key.toUpperCase()] = val?.snapshot || null;
+    });
+  }
+  return map;
+})();
+const etfAdapters = createAppDataAdapters({ latestSnapshotPayload: etfSnapshotPayload, csvModules: etfCsvModules });
 
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
@@ -45,9 +75,10 @@ export default function StockDetailPage() {
   const [detailAnalytics, setDetailAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const meta = stockTickerMetaMap.get(key);
-  const snapshot = stockSnapshotMap[key] || null;
-  const recentData = toRecentShape(snapshot);
+  const isEtf = etfTickerMetaMap.has(key) && !stockTickerMetaMap.has(key);
+  const meta = isEtf ? etfTickerMetaMap.get(key) : stockTickerMetaMap.get(key);
+  const snapshot = isEtf ? (etfSnapshotMap[key] || null) : (stockSnapshotMap[key] || null);
+  const recentData = isEtf ? etfToRecentShape(snapshot) : toRecentShape(snapshot);
   const changeValue = snapshot?.percentChangeFromPreviousClose;
   const marketDateLabel = snapshot?.dataDateMarket || null;
   const closeStatus = isStaleCloseByUsMarketDate(null, marketDateLabel);
@@ -55,11 +86,12 @@ export default function StockDetailPage() {
   useEffect(() => {
     setLoading(true);
     setDetailAnalytics(null);
-    loadStockDetailAnalytics(key)
+    const loadFn = isEtf ? etfAdapters.loadLocalDetailAnalytics : loadStockDetailAnalytics;
+    loadFn(key)
       .then((analytics) => setDetailAnalytics(analytics))
       .catch(() => setDetailAnalytics(null))
       .finally(() => setLoading(false));
-  }, [key]);
+  }, [key, isEtf]);
 
   const chartSeries = detailAnalytics?.chartSeries || {};
   const crossingHistory = detailAnalytics?.crossingHistory || { items: [] };
