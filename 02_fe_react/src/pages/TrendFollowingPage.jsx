@@ -328,7 +328,7 @@ export default function TrendFollowingPage() {
   if (!trendSignalPayload) {
     return (
       <div className="panel-card" style={{ padding: 32, textAlign: "center" }}>
-        <h2 className="panel-title">트렌드 팔로잉 / CTA</h2>
+        <h2 className="panel-title">CTA</h2>
         <p style={{ marginTop: 12, color: "var(--muted)" }}>
           트렌드 팔로잉 신호 데이터가 아직 생성되지 않았습니다.<br />
           파이프라인을 실행하면 자동으로 생성됩니다.
@@ -343,7 +343,7 @@ export default function TrendFollowingPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 800, margin: "0 auto", padding: "16px" }}>
       <ColumnBackLink to="/_dev_quant">← 퀀트 엿보기</ColumnBackLink>
       <h2 className="panel-title" style={{ fontSize: "clamp(20px, calc(15.8px + 1.1vw), 26px)", marginBottom: 0 }}>
-        트렌드 팔로잉 / CTA
+        CTA
       </h2>
       <p style={{ color: "var(--muted)", fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)", margin: 0 }}>
         9개 자산군 ETF에 앗추 필터 적용 + 동일 비중 — 월가 방법론의 개인 투자자용 간소화

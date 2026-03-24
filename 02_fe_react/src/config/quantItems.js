@@ -21,7 +21,7 @@ export const QUANT_STRATEGIES = [
   {
     id: "trend-following",
     path: "/_dev_quant/trend-following",
-    label: "트렌드 팔로잉 / CTA",
+    label: "CTA",
     description:
       "9개 자산군 앗추 필터 + 동일 비중 — 월가 방법론의 개인 투자자용 간소화",
     status: "active",
