@@ -125,6 +125,17 @@ else
   notify "[${RUN_ID}] ALLW SIGNAL FAIL (continuing)"
 fi
 
+# QVM 멀티팩터 전략 신호 생성
+log "Generating QVM multi-factor signal"
+notify "[${RUN_ID}] QVM SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_qvm_signal.mjs"; then
+  log "QVM signal generation completed"
+  notify "[${RUN_ID}] QVM SIGNAL DONE"
+else
+  log "Warning: QVM signal generation failed, continuing"
+  notify "[${RUN_ID}] QVM SIGNAL FAIL (continuing)"
+fi
+
 # 트렌드 팔로잉 전략 신호 생성
 log "Generating Trend Following signal"
 notify "[${RUN_ID}] TREND SIGNAL START"

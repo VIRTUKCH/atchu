@@ -1,5 +1,17 @@
 # 작업 기록
 
+### 2026-03-24 (85)
+- **경기순환 섹터 로테이션 전략 구현 — 2티어 전략 (Sam Stovall)**
+  - `generate_business_cycle_signal.mjs`: SPY 6M 모멘텀 + IEF/SHY 비율로 경기 4국면 판단 → 국면별 강세 섹터 자동 배분 + 백테스트
+  - 결과: CAGR 9.55%, MDD -40.54%, Sharpe 0.67 (SPY MDD -50.78% 대비 낮은 위험)
+  - 국면별 섹터 매핑: 회복기(XLF+XLI), 호황기(XLK+XLY), 둔화기(XLE+XLV+XLP), 침체기(XLU+XLV+XLP)
+  - `BusinessCyclePage.jsx`: 2×2 국면 그리드 시각화 + 포트폴리오 + 백테스트 + 히스토리
+  - `BusinessCycleEquityCurveChart.jsx`: 3선 에쿼티 커브 (경기순환/SPY/60-40)
+  - `quantItems.js`: business-cycle → active, curveKey "businessCycle"
+  - `QuantHubPage.jsx`: `getBusinessCycleCardData` 핸들러 추가
+  - `pipeline.sh`: 경기순환 신호 생성 단계 추가
+  - `TrendFollowingPage.jsx`: ColumnKeyFactGrid import 경로 수정 (기존 빌드 에러 수정)
+
 ### 2026-03-24 (84)
 - **트렌드 팔로잉 / CTA 교육형 전략 구현 — 1티어 전략**
   - `generate_trend_signal.mjs`: 9개 자산군 ETF(SPY/TLT/IEF/GLD/DBC/EFA/EEM/TIP/VNQ) × 앗추 필터(200일선, 20거래일 중 16일) 신호 생성 + 백테스트

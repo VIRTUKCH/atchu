@@ -35,8 +35,8 @@ export const QUANT_STRATEGIES = [
     label: "멀티팩터 QVM",
     description:
       "Quality + Value + Momentum 결합 종목 선별 — AQR 시장중립 방식",
-    status: "coming_soon",
-    curveKey: null,
+    status: "active",
+    curveKey: "qvml",
     tier: 1,
     tierLabel: "1티어 (기관 검증)",
   },

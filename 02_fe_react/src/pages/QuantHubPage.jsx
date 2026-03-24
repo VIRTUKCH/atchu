@@ -5,6 +5,7 @@ import { baaSignalPayload } from "../utils/baaDataLoaders";
 import { haaSignalPayload } from "../utils/haaDataLoaders";
 import { faberSignalPayload } from "../utils/faberDataLoaders";
 import { allwSignalPayload } from "../utils/allwDataLoaders";
+import { qvmSignalPayload } from "../utils/qvmDataLoaders";
 import { dmSignalPayload } from "../utils/dmDataLoaders";
 import { trendSignalPayload } from "../utils/trendDataLoaders";
 import { businessCycleSignalPayload } from "../utils/businessCycleDataLoaders";
@@ -86,6 +87,10 @@ function getCardData(strategy) {
 
   if (strategy.id === "business-cycle") {
     return getBusinessCycleCardData(strategy);
+  }
+
+  if (strategy.id === "multi-factor") {
+    return getQvmCardData(strategy);
   }
 
   return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
@@ -224,6 +229,33 @@ function getBusinessCycleCardData(strategy) {
       mdd: bt.mdd,
       sharpe: bt.sharpe,
       startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getQvmCardData(strategy) {
+  if (!qvmSignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+
+  const { performance, equityCurve, latestClose } = qvmSignalPayload;
+  const dateLabel = latestClose?.date ? latestClose.date.slice(0, 7) + " 기준" : "";
+  const returns = calcPeriodReturns(equityCurve, "qvml");
+  const qvmlPerf = performance?.qvml;
+
+  return {
+    signal: {
+      text: "통합 팩터",
+      variant: "offensive",
+      dateLabel,
+    },
+    portfolio: [{ ticker: "QVML", nameKo: "S&P 500 QVM 멀티팩터", weight: 100 }],
+    backtest: qvmlPerf ? {
+      cagr: qvmlPerf.cagr,
+      mdd: qvmlPerf.mdd,
+      sharpe: qvmlPerf.sharpe,
+      startDate: equityCurve?.[0]?.date,
     } : null,
     returns,
   };
