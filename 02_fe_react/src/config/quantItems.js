@@ -53,6 +53,28 @@ export const QUANT_STRATEGIES = [
     tier: 1,
     tierLabel: "1티어 (기관 검증)",
   },
+  {
+    id: "qvm-ew",
+    path: "/_dev_quant/qvm-ew",
+    label: "QVM-EW (균등 배분)",
+    description:
+      "QUAL+VLUE+MTUM 33% 균등 — 팩터 ETF를 직접 섞는 단순 혼합",
+    status: "active",
+    curveKey: "qvmEw",
+    tier: 1,
+    tierLabel: "1티어 (기관 검증)",
+  },
+  {
+    id: "qvm-mom",
+    path: "/_dev_quant/qvm-mom",
+    label: "QVM-MOM (모멘텀 로테이션)",
+    description:
+      "QUAL+VLUE+MTUM 12-1M 모멘텀 순위 50/30/20 + 10M SMA 필터",
+    status: "active",
+    curveKey: "qvmMom",
+    tier: 1,
+    tierLabel: "1티어 (기관 검증)",
+  },
 
   /* ── 2티어 (전문가 검증) — 업계 전문가 체계화, 소규모 펀드 운용 ── */
   {

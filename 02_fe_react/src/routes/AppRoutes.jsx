@@ -94,6 +94,7 @@ const QuantHubPage = React.lazy(() => import("../pages/QuantHubPage"));
 const DualMomentumPage = React.lazy(() => import("../pages/DualMomentumPage"));
 const BusinessCyclePage = React.lazy(() => import("../pages/BusinessCyclePage"));
 const QvmPage = React.lazy(() => import("../pages/QvmPage"));
+const QvmDiyPage = React.lazy(() => import("../pages/QvmDiyPage"));
 
 // 칼럼 페이지 — 전략 심화
 const BuyHoldVsTrendPage = React.lazy(() => import("../pages/columns/BuyHoldVsTrendPage"));
@@ -259,6 +260,8 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_dev_quant/dm-sector" element={<BentoLayout><PasswordGate><DualMomentumPage variant="sector" /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/business-cycle" element={<BentoLayout><PasswordGate><BusinessCyclePage /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/multi-factor" element={<BentoLayout><PasswordGate><QvmPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/qvm-ew" element={<BentoLayout><PasswordGate><QvmDiyPage variant="qvmEw" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant/qvm-mom" element={<BentoLayout><PasswordGate><QvmDiyPage variant="qvmMom" /></PasswordGate></BentoLayout>} />
         <Route path="/_dev_quant/dual-momentum" element={<Navigate to="/_dev_quant/dm-gem" replace />} />
         <Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
         {/* 기존 URL 리다이렉트 */}

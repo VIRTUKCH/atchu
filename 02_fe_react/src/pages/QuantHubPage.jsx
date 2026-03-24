@@ -6,6 +6,7 @@ import { haaSignalPayload } from "../utils/haaDataLoaders";
 import { faberSignalPayload } from "../utils/faberDataLoaders";
 import { allwSignalPayload } from "../utils/allwDataLoaders";
 import { qvmSignalPayload } from "../utils/qvmDataLoaders";
+import { qvmDiySignalPayload } from "../utils/qvmDiyDataLoaders";
 import { dmSignalPayload } from "../utils/dmDataLoaders";
 import { trendSignalPayload } from "../utils/trendDataLoaders";
 import { businessCycleSignalPayload } from "../utils/businessCycleDataLoaders";
@@ -91,6 +92,10 @@ function getCardData(strategy) {
 
   if (strategy.id === "multi-factor") {
     return getQvmCardData(strategy);
+  }
+
+  if (strategy.id === "qvm-ew" || strategy.id === "qvm-mom") {
+    return getQvmDiyCardData(strategy);
   }
 
   return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
@@ -249,6 +254,34 @@ function getBusinessCycleCardData(strategy) {
       mdd: bt.mdd,
       sharpe: bt.sharpe,
       startDate: backtest.startDate,
+    } : null,
+    returns,
+  };
+}
+
+function getQvmDiyCardData(strategy) {
+  if (!qvmDiySignalPayload) {
+    return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
+  }
+  const variantKey = strategy.curveKey;
+  const portfolio = qvmDiySignalPayload.portfolios?.[variantKey]?.allocations || [];
+  const bt = qvmDiySignalPayload.backtest?.[variantKey];
+  const returns = calcPeriodReturns(qvmDiySignalPayload.backtest?.equityCurve, variantKey);
+  const dateLabel = qvmDiySignalPayload.signal?.rebalanceDate
+    ? String(qvmDiySignalPayload.signal.rebalanceDate).slice(0, 7) + " 월말 기준" : "";
+
+  return {
+    signal: {
+      text: variantKey === "qvmEw" ? "균등 배분" : "모멘텀 로테이션",
+      variant: "offensive",
+      dateLabel,
+    },
+    portfolio: portfolio.map((a) => ({ ticker: a.ticker, nameKo: a.nameKo, weight: a.weight })),
+    backtest: bt ? {
+      cagr: bt.cagr,
+      mdd: bt.mdd,
+      sharpe: bt.sharpe,
+      startDate: qvmDiySignalPayload.backtest?.startDate,
     } : null,
     returns,
   };

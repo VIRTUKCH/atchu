@@ -43,6 +43,8 @@
 | CTA (Commodity Trading Advisor) 동일가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
 | CTA (Commodity Trading Advisor) CAGR가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
 | 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
+| QVM-EW (균등 배분) | `/_dev_quant/qvm-ew` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
+| QVM-MOM (모멘텀 로테이션) | `/_dev_quant/qvm-mom` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
 
 ---
 

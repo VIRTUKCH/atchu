@@ -136,6 +136,17 @@ else
   notify "[${RUN_ID}] QVM SIGNAL FAIL (continuing)"
 fi
 
+# QVM DIY (EW + MOM) 전략 신호 생성
+log "Generating QVM DIY signal"
+notify "[${RUN_ID}] QVM_DIY SIGNAL START"
+if "${node_cmd}" "${ROOT_DIR}/scripts/generate_qvm_diy_signal.mjs"; then
+  log "QVM DIY signal generation completed"
+  notify "[${RUN_ID}] QVM_DIY SIGNAL DONE"
+else
+  log "Warning: QVM DIY signal generation failed, continuing"
+  notify "[${RUN_ID}] QVM_DIY SIGNAL FAIL (continuing)"
+fi
+
 # 트렌드 팔로잉 전략 신호 생성
 log "Generating Trend Following signal"
 notify "[${RUN_ID}] TREND SIGNAL START"

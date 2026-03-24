@@ -121,11 +121,31 @@
 6. 멀티팩터 ETF의 현실 (롱숏 vs 롱온리)
 7. 한계점 + 면책 조항
 
-## 향후 계획 — Phase 2: DIY QVM (미구현)
+## Phase 2: DIY QVM — QVM-EW + QVM-MOM (구현 완료)
 
-- **QVM-EW**: QUAL 33% + VLUE 33% + MTUM 33% 균등 배분, 월 리밸런싱
-- **QVM-MOM**: 3개 ETF 12-1개월 모멘텀 순위 → 50/30/20 배분
-- "기관 통합(QVML) vs 단순 혼합(EW) vs 적극 로테이션(MOM)" 3검 비교
+### 두 변형
+| | QVM-EW | QVM-MOM |
+|---|---|---|
+| 배분 | QUAL/VLUE/MTUM 33% 균등 | 12-1M 모멘텀 순위 50/30/20 |
+| 추세 필터 | 없음 (항상 투자) | 10개월 SMA, 탈락 시 BIL 대체 |
+| CAGR | 12.84% | 9.40% |
+| MDD | -25.92% | **-15.13%** |
+| Sharpe | 0.893 | **0.908** |
+| 기간 | 2013-08 ~ 2026-02 (139개월) | 동일 |
+
+### 파일 구성
+| 파일 | 용도 |
+|------|------|
+| `data/scripts/generate_qvm_diy_signal.mjs` | EW+MOM 신호 생성 + 백테스트 |
+| `data/summary/qvm/qvm_diy_signal.json` | 신호 JSON |
+| `src/utils/qvmDiyDataLoaders.js` | eager 데이터 로더 |
+| `src/pages/QvmDiyPage.jsx` | variant prop 기반 상세 페이지 |
+| `src/components/qvm/QvmDiyEquityCurveChart.jsx` | 에쿼티 커브 차트 |
+
+### 3검 비교 결과 (2021-07 ~ 2026-02, QVML 존재 기간)
+- **QVML(기관 통합)**: CAGR 12.25%, MDD -22.84% — 종목 수준에서 Q+V+M 스코어링
+- **QVM-EW(단순 혼합)**: 비슷한 수익, 약간 더 높은 MDD
+- **QVM-MOM(적극 로테이션)**: 낮은 수익이지만 MDD 크게 감소, Sharpe 유사
 
 ## 참고 자료
 

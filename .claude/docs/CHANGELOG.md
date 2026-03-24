@@ -1,5 +1,15 @@
 # 작업 기록
 
+### 2026-03-24 (89)
+- **멀티팩터 QVM Phase 2: QVM-EW + QVM-MOM DIY 두 변형 구현**
+  - `generate_qvm_diy_signal.mjs`: QUAL+VLUE+MTUM 3팩터 ETF 조합 백테스트 (2013-08~, 139개월)
+  - QVM-EW: 33% 균등 배분 (CAGR 12.84%, MDD -25.92%, Sharpe 0.893)
+  - QVM-MOM: 12-1M 모멘텀 순위 50/30/20 + 10M SMA 필터 (CAGR 9.4%, MDD -15.13%, Sharpe 0.908)
+  - `QvmDiyPage.jsx`: variant prop 기반 상세 페이지 (BAA 듀얼 변형 패턴)
+  - `QvmDiyEquityCurveChart.jsx`: variant별 색상 전환 에쿼티 커브
+  - `quantItems.js`: qvm-ew, qvm-mom 2개 항목 추가 (1티어)
+  - AQR "섞지 말고 통합하라" 검증: QVML(기관) vs EW(혼합) vs MOM(로테이션) 3검 비교 완성
+
 ### 2026-03-24 (88)
 - **경기순환 섹터 로테이션: 국면 판단 로직 개선 (SPY 6M+IEF/SHY → 13612W)**
   - 기존: SPY 6M 수익률 + IEF/SHY 비율 → 국면 분포 편향 (회복 44%, 둔화 6%)
