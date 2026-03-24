@@ -77,6 +77,10 @@ const ETF_GROUP_ORDER = [
 ];
 const etfGroupRank = new Map(ETF_GROUP_ORDER.map((g, i) => [g, i + 100]));
 
+// 최상단 고정 티커 (대표 지수 ETF)
+const PINNED_TICKERS = ["SPY", "QQQ", "DIA"];
+const pinnedRank = new Map(PINNED_TICKERS.map((t, i) => [t, i]));
+
 const CAGR_STRATEGY_LABEL_MAP = {
   200: "200일선",
   "200-20of16": "앗추 필터",
@@ -361,6 +365,13 @@ export default function StockListPage() {
     };
 
     return tickers.sort((a, b) => {
+      // 고정 티커는 항상 최상단
+      const aPinned = pinnedRank.has(a);
+      const bPinned = pinnedRank.has(b);
+      if (aPinned && bPinned) return pinnedRank.get(a) - pinnedRank.get(b);
+      if (aPinned) return -1;
+      if (bPinned) return 1;
+
       if (sortMode === "group") {
         const aIsEtf = isEtf(a);
         const bIsEtf = isEtf(b);
