@@ -25,8 +25,8 @@ function buildRows(allocations) {
   });
 }
 
-export default function BaaPortfolioTab({ portfolios }) {
-  const [tab, setTab] = useState("aggressive");
+export default function BaaPortfolioTab({ portfolios, defaultTab = "aggressive" }) {
+  const [tab, setTab] = useState(defaultTab);
   const current = portfolios?.[tab];
   const allocations = current?.allocations || [];
 

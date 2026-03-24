@@ -5,11 +5,20 @@
  */
 export const QUANT_STRATEGIES = [
   {
-    id: "baa",
-    path: "/_quant/baa",
-    label: "BAA (Bold Asset Allocation)",
-    description: "전술적 자산배분 — 카나리아 모멘텀 기반 공격/방어 전환",
+    id: "baa-a",
+    path: "/_quant/baa-a",
+    label: "BAA-A (Aggressive)",
+    description: "G4 top 1 집중 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
+    curveKey: "aggressive",
+  },
+  {
+    id: "baa-b",
+    path: "/_quant/baa-b",
+    label: "BAA-B (Balanced)",
+    description: "G12 top 6 분산 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
+    status: "active",
+    curveKey: "balanced",
   },
   {
     id: "sector",
@@ -17,6 +26,7 @@ export const QUANT_STRATEGIES = [
     label: "섹터 로테이션",
     description: "GICS 섹터 모멘텀 기반 배분 전략",
     status: "coming_soon",
+    curveKey: null,
   },
 ];
 

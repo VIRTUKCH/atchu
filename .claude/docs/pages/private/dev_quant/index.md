@@ -30,7 +30,8 @@
 
 | 전략 | 라우트 | 기획 문서 | 상태 |
 |------|--------|----------|------|
-| BAA (Bold Asset Allocation) | `/_quant/baa` | [baa.md](baa.md) | 구현 완료 |
+| BAA-A (Aggressive) | `/_quant/baa-a` | [baa-a.md](baa-a.md) | 구현 완료 |
+| BAA-B (Balanced) | `/_quant/baa-b` | [baa-b.md](baa-b.md) | 구현 완료 |
 | 섹터 로테이션 | `/_quant/sector` | [sector.md](sector.md) | 기획 중 |
 
 ---
@@ -38,8 +39,9 @@
 ## 페이지 구조 — 허브 → 전략 상세
 
 ```
-/_quant              → 퀀트 허브 (전략 카드 리스트)
-/_quant/baa          → BAA 전략 상세
+/_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
+/_quant/baa-a        → BAA Aggressive 상세
+/_quant/baa-b        → BAA Balanced 상세
 /_quant/sector       → 섹터 로테이션 전략 상세 (예정)
 /_quant/...          → 추후 전략 추가 가능
 ```
@@ -68,10 +70,18 @@ FAQ 허브(`FaqPage`)와 동일한 카드 리스트 구조. 단, 각 카드에 *
 │  개인 투자 의사결정 보조 도구           │
 │                                      │
 │  ┌──────────────────────────────┐    │
-│  │ BAA (Bold Asset Allocation)  │    │
-│  │ 전술적 자산배분               │    │
+│  │ BAA-A (Aggressive)           │    │
+│  │ G4 top 1 집중 투자            │    │
 │  │ ┌────────┐                   │    │
-│  │ │ 공격 ↗ │  2026-02 월말 기준 │    │
+│  │ │ 공격 ↗ │ 1Y +8.2% 6M +4.1%│    │
+│  │ └────────┘                   │    │
+│  └──────────────────────────────┘    │
+│                                      │
+│  ┌──────────────────────────────┐    │
+│  │ BAA-B (Balanced)             │    │
+│  │ G12 top 6 분산 투자           │    │
+│  │ ┌────────┐                   │    │
+│  │ │ 공격 ↗ │ 1Y +6.5% 6M +3.8%│    │
 │  │ └────────┘                   │    │
 │  └──────────────────────────────┘    │
 │                                      │
@@ -102,11 +112,20 @@ FAQ 허브(`FaqPage`)와 동일한 카드 리스트 구조. 단, 각 카드에 *
 ```javascript
 export const QUANT_STRATEGIES = [
   {
-    id: "baa",
-    path: "/_quant/baa",
-    label: "BAA (Bold Asset Allocation)",
-    description: "전술적 자산배분 — 카나리아 모멘텀 기반 공격/방어 전환",
+    id: "baa-a",
+    path: "/_quant/baa-a",
+    label: "BAA-A (Aggressive)",
+    description: "G4 top 1 집중 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
     status: "active",
+    curveKey: "aggressive",
+  },
+  {
+    id: "baa-b",
+    path: "/_quant/baa-b",
+    label: "BAA-B (Balanced)",
+    description: "G12 top 6 분산 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
+    status: "active",
+    curveKey: "balanced",
   },
   {
     id: "sector",
@@ -114,7 +133,8 @@ export const QUANT_STRATEGIES = [
     label: "섹터 로테이션",
     description: "GICS 섹터 모멘텀 기반 배분 전략",
     status: "coming_soon",
-  }
+    curveKey: null,
+  },
 ];
 ```
 
@@ -122,7 +142,8 @@ export const QUANT_STRATEGIES = [
 
 | 전략 | 뱃지 텍스트 | 뱃지 색상 | JSON 경로 |
 |------|-----------|----------|-----------|
-| BAA | "공격" / "방어" | 초록 / 파랑 | `baa_signal.json → signal.mode` |
+| BAA-A | "공격" / "방어" + 수익률 | 초록 / 파랑 | `baa_signal.json → signal.mode` + `backtest.equityCurve` |
+| BAA-B | "공격" / "방어" + 수익률 | 초록 / 파랑 | `baa_signal.json → signal.mode` + `backtest.equityCurve` |
 | 섹터 | "준비 중" | 회색 | 없음 (하드코딩) |
 
 ### 상호작용
@@ -138,9 +159,10 @@ export const QUANT_STRATEGIES = [
 {/* 퀀트 허브 */}
 <Route path="/_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
 
-{/* 전략 상세 */}
-<Route path="/_quant/baa" element={<BentoLayout><PasswordGate><BaaQuantPeekPage /></PasswordGate></BentoLayout>} />
-<Route path="/_quant/sector" element={<BentoLayout><PasswordGate><SectorStrategyPage /></PasswordGate></BentoLayout>} />
+{/* BAA 전략 상세 */}
+<Route path="/_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
+<Route path="/_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
+<Route path="/_quant/baa" element={<Navigate to="/_quant/baa-a" replace />} />
 ```
 
 ---

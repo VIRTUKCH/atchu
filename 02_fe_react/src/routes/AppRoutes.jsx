@@ -240,7 +240,9 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/_stocks/:ticker" element={<Navigate to="/_dev_trend_list" replace />} />
         <Route path="/_stocks_overview" element={<Navigate to="/_dev_market_overview" replace />} />
         <Route path="/_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_quant/baa" element={<BentoLayout><PasswordGate><BaaQuantPeekPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
+        <Route path="/_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
+        <Route path="/_quant/baa" element={<Navigate to="/_quant/baa-a" replace />} />
 
         <Route
           path="/market_overview"
