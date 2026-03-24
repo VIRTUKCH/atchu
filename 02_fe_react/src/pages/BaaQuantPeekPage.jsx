@@ -13,8 +13,8 @@ import { ColumnBackLink } from "../components/column/ColumnBackLink";
 import BaaEquityCurveChart from "../components/baa/BaaEquityCurveChart";
 
 const VARIANT_CONFIG = {
-  aggressive: { label: "BAA-A (Aggressive)", short: "BAA-A", curveKey: "aggressive", historyKey: "aggressive" },
-  balanced: { label: "BAA-B (Balanced)", short: "BAA-B", curveKey: "balanced", historyKey: "balanced" },
+  aggressive: { label: "BAA-A (Aggressive)", short: "BAA-A", curveKey: "aggressive", historyKey: "aggressive", universe: "G4", universeTickers: ["SPY", "QQQ", "EFA", "AGG"] },
+  balanced: { label: "BAA-B (Balanced)", short: "BAA-B", curveKey: "balanced", historyKey: "balanced", universe: "G12", universeTickers: null },
 };
 
 function calcPeriodReturns(equityCurve, curveKey) {
@@ -90,16 +90,18 @@ function CanarySection({ canary, mode }) {
   );
 }
 
-function RankingSection({ offensiveRanking, defensiveRanking }) {
-  const offensiveRows = (offensiveRanking || []).map((r, i) => {
-    const selected = r.selectedG4 && r.selectedG12 ? "A·B"
-      : r.selectedG4 ? "A" : r.selectedG12 ? "B" : "";
-    const ticker = (r.selectedG4 || r.selectedG12)
-      ? { value: r.ticker, highlight: true } : r.ticker;
+function RankingSection({ offensiveRanking, defensiveRanking, variantConfig }) {
+  const filterTickers = variantConfig.universeTickers;
+  const filtered = filterTickers
+    ? (offensiveRanking || []).filter((r) => filterTickers.includes(r.ticker))
+    : (offensiveRanking || []);
+  const offensiveRows = filtered.map((r, i) => {
+    const isSelected = variantConfig.universe === "G4" ? r.selectedG4 : r.selectedG12;
+    const ticker = isSelected ? { value: r.ticker, highlight: true } : r.ticker;
     return [
       String(i + 1), ticker, r.nameKo || "",
       `${r.momentum13612w > 0 ? "+" : ""}${r.momentum13612w.toFixed(2)}%`,
-      r.relMomentum.toFixed(3), selected
+      r.relMomentum.toFixed(3), isSelected ? "✓" : ""
     ];
   });
   const bilRelMomentum = (defensiveRanking || []).find((r) => r.ticker === "BIL")?.relMomentum ?? 0;
@@ -116,7 +118,7 @@ function RankingSection({ offensiveRanking, defensiveRanking }) {
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div className="panel-card" style={{ padding: "20px" }}>
         <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
-          공격 유니버스 (G12) 모멘텀 순위
+          공격 유니버스 ({variantConfig.universe}) 모멘텀 순위
         </h3>
         <ColumnCompareTable columns={["순위", "티커", "이름", "13612W", "상대 모멘텀", "선택"]} rows={offensiveRows} />
       </div>
@@ -237,11 +239,11 @@ export default function BaaQuantPeekPage({ variant = "aggressive" }) {
         canaryPositiveCount={signal?.canaryPositiveCount}
       />
 
-      <BaaPortfolioTab portfolios={portfolios} defaultTab={variant} />
+      <BaaPortfolioTab portfolios={portfolios} variant={variant} />
 
       <CanarySection canary={canary} mode={signal?.mode} />
 
-      <RankingSection offensiveRanking={offensiveRanking} defensiveRanking={defensiveRanking} />
+      <RankingSection offensiveRanking={offensiveRanking} defensiveRanking={defensiveRanking} variantConfig={vc} />
 
       <BacktestSection backtest={backtest} variantConfig={vc} />
 

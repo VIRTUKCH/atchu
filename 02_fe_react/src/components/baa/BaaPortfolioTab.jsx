@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ColumnAllocationBar } from "../column/ColumnAllocationBar";
 import { ColumnCompareTable } from "../column/ColumnCompareTable";
 
@@ -25,38 +25,21 @@ function buildRows(allocations) {
   });
 }
 
-export default function BaaPortfolioTab({ portfolios, defaultTab = "aggressive" }) {
-  const [tab, setTab] = useState(defaultTab);
-  const current = portfolios?.[tab];
+export default function BaaPortfolioTab({ portfolios, variant = "aggressive" }) {
+  const current = portfolios?.[variant];
   const allocations = current?.allocations || [];
+  const label = variant === "aggressive" ? "Aggressive (G4)" : "Balanced (G12)";
 
   return (
     <div className="panel-card" style={{ padding: "20px" }}>
-      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-        {["aggressive", "balanced"].map((key) => (
-          <button
-            key={key}
-            onClick={() => setTab(key)}
-            style={{
-              padding: "8px 16px",
-              borderRadius: "var(--radius-sm, 6px)",
-              border: tab === key ? "2px solid var(--accent, #3b82f6)" : "1px solid var(--line)",
-              background: tab === key ? "var(--panel-2)" : "transparent",
-              color: "var(--ink)",
-              fontWeight: tab === key ? 600 : 400,
-              cursor: "pointer",
-              fontSize: "clamp(15px, calc(12.4px + 0.7vw), 18px)"
-            }}
-          >
-            {key === "aggressive" ? "Aggressive (G4)" : "Balanced (G12)"}
-          </button>
-        ))}
-      </div>
+      <h3 className="panel-title" style={{ marginBottom: 16, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
+        {label} 배분
+      </h3>
 
       {allocations.length > 0 && (
         <>
           <ColumnAllocationBar
-            title={`${tab === "aggressive" ? "Aggressive" : "Balanced"} 배분`}
+            title={null}
             items={buildAllocationItems(allocations)}
           />
           <div style={{ marginTop: 16 }}>
