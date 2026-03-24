@@ -217,7 +217,7 @@ export default function StockListPage() {
   const subParam = searchParams.get("sub") || "ALL";
 
   // 최상위 필터: 전체 / 개별주 / ETF
-  const [assetFilter, setAssetFilter] = useState("ALL");
+  const [assetFilter, setAssetFilter] = useState("ETF");
   // 개별주 하위 필터
   const [selectedSector, setSelectedSector] = useState(sectorParam);
   const [selectedSubSector, setSelectedSubSector] = useState(subParam);
