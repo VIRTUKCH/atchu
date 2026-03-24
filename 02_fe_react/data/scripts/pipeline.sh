@@ -54,6 +54,32 @@ while :; do
 done
 log "Download/compare complete: evaluating next steps"
 
+# 환율(USDKRW) CSV 다운로드
+log "Downloading USDKRW forex data"
+notify "[${RUN_ID}] FOREX DOWNLOAD START"
+forex_symbol="KRW.FOREX"
+forex_out="${OUT_DIR}/${forex_symbol}_all.csv"
+forex_url="https://eodhd.com/api/eod/${forex_symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv"
+forex_tmp="$(mktemp "${TMP_DIR}/.${forex_symbol}.XXXXXX")"
+if curl -fsSL --retry 3 --retry-delay 1 --connect-timeout 10 "$forex_url" -o "$forex_tmp"; then
+  if [[ -s "$forex_tmp" ]] && head -n 1 "$forex_tmp" | grep -qi "date"; then
+    if [[ -f "$forex_out" ]] && cmp -s "$forex_tmp" "$forex_out"; then
+      rm -f "$forex_tmp"
+      log "USDKRW forex data unchanged"
+    else
+      mv "$forex_tmp" "$forex_out"
+      log "USDKRW forex data updated"
+    fi
+  else
+    log "Warning: USDKRW forex CSV invalid"
+    rm -f "$forex_tmp"
+  fi
+else
+  log "Warning: USDKRW forex download failed"
+  rm -f "$forex_tmp"
+fi
+notify "[${RUN_ID}] FOREX DOWNLOAD DONE"
+
 summarize_updates
 log "Summary: processed=${total_count}, updated=${updated_count}"
 notify "[${RUN_ID}] SUMMARY | total=${total_count} | updated=${updated_count}"

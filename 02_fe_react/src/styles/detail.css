@@ -477,6 +477,26 @@
   color: var(--panel);
   border-color: var(--ink);
 }
+.monthly-heatmap-currency-toggle {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.monthly-heatmap-currency-btn {
+  font-size: clamp(13px, calc(10.8px + 0.6vw), 15px);
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.monthly-heatmap-currency-btn.active {
+  background: var(--accent, #3b82f6);
+  color: #fff;
+  border-color: var(--accent, #3b82f6);
+}
 .monthly-heatmap-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

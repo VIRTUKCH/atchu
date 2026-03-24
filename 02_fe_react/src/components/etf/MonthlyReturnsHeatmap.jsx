@@ -49,10 +49,16 @@ function useIsMobile() {
 
 export default function MonthlyReturnsHeatmap({ data }) {
   const [activeTab, setActiveTab] = useState("atchu");
+  const [currencyMode, setCurrencyMode] = useState("usd");
   const [page, setPage] = useState(0);
   const isMobile = useIsMobile();
   const theme = document.documentElement.getAttribute("data-theme") || "light";
   const yearsPerPage = isMobile ? MOBILE_YEARS_PER_PAGE : PC_YEARS_PER_PAGE;
+
+  const hasKrwData = !!(data?.buyHoldKrw);
+  const dataKey = currencyMode === "krw" && hasKrwData
+    ? (activeTab === "atchu" ? "atchuKrw" : "buyHoldKrw")
+    : activeTab;
 
   // 두 전략의 연도를 합쳐서 전체 범위 결정
   const { maxYear, minYear, grid, yearTotals } = useMemo(() => {
@@ -68,7 +74,7 @@ export default function MonthlyReturnsHeatmap({ data }) {
     const mn = sorted[0];
     const mx = sorted[sorted.length - 1];
 
-    const strategyData = data[activeTab] || {};
+    const strategyData = data[dataKey] || {};
     const totals = {};
     for (let yr = mn; yr <= mx; yr += 1) {
       const months = strategyData[yr] || {};
@@ -84,7 +90,7 @@ export default function MonthlyReturnsHeatmap({ data }) {
     }
 
     return { maxYear: mx, minYear: mn, grid: strategyData, yearTotals: totals };
-  }, [data, activeTab]);
+  }, [data, dataKey]);
 
   const handleTabChange = useCallback((key) => {
     setActiveTab(key);
@@ -110,6 +116,13 @@ export default function MonthlyReturnsHeatmap({ data }) {
 
   if (!data || !maxYear) return null;
 
+  const descriptionText = activeTab === "atchu"
+    ? "앗추 필터 이탈 구간은 0.00% (현금 보유)로 표시됩니다."
+    : "ETF를 매수 후 보유했을 때의 월별 수익률입니다.";
+  const currencySuffix = currencyMode === "krw" && hasKrwData
+    ? " 원화(KRW) 기준으로 환율 변동이 반영됩니다."
+    : "";
+
   return (
     <div className="monthly-heatmap-card">
       <div className="monthly-heatmap-header">
@@ -127,10 +140,26 @@ export default function MonthlyReturnsHeatmap({ data }) {
           ))}
         </div>
       </div>
+      {hasKrwData && (
+        <div className="monthly-heatmap-currency-toggle">
+          <button
+            type="button"
+            className={`monthly-heatmap-currency-btn${currencyMode === "usd" ? " active" : ""}`}
+            onClick={() => setCurrencyMode("usd")}
+          >
+            환헷지 (USD)
+          </button>
+          <button
+            type="button"
+            className={`monthly-heatmap-currency-btn${currencyMode === "krw" ? " active" : ""}`}
+            onClick={() => setCurrencyMode("krw")}
+          >
+            환노출 (KRW)
+          </button>
+        </div>
+      )}
       <p className="section-description">
-        {activeTab === "atchu"
-          ? "앗추 필터 이탈 구간은 0.00% (현금 보유)로 표시됩니다."
-          : "ETF를 매수 후 보유했을 때의 월별 수익률입니다."}
+        {descriptionText}{currencySuffix}
       </p>
       <table className="monthly-heatmap-table">
         <thead>

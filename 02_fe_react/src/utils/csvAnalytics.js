@@ -787,7 +787,7 @@ const buildCsvAnalytics = (csvText, options = {}) => {
   };
   const advancedMetrics = computeAdvancedMetrics();
 
-  // 월별 수익률 히트맵 계산 (매수후보유 + 앗추 필터)
+  // 월별 수익률 히트맵 계산 (매수후보유 + 앗추 필터 + 환노출 KRW)
   const computeMonthlyReturns = () => {
     if (records.length < 200) return null;
     const atchuQualified = holdQualifiedCache[200] || [];
@@ -805,19 +805,56 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       atchuHolding[i] = holding;
     }
 
+    // 환율 데이터 준비 (forexRateMap이 있을 때만 KRW 계산)
+    const forexRateMap = options.forexRateMap || null;
+    const hasForex = forexRateMap && forexRateMap.size > 0;
+    let sortedForexDates = null;
+    const getForexRate = (dateStr) => {
+      if (!forexRateMap) return null;
+      const rate = forexRateMap.get(dateStr);
+      if (rate) return rate;
+      if (!sortedForexDates) {
+        sortedForexDates = [...forexRateMap.keys()].sort();
+      }
+      let lo = 0;
+      let hi = sortedForexDates.length - 1;
+      let result = null;
+      while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        if (sortedForexDates[mid] <= dateStr) {
+          result = sortedForexDates[mid];
+          lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
+      }
+      return result ? forexRateMap.get(result) : null;
+    };
+
     const byMonth = {};  // { "buyHold": { 2024: { 1: x, ... }, ... }, "atchu": { ... } }
     const strategies = ["buyHold", "atchu"];
     strategies.forEach((s) => { byMonth[s] = {}; });
 
+    // KRW 기준 월별 수익률 (환노출)
+    const byMonthKrw = {};
+    if (hasForex) {
+      strategies.forEach((s) => { byMonthKrw[s] = {}; });
+    }
+
     let bhEquity = 1;
     let atchuEquity = 1;
+    let bhEquityKrw = 1;
+    let atchuEquityKrw = 1;
     let prevMonth = null;
     let prevYear = null;
     let bhMonthStart = 1;
     let atchuMonthStart = 1;
+    let bhMonthStartKrw = 1;
+    let atchuMonthStartKrw = 1;
     let atchuActiveInMonth = false; // 이번 월에 앗추 데이터가 유효한지
 
     const saveMonth = (year, month) => {
+      // USD 기준 (기존)
       if (!byMonth.buyHold[year]) byMonth.buyHold[year] = {};
       byMonth.buyHold[year][month] = (bhEquity / bhMonthStart - 1) * 100;
       if (atchuActiveInMonth) {
@@ -826,6 +863,19 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       }
       bhMonthStart = bhEquity;
       atchuMonthStart = atchuEquity;
+
+      // KRW 기준 (환노출)
+      if (hasForex) {
+        if (!byMonthKrw.buyHold[year]) byMonthKrw.buyHold[year] = {};
+        byMonthKrw.buyHold[year][month] = (bhEquityKrw / bhMonthStartKrw - 1) * 100;
+        if (atchuActiveInMonth) {
+          if (!byMonthKrw.atchu[year]) byMonthKrw.atchu[year] = {};
+          byMonthKrw.atchu[year][month] = (atchuEquityKrw / atchuMonthStartKrw - 1) * 100;
+        }
+        bhMonthStartKrw = bhEquityKrw;
+        atchuMonthStartKrw = atchuEquityKrw;
+      }
+
       atchuActiveInMonth = false;
     };
 
@@ -844,13 +894,26 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         saveMonth(prevYear, prevMonth);
       }
 
-      // 일별 equity 업데이트
+      // 일별 equity 업데이트 (USD)
       const dailyReturn = price / prevPrice;
       bhEquity *= dailyReturn;
       if (i >= atchuStartIdx) {
         atchuActiveInMonth = true;
         if (atchuHolding[i]) {
           atchuEquity *= dailyReturn;
+        }
+      }
+
+      // 일별 equity 업데이트 (KRW 환노출)
+      if (hasForex) {
+        const fxToday = getForexRate(records[i].Date);
+        const fxYesterday = i > 0 ? getForexRate(records[i - 1].Date) : null;
+        if (fxToday && fxYesterday && fxYesterday > 0) {
+          const dailyReturnKrw = (price * fxToday) / (prevPrice * fxYesterday);
+          bhEquityKrw *= dailyReturnKrw;
+          if (i >= atchuStartIdx && atchuHolding[i]) {
+            atchuEquityKrw *= dailyReturnKrw;
+          }
         }
       }
 
@@ -861,7 +924,13 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     if (prevMonth !== null && prevYear !== null) {
       saveMonth(prevYear, prevMonth);
     }
-    return byMonth;
+
+    const result = { ...byMonth };
+    if (hasForex && Object.keys(byMonthKrw.buyHold).length > 0) {
+      result.buyHoldKrw = byMonthKrw.buyHold;
+      result.atchuKrw = byMonthKrw.atchu;
+    }
+    return result;
   };
   const monthlyReturns = computeMonthlyReturns();
 

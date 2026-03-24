@@ -37,12 +37,33 @@ const toRecentShape = (snapshot) => {
   };
 };
 
+const parseForexCsv = (csvText) => {
+  if (!csvText) return null;
+  const lines = csvText.trim().split("\n");
+  if (lines.length < 2) return null;
+  const map = new Map();
+  for (let i = 1; i < lines.length; i += 1) {
+    const parts = lines[i].split(",");
+    const date = parts[0]?.trim();
+    const close = Number(parts[4]?.trim());
+    if (date && Number.isFinite(close) && close > 0) {
+      map.set(date, close);
+    }
+  }
+  return map.size > 0 ? map : null;
+};
+
 const createAppDataAdapters = ({ latestSnapshotPayload, csvModules }) => {
   const localListAnalyticsMap = buildLocalListAnalyticsMap(latestSnapshotPayload);
   const localDetailAnalyticsCache = new Map();
   const csvPathBySymbol = {};
+  let forexCsvPath = null;
 
   Object.keys(csvModules).forEach((path) => {
+    if (path.includes("KRW.FOREX")) {
+      forexCsvPath = path;
+      return;
+    }
     const symbol = extractTickerFromPath(path);
     if (!symbol) {
       return;
@@ -56,6 +77,23 @@ const createAppDataAdapters = ({ latestSnapshotPayload, csvModules }) => {
       }
     }
   });
+
+  let forexRateMapCache;
+  const loadForexRateMap = async () => {
+    if (forexRateMapCache !== undefined) return forexRateMapCache;
+    if (!forexCsvPath || !csvModules[forexCsvPath]) {
+      forexRateMapCache = null;
+      return null;
+    }
+    try {
+      const raw = await csvModules[forexCsvPath]();
+      forexRateMapCache = parseForexCsv(raw) || null;
+      return forexRateMapCache;
+    } catch {
+      forexRateMapCache = null;
+      return null;
+    }
+  };
 
   const loadLocalDetailAnalytics = async (ticker) => {
     const normalized = normalizeTickerKey(ticker);
@@ -71,8 +109,11 @@ const createAppDataAdapters = ({ latestSnapshotPayload, csvModules }) => {
       return null;
     }
     try {
-      const raw = await csvModules[path]();
-      const analytics = buildCsvAnalytics(raw);
+      const [raw, forexRateMap] = await Promise.all([
+        csvModules[path](),
+        loadForexRateMap()
+      ]);
+      const analytics = buildCsvAnalytics(raw, { forexRateMap });
       localDetailAnalyticsCache.set(normalized, analytics);
       if (normalized.includes(".")) {
         const base = normalizeTickerKey(normalized.split(".")[0]);
