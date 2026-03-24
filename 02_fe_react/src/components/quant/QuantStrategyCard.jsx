@@ -92,12 +92,6 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
                   color="var(--accent-red)"
                 />
                 <StatsRow label="샤프비율" value={backtest.sharpe} />
-                {backtest.defensiveRatio != null && (
-                  <StatsRow
-                    label="방어 비율"
-                    value={`${Math.round(backtest.defensiveRatio * 100)}%`}
-                  />
-                )}
                 {backtest.startDate && (
                   <StatsRow
                     label="데이터 시작"

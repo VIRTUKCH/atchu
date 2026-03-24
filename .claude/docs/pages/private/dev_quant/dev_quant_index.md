@@ -137,7 +137,6 @@ PC:
 | **CAGR** | `backtest.{variant}.cagr` | 장기 수익 |
 | **MDD** | `backtest.{variant}.mdd` | 위험 수준 |
 | **샤프비율** | `backtest.{variant}.sharpe` | 위험조정 수익 |
-| **방어 비율** | `backtest.defensiveRatio` | 전략 성격 |
 | **데이터 기간** | `backtest.startDate` | 몇 년 검증됐는지 |
 
 ### UI 상세 가이드
