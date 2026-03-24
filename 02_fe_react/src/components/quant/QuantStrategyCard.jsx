@@ -48,6 +48,9 @@ export default function QuantStrategyCard({ strategy, signal, portfolio, backtes
         )}
       </div>
       <div className="quant-card-desc">{strategy.description}</div>
+      {strategy.warning && (
+        <div className="quant-card-warning">{strategy.warning}</div>
+      )}
       <div className="quant-card-signal-row">
         <span className={`quant-signal-badge quant-signal-badge--${signal.variant}`}>
           {signal.text}
