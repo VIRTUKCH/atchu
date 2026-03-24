@@ -1,5 +1,13 @@
 # 작업 기록
 
+### 2026-03-24 (78)
+- **퀀트 허브: 리서치 기반 4개 전략 카드 추가 (coming_soon)**
+  - 웹 리서치: 2024-2025 퀀트 투자 전략 트렌드, 학술 논문, 업계 성과 종합 조사
+  - 신규 전략 4개: HAA(Keller 후속작), 리스크 패리티/All Weather(Dalio), 트렌드 팔로잉/CTA(crisis alpha), 멀티팩터 QVM(AQR)
+  - `quantItems.js`: 5개 → 9개 전략 (HAA는 BAA 바로 뒤 배치)
+  - 기획 문서 생성: `dev_quant_haa.md`, `dev_quant_risk_parity.md`, `dev_quant_trend_following.md`, `dev_quant_multi_factor.md`
+  - `dev_quant_index.md`: 전략 목록·라우트 맵 동기화
+
 ### 2026-03-24 (77)
 - **퀀트 허브: 섹터 로테이션 3대 전략 카드 추가 (coming_soon)**
   - 리서치: 월가 대표 섹터 추세추종 전략 3가지 선정 — Faber 섹터 모멘텀, 듀얼 모멘텀(Antonacci), 경기순환 섹터 로테이션(Stovall)

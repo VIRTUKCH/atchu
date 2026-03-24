@@ -21,6 +21,15 @@ export const QUANT_STRATEGIES = [
     curveKey: "balanced",
   },
   {
+    id: "haa",
+    path: "/_dev_quant/haa",
+    label: "HAA (Hybrid Asset Allocation)",
+    description:
+      "TIPS 모멘텀 필터 + 듀얼 모멘텀 top 4 분산 — BAA 저자의 간소화 후속작",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
     id: "faber-sector",
     path: "/_dev_quant/faber-sector",
     label: "Faber 섹터 모멘텀",
@@ -41,6 +50,33 @@ export const QUANT_STRATEGIES = [
     path: "/_dev_quant/business-cycle",
     label: "경기순환 섹터 로테이션",
     description: "경기 4국면(회복→호황→둔화→침체)별 강세 섹터 매핑 — Sam Stovall 방식",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
+    id: "risk-parity",
+    path: "/_dev_quant/risk-parity",
+    label: "리스크 패리티 / All Weather",
+    description:
+      "위험 기여도 균등 배분 — 경제 4계절 대응 정적 포트폴리오 (Ray Dalio)",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
+    id: "trend-following",
+    path: "/_dev_quant/trend-following",
+    label: "트렌드 팔로잉 / CTA",
+    description:
+      "자산군별 시계열 모멘텀 롱/숏 — 위기 시 역상관 수익 (crisis alpha)",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
+    id: "multi-factor",
+    path: "/_dev_quant/multi-factor",
+    label: "멀티팩터 QVM",
+    description:
+      "Quality + Value + Momentum 결합 종목 선별 — AQR 시장중립 방식",
     status: "coming_soon",
     curveKey: null,
   },

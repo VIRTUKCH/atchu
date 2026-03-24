@@ -32,9 +32,13 @@
 |------|--------|----------|------|
 | BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
 | BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
+| HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) | 기획 중 |
 | Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) | 기획 중 |
 | 듀얼 모멘텀 | `/_dev_quant/dual-momentum` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 기획 중 |
 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 기획 중 |
+| 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) | 기획 중 |
+| 트렌드 팔로잉 / CTA | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 기획 중 |
+| 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 기획 중 |
 
 ---
 
@@ -44,10 +48,13 @@
 /_dev_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
 /_dev_quant/baa-a        → BAA Aggressive 상세
 /_dev_quant/baa-b        → BAA Balanced 상세
+/_dev_quant/haa           → HAA 상세 (예정)
 /_dev_quant/faber-sector → Faber 섹터 모멘텀 상세 (예정)
 /_dev_quant/dual-momentum → 듀얼 모멘텀 상세 (예정)
 /_dev_quant/business-cycle → 경기순환 섹터 로테이션 상세 (예정)
-/_dev_quant/...          → 추후 전략 추가 가능
+/_dev_quant/risk-parity   → 리스크 패리티 상세 (예정)
+/_dev_quant/trend-following → 트렌드 팔로잉 상세 (예정)
+/_dev_quant/multi-factor  → 멀티팩터 QVM 상세 (예정)
 ```
 
 ### 왜 허브 → 상세 구조인가
