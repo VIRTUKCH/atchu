@@ -133,7 +133,6 @@ export default function StockDetailPage() {
             maAlignment={recentData.ma_alignment}
             maAlignmentDays={recentData.ma_alignment_days}
             meta={meta}
-            periodReturns={recentData.period_returns}
           />
           <PriceTrendChart
             title="최근 1년 그래프"

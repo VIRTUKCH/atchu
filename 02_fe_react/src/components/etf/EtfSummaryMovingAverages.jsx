@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, cagrAlignmentValue, cagrAlignmentClass, mddAlignmentValue, mddAlignmentClass, dataStartLabel, periodReturns }) {
+export default function EtfSummaryMovingAverages({ items, formatPrice, formatSignedPercent, cagrValue, cagrClass, mddValue, mddClass, cagrAlignmentValue, cagrAlignmentClass, mddAlignmentValue, mddAlignmentClass, dataStartLabel }) {
   const item = items[0];
   if (!item) return null;
 
@@ -65,24 +65,6 @@ export default function EtfSummaryMovingAverages({ items, formatPrice, formatSig
           <dt>최악의 낙폭 (골든크로스)</dt>
           <dd><strong className={mddAlignmentClass || ""}>{mddAlignmentValue}</strong></dd>
         </div>
-      )}
-      {periodReturns && (
-        [
-          { key: "1W", label: "수익률 (1주)" },
-          { key: "3M", label: "수익률 (3개월)" },
-          { key: "1Y", label: "수익률 (1년)" },
-          { key: "5Y", label: "수익률 (5년)" },
-        ].map(({ key, label }) => {
-          const val = periodReturns[key];
-          if (val == null) return null;
-          const cls = Number(val) >= 0 ? "change-up" : "change-down";
-          return (
-            <div key={key} className="index-ma-dl-row">
-              <dt>{label}</dt>
-              <dd><strong className={cls}>{formatSignedPercent(val)}</strong></dd>
-            </div>
-          );
-        })
       )}
       {dataStartLabel && (
         <div className="index-ma-dl-row">

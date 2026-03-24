@@ -29,7 +29,6 @@ function EtfSummaryCard({
   maAlignmentDays,
   meta,
   to,
-  periodReturns,
 }) {
   const formatPrice = (value) => {
     if (value === null || value === undefined || Number.isNaN(Number(value))) {
@@ -225,7 +224,6 @@ function EtfSummaryCard({
             mddAlignmentValue={mddAlignment !== null && mddAlignment !== undefined ? formatSignedPercent(mddAlignment) : null}
             mddAlignmentClass={mddAlignmentClass}
             dataStartLabel={dataStartLabel}
-            periodReturns={periodReturns}
           />
         </div>
       </div>

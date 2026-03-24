@@ -33,12 +33,6 @@ const toRecentShape = (snapshot) => {
     percent_difference_from_moving_averages: {
       fifty_day: snapshot.percentDiff50,
       two_hundred_day: snapshot.percentDiff200
-    },
-    period_returns: {
-      "1W": snapshot.percentChange5d ?? null,
-      "3M": snapshot.percentChange63d ?? null,
-      "1Y": snapshot.percentChange252d ?? null,
-      "5Y": snapshot.percentChange1260d ?? null,
     }
   };
 };
