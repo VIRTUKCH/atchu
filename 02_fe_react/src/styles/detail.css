@@ -493,7 +493,7 @@
   padding: 7px 6px;
   text-align: center;
   white-space: nowrap;
-  min-width: 54px;
+  min-width: 64px;
   box-sizing: border-box;
 }
 .monthly-heatmap-corner {
@@ -515,8 +515,8 @@
   border-radius: 4px;
   font-variant-numeric: tabular-nums;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
-  min-width: 54px;
-  width: 54px;
+  min-width: 64px;
+  width: 64px;
 }
 .monthly-heatmap-total-row {
   border-top: 2px solid var(--line);
