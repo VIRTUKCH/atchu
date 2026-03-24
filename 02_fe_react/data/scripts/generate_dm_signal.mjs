@@ -61,6 +61,20 @@ const parseNumber = (v) => {
   return Number.isFinite(p) ? p : null;
 };
 
+/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
+const readLatestClose = (ticker) => {
+  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
+  if (!fs.existsSync(csvPath)) return null;
+  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
+  if (lines.length < 2) return null;
+  const headers = lines[0].split(",").map((h) => h.trim());
+  const parts = lines[lines.length - 1].split(",");
+  const row = {};
+  headers.forEach((h, i) => { row[h] = parts[i]; });
+  const close = parseNumber(row.Adjusted_close ?? row.Close);
+  return close !== null ? { date: String(row.Date), close } : null;
+};
+
 /* ═══════════════════════════════════════════════════════
    Step 1 — CSV → month-end adjusted close
    ═══════════════════════════════════════════════════════ */
@@ -388,6 +402,35 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
       spy: round3(eqSpy),
       sixtyForty: round3(eq6040),
     });
+  }
+
+  /* ── 부분월(오늘) 포인트 ── */
+  const latestSpy = readLatestClose("SPY");
+  if (latestSpy && equityCurve.length > 0 && records.length > 0) {
+    const lastEq = equityCurve[equityCurve.length - 1];
+    const lastRecord = records[records.length - 1];
+    if (latestSpy.date > lastRecord.date) {
+      // 전략 부분월
+      let stratPartialRet = 0;
+      for (const { ticker, weight } of lastRecord.allocations) {
+        const c0 = getClose(ticker, lastRecord.ym);
+        const latest = readLatestClose(ticker);
+        if (c0 && latest && c0 > 0) stratPartialRet += (weight / 100) * (latest.close / c0 - 1);
+      }
+      // SPY
+      const spyRef = getClose("SPY", lastRecord.ym);
+      const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
+      // 60/40
+      const aggLatest = readLatestClose("AGG");
+      const aggRef = getClose("AGG", lastRecord.ym);
+      const bondPartial = (aggRef && aggLatest && aggRef > 0) ? (aggLatest.close / aggRef - 1) : 0;
+      equityCurve.push({
+        date: latestSpy.date,
+        [variantKey]: round3(lastEq[variantKey] * (1 + stratPartialRet)),
+        spy: round3(lastEq.spy * (1 + spyPartial)),
+        sixtyForty: round3(lastEq.sixtyForty * (1 + 0.6 * spyPartial + 0.4 * bondPartial)),
+      });
+    }
   }
 
   // 4) 성과 지표

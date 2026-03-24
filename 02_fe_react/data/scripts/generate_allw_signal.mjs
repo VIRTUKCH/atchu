@@ -31,6 +31,20 @@ const parseNumber = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
+const readLatestClose = (ticker) => {
+  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
+  if (!fs.existsSync(csvPath)) return null;
+  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
+  if (lines.length < 2) return null;
+  const headers = lines[0].split(",").map((h) => h.trim());
+  const parts = lines[lines.length - 1].split(",");
+  const row = {};
+  headers.forEach((h, i) => { row[h] = parts[i]; });
+  const close = parseNumber(row.Adjusted_close ?? row.Close);
+  return close !== null ? { date: String(row.Date), close } : null;
+};
+
 /* ── CSV → 월말 종가 ── */
 function readMonthEnds(ticker) {
   const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
@@ -202,6 +216,24 @@ function main() {
       allw: round3(eqAllw),
       spy: round3(eqSpy),
     });
+  }
+
+  /* ── 부분월(오늘) 포인트 ── */
+  const latestAllw = readLatestClose("ALLW");
+  const latestSpy = readLatestClose("SPY");
+  if (latestAllw && latestSpy && equityCurve.length > 0 && allwFiltered.length > 0) {
+    const lastEq = equityCurve[equityCurve.length - 1];
+    const lastAllw = allwFiltered[allwFiltered.length - 1];
+    if (latestAllw.date > lastAllw.date) {
+      const allwPartial = lastAllw.close > 0 ? (latestAllw.close / lastAllw.close - 1) : 0;
+      const lastSpyClose = spyMap.get(lastAllw.ym);
+      const spyPartial = (lastSpyClose && lastSpyClose > 0) ? (latestSpy.close / lastSpyClose - 1) : 0;
+      equityCurve.push({
+        date: latestAllw.date,
+        allw: round3(lastEq.allw * (1 + allwPartial)),
+        spy: round3(lastEq.spy * (1 + spyPartial)),
+      });
+    }
   }
 
   // 성과 지표
