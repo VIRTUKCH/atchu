@@ -791,6 +791,10 @@ const buildCsvAnalytics = (csvText, options = {}) => {
   const computeMonthlyReturns = () => {
     if (records.length < 200) return null;
     const atchuQualified = holdQualifiedCache[200] || [];
+
+    // 앗추 필터가 유효해지는 최초 인덱스 (MA200 + 20일 윈도우)
+    const atchuStartIdx = 199 + holdFilterWindow - 1; // MA200(199) + 슬라이딩 윈도우(19) = 218
+
     // 앗추 필터 "보유 상태" 추적 (진입/이탈 신호 기반)
     const atchuHolding = new Array(records.length).fill(false);
     let holding = false;
@@ -811,6 +815,19 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     let prevYear = null;
     let bhMonthStart = 1;
     let atchuMonthStart = 1;
+    let atchuActiveInMonth = false; // 이번 월에 앗추 데이터가 유효한지
+
+    const saveMonth = (year, month) => {
+      if (!byMonth.buyHold[year]) byMonth.buyHold[year] = {};
+      byMonth.buyHold[year][month] = (bhEquity / bhMonthStart - 1) * 100;
+      if (atchuActiveInMonth) {
+        if (!byMonth.atchu[year]) byMonth.atchu[year] = {};
+        byMonth.atchu[year][month] = (atchuEquity / atchuMonthStart - 1) * 100;
+      }
+      bhMonthStart = bhEquity;
+      atchuMonthStart = atchuEquity;
+      atchuActiveInMonth = false;
+    };
 
     for (let i = 0; i < records.length; i += 1) {
       const d = dateObjects[i];
@@ -822,31 +839,27 @@ const buildCsvAnalytics = (csvText, options = {}) => {
       const year = d.getFullYear();
       const month = d.getMonth() + 1;
 
+      // 월이 바뀌면 이전 월의 수익률 저장
+      if (prevMonth !== null && (month !== prevMonth || year !== prevYear)) {
+        saveMonth(prevYear, prevMonth);
+      }
+
       // 일별 equity 업데이트
       const dailyReturn = price / prevPrice;
       bhEquity *= dailyReturn;
-      if (atchuHolding[i]) {
-        atchuEquity *= dailyReturn;
+      if (i >= atchuStartIdx) {
+        atchuActiveInMonth = true;
+        if (atchuHolding[i]) {
+          atchuEquity *= dailyReturn;
+        }
       }
 
-      // 월이 바뀌면 이전 월의 수익률 저장
-      if (prevMonth !== null && (month !== prevMonth || year !== prevYear)) {
-        if (!byMonth.buyHold[prevYear]) byMonth.buyHold[prevYear] = {};
-        if (!byMonth.atchu[prevYear]) byMonth.atchu[prevYear] = {};
-        byMonth.buyHold[prevYear][prevMonth] = (bhEquity / bhMonthStart - 1) * 100;
-        byMonth.atchu[prevYear][prevMonth] = (atchuEquity / atchuMonthStart - 1) * 100;
-        bhMonthStart = bhEquity;
-        atchuMonthStart = atchuEquity;
-      }
       prevMonth = month;
       prevYear = year;
     }
     // 마지막 월 저장
     if (prevMonth !== null && prevYear !== null) {
-      if (!byMonth.buyHold[prevYear]) byMonth.buyHold[prevYear] = {};
-      if (!byMonth.atchu[prevYear]) byMonth.atchu[prevYear] = {};
-      byMonth.buyHold[prevYear][prevMonth] = (bhEquity / bhMonthStart - 1) * 100;
-      byMonth.atchu[prevYear][prevMonth] = (atchuEquity / atchuMonthStart - 1) * 100;
+      saveMonth(prevYear, prevMonth);
     }
     return byMonth;
   };
