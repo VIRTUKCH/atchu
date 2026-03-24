@@ -29,9 +29,9 @@ function getCellColor(value, theme) {
 }
 
 function formatValue(value) {
-  if (value === null || value === undefined) return "";
+  if (value === null || value === undefined) return "-";
   const v = Number(value);
-  if (Number.isNaN(v)) return "";
+  if (Number.isNaN(v)) return "-";
   return v.toFixed(2);
 }
 
@@ -54,24 +54,36 @@ export default function MonthlyReturnsHeatmap({ data }) {
   const theme = document.documentElement.getAttribute("data-theme") || "light";
   const yearsPerPage = isMobile ? MOBILE_YEARS_PER_PAGE : PC_YEARS_PER_PAGE;
 
-  const { years, grid, yearTotals } = useMemo(() => {
-    if (!data || !data[activeTab]) return { years: [], grid: {}, yearTotals: {} };
-    const strategyData = data[activeTab];
-    const yrs = Object.keys(strategyData)
-      .map(Number)
-      .sort((a, b) => b - a);
+  // 두 전략의 연도를 합쳐서 전체 범위 결정
+  const { maxYear, minYear, grid, yearTotals } = useMemo(() => {
+    if (!data) return { maxYear: null, minYear: null, grid: {}, yearTotals: {} };
+    // 모든 전략의 연도를 합산
+    const allYears = new Set();
+    ["buyHold", "atchu"].forEach((s) => {
+      if (data[s]) Object.keys(data[s]).forEach((y) => allYears.add(Number(y)));
+    });
+    if (allYears.size === 0) return { maxYear: null, minYear: null, grid: {}, yearTotals: {} };
 
+    const sorted = [...allYears].sort((a, b) => a - b);
+    const mn = sorted[0];
+    const mx = sorted[sorted.length - 1];
+
+    const strategyData = data[activeTab] || {};
     const totals = {};
-    yrs.forEach((yr) => {
+    for (let yr = mn; yr <= mx; yr += 1) {
       const months = strategyData[yr] || {};
       let total = 0;
+      let hasAny = false;
       MONTHS.forEach((m) => {
-        if (months[m] !== undefined && months[m] !== null) total += months[m];
+        if (months[m] !== undefined && months[m] !== null) {
+          total += months[m];
+          hasAny = true;
+        }
       });
-      totals[yr] = total;
-    });
+      totals[yr] = hasAny ? total : null;
+    }
 
-    return { years: yrs, grid: strategyData, yearTotals: totals };
+    return { maxYear: mx, minYear: mn, grid: strategyData, yearTotals: totals };
   }, [data, activeTab]);
 
   // 탭 전환 시 페이지 리셋
@@ -80,15 +92,25 @@ export default function MonthlyReturnsHeatmap({ data }) {
     setPage(0);
   }, []);
 
-  const totalPages = Math.max(1, Math.ceil(years.length / yearsPerPage));
-  const pageYears = years.slice(page * yearsPerPage, (page + 1) * yearsPerPage);
+  // 페이지별 연도 배열 생성 (항상 yearsPerPage개 고정)
+  const totalYearSpan = maxYear && minYear ? maxYear - minYear + 1 : 0;
+  const totalPages = Math.max(1, Math.ceil(totalYearSpan / yearsPerPage));
+  const pageYears = useMemo(() => {
+    if (!maxYear) return [];
+    const startYear = maxYear - page * yearsPerPage;
+    const result = [];
+    for (let i = 0; i < yearsPerPage; i += 1) {
+      result.push(startYear - i);
+    }
+    return result;
+  }, [maxYear, page, yearsPerPage]);
 
   // 화면 크기 변경 시 페이지 범위 보정
   useEffect(() => {
     if (page >= totalPages) setPage(Math.max(0, totalPages - 1));
   }, [page, totalPages]);
 
-  if (!data || years.length === 0) return null;
+  if (!data || !maxYear) return null;
 
   return (
     <div className="monthly-heatmap-card">
