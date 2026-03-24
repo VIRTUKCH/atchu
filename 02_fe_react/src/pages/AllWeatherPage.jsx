@@ -136,18 +136,39 @@ export default function AllWeatherPage() {
         <h3 className="panel-title" style={{ marginBottom: 12, fontSize: "clamp(18px, calc(15.2px + 0.75vw), 22px)" }}>
           왜 리스크 패리티인가
         </h3>
+
+        <h4 style={{ fontSize: "clamp(15px, calc(14.3px + 0.19vw), 16px)", marginBottom: 12, color: "var(--ink)" }}>1. 문제: 60/40은 진짜 분산이 아니다</h4>
         <ColumnCallout>
-          전통적인 60/40 포트폴리오는 주식 60%, 채권 40%이지만 실제 위험의 90%가 주식에 집중되어 있다. 채권 40%는 사실상 장식에 가깝다.
+          전통적인 60/40 포트폴리오는 주식 60%, 채권 40%이지만, 주식의 변동성(~16%)이 채권(~5%)의 3배다. 결과적으로 포트폴리오 위험의 90%가 주식 한 곳에 몰린다. 채권 40%는 사실상 장식이다.
         </ColumnCallout>
-        <div style={{ marginTop: 16 }}>
-          <h4 style={{ fontSize: "clamp(15px, calc(14.3px + 0.19vw), 16px)", marginBottom: 12, color: "var(--ink)" }}>경제 4계절</h4>
-          <ColumnKeyFactGrid>
-            <ColumnKeyFact value="주식, 원자재" label="성장↑ 인플레↑" desc="경기 호황 + 물가 상승" />
-            <ColumnKeyFact value="주식, 채권" label="성장↑ 인플레↓" desc="골디락스 (이상적 환경)" />
-            <ColumnKeyFact value="금, TIPS" label="성장↓ 인플레↑" desc="스태그플레이션" />
-            <ColumnKeyFact value="명목 채권" label="성장↓ 인플레↓" desc="디플레이션/침체" />
-          </ColumnKeyFactGrid>
-        </div>
+
+        <h4 style={{ fontSize: "clamp(15px, calc(14.3px + 0.19vw), 16px)", marginTop: 20, marginBottom: 12, color: "var(--ink)" }}>2. 해법: 위험 기여도를 균등하게</h4>
+        <ColumnCallout>
+          리스크 패리티는 돈이 아니라 위험을 나눈다. 채권은 변동성이 낮으니까 위험 기여도를 맞추려면 달러 기준으로 훨씬 많이 담아야 한다. 그래서 채권 비중이 55%까지 올라가는 것이다.
+        </ColumnCallout>
+
+        <h4 style={{ fontSize: "clamp(15px, calc(14.3px + 0.19vw), 16px)", marginTop: 20, marginBottom: 12, color: "var(--ink)" }}>3. 그런데 그러면 수익이 낮지 않나? → 레버리지</h4>
+        <ColumnCallout>
+          맞다. 채권을 55%나 담으면 기대수익이 주식 대비 낮아진다. 그래서 Bridgewater는 채권 쪽에 선물 레버리지를 건다. 안전한 자산에 레버리지를 걸어 기대수익을 주식 수준으로 끌어올리되, 위험 기여도는 균등하게 유지하는 것이 핵심이다. ALLW의 명목 노출이 188%인 이유가 이것이다.
+        </ColumnCallout>
+        <ColumnCompareTable
+          columns={["", "전통 60/40", "리스크 패리티"]}
+          rows={[
+            ["배분 기준", "달러를 나눔 (주식 60만원, 채권 40만원)", "위험을 나눔 (주식 흔들림 = 채권 흔들림)"],
+            ["채권 비중", "40%", "55%+ (위험 균등 맞추기 위해)"],
+            ["위험 집중도", "주식 90% / 채권 10%", "각 자산 균등"],
+            ["레버리지", "없음", "채권 쪽 레버리지로 기대수익 보완"],
+            ["레버리지 근거", "—", "안전한 자산에 레버리지 = 위험한 자산에 집중보다 낫다"],
+          ]}
+        />
+
+        <h4 style={{ fontSize: "clamp(15px, calc(14.3px + 0.19vw), 16px)", marginTop: 20, marginBottom: 12, color: "var(--ink)" }}>4. 어떤 경제 환경에서도 대응 — 경제 4계절</h4>
+        <ColumnKeyFactGrid>
+          <ColumnKeyFact value="주식, 원자재" label="성장↑ 인플레↑" desc="경기 호황 + 물가 상승" />
+          <ColumnKeyFact value="주식, 채권" label="성장↑ 인플레↓" desc="골디락스 (이상적 환경)" />
+          <ColumnKeyFact value="금, TIPS" label="성장↓ 인플레↑" desc="스태그플레이션" />
+          <ColumnKeyFact value="명목 채권" label="성장↓ 인플레↓" desc="디플레이션/침체" />
+        </ColumnKeyFactGrid>
         <ColumnCallout style={{ marginTop: 16 }}>
           "미래를 모른다는 걸 받아들이고, 장기적으로 모든 경제 환경에 균형잡힌 투자를 선택하라." — Ray Dalio
         </ColumnCallout>
