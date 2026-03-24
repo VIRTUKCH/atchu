@@ -1,5 +1,12 @@
 # 작업 기록
 
+### 2026-03-24 (77)
+- **퀀트 허브: 섹터 로테이션 3대 전략 카드 추가 (coming_soon)**
+  - 리서치: 월가 대표 섹터 추세추종 전략 3가지 선정 — Faber 섹터 모멘텀, 듀얼 모멘텀(Antonacci), 경기순환 섹터 로테이션(Stovall)
+  - `quantItems.js`: 기존 "섹터 로테이션" 1개 → 3개 전략으로 교체 (모두 coming_soon)
+  - 기획 문서 생성: `dev_quant_faber_sector.md`, `dev_quant_dual_momentum.md`, `dev_quant_business_cycle.md`
+  - `dev_quant_index.md`: 전략 목록, 라우트 맵, 신호 뱃지 테이블, 코드 블록 동기화
+
 ### 2026-03-23 (76)
 - **MA100 제거 & 정배열→골든크로스 전환 (파이프라인+프론트+문서)**
   - 배경: 정배열(price>MA50>MA100>MA200) 전략이 501개 개별주 중 96%에서 매수후보유보다 CAGR 열세, 연 5회 휩소. MA100은 가치 없음. 순수 골든크로스(MA50>MA200)가 CAGR 8.62%, 연 0.8회로 우수

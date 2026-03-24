@@ -32,7 +32,9 @@
 |------|--------|----------|------|
 | BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
 | BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
-| 섹터 로테이션 | `/_dev_quant/sector` | [dev_quant_sector.md](dev_quant_sector.md) | 기획 중 |
+| Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) | 기획 중 |
+| 듀얼 모멘텀 | `/_dev_quant/dual-momentum` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 기획 중 |
+| 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 기획 중 |
 
 ---
 
@@ -42,7 +44,9 @@
 /_dev_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
 /_dev_quant/baa-a        → BAA Aggressive 상세
 /_dev_quant/baa-b        → BAA Balanced 상세
-/_dev_quant/sector       → 섹터 로테이션 전략 상세 (예정)
+/_dev_quant/faber-sector → Faber 섹터 모멘텀 상세 (예정)
+/_dev_quant/dual-momentum → 듀얼 모멘텀 상세 (예정)
+/_dev_quant/business-cycle → 경기순환 섹터 로테이션 상세 (예정)
 /_dev_quant/...          → 추후 전략 추가 가능
 ```
 
@@ -182,10 +186,26 @@ export const QUANT_STRATEGIES = [
     curveKey: "balanced",
   },
   {
-    id: "sector",
-    path: "/_dev_quant/sector",
-    label: "섹터 로테이션",
-    description: "GICS 섹터 모멘텀 기반 배분 전략",
+    id: "faber-sector",
+    path: "/_dev_quant/faber-sector",
+    label: "Faber 섹터 모멘텀",
+    description: "3개월 수익률 상위 3 섹터 + 10개월 SMA 트렌드 필터 — Meb Faber 방식",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
+    id: "dual-momentum",
+    path: "/_dev_quant/dual-momentum",
+    label: "듀얼 모멘텀",
+    description: "상대모멘텀(어느 섹터?) + 절대모멘텀(지금 투자할 때?) — Gary Antonacci 방식",
+    status: "coming_soon",
+    curveKey: null,
+  },
+  {
+    id: "business-cycle",
+    path: "/_dev_quant/business-cycle",
+    label: "경기순환 섹터 로테이션",
+    description: "경기 4국면(회복→호황→둔화→침체)별 강세 섹터 매핑 — Sam Stovall 방식",
     status: "coming_soon",
     curveKey: null,
   },
@@ -198,7 +218,9 @@ export const QUANT_STRATEGIES = [
 |------|-----------|----------|-----------|
 | BAA-A | "공격" / "방어" + 수익률 | 초록 / 파랑 | `baa_signal.json → signal.mode` + `backtest.equityCurve` |
 | BAA-B | "공격" / "방어" + 수익률 | 초록 / 파랑 | `baa_signal.json → signal.mode` + `backtest.equityCurve` |
-| 섹터 | "준비 중" | 회색 | 없음 (하드코딩) |
+| Faber 섹터 모멘텀 | "준비 중" | 회색 | 없음 (하드코딩) |
+| 듀얼 모멘텀 | "준비 중" | 회색 | 없음 (하드코딩) |
+| 경기순환 섹터 로테이션 | "준비 중" | 회색 | 없음 (하드코딩) |
 
 ### 상호작용
 
