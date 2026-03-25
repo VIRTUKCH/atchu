@@ -2,6 +2,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  loadTickerPool, readMonthEnds, readLatestClose,
+  round2, round3, parseNumber, getReferenceMonth, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
@@ -9,27 +13,13 @@ const CSV_DIR = path.join(ROOT_DIR, "csv");
 const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "business-cycle");
 const OUT_FILE = path.join(SUMMARY_DIR, "business_cycle_signal.json");
 
-/* ── Universe ── */
-// 국면 판단: SPY 13612W 모멘텀만 사용
-const INDICATOR_TICKERS = ["SPY"];
-// 섹터 ETF (핵심 8개)
-const SECTORS = ["XLK", "XLF", "XLV", "XLY", "XLP", "XLE", "XLI", "XLU"];
-const ALL_TICKERS = [...new Set([...INDICATOR_TICKERS, ...SECTORS, "AGG"])];
-
-const NAME_KO = {
-  SPY: "S&P 500",
-  XLK: "기술", XLF: "금융", XLV: "헬스케어", XLY: "경기소비재",
-  XLP: "필수소비재", XLE: "에너지", XLI: "산업재", XLU: "유틸리티",
-  AGG: "미국 종합채권",
-};
-
-/* ── 4국면 → 섹터 매핑 ── */
-const PHASE_SECTORS = {
-  early:     ["XLF", "XLI"],           // 회복기: 금융, 산업재
-  mid:       ["XLK", "XLY"],           // 호황기: 기술, 경기소비재
-  late:      ["XLE", "XLV", "XLP"],    // 둔화기: 에너지, 헬스케어, 필수소비재
-  recession: ["XLU", "XLV", "XLP"],    // 침체기: 유틸리티, 헬스케어, 필수소비재
-};
+/* ── 티커 풀 로드 (tickers_quant/business_cycle.json) ── */
+const pool = loadTickerPool("business_cycle", ROOT_DIR);
+const INDICATOR_TICKERS = pool.groups.indicator;
+const SECTORS = pool.groups.sectors;
+const PHASE_SECTORS = pool.groups.phase_sectors;
+const NAME_KO = pool.nameMap;
+const ALL_TICKERS = pool.allTickers;
 
 const PHASE_LABELS = {
   early: "회복기", mid: "호황기", late: "둔화기", recession: "침체기",
@@ -42,77 +32,11 @@ const PHASE_CONDITIONS = {
   recession: "모멘텀 음수 & 하락 중",
 };
 
-/* ── Helpers ── */
-const round2 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100) / 100);
-const round3 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 1000) / 1000);
-const parseNumber = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-};
-
-/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
-const readLatestClose = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 2) return null;
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const parts = lines[lines.length - 1].split(",");
-  const row = {};
-  headers.forEach((h, i) => { row[h] = parts[i]; });
-  const close = parseNumber(row.Adjusted_close ?? row.Close);
-  return close !== null ? { date: String(row.Date), close } : null;
-};
-
 /* ── Step 1: Read CSV → month-end adjusted close ── */
-const readMonthEnds = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) {
-    console.warn(`[WARN] CSV not found: ${csvPath}`);
-    return null;
-  }
-
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) {
-    console.warn(`[WARN] CSV too short: ${ticker}`);
-    return null;
-  }
-
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((row) => row.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-
-  return [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
-};
 
 /* ── Step 2: Reference month (last completed month) ── */
-const getReferenceMonth = () => {
-  const now = new Date();
-  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
-  const year = lastDayPrevMonth.getFullYear();
-  const month = String(lastDayPrevMonth.getMonth() + 1).padStart(2, "0");
-  return `${year}-${month}`;
-};
+const refYm = getReferenceMonth();
+console.log(`Reference month: ${refYm}`);
 
 /* ── Step 3: 국면 판단 — SPY 13612W 모멘텀 ── */
 
@@ -170,15 +94,13 @@ const buildPortfolio = (phase) => {
 };
 
 /* ── Main ── */
-const refYm = getReferenceMonth();
-console.log(`Reference month: ${refYm}`);
 
 // Load month-end data
 const tickerData = new Map();
 let processedCount = 0;
 
 for (const ticker of ALL_TICKERS) {
-  const monthEnds = readMonthEnds(ticker);
+  const monthEnds = readMonthEnds(ticker, CSV_DIR);
   if (!monthEnds) continue;
   if (monthEnds.length < 13) {
     console.warn(`[WARN] Not enough monthly data for ${ticker} (${monthEnds.length} months, need >= 13)`);
@@ -385,7 +307,7 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
 }
 
 /* ── 부분월(오늘) 포인트 ── */
-const latestSpy = readLatestClose("SPY");
+const latestSpy = readLatestClose("SPY", CSV_DIR);
 if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
   const lastEq = equityCurve[equityCurve.length - 1];
   const lastRecord = monthlyRecords[monthlyRecords.length - 1];
@@ -393,14 +315,14 @@ if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
     let partialRet = 0;
     for (const { ticker, weight } of lastRecord.portfolio) {
       const c0 = getClose(ticker, lastRecord.ym);
-      const latest = readLatestClose(ticker);
+      const latest = readLatestClose(ticker, CSV_DIR);
       if (c0 && latest && c0 > 0) partialRet += (weight / 100) * (latest.close / c0 - 1);
     }
     const spyRef = getClose("SPY", lastRecord.ym);
     const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
     let bondPartial = 0;
     if (bond6040Ticker) {
-      const bLatest = readLatestClose(bond6040Ticker);
+      const bLatest = readLatestClose(bond6040Ticker, CSV_DIR);
       const bRef = getClose(bond6040Ticker, lastRecord.ym);
       if (bRef && bLatest && bRef > 0) bondPartial = bLatest.close / bRef - 1;
     }
@@ -520,9 +442,16 @@ if (backtestStartDate && monthlyRecords.length > 1) {
     benchmarkSpyMa: spyMaMetrics,
     benchmark6040: sixtyFortyMetrics,
     phaseDistribution,
-    equityCurve,
+    equityCurve
   };
   payload.history = historyLast36;
+
+  // 오늘 기준 기간별 수익률 (일별 가격 사용)
+  const lastRecord = monthlyRecords[monthlyRecords.length - 1];
+  const bcAlloc = (lastRecord.portfolio || []).map(({ ticker, weight }) => ({ ticker, weight: weight / 100 }));
+  payload.periodReturns = {
+    businessCycle: calcPeriodReturns(equityCurve, "businessCycle", bcAlloc, CSV_DIR, lastRecord.date),
+  };
 }
 
 fs.mkdirSync(SUMMARY_DIR, { recursive: true });
