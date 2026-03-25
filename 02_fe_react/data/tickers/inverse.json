@@ -639,11 +639,11 @@
       "name_ko": "금 -2배",
       "business_area": "Bloomberg Gold Subindex 일일 -2배",
       "heatmap_label": "금인버스",
-      "short_description": "금 가격 하락의 2배 수익.",
+      "short_description": "금 가격 하락의 2배 수익. PTP 종목(매도 시 세금 주의).",
       "trend_following": {
         "suitability": "고위험",
         "reason": "레버리지 인버스(-2x) 상품은 일간 목표 구조로 장기 보유 시 변동성 끌림이 더 크다. 단기 전술적 헤지 도구로만 적합.",
-        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
       },
       "tags": [
         "인버스",
@@ -660,11 +660,11 @@
       "name_ko": "은 -2배",
       "business_area": "Bloomberg Silver Subindex 일일 -2배",
       "heatmap_label": "은인버스",
-      "short_description": "은 가격 하락의 2배 수익.",
+      "short_description": "은 가격 하락의 2배 수익. PTP 종목(매도 시 세금 주의).",
       "trend_following": {
         "suitability": "고위험",
         "reason": "레버리지 인버스(-2x) 상품은 일간 목표 구조로 장기 보유 시 변동성 끌림이 더 크다. 단기 전술적 헤지 도구로만 적합.",
-        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
       },
       "tags": [
         "인버스",
@@ -681,11 +681,11 @@
       "name_ko": "원유 -2배",
       "business_area": "Bloomberg WTI Crude Oil Subindex 일일 -2배",
       "heatmap_label": "원유인버스",
-      "short_description": "원유 가격 하락의 2배 수익.",
+      "short_description": "원유 가격 하락의 2배 수익. PTP 종목(매도 시 세금 주의).",
       "trend_following": {
         "suitability": "고위험",
         "reason": "레버리지 인버스(-2x) 상품은 일간 목표 구조로 장기 보유 시 변동성 끌림이 더 크다. 단기 전술적 헤지 도구로만 적합.",
-        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
       },
       "tags": [
         "인버스",
@@ -702,11 +702,11 @@
       "name_ko": "천연가스 -2배",
       "business_area": "Bloomberg Natural Gas Subindex 일일 -2배",
       "heatmap_label": "천연가스인버스",
-      "short_description": "천연가스 가격 하락의 2배 수익.",
+      "short_description": "천연가스 가격 하락의 2배 수익. PTP 종목(매도 시 세금 주의).",
       "trend_following": {
         "suitability": "고위험",
         "reason": "레버리지 인버스(-2x) 상품은 일간 목표 구조로 장기 보유 시 변동성 끌림이 더 크다. 단기 전술적 헤지 도구로만 적합.",
-        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
       },
       "tags": [
         "인버스",
@@ -723,11 +723,11 @@
       "name_ko": "유로 -2배",
       "business_area": "유로/달러 환율 일일 -2배",
       "heatmap_label": "유로인버스",
-      "short_description": "유로 약세의 2배 수익. 달러 강세 베팅.",
+      "short_description": "유로 약세의 2배 수익. 달러 강세 베팅. PTP 종목(매도 시 세금 주의).",
       "trend_following": {
         "suitability": "고위험",
         "reason": "레버리지 인버스(-2x) 상품은 일간 목표 구조로 장기 보유 시 변동성 끌림이 더 크다. 단기 전술적 헤지 도구로만 적합.",
-        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
       },
       "tags": [
         "인버스",
