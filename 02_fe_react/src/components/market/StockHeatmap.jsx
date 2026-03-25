@@ -116,7 +116,7 @@ const Tile = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriod
       {badge && <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>}
       {trendDays !== null && trendDays !== undefined && (
         <div className="report-overview-card-days">
-          {trendDays.days}일째
+          {trendDays.direction === "up" ? "▲" : "▼"} {trendDays.days}일째
           {item.aboveDays200 != null && <span className="report-overview-card-filter-ratio">({item.aboveDays200}/20)</span>}
         </div>
       )}
