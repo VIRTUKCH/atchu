@@ -147,6 +147,19 @@ PC:
 | **샤프비율** | `backtest.{variant}.sharpe` | 위험조정 수익 |
 | **데이터 기간** | `backtest.startDate` | 몇 년 검증됐는지 |
 
+### 기간별 수익률 계산 방식
+
+- **기준**: 오늘 기준 일별 가격으로 계산. 매달 리밸런싱 가정을 깨고, 실제 당일 포트폴리오 가치를 반영.
+- **기간**: 1M(오늘-1달), 3M(오늘-3달), 6M(오늘-6달), 1Y(오늘-1년), 3Y(오늘-3년), 5Y(오늘-5년)
+- **계산 위치**: 시그널 생성 스크립트에서 계산하여 `periodReturns` 필드로 JSON에 저장. 프론트엔드는 표시만.
+- **로직**: 월별 equity curve를 오늘 일별 가격으로 확장 → N개월 전 날짜의 equity 값을 일별 CSV에서 찾아 수익률 계산.
+
+### 티커 풀 관리
+
+- 각 전략의 티커 풀은 `data/tickers_quant/{strategy}.json`에 정의.
+- 시그널 생성 스크립트는 이 JSON에서 `groups`와 `items`를 읽어 사용.
+- 풀을 변경하면 다음 파이프라인 실행 시 자동 반영.
+
 ### UI 상세 가이드
 
 #### 수익률 그리드 (`quant-returns-grid`)
@@ -292,16 +305,19 @@ export const QUANT_STRATEGIES = [
 | 데이터 | 파일 경로 | 로딩 방식 | 갱신 주기 |
 |--------|----------|-----------|----------|
 | BAA 신호·배분 | `data/summary/baa/baa_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
-| BAA 전용 티커 메타 | `data/tickers/baa.json` | `import.meta.glob` eager | 수동 |
+| 퀀트 티커 풀 | `data/tickers_quant/*.json` | 시그널 스크립트에서 읽음 | 수동 |
 | HAA 신호·배분 | `data/summary/haa/haa_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
-| HAA 전용 티커 메타 | `data/tickers/haa.json` | 파이프라인 전용 | 수동 |
-| 섹터 신호 (예정) | `data/summary/sector/sector_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| Faber 신호 | `data/summary/faber/faber_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
 | DM 4변형 신호 | `data/summary/dm/dm_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
-| DM 티커 메타 | `data/tickers/dm.json` | 파이프라인 전용 | 수동 |
+| CTA 신호 | `data/summary/trend/trend_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| 경기순환 신호 | `data/summary/business-cycle/business_cycle_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| ALLW 신호 | `data/summary/allw/allw_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| QVM 신호 | `data/summary/qvm/qvm_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
+| QVM DIY 신호 | `data/summary/qvm/qvm_diy_signal.json` | `import.meta.glob` eager | 매일 (pipeline.sh) |
 | ETF CSV (계산용) | `data/csv/*.US_all.csv` | 프론트 미사용 (파이프라인 전용) | 매일 |
 
 ---
 
 **관련 페이지 기획:** [dev_market_overview.md](../dev_market_overview.md) (개발자 마켓 뷰)
-**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `BaaSignalBadge`, `BaaPortfolioTab`, `baaDataLoaders.js`, `HaaQuantPeekPage`, `HaaEquityCurveChart`, `haaDataLoaders.js`, `DualMomentumPage`, `DmEquityCurveChart`, `dmDataLoaders.js`, `QvmPage`, `QvmEquityCurveChart`, `qvmDataLoaders.js`
-**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `generate_dm_signal.mjs`, `generate_qvm_signal.mjs`, `pipeline.sh`
+**관련 컴포넌트:** `QuantHubPage`, `BaaQuantPeekPage`, `HaaQuantPeekPage`, `DualMomentumPage`, `FaberSectorPage`, `TrendFollowingPage`, `BusinessCyclePage`, `AllWeatherPage`, `QvmPage`, `QvmDiyPage`
+**관련 파이프라인:** `generate_baa_signal.mjs`, `generate_haa_signal.mjs`, `generate_dm_signal.mjs`, `generate_faber_signal.mjs`, `generate_trend_signal.mjs`, `generate_business_cycle_signal.mjs`, `generate_allw_signal.mjs`, `generate_qvm_signal.mjs`, `generate_qvm_diy_signal.mjs`, `lib/quant_utils.mjs`, `pipeline.sh`
