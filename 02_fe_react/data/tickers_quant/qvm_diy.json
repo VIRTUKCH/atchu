@@ -1,0 +1,15 @@
+{
+  "type": "QVM DIY 멀티팩터",
+  "groups": {
+    "factors": ["QUAL", "VLUE", "MTUM"],
+    "benchmark": ["SPY"],
+    "cash": ["BIL"]
+  },
+  "items": [
+    { "ticker": "QUAL", "name_ko": "우량주 (Quality)" },
+    { "ticker": "VLUE", "name_ko": "가치주 (Value)" },
+    { "ticker": "MTUM", "name_ko": "모멘텀 (Momentum)" },
+    { "ticker": "SPY", "name_ko": "S&P 500" },
+    { "ticker": "BIL", "name_ko": "초단기 국채" }
+  ]
+}

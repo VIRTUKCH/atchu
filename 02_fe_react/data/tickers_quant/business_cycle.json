@@ -1,0 +1,26 @@
+{
+  "type": "경기순환 섹터 로테이션",
+  "groups": {
+    "indicator": ["SPY"],
+    "sectors": ["XLK", "XLF", "XLV", "XLY", "XLP", "XLE", "XLI", "XLU"],
+    "bond": ["AGG"],
+    "phase_sectors": {
+      "early": ["XLF", "XLI"],
+      "mid": ["XLK", "XLY"],
+      "late": ["XLE", "XLV", "XLP"],
+      "recession": ["XLU", "XLV", "XLP"]
+    }
+  },
+  "items": [
+    { "ticker": "SPY", "name_ko": "S&P 500" },
+    { "ticker": "XLK", "name_ko": "기술" },
+    { "ticker": "XLF", "name_ko": "금융" },
+    { "ticker": "XLV", "name_ko": "헬스케어" },
+    { "ticker": "XLY", "name_ko": "경기소비재" },
+    { "ticker": "XLP", "name_ko": "필수소비재" },
+    { "ticker": "XLE", "name_ko": "에너지" },
+    { "ticker": "XLI", "name_ko": "산업재" },
+    { "ticker": "XLU", "name_ko": "유틸리티" },
+    { "ticker": "AGG", "name_ko": "미국 종합채권" }
+  ]
+}

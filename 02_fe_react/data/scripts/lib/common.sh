@@ -9,6 +9,7 @@ init_runtime() {
   ROOT_DIR="${ROOT_DIR:-$(cd "${script_dir}/.." && pwd)}"
   FRONT_DIR="${FRONT_DIR:-$(cd "${ROOT_DIR}/.." && pwd)}"
   TICKERS_DIR="${TICKERS_DIR:-${ROOT_DIR}/tickers}"
+  TICKERS_QUANT_DIR="${TICKERS_QUANT_DIR:-${ROOT_DIR}/tickers_quant}"
   OUT_DIR="${OUT_DIR:-${ROOT_DIR}/csv}"
   LOG_DIR="${LOG_DIR:-${ROOT_DIR}/logs}"
   LOCK_FILE="${LOCK_FILE:-${ROOT_DIR}/.pipeline.lock}"

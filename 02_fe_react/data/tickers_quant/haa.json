@@ -1,0 +1,20 @@
+{
+  "type": "HAA 전략",
+  "groups": {
+    "canary": ["TIP"],
+    "offensive": ["SPY", "EFA", "EEM", "VNQ", "DBC", "GLD", "TLT"],
+    "defensive": ["IEF", "BIL"]
+  },
+  "items": [
+    { "ticker": "TIP", "name_ko": "물가연동 국채" },
+    { "ticker": "SPY", "name_ko": "S&P 500" },
+    { "ticker": "EFA", "name_ko": "선진국 (EAFE)" },
+    { "ticker": "EEM", "name_ko": "신흥국 (MSCI)" },
+    { "ticker": "VNQ", "name_ko": "부동산" },
+    { "ticker": "DBC", "name_ko": "원자재 종합" },
+    { "ticker": "GLD", "name_ko": "금" },
+    { "ticker": "TLT", "name_ko": "장기 국채" },
+    { "ticker": "IEF", "name_ko": "중기 국채" },
+    { "ticker": "BIL", "name_ko": "초단기 국채" }
+  ]
+}

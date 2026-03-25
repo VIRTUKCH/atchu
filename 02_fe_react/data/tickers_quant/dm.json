@@ -1,0 +1,35 @@
+{
+  "type": "듀얼 모멘텀 전략",
+  "groups": {
+    "gem": { "offensive": ["SPY", "EFA"], "defensive": ["AGG"], "benchmark": ["BIL"] },
+    "adm": { "offensive": ["SPY", "EFA"], "defensive": ["TLT"], "benchmark": ["BIL"] },
+    "cdm_modules": {
+      "equity": ["SPY", "EFA"],
+      "credit": ["LQD", "HYG"],
+      "real_estate": ["VNQ"],
+      "stress": ["GLD", "TLT"]
+    },
+    "sectors": ["XLB", "XLC", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"]
+  },
+  "items": [
+    { "ticker": "SPY", "name_ko": "S&P 500" },
+    { "ticker": "EFA", "name_ko": "선진국 (EAFE)" },
+    { "ticker": "AGG", "name_ko": "미국 종합채권" },
+    { "ticker": "BIL", "name_ko": "초단기 국채" },
+    { "ticker": "TLT", "name_ko": "장기 국채" },
+    { "ticker": "GLD", "name_ko": "금" },
+    { "ticker": "VNQ", "name_ko": "미국 부동산" },
+    { "ticker": "LQD", "name_ko": "투자등급 회사채" },
+    { "ticker": "HYG", "name_ko": "하이일드 채권" },
+    { "ticker": "XLB", "name_ko": "소재" },
+    { "ticker": "XLC", "name_ko": "커뮤니케이션" },
+    { "ticker": "XLE", "name_ko": "에너지" },
+    { "ticker": "XLF", "name_ko": "금융" },
+    { "ticker": "XLI", "name_ko": "산업재" },
+    { "ticker": "XLK", "name_ko": "기술" },
+    { "ticker": "XLP", "name_ko": "필수소비재" },
+    { "ticker": "XLU", "name_ko": "유틸리티" },
+    { "ticker": "XLV", "name_ko": "헬스케어" },
+    { "ticker": "XLY", "name_ko": "임의소비재" }
+  ]
+}

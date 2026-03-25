@@ -16,6 +16,7 @@ Thumbs.db
 02_fe_react/data/*
 !02_fe_react/data/scripts/
 !02_fe_react/data/tickers/
+!02_fe_react/data/tickers_quant/
 !02_fe_react/data/tickers_stock/
 
 # Vercel
