@@ -40,6 +40,41 @@ const averageOf = (series, period, index) => {
   return total / period;
 };
 
+/**
+ * MA 사전계산 배열을 반환한다.
+ * averageOf()와 동일한 결과를 O(n)으로 생성.
+ * - series에 null이 포함된 window는 null을 반환 (averageOf와 동일 동작).
+ */
+const precomputeMA = (series, period) => {
+  const len = series.length;
+  const result = new Array(len).fill(null);
+  let sum = 0;
+  let nullCount = 0;
+
+  for (let i = 0; i < len; i++) {
+    // 새 값 추가
+    if (series[i] === null || series[i] === undefined) {
+      nullCount++;
+    } else {
+      sum += series[i];
+    }
+    // 윈도우 밖으로 나간 값 제거
+    if (i >= period) {
+      const old = series[i - period];
+      if (old === null || old === undefined) {
+        nullCount--;
+      } else {
+        sum -= old;
+      }
+    }
+    // period개가 모였고 null이 없을 때만 평균 기록
+    if (i >= period - 1 && nullCount === 0) {
+      result[i] = sum / period;
+    }
+  }
+  return result;
+};
+
 const buildFromCsv = (csvText) => {
   const lines = String(csvText || "").trim().split("\n");
   if (lines.length < 3) {
@@ -64,12 +99,14 @@ const buildFromCsv = (csvText) => {
   const lastIndex = records.length - 1;
   const latest = records[lastIndex];
   const adjustedSeries = records.map((row) => parseNumber(row.Adjusted_close ?? row.Close));
+  const ma50Array = precomputeMA(adjustedSeries, 50);
+  const ma200Array = precomputeMA(adjustedSeries, 200);
   const latestAdjustedClose = adjustedSeries[lastIndex];
   const previousAdjustedClose = adjustedSeries[lastIndex - 1];
   const close = latestAdjustedClose;
   const previousClose = previousAdjustedClose;
-  const movingAverage50 = averageOf(adjustedSeries, 50, lastIndex);
-  const movingAverage200 = averageOf(adjustedSeries, 200, lastIndex);
+  const movingAverage50 = ma50Array[lastIndex];
+  const movingAverage200 = ma200Array[lastIndex];
   const percentDiff = (ma) => (ma && close !== null ? ((close - ma) / ma) * 100 : null);
 
   // 골든크로스/데드크로스 상태: MA50 > MA200 = golden, MA200 > MA50 = dead
@@ -84,8 +121,8 @@ const buildFromCsv = (csvText) => {
     if (maAlignment === null) return null;
     let days = 0;
     for (let i = lastIndex; i >= 199; i -= 1) {
-      const m50 = averageOf(adjustedSeries, 50, i);
-      const m200 = averageOf(adjustedSeries, 200, i);
+      const m50 = ma50Array[i];
+      const m200 = ma200Array[i];
       if (m50 === null || m200 === null) break;
       const state = m50 > m200 ? "golden" : "dead";
       if (state === maAlignment) {
@@ -114,14 +151,16 @@ const buildFromCsv = (csvText) => {
     let count = 0;
     for (let j = lastIndex - 19; j <= lastIndex; j += 1) {
       const price = adjustedSeries[j];
-      const ma = averageOf(adjustedSeries, 200, j);
+      const ma = ma200Array[j];
       if (price !== null && ma !== null && price > ma) count += 1;
     }
     return count;
   })();
 
+  const maArrayMap = { 50: ma50Array, 200: ma200Array };
   const holdingItems = PERIODS.map((period) => {
-    const lastMa = averageOf(adjustedSeries, period, lastIndex);
+    const maArray = maArrayMap[period];
+    const lastMa = maArray[lastIndex];
     if (lastMa === null) {
       return { label: `${period}일선`, days: null, direction: null };
     }
@@ -129,7 +168,7 @@ const buildFromCsv = (csvText) => {
     const lastState = lastPrice >= lastMa;
     let days = 0;
     for (let i = lastIndex; i >= 0; i -= 1) {
-      const ma = averageOf(adjustedSeries, period, i);
+      const ma = maArray[i];
       const price = adjustedSeries[i];
       if (ma === null || price === null) {
         break;
@@ -145,10 +184,10 @@ const buildFromCsv = (csvText) => {
 
   const crossingItems = [];
   CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "cross").forEach((strategy) => {
-    const period = strategy.period;
+    const maArray = maArrayMap[strategy.period];
     for (let i = 1; i <= lastIndex; i += 1) {
-      const prevMa = averageOf(adjustedSeries, period, i - 1);
-      const currMa = averageOf(adjustedSeries, period, i);
+      const prevMa = maArray[i - 1];
+      const currMa = maArray[i];
       const prevPrice = adjustedSeries[i - 1];
       const currPrice = adjustedSeries[i];
       if (prevMa === null || currMa === null || prevPrice === null || currPrice === null) {
@@ -168,14 +207,14 @@ const buildFromCsv = (csvText) => {
     }
   });
 
-  const isHoldFilterQualified = (period, index, windowDays = 20, minDays = 16) => {
+  const isHoldFilterQualified = (maArray, index, windowDays = 20, minDays = 16) => {
     if (index < windowDays - 1) {
       return false;
     }
     let aboveCount = 0;
     for (let j = index - windowDays + 1; j <= index; j += 1) {
       const price = adjustedSeries[j];
-      const ma = averageOf(adjustedSeries, period, j);
+      const ma = maArray[j];
       if (price !== null && ma !== null && price > ma) {
         aboveCount += 1;
       }
@@ -184,12 +223,13 @@ const buildFromCsv = (csvText) => {
   };
 
   CROSSING_STRATEGIES.filter((strategy) => strategy.mode === "hold_20of16").forEach((strategy) => {
+    const maArray = maArrayMap[strategy.period];
     let prevQualified = null;
     for (let i = 0; i <= lastIndex; i += 1) {
       if (i < 19) {
         continue;
       }
-      const isQualified = isHoldFilterQualified(strategy.period, i, 20, 16);
+      const isQualified = isHoldFilterQualified(maArray, i, 20, 16);
       if (prevQualified === null) {
         prevQualified = isQualified;
         if (isQualified) {
@@ -220,8 +260,8 @@ const buildFromCsv = (csvText) => {
     const startIdx = 199;
     let prevGolden = null;
     for (let i = startIdx; i <= lastIndex; i += 1) {
-      const ma50 = averageOf(adjustedSeries, 50, i);
-      const ma200 = averageOf(adjustedSeries, 200, i);
+      const ma50 = ma50Array[i];
+      const ma200 = ma200Array[i];
       if (ma50 === null || ma200 === null) continue;
       const isGolden = ma50 > ma200;
       if (prevGolden === null) {
