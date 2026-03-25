@@ -145,11 +145,11 @@ iPhone SE (375×667) 기준으로 디자인한다. 이 화면에서 잘리거나
 | 앗추 필터 상태 | 초록 점 `앗추 필터 적용 중 (18/20일)` 또는 빨강 점 `앗추 필터 이탈 (12/20일)` | 스냅샷 JSON `isAtchuQualified200`, `aboveDays200` |
 | 종가 | `$662.29` | 스냅샷 JSON `close` |
 | 일일 변화율 | `(-0.57%)` 빨강/파랑 | 스냅샷 JSON `percent_change_from_previous_close` |
-| 미니 캔들 | OHLC SVG, 색상은 변화율 기준 | 스냅샷 JSON `open`, `high`, `low`, `close` |
+| 미니 캔들 | OHLC SVG, 색상은 시가 vs 종가 기준 (캔들차트 관례) | 스냅샷 JSON `open`, `high`, `low`, `close` |
 | 마켓 상태 | `[미국 장 휴장일]` 등 회색 텍스트 | `isStaleCloseByUsMarketDate()` 계산 |
 | 간단한 설명 | 한 줄 텍스트 | JSON `short_description` |
 
-- 캔들 색상은 전일 대비 변화율(`changePercent`) 기준. 변화율과 캔들 색이 항상 일치
+- 캔들 색상은 시가 vs 종가 기준 (종가 ≥ 시가 → 양봉, 종가 < 시가 → 음봉). 일반 캔들차트 관례를 따른다. 일일 변화율(전일 대비)과 캔들 색상은 독립적이다 — 갭다운 후 반등 시 변화율은 음수(파랑)이지만 캔들은 양봉(빨강)이 맞다.
 
 **③ 오른쪽 — 전략 데이터:**
 

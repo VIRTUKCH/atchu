@@ -128,9 +128,7 @@ function EtfSummaryCard({
   const yClose = hasCandle ? toY(closeNum) : 12;
   const bodyTop = Math.min(yOpen, yClose);
   const bodyHeight = Math.max(Math.abs(yOpen - yClose), 1.5);
-  const candleClass = changePercent !== null && changePercent !== undefined
-    ? Number(changePercent) >= 0 ? "up" : "down"
-    : closeNum >= openNum ? "up" : "down";
+  const candleClass = closeNum >= openNum ? "up" : "down";
   const rawSuitability =
     meta?.trendFollowing?.suitability ||
     meta?.trend_following?.suitability ||
