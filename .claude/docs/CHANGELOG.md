@@ -1,5 +1,16 @@
 # 작업 기록
 
+### 2026-03-25 (90)
+- **퀀트 전략 티커 구조 정리 + Discord 알림 대상 원칙 명시**
+  - `data/tickers_quant/` 신설: 퀀트 전략 티커 풀을 공개 ETF와 물리적 분리
+  - 기존 JSON 3개(baa, haa, dm) 내용 수정 — 스크립트 실제 풀과 일치 (예: BAA 4→18개)
+  - 신규 JSON 4개 생성: faber, cta, business_cycle, qvm_diy
+  - `qvm.json` 삭제 (QVML은 style.json에 이미 존재, 중복)
+  - `tickers.sh`: read_tickers()에서 양쪽 디렉터리 읽기 (CSV 다운로드용)
+  - Discord 일간 리포트에서 "BAA 전략", "HAA 전략" 등 퀀트 타입 자동 제외
+  - `discord_alert.md`: 알림 대상은 공개 페이지 컨텐츠에 한정한다는 원칙 추가
+  - `CLAUDE.md`: 퀀트 엿보기(비공개) 섹션 추가
+
 ### 2026-03-24 (89)
 - **멀티팩터 QVM Phase 2: QVM-EW + QVM-MOM DIY 두 변형 구현**
   - `generate_qvm_diy_signal.mjs`: QUAL+VLUE+MTUM 3팩터 ETF 조합 백테스트 (2013-08~, 139개월)
