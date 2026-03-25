@@ -9,27 +9,16 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  readMonthEnds, readLatestClose,
+  round2, round3, parseNumber, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
 const CSV_DIR = path.join(ROOT_DIR, "csv");
 const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "qvm");
 const OUT_FILE = path.join(SUMMARY_DIR, "qvm_signal.json");
-
-/* ── Helpers ── */
-const round2 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 100) / 100;
-const round3 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 1000) / 1000;
-
-const parseNumber = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-};
 
 /** SPY 10개월 이동평균 */
 const calcSpySma10 = (spyData, ym) => {
@@ -40,62 +29,8 @@ const calcSpySma10 = (spyData, ym) => {
   return window.reduce((s, m) => s + m.close, 0) / 10;
 };
 
-/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
-const readLatestClose = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 2) return null;
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const parts = lines[lines.length - 1].split(",");
-  const row = {};
-  headers.forEach((h, i) => { row[h] = parts[i]; });
-  const close = parseNumber(row.Adjusted_close ?? row.Close);
-  return close !== null ? { date: String(row.Date), close } : null;
-};
-
-/* ── CSV → 월말 종가 ── */
-function readMonthEnds(ticker) {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) {
-    console.warn(`[WARN] CSV not found: ${csvPath}`);
-    return null;
-  }
-
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) {
-    console.warn(`[WARN] CSV too short: ${ticker}`);
-    return null;
-  }
-
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((row) => row.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-
-  return [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
-}
-
-/* ── 기준월 결정 (전월) ── */
-function getReferenceMonth() {
+/* ── 기준월 결정 (전월) — 공통 모듈 getReferenceMonth 미사용, 기존 로직 유지 ── */
+function _getReferenceMonth() {
   const now = new Date();
   const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
@@ -149,11 +84,11 @@ function calcPerformance(monthlyReturns) {
 function main() {
   console.log("[QVM] Starting QVM multi-factor signal generation...");
 
-  const refYm = getReferenceMonth();
+  const refYm = _getReferenceMonth();
   console.log(`[QVM] Reference month: ${refYm}`);
 
   // QVML 월말 데이터
-  const qvmlMonthEnds = readMonthEnds("QVML");
+  const qvmlMonthEnds = readMonthEnds("QVML", CSV_DIR);
   if (!qvmlMonthEnds || qvmlMonthEnds.length < 2) {
     console.warn("[QVM] Not enough QVML data. Creating minimal output.");
     fs.mkdirSync(SUMMARY_DIR, { recursive: true });
@@ -200,7 +135,7 @@ function main() {
   }
 
   // SPY 벤치마크
-  const spyMonthEnds = readMonthEnds("SPY");
+  const spyMonthEnds = readMonthEnds("SPY", CSV_DIR);
 
   // 공통 기간 결정
   const qvmlStart = qvmlMonthEnds[0].ym;
@@ -248,8 +183,8 @@ function main() {
   }
 
   /* ── 부분월(오늘) 포인트 ── */
-  const latestQvml = readLatestClose("QVML");
-  const latestSpy = readLatestClose("SPY");
+  const latestQvml = readLatestClose("QVML", CSV_DIR);
+  const latestSpy = readLatestClose("SPY", CSV_DIR);
   if (latestQvml && latestSpy && equityCurve.length > 0 && qvmlFiltered.length > 0) {
     const lastEq = equityCurve[equityCurve.length - 1];
     const lastQvml = qvmlFiltered[qvmlFiltered.length - 1];
@@ -316,6 +251,14 @@ function main() {
     },
     dataMonths: qvmlFiltered.length,
   };
+
+  // 오늘 기준 기간별 수익률
+  if (equityCurve.length >= 2) {
+    const lastQvmlEntry = qvmlFiltered[qvmlFiltered.length - 1];
+    output.periodReturns = {
+      qvml: calcPeriodReturns(equityCurve, "qvml", [{ ticker: "QVML", weight: 1 }], CSV_DIR, lastQvmlEntry.date),
+    };
+  }
 
   fs.mkdirSync(SUMMARY_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
