@@ -91,6 +91,7 @@ const buildLocalTickers = (tickerModules) => {
       "밸류",
       "퀄리티",
       "저변동성",
+      "모멘텀",
       "배당",
       "스타일",
       "섹터",
