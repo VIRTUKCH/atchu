@@ -12,19 +12,6 @@ import { trendSignalPayload } from "../utils/trendDataLoaders";
 import { businessCycleSignalPayload } from "../utils/businessCycleDataLoaders";
 import QuantStrategyCard from "../components/quant/QuantStrategyCard";
 
-function calcPeriodReturns(equityCurve, curveKey) {
-  if (!equityCurve || !curveKey || equityCurve.length < 2) return null;
-  const latest = equityCurve[equityCurve.length - 1];
-  const latestVal = latest[curveKey];
-  if (latestVal == null) return null;
-  const lookup = (monthsAgo) => {
-    const idx = equityCurve.length - 1 - monthsAgo;
-    return idx >= 0 ? equityCurve[idx][curveKey] : null;
-  };
-  const pct = (prev) => prev != null ? ((latestVal / prev - 1) * 100).toFixed(1) : null;
-  return { "5Y": pct(lookup(60)), "3Y": pct(lookup(36)), "1Y": pct(lookup(12)), "6M": pct(lookup(6)), "3M": pct(lookup(3)), "1M": pct(lookup(1)) };
-}
-
 function getCardDataFromPayload(strategy, payload) {
   if (!payload) {
     return { signal: { text: "데이터 없음", variant: "coming" }, portfolio: null, backtest: null, returns: null };
@@ -38,7 +25,7 @@ function getCardDataFromPayload(strategy, payload) {
   const variantKey = strategy.curveKey;
   const portfolio = portfolios?.[variantKey]?.allocations || [];
   const bt = backtest?.[variantKey];
-  const returns = calcPeriodReturns(backtest?.equityCurve, variantKey);
+  const returns = payload.periodReturns?.[variantKey] || null;
 
   return {
     signal: {
@@ -120,7 +107,7 @@ function getFaberCardData(strategy) {
   const dateLabel = rebalanceDate ? rebalanceDate.slice(0, 7) + " 월말 기준" : "";
   const isInvested = mode === "invested";
 
-  const returns = calcPeriodReturns(backtest?.equityCurve, "faberSector");
+  const returns = faberSignalPayload.periodReturns?.faberSector || null;
   const bt = backtest?.faberSector;
 
   return {
@@ -167,7 +154,7 @@ function getDmCardData(strategy) {
   const mode = signal?.mode;
   const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
   const curveKey = strategy.curveKey;
-  const returns = calcPeriodReturns(backtest?.equityCurve, curveKey);
+  const returns = variant.periodReturns || null;
   const bt = backtest?.[curveKey];
 
   return {
@@ -210,7 +197,7 @@ function getTrendCardData(strategy) {
   const investedCount = signal?.investedCount ?? 0;
   const totalCount = (signal?.investedCount ?? 0) + (signal?.cashCount ?? 0) || 9;
   const curveKey = strategy.curveKey || "trend";
-  const returns = calcPeriodReturns(backtest?.equityCurve, curveKey);
+  const returns = trendSignalPayload.periodReturns?.[curveKey] || null;
   const bt = backtest?.[curveKey];
 
   // CAGR가중이면 cagrWeights 기반 포트폴리오 구성
@@ -271,7 +258,7 @@ function getBusinessCycleCardData(strategy) {
   const dateLabel = signal?.rebalanceDate ? signal.rebalanceDate.slice(0, 7) + " 월말 기준" : "";
 
   const PHASE_VARIANTS = { early: "offensive", mid: "offensive", late: "defensive", recession: "defensive" };
-  const returns = calcPeriodReturns(backtest?.equityCurve, "businessCycle");
+  const returns = businessCycleSignalPayload.periodReturns?.businessCycle || null;
   const bt = backtest?.businessCycle;
 
   return {
@@ -311,7 +298,7 @@ function getQvmDiyCardData(strategy) {
   const variantKey = strategy.curveKey;
   const portfolio = qvmDiySignalPayload.portfolios?.[variantKey]?.allocations || [];
   const bt = qvmDiySignalPayload.backtest?.[variantKey];
-  const returns = calcPeriodReturns(qvmDiySignalPayload.backtest?.equityCurve, variantKey);
+  const returns = qvmDiySignalPayload.periodReturns?.[variantKey] || null;
   const dateLabel = qvmDiySignalPayload.signal?.rebalanceDate
     ? String(qvmDiySignalPayload.signal.rebalanceDate).slice(0, 7) + " 월말 기준" : "";
 
@@ -348,7 +335,7 @@ function getQvmCardData(strategy) {
 
   const { performance, equityCurve, latestClose } = qvmSignalPayload;
   const dateLabel = latestClose?.date ? latestClose.date.slice(0, 7) + " 기준" : "";
-  const returns = calcPeriodReturns(equityCurve, "qvml");
+  const returns = qvmSignalPayload.periodReturns?.qvml || null;
   const qvmlPerf = performance?.qvml;
 
   return {
@@ -384,7 +371,7 @@ function getAllwCardData(strategy) {
 
   const { performance, equityCurve, latestClose, allocation } = allwSignalPayload;
   const dateLabel = latestClose?.date ? latestClose.date.slice(0, 7) + " 기준" : "";
-  const returns = calcPeriodReturns(equityCurve, "allw");
+  const returns = allwSignalPayload.periodReturns?.allw || null;
   const allwPerf = performance?.allw;
 
   return {
