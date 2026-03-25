@@ -10,6 +10,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  loadTickerPool, readMonthEnds, readLatestClose,
+  round2, round3, parseNumber, getReferenceMonth, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
@@ -18,44 +22,37 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "dm");
 const OUT_FILE = path.join(SUMMARY_DIR, "dm_signal.json");
 
 /* ═══════════════════════════════════════════════════════
-   Universes
+   Universes — tickers_quant/dm.json 에서 로드
    ═══════════════════════════════════════════════════════ */
 
-const GEM = { offensive: ["SPY", "EFA"], defensive: "AGG", benchmark: "BIL" };
-const ADM = { offensive: ["SPY", "EFA"], defensive: "TLT", benchmark: "BIL" };
-const CDM_MODULES = [
-  { name: "주식", candidates: ["SPY", "EFA"] },
-  { name: "크레딧", candidates: ["LQD", "HYG"] },
-  { name: "부동산", candidates: ["VNQ"] },
-  { name: "스트레스", candidates: ["GLD", "TLT"] },
-];
-const SECTORS = ["XLB", "XLC", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"];
+const pool = loadTickerPool("dm", ROOT_DIR);
 
-const ALL_TICKERS = [...new Set([
-  ...GEM.offensive, GEM.defensive, GEM.benchmark,
-  ...ADM.offensive, ADM.defensive, ADM.benchmark,
-  ...CDM_MODULES.flatMap((m) => m.candidates), "BIL",
-  ...SECTORS,
-  "SPY", "AGG", // 벤치마크용
-])];
-
-const NAME_KO = {
-  SPY: "S&P 500", EFA: "선진국 (EAFE)", AGG: "미국 종합채권",
-  BIL: "초단기 국채", TLT: "장기 국채", GLD: "금",
-  VNQ: "미국 부동산", LQD: "투자등급 회사채", HYG: "하이일드 채권",
-  XLB: "소재", XLC: "커뮤니케이션", XLE: "에너지",
-  XLF: "금융", XLI: "산업재", XLK: "기술",
-  XLP: "필수소비재", XLU: "유틸리티", XLV: "헬스케어", XLY: "임의소비재",
+// gem/adm: JSON은 배열이므로 defensive·benchmark는 [0] 추출
+const GEM = {
+  offensive: pool.groups.gem.offensive,
+  defensive: pool.groups.gem.defensive[0],
+  benchmark: pool.groups.gem.benchmark[0],
 };
+const ADM = {
+  offensive: pool.groups.adm.offensive,
+  defensive: pool.groups.adm.defensive[0],
+  benchmark: pool.groups.adm.benchmark[0],
+};
+
+// cdm_modules: JSON key → 한국어 이름 매핑
+const CDM_MODULE_NAME = { equity: "주식", credit: "크레딧", real_estate: "부동산", stress: "스트레스" };
+const CDM_MODULES = Object.entries(pool.groups.cdm_modules).map(([key, candidates]) => ({
+  name: CDM_MODULE_NAME[key] || key,
+  candidates,
+}));
+
+const SECTORS = pool.groups.sectors;
+const NAME_KO = pool.nameMap;
+const ALL_TICKERS = pool.allTickers;
 
 /* ═══════════════════════════════════════════════════════
    Helpers
    ═══════════════════════════════════════════════════════ */
-
-const round2 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100) / 100;
-const round3 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 1000) / 1000;
 
 /** SPY 10개월 이동평균 */
 const calcSpySma10 = (spyData, ym) => {
@@ -64,75 +61,6 @@ const calcSpySma10 = (spyData, ym) => {
   if (idx < 9) return null;
   const window = spyData.slice(idx - 9, idx + 1);
   return window.reduce((s, m) => s + m.close, 0) / 10;
-};
-const parseNumber = (v) => {
-  const p = Number(v);
-  return Number.isFinite(p) ? p : null;
-};
-
-/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
-const readLatestClose = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 2) return null;
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const parts = lines[lines.length - 1].split(",");
-  const row = {};
-  headers.forEach((h, i) => { row[h] = parts[i]; });
-  const close = parseNumber(row.Adjusted_close ?? row.Close);
-  return close !== null ? { date: String(row.Date), close } : null;
-};
-
-/* ═══════════════════════════════════════════════════════
-   Step 1 — CSV → month-end adjusted close
-   ═══════════════════════════════════════════════════════ */
-
-const readMonthEnds = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) {
-    console.warn(`[WARN] CSV not found: ${csvPath}`);
-    return null;
-  }
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) {
-    console.warn(`[WARN] CSV too short: ${ticker}`);
-    return null;
-  }
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((r) => r.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-  return [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, d]) => ({ ym, date: d.date, close: d.close }));
-};
-
-/* ═══════════════════════════════════════════════════════
-   Step 2 — Reference month (직전 월말)
-   ═══════════════════════════════════════════════════════ */
-
-const getReferenceMonth = () => {
-  const now = new Date();
-  const first = new Date(now.getFullYear(), now.getMonth(), 1);
-  const last = new Date(first.getTime() - 1);
-  return `${last.getFullYear()}-${String(last.getMonth() + 1).padStart(2, "0")}`;
 };
 
 /* ═══════════════════════════════════════════════════════
@@ -171,7 +99,7 @@ console.log(`Reference month: ${refYm}`);
 
 const tickerData = new Map();
 for (const ticker of ALL_TICKERS) {
-  const monthEnds = readMonthEnds(ticker);
+  const monthEnds = readMonthEnds(ticker, CSV_DIR);
   if (!monthEnds || monthEnds.length < 7) {
     console.warn(`[WARN] Insufficient data for ${ticker}`);
     continue;
@@ -424,7 +352,7 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
   }
 
   /* ── 부분월(오늘) 포인트 ── */
-  const latestSpy = readLatestClose("SPY");
+  const latestSpy = readLatestClose("SPY", CSV_DIR);
   if (latestSpy && equityCurve.length > 0 && records.length > 0) {
     const lastEq = equityCurve[equityCurve.length - 1];
     const lastRecord = records[records.length - 1];
@@ -433,14 +361,14 @@ const runBacktest = (variantKey, variantTickers, allocFn) => {
       let stratPartialRet = 0;
       for (const { ticker, weight } of lastRecord.allocations) {
         const c0 = getClose(ticker, lastRecord.ym);
-        const latest = readLatestClose(ticker);
+        const latest = readLatestClose(ticker, CSV_DIR);
         if (c0 && latest && c0 > 0) stratPartialRet += (weight / 100) * (latest.close / c0 - 1);
       }
       // SPY
       const spyRef = getClose("SPY", lastRecord.ym);
       const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
       // 60/40
-      const aggLatest = readLatestClose("AGG");
+      const aggLatest = readLatestClose("AGG", CSV_DIR);
       const aggRef = getClose("AGG", lastRecord.ym);
       const bondPartial = (aggRef && aggLatest && aggRef > 0) ? (aggLatest.close / aggRef - 1) : 0;
       equityCurve.push({
@@ -563,6 +491,23 @@ const sectorResult = runBacktest(
 );
 
 /* ═══════════════════════════════════════════════════════
+   Period returns (오늘 기준 1M/3M/6M/1Y/3Y/5Y)
+   ═══════════════════════════════════════════════════════ */
+
+const calcVariantPeriodReturns = (curveKey, result, currentAlloc) => {
+  if (!result.backtest?.equityCurve || !currentAlloc?.allocations) return null;
+  const alloc = currentAlloc.allocations.map(({ ticker, weight }) => ({ ticker, weight: weight / 100 }));
+  if (alloc.length === 0) return null;
+  const lastDate = result.backtest.endDate;
+  return calcPeriodReturns(result.backtest.equityCurve, curveKey, alloc, CSV_DIR, lastDate);
+};
+
+const gemPeriodReturns = calcVariantPeriodReturns("gem", gemResult, gemCurrent);
+const admPeriodReturns = calcVariantPeriodReturns("adm", admResult, admCurrent);
+const cdmPeriodReturns = calcVariantPeriodReturns("cdm", cdmResult, cdmCurrent);
+const sectorPeriodReturns = calcVariantPeriodReturns("sector", sectorResult, sectorCurrent);
+
+/* ═══════════════════════════════════════════════════════
    Output JSON
    ═══════════════════════════════════════════════════════ */
 
@@ -582,6 +527,7 @@ const payload = {
       portfolio: { allocations: addNameKo(gemCurrent?.allocations) },
       backtest: gemResult.backtest,
       history: gemResult.history,
+      periodReturns: gemPeriodReturns,
     },
     adm: {
       signal: {
@@ -593,6 +539,7 @@ const payload = {
       portfolio: { allocations: addNameKo(admCurrent?.allocations) },
       backtest: admResult.backtest,
       history: admResult.history,
+      periodReturns: admPeriodReturns,
     },
     cdm: {
       signal: {
@@ -603,6 +550,7 @@ const payload = {
       portfolio: { allocations: addNameKo(cdmCurrent?.allocations) },
       backtest: cdmResult.backtest,
       history: cdmResult.history,
+      periodReturns: cdmPeriodReturns,
     },
     sector: {
       signal: {
@@ -613,6 +561,7 @@ const payload = {
       portfolio: { allocations: addNameKo(sectorCurrent?.allocations) },
       backtest: sectorResult.backtest,
       history: sectorResult.history,
+      periodReturns: sectorPeriodReturns,
     },
   },
 };
