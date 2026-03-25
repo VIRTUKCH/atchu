@@ -64,6 +64,22 @@
         "operation_notes": "장기 보유 금지에 가깝게 운용(짧은 보유기간). 손절·익절 규칙을 명확히 하고, 포트폴리오 전체에서 비중 상한을 매우 낮게 둔다."
       },
       "tags": ["변동성", "VIX", "공포", "ETN"]
+    },
+    {
+      "type": "암호화폐",
+      "asset_type": "기타",
+      "ticker": "IBIT",
+      "name": "iShares Bitcoin Trust ETF",
+      "name_ko": "비트코인",
+      "business_area": "비트코인 현물",
+      "heatmap_label": "비트코인",
+      "short_description": "비트코인 현물 가격 연동. 극심한 변동성, 24시간 시장과 괴리 존재.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "암호화폐는 24시간 거래되지만 ETF는 미국 장중만 거래돼 갭 리스크가 크다. 변동성이 극심해 추세 신호가 자주 무너질 수 있다.",
+        "operation_notes": "비중 상한을 매우 낮게 두고, 더 긴 신호(200일선)와 엄격한 손절 규칙을 권장."
+      },
+      "tags": ["암호화폐", "비트코인", "대안투자"]
     }
   ],
   "type_profile": {
