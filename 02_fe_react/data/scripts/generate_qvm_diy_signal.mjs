@@ -11,6 +11,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  loadTickerPool, readMonthEnds, readLatestClose,
+  round2, round3, parseNumber, getReferenceMonth, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
@@ -18,28 +22,16 @@ const CSV_DIR = path.join(ROOT_DIR, "csv");
 const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "qvm");
 const OUT_FILE = path.join(SUMMARY_DIR, "qvm_diy_signal.json");
 
-const FACTOR_TICKERS = [
-  { ticker: "QUAL", nameKo: "우량주" },
-  { ticker: "VLUE", nameKo: "가치주" },
-  { ticker: "MTUM", nameKo: "모멘텀" },
-];
+/* ── 티커 풀 로드 (tickers_quant/qvm_diy.json) ── */
+const pool = loadTickerPool("qvm_diy", ROOT_DIR);
+const FACTOR_TICKERS = pool.items
+  .filter((i) => pool.groups.factors.includes(i.ticker))
+  .map((i) => ({ ticker: i.ticker, nameKo: i.name_ko }));
+const NAME_KO = pool.nameMap;
+
+/* ── 전략 파라미터 (하드코딩 유지) ── */
 const MOM_WEIGHTS = [50, 30, 20]; // 1위/2위/3위 비중
 const EW_WEIGHT = 33.3;
-
-/* ── Helpers ── */
-const round2 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 100) / 100;
-const round3 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 1000) / 1000;
-
-const parseNumber = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-};
 
 /** SPY 10개월 이동평균 */
 const calcSpySma10 = (spyData, ym) => {
@@ -49,56 +41,6 @@ const calcSpySma10 = (spyData, ym) => {
   const window = spyData.slice(idx - 9, idx + 1);
   return window.reduce((s, m) => s + m.close, 0) / 10;
 };
-
-/* ── CSV → 월말 종가 ── */
-function readMonthEnds(ticker) {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) {
-    console.warn(`[WARN] CSV not found: ${csvPath}`);
-    return null;
-  }
-
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) {
-    console.warn(`[WARN] CSV too short: ${ticker}`);
-    return null;
-  }
-
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((row) => row.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-
-  return [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
-}
-
-/* ── 기준월 결정 (전월) ── */
-function getReferenceMonth() {
-  const now = new Date();
-  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
-  const year = lastDayPrevMonth.getFullYear();
-  const month = String(lastDayPrevMonth.getMonth() + 1).padStart(2, "0");
-  return `${year}-${month}`;
-}
 
 /* ── 성과 지표 ── */
 function calcPerformance(monthlyReturns) {
@@ -163,7 +105,7 @@ function main() {
   // 팩터 ETF 월말 데이터 읽기
   const factorData = {};
   for (const f of FACTOR_TICKERS) {
-    const data = readMonthEnds(f.ticker);
+    const data = readMonthEnds(f.ticker, CSV_DIR);
     if (!data || data.length < 13) {
       console.warn(`[QVM-DIY] Not enough data for ${f.ticker}. Aborting.`);
       writeMinimalOutput();
@@ -173,7 +115,7 @@ function main() {
   }
 
   // BIL (T-Bill) 월말 데이터
-  const bilData = readMonthEnds("BIL");
+  const bilData = readMonthEnds("BIL", CSV_DIR);
   if (!bilData || bilData.length < 2) {
     console.warn("[QVM-DIY] Not enough BIL data. Aborting.");
     writeMinimalOutput();
@@ -181,7 +123,7 @@ function main() {
   }
 
   // SPY 벤치마크
-  const spyData = readMonthEnds("SPY");
+  const spyData = readMonthEnds("SPY", CSV_DIR);
   if (!spyData || spyData.length < 2) {
     console.warn("[QVM-DIY] Not enough SPY data. Aborting.");
     writeMinimalOutput();
@@ -400,6 +342,21 @@ function main() {
     },
     history: recentHistory,
   };
+
+  // 오늘 기준 기간별 수익률 (일별 가격 사용)
+  const lastRecord = history[history.length - 1];
+  if (lastRecord && equityCurve.length >= 2) {
+    const ewAllocNorm = (latestEwAlloc || []).map(({ ticker, weight }) => ({
+      ticker, weight: weight / 100,
+    }));
+    const momAllocNorm = (latestMomAlloc || []).map(({ ticker, weight }) => ({
+      ticker, weight: weight / 100,
+    }));
+    output.periodReturns = {
+      qvmEw: calcPeriodReturns(equityCurve, "qvmEw", ewAllocNorm, CSV_DIR, lastRecord.date),
+      qvmMom: calcPeriodReturns(equityCurve, "qvmMom", momAllocNorm, CSV_DIR, lastRecord.date),
+    };
+  }
 
   fs.mkdirSync(SUMMARY_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
