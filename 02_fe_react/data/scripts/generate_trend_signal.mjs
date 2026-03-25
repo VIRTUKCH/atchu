@@ -15,6 +15,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  loadTickerPool, readMonthEnds, readLatestClose, readDailyPrices,
+  round2, round3, parseNumber, getReferenceMonth, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
@@ -23,47 +27,13 @@ const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "trend");
 const OUT_FILE = path.join(SUMMARY_DIR, "trend_signal.json");
 
 /* ── Universe ── */
-const UNIVERSE = [
-  { ticker: "SPY", nameKo: "미국 주식", role: "성장 추세" },
-  { ticker: "TLT", nameKo: "장기 국채", role: "금리 추세" },
-  { ticker: "IEF", nameKo: "중기 국채", role: "안정성" },
-  { ticker: "GLD", nameKo: "금", role: "인플레/불확실성" },
-  { ticker: "DBC", nameKo: "원자재", role: "인플레/공급 충격" },
-  { ticker: "EFA", nameKo: "선진국 주식", role: "글로벌 추세" },
-  { ticker: "EEM", nameKo: "이머징 주식", role: "이머징 추세" },
-  { ticker: "TIP", nameKo: "물가연동채", role: "인플레 방어" },
-  { ticker: "VNQ", nameKo: "부동산", role: "실물자산 추세" },
-];
+const pool = loadTickerPool("cta", ROOT_DIR);
+const UNIVERSE = pool.items.filter(i => i.ticker !== "BIL").map(i => ({
+  ticker: i.ticker, nameKo: i.name_ko, role: ""
+}));
 const CASH_TICKER = "BIL"; // 백테스트용 현금 대체 (2007~, SGOV보다 데이터 긺)
 const ASSET_COUNT = UNIVERSE.length;
-
-/* ── Helpers ── */
-const round2 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 100) / 100;
-const round3 = (v) =>
-  v === null || v === undefined || !Number.isFinite(v)
-    ? null
-    : Math.round(v * 1000) / 1000;
-const parseNumber = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-};
-
-/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
-const readLatestClose = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 2) return null;
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const parts = lines[lines.length - 1].split(",");
-  const row = {};
-  headers.forEach((h, i) => { row[h] = parts[i]; });
-  const close = parseNumber(row.Adjusted_close ?? row.Close);
-  return close !== null ? { date: String(row.Date), close } : null;
-};
+const NAME_KO = pool.nameMap;
 
 /* ── CSV → 일별 종가 (+ SMA 200 계산) ── */
 function readDailyWithSma(ticker) {
@@ -102,50 +72,6 @@ function readDailyWithSma(ticker) {
   }
 
   return daily;
-}
-
-/* ── CSV → 월말 종가 (벤치마크/현금 수익률용) ── */
-function readMonthEnds(ticker) {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) return null;
-
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((row) => row.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-
-  return [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
-}
-
-/* ── 기준월 (전월) ── */
-function getReferenceMonth() {
-  const now = new Date();
-  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
-  const year = lastDayPrevMonth.getFullYear();
-  const month = String(lastDayPrevMonth.getMonth() + 1).padStart(2, "0");
-  return `${year}-${month}`;
 }
 
 /* ── 앗추 필터 판정 ── */
@@ -231,15 +157,15 @@ function main() {
   }
 
   // 벤치마크/현금 월말 종가
-  const bilMonthEnds = readMonthEnds(CASH_TICKER);
-  const aggMonthEnds = readMonthEnds("AGG");
+  const bilMonthEnds = readMonthEnds(CASH_TICKER, CSV_DIR);
+  const aggMonthEnds = readMonthEnds("AGG", CSV_DIR);
   const bilMap = new Map(bilMonthEnds?.map((m) => [m.ym, m.close]) || []);
   const aggMap = new Map(aggMonthEnds?.map((m) => [m.ym, m.close]) || []);
 
   // 자산별 월말 종가도 준비 (수익률 계산용)
   const monthEndCache = new Map();
   for (const u of UNIVERSE) {
-    const me = readMonthEnds(u.ticker);
+    const me = readMonthEnds(u.ticker, CSV_DIR);
     if (me) monthEndCache.set(u.ticker, new Map(me.map((m) => [m.ym, m.close])));
   }
 
@@ -247,7 +173,7 @@ function main() {
   const spyMeMap = monthEndCache.get("SPY");
 
   // SPY 월말 종가 배열 (SMA 계산용)
-  const spyMonthEndsArr = readMonthEnds("SPY") || [];
+  const spyMonthEndsArr = readMonthEnds("SPY", CSV_DIR) || [];
 
   // Helper: SPY 10-month SMA at a given YM
   const calcSpySma10 = (ym) => {
@@ -477,7 +403,7 @@ function main() {
   }
 
   /* ── 부분월(오늘) 포인트 ── */
-  const latestSpy = readLatestClose("SPY");
+  const latestSpy = readLatestClose("SPY", CSV_DIR);
   if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
     const lastEq = equityCurve[equityCurve.length - 1];
     const lastRecord = monthlyRecords[monthlyRecords.length - 1];
@@ -492,7 +418,7 @@ function main() {
         const meMap = monthEndCache.get(a.ticker);
         if (!meMap) continue;
         const c0 = meMap.get(lastRecord.ym);
-        const latest = readLatestClose(a.ticker);
+        const latest = readLatestClose(a.ticker, CSV_DIR);
         if (!c0 || !latest || c0 === 0) continue;
 
         const assetRet = latest.close / c0 - 1;
@@ -510,7 +436,7 @@ function main() {
 
       // 현금 비중의 BIL 수익률
       const bilRef = bilMap.get(lastRecord.ym);
-      const bilLatest = readLatestClose(CASH_TICKER);
+      const bilLatest = readLatestClose(CASH_TICKER, CSV_DIR);
       const bilPartialRet = bilRef && bilLatest && bilRef > 0 ? bilLatest.close / bilRef - 1 : 0;
       if (cashW > 0) partialRet += cashW * bilPartialRet;
       if (cashWCagr > 0) partialRetCagr += cashWCagr * bilPartialRet;
@@ -521,7 +447,7 @@ function main() {
 
       // 60/40
       const aggRef = aggMap.get(lastRecord.ym);
-      const aggLatest = readLatestClose("AGG");
+      const aggLatest = readLatestClose("AGG", CSV_DIR);
       const aggPartial = aggRef && aggLatest && aggRef > 0 ? aggLatest.close / aggRef - 1 : 0;
       const sixtyFortyPartial = 0.6 * spyPartial + 0.4 * aggPartial;
 
@@ -589,7 +515,55 @@ function main() {
     })),
   }));
 
-  // 6. 출력
+  // 6. periodReturns 계산
+  const lastRecord = monthlyRecords.length > 0 ? monthlyRecords[monthlyRecords.length - 1] : null;
+  const lastRebalDate = lastRecord ? lastRecord.date : null;
+
+  // 동일가중 현재 배분 (invested → equalW, cash → BIL)
+  const trendAlloc = [];
+  if (lastRecord) {
+    const equalW = 1 / ASSET_COUNT;
+    let cashWTotal = 0;
+    for (const a of lastRecord.assets) {
+      if (a.invested) {
+        trendAlloc.push({ ticker: a.ticker, weight: equalW });
+      } else {
+        cashWTotal += equalW;
+      }
+    }
+    if (cashWTotal > 0) trendAlloc.push({ ticker: CASH_TICKER, weight: cashWTotal });
+  }
+
+  // CAGR가중 현재 배분
+  const trendCagrAlloc = [];
+  if (lastRecord) {
+    let cashWTotal = 0;
+    for (const a of lastRecord.assets) {
+      const cagrW = cagrWeights.get(a.ticker) || (1 / ASSET_COUNT);
+      if (a.invested) {
+        trendCagrAlloc.push({ ticker: a.ticker, weight: cagrW });
+      } else {
+        cashWTotal += cagrW;
+      }
+    }
+    if (cashWTotal > 0) trendCagrAlloc.push({ ticker: CASH_TICKER, weight: cashWTotal });
+  }
+
+  const periodReturnsTrend = equityCurve.length > 1 && lastRebalDate
+    ? calcPeriodReturns(equityCurve, "trend", trendAlloc, CSV_DIR, lastRebalDate)
+    : { "1M": null, "3M": null, "6M": null, "1Y": null, "3Y": null, "5Y": null };
+
+  const periodReturnsTrendCagr = equityCurve.length > 1 && lastRebalDate
+    ? calcPeriodReturns(equityCurve, "trendCagr", trendCagrAlloc, CSV_DIR, lastRebalDate)
+    : { "1M": null, "3M": null, "6M": null, "1Y": null, "3Y": null, "5Y": null };
+
+  // SPY 벤치마크 periodReturns
+  const spyAlloc = [{ ticker: "SPY", weight: 1 }];
+  const periodReturnsSpy = equityCurve.length > 1 && lastRebalDate
+    ? calcPeriodReturns(equityCurve, "spy", spyAlloc, CSV_DIR, lastRebalDate)
+    : { "1M": null, "3M": null, "6M": null, "1Y": null, "3Y": null, "5Y": null };
+
+  // 7. 출력
   const cagrWeightsArr = UNIVERSE.map((u) => ({
     ticker: u.ticker,
     nameKo: u.nameKo,
@@ -622,6 +596,11 @@ function main() {
       assets: currentAssets,
     },
     portfolio,
+    periodReturns: {
+      trend: periodReturnsTrend,
+      trendCagr: periodReturnsTrendCagr,
+      spy: periodReturnsSpy,
+    },
   };
 
   if (monthlyRecords.length > 1) {
