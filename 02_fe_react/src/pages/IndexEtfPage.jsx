@@ -111,7 +111,8 @@ export default function IndexEtfPage({
     "채권",
     "원자재",
     "중소형",
-    "레버리지·인버스",
+    "레버리지",
+    "인버스",
     "기타"
   ];
   const groupRank = new Map(groupOrder.map((value, index) => [value, index]));

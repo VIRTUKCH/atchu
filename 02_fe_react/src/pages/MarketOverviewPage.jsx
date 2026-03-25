@@ -49,7 +49,7 @@ export default function MarketOverviewPage({
   const snapshotTickersData = latestSnapshotPayload?.tickers || {};
 
   // 추세 강도 계산 (앗추 필터 통과 기준, 기간 탭과 무관)
-  const TREND_EXCLUDE_GROUPS = new Set(["레버리지·인버스", "기타"]);
+  const TREND_EXCLUDE_GROUPS = new Set(["레버리지", "인버스", "기타"]);
   const typeStatusItems = useMemo(() => {
     const typeMap = {};
     (overviewTickers || []).forEach((item) => {

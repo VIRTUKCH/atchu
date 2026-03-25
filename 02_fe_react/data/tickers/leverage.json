@@ -1,0 +1,130 @@
+{
+  "type": "레버리지",
+  "items": [
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "SSO",
+      "name": "ProShares Ultra S&P500",
+      "name_ko": "S&P 2배",
+      "business_area": "S&P 500 일일 2배",
+      "heatmap_label": "S&P2배",
+      "short_description": "S&P 500의 일일 수익률 2배. 장기 보유 시 손실 가능.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "추세가 강한 구간에서 전술적으로는 활용 가능하지만, 레버리지/인버스의 일간 목표 구조 때문에 장기 보유에는 부적합한 경우가 많다.",
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+      },
+      "tags": [
+        "레버리지",
+        "S&P500",
+        "2배"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "UPRO",
+      "name": "ProShares UltraPro S&P500",
+      "name_ko": "S&P 3배",
+      "business_area": "S&P 500 일일 3배",
+      "heatmap_label": "S&P3배",
+      "short_description": "S&P 500의 일일 수익률 3배. 장기 보유 시 손실 가능.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "추세가 강한 구간에서 전술적으로는 활용 가능하지만, 레버리지/인버스의 일간 목표 구조 때문에 장기 보유에는 부적합한 경우가 많다.",
+        "operation_notes": "코어가 아니라 '전술 포지션'으로만 운용. 더 긴 신호(120/200일선) + 확인 필터(20/16 등) + 비중 상한 + 손절 규칙을 함께 두는 편이 안전하다."
+      },
+      "tags": [
+        "레버리지",
+        "S&P500",
+        "3배"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "QLD",
+      "name": "ProShares Ultra QQQ",
+      "name_ko": "나스닥 2배",
+      "business_area": "나스닥 100 일일 2배",
+      "heatmap_label": "나스닥2배",
+      "short_description": "나스닥 100의 일일 수익률 2배. 장기 보유 시 손실 가능.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "추세가 강한 구간에서는 전술적 활용이 가능하지만, 장기 보유엔 구조적 불리함이 커서 코어로는 부적합한 경우가 많다.",
+        "operation_notes": "전술 포지션으로만 운용. 신호는 길게(120/200) + 확인 필터 + 비중 상한 + 손절 규칙을 병행."
+      },
+      "tags": [
+        "레버리지",
+        "나스닥",
+        "2배"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "name_ko": "나스닥 3배",
+      "business_area": "나스닥 100 일일 3배",
+      "heatmap_label": "나스닥3배",
+      "short_description": "나스닥 100의 일일 수익률 3배. 극단적 변동성.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "추세가 강한 구간에서는 전술적 활용이 가능하지만, 장기 보유엔 구조적 불리함이 커서 코어로는 부적합한 경우가 많다.",
+        "operation_notes": "전술 포지션으로만 운용. 신호는 길게(120/200) + 확인 필터 + 비중 상한 + 손절 규칙을 병행."
+      },
+      "tags": [
+        "레버리지",
+        "나스닥",
+        "3배"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "USD",
+      "name": "ProShares Ultra Semiconductors",
+      "name_ko": "반도체 2배",
+      "business_area": "반도체 섹터 일일 2배",
+      "heatmap_label": "반도체2배",
+      "short_description": "반도체 섹터의 일일 수익률 2배. 장기 보유 시 손실 가능.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "강한 상승 추세 구간에서는 전술적 활용이 가능하지만, 섹터 집중+레버리지 특성으로 장기 보유 리스크가 크다.",
+        "operation_notes": "전술 포지션으로만 운용. 120/200일선 + 확인 필터 + 비중 상한 규칙을 권장."
+      },
+      "tags": [
+        "레버리지",
+        "반도체",
+        "2배"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3X Shares",
+      "name_ko": "반도체 3배",
+      "business_area": "반도체 섹터 일일 3배",
+      "heatmap_label": "반도체3배",
+      "short_description": "반도체 섹터의 일일 수익률 3배. 극단적 변동성.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "전술적 활용은 가능하지만, 3배 레버리지 구조로 장기 보유에는 부적합한 경우가 많다.",
+        "operation_notes": "전술 포지션으로만 운용. 긴 신호 + 확인 필터 + 엄격한 비중 제한이 필요하다."
+      },
+      "tags": [
+        "레버리지",
+        "반도체",
+        "3배"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "기초지수의 일간 수익률을 2배/3배로 증폭해 추종하는 전술형 자산군",
+    "up_cycle": "추세가 강하고 방향성이 뚜렷한 상승 구간",
+    "down_cycle": "횡보·급변동·급락 반등이 반복되는 구간"
+  }
+}

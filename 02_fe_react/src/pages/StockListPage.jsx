@@ -70,10 +70,10 @@ const SECTOR_ORDER = [
 ];
 const sectorRank = new Map(SECTOR_ORDER.map((s, i) => [s, i]));
 
-// ETF 10개 자산군
+// ETF 11개 자산군
 const ETF_GROUP_ORDER = [
   "미국 대표 지수", "스타일", "배당", "섹터", "국가",
-  "채권", "원자재", "중소형", "레버리지·인버스", "기타"
+  "채권", "원자재", "중소형", "레버리지", "인버스", "기타"
 ];
 const etfGroupRank = new Map(ETF_GROUP_ORDER.map((g, i) => [g, i + 100]));
 

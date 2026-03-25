@@ -103,7 +103,8 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
     sectorTiles: buildTypeTiles("섹터"),
     countryTiles: buildTypeTiles("국가"),
     commodityTiles: buildTypeTiles("원자재"),
-    leverageTiles: buildTypeTiles("레버리지·인버스")
+    leverageTiles: buildTypeTiles("레버리지"),
+    inverseTiles: buildTypeTiles("인버스")
   };
 };
 
@@ -292,7 +293,8 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     sectorTiles,
     countryTiles,
     commodityTiles,
-    leverageTiles
+    leverageTiles,
+    inverseTiles
   } = data;
 
   const sorted = useMemo(() => {
@@ -306,7 +308,8 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         sectorTiles: sortFn(sectorTiles),
         countryTiles: sortFn(countryTiles),
         commodityTiles: sortFn(commodityTiles),
-        leverageTiles: sortFn(leverageTiles)
+        leverageTiles: sortFn(leverageTiles),
+        inverseTiles: sortFn(inverseTiles)
       };
     }
     return {
@@ -317,7 +320,8 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       sectorTiles: sortByAtchuDesc(sectorTiles),
       countryTiles: sortByAtchuDesc(countryTiles),
       commodityTiles: sortByAtchuDesc(commodityTiles),
-      leverageTiles: sortByAtchuDesc(leverageTiles)
+      leverageTiles: sortByAtchuDesc(leverageTiles),
+      inverseTiles: sortByAtchuDesc(inverseTiles)
     };
   }, [data, periodKey]);
 
@@ -329,14 +333,15 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     sectorTiles: sortedSectorTiles,
     countryTiles: sortedCountryTiles,
     commodityTiles: sortedCommodityTiles,
-    leverageTiles: sortedLeverageTiles
+    leverageTiles: sortedLeverageTiles,
+    inverseTiles: sortedInverseTiles
   } = sorted;
 
   const { summaryStats, maDistScale } = useMemo(() => {
     const allIndividualTiles = [
       ...sortedCoreTickers, ...sortedBondTiles, ...sortedSmallMidTiles,
       ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
-      ...sortedLeverageTiles
+      ...sortedLeverageTiles, ...sortedInverseTiles
     ];
     const allMaDistValues = [
       ...sortedCoreTickers.map((t) => t.maDist),
@@ -346,6 +351,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedCommodityTiles.map((t) => t.maDist),
       ...sortedSmallMidTiles.map((t) => t.maDist),
       ...sortedLeverageTiles.map((t) => t.maDist),
+      ...sortedInverseTiles.map((t) => t.maDist),
       ...sortedStyleSummary.map((t) => t.maDist)
     ];
     return {
@@ -360,7 +366,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     const allTickers = [
       ...sortedCoreTickers, ...sortedBondTiles, ...sortedSmallMidTiles,
       ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
-      ...sortedLeverageTiles
+      ...sortedLeverageTiles, ...sortedInverseTiles
     ];
     const values = allTickers.map((t) => getPeriodValue(t.ticker)).filter(Number.isFinite);
     const upCount = values.filter((v) => v > 0).length;
@@ -523,12 +529,22 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         </div>
       )}
 
-      {/* 9. 레버리지·인버스 */}
+      {/* 9. 레버리지 */}
       {sortedLeverageTiles.length > 0 && (
-        <div className="report-heat-section" data-heatmap-group="레버리지·인버스">
-          <div className="report-overview-title">레버리지·인버스 ETF</div>
+        <div className="report-heat-section" data-heatmap-group="레버리지">
+          <div className="report-overview-title">레버리지 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedLeverageTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 10. 인버스 */}
+      {sortedInverseTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="인버스">
+          <div className="report-overview-title">인버스 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedInverseTiles)}
           </div>
         </div>
       )}
