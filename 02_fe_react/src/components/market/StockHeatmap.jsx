@@ -259,7 +259,7 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
       </div>
 
       {sectorGroups.map(({ sector, subGroups, qualified, total }) => (
-        <div key={sector} className="report-heat-section">
+        <div key={sector} className="report-heat-section" data-heatmap-group={sector}>
           <div className="report-overview-title">
             {sector} ({qualified}/{total})
           </div>

@@ -35,11 +35,15 @@ const formatShortDate = (dateStr) => {
   return `${parts[1]}-${parts[2]}`;
 };
 
+const scrollToHeatmapGroup = (type) => {
+  const el = document.querySelector(`[data-heatmap-group="${type}"], [data-heatmap-group-alt="${type}"]`);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 export default function MarketOverviewPage({
   latestSnapshotPayload,
   overviewTickers,
   latestTrendNotificationPayload,
-  onTypeSelect
 }) {
   const [selectedPeriod, setSelectedPeriod] = useState("ma200");
   const snapshotTickersData = latestSnapshotPayload?.tickers || {};
@@ -187,7 +191,7 @@ export default function MarketOverviewPage({
         <div className="bento-card-subtitle">
           앗추 필터를 통과한 ETF 비율로 자산군별 추세를 한눈에 파악합니다
         </div>
-        <MainMarketStatusGrid items={typeStatusItems} onTypeSelect={onTypeSelect} />
+        <MainMarketStatusGrid items={typeStatusItems} onTypeSelect={scrollToHeatmapGroup} />
       </div>
 
       {/* ④ 시장 히트맵 + 기간별 비교 탭 */}

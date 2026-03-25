@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/bento.css";
 import "../styles/report.css";
 import MainMarketStatusGrid from "../components/main/MainMarketStatusGrid";
@@ -34,7 +34,6 @@ const formatShortDate = (dateStr) => {
 };
 
 export default function StockOverviewPage() {
-  const navigate = useNavigate();
   const [selectedPeriod, setSelectedPeriod] = useState("ma200");
   const snapshotTickersData = stockSnapshotPayload?.tickers || {};
 
@@ -206,8 +205,14 @@ export default function StockOverviewPage() {
         </div>
         <MainMarketStatusGrid
           items={sectorStatusItems}
-          onTypeSelect={(type) => navigate(`/_dev_trend_list?sector=${encodeURIComponent(type)}`)}
-          onSubSelect={(sector, sub) => navigate(`/_dev_trend_list?sector=${encodeURIComponent(sector)}&sub=${encodeURIComponent(sub)}`)}
+          onTypeSelect={(type) => {
+            const el = document.querySelector(`[data-heatmap-group="${type}"]`);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
+          onSubSelect={(sector, sub) => {
+            const el = document.querySelector(`[data-heatmap-group="${sector}"]`);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
         />
       </div>
 

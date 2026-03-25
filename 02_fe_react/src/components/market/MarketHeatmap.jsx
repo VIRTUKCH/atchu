@@ -432,7 +432,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       </div>
 
       {/* 2. 핵심 지수 */}
-      <div className="report-heat-section">
+      <div className="report-heat-section" data-heatmap-group="미국 대표 지수">
         <div className="report-overview-title">핵심 지수</div>
         <div className="report-overview-grid">
           {renderTileGrid(sortedCoreTickers)}
@@ -441,7 +441,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 3. 섹터 ETF */}
       {sortedSectorTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="섹터">
           <div className="report-overview-title">섹터 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedSectorTiles)}
@@ -451,7 +451,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 4. 채권 ETF */}
       {sortedBondTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="채권">
           <div className="report-overview-title">채권 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedBondTiles)}
@@ -461,7 +461,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 5. 국가 ETF */}
       {sortedCountryTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="국가">
           <div className="report-overview-title">국가 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedCountryTiles)}
@@ -471,7 +471,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 6. 원자재 ETF */}
       {sortedCommodityTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="원자재">
           <div className="report-overview-title">원자재 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedCommodityTiles)}
@@ -480,7 +480,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       )}
 
       {/* 7. 스타일 (타입 평균) */}
-      <div className="report-heat-section">
+      <div className="report-heat-section" data-heatmap-group="스타일" data-heatmap-group-alt="배당">
         <div className="report-overview-title">스타일 (타입 평균)</div>
         <div className="report-overview-grid">
           {isPeriodMode
@@ -515,7 +515,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 8. 중소형 ETF */}
       {sortedSmallMidTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="중소형">
           <div className="report-overview-title">중소형 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedSmallMidTiles)}
@@ -525,7 +525,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
       {/* 9. 레버리지·인버스 */}
       {sortedLeverageTiles.length > 0 && (
-        <div className="report-heat-section">
+        <div className="report-heat-section" data-heatmap-group="레버리지·인버스">
           <div className="report-overview-title">레버리지·인버스 ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedLeverageTiles)}

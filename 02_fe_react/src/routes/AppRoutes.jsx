@@ -276,10 +276,6 @@ export default function AppRoutes({ routeModel }) {
                 latestSnapshotPayload={latestSnapshotPayload}
                 overviewTickers={overviewTickers}
                 latestTrendNotificationPayload={latestTrendNotificationPayload}
-                onTypeSelect={(type) => {
-                  indexEtfPageModel?.toggleType?.(type);
-                  navigate("/trend_list");
-                }}
               />
             </BentoLayout>
           }
