@@ -2,6 +2,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  loadTickerPool, readMonthEnds, readLatestClose,
+  round2, round3, parseNumber, getReferenceMonth, calcPeriodReturns,
+} from "./lib/quant_utils.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "..");
@@ -9,94 +13,11 @@ const CSV_DIR = path.join(ROOT_DIR, "csv");
 const SUMMARY_DIR = path.join(ROOT_DIR, "summary", "haa");
 const OUT_FILE = path.join(SUMMARY_DIR, "haa_signal.json");
 
-/* ── Universes ── */
-const CANARY = ["TIP"];
-const OFFENSIVE = ["SPY", "EFA", "EEM", "VNQ", "DBC", "GLD", "TLT"];
-const DEFENSIVE = ["IEF", "BIL"];
-
-const NAME_KO = {
-  SPY: "S&P 500", EFA: "선진국 (EAFE)", EEM: "신흥국 (MSCI)",
-  VNQ: "부동산", DBC: "원자재 종합", GLD: "금", TLT: "장기 국채",
-  TIP: "물가연동 국채", IEF: "중기 국채", BIL: "초단기 국채"
-};
-
-const ALL_TICKERS = [...new Set([...CANARY, ...OFFENSIVE, ...DEFENSIVE])];
-
-/* ── Helpers ── */
-const round2 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100) / 100);
-const round3 = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 1000) / 1000);
-
-const parseNumber = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-};
-
-/** CSV 마지막 행에서 최신 거래일 종가 읽기 */
-const readLatestClose = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) return null;
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 2) return null;
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const parts = lines[lines.length - 1].split(",");
-  const row = {};
-  headers.forEach((h, i) => { row[h] = parts[i]; });
-  const close = parseNumber(row.Adjusted_close ?? row.Close);
-  return close !== null ? { date: String(row.Date), close } : null;
-};
-
-/* ── Step 1: Read CSV → month-end adjusted close ── */
-const readMonthEnds = (ticker) => {
-  const csvPath = path.join(CSV_DIR, `${ticker}.US_all.csv`);
-  if (!fs.existsSync(csvPath)) {
-    console.warn(`[WARN] CSV not found: ${csvPath}`);
-    return null;
-  }
-
-  const lines = fs.readFileSync(csvPath, "utf8").trim().split("\n");
-  if (lines.length < 3) {
-    console.warn(`[WARN] CSV too short: ${ticker}`);
-    return null;
-  }
-
-  const headers = lines[0].split(",").map((h) => h.trim());
-  const records = lines
-    .slice(1)
-    .map((line) => {
-      const parts = line.split(",");
-      const row = {};
-      headers.forEach((h, i) => { row[h] = parts[i]; });
-      return row;
-    })
-    .filter((row) => row.Date)
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
-
-  // Group by year-month, take last trading day of each month
-  const monthMap = new Map();
-  for (const row of records) {
-    const date = String(row.Date);
-    const ym = date.slice(0, 7);
-    const close = parseNumber(row.Adjusted_close ?? row.Close);
-    if (close === null) continue;
-    monthMap.set(ym, { date, close });
-  }
-
-  const monthEnds = [...monthMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([ym, data]) => ({ ym, date: data.date, close: data.close }));
-
-  return monthEnds;
-};
-
-/* ── Step 2: Determine reference month ── */
-const getReferenceMonth = () => {
-  const now = new Date();
-  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const lastDayPrevMonth = new Date(firstOfMonth.getTime() - 1);
-  const year = lastDayPrevMonth.getFullYear();
-  const month = String(lastDayPrevMonth.getMonth() + 1).padStart(2, "0");
-  return `${year}-${month}`;
-};
+/* ── 티커 풀 로드 (tickers_quant/haa.json) ── */
+const pool = loadTickerPool("haa", ROOT_DIR);
+const { canary: CANARY, offensive: OFFENSIVE, defensive: DEFENSIVE } = pool.groups;
+const NAME_KO = pool.nameMap;
+const ALL_TICKERS = pool.allTickers;
 
 /* ── Step 3: HAA momentum — equal-weight average of 1,3,6,12 month returns ── */
 const calcMomentumAvg = (monthEnds, refYm) => {
@@ -124,7 +45,7 @@ const tickerData = new Map();
 let processedCount = 0;
 
 for (const ticker of ALL_TICKERS) {
-  const monthEnds = readMonthEnds(ticker);
+  const monthEnds = readMonthEnds(ticker, CSV_DIR);
   if (!monthEnds) continue;
 
   if (monthEnds.length < 13) {
@@ -448,7 +369,7 @@ for (let i = 0; i < monthlyRecords.length - 1; i++) {
 }
 
 /* ── 부분월(오늘) 포인트 ── */
-const latestSpy = readLatestClose("SPY");
+const latestSpy = readLatestClose("SPY", CSV_DIR);
 if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
   const lastEq = equityCurve[equityCurve.length - 1];
   const lastRecord = monthlyRecords[monthlyRecords.length - 1];
@@ -457,13 +378,13 @@ if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
     if (lastRecord.mode === "offensive") {
       for (const { ticker, weight } of lastRecord.haa) {
         const c0 = getClose(ticker, lastRecord.ym);
-        const latest = readLatestClose(ticker);
+        const latest = readLatestClose(ticker, CSV_DIR);
         if (c0 && latest && c0 > 0) partialRet += (weight / 100) * (latest.close / c0 - 1);
       }
     } else {
       for (const { ticker, weight } of lastRecord.haa) {
         const c0 = getClose(ticker, lastRecord.ym);
-        const latest = readLatestClose(ticker);
+        const latest = readLatestClose(ticker, CSV_DIR);
         if (c0 && latest && c0 > 0) partialRet += (weight / 100) * (latest.close / c0 - 1);
       }
     }
@@ -471,7 +392,7 @@ if (latestSpy && equityCurve.length > 0 && monthlyRecords.length > 0) {
     const spyPartial = (spyRef && spyRef > 0) ? (latestSpy.close / spyRef - 1) : 0;
     let bondPartial = 0;
     if (bond6040Ticker) {
-      const bLatest = readLatestClose(bond6040Ticker);
+      const bLatest = readLatestClose(bond6040Ticker, CSV_DIR);
       const bRef = getClose(bond6040Ticker, lastRecord.ym);
       if (bRef && bLatest && bRef > 0) bondPartial = bLatest.close / bRef - 1;
     }
@@ -572,6 +493,13 @@ if (backtestStartDate && monthlyRecords.length > 1) {
     equityCurve
   };
   payload.history = historyLast36;
+
+  // 오늘 기준 기간별 수익률 (일별 가격 사용)
+  const lastRecord = monthlyRecords[monthlyRecords.length - 1];
+  const haaAlloc = (lastRecord.haa || []).map(({ ticker, weight }) => ({ ticker, weight: weight / 100 }));
+  payload.periodReturns = {
+    haa: calcPeriodReturns(equityCurve, "haa", haaAlloc, CSV_DIR, lastRecord.date),
+  };
 }
 
 fs.mkdirSync(SUMMARY_DIR, { recursive: true });
