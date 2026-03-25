@@ -257,7 +257,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
       )}
       {trendDays !== null && trendDays !== undefined && (
         <div className="report-overview-card-days">
-          {trendDays.days}일째
+          {trendDays.direction === "up" ? "▲" : "▼"} {trendDays.days}일째
           {item.aboveDays200 !== null && item.aboveDays200 !== undefined && (
             <span className="report-overview-card-filter-ratio">({item.aboveDays200}/20)</span>
           )}
