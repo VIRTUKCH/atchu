@@ -1,5 +1,13 @@
 # 작업 기록
 
+### 2026-03-25 (92)
+- **퀀트 시그널 스크립트 리팩터링: 풀 연동 + 실시간 기간별 수익률**
+  - `lib/quant_utils.mjs` 신규: 9개 스크립트 공통 유틸 (loadTickerPool, readMonthEnds, readLatestClose, readDailyPrices, calcPeriodReturns)
+  - 7개 스크립트 하드코딩 제거 → `tickers_quant/*.json`에서 풀 동적 로드 (BAA, HAA, DM, Faber, CTA, Business Cycle, QVM DIY)
+  - 9개 스크립트 모두 `periodReturns` 추가 — 오늘 기준 일별 가격으로 1M/3M/6M/1Y/3Y/5Y 수익률 계산
+  - QuantHubPage.jsx: 프론트엔드 calcPeriodReturns() 제거 → 시그널 JSON의 periodReturns 직접 표시
+  - 기존 백테스트 지표(CAGR, MDD, Sharpe) 변경 없이 유지
+
 ### 2026-03-25 (91)
 - **ETF 풀 대규모 확장: 인버스 29개 + 정방향 13개 (총 42개 신규)**
   - `trading.json`: 인버스 ETF 29개 추가 (국가/지역 6, 섹터 12, 광역지수 2, 채권 3, 원자재 4, 기타 2)
