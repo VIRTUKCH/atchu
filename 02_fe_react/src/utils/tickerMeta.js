@@ -87,8 +87,12 @@ const buildLocalTickers = (tickerModules) => {
   const groupPriority = new Map(
     [
       "미국 대표 지수",
-      "스타일",
+      "성장",
+      "밸류",
+      "퀄리티",
+      "저변동성",
       "배당",
+      "스타일",
       "섹터",
       "국가",
       "채권",

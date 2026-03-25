@@ -1,0 +1,31 @@
+{
+  "type": "퀄리티",
+  "items": [
+    {
+      "type": "퀄리티",
+      "asset_type": "퀄리티",
+      "ticker": "QUAL",
+      "name": "iShares MSCI USA Quality Factor ETF",
+      "name_ko": "우량주",
+      "business_area": "고ROE·저부채 우량 종목",
+      "heatmap_label": "퀄리티",
+      "short_description": "높은 ROE, 낮은 부채, 안정적 이익 기업 중심.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "퀄리티",
+        "팩터",
+        "우량주",
+        "ROE"
+      ]
+    }
+  ],
+  "type_profile": {
+    "description": "높은 ROE, 낮은 부채, 안정적 이익을 가진 우량 기업 중심",
+    "up_cycle": "불확실성 증가, 안정적 실적 선호 구간",
+    "down_cycle": "투기적 급등장, 저품질 종목이 강세인 구간"
+  }
+}

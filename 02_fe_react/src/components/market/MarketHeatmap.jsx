@@ -49,32 +49,6 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
       nameKo: meta?.name_ko || meta?.nameKo || ""
     };
   });
-  const styleTypes = ["성장", "밸류", "퀄리티", "저변동성", "배당"];
-  const styleSummary = styleTypes.map((type) => {
-    const tickersInType = localUniverse
-      .filter((item) => item?.type === type)
-      .map((item) => String(item.ticker || "").toUpperCase());
-    const maDistValues = tickersInType
-      .map((ticker) => getMaDistByTicker(ticker))
-      .filter((value) => value !== null);
-    const avgMaDist =
-      maDistValues.length > 0
-        ? maDistValues.reduce((sum, value) => sum + Number(value), 0) / maDistValues.length
-        : null;
-    const qualifiedCount = tickersInType.filter((t) => getIsAtchuQualifiedByTicker(t) === true).length;
-    const validQualCount = tickersInType.filter((t) => getIsAtchuQualifiedByTicker(t) !== null).length;
-    const qualifiedRatio = validQualCount > 0 ? qualifiedCount / validQualCount : null;
-    const isAtchuQualified = qualifiedRatio !== null
-      ? (avgMaDist !== null && avgMaDist >= 0 ? qualifiedRatio >= 0.5 : false)
-      : null;
-    return {
-      type,
-      tickers: tickersInType,
-      maDist: avgMaDist,
-      qualifiedRatio,
-      isAtchuQualified
-    };
-  });
   const getOverviewLabel = (item) => {
     if (!item) return "";
     return String(item.heatmapLabel || item.heatmap_label || "").trim();
@@ -97,7 +71,12 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
       .filter((item, index, arr) => arr.findIndex((v) => v.ticker === item.ticker) === index);
   return {
     coreTickers,
-    styleSummary,
+    growthTiles: buildTypeTiles("성장"),
+    valueTiles: buildTypeTiles("밸류"),
+    qualityTiles: buildTypeTiles("퀄리티"),
+    lowVolTiles: buildTypeTiles("저변동성"),
+    dividendTiles: buildTypeTiles("배당"),
+    styleTiles: buildTypeTiles("스타일"),
     bondTiles: buildTypeTiles("채권"),
     smallMidTiles: buildTypeTiles("중소형"),
     sectorTiles: buildTypeTiles("섹터"),
@@ -287,7 +266,12 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
   const {
     coreTickers,
-    styleSummary,
+    growthTiles,
+    valueTiles,
+    qualityTiles,
+    lowVolTiles,
+    dividendTiles,
+    styleTiles,
     bondTiles,
     smallMidTiles,
     sectorTiles,
@@ -302,7 +286,12 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       const sortFn = (items) => sortByValueDesc(items, (item) => getPeriodValue(item.ticker));
       return {
         coreTickers: sortFn(coreTickers),
-        styleSummary: styleSummary,
+        growthTiles: sortFn(growthTiles),
+        valueTiles: sortFn(valueTiles),
+        qualityTiles: sortFn(qualityTiles),
+        lowVolTiles: sortFn(lowVolTiles),
+        dividendTiles: sortFn(dividendTiles),
+        styleTiles: sortFn(styleTiles),
         bondTiles: sortFn(bondTiles),
         smallMidTiles: sortFn(smallMidTiles),
         sectorTiles: sortFn(sectorTiles),
@@ -314,7 +303,12 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     }
     return {
       coreTickers: sortByAtchuDesc(coreTickers),
-      styleSummary: sortByAtchuDesc(styleSummary, "maDist"),
+      growthTiles: sortByAtchuDesc(growthTiles),
+      valueTiles: sortByAtchuDesc(valueTiles),
+      qualityTiles: sortByAtchuDesc(qualityTiles),
+      lowVolTiles: sortByAtchuDesc(lowVolTiles),
+      dividendTiles: sortByAtchuDesc(dividendTiles),
+      styleTiles: sortByAtchuDesc(styleTiles),
       bondTiles: sortByAtchuDesc(bondTiles),
       smallMidTiles: sortByAtchuDesc(smallMidTiles),
       sectorTiles: sortByAtchuDesc(sectorTiles),
@@ -327,7 +321,12 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
   const {
     coreTickers: sortedCoreTickers,
-    styleSummary: sortedStyleSummary,
+    growthTiles: sortedGrowthTiles,
+    valueTiles: sortedValueTiles,
+    qualityTiles: sortedQualityTiles,
+    lowVolTiles: sortedLowVolTiles,
+    dividendTiles: sortedDividendTiles,
+    styleTiles: sortedStyleTiles,
     bondTiles: sortedBondTiles,
     smallMidTiles: sortedSmallMidTiles,
     sectorTiles: sortedSectorTiles,
@@ -339,20 +338,27 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
 
   const { summaryStats, maDistScale } = useMemo(() => {
     const allIndividualTiles = [
-      ...sortedCoreTickers, ...sortedBondTiles, ...sortedSmallMidTiles,
+      ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
+      ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedDividendTiles,
+      ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
       ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
       ...sortedLeverageTiles, ...sortedInverseTiles
     ];
     const allMaDistValues = [
       ...sortedCoreTickers.map((t) => t.maDist),
+      ...sortedGrowthTiles.map((t) => t.maDist),
+      ...sortedValueTiles.map((t) => t.maDist),
+      ...sortedQualityTiles.map((t) => t.maDist),
+      ...sortedLowVolTiles.map((t) => t.maDist),
+      ...sortedDividendTiles.map((t) => t.maDist),
+      ...sortedStyleTiles.map((t) => t.maDist),
       ...sortedBondTiles.map((t) => t.maDist),
       ...sortedSectorTiles.map((t) => t.maDist),
       ...sortedCountryTiles.map((t) => t.maDist),
       ...sortedCommodityTiles.map((t) => t.maDist),
       ...sortedSmallMidTiles.map((t) => t.maDist),
       ...sortedLeverageTiles.map((t) => t.maDist),
-      ...sortedInverseTiles.map((t) => t.maDist),
-      ...sortedStyleSummary.map((t) => t.maDist)
+      ...sortedInverseTiles.map((t) => t.maDist)
     ];
     return {
       summaryStats: buildSummaryStats(allIndividualTiles),
@@ -364,7 +370,9 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
   const { periodScale, periodSummary } = useMemo(() => {
     if (!isPeriodMode) return { periodScale: null, periodSummary: null };
     const allTickers = [
-      ...sortedCoreTickers, ...sortedBondTiles, ...sortedSmallMidTiles,
+      ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
+      ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedDividendTiles,
+      ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
       ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
       ...sortedLeverageTiles, ...sortedInverseTiles
     ];
@@ -378,19 +386,6 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     };
   }, [sorted, periodKey]);
 
-  /* 기간별 모드 — 스타일 타입 평균 */
-  const periodStyleSummary = useMemo(() => {
-    if (!isPeriodMode) return null;
-    return sortedStyleSummary.map((item) => {
-      const values = (item.tickers || [])
-        .map((t) => getPeriodValue(t))
-        .filter(Number.isFinite);
-      const avg = values.length > 0
-        ? values.reduce((s, v) => s + v, 0) / values.length
-        : null;
-      return { ...item, periodAvg: avg };
-    });
-  }, [sortedStyleSummary, periodKey]);
 
   const renderTileGrid = (items) =>
     items.map((item) => (
@@ -485,39 +480,65 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         </div>
       )}
 
-      {/* 7. 스타일 (타입 평균) */}
-      <div className="report-heat-section" data-heatmap-group="스타일" data-heatmap-group-alt="배당">
-        <div className="report-overview-title">스타일 (타입 평균)</div>
-        <div className="report-overview-grid">
-          {isPeriodMode
-            ? (periodStyleSummary || []).map((item) => (
-                <div
-                  key={item.type}
-                  className="report-overview-card"
-                  style={getPeriodHeatStyle(item.periodAvg, periodScale)}
-                >
-                  <div className="report-overview-card-title">{item.type}</div>
-                  <div className="report-overview-card-value">{formatOverviewPercent(item.periodAvg)}</div>
-                </div>
-              ))
-            : sortedStyleSummary.map((item) => {
-                const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
-                const badge = level ? ATCHU_BADGE_META[level] : null;
-                return (
-                  <div key={item.type} className="report-overview-card" style={getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale)}>
-                    <div className="report-overview-card-title">{item.type}</div>
-                    <div className="report-overview-card-value">{formatOverviewPercent(item.maDist)}</div>
-                    <div className="report-overview-card-sub">
-                      {badge && (
-                        <span className={`atchu-badge ${badge.cls}`}>● {badge.label}</span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })
-          }
+      {/* 7. 성장 ETF */}
+      {sortedGrowthTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="성장">
+          <div className="report-overview-title">성장 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedGrowthTiles)}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* 8. 밸류 ETF */}
+      {sortedValueTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="밸류">
+          <div className="report-overview-title">밸류 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedValueTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 9. 퀄리티 ETF */}
+      {sortedQualityTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="퀄리티">
+          <div className="report-overview-title">퀄리티 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedQualityTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 10. 저변동성 ETF */}
+      {sortedLowVolTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="저변동성">
+          <div className="report-overview-title">저변동성 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedLowVolTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 11. 배당 ETF */}
+      {sortedDividendTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="배당">
+          <div className="report-overview-title">배당 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedDividendTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 12. 스타일 ETF */}
+      {sortedStyleTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="스타일">
+          <div className="report-overview-title">스타일 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedStyleTiles)}
+          </div>
+        </div>
+      )}
 
       {/* 8. 중소형 ETF */}
       {sortedSmallMidTiles.length > 0 && (
