@@ -12,6 +12,20 @@ export default function LandingFilterSection() {
   const filterCount = (landingData.crossings || [])
     .filter((c) => c.d >= "2020-01-01").length;
 
+  // 앗추 필터 거래 이력 (crossings 페어링, 2020+ 표시)
+  const lastChartItem = (landingData.chart?.items ?? []).at(-1);
+  const filterTrades = (() => {
+    const trades = [];
+    let buy = null;
+    (landingData.crossings ?? []).forEach((c) => {
+      if (c.dir === "up") { buy = c; }
+      else if (c.dir === "down" && buy) { trades.push({ buy, sell: c }); buy = null; }
+    });
+    if (buy) trades.push({ buy, sell: null });
+    return trades.filter((t) => t.buy.d >= "2020-01-01");
+  })();
+  const shortDate = (d) => d ? d.slice(2).replace(/-/g, ".") : "";
+
   // 백테스트 테이블 데이터
   const tableRows = BACKTEST_TICKERS.map((ticker) => {
     const d = comparison[ticker];
@@ -91,6 +105,47 @@ export default function LandingFilterSection() {
           <p className="filter-stats-note">
             매매 횟수는 줄어도, 수익률과 리스크는 비슷하거나 더 낫습니다.
           </p>
+
+          {/* 앗추 필터 거래 이력 */}
+          {filterTrades.length > 0 && (
+            <div className="strategy-trade-wrap">
+              <table className="strategy-trade-table">
+                <thead>
+                  <tr>
+                    <th className="col-date">진입일</th>
+                    <th>진입가</th>
+                    <th className="col-date">청산일</th>
+                    <th>청산가</th>
+                    <th>수익</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filterTrades.map((t, i) => {
+                    const isHolding = !t.sell;
+                    const sellClose = t.sell ? t.sell.c : lastChartItem?.c;
+                    const sellDate = t.sell ? t.sell.d : lastChartItem?.d;
+                    const gain = sellClose
+                      ? (((sellClose - t.buy.c) / t.buy.c) * 100).toFixed(1)
+                      : null;
+                    return (
+                      <tr key={i}>
+                        <td className="col-date">{shortDate(t.buy.d)}</td>
+                        <td>${Math.round(t.buy.c)}</td>
+                        <td className="col-date">
+                          {shortDate(sellDate)}
+                          {isHolding && <span className="col-holding-note"> (현재)</span>}
+                        </td>
+                        <td>{sellClose ? `$${Math.round(sellClose)}` : "-"}</td>
+                        <td className={gain !== null && parseFloat(gain) >= 0 ? "positive" : "negative"}>
+                          {gain !== null ? `${parseFloat(gain) >= 0 ? "+" : ""}${gain}%` : "-"}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         {/* 백테스트 비교 카드 */}
