@@ -120,7 +120,7 @@ export default function LandingFilterSection() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filterTrades.map((t, i) => {
+                  {[...filterTrades].reverse().map((t, i) => {
                     const isHolding = !t.sell;
                     const sellClose = t.sell ? t.sell.c : lastChartItem?.c;
                     const sellDate = t.sell ? t.sell.d : lastChartItem?.d;

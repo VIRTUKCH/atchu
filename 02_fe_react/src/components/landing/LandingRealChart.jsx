@@ -326,7 +326,7 @@ export default function LandingRealChart() {
               </tr>
             </thead>
             <tbody>
-              {visibleTrades.map((t, i) => {
+              {[...visibleTrades].reverse().map((t, i) => {
                 const isHolding = !t.sell;
                 const sellClose = t.sell ? t.sell.close : lastItem.close;
                 const sellDate = t.sell ? t.sell.date : lastItem.date;
