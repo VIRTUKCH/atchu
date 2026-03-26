@@ -312,10 +312,29 @@ const computeBacktestComparison = (csvText) => {
     ? Math.round((1 - filter.signalsPerYear / simple.signalsPerYear) * 100)
     : null;
 
+  // -- Buy & Hold --
+  let bhPeak = -Infinity, bhMdd = 0;
+  let bhFirstPrice = null;
+  for (let i = 0; i <= lastIndex; i++) {
+    const p = adjustedSeries[i];
+    if (p === null) continue;
+    if (bhFirstPrice === null) bhFirstPrice = p;
+    if (p > bhPeak) bhPeak = p;
+    const dd = (p - bhPeak) / bhPeak;
+    if (dd < bhMdd) bhMdd = dd;
+  }
+  const bhTotalReturn = bhFirstPrice && bhFirstPrice > 0
+    ? (adjustedSeries[lastIndex] / bhFirstPrice) - 1
+    : null;
+  const bhCagr = bhTotalReturn !== null
+    ? round2((Math.pow(1 + bhTotalReturn, 1 / yearsOfData) - 1) * 100)
+    : null;
+
   return {
     years: round2(yearsOfData),
     dataStart: records[0].Date,
     dataEnd: records[lastIndex].Date,
+    buyAndHold: { cagr: bhCagr, mdd: round2(bhMdd * 100) },
     ma200: simple,
     atchuFilter: filter,
     tradeReductionPercent: tradeReduction

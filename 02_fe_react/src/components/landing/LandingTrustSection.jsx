@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import landingData from "../../../data/summary/landing_data.json";
 
 const comparisons = [
   {
@@ -14,6 +15,22 @@ const comparisons = [
 ];
 
 export default function LandingTrustSection() {
+  const spyBt = landingData.backtestComparison?.SPY;
+  const bh = spyBt?.buyAndHold ?? {};
+  const ma = spyBt?.ma200 ?? {};
+
+  const bhCagr = bh.cagr != null ? `${bh.cagr.toFixed(1)}%` : "10.5%";
+  const bhMdd = bh.mdd != null ? `${bh.mdd.toFixed(1)}%` : "-55.2%";
+  const maCagr = ma.cagr != null ? `${ma.cagr.toFixed(2)}%` : "8.22%";
+  const maMdd = ma.mdd != null ? `${ma.mdd.toFixed(0)}%` : "-28%";
+
+  // 1억 기준 최대 손실 금액 (만원)
+  const bhLoss = bh.mdd != null ? Math.round(Math.abs(bh.mdd) * 100 / 10) * 10 : 5520;
+  const maLoss = ma.mdd != null ? Math.round(Math.abs(ma.mdd) * 100 / 10) * 10 : 2800;
+
+  const dataEnd = spyBt?.dataEnd ? spyBt.dataEnd.slice(0, 4) : "2026";
+  const years = spyBt?.years != null ? Math.floor(spyBt.years) : 33;
+
   return (
     <section className="landing-trust">
       <div className="landing-section-inner">
@@ -25,7 +42,7 @@ export default function LandingTrustSection() {
         </div>
 
         <div className="trust-backtest-block">
-          <p className="trust-backtest-title">SPY 백테스트 (1993 – 2026, 33년)</p>
+          <p className="trust-backtest-title">SPY 백테스트 (1993 – {dataEnd}, {years}년)</p>
           <p className="trust-backtest-subtitle">수익률은 비슷, 리스크만 절반</p>
           <p className="trust-backtest-rule">200일선 위에서 매수, 아래로 내려오면 매도하는 단순한 규칙</p>
           <div className="trust-backtest-grid">
@@ -33,12 +50,12 @@ export default function LandingTrustSection() {
               <span className="trust-backtest-label">연평균 수익률</span>
               <div className="trust-backtest-compare">
                 <div className="trust-backtest-val trust-backtest-val--dim">
-                  <span className="trust-backtest-num">10.2%</span>
+                  <span className="trust-backtest-num">{bhCagr}</span>
                   <span className="trust-backtest-tag">Buy &amp; Hold</span>
                 </div>
                 <span className="trust-backtest-vs">vs</span>
                 <div className="trust-backtest-val trust-backtest-val--good">
-                  <span className="trust-backtest-num">8.58%</span>
+                  <span className="trust-backtest-num">{maCagr}</span>
                   <span className="trust-backtest-tag trust-backtest-tag--ma200">200일선</span>
                 </div>
               </div>
@@ -47,19 +64,19 @@ export default function LandingTrustSection() {
               <span className="trust-backtest-label">최대 낙폭 (MDD)</span>
               <div className="trust-backtest-compare">
                 <div className="trust-backtest-val trust-backtest-val--bad">
-                  <span className="trust-backtest-num">-55.2%</span>
+                  <span className="trust-backtest-num">{bhMdd}</span>
                   <span className="trust-backtest-tag">Buy &amp; Hold</span>
                 </div>
                 <span className="trust-backtest-vs">→</span>
                 <div className="trust-backtest-val trust-backtest-val--good">
-                  <span className="trust-backtest-num">-22.4%</span>
+                  <span className="trust-backtest-num">{maMdd}</span>
                   <span className="trust-backtest-tag trust-backtest-tag--ma200">200일선</span>
                 </div>
               </div>
             </div>
           </div>
           <p className="trust-backtest-real">
-            1억 투자 시 최대 손실: <strong className="trust-backtest-real--bad">5,520만원</strong> → <strong className="trust-backtest-real--good">2,240만원</strong>
+            1억 투자 시 최대 손실: <strong className="trust-backtest-real--bad">{bhLoss.toLocaleString()}만원</strong> → <strong className="trust-backtest-real--good">{maLoss.toLocaleString()}만원</strong>
           </p>
           <p className="trust-backtest-note">
             과거 백테스트 결과이며 미래 수익을 보장하지 않습니다.<br />
