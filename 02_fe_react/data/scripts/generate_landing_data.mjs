@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
  * 랜딩 페이지용 사전 계산 데이터 생성.
- * - LandingRealChart: SPY 2020년 이후 차트 + 16/20 크로싱
+ * - LandingRealChart (섹션 3): SPY 2020년 이후 차트 + simpleCrossings (단순 200일선 교차)
+ *   → 섹션 3은 "200일선이 기준이다"를 보여주므로 필터 없는 단순 교차 신호 사용
+ * - LandingFilterSection (섹션 5): crossings (16/20 앗추 필터) 사용 (별도 필드)
  * - LandingStockExplore: 4개 ETF CAGR
  * - backtestComparison: 200일선 vs 앗추 필터 백테스트 비교 (CAGR, 매매 횟수)
  *
@@ -76,7 +78,7 @@ const isHoldFilterQualified = (adjustedSeries, period, index, windowDays = 20, m
   return aboveCount >= minDays;
 };
 
-// --- SPY 차트 데이터 + 16/20 크로싱 ---
+// --- SPY 차트 데이터 + 단순 200일선 교차(simpleCrossings) + 16/20 필터(crossings) ---
 const buildChartData = (csvText) => {
   const records = parseRecords(csvText);
   if (!records) return { items: [], crossings: [] };

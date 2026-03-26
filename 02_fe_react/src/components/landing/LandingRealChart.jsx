@@ -6,8 +6,9 @@ export default function LandingRealChart() {
     date: i.d, close: i.c, ma200: i.m
   }));
 
-  // crossings: 이미 시간순 정렬됨
-  const crossings16_20 = landingData.crossings.map((c) => ({
+  // simpleCrossings: 단순 200일선 교차 신호 (섹션 3용)
+  // crossings (16/20 필터)는 섹션 5 LandingFilterSection에서 사용
+  const simpleMA200Crossings = landingData.simpleCrossings.map((c) => ({
     date: c.d, direction: c.dir, close: c.c
   }));
 
@@ -20,20 +21,20 @@ export default function LandingRealChart() {
   let inMarket = false;
   let ci = 0;
   const markedItems = items.map((item) => {
-    while (ci < crossings16_20.length && crossings16_20[ci].date <= item.date) {
-      inMarket = crossings16_20[ci].direction === "up";
+    while (ci < simpleMA200Crossings.length && simpleMA200Crossings[ci].date <= item.date) {
+      inMarket = simpleMA200Crossings[ci].direction === "up";
       ci++;
     }
     return { ...item, inMarket };
   });
 
   // 2020년 이후 차트 범위 내 crossing만
-  const visibleCrossings = crossings16_20.filter((c) => c.date >= "2020-01-01");
+  const visibleCrossings = simpleMA200Crossings.filter((c) => c.date >= "2020-01-01");
 
-  // 거래 페어링 (전체 crossings16_20 기준으로 쌍을 맞춤)
+  // 거래 페어링 (전체 simpleMA200Crossings 기준으로 쌍을 맞춤)
   const trades = [];
   let buyEvent = null;
-  crossings16_20.forEach((c) => {
+  simpleMA200Crossings.forEach((c) => {
     if (c.direction === "up") {
       buyEvent = c;
     } else if (c.direction === "down" && buyEvent) {
@@ -159,7 +160,7 @@ export default function LandingRealChart() {
         width="100%"
         className="strategy-chart-svg"
         role="img"
-        aria-label="SPY 2020년 이후 가격 및 200일선 + 16/20 필터 매수/매도 신호 차트"
+        aria-label="SPY 2020년 이후 가격 및 200일선 + 단순 200일선 교차 매수/매도 신호 차트"
       >
         {/* Y axis */}
         <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={CHART_BOTTOM} className="lc-axis" strokeWidth="1" />
@@ -205,7 +206,7 @@ export default function LandingRealChart() {
           );
         })}
 
-        {/* 보유 밴드 (16/20 필터 기준) */}
+        {/* 보유 밴드 (단순 200일선 교차 기준) */}
         {bands.map((band, i) => {
           const x1 = toX(band.startIdx);
           const x2 = toX(band.endIdx);
@@ -306,7 +307,7 @@ export default function LandingRealChart() {
           <p className="strategy-invest-hook-growth">
             약 {(finalCapital / 1000).toFixed(1)}배 성장
           </p>
-          <p className="strategy-invest-hook-sub">앗추 필터 기준 · 실제 거래 데이터</p>
+          <p className="strategy-invest-hook-sub">200일선 기준 · 실제 거래 데이터</p>
           <p className="strategy-invest-hook-disclaimer">과거 백테스트 결과이며 미래 수익을 보장하지 않습니다. 세금·수수료·슬리피지 미반영.</p>
         </div>
       )}
