@@ -122,19 +122,21 @@ run_signal() {
 }
 
 # 그룹 A: trend(10초, 가장 무거움) + baa + haa + faber (가벼움)
-run_signal "Trend Following" "generate_trend_signal.mjs" &
-run_signal "BAA"             "generate_baa_signal.mjs" &
-run_signal "HAA"             "generate_haa_signal.mjs" &
-run_signal "Faber"           "generate_faber_signal.mjs" &
-wait
+pids=()
+run_signal "Trend Following" "generate_trend_signal.mjs" & pids+=($!)
+run_signal "BAA"             "generate_baa_signal.mjs" & pids+=($!)
+run_signal "HAA"             "generate_haa_signal.mjs" & pids+=($!)
+run_signal "Faber"           "generate_faber_signal.mjs" & pids+=($!)
+wait "${pids[@]}"
 
 # 그룹 B: allw + qvm + qvm_diy + dm + business_cycle (모두 가벼움)
-run_signal "All Weather"     "generate_allw_signal.mjs" &
-run_signal "QVM"             "generate_qvm_signal.mjs" &
-run_signal "QVM DIY"         "generate_qvm_diy_signal.mjs" &
-run_signal "Dual Momentum"   "generate_dm_signal.mjs" &
-run_signal "Business Cycle"  "generate_business_cycle_signal.mjs" &
-wait
+pids=()
+run_signal "All Weather"     "generate_allw_signal.mjs" & pids+=($!)
+run_signal "QVM"             "generate_qvm_signal.mjs" & pids+=($!)
+run_signal "QVM DIY"         "generate_qvm_diy_signal.mjs" & pids+=($!)
+run_signal "Dual Momentum"   "generate_dm_signal.mjs" & pids+=($!)
+run_signal "Business Cycle"  "generate_business_cycle_signal.mjs" & pids+=($!)
+wait "${pids[@]}"
 
 log "All quant signals completed"
 notify "[${RUN_ID}] QUANT SIGNALS DONE"
