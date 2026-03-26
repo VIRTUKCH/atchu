@@ -106,105 +106,38 @@ run_snapshot_generation
 run_landing_data_generation
 generate_trend_notifications_file
 
-# BAA 전략 신호 생성
-log "Generating BAA signal"
-notify "[${RUN_ID}] BAA SIGNAL START"
+# 퀀트 전략 신호 병렬 생성 (4코어 기준 2그룹)
 resolve_node_cmd
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_baa_signal.mjs"; then
-  log "BAA signal generation completed"
-  notify "[${RUN_ID}] BAA SIGNAL DONE"
-else
-  log "Warning: BAA signal generation failed, continuing"
-  notify "[${RUN_ID}] BAA SIGNAL FAIL (continuing)"
-fi
+log "Generating quant signals (parallel)"
+notify "[${RUN_ID}] QUANT SIGNALS START (parallel)"
 
-# HAA 전략 신호 생성
-log "Generating HAA signal"
-notify "[${RUN_ID}] HAA SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_haa_signal.mjs"; then
-  log "HAA signal generation completed"
-  notify "[${RUN_ID}] HAA SIGNAL DONE"
-else
-  log "Warning: HAA signal generation failed, continuing"
-  notify "[${RUN_ID}] HAA SIGNAL FAIL (continuing)"
-fi
+# 병렬 실행 헬퍼: 실패해도 파이프라인을 중단하지 않는다
+run_signal() {
+  local name="$1" script="$2"
+  if "${node_cmd}" "${ROOT_DIR}/scripts/${script}"; then
+    log "${name} signal completed"
+  else
+    log "Warning: ${name} signal failed, continuing"
+  fi
+}
 
-# Faber 섹터 모멘텀 전략 신호 생성
-log "Generating Faber sector signal"
-notify "[${RUN_ID}] FABER SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_faber_signal.mjs"; then
-  log "Faber signal generation completed"
-  notify "[${RUN_ID}] FABER SIGNAL DONE"
-else
-  log "Warning: Faber signal generation failed, continuing"
-  notify "[${RUN_ID}] FABER SIGNAL FAIL (continuing)"
-fi
+# 그룹 A: trend(10초, 가장 무거움) + baa + haa + faber (가벼움)
+run_signal "Trend Following" "generate_trend_signal.mjs" &
+run_signal "BAA"             "generate_baa_signal.mjs" &
+run_signal "HAA"             "generate_haa_signal.mjs" &
+run_signal "Faber"           "generate_faber_signal.mjs" &
+wait
 
-# All Weather (ALLW) 전략 신호 생성
-log "Generating All Weather signal"
-notify "[${RUN_ID}] ALLW SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_allw_signal.mjs"; then
-  log "All Weather signal generation completed"
-  notify "[${RUN_ID}] ALLW SIGNAL DONE"
-else
-  log "Warning: All Weather signal generation failed, continuing"
-  notify "[${RUN_ID}] ALLW SIGNAL FAIL (continuing)"
-fi
+# 그룹 B: allw + qvm + qvm_diy + dm + business_cycle (모두 가벼움)
+run_signal "All Weather"     "generate_allw_signal.mjs" &
+run_signal "QVM"             "generate_qvm_signal.mjs" &
+run_signal "QVM DIY"         "generate_qvm_diy_signal.mjs" &
+run_signal "Dual Momentum"   "generate_dm_signal.mjs" &
+run_signal "Business Cycle"  "generate_business_cycle_signal.mjs" &
+wait
 
-# QVM 멀티팩터 전략 신호 생성
-log "Generating QVM multi-factor signal"
-notify "[${RUN_ID}] QVM SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_qvm_signal.mjs"; then
-  log "QVM signal generation completed"
-  notify "[${RUN_ID}] QVM SIGNAL DONE"
-else
-  log "Warning: QVM signal generation failed, continuing"
-  notify "[${RUN_ID}] QVM SIGNAL FAIL (continuing)"
-fi
-
-# QVM DIY (EW + MOM) 전략 신호 생성
-log "Generating QVM DIY signal"
-notify "[${RUN_ID}] QVM_DIY SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_qvm_diy_signal.mjs"; then
-  log "QVM DIY signal generation completed"
-  notify "[${RUN_ID}] QVM_DIY SIGNAL DONE"
-else
-  log "Warning: QVM DIY signal generation failed, continuing"
-  notify "[${RUN_ID}] QVM_DIY SIGNAL FAIL (continuing)"
-fi
-
-# 트렌드 팔로잉 전략 신호 생성
-log "Generating Trend Following signal"
-notify "[${RUN_ID}] TREND SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_trend_signal.mjs"; then
-  log "Trend Following signal generation completed"
-  notify "[${RUN_ID}] TREND SIGNAL DONE"
-else
-  log "Warning: Trend Following signal generation failed, continuing"
-  notify "[${RUN_ID}] TREND SIGNAL FAIL (continuing)"
-fi
-
-# 듀얼 모멘텀 4변형 신호 생성
-log "Generating Dual Momentum signal"
-notify "[${RUN_ID}] DM SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_dm_signal.mjs"; then
-  log "Dual Momentum signal generation completed"
-  notify "[${RUN_ID}] DM SIGNAL DONE"
-else
-  log "Warning: Dual Momentum signal generation failed, continuing"
-  notify "[${RUN_ID}] DM SIGNAL FAIL (continuing)"
-fi
-
-# 경기순환 섹터 로테이션 신호 생성
-log "Generating Business Cycle signal"
-notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL START"
-if "${node_cmd}" "${ROOT_DIR}/scripts/generate_business_cycle_signal.mjs"; then
-  log "Business Cycle signal generation completed"
-  notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL DONE"
-else
-  log "Warning: Business Cycle signal generation failed, continuing"
-  notify "[${RUN_ID}] BUSINESS_CYCLE SIGNAL FAIL (continuing)"
-fi
+log "All quant signals completed"
+notify "[${RUN_ID}] QUANT SIGNALS DONE"
 
 # 개별주(S&P 500) 파이프라인 실행
 log "Starting stock pipeline"

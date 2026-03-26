@@ -18,7 +18,9 @@ process_ticker() {
   out="${OUT_DIR}/${symbol}_all.csv"
   url="https://eodhd.com/api/eod/${symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv"
   tmp="$(mktemp "${TMP_DIR}/.${symbol}.XXXXXX")"
-  if curl -fsSL --retry 3 --retry-delay 1 --connect-timeout 10 "$url" -o "$tmp"; then
+  if curl -fsSL --retry 3 --retry-delay 1 --connect-timeout 10 \
+       --compressed --keepalive-time 60 -H "Connection: keep-alive" \
+       "$url" -o "$tmp"; then
     if [[ -s "$tmp" ]] && head -n 1 "$tmp" | grep -qi "date"; then
       if [[ -f "$out" ]] && cmp -s "$tmp" "$out"; then
         rm -f "$tmp"
