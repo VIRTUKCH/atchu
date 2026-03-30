@@ -1,5 +1,12 @@
 # 작업 기록
 
+### 2026-03-30 (95)
+- **캔들 차트 추가 개선**
+  - 최근 3개월 일봉 캔들 차트 추가 (차트 순서: 3개월 → 1년 → 5년), 기존 `chartSeries.threeMonth` 재사용
+  - 툴팁에 50일선 이격률 추가 (MA50 없는 초기 구간은 미표시)
+  - OHLC 전체 조정 가격 적용: `adjFactor = Adjusted_close / Close` 를 open/high/low에 곱해 분할·배당 점프 제거
+  - null-safe 처리: `applyAdj()` 헬퍼로 `null * factor = 0` 버그 수정
+
 ### 2026-03-30 (94)
 - **캔들스틱 차트 도입: 1년 주봉 · 5년 월봉 + 호버 툴팁**
   - `csvAnalytics.js`: `volume` 필드 추가, `resampleToWeekly` / `resampleToMonthly` 집계 함수 구현 (OHLCV + MA50/MA200 마지막 값 유지), `chartSeries`에 `oneYearWeekly` / `fiveYearMonthly` 추가
