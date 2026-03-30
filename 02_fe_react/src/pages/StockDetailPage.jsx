@@ -168,6 +168,12 @@ export default function StockDetailPage() {
             meta={meta}
           />
           <PriceTrendChart
+            title="최근 3개월 그래프 (일봉)"
+            series={chartSeries.threeMonth?.items || []}
+            variant="candle"
+            periodType="daily"
+          />
+          <PriceTrendChart
             title="최근 1년 그래프 (주봉)"
             series={chartSeries.oneYearWeekly?.items || []}
             variant="candle"
