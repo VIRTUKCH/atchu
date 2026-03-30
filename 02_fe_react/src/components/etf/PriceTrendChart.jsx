@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const formatPeriodLabel = (date, periodType) => {
   if (!date) return "";
@@ -28,6 +28,7 @@ export default function PriceTrendChart({
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [tooltipXPct, setTooltipXPct] = useState(0);
+  const svgRef = useRef(null);
 
   const height = 260;
   const width = 1000;
@@ -87,6 +88,25 @@ export default function PriceTrendChart({
       segments.push(current.join(" "));
     }
     return segments;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!svgRef.current || !series.length || variant !== "candle") return;
+    const rect = svgRef.current.getBoundingClientRect();
+    const svgX = ((e.clientX - rect.left) / rect.width) * width;
+    const svgY = ((e.clientY - rect.top) / rect.height) * height;
+    if (svgX < plotLeft || svgX > plotRight || svgY < plotTop || svgY > plotBottom) {
+      setHoveredItem(null);
+      return;
+    }
+    const index = Math.max(
+      0,
+      Math.min(series.length - 1, Math.round(((svgX - plotLeft) / plotWidth) * (series.length - 1)))
+    );
+    const item = series[index];
+    const candleX = plotLeft + (series.length <= 1 ? 0 : (index / (series.length - 1)) * plotWidth);
+    setHoveredItem(item);
+    setTooltipXPct((candleX - plotLeft) / plotWidth);
   };
 
   const closeSegments = buildSegments(series, "close");
@@ -162,9 +182,11 @@ export default function PriceTrendChart({
         </div>
       )}
       <svg
+        ref={svgRef}
         className="detail-chart"
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="none"
+        onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredItem(null)}
       >
         <line
@@ -263,22 +285,7 @@ export default function PriceTrendChart({
             const isUp = closeValue >= openValue;
             const candleClass = isUp ? "chart-candle-up" : "chart-candle-down";
             return (
-              <g
-                key={`candle-${index}`}
-                className={candleClass}
-                onMouseEnter={() => {
-                  setHoveredItem(item);
-                  setTooltipXPct((x - plotLeft) / plotWidth);
-                }}
-              >
-                <rect
-                  x={x - candleWidth / 2 - 4}
-                  y={yHigh}
-                  width={candleWidth + 8}
-                  height={Math.max(1, yLow - yHigh)}
-                  fill="transparent"
-                  style={{ cursor: "crosshair" }}
-                />
+              <g key={`candle-${index}`} className={candleClass}>
                 <line x1={x} y1={yHigh} x2={x} y2={yLow} className="chart-wick" />
                 <rect
                   x={x - candleWidth / 2}
