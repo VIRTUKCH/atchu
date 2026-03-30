@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import EtfSummaryCard from "../components/etf/EtfSummaryCard";
 import TypeFilter from "../components/etf/TypeFilter";
 import GuideTour from "../components/main/GuideTour";
+import { GROUP_PRIORITY_ORDER } from "../utils/tickerMeta";
 import "../styles/index-etf.css";
 
 const SORT_OPTIONS = [
@@ -90,8 +91,9 @@ export default function IndexEtfPage({
   } = model;
   const trendSummary = useMemo(() => {
     const allTickers = tickers.filter((item) => item?.ticker).map((item) => item.ticker.toUpperCase());
-    const total = allTickers.length;
-    const activeCount = allTickers.filter((ticker) => snapshotMap[ticker]?.isAtchuQualified200 === true).length;
+    const withData = allTickers.filter((ticker) => snapshotMap[ticker] != null);
+    const total = withData.length;
+    const activeCount = withData.filter((ticker) => snapshotMap[ticker]?.isAtchuQualified200 === true).length;
     return { total, activeCount };
   }, [tickers, snapshotMap]);
   const [tickerQuery, setTickerQuery] = useState("");
@@ -102,25 +104,7 @@ export default function IndexEtfPage({
     setShowDiscordBanner(false);
     sessionStorage.setItem("atchu_hide_discord_banner", "1");
   };
-  const groupOrder = [
-    "미국 대표 지수",
-    "성장",
-    "밸류",
-    "퀄리티",
-    "저변동성",
-    "모멘텀",
-    "배당",
-    "스타일",
-    "섹터",
-    "국가",
-    "채권",
-    "원자재",
-    "중소형",
-    "레버리지",
-    "인버스",
-    "기타"
-  ];
-  const groupRank = new Map(groupOrder.map((value, index) => [value, index]));
+  const groupRank = new Map(GROUP_PRIORITY_ORDER.map((value, index) => [value, index]));
   const availableTypes = Array.from(
     new Set(tickers.map((item) => item?.group).filter(Boolean))
   ).sort((a, b) => {

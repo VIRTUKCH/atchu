@@ -83,28 +83,28 @@ const flattenTickerEntries = (entry) => {
   return [];
 };
 
+const GROUP_PRIORITY_ORDER = [
+  "미국 대표 지수",
+  "성장",
+  "밸류",
+  "퀄리티",
+  "저변동성",
+  "모멘텀",
+  "배당",
+  "스타일",
+  "섹터",
+  "ARK",
+  "국가",
+  "채권",
+  "원자재",
+  "중소형",
+  "레버리지",
+  "인버스",
+  "기타"
+];
+
 const buildLocalTickers = (tickerModules) => {
-  const groupPriority = new Map(
-    [
-      "미국 대표 지수",
-      "성장",
-      "밸류",
-      "퀄리티",
-      "저변동성",
-      "모멘텀",
-      "배당",
-      "스타일",
-      "섹터",
-      "ARK",
-      "국가",
-      "채권",
-      "원자재",
-      "중소형",
-      "레버리지",
-      "인버스",
-      "기타"
-    ].map((value, index) => [value, index])
-  );
+  const groupPriority = new Map(GROUP_PRIORITY_ORDER.map((value, index) => [value, index]));
   const deduped = new Map();
   Object.values(tickerModules).forEach((mod) => {
     if (mod?.hidden === true) return;
@@ -166,5 +166,6 @@ export {
   getLocalSnapshotByMap,
   flattenTickerEntries,
   buildLocalTickers,
-  buildMockTickers
+  buildMockTickers,
+  GROUP_PRIORITY_ORDER
 };
