@@ -179,6 +179,17 @@ export default function PriceTrendChart({
             <span>거래량</span>
             <span>{formatVolume(hoveredItem.volume)}</span>
           </div>
+          {hoveredItem.open != null && hoveredItem.open !== 0 && hoveredItem.closeRaw != null && (
+            <div className="candle-tooltip-row">
+              <span>등락률</span>
+              <span style={{
+                color: hoveredItem.closeRaw >= hoveredItem.open ? "#f87171" : "#60a5fa"
+              }}>
+                {hoveredItem.closeRaw >= hoveredItem.open ? "+" : ""}
+                {(((hoveredItem.closeRaw - hoveredItem.open) / hoveredItem.open) * 100).toFixed(2)}%
+              </span>
+            </div>
+          )}
         </div>
       )}
       <svg
