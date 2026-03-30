@@ -81,7 +81,7 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
     bondTiles: buildTypeTiles("채권"),
     smallMidTiles: buildTypeTiles("중소형"),
     sectorTiles: buildTypeTiles("섹터"),
-    innovationTiles: buildTypeTiles("혁신 액티브"),
+    innovationTiles: buildTypeTiles("ARK"),
     countryTiles: buildTypeTiles("국가"),
     commodityTiles: buildTypeTiles("원자재"),
     leverageTiles: buildTypeTiles("레버리지"),
@@ -463,10 +463,10 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         </div>
       )}
 
-      {/* 4. 혁신 액티브 ETF */}
+      {/* 4. ARK ETF */}
       {sortedInnovationTiles.length > 0 && (
-        <div className="report-heat-section" data-heatmap-group="혁신 액티브">
-          <div className="report-overview-title">혁신 액티브 ETF</div>
+        <div className="report-heat-section" data-heatmap-group="ARK">
+          <div className="report-overview-title">ARK ETF</div>
           <div className="report-overview-grid">
             {renderTileGrid(sortedInnovationTiles)}
           </div>

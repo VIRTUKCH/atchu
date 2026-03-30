@@ -1,9 +1,9 @@
 {
-  "type": "혁신 액티브",
+  "type": "ARK",
   "items": [
     {
       "type": "ARK 혁신",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKK",
       "name": "ARK Innovation ETF",
       "name_ko": "ARK 혁신",
@@ -19,7 +19,7 @@
     },
     {
       "type": "ARK 자율주행·로보틱스",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKQ",
       "name": "ARK Autonomous Technology & Robotics ETF",
       "name_ko": "ARK 로보틱스",
@@ -35,7 +35,7 @@
     },
     {
       "type": "ARK 차세대 인터넷",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKW",
       "name": "ARK Next Generation Internet ETF",
       "name_ko": "ARK 인터넷",
@@ -51,7 +51,7 @@
     },
     {
       "type": "ARK 유전체 혁명",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKG",
       "name": "ARK Genomic Revolution ETF",
       "name_ko": "ARK 유전체",
@@ -67,7 +67,7 @@
     },
     {
       "type": "ARK 핀테크",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKF",
       "name": "ARK Fintech Innovation ETF",
       "name_ko": "ARK 핀테크",
@@ -83,7 +83,7 @@
     },
     {
       "type": "ARK 우주·방산",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "ARKX",
       "name": "ARK Space Exploration & Innovation ETF",
       "name_ko": "ARK 우주",
@@ -99,7 +99,7 @@
     },
     {
       "type": "ARK 이스라엘 혁신",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "IZRL",
       "name": "ARK Israel Innovative Technology ETF",
       "name_ko": "ARK 이스라엘",
@@ -115,7 +115,7 @@
     },
     {
       "type": "3D프린팅",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "PRNT",
       "name": "3D Printing ETF",
       "name_ko": "3D프린팅",
@@ -131,7 +131,7 @@
     },
     {
       "type": "IPO",
-      "asset_type": "혁신 액티브",
+      "asset_type": "ARK",
       "ticker": "FPX",
       "name": "First Trust US Equity Opportunities ETF",
       "name_ko": "IPO 신규상장",
@@ -144,10 +144,26 @@
         "operation_notes": "성장주 성격 강해 200일선 신호로 진입/청산. 확인 필터 + 비중 상한 권장."
       },
       "tags": ["IPO", "신규상장", "성장", "모멘텀"]
+    },
+    {
+      "type": "ARK 인버스",
+      "asset_type": "ARK",
+      "ticker": "SARK",
+      "name": "AXS Short Innovation Daily ETF",
+      "name_ko": "ARK 인버스",
+      "business_area": "ARKK 일간 역방향 -1배 수익 추구 (AXS Investments 운용)",
+      "heatmap_label": "ARK인버스",
+      "short_description": "ARKK의 일간 역방향 성과를 추구. ARK 하락·조정 국면에서 수익 가능. 장기 보유 부적합.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "일간 -1배 구조로 장기 보유 시 음의 복리 효과 발생. ARKK 하락 추세 확인 후 단기 활용 용도.",
+        "operation_notes": "장기 보유 금지. 단기 하락 추세 확인 시에만 진입, 신속 청산 원칙. 비중 소규모 유지."
+      },
+      "tags": ["ARK", "인버스", "숏", "액티브인버스"]
     }
   ],
   "type_profile": {
-    "description": "파괴적 혁신 테마 액티브 ETF. ARK Invest 운용 시리즈 및 IPO 모멘텀 ETF 포함.",
+    "description": "파괴적 혁신 테마 액티브 ETF. ARK Invest 운용 시리즈 및 IPO·인버스 ETF 포함.",
     "up_cycle": "금리 인하 기대, 혁신 기술 강세, 위험자산 선호 구간",
     "down_cycle": "금리 인상, 밸류에이션 부담, 위험회피 심화 구간"
   }
