@@ -201,6 +201,17 @@ export default function PriceTrendChart({
               </span>
             </div>
           )}
+          {hoveredItem.ma50 != null && hoveredItem.closeRaw != null && (
+            <div className="candle-tooltip-row">
+              <span>50일선 이격</span>
+              <span style={{
+                color: hoveredItem.closeRaw >= hoveredItem.ma50 ? "#f87171" : "#60a5fa"
+              }}>
+                {hoveredItem.closeRaw >= hoveredItem.ma50 ? "+" : ""}
+                {(((hoveredItem.closeRaw - hoveredItem.ma50) / hoveredItem.ma50) * 100).toFixed(2)}%
+              </span>
+            </div>
+          )}
           {hoveredItem.ma200 != null && hoveredItem.closeRaw != null && (
             <div className="candle-tooltip-row">
               <span>200일선 이격</span>
