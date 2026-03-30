@@ -28,7 +28,9 @@ export default function PriceTrendChart({
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [tooltipXPct, setTooltipXPct] = useState(0);
+  const [tooltipCardPct, setTooltipCardPct] = useState(0);
   const svgRef = useRef(null);
+  const cardRef = useRef(null);
 
   const height = 260;
   const width = 1000;
@@ -105,8 +107,14 @@ export default function PriceTrendChart({
     );
     const item = series[index];
     const candleX = plotLeft + (series.length <= 1 ? 0 : (index / (series.length - 1)) * plotWidth);
+    const xPct = (candleX - plotLeft) / plotWidth;
     setHoveredItem(item);
-    setTooltipXPct((candleX - plotLeft) / plotWidth);
+    setTooltipXPct(xPct);
+    if (cardRef.current) {
+      const cardRect = cardRef.current.getBoundingClientRect();
+      const candleScreenX = rect.left + (candleX / width) * rect.width;
+      setTooltipCardPct(((candleScreenX - cardRect.left) / cardRect.width) * 100);
+    }
   };
 
   const closeSegments = buildSegments(series, "close");
@@ -128,7 +136,7 @@ export default function PriceTrendChart({
   });
 
   return (
-    <div className="detail-chart-card">
+    <div ref={cardRef} className="detail-chart-card">
       <div className="detail-chart-header">
         <div className="detail-chart-title">
           {title}
@@ -155,8 +163,8 @@ export default function PriceTrendChart({
         <div
           className="candle-tooltip"
           style={tooltipXPct < 0.5
-            ? { right: "20px", left: "auto", transform: "none" }
-            : { left: "72px", right: "auto", transform: "none" }
+            ? { left: `calc(${tooltipCardPct}% + 10px)`, right: "auto", transform: "none" }
+            : { left: `calc(${tooltipCardPct}% - 10px)`, right: "auto", transform: "translateX(-100%)" }
           }
         >
           <div className="candle-tooltip-date">
