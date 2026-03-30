@@ -81,6 +81,7 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
     bondTiles: buildTypeTiles("채권"),
     smallMidTiles: buildTypeTiles("중소형"),
     sectorTiles: buildTypeTiles("섹터"),
+    innovationTiles: buildTypeTiles("혁신 액티브"),
     countryTiles: buildTypeTiles("국가"),
     commodityTiles: buildTypeTiles("원자재"),
     leverageTiles: buildTypeTiles("레버리지"),
@@ -277,6 +278,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     bondTiles,
     smallMidTiles,
     sectorTiles,
+    innovationTiles,
     countryTiles,
     commodityTiles,
     leverageTiles,
@@ -298,6 +300,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         bondTiles: sortFn(bondTiles),
         smallMidTiles: sortFn(smallMidTiles),
         sectorTiles: sortFn(sectorTiles),
+        innovationTiles: sortFn(innovationTiles),
         countryTiles: sortFn(countryTiles),
         commodityTiles: sortFn(commodityTiles),
         leverageTiles: sortFn(leverageTiles),
@@ -316,6 +319,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       bondTiles: sortByAtchuDesc(bondTiles),
       smallMidTiles: sortByAtchuDesc(smallMidTiles),
       sectorTiles: sortByAtchuDesc(sectorTiles),
+      innovationTiles: sortByAtchuDesc(innovationTiles),
       countryTiles: sortByAtchuDesc(countryTiles),
       commodityTiles: sortByAtchuDesc(commodityTiles),
       leverageTiles: sortByAtchuDesc(leverageTiles),
@@ -335,6 +339,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     bondTiles: sortedBondTiles,
     smallMidTiles: sortedSmallMidTiles,
     sectorTiles: sortedSectorTiles,
+    innovationTiles: sortedInnovationTiles,
     countryTiles: sortedCountryTiles,
     commodityTiles: sortedCommodityTiles,
     leverageTiles: sortedLeverageTiles,
@@ -347,7 +352,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
       ...sortedDividendTiles,
       ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
-      ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
+      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
       ...sortedLeverageTiles, ...sortedInverseTiles
     ];
     const allMaDistValues = [
@@ -361,6 +366,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedStyleTiles.map((t) => t.maDist),
       ...sortedBondTiles.map((t) => t.maDist),
       ...sortedSectorTiles.map((t) => t.maDist),
+      ...sortedInnovationTiles.map((t) => t.maDist),
       ...sortedCountryTiles.map((t) => t.maDist),
       ...sortedCommodityTiles.map((t) => t.maDist),
       ...sortedSmallMidTiles.map((t) => t.maDist),
@@ -380,7 +386,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
       ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
       ...sortedDividendTiles, ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
-      ...sortedSectorTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
+      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
       ...sortedLeverageTiles, ...sortedInverseTiles
     ];
     const values = allTickers.map((t) => getPeriodValue(t.ticker)).filter(Number.isFinite);
@@ -457,7 +463,17 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         </div>
       )}
 
-      {/* 4. 채권 ETF */}
+      {/* 4. 혁신 액티브 ETF */}
+      {sortedInnovationTiles.length > 0 && (
+        <div className="report-heat-section" data-heatmap-group="혁신 액티브">
+          <div className="report-overview-title">혁신 액티브 ETF</div>
+          <div className="report-overview-grid">
+            {renderTileGrid(sortedInnovationTiles)}
+          </div>
+        </div>
+      )}
+
+      {/* 5. 채권 ETF */}
       {sortedBondTiles.length > 0 && (
         <div className="report-heat-section" data-heatmap-group="채권">
           <div className="report-overview-title">채권 ETF</div>
