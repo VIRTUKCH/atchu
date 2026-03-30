@@ -170,6 +170,7 @@
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
 }
 .detail-chart-card {
+  position: relative;
   margin-top: 16px;
   border-radius: var(--radius-md);
   background: #ffffff;
@@ -177,6 +178,35 @@
   padding: 18px;
   display: grid;
   gap: 12px;
+}
+.candle-tooltip {
+  position: absolute;
+  top: 54px;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 35, 0.92);
+  color: #e8eaf0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.7;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.candle-tooltip-date {
+  font-weight: 700;
+  margin-bottom: 3px;
+  font-size: 11px;
+  color: #a0aec0;
+}
+.candle-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.candle-tooltip-row span:first-child {
+  color: #a0aec0;
 }
 .detail-chart-header {
   display: flex;

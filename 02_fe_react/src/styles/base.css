@@ -1153,6 +1153,18 @@ a.topnav-brand {
 [data-theme="dark"] .legend-ma200 {
   color: #facc15;
 }
+.legend-candle-up {
+  color: #d6473b;
+}
+.legend-candle-down {
+  color: #1d5bff;
+}
+[data-theme="dark"] .legend-candle-up {
+  color: #f87171;
+}
+[data-theme="dark"] .legend-candle-down {
+  color: #60a5fa;
+}
 
 
 [data-theme="dark"] .chart-axis,

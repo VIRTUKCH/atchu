@@ -1,8 +1,34 @@
+import { useState } from "react";
+
+const formatPeriodLabel = (date, periodType) => {
+  if (!date) return "";
+  if (periodType === "monthly") {
+    const [y, m] = date.split("-");
+    return `${y}년 ${parseInt(m, 10)}월`;
+  }
+  if (periodType === "weekly") {
+    return `${date} 주간`;
+  }
+  return date;
+};
+
+const formatVolume = (v) => {
+  if (v == null) return "-";
+  if (v >= 1e9) return `${(v / 1e9).toFixed(1)}B`;
+  if (v >= 1e6) return `${(v / 1e6).toFixed(1)}M`;
+  if (v >= 1e3) return `${(v / 1e3).toFixed(1)}K`;
+  return String(v);
+};
+
 export default function PriceTrendChart({
   title = "가격/이평선 그래프",
   series = [],
-  variant = "line"
+  variant = "line",
+  periodType = "daily"
 }) {
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [tooltipXPct, setTooltipXPct] = useState(0);
+
   const height = 260;
   const width = 1000;
   const paddingX = 24;
@@ -89,15 +115,55 @@ export default function PriceTrendChart({
           <span className="detail-chart-note">(모바일은 가로 권장)</span>
         </div>
         <div className="detail-chart-legend">
-          <span className="legend-item legend-close">종가</span>
-          {hasMa50 && <span className="legend-item legend-ma50">50일선</span>}
-          <span className="legend-item legend-ma200">200일선</span>
+          {variant === "candle" ? (
+            <>
+              <span className="legend-item legend-candle-up">상승</span>
+              <span className="legend-item legend-candle-down">하락</span>
+            </>
+          ) : (
+            <>
+              <span className="legend-item legend-close">종가</span>
+              {hasMa50 && <span className="legend-item legend-ma50">50일선</span>}
+              <span className="legend-item legend-ma200">200일선</span>
+            </>
+          )}
         </div>
       </div>
+      {hoveredItem && (
+        <div
+          className="candle-tooltip"
+          style={{ left: `${Math.min(80, Math.max(5, tooltipXPct * 100))}%` }}
+        >
+          <div className="candle-tooltip-date">
+            {formatPeriodLabel(hoveredItem.date, periodType)}
+          </div>
+          <div className="candle-tooltip-row">
+            <span>시가</span>
+            <span>{hoveredItem.open?.toFixed(2)}</span>
+          </div>
+          <div className="candle-tooltip-row">
+            <span>고가</span>
+            <span>{hoveredItem.high?.toFixed(2)}</span>
+          </div>
+          <div className="candle-tooltip-row">
+            <span>저가</span>
+            <span>{hoveredItem.low?.toFixed(2)}</span>
+          </div>
+          <div className="candle-tooltip-row">
+            <span>종가</span>
+            <span>{hoveredItem.closeRaw?.toFixed(2)}</span>
+          </div>
+          <div className="candle-tooltip-row">
+            <span>거래량</span>
+            <span>{formatVolume(hoveredItem.volume)}</span>
+          </div>
+        </div>
+      )}
       <svg
         className="detail-chart"
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="none"
+        onMouseLeave={() => setHoveredItem(null)}
       >
         <line
           x1={plotLeft}
@@ -193,9 +259,24 @@ export default function PriceTrendChart({
             const bodyTop = Math.min(yOpen, yClose);
             const bodyHeight = Math.max(2, Math.abs(yOpen - yClose));
             const isUp = closeValue >= openValue;
-            const className = isUp ? "chart-candle-up" : "chart-candle-down";
+            const candleClass = isUp ? "chart-candle-up" : "chart-candle-down";
             return (
-              <g key={`candle-${index}`} className={className}>
+              <g
+                key={`candle-${index}`}
+                className={candleClass}
+                onMouseEnter={() => {
+                  setHoveredItem(item);
+                  setTooltipXPct((x - plotLeft) / plotWidth);
+                }}
+              >
+                <rect
+                  x={x - candleWidth / 2 - 4}
+                  y={yHigh}
+                  width={candleWidth + 8}
+                  height={Math.max(1, yLow - yHigh)}
+                  fill="transparent"
+                  style={{ cursor: "crosshair" }}
+                />
                 <line x1={x} y1={yHigh} x2={x} y2={yLow} className="chart-wick" />
                 <rect
                   x={x - candleWidth / 2}

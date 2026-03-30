@@ -173,11 +173,69 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         low: parseNumber(records[i]?.Low),
         closeRaw: parseNumber(records[i]?.Close),
         close: closeValue ?? null,
+        volume: parseNumber(records[i]?.Volume),
         ma50: averageOf(50, i),
         ma200: averageOf(200, i)
       });
     }
     return items;
+  };
+  const resampleToWeekly = (items) => {
+    const groups = new Map();
+    for (const item of items) {
+      if (!item.date) continue;
+      const d = new Date(item.date + "T00:00:00");
+      const day = d.getDay();
+      const diff = day === 0 ? -6 : 1 - day;
+      const monday = new Date(d);
+      monday.setDate(d.getDate() + diff);
+      const key = monday.toISOString().slice(0, 10);
+      if (!groups.has(key)) {
+        groups.set(key, {
+          date: key,
+          open: item.open,
+          high: item.high,
+          low: item.low,
+          closeRaw: item.closeRaw,
+          close: item.close,
+          volume: item.volume ?? 0
+        });
+      } else {
+        const g = groups.get(key);
+        if (item.high != null) g.high = Math.max(g.high, item.high);
+        if (item.low != null) g.low = Math.min(g.low, item.low);
+        g.closeRaw = item.closeRaw;
+        g.close = item.close;
+        g.volume += item.volume ?? 0;
+      }
+    }
+    return Array.from(groups.values());
+  };
+  const resampleToMonthly = (items) => {
+    const groups = new Map();
+    for (const item of items) {
+      if (!item.date) continue;
+      const key = item.date.slice(0, 7);
+      if (!groups.has(key)) {
+        groups.set(key, {
+          date: key,
+          open: item.open,
+          high: item.high,
+          low: item.low,
+          closeRaw: item.closeRaw,
+          close: item.close,
+          volume: item.volume ?? 0
+        });
+      } else {
+        const g = groups.get(key);
+        if (item.high != null) g.high = Math.max(g.high, item.high);
+        if (item.low != null) g.low = Math.min(g.low, item.low);
+        g.closeRaw = item.closeRaw;
+        g.close = item.close;
+        g.volume += item.volume ?? 0;
+      }
+    }
+    return Array.from(groups.values());
   };
   const chartSeries = {
     oneYear: {
@@ -195,6 +253,12 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     full: {
       years: null,
       items: buildChartItems(0)
+    },
+    oneYearWeekly: {
+      items: resampleToWeekly(buildChartItems(findStartIndexByYears(1, 252)))
+    },
+    fiveYearMonthly: {
+      items: resampleToMonthly(buildChartItems(findStartIndexByYears(5, 252 * 5)))
     }
   };
 

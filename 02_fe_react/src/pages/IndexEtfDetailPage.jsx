@@ -150,12 +150,16 @@ export default function IndexEtfDetailPage({ model }) {
             meta={meta}
           />
           <PriceTrendChart
-            title="최근 1년 그래프"
-            series={chartSeries.oneYear?.items || []}
+            title="최근 1년 그래프 (주봉)"
+            series={chartSeries.oneYearWeekly?.items || []}
+            variant="candle"
+            periodType="weekly"
           />
           <PriceTrendChart
-            title="최근 5년 그래프"
-            series={chartSeries.fiveYear?.items || []}
+            title="최근 5년 그래프 (월봉)"
+            series={chartSeries.fiveYearMonthly?.items || []}
+            variant="candle"
+            periodType="monthly"
           />
           {detailAnalytics?.monthlyReturns && (
             <MonthlyReturnsHeatmap
