@@ -13,21 +13,58 @@ map_ticker() {
 process_ticker() {
   local ticker="$1"
   local result_file="$2"
-  local symbol out url tmp
+  local symbol out tmp
   symbol="$(map_ticker "$ticker")"
   out="${OUT_DIR}/${symbol}_all.csv"
-  url="https://eodhd.com/api/eod/${symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv"
   tmp="$(mktemp "${TMP_DIR}/.${symbol}.XXXXXX")"
+
+  # === 증분 모드: 파일이 존재하면 최근 10일만 요청 ===
+  if [[ -f "$out" ]]; then
+    local last_date from_date
+    last_date=$(tail -1 "$out" | cut -d, -f1)
+    if [[ "$last_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+      from_date=$(date -d "${last_date} - 10 days" +%Y-%m-%d 2>/dev/null || true)
+    fi
+
+    if [[ -n "${from_date:-}" ]]; then
+      local url_incr
+      url_incr="https://eodhd.com/api/eod/${symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv&from=${from_date}"
+      if curl -fsSL --retry 3 --retry-delay 1 --connect-timeout 10 \
+           --compressed --keepalive-time 60 -H "Connection: keep-alive" \
+           "$url_incr" -o "$tmp"; then
+        if [[ -s "$tmp" ]] && head -n 1 "$tmp" | grep -qi "date"; then
+          local new_rows
+          new_rows=$(awk -F, -v last="$last_date" 'NR>1 && $1>last' "$tmp")
+          rm -f "$tmp"
+          if [[ -z "$new_rows" ]]; then
+            printf "unchanged\n" >"${result_file}"
+          else
+            echo "$new_rows" >>"$out"
+            log "Incremental: ${symbol} updated"
+            printf "updated\n" >"${result_file}"
+          fi
+          return
+        fi
+      fi
+      log "Warning: ${symbol} incremental failed, falling back to full download" >&2
+      rm -f "$tmp"
+      tmp="$(mktemp "${TMP_DIR}/.${symbol}.XXXXXX")"
+    fi
+  fi
+
+  # === 전체 다운로드 모드 (최초 실행 또는 증분 실패 폴백) ===
+  local url_full
+  url_full="https://eodhd.com/api/eod/${symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv"
   if curl -fsSL --retry 3 --retry-delay 1 --connect-timeout 10 \
        --compressed --keepalive-time 60 -H "Connection: keep-alive" \
-       "$url" -o "$tmp"; then
+       "$url_full" -o "$tmp"; then
     if [[ -s "$tmp" ]] && head -n 1 "$tmp" | grep -qi "date"; then
       if [[ -f "$out" ]] && cmp -s "$tmp" "$out"; then
         rm -f "$tmp"
         printf "unchanged\n" >"${result_file}"
       else
         mv "$tmp" "$out"
-        log "Change detected: ${symbol} updated"
+        log "Full download: ${symbol} updated"
         printf "updated\n" >"${result_file}"
       fi
     else

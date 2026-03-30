@@ -1,5 +1,13 @@
 # 작업 기록
 
+### 2026-03-30 (93)
+- **파이프라인 증분 다운로드 최적화 (14-17분 → 3-5분 예상)**
+  - `lib/download.sh` `process_ticker()` 수정: 파일 있으면 최근 10일만 증분 요청, 없으면 전체 다운로드
+  - EODHD API `from` 파라미터 활용 — `last_date - 10일` 기준 증분 요청
+  - 새 행 없으면 `unchanged` 처리, 있으면 기존 CSV에 append (`>>`) — 전체 히스토리 유지
+  - 증분 실패 시 자동으로 전체 다운로드 폴백
+  - 네트워크 트래픽 ~95% 감소 (33년 → 최근 10일)
+
 ### 2026-03-25 (92)
 - **퀀트 시그널 스크립트 리팩터링: 풀 연동 + 실시간 기간별 수익률**
   - `lib/quant_utils.mjs` 신규: 9개 스크립트 공통 유틸 (loadTickerPool, readMonthEnds, readLatestClose, readDailyPrices, calcPeriodReturns)
