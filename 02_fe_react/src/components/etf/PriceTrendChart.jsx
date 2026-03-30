@@ -154,7 +154,10 @@ export default function PriceTrendChart({
       {hoveredItem && (
         <div
           className="candle-tooltip"
-          style={{ left: `${Math.min(80, Math.max(5, tooltipXPct * 100))}%` }}
+          style={tooltipXPct < 0.5
+            ? { right: "20px", left: "auto", transform: "none" }
+            : { left: "72px", right: "auto", transform: "none" }
+          }
         >
           <div className="candle-tooltip-date">
             {formatPeriodLabel(hoveredItem.date, periodType)}

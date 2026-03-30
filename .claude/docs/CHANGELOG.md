@@ -1,5 +1,13 @@
 # 작업 기록
 
+### 2026-03-30 (94)
+- **캔들스틱 차트 도입: 1년 주봉 · 5년 월봉 + 호버 툴팁**
+  - `csvAnalytics.js`: `volume` 필드 추가, `resampleToWeekly` / `resampleToMonthly` 집계 함수 구현 (OHLCV + MA50/MA200 마지막 값 유지), `chartSeries`에 `oneYearWeekly` / `fiveYearMonthly` 추가
+  - `PriceTrendChart.jsx`: `variant="candle"` + `periodType` prop 활성화, SVG `onMouseMove` 기반 X좌표 호버 감지, OHLCV + 등락률 툴팁 표시
+  - `IndexEtfDetailPage` / `StockDetailPage`: 1년→주봉, 5년→월봉 캔들 차트로 전환
+  - MA50/MA200 이평선 오버레이 유지 (주/월봉 각 기간 마지막 일봉 MA 값 사용)
+  - `detail.css` / `base.css`: 툴팁 스타일, 상승/하락 레전드 색상 추가
+
 ### 2026-03-30 (93)
 - **파이프라인 증분 다운로드 최적화 (14-17분 → 3-5분 예상)**
   - `lib/download.sh` `process_ticker()` 수정: 파일 있으면 최근 10일만 증분 요청, 없으면 전체 다운로드
