@@ -800,6 +800,27 @@
         "장기",
         "-2배"
       ]
+    },
+    {
+      "type": "섹터 인버스",
+      "asset_type": "인버스",
+      "ticker": "SARK",
+      "name": "AXS Short Innovation Daily ETF",
+      "name_ko": "ARK 인버스",
+      "business_area": "ARKK 일간 역방향 -1배 수익 추구 (AXS Investments 운용)",
+      "heatmap_label": "ARK인버스",
+      "short_description": "ARKK의 일간 역방향 성과를 추구. ARK 하락·조정 국면에서 수익 가능. 장기 보유 부적합.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "일간 -1배 구조로 장기 보유 시 음의 복리 효과 발생. ARKK 하락 추세 확인 후 단기 활용 용도.",
+        "operation_notes": "장기 보유 금지. 단기 하락 추세 확인 시에만 진입, 신속 청산 원칙. 비중 소규모 유지."
+      },
+      "tags": [
+        "인버스",
+        "ARK",
+        "숏",
+        "-1배"
+      ]
     }
   ],
   "type_profile": {
