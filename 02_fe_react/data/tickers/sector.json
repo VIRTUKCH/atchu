@@ -639,6 +639,182 @@
         "EV",
         "원자재"
       ]
+    },
+    {
+      "type": "은 광산",
+      "asset_type": "섹터",
+      "ticker": "SIL",
+      "name": "Global X Silver Miners ETF",
+      "name_ko": "은 광산",
+      "business_area": "글로벌 은 채굴 기업 시총 가중 지수",
+      "heatmap_label": "은광산",
+      "short_description": "글로벌 은광 기업 집중. SLV(현물)와 달리 채굴사 레버리지 효과. AUM $4.9B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "은 가격과 높은 상관이지만 기업 실적·운영비 레버리지로 은 현물보다 변동성 크다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "은", "광산", "귀금속", "채굴"]
+    },
+    {
+      "type": "소형 은 광산",
+      "asset_type": "섹터",
+      "ticker": "SILJ",
+      "name": "ETFMG Prime Junior Silver Miners ETF",
+      "name_ko": "소형 은 광산",
+      "business_area": "소형·순수 은 채굴 기업 지수 (Junior)",
+      "heatmap_label": "소형은광산",
+      "short_description": "소형 주니어 은광 기업 특화. SIL보다 변동성 높고 은 가격에 더 직접적으로 연동.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "소형 채굴사 특성상 유동성 낮고 변동성 극심. 은 가격 하락기 낙폭이 현물·대형 광산보다 크다.",
+        "operation_notes": "비중 최소화, 200일선 + 확인 필터 필수. 위성 중 위성 자산 수준으로만."
+      },
+      "tags": ["섹터", "은", "광산", "소형주", "귀금속", "채굴"]
+    },
+    {
+      "type": "구리 광산",
+      "asset_type": "섹터",
+      "ticker": "COPX",
+      "name": "Global X Copper Miners ETF",
+      "name_ko": "구리 광산",
+      "business_area": "글로벌 구리 채굴 기업 시총 가중 지수",
+      "heatmap_label": "구리광산",
+      "short_description": "글로벌 구리광산 기업 집중. CPER(선물)과 달리 채굴사 레버리지 효과. AUM $6.6B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "구리 수요(전기화·AI 인프라)와 구조적으로 연동. 채굴사 특성상 구리 현물보다 변동성 크다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "구리", "광산", "산업금속", "채굴", "경기선행"]
+    },
+    {
+      "type": "소형 금 광산",
+      "asset_type": "섹터",
+      "ticker": "GDXJ",
+      "name": "VanEck Junior Gold Miners ETF",
+      "name_ko": "소형 금 광산",
+      "business_area": "글로벌 소형 금·은 채굴 기업 지수 (Junior)",
+      "heatmap_label": "소형금광산",
+      "short_description": "소형 주니어 금광 기업. GDX보다 금 가격에 더 레버리지 효과. AUM $8.5B.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "소형 채굴사 특성상 유동성 낮고 변동성 극심. 금 강세장 초과수익·약세장 초과손실 경향.",
+        "operation_notes": "비중 최소화, 200일선 + 확인 필터 필수."
+      },
+      "tags": ["섹터", "금", "광산", "소형주", "귀금속", "채굴"]
+    },
+    {
+      "type": "목재·임업",
+      "asset_type": "섹터",
+      "ticker": "WOOD",
+      "name": "iShares Global Timber & Forestry ETF",
+      "name_ko": "목재·임업",
+      "business_area": "글로벌 목재·임업·셀룰로스 기업 25개",
+      "heatmap_label": "목재임업",
+      "short_description": "글로벌 임업·제지·목재 기업 25개. 주택 건설 경기와 탄소크레딧 수요에 민감.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "주택 건설 사이클과 높은 상관. 탄소크레딧·ESG 테마 수요도 구조적 드라이버.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "목재", "임업", "원자재", "ESG"]
+    },
+    {
+      "type": "인프라",
+      "asset_type": "섹터",
+      "ticker": "PAVE",
+      "name": "Global X U.S. Infrastructure Development ETF",
+      "name_ko": "인프라",
+      "business_area": "미국 인프라 개발 매출 비중 높은 기업",
+      "heatmap_label": "인프라",
+      "short_description": "미국 인프라 법안 수혜 기업 집중. 건설·철강·엔지니어링. AUM $11.4B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "인프라 지출은 경기 사이클보다 정책 드라이버가 강해 추세 지속성이 높은 편.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "인프라", "건설", "경기민감", "정책"]
+    },
+    {
+      "type": "물",
+      "asset_type": "섹터",
+      "ticker": "PHO",
+      "name": "Invesco Water Resources ETF",
+      "name_ko": "물",
+      "business_area": "물 정화·보존 제품 생산 미국 상장 기업",
+      "heatmap_label": "물",
+      "short_description": "물 정수·수처리·수자원 관리 기업. 기후변화 수혜 방어적 성장 테마. AUM $1.95B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "수자원 인프라 수요는 경기 불문 구조적 성장. 변동성 낮고 추세 안정적인 편.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "물", "수자원", "ESG", "기후변화", "방어적성장"]
+    },
+    {
+      "type": "항공사",
+      "asset_type": "섹터",
+      "ticker": "JETS",
+      "name": "U.S. Global Jets ETF",
+      "name_ko": "항공사",
+      "business_area": "미국 및 글로벌 여객 항공사 집중",
+      "heatmap_label": "항공사",
+      "short_description": "미국 주요 항공사 집중. 여행 수요·유가·경기에 직접 연동. AUM $641M.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "여행 수요 회복/위축 사이클이 뚜렷해 추세가 형성되는 편. 단, 유가 급변·팬데믹류 이벤트에 급락 이력.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "항공", "여행", "경기민감", "에너지비용"]
+    },
+    {
+      "type": "농업기업",
+      "asset_type": "섹터",
+      "ticker": "MOO",
+      "name": "VanEck Agribusiness ETF",
+      "name_ko": "농업기업",
+      "business_area": "글로벌 농업 관련 매출 비중 높은 기업",
+      "heatmap_label": "농업기업",
+      "short_description": "비료·농기계·종자·식품가공 기업. DBA(선물)와 달리 농업 기업 주식. AUM $1.09B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "식량 안보·농산물 가격 상승기에 수익성 개선. 기업 주식이라 선물 롤오버 이슈 없음.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 + 확인 필터 권장."
+      },
+      "tags": ["섹터", "농업", "식품", "비료", "경기민감"]
+    },
+    {
+      "type": "대마초 (미국)",
+      "asset_type": "섹터",
+      "ticker": "MSOS",
+      "name": "AdvisorShares Pure US Cannabis ETF",
+      "name_ko": "대마초 (미국)",
+      "business_area": "미국 대마초·헴프 산업 액티브 운용",
+      "heatmap_label": "대마초US",
+      "short_description": "미국 상장 대마초 기업 집중 액티브. 연방 합법화 여부에 따라 극단적 가격 변동.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "미국 연방 규제 불확실성으로 급등락 반복. 정치 이벤트(선거·법안)에 극단적으로 반응.",
+        "operation_notes": "비중 최소화, 강한 추세 확인 후 진입. 200일선 + 확인 필터 + 엄격한 손절 원칙."
+      },
+      "tags": ["섹터", "대마초", "헴프", "규제", "고위험", "액티브"]
+    },
+    {
+      "type": "대마초 (글로벌)",
+      "asset_type": "섹터",
+      "ticker": "MJ",
+      "name": "ETFMG Alternative Harvest ETF",
+      "name_ko": "대마초 (글로벌)",
+      "business_area": "글로벌 대마초·카나비노이드·담배 기업",
+      "heatmap_label": "대마초글로벌",
+      "short_description": "캐나다·유럽 등 글로벌 대마초 기업 포함. MSOS보다 분산됐지만 규제 민감도 동일.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "각국 규제 환경·합법화 진행 속도 차이로 극단적 변동성. 투기적 성격 강함.",
+        "operation_notes": "비중 최소화, 강한 추세 확인 후 진입. 200일선 + 확인 필터 + 엄격한 손절 원칙."
+      },
+      "tags": ["섹터", "대마초", "헴프", "규제", "고위험", "글로벌"]
     }
   ],
   "type_profile": {

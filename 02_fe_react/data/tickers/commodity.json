@@ -185,6 +185,102 @@
         "안전자산",
         "저비용"
       ]
+    },
+    {
+      "type": "백금",
+      "asset_type": "원자재",
+      "ticker": "PPLT",
+      "name": "abrdn Physical Platinum Shares ETF",
+      "name_ko": "백금",
+      "business_area": "백금 현물 (런던 볼트 보관)",
+      "heatmap_label": "백금",
+      "short_description": "백금 현물 직접 연동. 자동차 촉매변환기·수소연료전지 수요. GLD처럼 현물 보유 구조. AUM $2.3B.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "현물 ETF라 선물 롤오버 이슈 없음. 산업 수요(자동차·수소) 사이클과 귀금속 안전자산 성격 혼재로 독특한 추세 형성.",
+        "operation_notes": "중장기 추세 기준(120/200일선)으로 운용. 비중 상한을 두는 편이 안전하다."
+      },
+      "tags": ["원자재", "백금", "귀금속", "현물", "수소"]
+    },
+    {
+      "type": "팔라듐",
+      "asset_type": "원자재",
+      "ticker": "PALL",
+      "name": "abrdn Physical Palladium Shares ETF",
+      "name_ko": "팔라듐",
+      "business_area": "팔라듐 현물 (런던 볼트 보관)",
+      "heatmap_label": "팔라듐",
+      "short_description": "팔라듐 현물 직접 연동. 가솔린차 촉매변환기 수요. 공급 70%가 러시아·남아공으로 지정학 민감. AUM $764M.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "현물 ETF라 선물 이슈 없음. 공급 집중(러시아·남아공)으로 지정학 이벤트에 급등락 이력 있음.",
+        "operation_notes": "비중 상한을 두고, 지정학 이벤트 모니터링 필요. 200일선 기준 운용."
+      },
+      "tags": ["원자재", "팔라듐", "귀금속", "현물", "자동차", "지정학"]
+    },
+    {
+      "type": "밀",
+      "asset_type": "원자재",
+      "ticker": "WEAT",
+      "name": "Teucrium Wheat Fund",
+      "name_ko": "밀",
+      "business_area": "CBOT 밀 선물 (만기 3개 분산)",
+      "heatmap_label": "밀",
+      "short_description": "밀 선물 기반. 러-우 전쟁 이후 공급 이슈로 주목. Teucrium 3만기 분산 구조. AUM $267M.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용과 콘탱고 구조가 수익률을 왜곡할 수 있다. 기후·작황·무역 정책 이벤트에 급등락.",
+        "operation_notes": "단기 전술/테마 접근 또는 흐름 관찰 용도. 장기 코어 추세추종에는 부적합. 비중 소규모 유지."
+      },
+      "tags": ["원자재", "밀", "농산물", "선물", "식량안보"]
+    },
+    {
+      "type": "옥수수",
+      "asset_type": "원자재",
+      "ticker": "CORN",
+      "name": "Teucrium Corn Fund",
+      "name_ko": "옥수수",
+      "business_area": "CBOT 옥수수 선물 (만기 3개 분산)",
+      "heatmap_label": "옥수수",
+      "short_description": "옥수수 선물 기반. 에탄올·사료 수요 및 라니냐/엘니뇨 기후 사이클에 민감. AUM $233M.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용과 콘탱고 구조가 수익률을 왜곡할 수 있다. 기후·작황·에탄올 정책에 급등락.",
+        "operation_notes": "단기 전술/테마 접근 또는 흐름 관찰 용도. 장기 코어 추세추종에는 부적합."
+      },
+      "tags": ["원자재", "옥수수", "농산물", "선물", "에탄올"]
+    },
+    {
+      "type": "설탕",
+      "asset_type": "원자재",
+      "ticker": "CANE",
+      "name": "Teucrium Sugar Fund",
+      "name_ko": "설탕",
+      "business_area": "ICE 설탕 선물 (만기 3개 분산)",
+      "heatmap_label": "설탕",
+      "short_description": "설탕 선물 기반. 브라질 생산량·인도 수출 정책에 민감. 틈새 원자재 흐름 관찰용. AUM $52M.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용과 함께 공급국(브라질·인도) 정책에 급등락. AUM이 작아 유동성 리스크 있음.",
+        "operation_notes": "흐름 관찰 용도로만. 장기 보유 비적합. 비중 최소화."
+      },
+      "tags": ["원자재", "설탕", "농산물", "선물", "브라질"]
+    },
+    {
+      "type": "대두",
+      "asset_type": "원자재",
+      "ticker": "SOYB",
+      "name": "Teucrium Soybean Fund",
+      "name_ko": "대두",
+      "business_area": "CBOT 대두 선물 (만기 3개 분산)",
+      "heatmap_label": "대두",
+      "short_description": "대두 선물 기반. 중국 수요·미-중 무역 갈등·기후에 민감. 사료·식용유 수요 연동. AUM $55M.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용 외에 중국 수요와 미-중 무역 마찰에 급등락. AUM이 작아 유동성 리스크 있음.",
+        "operation_notes": "흐름 관찰 용도로만. 장기 보유 비적합. 비중 최소화."
+      },
+      "tags": ["원자재", "대두", "농산물", "선물", "중국", "무역"]
     }
   ],
   "type_profile": {
