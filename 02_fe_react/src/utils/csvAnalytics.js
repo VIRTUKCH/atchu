@@ -166,12 +166,14 @@ const buildCsvAnalytics = (csvText, options = {}) => {
     const items = [];
     for (let i = startIndex; i <= lastIndex; i += 1) {
       const closeValue = adjustedSeries[i];
+      const rawClose = parseNumber(records[i]?.Close);
+      const adjFactor = (rawClose && closeValue) ? closeValue / rawClose : 1;
       items.push({
         date: records[i]?.Date || null,
-        open: parseNumber(records[i]?.Open),
-        high: parseNumber(records[i]?.High),
-        low: parseNumber(records[i]?.Low),
-        closeRaw: parseNumber(records[i]?.Close),
+        open: parseNumber(records[i]?.Open) * adjFactor,
+        high: parseNumber(records[i]?.High) * adjFactor,
+        low: parseNumber(records[i]?.Low) * adjFactor,
+        closeRaw: closeValue ?? null,
         close: closeValue ?? null,
         volume: parseNumber(records[i]?.Volume),
         ma50: averageOf(50, i),
