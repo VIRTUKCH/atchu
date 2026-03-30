@@ -84,6 +84,27 @@
         "뱅가드",
         "배당"
       ]
+    },
+    {
+      "type": "밸류",
+      "asset_type": "밸류",
+      "ticker": "VOE",
+      "name": "Vanguard Mid-Cap Value ETF",
+      "name_ko": "뱅가드 중형 가치주",
+      "business_area": "미국 중형 가치주 (CRSP 중형 가치 지수)",
+      "heatmap_label": "중형밸류",
+      "short_description": "미국 중형 가치주. 대형 가치주보다 작고, 소형주보다 안정적인 가치 팩터 노출.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "중형 가치주는 대형주보다 변동성 높지만 추세 형성 뚜렷. 대형 가치주와 보완적 분산 효과 기대 가능.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "밸류",
+        "중형주",
+        "팩터",
+        "뱅가드"
+      ]
     }
   ],
   "type_profile": {

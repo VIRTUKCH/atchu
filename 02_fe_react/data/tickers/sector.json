@@ -465,6 +465,180 @@
         "부동산",
         "금리민감"
       ]
+    },
+    {
+      "type": "부동산 리츠",
+      "asset_type": "섹터",
+      "ticker": "XLRE",
+      "name": "Real Estate Select Sector SPDR Fund",
+      "name_ko": "리츠 섹터",
+      "business_area": "S&P 500 부동산·리츠 기업",
+      "heatmap_label": "리츠섹터",
+      "short_description": "S&P 500 내 리츠·부동산 기업 집중. VNQ보다 대형 리츠 편중.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "부동산",
+        "리츠",
+        "금리민감"
+      ]
+    },
+    {
+      "type": "클라우드",
+      "asset_type": "섹터",
+      "ticker": "SKYY",
+      "name": "First Trust Cloud Computing ETF",
+      "name_ko": "클라우드",
+      "business_area": "클라우드 인프라·SaaS·PaaS 기업",
+      "heatmap_label": "클라우드",
+      "short_description": "AWS·Azure·Salesforce 등 클라우드 인프라와 SaaS 기업. IGV(소프트웨어)보다 인프라 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. 데이터는 깔끔하지만 '전략 난이도'가 올라간다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "클라우드",
+        "SaaS",
+        "기술"
+      ]
+    },
+    {
+      "type": "AI·기술",
+      "asset_type": "섹터",
+      "ticker": "AIQ",
+      "name": "Global X Artificial Intelligence & Technology ETF",
+      "name_ko": "AI·기술",
+      "business_area": "AI 개발·활용 기업 (글로벌)",
+      "heatmap_label": "AI기술",
+      "short_description": "AI 개발·빅데이터·클라우드 기업 글로벌 분산. XLK·SMH보다 순수 AI 노출 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "구조적 AI 성장 테마로 중장기 추세 형성 가능. 단, 기술주 전반 밸류에이션 부담 시 조정 폭 큰 편.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "AI",
+        "기술",
+        "빅데이터",
+        "클라우드"
+      ]
+    },
+    {
+      "type": "우주",
+      "asset_type": "섹터",
+      "ticker": "UFO",
+      "name": "Procure Space ETF",
+      "name_ko": "우주",
+      "business_area": "위성통신·발사체·우주 인프라 기업",
+      "heatmap_label": "우주",
+      "short_description": "위성통신·발사체·우주관광 기업. ITA(방산)와 달리 순수 우주 경제 노출.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "우주 경제 구조적 성장 테마. 단, 소규모 기업 비중이 높아 유동성·이벤트 리스크 존재.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "우주",
+        "위성",
+        "발사체",
+        "테마"
+      ]
+    },
+    {
+      "type": "게임·e스포츠",
+      "asset_type": "섹터",
+      "ticker": "ESPO",
+      "name": "VanEck Video Gaming and eSports ETF",
+      "name_ko": "게임·e스포츠",
+      "business_area": "비디오게임 개발·퍼블리싱·e스포츠 기업",
+      "heatmap_label": "게임e스포츠",
+      "short_description": "닌텐도·엔씨소프트·액티비전 등 글로벌 게임 기업. 한국·일본 기업 비중 높아 환율 영향.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "글로벌 게임·e스포츠 테마. 한국·일본 기업 비중으로 원화/엔화 환율 변수 추가. 강세장에서 명확한 추세 형성.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "게임",
+        "e스포츠",
+        "테마",
+        "한국주"
+      ]
+    },
+    {
+      "type": "로보틱스·AI",
+      "asset_type": "섹터",
+      "ticker": "BOTZ",
+      "name": "Global X Robotics & Artificial Intelligence ETF",
+      "name_ko": "로보틱스·AI",
+      "business_area": "산업 로봇·자율화·AI 하드웨어 기업",
+      "heatmap_label": "로보틱스",
+      "short_description": "공장 자동화·산업 로봇·자율주행 기업. XLK·SMH와 다른 기업군으로 보완적 분산 가능.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "제조업 자동화와 AI 하드웨어 구조적 성장 테마. 글로벌 분산으로 단일 국가 리스크 낮음.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "로보틱스",
+        "AI",
+        "자동화",
+        "산업"
+      ]
+    },
+    {
+      "type": "우라늄",
+      "asset_type": "섹터",
+      "ticker": "URA",
+      "name": "Global X Uranium ETF",
+      "name_ko": "우라늄",
+      "business_area": "우라늄 채굴·핵에너지 기업 (Cameco·Kazatomprom 등)",
+      "heatmap_label": "우라늄",
+      "short_description": "우라늄 채굴 및 핵에너지 기업. AI 데이터센터 전력 수요와 원전 르네상스 수혜.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "구조적 수급 변화(원전 재평가·AI 전력 수요)가 중장기 추세를 만들어낸다. 단, 정책·규제 이벤트에 급등락 가능.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "우라늄",
+        "핵에너지",
+        "원자력",
+        "에너지"
+      ]
+    },
+    {
+      "type": "리튬·배터리",
+      "asset_type": "섹터",
+      "ticker": "LIT",
+      "name": "Global X Lithium & Battery Tech ETF",
+      "name_ko": "리튬·배터리",
+      "business_area": "리튬 채굴·배터리 제조·EV 공급망",
+      "heatmap_label": "리튬배터리",
+      "short_description": "리튬 채굴부터 배터리 제조까지 EV 공급망 전체 커버. 중국·한국·칠레 기업 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "EV 보급·에너지저장 수요 구조적 성장 테마. 단, 리튬 가격 사이클과 중국 공급 이슈로 추세 변동 가능.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "리튬",
+        "배터리",
+        "EV",
+        "원자재"
+      ]
     }
   ],
   "type_profile": {

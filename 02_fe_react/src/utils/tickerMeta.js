@@ -95,6 +95,7 @@ const buildLocalTickers = (tickerModules) => {
       "배당",
       "스타일",
       "섹터",
+      "혁신 액티브",
       "국가",
       "채권",
       "원자재",

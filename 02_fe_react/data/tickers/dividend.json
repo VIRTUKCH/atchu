@@ -60,6 +60,49 @@
         "인컴",
         "뱅가드"
       ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "VIG",
+      "name": "Vanguard Dividend Appreciation ETF",
+      "name_ko": "배당 증가주",
+      "business_area": "10년 이상 배당 성장 미국 기업",
+      "heatmap_label": "배당증가",
+      "short_description": "10년 이상 배당을 늘려온 기업. SCHD보다 성장주 비중 높아 방어성↓ 성장성↑.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "배당 성장주는 장기 추세 안정성 높은 편. 성장주 성격도 있어 금리 변화에 어느 정도 민감.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "배당성장",
+        "인컴",
+        "뱅가드"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "JEPQ",
+      "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+      "name_ko": "나스닥 커버드콜",
+      "business_area": "나스닥 100 기반 커버드콜 + 배당",
+      "heatmap_label": "나스닥커버드콜",
+      "short_description": "나스닥 100 기업 보유 + 콜옵션 매도로 월배당. 상승 참여 제한되지만 인컴 극대화.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "커버드콜 구조로 상승 제한이 있어 강한 추세 상승장에서 JEPI/QQQ 대비 성과 열위. 인컴 수취 전략으로 활용 가능.",
+        "operation_notes": "추세추종보다 인컴 수취 목적에 맞는 자산. 확인 필터와 비중 상한 권장."
+      },
+      "tags": [
+        "배당",
+        "커버드콜",
+        "인컴",
+        "나스닥",
+        "월배당"
+      ]
     }
   ],
   "type_profile": {

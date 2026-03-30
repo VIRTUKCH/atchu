@@ -120,6 +120,71 @@
         "반도체",
         "3배"
       ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "FNGU",
+      "name": "MicroSectors FANG+ Index 3X Leveraged ETNs",
+      "name_ko": "FANG+ 3배",
+      "business_area": "NYSE FANG+ 지수 일일 3배 (ETN, 발행사 BMO)",
+      "heatmap_label": "FANG+3배",
+      "short_description": "M7+알파벳·메타·넷플릭스 등 10개 빅테크 집중 3배 레버리지. ETF가 아닌 ETN 구조.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "10개 빅테크에 극도로 집중된 3배 레버리지. 빅테크 강세장에서 폭발적 수익이 가능하나 하락 시 손실도 극단적.",
+        "operation_notes": "ETN 특성 주의 — 발행사(BMO) 신용리스크 이론상 존재. 전술 포지션으로만. 긴 신호 + 확인 필터 + 엄격한 비중 제한."
+      },
+      "tags": [
+        "레버리지",
+        "빅테크",
+        "FANG",
+        "3배",
+        "ETN"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "TMF",
+      "name": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+      "name_ko": "장기채 3배",
+      "business_area": "미국 20년+ 장기 국채 일일 3배",
+      "heatmap_label": "장기채3배",
+      "short_description": "미국 장기 국채 3배 레버리지. 금리 인하 국면 또는 위기 시 강력한 헤지 도구.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "금리 방향성이 명확한 구간에서 전술적 활용 가능. 금리 변동성 확대 시 극단적 손실 발생 이력.",
+        "operation_notes": "매크로 헤지 또는 금리 하락 전술 포지션으로만. 긴 신호 + 확인 필터 + 엄격한 비중 제한."
+      },
+      "tags": [
+        "레버리지",
+        "채권",
+        "장기국채",
+        "3배",
+        "헤지"
+      ]
+    },
+    {
+      "type": "레버리지",
+      "asset_type": "레버리지",
+      "ticker": "TECL",
+      "name": "Direxion Daily Technology Bull 3X Shares",
+      "name_ko": "기술 섹터 3배",
+      "business_area": "기술 섹터(XLK) 일일 3배",
+      "heatmap_label": "기술3배",
+      "short_description": "기술 섹터(XLK) 3배 레버리지. TQQQ(나스닥 전체)보다 XLK 집중으로 더 높은 기술주 순도.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "기술 섹터 집중 3배 레버리지. 기술주 강세장에서 폭발적이나 조정 시 손실 극단적.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 엄격한 비중 제한."
+      },
+      "tags": [
+        "레버리지",
+        "기술",
+        "3배",
+        "XLK"
+      ]
     }
   ],
   "type_profile": {
