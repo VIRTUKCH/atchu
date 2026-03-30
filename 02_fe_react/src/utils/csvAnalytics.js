@@ -198,7 +198,9 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           low: item.low,
           closeRaw: item.closeRaw,
           close: item.close,
-          volume: item.volume ?? 0
+          volume: item.volume ?? 0,
+          ma50: item.ma50,
+          ma200: item.ma200
         });
       } else {
         const g = groups.get(key);
@@ -207,6 +209,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         g.closeRaw = item.closeRaw;
         g.close = item.close;
         g.volume += item.volume ?? 0;
+        g.ma50 = item.ma50;
+        g.ma200 = item.ma200;
       }
     }
     return Array.from(groups.values());
@@ -224,7 +228,9 @@ const buildCsvAnalytics = (csvText, options = {}) => {
           low: item.low,
           closeRaw: item.closeRaw,
           close: item.close,
-          volume: item.volume ?? 0
+          volume: item.volume ?? 0,
+          ma50: item.ma50,
+          ma200: item.ma200
         });
       } else {
         const g = groups.get(key);
@@ -233,6 +239,8 @@ const buildCsvAnalytics = (csvText, options = {}) => {
         g.closeRaw = item.closeRaw;
         g.close = item.close;
         g.volume += item.volume ?? 0;
+        g.ma50 = item.ma50;
+        g.ma200 = item.ma200;
       }
     }
     return Array.from(groups.values());

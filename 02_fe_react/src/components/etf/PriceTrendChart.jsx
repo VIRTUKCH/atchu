@@ -52,7 +52,7 @@ export default function PriceTrendChart({
   }
 
   const baseValueKeys = ["close", "ma50", "ma200"];
-  const candleValueKeys = ["open", "high", "low", "closeRaw", ...baseValueKeys];
+  const candleValueKeys = ["open", "high", "low", "closeRaw", "ma50", "ma200"];
   const valueKeys = variant === "candle" ? candleValueKeys : baseValueKeys;
   const values = series.flatMap((item) =>
     valueKeys.map((key) => item?.[key]).filter((value) => value !== null && value !== undefined)
@@ -119,6 +119,8 @@ export default function PriceTrendChart({
             <>
               <span className="legend-item legend-candle-up">상승</span>
               <span className="legend-item legend-candle-down">하락</span>
+              {hasMa50 && <span className="legend-item legend-ma50">50일선</span>}
+              <span className="legend-item legend-ma200">200일선</span>
             </>
           ) : (
             <>
