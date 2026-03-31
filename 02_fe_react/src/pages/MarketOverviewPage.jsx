@@ -113,6 +113,9 @@ export default function MarketOverviewPage({
     return meta?.nameKo ? `${t}(${meta.nameKo})` : t;
   };
 
+  const GOLD_TICKERS = new Set(["SPY", "QQQ", "DIA"]);
+  const isGold = (t) => GOLD_TICKERS.has(t.toUpperCase());
+
   return (
     <div className="market-overview-page">
       {/* ① 최근 신호 */}
@@ -138,7 +141,7 @@ export default function MarketOverviewPage({
               ) : (
                 <div className="trend-column-list">
                   {allEntries.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className="trend-signal-item entry">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className={`trend-signal-item entry${isGold(item.ticker) ? " gold" : ""}`}>
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
@@ -153,7 +156,7 @@ export default function MarketOverviewPage({
               ) : (
                 <div className="trend-column-list">
                   {allExits.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className="trend-signal-item exit">
+                    <Link key={`${item.ticker}-${item.date}`} to={`/trend_list/${item.ticker}`} className={`trend-signal-item exit${isGold(item.ticker) ? " gold" : ""}`}>
                       <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>

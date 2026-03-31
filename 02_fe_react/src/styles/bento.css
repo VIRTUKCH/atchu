@@ -709,6 +709,13 @@ a.trend-signal-item {
 .trend-signal-item.exit {
   border-left: 3px solid rgba(239, 68, 68, 0.6);
 }
+.trend-signal-item.gold {
+  background: rgba(245, 158, 11, 0.12);
+  border-left: 3px solid #F59E0B;
+}
+.trend-signal-item.gold:hover {
+  background: rgba(245, 158, 11, 0.22);
+}
 .trend-signal-item-name {
   font-weight: 600;
   font-family: "Sora", sans-serif;
