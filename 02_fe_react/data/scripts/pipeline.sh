@@ -56,7 +56,6 @@ log "Download/compare complete: evaluating next steps"
 
 # 환율(USDKRW) CSV 다운로드
 log "Downloading USDKRW forex data"
-notify "[${RUN_ID}] FOREX DOWNLOAD START"
 forex_symbol="KRW.FOREX"
 forex_out="${OUT_DIR}/${forex_symbol}_all.csv"
 forex_url="https://eodhd.com/api/eod/${forex_symbol}?api_token=${EODHD_API_TOKEN}&fmt=csv"
@@ -78,7 +77,6 @@ else
   log "Warning: USDKRW forex download failed"
   rm -f "$forex_tmp"
 fi
-notify "[${RUN_ID}] FOREX DOWNLOAD DONE"
 
 summarize_updates
 log "Summary: processed=${total_count}, updated=${updated_count}"
