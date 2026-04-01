@@ -65,6 +65,12 @@ GICS 11개 섹터 + 46개 서브섹터 그룹 레이아웃.
 ```
 
 > **레버리지·인버스 포함**: 공개 추세 조회(`/trend_list`)에서는 제외되지만, 이 관리자 페이지에서는 `[레버리지·인버스]` 통합 필터 버튼으로 확인 가능. ETF JSON 파일이 `data/tickers/private/`에 별도 저장됨.
+>
+> `[레버리지·인버스]` 버튼은 두 종류를 통합해서 보여준다:
+> - **지수·섹터 레버리지·인버스**: TQQQ, SOXL, SQQQ 등 — `leverage.json` / `inverse.json`
+> - **개별주 레버리지·인버스**: TSLL(Tesla 2x), NVDL(Nvidia 2x), AAPU(Apple 2x), MSFU(MSFT 2x), AMZU, METU, GGLL, ORCU 등 Direxion·GraniteShares 단일종목 ETF — `stock_leverage.json` / `stock_inverse.json`
+>
+> 카드에는 기초자산 정보 표시 (예: "TSLL · Tesla 2x Bull"). 모두 일간 리셋 구조 — 장기 보유 시 decay 주의.
 
 ---
 

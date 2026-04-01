@@ -73,8 +73,14 @@
 
 ### 티커 소스
 
-`02_fe_react/data/tickers/private/` 디렉터리의 JSON 파일들 (inverse.json, leverage.json).
-공개 tickers/ 와 분리되어 있으며 git 추적 제외 대상이 아님.
+`02_fe_react/data/tickers/private/` 디렉터리의 JSON 파일들. 공개 `tickers/`와 분리되어 있으며 git 추적 제외 대상이 아님.
+
+| 파일 | 내용 |
+|------|------|
+| `leverage.json` | 지수·섹터 레버리지 ETF (TQQQ, SOXL 등) |
+| `inverse.json` | 지수·섹터 인버스 ETF (SQQQ, SDOW 등) |
+| `stock_leverage.json` | 개별주 레버리지 ETF (TSLL, NVDL, AAPU, MSFU, AMZU, METU, GGLL, ORCU 등) |
+| `stock_inverse.json` | 개별주 인버스 ETF (TSLS, NVDD, AAPD, MSFD, AMZD, METD, GGLS, ORCS 등) |
 
 ### 메시지 포맷
 
@@ -84,10 +90,15 @@
 ## 추세 진입
 - TQQQ (기술) — 03/13
 - SOXL (반도체) — 03/12
+- TSLL (Tesla 2x Bull) — 03/13
+- NVDL (Nvidia 2x Long) — 03/12
 
 ## 추세 이탈
 - SQQQ (기술) — 03/13
+- NVDD (Nvidia 1x Bear) — 03/13
 ```
+
+개별주 레버리지·인버스는 괄호 안에 `기초자산 배율 방향` 형식으로 표시 (예: `Tesla 2x Bull`, `Nvidia 1x Bear`).
 
 > `send_webhook()`을 통해 전송되므로 앞에 timestamp가 자동으로 붙는다.
 > `adminMarkdownBody`가 빈 문자열이면 발송하지 않는다.

@@ -1,0 +1,146 @@
+{
+  "type": "개별주인버스",
+  "items": [
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "TSLS",
+      "name": "Direxion Daily TSLA Bear 1X Shares",
+      "name_ko": "Tesla -1배",
+      "underlying": "TSLA",
+      "business_area": "Tesla 일일 -1배",
+      "heatmap_label": "TSLA인버스",
+      "short_description": "Tesla 주가가 떨어지면 오르는 구조. 단기 헤지·공매도 대안.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Tesla 단일 종목 인버스. Tesla는 변동성 자체가 극단적이라 인버스도 예측 불가 구간이 많다.",
+        "operation_notes": "단기 헤지·전술 포지션으로만. 긴 신호 + 확인 필터 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Tesla", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "NVDD",
+      "name": "Direxion Daily NVDA Bear 1X Shares",
+      "name_ko": "Nvidia -1배",
+      "underlying": "NVDA",
+      "business_area": "Nvidia 일일 -1배",
+      "heatmap_label": "NVDA인버스",
+      "short_description": "Nvidia 주가가 떨어지면 오르는 구조. AI 사이클 과열 헤지.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Nvidia 단일 종목 인버스. AI 수요 사이클에 극도로 민감하여 추세 전환 타이밍 예측이 어렵다.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 확인 필터 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Nvidia", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "AAPD",
+      "name": "Direxion Daily AAPL Bear 1X Shares",
+      "name_ko": "Apple -1배",
+      "underlying": "AAPL",
+      "business_area": "Apple 일일 -1배",
+      "heatmap_label": "AAPL인버스",
+      "short_description": "Apple 주가가 떨어지면 오르는 구조. 단기 헤지용.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Apple 단일 종목 인버스. 장기적으로 우상향 경향이 강한 종목이라 인버스 장기 보유는 부적합.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Apple", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "MSFD",
+      "name": "Direxion Daily MSFT Bear 1X Shares",
+      "name_ko": "Microsoft -1배",
+      "underlying": "MSFT",
+      "business_area": "Microsoft 일일 -1배",
+      "heatmap_label": "MSFT인버스",
+      "short_description": "Microsoft 주가가 떨어지면 오르는 구조. 단기 헤지용.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Microsoft 단일 종목 인버스. 장기 우상향 종목이라 인버스 장기 보유는 손실 위험이 크다.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Microsoft", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "AMZD",
+      "name": "Direxion Daily AMZN Bear 1X Shares",
+      "name_ko": "Amazon -1배",
+      "underlying": "AMZN",
+      "business_area": "Amazon 일일 -1배",
+      "heatmap_label": "AMZN인버스",
+      "short_description": "Amazon 주가가 떨어지면 오르는 구조. 단기 헤지용.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Amazon 단일 종목 인버스. 클라우드·이커머스 장기 성장 추세에 역행하는 구조.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Amazon", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "METD",
+      "name": "Direxion Daily META Bear 1X Shares",
+      "name_ko": "Meta -1배",
+      "underlying": "META",
+      "business_area": "Meta 일일 -1배",
+      "heatmap_label": "META인버스",
+      "short_description": "Meta 주가가 떨어지면 오르는 구조. 광고 사이클 하락 헤지.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Meta 단일 종목 인버스. 규제 이슈나 광고 사이클 하락 구간에서 단기 헤지로 활용 가능.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Meta", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "GGLS",
+      "name": "Direxion Daily GOOGL Bear 1X Shares",
+      "name_ko": "Alphabet -1배",
+      "underlying": "GOOGL",
+      "business_area": "Alphabet 일일 -1배",
+      "heatmap_label": "GOOGL인버스",
+      "short_description": "Alphabet 주가가 떨어지면 오르는 구조. 검색 광고 사이클 하락 헤지.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Alphabet 단일 종목 인버스. 장기 우상향 종목이라 단기 헤지 외 용도 부적합.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Alphabet", "Google", "-1배", "Direxion"]
+    },
+    {
+      "type": "개별주인버스",
+      "asset_type": "인버스",
+      "ticker": "ORCS",
+      "name": "Direxion Daily ORCL Bear 1X Shares",
+      "name_ko": "Oracle -1배",
+      "underlying": "ORCL",
+      "business_area": "Oracle 일일 -1배",
+      "heatmap_label": "ORCL인버스",
+      "short_description": "Oracle 주가가 떨어지면 오르는 구조. 클라우드 사이클 하락 헤지.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Oracle 단일 종목 인버스. AI 인프라 테마 과열 구간 헤지 목적으로 단기 활용 가능.",
+        "operation_notes": "단기 헤지로만. 긴 신호 + 손절 필수."
+      },
+      "tags": ["인버스", "개별주", "Oracle", "-1배", "Direxion"]
+    }
+  ],
+  "type_profile": {
+    "description": "개별 종목의 일간 수익률을 -1배로 추종하는 단일종목 인버스 ETF. 단기 헤지·숏 포지션 대안으로 사용.",
+    "up_cycle": "기초 종목이 하락 추세에 있는 구간",
+    "down_cycle": "기초 종목이 상승 추세로 전환하는 구간 — 보유 시 손실"
+  }
+}

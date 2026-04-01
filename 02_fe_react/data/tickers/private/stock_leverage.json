@@ -1,0 +1,248 @@
+{
+  "type": "개별주레버리지",
+  "items": [
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "TSLL",
+      "name": "Direxion Daily TSLA Bull 2X Shares",
+      "name_ko": "Tesla 2배",
+      "underlying": "TSLA",
+      "business_area": "Tesla 일일 2배",
+      "heatmap_label": "TSLA2배",
+      "short_description": "Tesla 주가 일일 수익률 2배. 장기 보유 시 손실 가능.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. Tesla는 변동성 자체가 크기 때문에 2배 적용 시 손실 리스크가 극단적으로 커진다.",
+        "operation_notes": "전술 포지션으로만. 긴 신호(120/200일선) + 확인 필터 + 엄격한 비중 제한 + 손절 필수."
+      },
+      "tags": ["레버리지", "개별주", "Tesla", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "NVDL",
+      "name": "GraniteShares 2x Long NVDA Daily ETF",
+      "name_ko": "Nvidia 2배",
+      "underlying": "NVDA",
+      "business_area": "Nvidia 일일 2배",
+      "heatmap_label": "NVDA2배",
+      "short_description": "Nvidia 주가 일일 수익률 2배. AUM $3.4B, 단일종목 레버리지 ETF 중 최대 규모.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Nvidia 자체 변동성이 크고 AI 사이클에 민감. 2배 레버리지 시 추세 반전 구간에서 손실이 극단적.",
+        "operation_notes": "전술 포지션으로만. Nvidia 추세 확인(200일선) + 확인 필터 + 엄격한 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Nvidia", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "NVDU",
+      "name": "Direxion Daily NVDA Bull 2X Shares",
+      "name_ko": "Nvidia 2배 (Direxion)",
+      "underlying": "NVDA",
+      "business_area": "Nvidia 일일 2배",
+      "heatmap_label": "NVDA2배D",
+      "short_description": "Nvidia 주가 일일 수익률 2배. Direxion 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "Nvidia 단일 종목 2배. 추세 반전 구간 손실 극단적.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 상한."
+      },
+      "tags": ["레버리지", "개별주", "Nvidia", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "AAPU",
+      "name": "Direxion Daily AAPL Bull 2X Shares",
+      "name_ko": "Apple 2배",
+      "underlying": "AAPL",
+      "business_area": "Apple 일일 2배",
+      "heatmap_label": "AAPL2배",
+      "short_description": "Apple 주가 일일 수익률 2배. 장기 보유 시 decay 발생.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. Apple은 상대적으로 변동성이 낮지만 레버리지 decay는 동일하게 적용.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Apple", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "AAPB",
+      "name": "GraniteShares 2x Long AAPL Daily ETF",
+      "name_ko": "Apple 2배 (GraniteShares)",
+      "underlying": "AAPL",
+      "business_area": "Apple 일일 2배",
+      "heatmap_label": "AAPL2배G",
+      "short_description": "Apple 주가 일일 수익률 2배. GraniteShares 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. decay 구조 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Apple", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "MSFU",
+      "name": "Direxion Daily MSFT Bull 2X Shares",
+      "name_ko": "Microsoft 2배",
+      "underlying": "MSFT",
+      "business_area": "Microsoft 일일 2배",
+      "heatmap_label": "MSFT2배",
+      "short_description": "Microsoft 주가 일일 수익률 2배. 장기 보유 시 decay 발생.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. Microsoft는 상대적으로 안정적이나 레버리지 decay는 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Microsoft", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "MSFL",
+      "name": "GraniteShares 2x Long MSFT Daily ETF",
+      "name_ko": "Microsoft 2배 (GraniteShares)",
+      "underlying": "MSFT",
+      "business_area": "Microsoft 일일 2배",
+      "heatmap_label": "MSFT2배G",
+      "short_description": "Microsoft 주가 일일 수익률 2배. GraniteShares 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. decay 구조 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Microsoft", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "AMZU",
+      "name": "Direxion Daily AMZN Bull 2X Shares",
+      "name_ko": "Amazon 2배",
+      "underlying": "AMZN",
+      "business_area": "Amazon 일일 2배",
+      "heatmap_label": "AMZN2배",
+      "short_description": "Amazon 주가 일일 수익률 2배. 장기 보유 시 decay 발생.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. 클라우드·이커머스 사이클에 민감.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Amazon", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "AMZZ",
+      "name": "GraniteShares 2x Long AMZN Daily ETF",
+      "name_ko": "Amazon 2배 (GraniteShares)",
+      "underlying": "AMZN",
+      "business_area": "Amazon 일일 2배",
+      "heatmap_label": "AMZN2배G",
+      "short_description": "Amazon 주가 일일 수익률 2배. GraniteShares 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. decay 구조 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Amazon", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "METU",
+      "name": "Direxion Daily META Bull 2X Shares",
+      "name_ko": "Meta 2배",
+      "underlying": "META",
+      "business_area": "Meta 일일 2배",
+      "heatmap_label": "META2배",
+      "short_description": "Meta 주가 일일 수익률 2배. 광고 사이클·AI 테마에 민감.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. Meta는 분기 실적 변동성이 큰 종목.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Meta", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "FBL",
+      "name": "GraniteShares 2x Long META Daily ETF",
+      "name_ko": "Meta 2배 (GraniteShares)",
+      "underlying": "META",
+      "business_area": "Meta 일일 2배",
+      "heatmap_label": "META2배G",
+      "short_description": "Meta 주가 일일 수익률 2배. GraniteShares 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. decay 구조 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Meta", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "GGLL",
+      "name": "Direxion Daily GOOGL Bull 2X Shares",
+      "name_ko": "Alphabet 2배",
+      "underlying": "GOOGL",
+      "business_area": "Alphabet 일일 2배",
+      "heatmap_label": "GOOGL2배",
+      "short_description": "Alphabet(GOOGL) 주가 일일 수익률 2배. 검색·클라우드·AI 테마.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. 규제·광고 사이클 민감.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Alphabet", "Google", "2배", "Direxion"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "GOU",
+      "name": "GraniteShares 2x Long GOOGL Daily ETF",
+      "name_ko": "Alphabet 2배 (GraniteShares)",
+      "underlying": "GOOGL",
+      "business_area": "Alphabet 일일 2배",
+      "heatmap_label": "GOOGL2배G",
+      "short_description": "Alphabet 주가 일일 수익률 2배. GraniteShares 버전.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. decay 구조 동일.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Alphabet", "Google", "2배", "GraniteShares"]
+    },
+    {
+      "type": "개별주레버리지",
+      "asset_type": "레버리지",
+      "ticker": "ORCU",
+      "name": "Direxion Daily ORCL Bull 2X Shares",
+      "name_ko": "Oracle 2배",
+      "underlying": "ORCL",
+      "business_area": "Oracle 일일 2배",
+      "heatmap_label": "ORCL2배",
+      "short_description": "Oracle 주가 일일 수익률 2배. 클라우드 전환·AI 인프라 테마.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "단일 종목 2배 레버리지. Oracle은 클라우드 사이클과 AI 인프라 수혜 기대로 변동성 높음.",
+        "operation_notes": "전술 포지션으로만. 긴 신호 + 확인 필터 + 비중 제한."
+      },
+      "tags": ["레버리지", "개별주", "Oracle", "2배", "Direxion"]
+    }
+  ],
+  "type_profile": {
+    "description": "개별 종목의 일간 수익률을 2배로 증폭해 추종하는 단일종목 레버리지 ETF. 지수 레버리지보다 종목 집중 리스크가 높다.",
+    "up_cycle": "기초 종목이 강한 상승 추세를 유지하는 구간",
+    "down_cycle": "기초 종목이 횡보하거나 하락 전환하는 구간 — decay 가속"
+  }
+}
