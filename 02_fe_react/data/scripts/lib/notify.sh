@@ -23,12 +23,12 @@ const rules = [
   }
 ];
 
-function readTickerMeta() {
-  const files = fs.readdirSync(tickersDir).filter((f) => f.endsWith(".json"));
+function readTickerMeta(dir) {
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
   const meta = new Map();
   for (const file of files) {
     try {
-      const json = JSON.parse(fs.readFileSync(path.join(tickersDir, file), "utf8"));
+      const json = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
       const items = Array.isArray(json) ? json : (json && Array.isArray(json.items) ? json.items : []);
       for (const row of items) {
         if (row && row.ticker) {
@@ -43,7 +43,13 @@ function readTickerMeta() {
   return meta;
 }
 
-const tickerMeta = readTickerMeta();
+// 공개 티커 (레버리지·인버스 제외)
+const tickerMeta = readTickerMeta(tickersDir);
+// 관리자 전용 티커 (레버리지·인버스 — private 디렉터리)
+const privateTickersDir = path.join(tickersDir, "private");
+const adminTickerMeta = fs.existsSync(privateTickersDir) ? readTickerMeta(privateTickersDir) : new Map();
+// 처리 루프용: 공개 + 관리자 전체
+const allTickerMeta = new Map([...tickerMeta, ...adminTickerMeta]);
 
 function mapTickerToSymbol(ticker) {
   return ticker.includes(".") ? ticker : `${ticker}.US`;
@@ -109,7 +115,7 @@ function stateByRule(rows, idx, rule) {
   return holdState(rows, idx, rule.period);
 }
 
-for (const ticker of tickerMeta.keys()) {
+for (const ticker of allTickerMeta.keys()) {
   const symbol = mapTickerToSymbol(ticker);
   const rows = parseCsv(path.join(csvDir, `${symbol}_all.csv`));
   if (!rows || rows.length < 221) continue;
@@ -154,19 +160,29 @@ function resolveRecentTradingDates() {
   return [];
 }
 
+// 공개/관리자 분리 헬퍼
+function filterByMeta(dateEntries, meta) {
+  return dateEntries
+    .map((e) => ({ ...e, tickers: e.tickers.filter((t) => meta.has(t)) }))
+    .filter((e) => e.tickers.length > 0);
+}
+
 const ruleItems = rules.map((rule) => {
-  const entries = mapToDateEntries(upMap[rule.key]);
-  const exits = mapToDateEntries(downMap[rule.key]);
+  const allDateEntries = mapToDateEntries(upMap[rule.key]);
+  const allDateExits = mapToDateEntries(downMap[rule.key]);
   return {
     key: rule.key,
     label: rule.label,
     shortLabel: rule.shortLabel,
-    entries,
-    exits
+    entries: filterByMeta(allDateEntries, tickerMeta),       // 공개용
+    exits: filterByMeta(allDateExits, tickerMeta),           // 공개용
+    adminEntries: filterByMeta(allDateEntries, adminTickerMeta), // 관리자용
+    adminExits: filterByMeta(allDateExits, adminTickerMeta)  // 관리자용
   };
 });
 
 const hasAnyChanges = ruleItems.some((rule) => rule.entries.length > 0 || rule.exits.length > 0);
+const hasAdminChanges = ruleItems.some((rule) => rule.adminEntries.length > 0 || rule.adminExits.length > 0);
 const events = [];
 for (const rule of ruleItems) {
   for (const item of rule.entries) {
@@ -194,7 +210,7 @@ for (const rule of ruleItems) {
 }
 
 function tickerDesc(ticker) {
-  const m = tickerMeta.get(ticker);
+  const m = allTickerMeta.get(ticker);
   return m && m.label ? ` (${m.label})` : "";
 }
 
@@ -253,12 +269,49 @@ bodyLines.push("자세히 보기: https://atchu-fe.vercel.app/market_overview");
 bodyLines.push("");
 bodyLines.push("※ 참고용 지표이며 투자 조언이 아닙니다. 투자 결정과 책임은 본인에게 있습니다.");
 
+// 관리자용 알림 본문 생성 (레버리지·인버스)
+const adminBodyLines = [];
+if (hasAdminChanges) {
+  adminBodyLines.push("# [관리자] 레버리지·인버스 추세 변화 (최근 5거래일)");
+  const adminAllEntries = [];
+  const adminAllExits = [];
+  for (const rule of ruleItems) {
+    for (const entry of rule.adminEntries) {
+      for (const ticker of entry.tickers) {
+        adminAllEntries.push({ ticker, date: entry.date });
+      }
+    }
+    for (const exit of rule.adminExits) {
+      for (const ticker of exit.tickers) {
+        adminAllExits.push({ ticker, date: exit.date });
+      }
+    }
+  }
+  const adminDiscordEntries = adminAllEntries.filter((e) => discordDates.has(e.date));
+  const adminDiscordExits = adminAllExits.filter((e) => discordDates.has(e.date));
+  if (adminDiscordEntries.length > 0) {
+    adminBodyLines.push("");
+    adminBodyLines.push("## 추세 진입");
+    for (const e of adminDiscordEntries.sort((a, b) => b.date.localeCompare(a.date) || a.ticker.localeCompare(b.ticker))) {
+      adminBodyLines.push(`- ${e.ticker}${tickerDesc(e.ticker)} — ${shortDate(e.date)}`);
+    }
+  }
+  if (adminDiscordExits.length > 0) {
+    adminBodyLines.push("");
+    adminBodyLines.push("## 추세 이탈");
+    for (const e of adminDiscordExits.sort((a, b) => b.date.localeCompare(a.date) || a.ticker.localeCompare(b.ticker))) {
+      adminBodyLines.push(`- ${e.ticker}${tickerDesc(e.ticker)} — ${shortDate(e.date)}`);
+    }
+  }
+}
+
 const payload = {
   version: 1,
   generatedAt: new Date().toISOString(),
   title: "추세 변화 알림 (최근 5거래일)",
   recentTradingDates: resolveRecentTradingDates(),
   hasAnyChanges,
+  hasAdminChanges,
   rules: ruleItems,
   events: events.sort((a, b) => {
     if (a.date === b.date) {
@@ -267,7 +320,8 @@ const payload = {
     }
     return b.date.localeCompare(a.date);
   }),
-  markdownBody: bodyLines.join("\n")
+  markdownBody: bodyLines.join("\n"),
+  adminMarkdownBody: adminBodyLines.join("\n")
 };
 
 console.log(JSON.stringify(payload, null, 2));
@@ -336,6 +390,15 @@ send_trend_change_notifications() {
     log "Trend notification webhook failed"
     notify "[${RUN_ID}] TREND NOTIFY FAIL | reason=webhook_post_error"
     return 1
+  fi
+
+  # 관리자 채널: 레버리지·인버스 신호 별도 전송
+  local has_admin_changes admin_body
+  has_admin_changes="$(jq -r '.hasAdminChanges // false' "${trend_json_latest_file}")"
+  admin_body="$(jq -r '.adminMarkdownBody // empty' "${trend_json_latest_file}")"
+  if [[ "${has_admin_changes}" == "true" && -n "${admin_body}" ]]; then
+    notify "${admin_body}"
+    log "Admin trend notification sent (leverage/inverse signals)"
   fi
 }
 

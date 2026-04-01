@@ -73,23 +73,39 @@ export default function MarketOverviewPage({
 
   const { recentTradingDates, rules } = latestTrendNotificationPayload || {};
 
+  // 최근 신호에서 제외할 티커 Set (기존 JSON 호환 안전망 — 레버리지·인버스)
+  const excludedSignalTickers = useMemo(() => {
+    const set = new Set();
+    (overviewTickers || []).forEach((item) => {
+      if (TREND_EXCLUDE_GROUPS.has(item.group))
+        set.add(String(item.ticker || "").toUpperCase());
+    });
+    return set;
+  }, [overviewTickers]);
+
   // 최근 신호: 전체 룰의 진입/이탈을 날짜+티커로 평탄화
   const { allEntries, allExits } = useMemo(() => {
     const entries = [];
     const exits = [];
     (rules || []).forEach((rule) => {
       (rule.entries || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => entries.push({ ticker: t, date: e.date }));
+        (e.tickers || []).forEach((t) => {
+          if (!excludedSignalTickers.has(String(t).toUpperCase()))
+            entries.push({ ticker: t, date: e.date });
+        });
       });
       (rule.exits || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => exits.push({ ticker: t, date: e.date }));
+        (e.tickers || []).forEach((t) => {
+          if (!excludedSignalTickers.has(String(t).toUpperCase()))
+            exits.push({ ticker: t, date: e.date });
+        });
       });
     });
     // 최신 날짜 먼저
     entries.sort((a, b) => b.date.localeCompare(a.date));
     exits.sort((a, b) => b.date.localeCompare(a.date));
     return { allEntries: entries, allExits: exits };
-  }, [rules]);
+  }, [rules, excludedSignalTickers]);
 
   // 날짜 범위 라벨
   const dateRangeLabel = useMemo(() => {

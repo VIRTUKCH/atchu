@@ -29,6 +29,11 @@ const tickerModules = import.meta.glob("../../data/tickers/*.json", {
   import: "default"
 });
 
+const privateTickerModules = import.meta.glob("../../data/tickers/private/*.json", {
+  eager: true,
+  import: "default"
+});
+
 const pickLatestPayload = (modules, regex, fallbackModules) => {
   const datedCandidates = Object.entries(modules)
     .map(([modulePath, payload]) => {
@@ -60,6 +65,7 @@ const latestTrendNotificationPayload = pickLatestPayload(
 export {
   csvModules,
   tickerModules,
+  privateTickerModules,
   latestSnapshotPayload,
   latestTrendNotificationPayload
 };

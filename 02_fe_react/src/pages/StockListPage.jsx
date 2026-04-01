@@ -10,6 +10,7 @@ import {
 } from "../utils/stockDataLoaders";
 import {
   tickerModules as etfTickerModules,
+  privateTickerModules,
   latestSnapshotPayload as etfSnapshotPayload
 } from "../utils/dataLoaders";
 import {
@@ -23,7 +24,11 @@ import { isStaleCloseByUsMarketDate } from "../utils/marketDate";
 import "../styles/index-etf.css";
 
 // --- ETF 데이터 빌드 (빌드 시 eager load) ---
-const etfLocalTickers = buildLocalTickers(etfTickerModules);
+// 관리자 전용: 공개 티커 + private(레버리지·인버스) 티커 병합
+const etfLocalTickers = [
+  ...buildLocalTickers(etfTickerModules),
+  ...buildLocalTickers(privateTickerModules)
+];
 const etfTickers = buildMockTickers(etfLocalTickers);
 const etfSnapshotMap = (() => {
   const map = {};

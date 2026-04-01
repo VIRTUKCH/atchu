@@ -84,8 +84,6 @@ const buildOverviewData = (snapshotPayload, localUniverse = []) => {
     innovationTiles: buildTypeTiles("ARK"),
     countryTiles: buildTypeTiles("국가"),
     commodityTiles: buildTypeTiles("원자재"),
-    leverageTiles: buildTypeTiles("레버리지"),
-    inverseTiles: buildTypeTiles("인버스")
   };
 };
 
@@ -280,9 +278,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     sectorTiles,
     innovationTiles,
     countryTiles,
-    commodityTiles,
-    leverageTiles,
-    inverseTiles
+    commodityTiles
   } = data;
 
   const sorted = useMemo(() => {
@@ -302,9 +298,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         sectorTiles: sortFn(sectorTiles),
         innovationTiles: sortFn(innovationTiles),
         countryTiles: sortFn(countryTiles),
-        commodityTiles: sortFn(commodityTiles),
-        leverageTiles: sortFn(leverageTiles),
-        inverseTiles: sortFn(inverseTiles)
+        commodityTiles: sortFn(commodityTiles)
       };
     }
     return {
@@ -321,9 +315,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       sectorTiles: sortByAtchuDesc(sectorTiles),
       innovationTiles: sortByAtchuDesc(innovationTiles),
       countryTiles: sortByAtchuDesc(countryTiles),
-      commodityTiles: sortByAtchuDesc(commodityTiles),
-      leverageTiles: sortByAtchuDesc(leverageTiles),
-      inverseTiles: sortByAtchuDesc(inverseTiles)
+      commodityTiles: sortByAtchuDesc(commodityTiles)
     };
   }, [data, periodKey]);
 
@@ -341,9 +333,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     sectorTiles: sortedSectorTiles,
     innovationTiles: sortedInnovationTiles,
     countryTiles: sortedCountryTiles,
-    commodityTiles: sortedCommodityTiles,
-    leverageTiles: sortedLeverageTiles,
-    inverseTiles: sortedInverseTiles
+    commodityTiles: sortedCommodityTiles
   } = sorted;
 
   const { summaryStats, maDistScale } = useMemo(() => {
@@ -352,8 +342,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
       ...sortedDividendTiles,
       ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
-      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
-      ...sortedLeverageTiles, ...sortedInverseTiles
+      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles
     ];
     const allMaDistValues = [
       ...sortedCoreTickers.map((t) => t.maDist),
@@ -369,9 +358,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedInnovationTiles.map((t) => t.maDist),
       ...sortedCountryTiles.map((t) => t.maDist),
       ...sortedCommodityTiles.map((t) => t.maDist),
-      ...sortedSmallMidTiles.map((t) => t.maDist),
-      ...sortedLeverageTiles.map((t) => t.maDist),
-      ...sortedInverseTiles.map((t) => t.maDist)
+      ...sortedSmallMidTiles.map((t) => t.maDist)
     ];
     return {
       summaryStats: buildSummaryStats(allIndividualTiles),
@@ -386,8 +373,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
       ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
       ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
       ...sortedDividendTiles, ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
-      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles,
-      ...sortedLeverageTiles, ...sortedInverseTiles
+      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles
     ];
     const values = allTickers.map((t) => getPeriodValue(t.ticker)).filter(Number.isFinite);
     const upCount = values.filter((v) => v > 0).length;
@@ -583,25 +569,6 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         </div>
       )}
 
-      {/* 9. 레버리지 */}
-      {sortedLeverageTiles.length > 0 && (
-        <div className="report-heat-section" data-heatmap-group="레버리지">
-          <div className="report-overview-title">레버리지 ETF</div>
-          <div className="report-overview-grid">
-            {renderTileGrid(sortedLeverageTiles)}
-          </div>
-        </div>
-      )}
-
-      {/* 10. 인버스 */}
-      {sortedInverseTiles.length > 0 && (
-        <div className="report-heat-section" data-heatmap-group="인버스">
-          <div className="report-overview-title">인버스 ETF</div>
-          <div className="report-overview-grid">
-            {renderTileGrid(sortedInverseTiles)}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
