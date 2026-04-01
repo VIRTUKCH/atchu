@@ -2,7 +2,13 @@
 
 ## 이 페이지의 역할
 
-ETF 상세(`/trend_list/:ticker`)의 개별주 버전. 개별 종목의 차트, 교차 이력, 전략 비교를 보여준다.
+`/_dev_trend_list`에서 카드를 클릭했을 때 진입하는 개발자 전용 상세 페이지. 개별 종목의 차트, 교차 이력, 전략 비교를 보여준다.
+
+> **원칙**: 공개 서비스에서 숨겨진 티커(개별주, 레버리지·인버스 ETF 전부)는 이 페이지에서 상세를 볼 수 있다.
+
+**처리하는 티커 유형:**
+- S&P 500 개별주 (AAPL, NVDA 등) — CSV on-demand fetch
+- 레버리지·인버스 ETF (TQQQ, SOXL, TSLL, NVDL 등) — CSV 번들 로드 (ETF 방식)
 
 **답하는 질문:**
 - "이 종목이 지금 추세 안에 있나?"
@@ -33,15 +39,15 @@ ETF 상세(`/trend_list/:ticker`)의 개별주 버전. 개별 종목의 차트, 
 
 ---
 
-## ETF 상세와의 차이
+## 종목 유형별 차이
 
-| | ETF (`/trend_list/:ticker`) | 개별주 (`/_dev_trend_list/:ticker`) |
-|---|---|---|
-| CSV 로딩 | 빌드 시 번들 | `public/csv_stock/`에서 `fetch()` on-demand |
-| 이평선 | MA200 1개 | **MA50 + MA200 2개** |
-| 크로스 배지 | 없음 | 골든크로스/데드크로스 표시 |
-| 메타데이터 | `trend_following.suitability` 배지 | ETF 전용 필드 없음 (미표시) |
-| 설명 | ticker JSON의 `short_description` | sp500.json의 `short_description` |
+| | 공개 ETF (`/trend_list/:ticker`) | S&P 500 개별주 (`/_dev_trend_list/:ticker`) | 레버리지·인버스 ETF (`/_dev_trend_list/:ticker`) |
+|---|---|---|---|
+| CSV 로딩 | 빌드 시 번들 | `public/csv_stock/`에서 `fetch()` on-demand | 빌드 시 번들 (ETF 방식) |
+| 이평선 | MA200 1개 | **MA50 + MA200 2개** | **MA50 + MA200 2개** |
+| 크로스 배지 | 없음 | 골든크로스/데드크로스 표시 | 골든크로스/데드크로스 표시 |
+| 메타데이터 | `trend_following.suitability` 배지 | sp500.json의 `short_description` | `stock_leverage/inverse.json`의 `short_description` + `underlying` (기초자산) |
+| 노출 범위 | 공개 | 개발자 전용 | 개발자 전용 (초보자 보호) |
 
 ---
 
