@@ -106,9 +106,11 @@ export default function PriceTrendChart({
       Math.min(series.length - 1, Math.round(((svgX - plotLeft) / plotWidth) * (series.length - 1)))
     );
     const item = series[index];
+    const prevItem = index > 0 ? series[index - 1] : null;
+    const prevClose = prevItem?.closeRaw ?? null;
     const candleX = plotLeft + (series.length <= 1 ? 0 : (index / (series.length - 1)) * plotWidth);
     const xPct = (candleX - plotLeft) / plotWidth;
-    setHoveredItem(item);
+    setHoveredItem({ ...item, prevClose });
     setTooltipXPct(xPct);
     if (cardRef.current) {
       const cardRect = cardRef.current.getBoundingClientRect();
@@ -190,14 +192,14 @@ export default function PriceTrendChart({
             <span>거래량</span>
             <span>{formatVolume(hoveredItem.volume)}</span>
           </div>
-          {hoveredItem.open != null && hoveredItem.open !== 0 && hoveredItem.closeRaw != null && (
+          {hoveredItem.prevClose != null && hoveredItem.prevClose !== 0 && hoveredItem.closeRaw != null && (
             <div className="candle-tooltip-row">
               <span>등락률</span>
               <span style={{
-                color: hoveredItem.closeRaw >= hoveredItem.open ? "#f87171" : "#60a5fa"
+                color: hoveredItem.closeRaw >= hoveredItem.prevClose ? "#f87171" : "#60a5fa"
               }}>
-                {hoveredItem.closeRaw >= hoveredItem.open ? "+" : ""}
-                {(((hoveredItem.closeRaw - hoveredItem.open) / hoveredItem.open) * 100).toFixed(2)}%
+                {hoveredItem.closeRaw >= hoveredItem.prevClose ? "+" : ""}
+                {(((hoveredItem.closeRaw - hoveredItem.prevClose) / hoveredItem.prevClose) * 100).toFixed(2)}%
               </span>
             </div>
           )}
