@@ -103,6 +103,29 @@
         "나스닥",
         "월배당"
       ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "YMAG",
+      "name": "YieldMax Magnificent 7 Fund of Option Income ETFs",
+      "name_ko": "M7 커버드콜 인컴",
+      "business_area": "M7 7종목 동일비중 커버드콜 옵션 인컴",
+      "heatmap_label": "M7인컴",
+      "short_description": "M7 7종목 각각에 커버드콜 전략을 적용한 펀드-오브-펀드. 고배당 주간 인컴에 집중, 상승 참여는 제한적.",
+      "trend_following": {
+        "suitability": "부분적합",
+        "reason": "커버드콜 구조로 강한 상승 추세에서 MAGS 대비 성과가 열위다. 인컴 수취가 주목적이며 추세추종보다는 현금흐름 전략에 어울린다.",
+        "operation_notes": "추세 추종 코어보다 인컴 포지션으로 활용. 확인 필터와 비중 상한 권장. 커버드콜 특성상 급락 방어력도 제한적임에 주의."
+      },
+      "tags": [
+        "배당",
+        "커버드콜",
+        "인컴",
+        "M7",
+        "빅테크",
+        "주배당"
+      ]
     }
   ],
   "type_profile": {
