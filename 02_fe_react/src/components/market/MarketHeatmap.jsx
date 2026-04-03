@@ -220,9 +220,11 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   const style = isPeriodMode
     ? getPeriodHeatStyle(periodValue, periodScale)
     : getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
-  const level = isPeriodMode ? null : getAtchuLevel(item.maDist, item.isAtchuQualified);
-  const badge = level ? ATCHU_BADGE_META[level] : null;
-  const trendDays = isPeriodMode ? null : item.trendDays;
+  const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
+  const badge = isPeriodMode
+    ? (item.isAtchuQualified === true ? ATCHU_BADGE_META.qualified : null)
+    : (level ? ATCHU_BADGE_META[level] : null);
+  const trendDays = item.trendDays;
   return (
     <Link
       to={`${baseLinkPath || "/trend_list"}/${item.ticker}`}
