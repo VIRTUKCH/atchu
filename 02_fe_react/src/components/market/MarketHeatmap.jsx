@@ -210,11 +210,11 @@ const sortByValueDesc = (items, getValue) =>
   });
 
 const PERIOD_CONTEXT_LABELS = {
-  "1d": "1일 수익률",
-  "5d": "1주 수익률",
-  "63d": "3개월 수익률",
-  "252d": "1년 수익률",
-  "1260d": "5년 수익률"
+  "1d": "1일",
+  "5d": "1주",
+  "63d": "3개월",
+  "252d": "1년",
+  "1260d": "5년"
 };
 
 const ATCHU_BADGE_META = {
@@ -233,7 +233,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   const trendDays = item.trendDays;
   const contextLabel = isPeriodMode
     ? (PERIOD_CONTEXT_LABELS[periodKey] || "수익률")
-    : "↕ MA200 대비";
+    : "MA200대비";
   return (
     <Link
       to={`${baseLinkPath || "/trend_list"}/${item.ticker}`}
@@ -242,8 +242,10 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
     >
       <div className="report-overview-card-title">{item.label || item.nameKo || item.ticker}</div>
       <div className="report-overview-card-ticker">{item.ticker}</div>
-      <div className="report-overview-card-value">{formatOverviewPercent(displayValue)}</div>
-      <div className="report-overview-card-context">{contextLabel}</div>
+      <div className="report-overview-card-value">
+        <span className="report-overview-card-value-prefix">{contextLabel} </span>
+        {formatOverviewPercent(displayValue)}
+      </div>
       {badge && (
         <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>
       )}
