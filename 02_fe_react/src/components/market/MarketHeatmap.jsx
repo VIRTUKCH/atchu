@@ -212,6 +212,7 @@ const sortByValueDesc = (items, getValue) =>
 const PERIOD_CONTEXT_LABELS = {
   "1d": "1일",
   "5d": "1주",
+  "21d": "1개월",
   "63d": "3개월",
   "252d": "1년",
   "1260d": "5년"
