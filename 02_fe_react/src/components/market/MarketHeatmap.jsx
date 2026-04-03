@@ -209,13 +209,21 @@ const sortByValueDesc = (items, getValue) =>
     return bv - av;
   });
 
+const PERIOD_CONTEXT_LABELS = {
+  "1d": "1일 수익률",
+  "5d": "1주 수익률",
+  "63d": "3개월 수익률",
+  "252d": "1년 수익률",
+  "1260d": "5년 수익률"
+};
+
 const ATCHU_BADGE_META = {
   qualified: { label: "진입", cls: "atchu-badge--qualified" },
   caution: { label: "주의", cls: "atchu-badge--caution" },
   down: { label: "하락", cls: "atchu-badge--down" }
 };
 
-const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, baseLinkPath }) => {
+const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, periodKey, baseLinkPath }) => {
   const displayValue = isPeriodMode ? periodValue : item.maDist;
   const style = isPeriodMode
     ? getPeriodHeatStyle(periodValue, periodScale)
@@ -223,6 +231,9 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
   const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
   const badge = level ? ATCHU_BADGE_META[level] : null;
   const trendDays = item.trendDays;
+  const contextLabel = isPeriodMode
+    ? (PERIOD_CONTEXT_LABELS[periodKey] || "수익률")
+    : "↕ MA200 대비";
   return (
     <Link
       to={`${baseLinkPath || "/trend_list"}/${item.ticker}`}
@@ -232,6 +243,7 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
       <div className="report-overview-card-title">{item.label || item.nameKo || item.ticker}</div>
       <div className="report-overview-card-ticker">{item.ticker}</div>
       <div className="report-overview-card-value">{formatOverviewPercent(displayValue)}</div>
+      <div className="report-overview-card-context">{contextLabel}</div>
       {badge && (
         <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>
       )}
@@ -395,6 +407,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         periodValue={isPeriodMode ? getPeriodValue(item.ticker) : null}
         periodScale={periodScale}
         isPeriodMode={isPeriodMode}
+        periodKey={periodKey}
         baseLinkPath={baseLinkPath}
       />
     ));

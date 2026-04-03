@@ -237,6 +237,13 @@ a.report-overview-card {
   white-space: nowrap;
   color: var(--tile-text, var(--ink));
 }
+.report-overview-card-context {
+  font-size: clamp(11px, calc(9.4px + 0.43vw), 13px);
+  color: var(--tile-text, var(--muted));
+  opacity: 0.7;
+  margin-top: 1px;
+  white-space: nowrap;
+}
 .report-overview-card-ma {
   margin-top: 2px;
   font-family: "Sora", sans-serif;
