@@ -173,6 +173,16 @@ const sortByAtchuDesc = (items, maKey = "maDist") =>
     return bv - av;
   });
 
+const sortByValueDesc = (items, getValue) =>
+  [...items].sort((a, b) => {
+    const av = getValue(a);
+    const bv = getValue(b);
+    if (!Number.isFinite(av) && !Number.isFinite(bv)) return 0;
+    if (!Number.isFinite(av)) return 1;
+    if (!Number.isFinite(bv)) return -1;
+    return bv - av;
+  });
+
 const PERIOD_CONTEXT_LABELS = {
   "1d": "1일",
   "5d": "1주",
@@ -263,22 +273,49 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     commodityTiles
   } = data;
 
-  const sorted = useMemo(() => ({
-    coreTickers: sortByAtchuDesc(coreTickers),
-    growthTiles: sortByAtchuDesc(growthTiles),
-    valueTiles: sortByAtchuDesc(valueTiles),
-    qualityTiles: sortByAtchuDesc(qualityTiles),
-    lowVolTiles: sortByAtchuDesc(lowVolTiles),
-    momentumTiles: sortByAtchuDesc(momentumTiles),
-    dividendTiles: sortByAtchuDesc(dividendTiles),
-    styleTiles: sortByAtchuDesc(styleTiles),
-    bondTiles: sortByAtchuDesc(bondTiles),
-    smallMidTiles: sortByAtchuDesc(smallMidTiles),
-    sectorTiles: sortByAtchuDesc(sectorTiles),
-    innovationTiles: sortByAtchuDesc(innovationTiles),
-    countryTiles: sortByAtchuDesc(countryTiles),
-    commodityTiles: sortByAtchuDesc(commodityTiles)
-  }), [data]);
+  const sorted = useMemo(() => {
+    if (isPeriodMode && periodField) {
+      const getPV = (ticker) => {
+        const raw = snapshotPayload?.tickers?.[ticker]?.snapshot?.[periodField];
+        if (raw === null || raw === undefined) return null;
+        const num = Number(raw);
+        return Number.isNaN(num) ? null : num;
+      };
+      const sortFn = (items) => sortByValueDesc(items, (item) => getPV(item.ticker));
+      return {
+        coreTickers: sortFn(coreTickers),
+        growthTiles: sortFn(growthTiles),
+        valueTiles: sortFn(valueTiles),
+        qualityTiles: sortFn(qualityTiles),
+        lowVolTiles: sortFn(lowVolTiles),
+        momentumTiles: sortFn(momentumTiles),
+        dividendTiles: sortFn(dividendTiles),
+        styleTiles: sortFn(styleTiles),
+        bondTiles: sortFn(bondTiles),
+        smallMidTiles: sortFn(smallMidTiles),
+        sectorTiles: sortFn(sectorTiles),
+        innovationTiles: sortFn(innovationTiles),
+        countryTiles: sortFn(countryTiles),
+        commodityTiles: sortFn(commodityTiles)
+      };
+    }
+    return {
+      coreTickers: sortByAtchuDesc(coreTickers),
+      growthTiles: sortByAtchuDesc(growthTiles),
+      valueTiles: sortByAtchuDesc(valueTiles),
+      qualityTiles: sortByAtchuDesc(qualityTiles),
+      lowVolTiles: sortByAtchuDesc(lowVolTiles),
+      momentumTiles: sortByAtchuDesc(momentumTiles),
+      dividendTiles: sortByAtchuDesc(dividendTiles),
+      styleTiles: sortByAtchuDesc(styleTiles),
+      bondTiles: sortByAtchuDesc(bondTiles),
+      smallMidTiles: sortByAtchuDesc(smallMidTiles),
+      sectorTiles: sortByAtchuDesc(sectorTiles),
+      innovationTiles: sortByAtchuDesc(innovationTiles),
+      countryTiles: sortByAtchuDesc(countryTiles),
+      commodityTiles: sortByAtchuDesc(commodityTiles)
+    };
+  }, [data, periodKey, snapshotPayload]);
 
   const {
     coreTickers: sortedCoreTickers,
