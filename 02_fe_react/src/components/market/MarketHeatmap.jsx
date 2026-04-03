@@ -240,8 +240,12 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
       className="report-overview-card"
       style={style}
     >
-      <div className="report-overview-card-title">{item.label || item.nameKo || item.ticker}</div>
-      <div className="report-overview-card-ticker">{item.ticker}</div>
+      <div className="report-overview-card-title">
+        {item.ticker}
+        {(item.label || item.nameKo) && (
+          <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
+        )}
+      </div>
       <div className="report-overview-card-value">
         <span className="report-overview-card-value-prefix">{contextLabel} </span>
         {formatOverviewPercent(displayValue)}

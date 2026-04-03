@@ -220,6 +220,11 @@ a.report-overview-card {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.report-overview-card-title-label {
+  font-size: 0.75em;
+  font-weight: 400;
+  opacity: 0.8;
+}
 .report-overview-card-name-ko {
   font-size: clamp(13px, calc(10.4px + 0.7vw), 16px);
   color: var(--tile-text, var(--muted));
