@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const PERIOD_SNAPSHOT_KEYS = {
   "1d": "percentChangeFromPreviousClose",
   "5d": "percentChange5d",
+  "21d": "percentChange21d",
   "63d": "percentChange63d",
   "252d": "percentChange252d",
   "1260d": "percentChange1260d"
@@ -236,13 +237,13 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
       style={style}
     >
       <div className="report-overview-card-title">
+        {badge && <span className={`atchu-badge ${badge.cls}`}>{badge.label}</span>}
         <span className="report-overview-card-title-text">
           {item.ticker}
           {(item.label || item.nameKo) && (
             <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
           )}
         </span>
-        {badge && <span className={`atchu-badge ${badge.cls}`}>{badge.label}</span>}
       </div>
       {isPeriodMode ? (
         <>

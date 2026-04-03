@@ -353,6 +353,7 @@ const buildFromCsv = (csvText) => {
           : null
       ),
       percentChange5d: round2(percentChangeFromLookback(5)),
+      percentChange21d: round2(percentChangeFromLookback(21)),
       percentChange63d: round2(percentChangeFromLookback(63)),
       percentChange252d: round2(percentChangeFromLookback(252)),
       percentChange1260d: round2(percentChangeFromLookback(1260)),

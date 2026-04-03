@@ -10,6 +10,7 @@ const PERIOD_TABS = [
   { key: "ma200", label: "이격률" },
   { key: "1d", label: "일간" },
   { key: "5d", label: "주간" },
+  { key: "21d", label: "1개월" },
   { key: "63d", label: "3개월" },
   { key: "252d", label: "1년" },
   { key: "1260d", label: "5년" }
