@@ -216,9 +216,16 @@ a.report-overview-card {
   font-family: "Sora", sans-serif;
   font-size: 18px;
   color: var(--tile-text, var(--ink));
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+}
+.report-overview-card-title-text {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .report-overview-card-title-label {
   font-size: clamp(13px, calc(10.4px + 0.7vw), 16px);
@@ -298,13 +305,15 @@ a.report-overview-card {
 }
 .atchu-badge {
   font-family: "Sora", sans-serif;
-  font-size: clamp(11px, calc(9px + 0.53vw), 13px);
+  font-size: clamp(10px, calc(8.4px + 0.43vw), 12px);
   font-weight: 700;
   white-space: nowrap;
-  border-radius: 4px;
-  padding: 2px 5px;
+  border-radius: 3px;
+  padding: 1px 4px;
   color: #fff;
   display: inline-block;
+  flex-shrink: 0;
+  line-height: 1.4;
 }
 .atchu-badge--qualified {
   background: rgba(22, 163, 74, 0.9);

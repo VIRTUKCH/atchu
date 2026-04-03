@@ -236,10 +236,13 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
       style={style}
     >
       <div className="report-overview-card-title">
-        {item.ticker}
-        {(item.label || item.nameKo) && (
-          <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
-        )}
+        <span className="report-overview-card-title-text">
+          {item.ticker}
+          {(item.label || item.nameKo) && (
+            <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
+          )}
+        </span>
+        {badge && <span className={`atchu-badge ${badge.cls}`}>{badge.label}</span>}
       </div>
       {isPeriodMode ? (
         <>
@@ -257,9 +260,6 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
           <span className="report-overview-card-value-prefix">MA200대비 </span>
           {formatOverviewPercent(item.maDist)}
         </div>
-      )}
-      {badge && (
-        <div className={`atchu-badge ${badge.cls}`}>{badge.label}</div>
       )}
       {trendDays !== null && trendDays !== undefined && (
         <div className="report-overview-card-days">
