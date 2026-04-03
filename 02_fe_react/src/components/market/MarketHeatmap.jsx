@@ -110,6 +110,31 @@ const getHeatScale = (values) => {
   };
 };
 
+const getPeriodHeatStyle = (value, scale) => {
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) {
+    return undefined;
+  }
+  const num = Number(value);
+  const baseAlpha = 0.18;
+  const maxAlpha = 0.72;
+  let alpha, bg;
+  if (num >= 0) {
+    const denom = scale.maxPositive > 0 ? scale.maxPositive : 1;
+    const ratio = Math.min(Math.max(num / denom, 0), 1);
+    alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
+    bg = `rgba(34, 197, 94, ${alpha.toFixed(3)})`;
+  } else {
+    const denom = scale.maxNegative > 0 ? scale.maxNegative : 1;
+    const ratio = Math.min(Math.max(Math.abs(num) / denom, 0), 1);
+    alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
+    bg = `rgba(239, 68, 68, ${alpha.toFixed(3)})`;
+  }
+  if (alpha >= 0.48) {
+    return { background: bg, "--tile-text": "rgba(255,255,255,0.92)" };
+  }
+  return { background: bg };
+};
+
 const getAtchuHeatStyle = (maDist, isAtchuQualified, scale) => {
   if (maDist === null || maDist === undefined || Number.isNaN(Number(maDist))) {
     return undefined;
@@ -197,8 +222,10 @@ const ATCHU_BADGE_META = {
   down: { label: "이탈", cls: "atchu-badge--down" }
 };
 
-const TickerCard = React.memo(({ item, maDistScale, periodValue, isPeriodMode, periodKey, baseLinkPath }) => {
-  const style = getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
+const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, periodKey, baseLinkPath }) => {
+  const style = isPeriodMode
+    ? getPeriodHeatStyle(periodValue, periodScale)
+    : getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
   const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
   const badge = level ? ATCHU_BADGE_META[level] : null;
   const trendDays = item.trendDays;
@@ -214,14 +241,21 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, isPeriodMode, p
           <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
         )}
       </div>
-      <div className="report-overview-card-value">
-        <span className="report-overview-card-value-prefix">MA200대비 </span>
-        {formatOverviewPercent(item.maDist)}
-      </div>
-      {isPeriodMode && periodValue !== null && periodValue !== undefined && (
-        <div className="report-overview-card-period-row">
-          <span className="report-overview-card-value-prefix">{PERIOD_CONTEXT_LABELS[periodKey] || ""} </span>
-          {formatOverviewPercent(periodValue)}
+      {isPeriodMode ? (
+        <>
+          <div className="report-overview-card-value">
+            <span className="report-overview-card-value-prefix">{PERIOD_CONTEXT_LABELS[periodKey] || ""} </span>
+            {formatOverviewPercent(periodValue)}
+          </div>
+          <div className="report-overview-card-period-row">
+            <span className="report-overview-card-value-prefix">MA200대비 </span>
+            {formatOverviewPercent(item.maDist)}
+          </div>
+        </>
+      ) : (
+        <div className="report-overview-card-value">
+          <span className="report-overview-card-value-prefix">MA200대비 </span>
+          {formatOverviewPercent(item.maDist)}
         </div>
       )}
       {badge && (
@@ -364,6 +398,18 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     };
   }, [sorted]);
 
+  const periodScale = useMemo(() => {
+    if (!isPeriodMode) return { maxPositive: 0, maxNegative: 0 };
+    const allTickers = [
+      ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
+      ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
+      ...sortedDividendTiles, ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
+      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles
+    ];
+    const values = allTickers.map((t) => getPeriodValue(t.ticker)).filter(Number.isFinite);
+    return getHeatScale(values);
+  }, [sorted, periodKey]);
+
   const renderTileGrid = (items) =>
     items.map((item) => (
       <TickerCard
@@ -371,6 +417,7 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         item={item}
         maDistScale={maDistScale}
         periodValue={isPeriodMode ? getPeriodValue(item.ticker) : null}
+        periodScale={periodScale}
         isPeriodMode={isPeriodMode}
         periodKey={periodKey}
         baseLinkPath={baseLinkPath}
