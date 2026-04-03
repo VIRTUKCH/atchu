@@ -247,6 +247,14 @@ a.report-overview-card {
   font-weight: 400;
   opacity: 0.75;
 }
+.report-overview-card-period-row {
+  margin-top: 2px;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(13px, calc(10.4px + 0.7vw), 16px);
+  font-weight: 600;
+  color: var(--tile-text, var(--ink));
+  white-space: nowrap;
+}
 .report-overview-card-ma {
   margin-top: 2px;
   font-family: "Sora", sans-serif;
@@ -290,18 +298,22 @@ a.report-overview-card {
 }
 .atchu-badge {
   font-family: "Sora", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: clamp(11px, calc(9px + 0.53vw), 13px);
+  font-weight: 700;
   white-space: nowrap;
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: #fff;
+  display: inline-block;
 }
 .atchu-badge--qualified {
-  color: var(--tile-text, #16a34a);
+  background: rgba(22, 163, 74, 0.9);
 }
 .atchu-badge--caution {
-  color: var(--tile-text, #ea580c);
+  background: rgba(234, 88, 12, 0.9);
 }
 .atchu-badge--down {
-  color: var(--tile-text, #1d5bff);
+  background: rgba(29, 91, 255, 0.9);
 }
 
 /* ── Dark Mode ── */
@@ -400,9 +412,6 @@ a.report-overview-card {
     font-size: 15px;
   }
   .report-overview-card-period {
-    font-size: 15px;
-  }
-  .atchu-badge {
     font-size: 15px;
   }
   .report-overview-card-days {

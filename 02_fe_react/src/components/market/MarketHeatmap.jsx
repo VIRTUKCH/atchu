@@ -123,41 +123,15 @@ const getAtchuHeatStyle = (maDist, isAtchuQualified, scale) => {
     const ratio = Math.min(Math.max(num / denom, 0), 1);
     alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
     if (isAtchuQualified === true) {
-      bg = `rgba(34, 197, 94, ${alpha.toFixed(3)})`; // 초록: 앗추 진입
+      bg = `rgba(34, 197, 94, ${alpha.toFixed(3)})`; // 초록: 앗추 통과
     } else {
-      bg = `rgba(249, 115, 22, ${alpha.toFixed(3)})`; // 주황: 200일 위, 앗추 이탈
+      bg = `rgba(249, 115, 22, ${alpha.toFixed(3)})`; // 주황: 200일 위, 앗추 대기
     }
   } else {
     const denom = scale.maxNegative > 0 ? scale.maxNegative : 1;
     const ratio = Math.min(Math.max(Math.abs(num) / denom, 0), 1);
     alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
     bg = `rgba(29, 91, 255, ${alpha.toFixed(3)})`; // 파랑: 200일 아래
-  }
-  if (alpha >= 0.48) {
-    return { background: bg, "--tile-text": "rgba(255,255,255,0.92)" };
-  }
-  return { background: bg };
-};
-
-/* ── 기간별 비교 모드 — 초록(상승) / 빨강(하락) ── */
-const getPeriodHeatStyle = (value, scale) => {
-  if (value === null || value === undefined || !Number.isFinite(Number(value))) {
-    return undefined;
-  }
-  const num = Number(value);
-  const baseAlpha = 0.18;
-  const maxAlpha = 0.72;
-  let alpha, bg;
-  if (num >= 0) {
-    const denom = scale.maxPositive > 0 ? scale.maxPositive : 1;
-    const ratio = Math.min(Math.max(num / denom, 0), 1);
-    alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
-    bg = `rgba(34, 197, 94, ${alpha.toFixed(3)})`;
-  } else {
-    const denom = scale.maxNegative > 0 ? scale.maxNegative : 1;
-    const ratio = Math.min(Math.max(Math.abs(num) / denom, 0), 1);
-    alpha = baseAlpha + ratio * (maxAlpha - baseAlpha);
-    bg = `rgba(239, 68, 68, ${alpha.toFixed(3)})`;
   }
   if (alpha >= 0.48) {
     return { background: bg, "--tile-text": "rgba(255,255,255,0.92)" };
@@ -199,16 +173,6 @@ const sortByAtchuDesc = (items, maKey = "maDist") =>
     return bv - av;
   });
 
-const sortByValueDesc = (items, getValue) =>
-  [...items].sort((a, b) => {
-    const av = getValue(a);
-    const bv = getValue(b);
-    if (!Number.isFinite(av) && !Number.isFinite(bv)) return 0;
-    if (!Number.isFinite(av)) return 1;
-    if (!Number.isFinite(bv)) return -1;
-    return bv - av;
-  });
-
 const PERIOD_CONTEXT_LABELS = {
   "1d": "1일",
   "5d": "1주",
@@ -218,22 +182,16 @@ const PERIOD_CONTEXT_LABELS = {
 };
 
 const ATCHU_BADGE_META = {
-  qualified: { label: "진입", cls: "atchu-badge--qualified" },
-  caution: { label: "주의", cls: "atchu-badge--caution" },
-  down: { label: "하락", cls: "atchu-badge--down" }
+  qualified: { label: "통과", cls: "atchu-badge--qualified" },
+  caution: { label: "대기", cls: "atchu-badge--caution" },
+  down: { label: "이탈", cls: "atchu-badge--down" }
 };
 
-const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, periodKey, baseLinkPath }) => {
-  const displayValue = isPeriodMode ? periodValue : item.maDist;
-  const style = isPeriodMode
-    ? getPeriodHeatStyle(periodValue, periodScale)
-    : getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
+const TickerCard = React.memo(({ item, maDistScale, periodValue, isPeriodMode, periodKey, baseLinkPath }) => {
+  const style = getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
   const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
   const badge = level ? ATCHU_BADGE_META[level] : null;
   const trendDays = item.trendDays;
-  const contextLabel = isPeriodMode
-    ? (PERIOD_CONTEXT_LABELS[periodKey] || "수익률")
-    : "MA200대비";
   return (
     <Link
       to={`${baseLinkPath || "/trend_list"}/${item.ticker}`}
@@ -247,11 +205,17 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
         )}
       </div>
       <div className="report-overview-card-value">
-        <span className="report-overview-card-value-prefix">{contextLabel} </span>
-        {formatOverviewPercent(displayValue)}
+        <span className="report-overview-card-value-prefix">MA200대비 </span>
+        {formatOverviewPercent(item.maDist)}
       </div>
+      {isPeriodMode && periodValue !== null && periodValue !== undefined && (
+        <div className="report-overview-card-period-row">
+          <span className="report-overview-card-value-prefix">{PERIOD_CONTEXT_LABELS[periodKey] || ""} </span>
+          {formatOverviewPercent(periodValue)}
+        </div>
+      )}
       {badge && (
-        <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>
+        <div className={`atchu-badge ${badge.cls}`}>{badge.label}</div>
       )}
       {trendDays !== null && trendDays !== undefined && (
         <div className="report-overview-card-days">
@@ -299,43 +263,22 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     commodityTiles
   } = data;
 
-  const sorted = useMemo(() => {
-    if (isPeriodMode) {
-      const sortFn = (items) => sortByValueDesc(items, (item) => getPeriodValue(item.ticker));
-      return {
-        coreTickers: sortFn(coreTickers),
-        growthTiles: sortFn(growthTiles),
-        valueTiles: sortFn(valueTiles),
-        qualityTiles: sortFn(qualityTiles),
-        lowVolTiles: sortFn(lowVolTiles),
-        momentumTiles: sortFn(momentumTiles),
-        dividendTiles: sortFn(dividendTiles),
-        styleTiles: sortFn(styleTiles),
-        bondTiles: sortFn(bondTiles),
-        smallMidTiles: sortFn(smallMidTiles),
-        sectorTiles: sortFn(sectorTiles),
-        innovationTiles: sortFn(innovationTiles),
-        countryTiles: sortFn(countryTiles),
-        commodityTiles: sortFn(commodityTiles)
-      };
-    }
-    return {
-      coreTickers: sortByAtchuDesc(coreTickers),
-      growthTiles: sortByAtchuDesc(growthTiles),
-      valueTiles: sortByAtchuDesc(valueTiles),
-      qualityTiles: sortByAtchuDesc(qualityTiles),
-      lowVolTiles: sortByAtchuDesc(lowVolTiles),
-      momentumTiles: sortByAtchuDesc(momentumTiles),
-      dividendTiles: sortByAtchuDesc(dividendTiles),
-      styleTiles: sortByAtchuDesc(styleTiles),
-      bondTiles: sortByAtchuDesc(bondTiles),
-      smallMidTiles: sortByAtchuDesc(smallMidTiles),
-      sectorTiles: sortByAtchuDesc(sectorTiles),
-      innovationTiles: sortByAtchuDesc(innovationTiles),
-      countryTiles: sortByAtchuDesc(countryTiles),
-      commodityTiles: sortByAtchuDesc(commodityTiles)
-    };
-  }, [data, periodKey]);
+  const sorted = useMemo(() => ({
+    coreTickers: sortByAtchuDesc(coreTickers),
+    growthTiles: sortByAtchuDesc(growthTiles),
+    valueTiles: sortByAtchuDesc(valueTiles),
+    qualityTiles: sortByAtchuDesc(qualityTiles),
+    lowVolTiles: sortByAtchuDesc(lowVolTiles),
+    momentumTiles: sortByAtchuDesc(momentumTiles),
+    dividendTiles: sortByAtchuDesc(dividendTiles),
+    styleTiles: sortByAtchuDesc(styleTiles),
+    bondTiles: sortByAtchuDesc(bondTiles),
+    smallMidTiles: sortByAtchuDesc(smallMidTiles),
+    sectorTiles: sortByAtchuDesc(sectorTiles),
+    innovationTiles: sortByAtchuDesc(innovationTiles),
+    countryTiles: sortByAtchuDesc(countryTiles),
+    commodityTiles: sortByAtchuDesc(commodityTiles)
+  }), [data]);
 
   const {
     coreTickers: sortedCoreTickers,
@@ -384,26 +327,6 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
     };
   }, [sorted]);
 
-  /* 기간별 모드 — 스케일 & 요약 통계 */
-  const { periodScale, periodSummary } = useMemo(() => {
-    if (!isPeriodMode) return { periodScale: null, periodSummary: null };
-    const allTickers = [
-      ...sortedCoreTickers, ...sortedGrowthTiles, ...sortedValueTiles,
-      ...sortedQualityTiles, ...sortedLowVolTiles, ...sortedMomentumTiles,
-      ...sortedDividendTiles, ...sortedStyleTiles, ...sortedBondTiles, ...sortedSmallMidTiles,
-      ...sortedSectorTiles, ...sortedInnovationTiles, ...sortedCountryTiles, ...sortedCommodityTiles
-    ];
-    const values = allTickers.map((t) => getPeriodValue(t.ticker)).filter(Number.isFinite);
-    const upCount = values.filter((v) => v > 0).length;
-    const downCount = values.filter((v) => v < 0).length;
-    const flatCount = values.filter((v) => v === 0).length;
-    return {
-      periodScale: getHeatScale(values),
-      periodSummary: { upCount, downCount, flatCount }
-    };
-  }, [sorted, periodKey]);
-
-
   const renderTileGrid = (items) =>
     items.map((item) => (
       <TickerCard
@@ -411,7 +334,6 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         item={item}
         maDistScale={maDistScale}
         periodValue={isPeriodMode ? getPeriodValue(item.ticker) : null}
-        periodScale={periodScale}
         isPeriodMode={isPeriodMode}
         periodKey={periodKey}
         baseLinkPath={baseLinkPath}
@@ -425,27 +347,11 @@ export default function MarketHeatmap({ snapshotPayload, overviewTickers = [], p
         <div className="report-summary-stat">
           <div className="report-summary-label">추적 자산</div>
           <div className="report-summary-value">
-            {isPeriodMode ? (
-              <>
-                <span className="atchu-badge atchu-badge--qualified">▲ 상승 {periodSummary.upCount}</span>
-                {" · "}
-                <span className="atchu-badge atchu-badge--down">▼ 하락 {periodSummary.downCount}</span>
-                {periodSummary.flatCount > 0 && (
-                  <>
-                    {" · "}
-                    <span className="atchu-badge atchu-badge--caution">— 보합 {periodSummary.flatCount}</span>
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                <span className="atchu-badge atchu-badge--qualified">● 진입 {summaryStats.qualifiedCount}</span>
-                {" · "}
-                <span className="atchu-badge atchu-badge--caution">● 주의 {summaryStats.cautionCount}</span>
-                {" · "}
-                <span className="atchu-badge atchu-badge--down">● 하락 {summaryStats.downCount}</span>
-              </>
-            )}
+            <span className="atchu-badge atchu-badge--qualified">통과 {summaryStats.qualifiedCount}</span>
+            {" · "}
+            <span className="atchu-badge atchu-badge--caution">대기 {summaryStats.cautionCount}</span>
+            {" · "}
+            <span className="atchu-badge atchu-badge--down">이탈 {summaryStats.downCount}</span>
           </div>
         </div>
       </div>
