@@ -232,7 +232,9 @@ a.report-overview-card {
   font-weight: 400;
   opacity: 0.8;
 }
+/* PC: nameKo 숨김, 레이블은 타이틀 줄에 표시 */
 .report-overview-card-name-ko {
+  display: none;
   font-size: clamp(13px, calc(10.4px + 0.7vw), 16px);
   color: var(--tile-text, var(--muted));
   opacity: 0.85;
@@ -406,8 +408,13 @@ a.report-overview-card {
     font-size: 15px;
   }
 
+  /* 모바일: nameKo 별도 줄 표시, 타이틀 레이블 숨김 */
   .report-overview-card-name-ko {
+    display: block;
     font-size: 13px;
+  }
+  .report-overview-card-title-label {
+    display: none;
   }
 
   .report-overview-card-value {
