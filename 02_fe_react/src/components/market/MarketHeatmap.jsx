@@ -241,14 +241,11 @@ const TickerCard = React.memo(({ item, maDistScale, periodValue, periodScale, is
         {badge && <span className={`atchu-badge ${badge.cls}`}>{badge.label}</span>}
         <span className="report-overview-card-title-text">
           {item.ticker}
-          {(item.label || item.nameKo) && (
-            <span className="report-overview-card-title-label"> ({item.label || item.nameKo})</span>
+          {item.nameKo && (
+            <span className="report-overview-card-title-label"> {item.nameKo}</span>
           )}
         </span>
       </div>
-      {item.nameKo && (
-        <div className="report-overview-card-name-ko">{item.nameKo}</div>
-      )}
       {isPeriodMode ? (
         <>
           <div className="report-overview-card-value">
