@@ -1,6 +1,6 @@
 # 서비스 운영
 
-마지막 업데이트: 2026-02-22
+마지막 업데이트: 2026-04-06
 
 > **면책**: 이 문서는 일반적인 참고 정보이며, 법률 자문이 아닙니다.
 
@@ -12,8 +12,8 @@
 |------|------|--------|
 | 이용약관 | ❌ 없음 | 🟡 단기 |
 | 개인정보 처리방침 | ❌ 없음 | 🟡 단기 (Discord 운영 중) |
-| 운영자 연락처 공시 | ❌ 없음 | 🟡 단기 |
-| 데이터 출처 명시 | ❌ 없음 (README에만) | 🟡 단기 |
+| 운영자 연락처 공시 | 🟡 Discord 링크만 (Footer) | 🟡 단기 |
+| 데이터 출처 명시 | 🟡 부분 (Footer 면책 문구 있음, 출처 명시 없음) | 🟡 단기 |
 | 방문자 분석 (Analytics) | ❌ 없음 | 🔴 즉시 |
 
 ---
@@ -68,7 +68,7 @@ Discord 서버를 운영하면 사용자의 Discord ID/닉네임을 수집하게
 
 | 항목 | 현재 월 비용 | 비고 |
 |------|-----------|------|
-| EODHD API | ? (플랜 확인 필요) | 무료 티어 한도 확인 |
+| EODHD API | $19.99/mo | EOD Historical Data — All World (Personal use) |
 | Vercel 호스팅 | $0 (Hobby) | 100GB 대역폭/월 |
 | Discord | $0 | 무료 |
 | 도메인 | ~$10~15/년 | 만료일 관리 |
@@ -77,7 +77,7 @@ Discord 서버를 운영하면 사용자의 Discord ID/닉네임을 수집하게
 ### 4-2. 주의사항
 
 - **Vercel Hobby 플랜**: 상업적 사용 금지 조항. 유료화하면 Pro($20/월) 이상 필요.
-- **EODHD 무료 티어**: 한도 초과 시 API 호출 실패 → 서비스 장애
+- **EODHD 라이선스**: Personal use 플랜은 public display 약관상 금지. 단, CSV 사전 처리 방식이라 사용자 트래픽이 EODHD에 전달되지 않아 탐지 가능성 낮음. 유료화 시 반드시 상업 라이선스 협의 필요. → [EODHD 리스크 상세](../law_risk/00_legal_risk_overview.md#6-eodhd-데이터-라이선스)
 - **도메인 만료**: 자동 갱신 설정 확인, 만료 1개월 전 알림
 
 ---
@@ -139,8 +139,13 @@ Discord 서버를 운영하면 사용자의 Discord ID/닉네임을 수집하게
 
 현재 관리 중인 비밀정보:
 - `EODHD_API_TOKEN`
-- `DISCORD_*_WEBHOOK_URL` (4개)
+- `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`
+- `DISCORD_ATCHU_DAILY_SUMMARY_WEBHOOK_URL`
+- `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL`
+- `VITE_DISCORD_ATCHU_NEW_DAILY_SUMMARY_AND_NEW_TREND_NOTIFICATION_SERVER_URL` (Discord 초대 링크 — 공개값, VITE_ 무방)
 - `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
 
 **체크리스트:**
 - [x] `.env` 파일로 관리
