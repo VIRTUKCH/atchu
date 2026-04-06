@@ -14,7 +14,7 @@ export default function LandingDiscordCTA() {
         <div className="landing-cta-content">
           <p className="landing-cta-eyebrow">지금 바로 시작하세요</p>
           <h2 className="landing-cta-headline">
-            이제 뉴스보다 먼저<br />알 수 있습니다.
+            뉴스 말고,<br />데이터로 판단하세요.
           </h2>
           <p className="landing-cta-desc">
             매일 아침 추세 알림을 받거나, 직접 ETF를 탐색해 보세요.
