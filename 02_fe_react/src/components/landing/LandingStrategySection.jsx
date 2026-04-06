@@ -11,7 +11,7 @@ export default function LandingStrategySection() {
           </h2>
           <p className="landing-section-desc landing-section-desc--dim">
             200일선* 위에 있으면 들어가고, 아래로 내려오면 나온다.<br />
-            투자 전문가라면 기본적으로 사용하는 매매 기준입니다.
+            Paul Tudor Jones가 "나의 모든 지표의 기준은 200일 이동평균선"이라고 밝힌 바로 그 지표입니다.
           </p>
           <p className="landing-section-footnote">*200일선(이동평균선) : 지난 200거래일간의 평균 가격</p>
         </div>
