@@ -8,14 +8,6 @@ const latestSnapshotModules = import.meta.glob("../../data/summary/snapshot/summ
   import: "default"
 });
 
-const datedTrendNotificationModules = import.meta.glob(
-  "../../data/summary/trend/*_trend_notifications.json",
-  {
-    eager: true,
-    import: "default"
-  }
-);
-
 const latestTrendNotificationModules = import.meta.glob(
   "../../data/summary/trend/trend_notifications.json",
   {
@@ -34,33 +26,12 @@ const privateTickerModules = import.meta.glob("../../data/tickers/private/*.json
   import: "default"
 });
 
-const pickLatestPayload = (modules, regex, fallbackModules) => {
-  const datedCandidates = Object.entries(modules)
-    .map(([modulePath, payload]) => {
-      const fileName = modulePath.split("/").pop() || "";
-      const dateMatch = fileName.match(regex);
-      return {
-        date: dateMatch ? dateMatch[1] : "",
-        payload
-      };
-    })
-    .filter((item) => item.date && item.payload && typeof item.payload === "object")
-    .sort((a, b) => b.date.localeCompare(a.date));
-
-  if (datedCandidates.length > 0) {
-    return datedCandidates[0].payload;
-  }
-  const latestFallback = Object.values(fallbackModules)[0];
-  return latestFallback && typeof latestFallback === "object" ? latestFallback : null;
-};
-
 const latestSnapshotPayload = Object.values(latestSnapshotModules)[0] || null;
 
-const latestTrendNotificationPayload = pickLatestPayload(
-  datedTrendNotificationModules,
-  /^(\d{4}-\d{2}-\d{2})_trend_notifications\.json$/,
-  latestTrendNotificationModules
-);
+const latestTrendNotificationPayload = (() => {
+  const payload = Object.values(latestTrendNotificationModules)[0];
+  return payload && typeof payload === "object" ? payload : null;
+})();
 
 export {
   csvModules,

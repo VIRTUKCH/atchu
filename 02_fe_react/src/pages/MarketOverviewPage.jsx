@@ -145,7 +145,8 @@ export default function MarketOverviewPage({
           >?</span>
         </div>
         <div className="bento-card-subtitle">
-          {`최근 5거래일 앗추 필터 통과·이탈 변화${dateRangeLabel ? ` · ${dateRangeLabel}` : ''}`}
+          {dateRangeLabel && <>{dateRangeLabel}<br /></>}
+          최근 5거래일 앗추 필터 통과·이탈 변화
         </div>
         {allEntries.length === 0 && allExits.length === 0 ? (
           <div className="trend-no-change">최근 5거래일 변동 없음</div>
