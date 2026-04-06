@@ -60,7 +60,7 @@ export default function LandingFilterSection() {
         <div className="filter-rule-card">
           <p className="filter-rule-title">앗추 필터 (16/20 규칙)</p>
           <p className="filter-rule-desc">
-            최근 20거래일 중 <strong>16일 이상</strong> 200일선 위에 있을 때만 진입 신호.<br />
+            최근 20거래일 중 <strong>16일 이상</strong> 200일선 위에 있을 때만 앗추 필터 통과.<br />
             단기 변동에 흔들리지 않습니다.
           </p>
         </div>
