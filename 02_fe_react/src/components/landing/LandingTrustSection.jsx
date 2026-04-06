@@ -114,9 +114,9 @@ export default function LandingTrustSection() {
                 <span>시스템 트레이딩 선구자 · 50년+ 운용</span>
               </div>
               <blockquote className="strategy-trust-quote">
-                "추세는 친구다. 이동평균선은 그 친구의 얼굴이다."
+                "추세는 친구다. 끝에서 꺾이기 전까지는."
               </blockquote>
-              <p className="strategy-trust-original">"The trend is your friend. The moving average is the face of that friend."</p>
+              <p className="strategy-trust-original">"The trend is your friend except at the end where it bends."</p>
               <span className="strategy-trust-card-link">칼럼 읽기 →</span>
             </Link>
 
