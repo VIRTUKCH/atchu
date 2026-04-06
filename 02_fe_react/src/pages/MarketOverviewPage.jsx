@@ -141,18 +141,18 @@ export default function MarketOverviewPage({
           최근 신호
           <span
             className="info-tooltip"
-            data-tooltip="최근 20거래일 중 16일 이상 200일선 위에 있을 때 '진입', 이 조건을 벗어나면 '이탈'입니다. 앗추 필터 기반 신호입니다."
+            data-tooltip="최근 20거래일 중 16일 이상 200일선 위에 있을 때 '통과', 이 조건을 벗어나면 '이탈'입니다. 앗추 필터 기반 신호입니다."
           >?</span>
         </div>
         <div className="bento-card-subtitle">
-          {`최근 5거래일 앗추 필터 진입·이탈 변화${dateRangeLabel ? ` · ${dateRangeLabel}` : ''}`}
+          {`최근 5거래일 앗추 필터 통과·이탈 변화${dateRangeLabel ? ` · ${dateRangeLabel}` : ''}`}
         </div>
         {allEntries.length === 0 && allExits.length === 0 ? (
           <div className="trend-no-change">최근 5거래일 변동 없음</div>
         ) : (
           <div className="trend-signal-columns">
             <div className="trend-signal-column">
-              <div className="trend-column-header entry">진입</div>
+              <div className="trend-column-header entry">통과</div>
               {allEntries.length === 0 ? (
                 <div className="trend-column-empty">없음</div>
               ) : (
