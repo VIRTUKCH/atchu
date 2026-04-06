@@ -477,12 +477,15 @@ a.index-card {
   color: var(--muted);
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   font-weight: 400;
-  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
 }
 .index-ma-dl-row dd {
   margin: 0;
   font-size: clamp(16px, calc(14.6px + 0.38vw), 20px);
   white-space: nowrap;
+  flex-shrink: 0;
+  padding-left: 8px;
 }
 .index-detail {
   margin-top: 20px;
