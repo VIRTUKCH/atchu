@@ -150,16 +150,19 @@ a.index-card {
   grid-template-columns: 1.2fr 1fr;
   gap: 20px;
   align-items: start;
+  min-width: 0;
 }
 .index-card-left {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 .index-card-right {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 .index-card:focus-visible {
   transform: translateY(-4px);
@@ -459,6 +462,8 @@ a.index-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
+  width: 100%;
 }
 .index-ma-dl-row {
   display: grid;
