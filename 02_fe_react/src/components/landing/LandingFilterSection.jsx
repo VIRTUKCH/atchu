@@ -109,6 +109,7 @@ export default function LandingFilterSection() {
           {/* 앗추 필터 거래 이력 */}
           {filterTrades.length > 0 && (
             <div className="strategy-trade-wrap">
+              <p className="filter-trade-period-label">2020년 이후 거래 이력 (최근 신호 흐름 확인용)</p>
               <table className="strategy-trade-table">
                 <thead>
                   <tr>
@@ -188,6 +189,7 @@ export default function LandingFilterSection() {
           </p>
           <p className="filter-table-disclaimer">
             과거 백테스트 결과이며 미래 수익을 보장하지 않습니다.<br />
+            수익률은 전체 데이터 기간 기준이며, 거래 이력은 2020년 이후 최근 신호만 표시합니다.<br />
             세금·수수료·슬리피지 미반영.
           </p>
         </div>
