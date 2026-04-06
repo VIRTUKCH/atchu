@@ -727,6 +727,26 @@ a.trend-signal-item {
   margin-left: 8px;
 }
 
+/* A: 최근 신호 카드 하단 인라인 면책 */
+.trend-signal-disclaimer {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* B: 페이지 하단 전체 면책 */
+.market-overview-disclaimer {
+  margin: 4px 0 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .bento-sector-overview {
   grid-column: 1;
   grid-row: auto;

@@ -183,6 +183,10 @@ export default function MarketOverviewPage({
             </div>
           </div>
         )}
+        {/* A: 최근 신호 인라인 면책 */}
+        <p className="trend-signal-disclaimer">
+          앗추 필터 상태 변화를 나타냅니다. 매수·매도를 권유하지 않으며, 투자 결정의 책임은 본인에게 있습니다.
+        </p>
       </div>
 
       {/* Discord 알림 CTA */}
@@ -235,6 +239,14 @@ export default function MarketOverviewPage({
           periodKey={selectedPeriod}
         />
       </div>
+
+      {/* B: 페이지 하단 전체 면책 */}
+      <p className="market-overview-disclaimer">
+        본 서비스는 투자 참고용 데이터이며, 매수·매도를 권유하지 않습니다.<br />
+        과거 추세 기반 지표이며, 미래 결과를 보장하지 않습니다.<br />
+        실제 거래 시 세금·수수료·슬리피지로 인해 결과가 달라질 수 있습니다.<br />
+        투자 결정과 책임은 전적으로 본인에게 있습니다.
+      </p>
     </div>
   );
 }
