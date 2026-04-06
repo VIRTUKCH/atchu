@@ -205,7 +205,7 @@ export default function IndexEtfDetailPage({ model }) {
             periodLabels={crossingHistory.periodLabels || {}}
             periods={crossingHistory.periods || []}
           />
-          <p className="detail-disclaimer">과거 백테스트 결과이며 미래 수익을 보장하지 않습니다. 실제 거래 시 세금·수수료·슬리피지로 인해 결과가 달라질 수 있습니다. 투자 참고용 데이터이며, 매수·매도를 권유하지 않습니다. 투자 결정과 책임은 전적으로 본인에게 있습니다.</p>
+          <p className="detail-disclaimer">과거 백테스트 결과이며 미래 수익을 보장하지 않습니다. 실제 거래 시 세금·수수료·슬리피지로 인해 결과가 달라질 수 있습니다.<br />투자 참고용 데이터이며, 매수·매도를 권유하지 않습니다. 투자 결정과 책임은 전적으로 본인에게 있습니다.</p>
         </>
       )}
     </section>
