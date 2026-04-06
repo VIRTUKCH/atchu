@@ -49,7 +49,7 @@ export default function LandingFilterSection() {
         <div className="landing-section-header">
           <p className="landing-section-label">앗추 필터</p>
           <h2 className="landing-section-title">
-            거짓 신호를 걸러냅니다
+            거짓 신호를 줄여줍니다
           </h2>
           <p className="landing-section-desc">
             200일선은 좋은 기준이지만, 선을 넘을 때마다 사고팔면<br />
