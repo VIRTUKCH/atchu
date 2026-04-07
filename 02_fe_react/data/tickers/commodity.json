@@ -64,6 +64,29 @@
       ]
     },
     {
+      "type": "원유",
+      "asset_type": "원자재",
+      "ticker": "BNO",
+      "name": "United States Brent Oil Fund",
+      "name_ko": "브렌트유",
+      "business_area": "브렌트 원유 선물 (ICE)",
+      "heatmap_label": "브렌트유",
+      "short_description": "북해 브렌트 원유 선물 기반. 글로벌 원유 거래 2/3의 기준가. WTI(USO)보다 통상 가격 높음. PTP 종목(매도 시 세금 주의).",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "선물 롤오버 비용과 콘탱고/백워데이션 구조가 수익률을 크게 좌우해, 현물 원유의 '추세'와 ETF의 '성과 추세'가 분리될 수 있다. 브렌트유는 중동·러시아·아프리카 등 글로벌 공급 이슈와 지정학 리스크에 민감하게 반응한다.",
+        "operation_notes": "단기 전술/테마 접근은 가능하나, 장기 코어 추세추종 풀에서는 제외하는 것을 권장한다. PTP(Publicly Traded Partnership) 종목으로, 매도 시 매도대금의 10%가 원천징수될 수 있다. 매도 전 증권사에서 QN(적격통지) 면제 여부를 확인할 것."
+      },
+      "tags": [
+        "원자재",
+        "원유",
+        "브렌트",
+        "에너지",
+        "선물",
+        "지정학"
+      ]
+    },
+    {
       "type": "천연가스",
       "asset_type": "원자재",
       "ticker": "UNG",
