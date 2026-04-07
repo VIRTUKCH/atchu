@@ -61,7 +61,10 @@ const isUsHolidayDate = (dateKey) => {
   if (!isIsoDate(dateKey)) {
     return false;
   }
-  return Boolean(usHolidays.isHoliday(dateKey));
+  const holidays = usHolidays.isHoliday(dateKey);
+  if (!holidays || !Array.isArray(holidays)) return false;
+  // NYSE 증시는 public 타입(연방 공휴일)만 휴장. observance/optional은 장이 열림
+  return holidays.some((h) => h.type === "public");
 };
 
 const previousBusinessDateKey = (dateKey) => {
