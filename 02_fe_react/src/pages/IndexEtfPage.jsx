@@ -230,6 +230,9 @@ export default function IndexEtfPage({
         />
       </div>
       <SortDropdown sortMode={sortMode} setSortMode={setSortMode} />
+      <p className="panel-subtitle" style={{ marginTop: "8px", marginBottom: "10px" }}>
+        ※ 연평균 수익률(CAGR)·최악의 낙폭(MDD)은 과거 백테스트 결과이며, 미래 수익을 보장하지 않습니다.
+      </p>
       {tickersLoading && (
         <div className="panel-subtitle">티커 목록을 불러오는 중입니다.</div>
       )}
