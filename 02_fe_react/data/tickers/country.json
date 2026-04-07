@@ -291,6 +291,28 @@
       ]
     },
     {
+      "type": "미국 전체",
+      "asset_type": "국가",
+      "ticker": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "name_ko": "미국 전체",
+      "business_area": "미국 전체 주식시장 (대형·중형·소형주)",
+      "heatmap_label": "미국전체",
+      "short_description": "S&P 500에 중소형주까지 추가. 미국 주식시장 99% 커버.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "광범위 지수형으로 구조적 왜곡이 적고 장기 시계열이 안정적이라 추세추종의 기본 대상으로 적합하다. SPY와 유사하나 중소형주 포함으로 시장 전반 강도를 더 잘 반영한다.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "미국",
+        "대형주",
+        "중소형주",
+        "지수",
+        "분산"
+      ]
+    },
+    {
       "type": "글로벌",
       "asset_type": "국가",
       "ticker": "VT",
@@ -307,6 +329,28 @@
       "tags": [
         "글로벌",
         "전세계",
+        "분산",
+        "지수"
+      ]
+    },
+    {
+      "type": "글로벌",
+      "asset_type": "국가",
+      "ticker": "IOO",
+      "name": "iShares Global 100 ETF",
+      "name_ko": "글로벌 100",
+      "business_area": "전 세계 시가총액 상위 100개 기업",
+      "heatmap_label": "글로벌100",
+      "short_description": "전 세계 최대 기업 100개 집중. 미국 비중 약 70% 이상.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "글로벌 메가캡 100개로 구성돼 변동성이 낮고 시계열이 안정적이다. VT보다 집중도 높아 추세 신호가 더 선명한 편.",
+        "operation_notes": "120/200일선 같은 중장기 신호와 확인 필터를 결합하면 휩쏘를 줄이기 좋다."
+      },
+      "tags": [
+        "글로벌",
+        "메가캡",
+        "미국",
         "분산",
         "지수"
       ]

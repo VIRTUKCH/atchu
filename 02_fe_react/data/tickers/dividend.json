@@ -85,6 +85,114 @@
     {
       "type": "배당",
       "asset_type": "배당",
+      "ticker": "DGRO",
+      "name": "iShares Core Dividend Growth ETF",
+      "name_ko": "배당 성장 (iShares)",
+      "business_area": "5년 이상 배당 성장 미국 기업",
+      "heatmap_label": "배당성장iShares",
+      "short_description": "5년 이상 배당을 늘려온 기업. SCHD보다 종목 수 많고 기술주 비중 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "일반적으로 추세추종은 가능하나, 자산 성격(집중도/정책리스크/유동성)에 따라 필터·비중 조절이 필요하다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "배당성장",
+        "인컴",
+        "대형주"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "DGRW",
+      "name": "WisdomTree U.S. Quality Dividend Growth Fund",
+      "name_ko": "배당 성장 (WisdomTree)",
+      "business_area": "배당 성장 + 퀄리티 스크리닝 미국 기업",
+      "heatmap_label": "WisdomTree배당성장",
+      "short_description": "배당 성장에 ROE·ROA 퀄리티 필터 추가. 기술주 비중 약 35%로 성장성 강함.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "배당 성장과 퀄리티 스크리닝의 결합으로 실적 안정성이 높다. 기술주 비중이 커 성장주 장세에서 SCHD 대비 강세를 보이는 경향이 있다.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "배당성장",
+        "퀄리티",
+        "기술주",
+        "인컴"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "NOBL",
+      "name": "ProShares S&P 500 Dividend Aristocrats ETF",
+      "name_ko": "배당 귀족",
+      "business_area": "25년 이상 연속 배당 증가 S&P 500 기업",
+      "heatmap_label": "배당귀족",
+      "short_description": "25년 이상 배당을 늘려온 S&P 500 귀족주. 방어성이 강하고 변동성 낮음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "장기간 배당을 늘려온 기업 특성상 실적 안정성이 높고 하락장 방어력이 좋다. 추세추종 시 휩쏘가 적은 편.",
+        "operation_notes": "확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "배당",
+        "배당귀족",
+        "인컴",
+        "방어주"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "JEPI",
+      "name": "JPMorgan Equity Premium Income ETF",
+      "name_ko": "S&P 500 커버드콜",
+      "business_area": "S&P 500 저변동성 주식 + 콜옵션 매도 인컴",
+      "heatmap_label": "S&P커버드콜",
+      "short_description": "S&P 500 저변동성 주식(80%) + 옵션 매도 인컴(20%). 상승 제한 대신 안정적 월배당.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "커버드콜 구조로 강한 상승 추세에서 SPY 대비 성과 열위. 인컴 수취 전략으로 활용 가능.",
+        "operation_notes": "추세추종보다 인컴 수취 목적에 맞는 자산. 확인 필터와 비중 상한 권장."
+      },
+      "tags": [
+        "배당",
+        "커버드콜",
+        "인컴",
+        "S&P500",
+        "월배당"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "XYLD",
+      "name": "Global X S&P 500 Covered Call ETF",
+      "name_ko": "S&P 500 완전 커버드콜",
+      "business_area": "S&P 500 기반 100% 콜옵션 매도",
+      "heatmap_label": "S&P완전커버드콜",
+      "short_description": "S&P 500을 보유하고 100% 콜옵션 매도. JEPI보다 상승 참여 더 제한적이나 배당수익률 높음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "커버드콜 구조로 상승 제한이 있어 강한 추세 상승장에서 성과 열위. 인컴 수취 전략으로 활용 가능.",
+        "operation_notes": "추세추종보다 인컴 수취 목적에 맞는 자산. 확인 필터와 비중 상한 권장."
+      },
+      "tags": [
+        "배당",
+        "커버드콜",
+        "인컴",
+        "S&P500",
+        "월배당"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
       "ticker": "JEPQ",
       "name": "JPMorgan Nasdaq Equity Premium Income ETF",
       "name_ko": "나스닥 커버드콜",
@@ -94,6 +202,28 @@
       "trend_following": {
         "suitability": "적합",
         "reason": "커버드콜 구조로 상승 제한이 있어 강한 추세 상승장에서 JEPI/QQQ 대비 성과 열위. 인컴 수취 전략으로 활용 가능.",
+        "operation_notes": "추세추종보다 인컴 수취 목적에 맞는 자산. 확인 필터와 비중 상한 권장."
+      },
+      "tags": [
+        "배당",
+        "커버드콜",
+        "인컴",
+        "나스닥",
+        "월배당"
+      ]
+    },
+    {
+      "type": "배당",
+      "asset_type": "배당",
+      "ticker": "QYLD",
+      "name": "Global X NASDAQ 100 Covered Call ETF",
+      "name_ko": "나스닥 100 완전 커버드콜",
+      "business_area": "나스닥 100 기반 100% 콜옵션 매도",
+      "heatmap_label": "나스닥완전커버드콜",
+      "short_description": "나스닥 100을 보유하고 100% 콜옵션 매도. 월배당 높으나 주가 상승 거의 없음.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "커버드콜 구조로 상승 제한이 있어 강한 추세 상승장에서 성과 열위. 인컴 수취 전략으로 활용 가능.",
         "operation_notes": "추세추종보다 인컴 수취 목적에 맞는 자산. 확인 필터와 비중 상한 권장."
       },
       "tags": [

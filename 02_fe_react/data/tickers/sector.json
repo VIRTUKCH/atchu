@@ -130,6 +130,27 @@
       ]
     },
     {
+      "type": "IT",
+      "asset_type": "섹터",
+      "ticker": "VGT",
+      "name": "Vanguard Information Technology ETF",
+      "name_ko": "IT 섹터 (Vanguard)",
+      "business_area": "미국 IT 섹터 전체",
+      "heatmap_label": "IT섹터Vanguard",
+      "short_description": "애플·MS·엔비디아 등 IT 섹터 전체. XLK보다 종목 넓고 유사한 성격.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "섹터/테마 집중으로 변동성과 휩쏘가 커질 수 있다. XLK와 유사한 구성으로 대형 기술주 추세에 민감.",
+        "operation_notes": "위성 자산으로 낮은 비중, 더 긴 신호(200일선 등), 확인 필터를 권장."
+      },
+      "tags": [
+        "섹터",
+        "IT",
+        "기술주",
+        "뱅가드"
+      ]
+    },
+    {
       "type": "필수소비재",
       "asset_type": "섹터",
       "ticker": "XLP",

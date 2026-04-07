@@ -2,6 +2,27 @@
   "type": "스타일",
   "items": [
     {
+      "type": "메가캡",
+      "asset_type": "스타일",
+      "ticker": "XLG",
+      "name": "Invesco S&P 500 Top 50 ETF",
+      "name_ko": "S&P 500 메가캡 50",
+      "business_area": "S&P 500 상위 50개 메가캡",
+      "heatmap_label": "메가캡50",
+      "short_description": "S&P 500 상위 50개 초대형주에만 집중. 애플·MS·엔비디아 등 비중 극대화.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "메가캡 집중으로 SPY보다 소수 종목에 의존하나, 대형 성장주 주도 장세에서 추세가 명확하게 나타난다.",
+        "operation_notes": "집중도가 높아 특정 종목 이슈에 민감. 확인 필터와 비중 상한을 두면 안정성이 올라간다."
+      },
+      "tags": [
+        "메가캡",
+        "대형주",
+        "S&P500",
+        "집중"
+      ]
+    },
+    {
       "type": "동일가중",
       "asset_type": "스타일",
       "ticker": "EUSA",
