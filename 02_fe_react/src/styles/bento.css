@@ -1119,7 +1119,6 @@ a.leverage-item {
   font-weight: 700;
   white-space: nowrap;
   flex-shrink: 0;
-  margin-left: auto;
 }
 .sub-sector-cell-diff.positive {
   color: #22c55e;

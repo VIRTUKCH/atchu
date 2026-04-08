@@ -22,12 +22,12 @@ function SubSectorGrid({ subSectors, onSubClick }) {
           }}
         >
           <span className="sub-sector-cell-name">{sub.name}</span>
-          <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
           {sub.avgDiff200 != null && (
             <span className={`sub-sector-cell-diff ${sub.avgDiff200 >= 0 ? "positive" : "negative"}`}>
               {sub.avgDiff200 >= 0 ? "+" : ""}{sub.avgDiff200}%
             </span>
           )}
+          <span className="sub-sector-cell-count">({sub.above}/{sub.total})</span>
         </button>
       ))}
     </div>
@@ -66,12 +66,12 @@ export default function MainMarketStatusGrid({ items, onTypeSelect, onSubSelect 
                 <div className="sector-wide-bar-fill" style={{ width: `${ratio}%` }} />
               </div>
               <span className="sector-wide-ratio">{toPercent(ratio)}</span>
-              <span className="sector-wide-count">{counts.above}/{counts.total}</span>
               {counts.avgDiff200 != null && (
                 <span className={`sector-wide-diff ${counts.avgDiff200 >= 0 ? "positive" : "negative"}`}>
                   {counts.avgDiff200 >= 0 ? "+" : ""}{counts.avgDiff200}%
                 </span>
               )}
+              <span className="sector-wide-count">({counts.above}/{counts.total})</span>
             </div>
             <SubSectorGrid subSectors={counts.subSectors} onSubClick={(sub) => onSubSelect?.(type, sub)} />
           </button>
