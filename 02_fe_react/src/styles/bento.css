@@ -1051,21 +1051,15 @@ a.leverage-item {
   width: 100%;
   min-width: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
   background: rgba(95, 104, 255, 0.04);
   border: 1px solid rgba(95, 104, 255, 0.08);
   cursor: pointer;
   padding: 8px 10px;
   border-radius: 8px;
   transition: background 0.12s ease, border-color 0.12s ease;
-}
-.sub-sector-cell-bottom {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
 }
 .sub-sector-cell:hover {
   background: rgba(95, 104, 255, 0.1);
@@ -1086,7 +1080,7 @@ a.leverage-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
+  flex: 1;
   min-width: 0;
 }
 .sub-sector-cell-count {
