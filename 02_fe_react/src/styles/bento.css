@@ -1044,9 +1044,9 @@ a.leverage-item {
   width: 100%;
   min-width: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -1067,20 +1067,23 @@ a.leverage-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 .sub-sector-cell-count {
   font-family: "Sora", sans-serif;
-  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-size: clamp(13px, calc(11px + 0.5vw), 15px);
   font-weight: 600;
   color: #8891ab;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .sub-sector-cell-diff {
   font-family: "Sora", sans-serif;
-  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-size: clamp(13px, calc(11px + 0.5vw), 15px);
   font-weight: 600;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .sub-sector-cell-diff.positive {
   color: #22c55e;
