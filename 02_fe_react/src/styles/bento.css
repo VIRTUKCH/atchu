@@ -1031,11 +1031,11 @@ a.leverage-item {
   min-width: 40px;
   text-align: right;
 }
-/* 서브섹터 5등분 그리드 */
+/* 서브섹터 2열 그리드 */
 .sub-sector-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
   margin-top: 10px;
   padding-top: 8px;
   border-top: 1px solid rgba(35, 49, 92, 0.06);
@@ -1045,12 +1045,12 @@ a.leverage-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 2px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 6px;
-  border-radius: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
   transition: background 0.12s ease;
 }
 .sub-sector-cell:hover {
@@ -1060,31 +1060,26 @@ a.leverage-item {
   background: rgba(88, 101, 242, 0.12);
 }
 .sub-sector-cell-name {
-  font-size: clamp(13px, calc(11px + 0.55vw), 15px);
-  font-weight: 600;
+  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-weight: 700;
   color: #59607c;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
 }
-.sub-sector-cell-stats {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 .sub-sector-cell-count {
   font-family: "Sora", sans-serif;
-  font-size: clamp(12px, calc(10px + 0.5vw), 14px);
+  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-weight: 600;
   color: #8891ab;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 .sub-sector-cell-diff {
   font-family: "Sora", sans-serif;
-  font-size: clamp(12px, calc(10px + 0.5vw), 14px);
+  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-weight: 600;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 .sub-sector-cell-diff.positive {
   color: #22c55e;
@@ -1630,8 +1625,8 @@ a.leverage-item {
     min-width: 56px;
   }
   .sub-sector-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
   }
 
   .main-market-ratio {
