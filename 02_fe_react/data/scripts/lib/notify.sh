@@ -392,14 +392,8 @@ send_trend_change_notifications() {
     return 1
   fi
 
-  # 개발자 채널: 레버리지·인버스 신호 별도 전송
-  local has_admin_changes admin_body
-  has_admin_changes="$(jq -r '.hasAdminChanges // false' "${trend_json_latest_file}")"
-  admin_body="$(jq -r '.adminMarkdownBody // empty' "${trend_json_latest_file}")"
-  if [[ "${has_admin_changes}" == "true" && -n "${admin_body}" ]]; then
-    send_dev_trend_webhook "${admin_body}" || true
-    log "Dev trend notification sent (leverage/inverse signals)"
-  fi
+  # 개발자 채널: 레버리지·인버스 신호는 pipeline_stock.sh에서 개별주와 합쳐서 전송
+  log "Dev trend (leverage/inverse) deferred to pipeline_stock.sh for combined delivery"
 }
 
 send_daily_snapshot_summary() {

@@ -346,8 +346,50 @@ NODE
 
   log "[개별주] Trend notification files generated: ${trend_json_file}"
 
-  # Discord 개발자 채널로 전송
+  # Discord 개발자 채널: 레버리지·인버스(notify.sh에서 저장) + 개별주 통합 전송
+  local etf_admin_json etf_admin_body has_etf_changes combined_body
+  etf_admin_json="${ROOT_DIR}/summary/trend/trend_notifications.json"
+  etf_admin_body=""
+  has_etf_changes="false"
+  if [[ -f "${etf_admin_json}" ]]; then
+    has_etf_changes="$(jq -r '.hasAdminChanges // false' "${etf_admin_json}")"
+    if [[ "${has_etf_changes}" == "true" ]]; then
+      # adminMarkdownBody에서 섹션만 추출 (헤더 제거 후 섹션 재조립)
+      local raw_etf_body
+      raw_etf_body="$(jq -r '.adminMarkdownBody // empty' "${etf_admin_json}")"
+      # "## 추세 진입" → "## 레버리지·인버스 추세 진입", "## 추세 이탈" → "## 레버리지·인버스 추세 이탈"
+      # 첫 번째 줄(# [관리자] ...) 제거, 섹션 헤더만 rename
+      etf_admin_body="$(echo "${raw_etf_body}" | tail -n +2 \
+        | sed 's/^## 추세 진입$/## 레버리지·인버스 추세 진입/' \
+        | sed 's/^## 추세 이탈$/## 레버리지·인버스 추세 이탈/')"
+    fi
+  fi
+
+  # 개별주 섹션: "## 추세 진입 감지 ..." → "## 개별주 추세 진입", "## 추세 이탈 감지 ..." → "## 개별주 추세 이탈"
+  # 하단 링크·면책문구 제거 후 재구성
+  local stock_sections stock_body_raw
+  stock_body_raw=""
   if [[ "${has_any_changes}" == "true" && -n "${report_body}" ]]; then
+    stock_body_raw="$(echo "${report_body}" \
+      | grep -v '^# \[개별주\]' \
+      | grep -v '^자세히 보기:' \
+      | grep -v '^※' \
+      | grep -v '^$' \
+      | sed 's/^## 추세 진입 감지.*$/## 개별주 추세 진입/' \
+      | sed 's/^## 추세 이탈 감지.*$/## 개별주 추세 이탈/')"
+  fi
+
+  # 통합 메시지 조립
+  if [[ "${has_etf_changes}" == "true" || "${has_any_changes}" == "true" ]]; then
+    combined_body="# [관리자] 추세 변화 알림 (최근 5거래일)"
+    if [[ -n "${etf_admin_body}" ]]; then
+      combined_body="${combined_body}"$'\n'"${etf_admin_body}"
+    fi
+    if [[ -n "${stock_body_raw}" ]]; then
+      combined_body="${combined_body}"$'\n\n'"${stock_body_raw}"
+    fi
+    combined_body="${combined_body}"$'\n\n'"자세히 보기: https://atchu-fe.vercel.app/_stocks"$'\n\n'"※ 참고용 지표이며 투자 조언이 아닙니다."
+
     local chunk line max_len=1800
     chunk=""
     while IFS= read -r line || [[ -n "${line}" ]]; do
@@ -361,13 +403,13 @@ NODE
           chunk="${chunk}"$'\n'"${line}"
         fi
       fi
-    done <<< "${report_body}"
+    done <<< "${combined_body}"
     if [[ -n "${chunk}" ]]; then
       send_dev_trend_webhook "${chunk}" || true
     fi
-    log "[개별주] Trend notification sent to dev channel"
+    log "[개별주] Combined dev trend notification sent (ETF: ${has_etf_changes}, 개별주: ${has_any_changes})"
   else
-    log "[개별주] No trend changes to notify"
+    log "[개별주] No trend changes to notify (ETF + 개별주 모두 변화 없음)"
   fi
 }
 
