@@ -31,7 +31,7 @@ send_webhook() {
   if [[ "${WEBHOOK_ENABLED}" -ne 1 ]]; then
     return 0
   fi
-  local webhook_url="${DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL:-}"
+  local webhook_url="${DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL:-}"
   if [[ -z "${webhook_url}" ]]; then
     return 0
   fi
@@ -113,7 +113,7 @@ load_env_file() {
 }
 
 enable_webhook_if_configured() {
-  if [[ -n "${DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL:-}" ]]; then
+  if [[ -n "${DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL:-}" ]]; then
     WEBHOOK_ENABLED=1
   fi
 }

@@ -23,10 +23,11 @@
 
 ## 발송 채널
 
-| 환경변수 | 채널 | 용도 |
-|---------|------|------|
-| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | 관리자 채널 | 파이프라인 상태 메시지 |
-| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | 개발자 추세 채널 | 레버리지·인버스 + 개별주 추세 변화 신호 |
+| 환경변수 | 용도 |
+|---------|------|
+| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | 파이프라인 상태 메시지 + 추세 변화 신호 모두 |
+
+> `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`은 제거. 모든 관리자 알림을 한 채널(`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`)로 통합한다.
 
 ---
 
@@ -42,7 +43,7 @@
 [YYYY/MM/DD HH:MM:SS] {메시지}
 ```
 
-> `send_webhook()`이 RUN_ID 접두어(`[YYYYMMDD-HHMMSS-PID]`)를 제거하고 사람이 읽기 좋은 timestamp로 교체한다.
+> `notify()`가 RUN_ID 접두어(`[YYYYMMDD-HHMMSS-PID]`)를 제거하고 사람이 읽기 좋은 timestamp로 교체 후 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`로 전송.
 
 ### 발송되는 메시지 목록
 
@@ -125,9 +126,9 @@
 
 | 파일 | 역할 |
 |------|------|
-| `02_fe_react/data/scripts/lib/common.sh` | `send_webhook()` — 관리자 채널 전송 유틸, timestamp 포맷 처리 |
+| `02_fe_react/data/scripts/lib/common.sh` | `notify()` — 파이프라인 상태 메시지 전송 (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`) |
 | `02_fe_react/data/scripts/lib/notify.sh` | `send_trend_change_notifications()` — 레버리지·인버스 adminMarkdownBody 생성·저장 (전송 안 함) |
-| `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 + 레버리지·인버스 통합 메시지 생성 및 관리자 채널 전송 |
+| `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 + 레버리지·인버스 통합 메시지 생성 및 전송 (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`) |
 
 ### 실행 흐름
 
@@ -148,20 +149,22 @@ pipeline.sh
           → (관리자 채널) send_dev_trend_webhook "${chunk}"  # 변화 있을 때만, 청크 분할
 ```
 
-### `send_webhook()` 동작 방식
+### `notify()` 동작 방식
 
 ```bash
 # RUN_ID 접두어 제거 후 timestamp 추가
 message="$(sed -E 's/^\[[0-9]{8}-[0-9]{6}-[0-9]+\][[:space:]]*//' <<< "$message")"
 stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
+# DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL로 POST
 ```
 
-레버리지·인버스 알림(`admin_body`)은 `# [관리자]...`로 시작하므로 RUN_ID 제거 패턴과 매칭되지 않아 그대로 전송된다.
+추세 통합 알림(`combined_body`)은 `pipeline_stock.sh`에서 `send_dev_trend_webhook()`으로 직접 전송하므로 timestamp가 붙지 않는다.
 
 ---
 
 ## 현재 구현 상태
 
+- [x] 모든 관리자 알림을 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` 하나로 통합
 - [x] 파이프라인 상태 메시지 (PIPELINE START / NOTIFICATIONS START·DONE / DAILY SUMMARY SENT / TREND NOTIFY SENT·FAIL)
 - [x] 레버리지·인버스 + 개별주 추세 변화 신호 통합 — 변화 있을 때만 발송, 1800자 청크 분할
 - [x] 통합 알림 메시지 포맷 (`# [관리자] 추세 변화 알림 ...`)
