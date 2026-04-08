@@ -392,13 +392,13 @@ send_trend_change_notifications() {
     return 1
   fi
 
-  # 관리자 채널: 레버리지·인버스 신호 별도 전송
+  # 개발자 채널: 레버리지·인버스 신호 별도 전송
   local has_admin_changes admin_body
   has_admin_changes="$(jq -r '.hasAdminChanges // false' "${trend_json_latest_file}")"
   admin_body="$(jq -r '.adminMarkdownBody // empty' "${trend_json_latest_file}")"
   if [[ "${has_admin_changes}" == "true" && -n "${admin_body}" ]]; then
-    notify "${admin_body}"
-    log "Admin trend notification sent (leverage/inverse signals)"
+    send_dev_trend_webhook "${admin_body}" || true
+    log "Dev trend notification sent (leverage/inverse signals)"
   fi
 }
 

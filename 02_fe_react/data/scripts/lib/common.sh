@@ -74,6 +74,18 @@ send_trend_notification_webhook() {
     -d "${payload}" "${webhook_url}" >/dev/null 2>&1 || return 1
 }
 
+send_dev_trend_webhook() {
+  local message="$1"
+  local webhook_url="${DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL:-}"
+  if [[ -z "${webhook_url}" ]]; then
+    return 0
+  fi
+  local payload
+  payload="$(jq -n --arg content "${message}" '{content: $content}')"
+  curl -fsS -H "Content-Type: application/json" -X POST \
+    -d "${payload}" "${webhook_url}" >/dev/null 2>&1 || return 1
+}
+
 setup_logging() {
   mkdir -p "${LOG_DIR}"
   local market_log_date

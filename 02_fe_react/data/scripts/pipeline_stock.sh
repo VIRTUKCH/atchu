@@ -346,13 +346,13 @@ NODE
 
   log "[개별주] Trend notification files generated: ${trend_json_file}"
 
-  # Discord 관리자 채널로 전송
+  # Discord 개발자 채널로 전송
   if [[ "${has_any_changes}" == "true" && -n "${report_body}" ]]; then
     local chunk line max_len=1800
     chunk=""
     while IFS= read -r line || [[ -n "${line}" ]]; do
       if [[ $(( ${#chunk} + ${#line} + 1 )) -gt ${max_len} && -n "${chunk}" ]]; then
-        send_webhook "${chunk}" || true
+        send_dev_trend_webhook "${chunk}" || true
         chunk="${line}"
       else
         if [[ -z "${chunk}" ]]; then
@@ -363,9 +363,9 @@ NODE
       fi
     done <<< "${report_body}"
     if [[ -n "${chunk}" ]]; then
-      send_webhook "${chunk}" || true
+      send_dev_trend_webhook "${chunk}" || true
     fi
-    log "[개별주] Trend notification sent to admin channel"
+    log "[개별주] Trend notification sent to dev channel"
   else
     log "[개별주] No trend changes to notify"
   fi

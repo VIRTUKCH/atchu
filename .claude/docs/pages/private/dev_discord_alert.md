@@ -10,25 +10,23 @@
 파이프라인 실행 상태와 **공개 채널에서 제외된 모든 비공개 티커의 추세 신호**를 관리자에게 전달한다.
 일반 사용자에게는 절대 노출되지 않는다.
 
-> **원칙**: 공개 서비스에서 숨겨진 티커(레버리지·인버스 ETF 전체)는 이 알림 채널을 통해 신호를 받는다.
+> **원칙**: 공개 서비스에서 숨겨진 티커(레버리지·인버스 ETF 전체)와 S&P 500 개별주 추세 신호 모두 이 관리자 채널 하나로 수신한다.
 
-**비공개 신호 대상:**
+**신호 대상:**
 - 지수·섹터 레버리지 ETF (TQQQ, UPRO, SOXL 등)
 - 지수·섹터 인버스 ETF (SQQQ, SDS, SOXS 등)
 - 단일종목 레버리지 ETF (TSLL, NVDL, AAPU, MSFU 등)
 - 단일종목 인버스 ETF (TSLS, NVDD, AAPD, MSFD 등)
-
-> S&P 500 개별주 신호는 별도 알림 채널로 수신 (파이프라인에서 `stock_trend_notifications.json` 생성 후 Discord 전송).
+- **S&P 500 개별주** (앗추 필터 200일 기준, `pipeline_stock.sh`에서 전송)
 
 ---
 
 ## 발송 채널
 
-| 환경변수 | 채널 |
-|---------|------|
-| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | 관리자 전용 채널 (유일) |
-
-모든 관리자 알림은 이 채널 하나로 전송된다.
+| 환경변수 | 채널 | 용도 |
+|---------|------|------|
+| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | 관리자 채널 | 파이프라인 상태 메시지 |
+| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | 개발자 추세 채널 | 레버리지·인버스 + 개별주 추세 변화 신호 |
 
 ---
 
@@ -69,57 +67,61 @@
 
 ---
 
-## 알림 2. 레버리지·인버스 추세 변화 신호
+## 알림 2. 개발자 추세 변화 신호
 
 ### 목적
 
-공개 채널에서 제외된 레버리지·인버스 ETF의 앗추 필터 진입/이탈 신호를 관리자에게만 전달한다.
-방향성 왜곡과 초보자 보호를 위해 공개 채널에서는 완전 제외.
+공개 채널에서 제외된 모든 티커의 앗추 필터 진입/이탈 신호를 관리자에게만 전달한다.
 
-### 발송 조건
+### 발송 대상 및 조건
 
-- 최근 5거래일 내 레버리지·인버스 티커의 앗추 필터(200일, 16/20 규칙) 진입 또는 이탈이 **1건이라도 있을 때만** 발송
-- 변화가 없으면 발송하지 않음
+**2-A. 레버리지·인버스 ETF** (`notify.sh`에서 전송)
+- 최근 5거래일 내 앗추 필터(200일, 16/20 규칙) 진입 또는 이탈이 1건이라도 있을 때만 발송
+- 티커 소스: `data/tickers/private/leverage.json`, `inverse.json`, `stock_leverage.json`, `stock_inverse.json`
 
-### 티커 소스
-
-`02_fe_react/data/tickers/private/` 디렉터리의 JSON 파일들. 공개 `tickers/`와 분리되어 있으며 git 추적 제외 대상이 아님.
-
-| 파일 | 내용 |
-|------|------|
-| `leverage.json` | 지수·섹터 레버리지 ETF (TQQQ, SOXL 등) |
-| `inverse.json` | 지수·섹터 인버스 ETF (SQQQ, SDOW 등) |
-| `stock_leverage.json` | 개별주 레버리지 ETF (TSLL, NVDL, AAPU, MSFU, AMZU, METU, GGLL, ORCU 등) |
-| `stock_inverse.json` | 개별주 인버스 ETF (TSLS, NVDD, AAPD, MSFD, AMZD, METD, GGLS, ORCS 등) |
+**2-B. S&P 500 개별주** (`pipeline_stock.sh`에서 전송)
+- 최근 5거래일 내 앗추 필터(200일) 진입 또는 이탈이 1건이라도 있을 때만 발송
+- 1800자 초과 시 자동 청크 분할 전송
 
 ### 메시지 포맷
 
+**레버리지·인버스:**
 ```
 [YYYY/MM/DD HH:MM:SS] # [관리자] 레버리지·인버스 추세 변화 (최근 5거래일)
 
 ## 추세 진입
 - TQQQ (기술) — 03/13
-- SOXL (반도체) — 03/12
 - TSLL (Tesla 2x Bull) — 03/13
-- NVDL (Nvidia 2x Long) — 03/12
 
 ## 추세 이탈
 - SQQQ (기술) — 03/13
 - NVDD (Nvidia 1x Bear) — 03/13
 ```
+> `send_webhook()` 경유 → timestamp 자동 부착
 
-개별주 레버리지·인버스는 괄호 안에 `기초자산 배율 방향` 형식으로 표시 (예: `Tesla 2x Bull`, `Nvidia 1x Bear`).
+**개별주:**
+```
+# [개별주] 추세 변화 알림 (최근 5거래일)
 
-> `send_webhook()`을 통해 전송되므로 앞에 timestamp가 자동으로 붙는다.
-> `adminMarkdownBody`가 빈 문자열이면 발송하지 않는다.
+## 추세 진입 감지 (앗추 필터 200일)
+- AAPL (Apple Inc.) — 03/13
+
+## 추세 이탈 감지 (앗추 필터 200일)
+- TSLA (Tesla, Inc.) — 03/13
+
+자세히 보기: https://atchu-fe.vercel.app/_stocks
+
+※ 참고용 지표이며 투자 조언이 아닙니다.
+```
+> `send_webhook()` 경유 → timestamp 자동 부착
 
 ### 공개 알림과의 차이
 
-| 항목 | 공개 채널 | 관리자 채널 |
+| 항목 | 공개 채널 | 개발자 채널 |
 |------|----------|------------|
-| 대상 티커 | 레버리지·인버스 제외 | 레버리지·인버스만 |
-| 면책 문구 | 포함 | 없음 |
-| 발송 채널 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` |
+| 대상 티커 | 레버리지·인버스·개별주 제외 | 레버리지·인버스 + 개별주 |
+| 면책 문구 | 포함 | 개별주 알림에만 포함 |
+| 발송 채널 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` |
 
 ---
 
@@ -131,18 +133,23 @@
 |------|------|
 | `02_fe_react/data/scripts/lib/common.sh` | `send_webhook()` — 관리자 채널 전송 유틸, timestamp 포맷 처리 |
 | `02_fe_react/data/scripts/lib/notify.sh` | `send_trend_change_notifications()` — 레버리지·인버스 adminBody 생성 및 전송 |
+| `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 알림 JSON 생성 및 관리자 채널 전송 |
 
 ### 실행 흐름
 
 ```
-send_all_notifications()
-  → notify "[RUN_ID] NOTIFICATIONS START"
-  → send_daily_snapshot_summary()
-      → notify "[RUN_ID] DAILY SUMMARY SENT | date=..."
-  → send_trend_change_notifications()
-      → (공개 채널) send_trend_notification_webhook()  → notify "[RUN_ID] TREND NOTIFY SENT"
-      → (관리자 채널) notify "${admin_body}"            # 변화 있을 때만
-  → notify "[RUN_ID] NOTIFICATIONS DONE"
+pipeline.sh
+  → send_all_notifications()
+      → notify "[RUN_ID] NOTIFICATIONS START"
+      → send_daily_snapshot_summary()
+          → notify "[RUN_ID] DAILY SUMMARY SENT | date=..."
+      → send_trend_change_notifications()
+          → (공개 채널) send_trend_notification_webhook()  → notify "[RUN_ID] TREND NOTIFY SENT"
+          → (관리자 채널) notify "${admin_body}"            # 레버리지·인버스, 변화 있을 때만
+      → notify "[RUN_ID] NOTIFICATIONS DONE"
+  → pipeline_stock.sh                                      # ETF 완료 후 자동 호출
+      → generate_stock_trend_notifications_file()
+          → (관리자 채널) send_webhook "${chunk}"         # 개별주, 변화 있을 때만, 청크 분할
 ```
 
 ### `send_webhook()` 동작 방식
@@ -162,3 +169,4 @@ stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
 - [x] 파이프라인 상태 메시지 (PIPELINE START / NOTIFICATIONS START·DONE / DAILY SUMMARY SENT / TREND NOTIFY SENT·FAIL)
 - [x] 레버리지·인버스 추세 변화 신호 — 변화 있을 때만 발송
 - [x] 레버리지·인버스 알림 메시지 포맷 (`# [관리자] ...`)
+- [x] S&P 500 개별주 추세 변화 신호 — 변화 있을 때만 발송, 1800자 청크 분할
