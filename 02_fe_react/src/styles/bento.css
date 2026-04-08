@@ -802,9 +802,16 @@ a.leverage-item {
   background: rgba(22, 163, 74, 0.15);
   color: #16a34a;
 }
+.leverage-status-badge.caution {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+}
 .leverage-status-badge.out {
   background: rgba(239, 68, 68, 0.12);
   color: #ef4444;
+}
+.leverage-item.caution {
+  opacity: 0.7;
 }
 .leverage-item-name {
   font-weight: 700;
@@ -1031,10 +1038,10 @@ a.leverage-item {
   min-width: 40px;
   text-align: right;
 }
-/* 서브섹터 2열 그리드 */
+/* 서브섹터 3열 그리드 */
 .sub-sector-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   margin-top: 10px;
   padding-top: 8px;
@@ -1044,30 +1051,42 @@ a.leverage-item {
   width: 100%;
   min-width: 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  background: rgba(95, 104, 255, 0.04);
+  border: 1px solid rgba(95, 104, 255, 0.08);
   cursor: pointer;
   padding: 8px 10px;
   border-radius: 8px;
-  transition: background 0.12s ease;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.sub-sector-cell-bottom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
 }
 .sub-sector-cell:hover {
-  background: rgba(95, 104, 255, 0.08);
+  background: rgba(95, 104, 255, 0.1);
+  border-color: rgba(95, 104, 255, 0.18);
+}
+[data-theme="dark"] .sub-sector-cell {
+  background: rgba(88, 101, 242, 0.07);
+  border-color: rgba(88, 101, 242, 0.12);
 }
 [data-theme="dark"] .sub-sector-cell:hover {
-  background: rgba(88, 101, 242, 0.12);
+  background: rgba(88, 101, 242, 0.14);
+  border-color: rgba(88, 101, 242, 0.22);
 }
 .sub-sector-cell-name {
-  font-size: clamp(14px, calc(12px + 0.55vw), 16px);
+  font-size: clamp(13px, calc(11.5px + 0.5vw), 15px);
   font-weight: 700;
   color: #59607c;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  flex: 1;
+  width: 100%;
   min-width: 0;
 }
 .sub-sector-cell-count {

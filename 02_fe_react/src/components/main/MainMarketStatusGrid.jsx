@@ -22,12 +22,14 @@ function SubSectorGrid({ subSectors, onSubClick }) {
           }}
         >
           <span className="sub-sector-cell-name">{sub.name}</span>
-          <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
-          {sub.avgDiff200 != null && (
-            <span className={`sub-sector-cell-diff ${sub.avgDiff200 >= 0 ? "positive" : "negative"}`}>
-              {sub.avgDiff200 >= 0 ? "+" : ""}{sub.avgDiff200}%
-            </span>
-          )}
+          <div className="sub-sector-cell-bottom">
+            <span className="sub-sector-cell-count">{sub.above}/{sub.total}</span>
+            {sub.avgDiff200 != null && (
+              <span className={`sub-sector-cell-diff ${sub.avgDiff200 >= 0 ? "positive" : "negative"}`}>
+                {sub.avgDiff200 >= 0 ? "+" : ""}{sub.avgDiff200}%
+              </span>
+            )}
+          </div>
         </button>
       ))}
     </div>
