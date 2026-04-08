@@ -762,8 +762,8 @@ a.trend-signal-item {
   letter-spacing: 0.02em;
 }
 .leverage-group-items {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
 }
 a.leverage-item {
@@ -1002,7 +1002,7 @@ a.leverage-item {
   gap: 10px;
 }
 .sector-wide-name {
-  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 20px);
   font-weight: 700;
   color: var(--ink, #23315c);
   white-space: nowrap;
@@ -1023,7 +1023,7 @@ a.leverage-item {
 }
 .sector-wide-ratio {
   font-family: "Sora", sans-serif;
-  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 20px);
   font-weight: 700;
   color: #59607c;
   white-space: nowrap;
@@ -1032,7 +1032,7 @@ a.leverage-item {
 }
 .sector-wide-count {
   font-family: "Sora", sans-serif;
-  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 20px);
   color: #8891ab;
   white-space: nowrap;
   min-width: 40px;
@@ -1074,7 +1074,7 @@ a.leverage-item {
   border-color: rgba(88, 101, 242, 0.22);
 }
 .sub-sector-cell-name {
-  font-size: clamp(12px, calc(10.5px + 0.4vw), 13px);
+  font-size: clamp(12px, calc(10.5px + 0.4vw), 15px);
   font-weight: 600;
   color: #59607c;
   overflow: hidden;
@@ -1085,7 +1085,7 @@ a.leverage-item {
 }
 .sub-sector-cell-count {
   font-family: "Sora", sans-serif;
-  font-size: clamp(10px, calc(9.5px + 0.3vw), 11px);
+  font-size: clamp(10px, calc(9.5px + 0.3vw), 13px);
   font-weight: 500;
   color: #8891ab;
   white-space: nowrap;
@@ -1094,7 +1094,7 @@ a.leverage-item {
 }
 .sub-sector-cell-diff {
   font-family: "Sora", sans-serif;
-  font-size: clamp(12px, calc(11px + 0.4vw), 14px);
+  font-size: clamp(12px, calc(11px + 0.4vw), 16px);
   font-weight: 700;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1841,6 +1841,7 @@ a.leverage-item {
   .trend-signal-item-date { font-size: 15px; }
   .trend-signal-label { font-size: 15px; }
   .leverage-group-label { font-size: 15px; }
+  .leverage-group-items { grid-template-columns: repeat(3, 1fr); }
   .leverage-item { font-size: 15px; }
   .leverage-item-name { font-size: 15px; }
   .leverage-item-desc { font-size: 13px; max-width: 90px; }
