@@ -10,6 +10,38 @@ import {
   stockOverviewTickers,
   stockTickerMetaMap
 } from "../utils/stockDataLoaders";
+import {
+  latestTrendNotificationPayload,
+  privateTickerModules,
+  latestSnapshotPayload
+} from "../utils/dataLoaders";
+
+// 레버리지·인버스 private 티커 메타 (모듈 레벨, 1회 빌드)
+const privateTickerMeta = (() => {
+  const map = new Map();
+  Object.values(privateTickerModules).forEach((mod) => {
+    const items = Array.isArray(mod) ? mod : (mod?.items || []);
+    items.forEach((item) => {
+      if (item?.ticker) map.set(item.ticker.toUpperCase(), item);
+    });
+  });
+  return map;
+})();
+
+const PRIVATE_GROUP_DEFS = [
+  { typeKey: "레버리지",     label: "지수·섹터 레버리지" },
+  { typeKey: "인버스",       label: "지수·섹터 인버스" },
+  { typeKey: "개별주레버리지", label: "개별주 레버리지" },
+  { typeKey: "개별주인버스",  label: "개별주 인버스" },
+];
+
+const privateTickersByGroup = (() => {
+  const groups = Object.fromEntries(PRIVATE_GROUP_DEFS.map((g) => [g.typeKey, []]));
+  privateTickerMeta.forEach((item) => {
+    if (groups[item.type]) groups[item.type].push(item);
+  });
+  return groups;
+})();
 
 const PERIOD_TABS = [
   { key: "ma200", label: "이격률" },
@@ -109,16 +141,45 @@ export default function StockOverviewPage() {
     const exits = [];
     (rules || []).forEach((rule) => {
       (rule.entries || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => entries.push({ ticker: t, date: e.date }));
+        (e.tickers || []).forEach((t) => entries.push({ ticker: t, date: e.date, isPrivate: false }));
       });
       (rule.exits || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => exits.push({ ticker: t, date: e.date }));
+        (e.tickers || []).forEach((t) => exits.push({ ticker: t, date: e.date, isPrivate: false }));
+      });
+    });
+    // 레버리지·인버스 admin 신호 합산
+    (latestTrendNotificationPayload?.rules || []).forEach((rule) => {
+      (rule.adminEntries || []).forEach((e) => {
+        (e.tickers || []).forEach((t) => entries.push({ ticker: t, date: e.date, isPrivate: true }));
+      });
+      (rule.adminExits || []).forEach((e) => {
+        (e.tickers || []).forEach((t) => exits.push({ ticker: t, date: e.date, isPrivate: true }));
       });
     });
     entries.sort((a, b) => b.date.localeCompare(a.date));
     exits.sort((a, b) => b.date.localeCompare(a.date));
     return { allEntries: entries, allExits: exits };
   }, [rules]);
+
+  // 섹션5: 레버리지·인버스 현황 (그룹별 정렬 — 진입 먼저)
+  const privateTrendGroups = useMemo(() => {
+    const snapshotTickers = latestSnapshotPayload?.tickers || {};
+    return PRIVATE_GROUP_DEFS.map(({ typeKey, label }) => {
+      const items = (privateTickersByGroup[typeKey] || []).map((meta) => {
+        const ticker = meta.ticker.toUpperCase();
+        const snap = snapshotTickers[ticker]?.snapshot || null;
+        const isQualified = snap?.isAtchuQualified200 ?? null;
+        return { ticker, nameKo: meta.name_ko || meta.ticker, businessArea: meta.business_area || "", isQualified, snap };
+      });
+      items.sort((a, b) => {
+        if (a.isQualified === b.isQualified) return a.ticker.localeCompare(b.ticker);
+        if (a.isQualified === true) return -1;
+        if (b.isQualified === true) return 1;
+        return 0;
+      });
+      return { typeKey, label, items };
+    });
+  }, []);
 
   const dateRangeLabel = useMemo(() => {
     if (recentTradingDates && recentTradingDates.length > 0) {
@@ -129,8 +190,12 @@ export default function StockOverviewPage() {
   }, [recentTradingDates]);
 
   const badgeLabel = (t) => {
-    const meta = stockTickerMetaMap.get(t.toUpperCase());
-    return meta?.nameKo ? `${t}(${meta.nameKo})` : t;
+    const key = t.toUpperCase();
+    const stockMeta = stockTickerMetaMap.get(key);
+    if (stockMeta?.nameKo) return `${t}(${stockMeta.nameKo})`;
+    const privMeta = privateTickerMeta.get(key);
+    if (privMeta?.name_ko) return `${t}(${privMeta.name_ko})`;
+    return t;
   };
 
   return (
@@ -170,8 +235,11 @@ export default function StockOverviewPage() {
               ) : (
                 <div className="trend-column-list">
                   {allEntries.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/_dev_trend_list/${item.ticker}`} className="trend-signal-item entry">
-                      <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
+                    <Link key={`${item.ticker}-${item.date}-${item.isPrivate}`} to={`/_dev_trend_list/${item.ticker}`} className={`trend-signal-item entry${item.isPrivate ? " private" : ""}`}>
+                      <span className="trend-signal-item-name">
+                        {item.isPrivate && <span className="private-badge">LVG</span>}
+                        {badgeLabel(item.ticker)}
+                      </span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
                   ))}
@@ -185,8 +253,11 @@ export default function StockOverviewPage() {
               ) : (
                 <div className="trend-column-list">
                   {allExits.map((item) => (
-                    <Link key={`${item.ticker}-${item.date}`} to={`/_dev_trend_list/${item.ticker}`} className="trend-signal-item exit">
-                      <span className="trend-signal-item-name">{badgeLabel(item.ticker)}</span>
+                    <Link key={`${item.ticker}-${item.date}-${item.isPrivate}`} to={`/_dev_trend_list/${item.ticker}`} className={`trend-signal-item exit${item.isPrivate ? " private" : ""}`}>
+                      <span className="trend-signal-item-name">
+                        {item.isPrivate && <span className="private-badge">LVG</span>}
+                        {badgeLabel(item.ticker)}
+                      </span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
                     </Link>
                   ))}
@@ -214,6 +285,34 @@ export default function StockOverviewPage() {
             if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
         />
+      </div>
+
+      {/* 레버리지·인버스 현황 */}
+      <div className="bento-card">
+        <div className="bento-card-title">레버리지·인버스 현황</div>
+        <div className="bento-card-subtitle">앗추 필터 통과 여부 기준 · 진입 중인 항목 먼저 표시</div>
+        <div className="leverage-groups">
+          {privateTrendGroups.map(({ typeKey, label, items }) => (
+            <div key={typeKey} className="leverage-group">
+              <div className="leverage-group-label">{label}</div>
+              <div className="leverage-group-items">
+                {items.map((item) => (
+                  <Link
+                    key={item.ticker}
+                    to={`/_dev_trend_list/${item.ticker}`}
+                    className={`leverage-item${item.isQualified === true ? " qualified" : item.isQualified === false ? " not-qualified" : ""}`}
+                  >
+                    <span className={`leverage-status-badge${item.isQualified === true ? " in" : item.isQualified === false ? " out" : ""}`}>
+                      {item.isQualified === true ? "진입" : item.isQualified === false ? "하락" : "-"}
+                    </span>
+                    <span className="leverage-item-name">{item.ticker}</span>
+                    <span className="leverage-item-desc">{item.nameKo}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 시장 히트맵 */}
