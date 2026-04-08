@@ -80,7 +80,6 @@ const GiantsPredictionPage = React.lazy(() => import("../pages/columns/GiantsPre
 const BearMarketSignalsPage = React.lazy(() => import("../pages/columns/BearMarketSignalsPage"));
 
 // 개발자 페이지
-const PasswordGate = React.lazy(() => import("../components/auth/PasswordGate"));
 const DevPage = React.lazy(() => import("../pages/DevPage"));
 const StockListPage = React.lazy(() => import("../pages/StockListPage"));
 const StockDetailPage = React.lazy(() => import("../pages/StockDetailPage"));
@@ -239,29 +238,29 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/atchu_filter_sell_criteria" element={<AtchuFilterSellCriteriaPage />} />
 
         {/* 개발자 전용 (숨김) */}
-        <Route path="/_dev" element={<BentoLayout><PasswordGate><DevPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_trend_list" element={<BentoLayout><PasswordGate><StockListPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_trend_list/:ticker" element={<BentoLayout><PasswordGate><StockDetailPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_market_overview" element={<BentoLayout><PasswordGate><StockOverviewPage /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev" element={<BentoLayout><DevPage /></BentoLayout>} />
+        <Route path="/_dev_trend_list" element={<BentoLayout><StockListPage /></BentoLayout>} />
+        <Route path="/_dev_trend_list/:ticker" element={<BentoLayout><StockDetailPage /></BentoLayout>} />
+        <Route path="/_dev_market_overview" element={<BentoLayout><StockOverviewPage /></BentoLayout>} />
         {/* 이전 개발자 URL 리다이렉트 */}
         <Route path="/_stocks" element={<Navigate to="/_dev_trend_list" replace />} />
         <Route path="/_stocks/:ticker" element={<Navigate to="/_dev_trend_list" replace />} />
         <Route path="/_stocks_overview" element={<Navigate to="/_dev_market_overview" replace />} />
-        <Route path="/_dev_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/haa" element={<BentoLayout><PasswordGate><HaaQuantPeekPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/faber-sector" element={<BentoLayout><PasswordGate><FaberSectorPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/risk-parity" element={<BentoLayout><PasswordGate><AllWeatherPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/trend-following" element={<BentoLayout><PasswordGate><TrendFollowingPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/dm-gem" element={<BentoLayout><PasswordGate><DualMomentumPage variant="gem" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/dm-adm" element={<BentoLayout><PasswordGate><DualMomentumPage variant="adm" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/dm-cdm" element={<BentoLayout><PasswordGate><DualMomentumPage variant="cdm" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/dm-sector" element={<BentoLayout><PasswordGate><DualMomentumPage variant="sector" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/business-cycle" element={<BentoLayout><PasswordGate><BusinessCyclePage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/multi-factor" element={<BentoLayout><PasswordGate><QvmPage /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/qvm-ew" element={<BentoLayout><PasswordGate><QvmDiyPage variant="qvmEw" /></PasswordGate></BentoLayout>} />
-        <Route path="/_dev_quant/qvm-mom" element={<BentoLayout><PasswordGate><QvmDiyPage variant="qvmMom" /></PasswordGate></BentoLayout>} />
+        <Route path="/_dev_quant" element={<BentoLayout><QuantHubPage /></BentoLayout>} />
+        <Route path="/_dev_quant/baa-a" element={<BentoLayout><BaaQuantPeekPage variant="aggressive" /></BentoLayout>} />
+        <Route path="/_dev_quant/baa-b" element={<BentoLayout><BaaQuantPeekPage variant="balanced" /></BentoLayout>} />
+        <Route path="/_dev_quant/haa" element={<BentoLayout><HaaQuantPeekPage /></BentoLayout>} />
+        <Route path="/_dev_quant/faber-sector" element={<BentoLayout><FaberSectorPage /></BentoLayout>} />
+        <Route path="/_dev_quant/risk-parity" element={<BentoLayout><AllWeatherPage /></BentoLayout>} />
+        <Route path="/_dev_quant/trend-following" element={<BentoLayout><TrendFollowingPage /></BentoLayout>} />
+        <Route path="/_dev_quant/dm-gem" element={<BentoLayout><DualMomentumPage variant="gem" /></BentoLayout>} />
+        <Route path="/_dev_quant/dm-adm" element={<BentoLayout><DualMomentumPage variant="adm" /></BentoLayout>} />
+        <Route path="/_dev_quant/dm-cdm" element={<BentoLayout><DualMomentumPage variant="cdm" /></BentoLayout>} />
+        <Route path="/_dev_quant/dm-sector" element={<BentoLayout><DualMomentumPage variant="sector" /></BentoLayout>} />
+        <Route path="/_dev_quant/business-cycle" element={<BentoLayout><BusinessCyclePage /></BentoLayout>} />
+        <Route path="/_dev_quant/multi-factor" element={<BentoLayout><QvmPage /></BentoLayout>} />
+        <Route path="/_dev_quant/qvm-ew" element={<BentoLayout><QvmDiyPage variant="qvmEw" /></BentoLayout>} />
+        <Route path="/_dev_quant/qvm-mom" element={<BentoLayout><QvmDiyPage variant="qvmMom" /></BentoLayout>} />
         <Route path="/_dev_quant/dual-momentum" element={<Navigate to="/_dev_quant/dm-gem" replace />} />
         <Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
         {/* 기존 URL 리다이렉트 */}
