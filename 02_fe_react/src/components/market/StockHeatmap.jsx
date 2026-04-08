@@ -4,9 +4,19 @@ import { Link } from "react-router-dom";
 const PERIOD_SNAPSHOT_KEYS = {
   "1d": "percentChangeFromPreviousClose",
   "5d": "percentChange5d",
+  "21d": "percentChange21d",
   "63d": "percentChange63d",
   "252d": "percentChange252d",
   "1260d": "percentChange1260d"
+};
+
+const PERIOD_CONTEXT_LABELS = {
+  "1d": "1일",
+  "5d": "1주",
+  "21d": "1개월",
+  "63d": "3개월",
+  "252d": "1년",
+  "1260d": "5년"
 };
 
 const formatPercent = (value) => {
@@ -75,9 +85,9 @@ const getAtchuLevel = (maDist, isAtchuQualified) => {
 };
 
 const BADGE_META = {
-  qualified: { label: "진입", cls: "atchu-badge--qualified" },
-  caution: { label: "주의", cls: "atchu-badge--caution" },
-  down: { label: "하락", cls: "atchu-badge--down" }
+  qualified: { label: "통과", cls: "atchu-badge--qualified" },
+  caution: { label: "대기", cls: "atchu-badge--caution" },
+  down: { label: "이탈", cls: "atchu-badge--down" }
 };
 
 const sortByAtchu = (items) =>
@@ -100,20 +110,41 @@ const sortByValue = (items, getValue) =>
     return bv - av;
   });
 
-const Tile = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, baseLinkPath }) => {
-  const displayValue = isPeriodMode ? periodValue : item.maDist;
+const Tile = React.memo(({ item, maDistScale, periodValue, periodScale, isPeriodMode, periodKey, baseLinkPath }) => {
   const style = isPeriodMode
     ? getPeriodHeatStyle(periodValue, periodScale)
     : getAtchuHeatStyle(item.maDist, item.isAtchuQualified, maDistScale);
-  const level = isPeriodMode ? null : getAtchuLevel(item.maDist, item.isAtchuQualified);
+  const level = getAtchuLevel(item.maDist, item.isAtchuQualified);
   const badge = level ? BADGE_META[level] : null;
-  const trendDays = isPeriodMode ? null : item.trendDays;
+  const trendDays = item.trendDays;
   return (
     <Link to={`${baseLinkPath || "/_dev_trend_list"}/${item.ticker}`} className="report-overview-card" style={style}>
-      <div className="report-overview-card-title">{item.label || item.ticker}</div>
-      {item.nameKo && <div className="report-overview-card-name-ko">{item.nameKo}</div>}
-      <div className="report-overview-card-value">{formatPercent(displayValue)}</div>
-      {badge && <div className={`atchu-badge ${badge.cls}`}>● {badge.label}</div>}
+      <div className="report-overview-card-title">
+        {badge && <span className={`atchu-badge ${badge.cls}`}>{badge.label}</span>}
+        <span className="report-overview-card-title-text">
+          {item.label || item.ticker}
+          {item.nameKo && (
+            <span className="report-overview-card-title-label"> {item.nameKo}</span>
+          )}
+        </span>
+      </div>
+      {isPeriodMode ? (
+        <>
+          <div className="report-overview-card-value">
+            <span className="report-overview-card-value-prefix">{PERIOD_CONTEXT_LABELS[periodKey] || ""} </span>
+            {formatPercent(periodValue)}
+          </div>
+          <div className="report-overview-card-period-row">
+            <span className="report-overview-card-value-prefix">MA200대비 </span>
+            {formatPercent(item.maDist)}
+          </div>
+        </>
+      ) : (
+        <div className="report-overview-card-value">
+          <span className="report-overview-card-value-prefix">MA200대비 </span>
+          {formatPercent(item.maDist)}
+        </div>
+      )}
       {trendDays !== null && trendDays !== undefined && (
         <div className="report-overview-card-days">
           {trendDays.direction === "up" ? "▲" : "▼"} {trendDays.days}일째
@@ -228,6 +259,7 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
         periodValue={isPeriodMode ? getPeriodValue(item.ticker) : null}
         periodScale={periodScale}
         isPeriodMode={isPeriodMode}
+        periodKey={periodKey}
         baseLinkPath={baseLinkPath}
       />
     ));
@@ -247,11 +279,11 @@ export default function StockHeatmap({ snapshotPayload, overviewTickers = [], pe
               </>
             ) : (
               <>
-                <span className="atchu-badge atchu-badge--qualified">● 진입 {summary.qualified}</span>
+                <span className="atchu-badge atchu-badge--qualified">통과 {summary.qualified}</span>
                 {" · "}
-                <span className="atchu-badge atchu-badge--caution">● 주의 {summary.caution}</span>
+                <span className="atchu-badge atchu-badge--caution">대기 {summary.caution}</span>
                 {" · "}
-                <span className="atchu-badge atchu-badge--down">● 하락 {summary.down}</span>
+                <span className="atchu-badge atchu-badge--down">이탈 {summary.down}</span>
               </>
             )}
           </div>
