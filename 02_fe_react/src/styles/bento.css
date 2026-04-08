@@ -742,6 +742,10 @@ a.trend-signal-item {
   letter-spacing: 0.03em;
   vertical-align: middle;
 }
+.private-badge.inv {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
 
 /* 레버리지·인버스 현황 (섹션5) */
 .leverage-groups {

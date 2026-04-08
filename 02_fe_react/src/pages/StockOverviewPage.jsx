@@ -150,10 +150,18 @@ export default function StockOverviewPage() {
     // 레버리지·인버스 admin 신호 합산
     (latestTrendNotificationPayload?.rules || []).forEach((rule) => {
       (rule.adminEntries || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => entries.push({ ticker: t, date: e.date, isPrivate: true }));
+        (e.tickers || []).forEach((t) => {
+          const type = privateTickerMeta.get(t.toUpperCase())?.type || "";
+          const isInverse = type.includes("인버스");
+          entries.push({ ticker: t, date: e.date, isPrivate: true, isInverse });
+        });
       });
       (rule.adminExits || []).forEach((e) => {
-        (e.tickers || []).forEach((t) => exits.push({ ticker: t, date: e.date, isPrivate: true }));
+        (e.tickers || []).forEach((t) => {
+          const type = privateTickerMeta.get(t.toUpperCase())?.type || "";
+          const isInverse = type.includes("인버스");
+          exits.push({ ticker: t, date: e.date, isPrivate: true, isInverse });
+        });
       });
     });
     entries.sort((a, b) => b.date.localeCompare(a.date));
@@ -237,7 +245,7 @@ export default function StockOverviewPage() {
                   {allEntries.map((item) => (
                     <Link key={`${item.ticker}-${item.date}-${item.isPrivate}`} to={`/_dev_trend_list/${item.ticker}`} className={`trend-signal-item entry${item.isPrivate ? " private" : ""}`}>
                       <span className="trend-signal-item-name">
-                        {item.isPrivate && <span className="private-badge">LVG</span>}
+                        {item.isPrivate && <span className={`private-badge${item.isInverse ? " inv" : ""}`}>{item.isInverse ? "INV" : "LVG"}</span>}
                         {badgeLabel(item.ticker)}
                       </span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
@@ -255,7 +263,7 @@ export default function StockOverviewPage() {
                   {allExits.map((item) => (
                     <Link key={`${item.ticker}-${item.date}-${item.isPrivate}`} to={`/_dev_trend_list/${item.ticker}`} className={`trend-signal-item exit${item.isPrivate ? " private" : ""}`}>
                       <span className="trend-signal-item-name">
-                        {item.isPrivate && <span className="private-badge">LVG</span>}
+                        {item.isPrivate && <span className={`private-badge${item.isInverse ? " inv" : ""}`}>{item.isInverse ? "INV" : "LVG"}</span>}
                         {badgeLabel(item.ticker)}
                       </span>
                       <span className="trend-signal-item-date">{formatShortDate(item.date)}</span>
