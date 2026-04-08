@@ -88,6 +88,49 @@
     {
       "type": "성장",
       "asset_type": "성장",
+      "ticker": "MGK",
+      "name": "Vanguard Mega Cap Growth ETF",
+      "name_ko": "메가캡 성장주",
+      "business_area": "미국 초대형 성장주 (CRSP US Mega Cap Growth)",
+      "heatmap_label": "메가캡성장",
+      "short_description": "미국 시총 상위 초대형 성장주 약 64개. NVIDIA·Apple·Microsoft·Alphabet·Meta 집중. 비용 0.07%로 저렴.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "초대형 성장주만 담아 VUG 대비 집중도가 높지만 유동성은 충분하다. 빅테크 강세·약세 추세가 뚜렷하게 반영된다.",
+        "operation_notes": "120/200일선 + 확인 필터 기준 동일 적용. 기술주 비중이 매우 높으므로 코어보다 보조 포지션이 적합하다."
+      },
+      "tags": [
+        "성장",
+        "메가캡",
+        "초대형주",
+        "뱅가드"
+      ]
+    },
+    {
+      "type": "성장",
+      "asset_type": "성장",
+      "ticker": "FNGS",
+      "name": "MicroSectors FANG+ ETN",
+      "name_ko": "FANG+ ETN",
+      "business_area": "NYSE FANG+ 10대 빅테크 동일비중 (ETN)",
+      "heatmap_label": "FANG+",
+      "short_description": "META·Apple·NVIDIA·Tesla 등 빅테크 10종목 동일비중 추종 ETN. ETF 아닌 ETN 구조로 발행사(BMO) 신용 리스크 존재.",
+      "trend_following": {
+        "suitability": "적합",
+        "reason": "10대 빅테크를 동일비중으로 담아 특정 종목 쏠림 없이 메가캡 기술주 전체 추세를 추적한다. MAGS와 유사하나 FANG+ 기준으로 Netflix·AMD 등이 포함된다.",
+        "operation_notes": "120/200일선 + 확인 필터 기준 동일 적용. ETN(상장지수채권) 구조로 ETF와 달리 발행사 신용 위험이 존재한다. 위성 자산 수준으로 비중을 제한할 것."
+      },
+      "tags": [
+        "성장",
+        "빅테크",
+        "FANG+",
+        "동일비중",
+        "ETN"
+      ]
+    },
+    {
+      "type": "성장",
+      "asset_type": "성장",
       "ticker": "MAGS",
       "name": "Roundhill Magnificent Seven ETF",
       "name_ko": "매그니피센트 7",
