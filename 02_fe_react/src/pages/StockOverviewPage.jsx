@@ -178,7 +178,8 @@ export default function StockOverviewPage() {
         const ticker = meta.ticker.toUpperCase();
         const snap = snapshotTickers[ticker]?.snapshot || null;
         const isQualified = snap?.isAtchuQualified200 ?? null;
-        return { ticker, nameKo: meta.name_ko || meta.ticker, businessArea: meta.business_area || "", isQualified, snap };
+        const maDist = Number.isFinite(Number(snap?.percentDiff200)) ? Number(snap.percentDiff200) : null;
+        return { ticker, nameKo: meta.name_ko || meta.ticker, businessArea: meta.business_area || "", isQualified, maDist, snap };
       });
       items.sort((a, b) => {
         if (a.isQualified === b.isQualified) return a.ticker.localeCompare(b.ticker);
@@ -309,10 +310,10 @@ export default function StockOverviewPage() {
                   <Link
                     key={item.ticker}
                     to={`/_dev_trend_list/${item.ticker}`}
-                    className={`leverage-item${item.isQualified === true ? " qualified" : item.isQualified === false ? " not-qualified" : ""}`}
+                    className={`leverage-item${item.isQualified === true ? " qualified" : item.maDist !== null && item.maDist >= 0 ? " caution" : " not-qualified"}`}
                   >
-                    <span className={`leverage-status-badge${item.isQualified === true ? " in" : item.isQualified === false ? " out" : ""}`}>
-                      {item.isQualified === true ? "진입" : item.isQualified === false ? "하락" : "-"}
+                    <span className={`leverage-status-badge${item.isQualified === true ? " in" : item.maDist !== null && item.maDist >= 0 ? " caution" : " out"}`}>
+                      {item.isQualified === true ? "통과" : item.maDist !== null && item.maDist >= 0 ? "대기" : "이탈"}
                     </span>
                     <span className="leverage-item-name">{item.ticker}</span>
                     <span className="leverage-item-desc">{item.nameKo}</span>
