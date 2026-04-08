@@ -1038,6 +1038,27 @@ a.leverage-item {
   min-width: 40px;
   text-align: right;
 }
+.sector-wide-diff {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 20px);
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 64px;
+  text-align: right;
+}
+.sector-wide-diff.positive {
+  color: #22c55e;
+}
+.sector-wide-diff.negative {
+  color: #ef5d4f;
+}
+[data-theme="dark"] .sector-wide-diff.positive {
+  color: #4ade80;
+}
+[data-theme="dark"] .sector-wide-diff.negative {
+  color: #f87171;
+}
 /* 서브섹터 4열 그리드 */
 .sub-sector-grid {
   display: grid;

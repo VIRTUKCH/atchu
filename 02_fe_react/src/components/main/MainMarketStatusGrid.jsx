@@ -67,6 +67,11 @@ export default function MainMarketStatusGrid({ items, onTypeSelect, onSubSelect 
               </div>
               <span className="sector-wide-ratio">{toPercent(ratio)}</span>
               <span className="sector-wide-count">{counts.above}/{counts.total}</span>
+              {counts.avgDiff200 != null && (
+                <span className={`sector-wide-diff ${counts.avgDiff200 >= 0 ? "positive" : "negative"}`}>
+                  {counts.avgDiff200 >= 0 ? "+" : ""}{counts.avgDiff200}%
+                </span>
+              )}
             </div>
             <SubSectorGrid subSectors={counts.subSectors} onSubClick={(sub) => onSubSelect?.(type, sub)} />
           </button>
