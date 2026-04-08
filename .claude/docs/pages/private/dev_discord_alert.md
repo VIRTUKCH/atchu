@@ -23,11 +23,15 @@
 
 ## 발송 채널
 
-| 환경변수 | 용도 |
-|---------|------|
-| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | 파이프라인 상태 메시지 + 추세 변화 신호 모두 |
+| 환경변수 | 알림 유형 |
+|---------|----------|
+| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | **시스템 알림** (파이프라인 상태) + **신호 알림** (추세 변화) |
 
-> `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`은 제거. 모든 관리자 알림을 한 채널(`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`)로 통합한다.
+두 유형은 성격이 다르지만 같은 채널로 수신한다.
+- **시스템 알림**: `[타임스탬프] 이벤트명` 형식, 파이프라인 실행 흐름 추적용
+- **신호 알림**: `# [관리자] 추세 변화 알림` 형식, 투자 판단용 추세 신호
+
+> 이전에 사용하던 `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`(시스템 알림 전용)은 제거되었다.
 
 ---
 
@@ -164,7 +168,12 @@ stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
 
 ## 현재 구현 상태
 
-- [x] 모든 관리자 알림을 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` 하나로 통합
-- [x] 파이프라인 상태 메시지 (PIPELINE START / NOTIFICATIONS START·DONE / DAILY SUMMARY SENT / TREND NOTIFY SENT·FAIL)
+**시스템 알림** (파이프라인 상태 추적)
+- [x] PIPELINE START / NOTIFICATIONS START·DONE / DAILY SUMMARY SENT / TREND NOTIFY SENT·FAIL
+
+**신호 알림** (추세 변화)
 - [x] 레버리지·인버스 + 개별주 추세 변화 신호 통합 — 변화 있을 때만 발송, 1800자 청크 분할
-- [x] 통합 알림 메시지 포맷 (`# [관리자] 추세 변화 알림 ...`)
+- [x] 통합 메시지 포맷 (`# [관리자] 추세 변화 알림 ...`)
+
+**채널**
+- [x] 두 유형 모두 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` 단일 채널로 수신
