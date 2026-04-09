@@ -1274,6 +1274,26 @@ a.topnav-brand {
   color: #1d5bff;
 }
 
+.chart-volume-up {
+  fill: #d6473b;
+  opacity: 0.5;
+}
+
+.chart-volume-down {
+  fill: #1d5bff;
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .chart-volume-up {
+  fill: #f87171;
+  opacity: 0.45;
+}
+
+[data-theme="dark"] .chart-volume-down {
+  fill: #60a5fa;
+  opacity: 0.45;
+}
+
 [data-theme="dark"] .trend-block {
   background: linear-gradient(135deg, #1a1a2e 0%, #1a2040 55%, #2a1a20 100%);
 }

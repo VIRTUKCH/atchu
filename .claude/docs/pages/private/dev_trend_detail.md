@@ -30,12 +30,13 @@
 | 순서 | 컴포넌트 | 내용 |
 |---|---|---|
 | 1 | EtfSummaryCard | 현재가, 이격률, 앗추 필터 상태, **골든크로스/데드크로스 배지**, CAGR, MDD |
-| 2 | PriceTrendChart (1Y) | 최근 1년 가격 + **MA50(초록)/MA200(주황)** |
-| 3 | PriceTrendChart (5Y) | 최근 5년 가격 + MA50/MA200 |
-| 4 | StrategyComparisonCard | 매수후보유 vs 200일선 vs 앗추 필터 비교 |
-| 5 | TrendCrossingHistoryCard | 200일선 돌파 이력 테이블 |
-| 6 | **MonthlyReturnsHeatmap** | **월별 수익률 히트맵** (ETF 상세와 동일, CSV 기반) |
-| 7 | AdvancedMetricsCard | 샤프비율, 소르티노, 승률, 평균보유일수 |
+| 2 | PriceTrendChart (3M 일봉) | 최근 3개월 캔들 + MA50/MA200 + **거래량 서브차트** |
+| 3 | PriceTrendChart (1Y 주봉) | 최근 1년 캔들 + MA50/MA200 + **거래량 서브차트** |
+| 4 | PriceTrendChart (5Y 월봉) | 최근 5년 캔들 + MA50/MA200 + **거래량 서브차트** |
+| 5 | StrategyComparisonCard | 매수후보유 vs 200일선 vs 앗추 필터 비교 |
+| 6 | TrendCrossingHistoryCard | 200일선 돌파 이력 테이블 |
+| 7 | **MonthlyReturnsHeatmap** | **월별 수익률 히트맵** (ETF 상세와 동일, CSV 기반) |
+| 8 | AdvancedMetricsCard | 샤프비율, 소르티노, 승률, 평균보유일수 |
 
 ---
 
@@ -53,15 +54,21 @@
 
 ## 골든크로스 / 데드크로스
 
-### 차트 2개 라인
+### 차트 구성
 
-| 라인 | 색상 | CSS 클래스 |
+| 라인/요소 | 색상 | CSS 클래스 |
 |------|------|-----------|
 | 종가 | 파랑 (기존) | `.chart-close` |
 | MA50 | 초록 `#16a34a` / 다크 `#4ade80` | `.chart-ma50` |
-| MA200 | 주황 `#6b6f7a` (기존) | `.chart-ma200` |
+| MA200 | 주황 `#b45309` / 다크 `#facc15` | `.chart-ma200` |
+| 거래량 바 (상승) | 빨강 `#d6473b` opacity 0.5 / 다크 `#f87171` | `.chart-volume-up` |
+| 거래량 바 (하락) | 파랑 `#1d5bff` opacity 0.5 / 다크 `#60a5fa` | `.chart-volume-down` |
 
-범례는 MA50 데이터가 있을 때만 조건부 표시.
+- 범례는 MA50 데이터가 있을 때만 조건부 표시.
+- 거래량 서브차트는 `PriceTrendChart`의 `showVolume={true}` prop으로 활성화 (관리자 전용).
+- 공개 ETF 상세 페이지(`/trend_list/:ticker`)에는 `showVolume` 미전달 → 기존 동작 유지.
+- 거래량 y축: 최대값(M/B/K 포맷)과 절반값 2개 포인트 표시.
+- 캔들 방향(시가 대비 종가)에 따라 상승/하락 색상 자동 적용.
 
 ### 카드 크로스 인디케이터 (goldenCross)
 

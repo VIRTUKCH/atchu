@@ -24,7 +24,8 @@ export default function PriceTrendChart({
   title = "가격/이평선 그래프",
   series = [],
   variant = "line",
-  periodType = "daily"
+  periodType = "daily",
+  showVolume = false
 }) {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [tooltipXPct, setTooltipXPct] = useState(0);
@@ -32,7 +33,9 @@ export default function PriceTrendChart({
   const svgRef = useRef(null);
   const cardRef = useRef(null);
 
-  const height = 260;
+  const volumeHeight = 70;
+  const volumeGap = 10;
+  const height = showVolume ? 260 + volumeGap + volumeHeight + 22 : 260;
   const width = 1000;
   const paddingX = 24;
   const paddingY = 18;
@@ -41,9 +44,15 @@ export default function PriceTrendChart({
   const plotLeft = paddingX + axisLeftSpace;
   const plotRight = width - paddingX;
   const plotTop = paddingY;
-  const plotBottom = height - paddingY - axisBottomSpace;
+  const plotBottom = showVolume
+    ? height - paddingY - axisBottomSpace - volumeHeight - volumeGap
+    : height - paddingY - axisBottomSpace;
   const plotWidth = plotRight - plotLeft;
   const plotHeight = plotBottom - plotTop;
+
+  const volTop = showVolume ? plotBottom + volumeGap : 0;
+  const volBottom = showVolume ? height - paddingY - axisBottomSpace : 0;
+  const volHeight = showVolume ? volBottom - volTop : 0;
 
   if (!series.length) {
     return (
@@ -91,6 +100,16 @@ export default function PriceTrendChart({
     }
     return segments;
   };
+
+  const volumes = showVolume ? series.map((item) => item?.volume ?? 0) : [];
+  const maxVolume = showVolume ? Math.max(...volumes, 1) : 1;
+  const toVolBarHeight = (vol) => ((vol ?? 0) / maxVolume) * volHeight;
+  const volumeYTicks = showVolume
+    ? [
+        { value: maxVolume, y: volTop },
+        { value: maxVolume / 2, y: volTop + volHeight / 2 },
+      ]
+    : [];
 
   const handleMouseMove = (e) => {
     if (!svgRef.current || !series.length || variant !== "candle") return;
@@ -357,6 +376,63 @@ export default function PriceTrendChart({
             className="chart-line chart-ma200"
           />
         ))}
+        {showVolume && (
+          <>
+            <line
+              x1={plotLeft}
+              y1={volTop}
+              x2={plotLeft}
+              y2={volBottom}
+              className="chart-axis"
+            />
+            <line
+              x1={plotLeft}
+              y1={volBottom}
+              x2={plotRight}
+              y2={volBottom}
+              className="chart-axis"
+            />
+            {volumeYTicks.map((tick, index) => (
+              <g key={`vy-${index}`}>
+                <line
+                  x1={plotLeft - 4}
+                  y1={tick.y}
+                  x2={plotLeft}
+                  y2={tick.y}
+                  className="chart-tick"
+                />
+                <text
+                  x={plotLeft - 8}
+                  y={tick.y + 4}
+                  textAnchor="end"
+                  className="chart-axis-label"
+                >
+                  {formatVolume(tick.value)}
+                </text>
+              </g>
+            ))}
+            {series.map((item, index) => {
+              const vol = item?.volume ?? 0;
+              if (!vol) return null;
+              const barH = toVolBarHeight(vol);
+              const x = plotLeft + (series.length <= 1 ? 0 : (index / (series.length - 1)) * plotWidth);
+              const barW = Math.max(1, Math.min(8, plotWidth / Math.max(1, series.length) * 0.7));
+              const isUp = variant === "candle"
+                ? (item?.closeRaw ?? item?.close ?? 0) >= (item?.open ?? item?.closeRaw ?? item?.close ?? 0)
+                : true;
+              return (
+                <rect
+                  key={`vol-${index}`}
+                  x={x - barW / 2}
+                  y={volBottom - barH}
+                  width={barW}
+                  height={barH}
+                  className={isUp ? "chart-volume-up" : "chart-volume-down"}
+                />
+              );
+            })}
+          </>
+        )}
       </svg>
     </div>
   );

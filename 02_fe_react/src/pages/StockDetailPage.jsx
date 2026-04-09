@@ -177,18 +177,21 @@ export default function StockDetailPage() {
             series={chartSeries.threeMonth?.items || []}
             variant="candle"
             periodType="daily"
+            showVolume={true}
           />
           <PriceTrendChart
             title="최근 1년 그래프 (주봉)"
             series={chartSeries.oneYearWeekly?.items || []}
             variant="candle"
             periodType="weekly"
+            showVolume={true}
           />
           <PriceTrendChart
             title="최근 5년 그래프 (월봉)"
             series={chartSeries.fiveYearMonthly?.items || []}
             variant="candle"
             periodType="monthly"
+            showVolume={true}
           />
           <StrategyComparisonCard
             buyHold={drawdownStats?.buyHold || null}
