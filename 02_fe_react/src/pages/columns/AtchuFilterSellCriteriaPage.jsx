@@ -72,7 +72,7 @@ export default function AtchuFilterSellCriteriaPage() {
 
       <ColumnCallout label="앗추의 기본 전제">
         앗추 서비스의 핵심 원칙은 명확합니다.{" "}
-        <strong>앗추 필터를 처음 돌파하는 시점에 매수하는 것이 가장 이상적입니다.</strong>{" "}
+        <strong>앗추 필터를 처음 돌파하는 시점이 리스크 대비 기대수익이 가장 높은 구간으로 볼 수 있습니다.</strong>{" "}
         그때 진입하면 추세의 시작부터 올라타고, 리스크 대비 기대수익이 가장 높습니다.
         <br />
         <br />
@@ -160,7 +160,7 @@ export default function AtchuFilterSellCriteriaPage() {
         branches={[
           {
             label: "앗추 필터 돌파 시점 (최적 타이밍)",
-            text: "즉시 매수. 이것이 앗추 서비스가 추구하는 가장 이상적인 진입 시점입니다.",
+            text: "리스크 대비 기대수익이 가장 높은 구간입니다. 추세의 시작부터 올라탈 수 있는 시점입니다.",
             variant: "good",
           },
           {

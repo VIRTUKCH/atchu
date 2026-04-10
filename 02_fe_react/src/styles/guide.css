@@ -510,3 +510,12 @@
     padding: 0 var(--layout-gutter-mobile, 16px);
   }
 }
+
+/* ── Disclaimer ── */
+.guide-disclaimer {
+  font-size: clamp(11px, calc(9.8px + 0.33vw), 13px);
+  color: var(--ink-muted, #888);
+  text-align: center;
+  line-height: 1.7;
+  padding: 24px 0 8px;
+}

@@ -183,7 +183,7 @@ export default function TrendGuidePage() {
             <h2 className="guide-step-title">직접 확인해 보세요</h2>
           </div>
           <p className="guide-step-desc">
-            미국 대표 지수 SPY로 시작하는 걸 추천합니다.
+            처음이라면 미국 대표 지수 SPY를 먼저 살펴보세요.
           </p>
           <div className="guide-cta-buttons">
             <Link to="/trend_list/SPY" className="guide-cta-primary">
@@ -193,6 +193,17 @@ export default function TrendGuidePage() {
               85개 ETF 전체 탐색 →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* 면책 */}
+      <section className="guide-step-section">
+        <div className="guide-section-inner">
+          <p className="guide-disclaimer">
+            본 서비스는 투자 참고용 데이터이며, 매수·매도를 권유하지 않습니다.<br />
+            과거 백테스트 결과이며 미래 수익을 보장하지 않습니다.<br />
+            투자 결정과 책임은 전적으로 본인에게 있습니다.
+          </p>
         </div>
       </section>
     </div>

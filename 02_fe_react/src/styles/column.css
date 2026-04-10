@@ -528,6 +528,30 @@
   color: var(--accent);
 }
 
+/* ── 이용약관 등 텍스트 전용 페이지 ── */
+.col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.col-section {
+  padding: 16px 0 8px;
+  border-top: 1px solid var(--line);
+}
+.col-section:first-child {
+  border-top: none;
+}
+.col-section-text {
+  font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
+  color: var(--text);
+  line-height: 1.75;
+  margin: 0 0 10px;
+  word-break: keep-all;
+}
+.col-section-text:last-child {
+  margin-bottom: 0;
+}
+
 /* ── 면책조항 ── */
 .col-disclaimer {
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);

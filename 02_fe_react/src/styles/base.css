@@ -325,6 +325,22 @@ a.topnav-brand {
   color: var(--muted);
   line-height: 1.5;
 }
+.app-footer-links {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app-footer-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+.app-footer-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
 .app-footer-discord {
   flex-shrink: 0;
   font-size: 15px;
@@ -356,6 +372,12 @@ a.topnav-brand {
 }
 
 /* Dark mode: footer */
+[data-theme="dark"] .app-footer-link {
+  color: var(--muted);
+}
+[data-theme="dark"] .app-footer-link:hover {
+  color: var(--text);
+}
 [data-theme="dark"] .app-footer-discord {
   color: #a5b4fc;
 }
