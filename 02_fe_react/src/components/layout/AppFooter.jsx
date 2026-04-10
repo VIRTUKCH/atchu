@@ -18,6 +18,7 @@ export default function AppFooter() {
       </p>
       <div className="app-footer-links">
         <Link to="/terms" className="app-footer-link">이용약관</Link>
+        <Link to="/privacy" className="app-footer-link">개인정보 처리방침</Link>
         {discordInviteUrl && (
           <a
             className="app-footer-discord"

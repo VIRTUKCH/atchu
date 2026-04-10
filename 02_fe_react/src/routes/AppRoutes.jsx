@@ -14,6 +14,7 @@ const MorePage = React.lazy(() => import("../pages/MorePage"));
 const FaqPage = React.lazy(() => import("../pages/FaqPage"));
 const TrendGuidePage = React.lazy(() => import("../pages/TrendGuidePage"));
 const TermsPage = React.lazy(() => import("../pages/TermsPage"));
+const PrivacyPage = React.lazy(() => import("../pages/PrivacyPage"));
 
 // FAQ 페이지
 const MovingAverageFaqPage = React.lazy(() => import("../pages/columns/MovingAverageFaqPage"));
@@ -163,6 +164,7 @@ export default function AppRoutes({ routeModel }) {
         <Route path="/more" element={<BentoLayout><MorePage /></BentoLayout>} />
         <Route path="/faq" element={<BentoLayout><FaqPage /></BentoLayout>} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
 
         {/* FAQ */}
         <Route path="/moving_average_faq" element={<MovingAverageFaqPage />} />
