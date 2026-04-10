@@ -4,7 +4,7 @@
 
 - DevPage(`/_dev`) 허브 → "퀀트 엿보기" 카드 클릭
 - 직접 URL 입력 (`/_dev_quant`)
-- PasswordGate + BentoLayout 적용
+- BentoLayout 적용 (PasswordGate 없음 — 제거됨)
 - 일반 사용자에게 절대 노출되지 않음. 네비게이션·사이트맵·SEO 모두 제외
 
 ## 이 페이지의 목적
@@ -26,25 +26,25 @@
 
 ---
 
-## 전략 목록
+## 전략 목록 (15개 전략, 전체 구현 완료)
 
-| 전략 | 라우트 | 기획 문서 | 상태 |
-|------|--------|----------|------|
-| BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) | 구현 완료 |
-| BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) | 구현 완료 |
-| HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) | 구현 완료 |
-| Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) | 기획 중 |
-| 듀얼 모멘텀 GEM | `/_dev_quant/dm-gem` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
-| 듀얼 모멘텀 ADM | `/_dev_quant/dm-adm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
-| 듀얼 모멘텀 CDM | `/_dev_quant/dm-cdm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
-| 듀얼 모멘텀 섹터 | `/_dev_quant/dm-sector` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) | 구현 완료 |
-| 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) | 구현 완료 |
-| 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) | 구현 완료 |
-| CTA (Commodity Trading Advisor) 동일가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
-| CTA (Commodity Trading Advisor) CAGR가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) | 구현 완료 |
-| 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
-| QVM-EW (균등 배분) | `/_dev_quant/qvm-ew` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
-| QVM-MOM (모멘텀 로테이션) | `/_dev_quant/qvm-mom` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) | 구현 완료 |
+| 티어 | 전략 | 라우트 | 기획 문서 |
+|------|------|--------|----------|
+| 1티어 | 리스크 패리티 / All Weather | `/_dev_quant/risk-parity` | [dev_quant_risk_parity.md](dev_quant_risk_parity.md) |
+| 1티어 | CTA 동일가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) |
+| 1티어 | CTA CAGR가중 | `/_dev_quant/trend-following` | [dev_quant_trend_following.md](dev_quant_trend_following.md) |
+| 1티어 | 멀티팩터 QVM | `/_dev_quant/multi-factor` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) |
+| 1티어 | QVM-EW (균등 배분) | `/_dev_quant/qvm-ew` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) |
+| 1티어 | QVM-MOM (모멘텀 로테이션) | `/_dev_quant/qvm-mom` | [dev_quant_multi_factor.md](dev_quant_multi_factor.md) |
+| 2티어 | Faber 섹터 모멘텀 | `/_dev_quant/faber-sector` | [dev_quant_faber_sector.md](dev_quant_faber_sector.md) |
+| 2티어 | 듀얼 모멘텀 GEM | `/_dev_quant/dm-gem` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) |
+| 2티어 | 듀얼 모멘텀 ADM | `/_dev_quant/dm-adm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) |
+| 2티어 | 듀얼 모멘텀 CDM | `/_dev_quant/dm-cdm` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) |
+| 2티어 | 듀얼 모멘텀 섹터 | `/_dev_quant/dm-sector` | [dev_quant_dual_momentum.md](dev_quant_dual_momentum.md) |
+| 2티어 | 경기순환 섹터 로테이션 | `/_dev_quant/business-cycle` | [dev_quant_business_cycle.md](dev_quant_business_cycle.md) |
+| 3티어 | BAA-A (Aggressive) | `/_dev_quant/baa-a` | [dev_quant_baa_a.md](dev_quant_baa_a.md) |
+| 3티어 | BAA-B (Balanced) | `/_dev_quant/baa-b` | [dev_quant_baa_b.md](dev_quant_baa_b.md) |
+| 3티어 | HAA (Hybrid Asset Allocation) | `/_dev_quant/haa` | [dev_quant_haa.md](dev_quant_haa.md) |
 
 ---
 
@@ -52,15 +52,20 @@
 
 ```
 /_dev_quant              → 퀀트 허브 (전략 카드 리스트 + 수익률 요약)
+/_dev_quant/risk-parity  → 리스크 패리티 / All Weather 상세
+/_dev_quant/trend-following → CTA (동일가중 / CAGR가중) 상세
+/_dev_quant/multi-factor → 멀티팩터 QVM 상세
+/_dev_quant/qvm-ew       → QVM-EW (균등 배분) 상세
+/_dev_quant/qvm-mom      → QVM-MOM (모멘텀 로테이션) 상세
+/_dev_quant/faber-sector → Faber 섹터 모멘텀 상세
+/_dev_quant/dm-gem       → 듀얼 모멘텀 GEM 상세
+/_dev_quant/dm-adm       → 듀얼 모멘텀 ADM 상세
+/_dev_quant/dm-cdm       → 듀얼 모멘텀 CDM 상세
+/_dev_quant/dm-sector    → 듀얼 모멘텀 섹터 상세
+/_dev_quant/business-cycle → 경기순환 섹터 로테이션 상세
 /_dev_quant/baa-a        → BAA Aggressive 상세
 /_dev_quant/baa-b        → BAA Balanced 상세
-/_dev_quant/haa           → HAA 상세
-/_dev_quant/faber-sector → Faber 섹터 모멘텀 상세 (예정)
-/_dev_quant/dual-momentum → 듀얼 모멘텀 상세 (예정)
-/_dev_quant/business-cycle → 경기순환 섹터 로테이션 상세 (예정)
-/_dev_quant/risk-parity   → 리스크 패리티 상세 (예정)
-/_dev_quant/trend-following → 트렌드 팔로잉 상세 (예정)
-/_dev_quant/multi-factor  → 멀티팩터 QVM 상세 (예정)
+/_dev_quant/haa          → HAA 상세
 ```
 
 ### 왜 허브 → 상세 구조인가
@@ -193,50 +198,24 @@ PC:
 
 ### 전략 설정 (SSoT)
 
-`src/config/quantItems.js` — FAQ의 `faqItems.js`와 동일한 패턴:
+`src/config/quantItems.js` — FAQ의 `faqItems.js`와 동일한 패턴.
+**실제 코드는 `quantItems.js` 참조.** 핵심 필드 구조:
 
 ```javascript
+// 티어 순 정렬: 1티어(기관 검증) → 2티어(전문가 검증) → 3티어(연구 단계)
 export const QUANT_STRATEGIES = [
   {
-    id: "baa-a",
-    path: "/_dev_quant/baa-a",
-    label: "BAA-A (Aggressive)",
-    description: "G4 top 1 집중 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
-    status: "active",
-    curveKey: "aggressive",
+    id: "risk-parity",        // 라우트 세그먼트
+    path: "/_dev_quant/risk-parity",
+    label: "리스크 패리티 / All Weather",
+    description: "...",
+    status: "active",         // "active" | "coming_soon"
+    curveKey: "allw",         // equity curve JSON의 키
+    tier: 1,
+    tierLabel: "1티어 (기관 검증)",
+    warning: "⚠️ 데이터 짧음 주의",  // 선택 필드
   },
-  {
-    id: "baa-b",
-    path: "/_dev_quant/baa-b",
-    label: "BAA-B (Balanced)",
-    description: "G12 top 6 분산 투자 — 카나리아 모멘텀 기반 공격/방어 전환",
-    status: "active",
-    curveKey: "balanced",
-  },
-  {
-    id: "faber-sector",
-    path: "/_dev_quant/faber-sector",
-    label: "Faber 섹터 모멘텀",
-    description: "3개월 수익률 상위 3 섹터 + 10개월 SMA 트렌드 필터 — Meb Faber 방식",
-    status: "coming_soon",
-    curveKey: null,
-  },
-  {
-    id: "dual-momentum",
-    path: "/_dev_quant/dual-momentum",
-    label: "듀얼 모멘텀",
-    description: "상대모멘텀(어느 섹터?) + 절대모멘텀(지금 투자할 때?) — Gary Antonacci 방식",
-    status: "coming_soon",
-    curveKey: null,
-  },
-  {
-    id: "business-cycle",
-    path: "/_dev_quant/business-cycle",
-    label: "경기순환 섹터 로테이션",
-    description: "경기 4국면(회복→호황→둔화→침체)별 강세 섹터 매핑 — Sam Stovall 방식",
-    status: "coming_soon",
-    curveKey: null,
-  },
+  // ... (총 15개 전략)
 ];
 ```
 
@@ -259,13 +238,15 @@ export const QUANT_STRATEGIES = [
 
 ## 라우트
 
+PasswordGate 없이 BentoLayout만 사용. 실제 코드는 `AppRoutes.jsx` 참조.
+
 ```jsx
 {/* 퀀트 허브 */}
-<Route path="/_dev_quant" element={<BentoLayout><PasswordGate><QuantHubPage /></PasswordGate></BentoLayout>} />
+<Route path="/_dev_quant" element={<BentoLayout><QuantHubPage /></BentoLayout>} />
 
 {/* BAA 전략 상세 */}
-<Route path="/_dev_quant/baa-a" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="aggressive" /></PasswordGate></BentoLayout>} />
-<Route path="/_dev_quant/baa-b" element={<BentoLayout><PasswordGate><BaaQuantPeekPage variant="balanced" /></PasswordGate></BentoLayout>} />
+<Route path="/_dev_quant/baa-a" element={<BentoLayout><BaaQuantPeekPage variant="aggressive" /></BentoLayout>} />
+<Route path="/_dev_quant/baa-b" element={<BentoLayout><BaaQuantPeekPage variant="balanced" /></BentoLayout>} />
 <Route path="/_dev_quant/baa" element={<Navigate to="/_dev_quant/baa-a" replace />} />
 ```
 

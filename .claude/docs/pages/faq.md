@@ -75,7 +75,7 @@ iPhone SE (375×667) 기준으로 디자인한다. 이 화면에서 잘리거나
 
 ## 현재 구현 상태
 
-- FAQ 9개 완료
+- FAQ 10개 완료
 
 **관련 컴포넌트:** `FaqPage`, `components/column/` (25개 UI 컴포넌트)
 
@@ -109,6 +109,7 @@ config/faqItems.js        ← 단일 원천
 | 4 | 앗추 필터, 근거가 있는 것인가요? | `/moving_average_faq` | MovingAverageFaqPage.jsx |
 | 5 | 앗추 필터, 개별주에도 사용해도 되나요? | `/individual_stock_ma200` | IndividualStockMa200Page.jsx |
 | 6 | 앗추 필터 이미 통과했는데, 중간에 올라타도 될까요? | `/atchu_filter_sell_criteria` | AtchuFilterSellCriteriaPage.jsx |
-| 7 | 팔자마자 왜 오르는 걸까? | `/holding_conviction` | HoldingConvictionPage.jsx |
-| 8 | 지수가 빠져도 오르는 곳이 있다? | `/spy_qqq_decline_rotation` | SpyQqqDeclineRotationPage.jsx |
-| 9 | 수익률만 보면 안 되나요? | `/why_mdd_matters` | WhyMddMattersPage.jsx |
+| 7 | 하락 뉴스가 나왔는데, 앗추 필터는 괜찮다고 합니다 | `/holding_conviction` | HoldingConvictionPage.jsx |
+| 8 | 앗추 필터도 만능은 아닙니다 | `/spy_qqq_decline_rotation` | SpyQqqDeclineRotationPage.jsx |
+| 9 | 수익률이 높아도 비중이 작으면 의미 없습니다 | `/why_mdd_matters` | WhyMddMattersPage.jsx |
+| 10 | 아직 벌어야 할 돈이 많은데, MDD는 조금 덜 봐도 되나요? | `/can_you_handle_mdd` | CanYouHandleMddPage.jsx |
