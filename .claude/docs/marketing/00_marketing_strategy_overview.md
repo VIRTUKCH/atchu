@@ -1,6 +1,6 @@
 # 앗추 마케팅 전략 총괄
 
-> 최종 수정: 2026-04-10 (채널 전략 종목토론방 단일 집중으로 간소화)
+> 최종 수정: 2026-04-11 (인프라 상태 실제 코드 기준으로 업데이트 — Analytics 외 SEO/OG/sitemap/robots/EODHD 완료 반영)
 
 ---
 
@@ -28,17 +28,17 @@
 | 랜딩 페이지 | ✅ 완성 | 6개 섹션, 다크/라이트 모드 |
 | Discord 채널 | ✅ 운영 중 | 일간 리포트 + 추세 알림 자동 발송 |
 | 이용약관 | ✅ 완성 | |
-| Google Analytics | ❌ 없음 | 유입/전환 측정 불가 |
-| SEO 메타태그 | ⚠️ 미비 | meta description 없음, OG 카피 구식 |
-| OG 이미지 | ✅ 있음 | chaeho.store 도메인 하드코딩 |
-| sitemap.xml | ❌ 없음 | 검색 엔진 크롤링 비효율 |
-| robots.txt | ❌ 없음 | |
+| Google Analytics | ❌ 없음 | 유입/전환 측정 불가 — 유일한 미비 항목 |
+| SEO 메타태그 | ✅ 완성 | meta description, og:description, canonical 모두 정비 완료 |
+| OG 이미지 | ✅ 완성 | atchu.co.kr 도메인으로 정상 설정 |
+| sitemap.xml | ✅ 있음 | /public/sitemap.xml — 주요 페이지 등록 완료 |
+| robots.txt | ✅ 있음 | /public/robots.txt — sitemap 경로 명시 완료 |
 | 면책 조항 | ⚠️ 약함 | 푸터에만 간략 표기, 수익률 표시 위치에 없음 |
-| EODHD 데이터 출처 | ⚠️ 미표기 | 사이트 푸터에 명시 필요 |
+| EODHD 데이터 출처 | ✅ 표기됨 | AppFooter.jsx 푸터에 "데이터 출처: EODHD" 명시 완료 |
 
 ### 핵심 문제
 > **마케팅 효과를 측정할 수단이 전혀 없다.**
-> 어떤 채널에서 유입이 오는지, CTA 클릭률이 얼마인지, Discord 전환이 몇 건인지 알 수 없음.
+> Analytics 미설치로 어떤 채널에서 유입이 오는지, CTA 클릭률이 얼마인지, Discord 전환이 몇 건인지 알 수 없음.
 
 ---
 
