@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chaeho.store/sitemap.xml
+Sitemap: https://atchu.co.kr/sitemap.xml

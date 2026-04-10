@@ -2,343 +2,343 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- 메인 -->
   <url>
-    <loc>https://chaeho.store/</loc>
+    <loc>https://atchu.co.kr/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/trend_list</loc>
+    <loc>https://atchu.co.kr/trend_list</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/market_overview</loc>
+    <loc>https://atchu.co.kr/market_overview</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/faq</loc>
+    <loc>https://atchu.co.kr/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/more</loc>
+    <loc>https://atchu.co.kr/more</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- FAQ 서브페이지 -->
   <url>
-    <loc>https://chaeho.store/atchu_strategy</loc>
+    <loc>https://atchu.co.kr/atchu_strategy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/moving_average_history</loc>
+    <loc>https://atchu.co.kr/moving_average_history</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/what_is_moving_average</loc>
+    <loc>https://atchu.co.kr/what_is_moving_average</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/moving_average_faq</loc>
+    <loc>https://atchu.co.kr/moving_average_faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/individual_stock_ma200</loc>
+    <loc>https://atchu.co.kr/individual_stock_ma200</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/atchu_filter_sell_criteria</loc>
+    <loc>https://atchu.co.kr/atchu_filter_sell_criteria</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/holding_conviction</loc>
+    <loc>https://atchu.co.kr/holding_conviction</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/spy_qqq_decline_rotation</loc>
+    <loc>https://atchu.co.kr/spy_qqq_decline_rotation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/why_mdd_matters</loc>
+    <loc>https://atchu.co.kr/why_mdd_matters</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/can_you_handle_mdd</loc>
+    <loc>https://atchu.co.kr/can_you_handle_mdd</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 추세추종 기초 -->
   <url>
-    <loc>https://chaeho.store/golden_dead_cross</loc>
+    <loc>https://atchu.co.kr/golden_dead_cross</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/faber_paper</loc>
+    <loc>https://atchu.co.kr/faber_paper</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 전설적 투자자 -->
   <url>
-    <loc>https://chaeho.store/paul_tudor_jones</loc>
+    <loc>https://atchu.co.kr/paul_tudor_jones</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/stan_weinstein</loc>
+    <loc>https://atchu.co.kr/stan_weinstein</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/ed_seykota</loc>
+    <loc>https://atchu.co.kr/ed_seykota</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/jesse_livermore</loc>
+    <loc>https://atchu.co.kr/jesse_livermore</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/turtle_trader</loc>
+    <loc>https://atchu.co.kr/turtle_trader</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/marty_schwartz</loc>
+    <loc>https://atchu.co.kr/marty_schwartz</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/buffett_vs_hedge</loc>
+    <loc>https://atchu.co.kr/buffett_vs_hedge</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/jack_bogle</loc>
+    <loc>https://atchu.co.kr/jack_bogle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/howard_marks</loc>
+    <loc>https://atchu.co.kr/howard_marks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 위기 분석 -->
   <url>
-    <loc>https://chaeho.store/crisis_2008</loc>
+    <loc>https://atchu.co.kr/crisis_2008</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/dotcom_bubble</loc>
+    <loc>https://atchu.co.kr/dotcom_bubble</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/covid_crash</loc>
+    <loc>https://atchu.co.kr/covid_crash</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/sp500_drawdowns</loc>
+    <loc>https://atchu.co.kr/sp500_drawdowns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/bad_timing_still_wins</loc>
+    <loc>https://atchu.co.kr/bad_timing_still_wins</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 투자 심리 -->
   <url>
-    <loc>https://chaeho.store/crowd_signal</loc>
+    <loc>https://atchu.co.kr/crowd_signal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/dalbar_research</loc>
+    <loc>https://atchu.co.kr/dalbar_research</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/loss_aversion</loc>
+    <loc>https://atchu.co.kr/loss_aversion</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/fear_greed_index</loc>
+    <loc>https://atchu.co.kr/fear_greed_index</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/bear_market_survival</loc>
+    <loc>https://atchu.co.kr/bear_market_survival</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/information_paradox</loc>
+    <loc>https://atchu.co.kr/information_paradox</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/overseas_investor_psychology</loc>
+    <loc>https://atchu.co.kr/overseas_investor_psychology</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 레버리지 -->
   <url>
-    <loc>https://chaeho.store/leverage_faq</loc>
+    <loc>https://atchu.co.kr/leverage_faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/upro_vs_tqqq</loc>
+    <loc>https://atchu.co.kr/upro_vs_tqqq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/volatility_decay</loc>
+    <loc>https://atchu.co.kr/volatility_decay</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/hfea_strategy</loc>
+    <loc>https://atchu.co.kr/hfea_strategy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 거시경제 -->
   <url>
-    <loc>https://chaeho.store/dalio_cycle_guide</loc>
+    <loc>https://atchu.co.kr/dalio_cycle_guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/all_weather_portfolio</loc>
+    <loc>https://atchu.co.kr/all_weather_portfolio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/debt_cycle</loc>
+    <loc>https://atchu.co.kr/debt_cycle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/sector_rotation</loc>
+    <loc>https://atchu.co.kr/sector_rotation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/country_momentum</loc>
+    <loc>https://atchu.co.kr/country_momentum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/vix_explained</loc>
+    <loc>https://atchu.co.kr/vix_explained</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/why_sp500</loc>
+    <loc>https://atchu.co.kr/why_sp500</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/super_cycle</loc>
+    <loc>https://atchu.co.kr/super_cycle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/cpi_stock_market</loc>
+    <loc>https://atchu.co.kr/cpi_stock_market</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/interest_rate</loc>
+    <loc>https://atchu.co.kr/interest_rate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/qe_qt</loc>
+    <loc>https://atchu.co.kr/qe_qt</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/us_economy_players</loc>
+    <loc>https://atchu.co.kr/us_economy_players</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/fed_chairs</loc>
+    <loc>https://atchu.co.kr/fed_chairs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/giants_prediction</loc>
+    <loc>https://atchu.co.kr/giants_prediction</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/bear_market_signals</loc>
+    <loc>https://atchu.co.kr/bear_market_signals</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 칼럼 — 전략 심화 -->
   <url>
-    <loc>https://chaeho.store/buy_hold_vs_trend</loc>
+    <loc>https://atchu.co.kr/buy_hold_vs_trend</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/dca_vs_lump_sum</loc>
+    <loc>https://atchu.co.kr/dca_vs_lump_sum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/peter_lynch_warning</loc>
+    <loc>https://atchu.co.kr/peter_lynch_warning</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/momentum_effect</loc>
+    <loc>https://atchu.co.kr/momentum_effect</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/cta_funds</loc>
+    <loc>https://atchu.co.kr/cta_funds</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/diversification_science</loc>
+    <loc>https://atchu.co.kr/diversification_science</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/risk_adjusted_return</loc>
+    <loc>https://atchu.co.kr/risk_adjusted_return</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chaeho.store/sector_momentum</loc>
+    <loc>https://atchu.co.kr/sector_momentum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
