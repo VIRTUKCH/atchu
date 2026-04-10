@@ -199,7 +199,7 @@ curl -fsS -H "Content-Type: application/json" -X POST \
 |---------|------|
 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | 추세 변화 알림 채널 |
 | `DISCORD_ATCHU_DAILY_SUMMARY_WEBHOOK_URL` | 일간 리포트 채널 |
-| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | 관리자 알림 채널 |
+| `DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL` | 개발자 파이프라인 로그 채널 |
 
 ### 코드 위치
 

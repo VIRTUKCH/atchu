@@ -25,11 +25,11 @@
 
 | 환경변수 | 알림 유형 |
 |---------|----------|
-| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | **시스템 알림** (파이프라인 로그) — `[타임스탬프] 이벤트명` 형식 |
-| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | **신호 알림** (추세 변화) — `# [관리자] 추세 변화 알림` 형식 |
+| `DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL` | **시스템 알림** (파이프라인 로그) — `[타임스탬프] 이벤트명` 형식 |
+| `DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL` | **신호 알림** (추세 변화) — `# [관리자] 추세 변화 알림` 형식 |
 
-- **시스템 알림** (`DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`): 파이프라인 실행 흐름 추적용 로그 전용
-- **신호 알림** (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`): 투자 판단용 추세 신호만 수신
+- **시스템 알림** (`DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL`): 파이프라인 실행 흐름 추적용 로그 전용
+- **신호 알림** (`DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL`): 투자 판단용 추세 신호만 수신
 
 ---
 
@@ -45,7 +45,7 @@
 [YYYY/MM/DD HH:MM:SS] {메시지}
 ```
 
-> `notify()`가 RUN_ID 접두어(`[YYYYMMDD-HHMMSS-PID]`)를 제거하고 사람이 읽기 좋은 timestamp로 교체 후 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`로 전송.
+> `notify()`가 RUN_ID 접두어(`[YYYYMMDD-HHMMSS-PID]`)를 제거하고 사람이 읽기 좋은 timestamp로 교체 후 `DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL`로 전송.
 
 ### 발송되는 메시지 목록
 
@@ -118,7 +118,7 @@
 |------|----------|------------|
 | 대상 티커 | 레버리지·인버스·개별주 제외 | 레버리지·인버스 + 개별주 |
 | 발송 시점 | ETF 파이프라인 완료 후 | 개별주 파이프라인 완료 후 (통합) |
-| 발송 채널 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` |
+| 발송 채널 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | `DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL` |
 
 ---
 
@@ -128,9 +128,9 @@
 
 | 파일 | 역할 |
 |------|------|
-| `02_fe_react/data/scripts/lib/common.sh` | `notify()` — 파이프라인 로그 전송 (`DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`) |
+| `02_fe_react/data/scripts/lib/common.sh` | `notify()` — 파이프라인 로그 전송 (`DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL`) |
 | `02_fe_react/data/scripts/lib/notify.sh` | `send_trend_change_notifications()` — 레버리지·인버스 adminMarkdownBody 생성·저장 (전송 안 함) |
-| `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 + 레버리지·인버스 통합 메시지 생성 및 전송 (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`) |
+| `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 + 레버리지·인버스 통합 메시지 생성 및 전송 (`DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL`) |
 
 ### 실행 흐름
 
@@ -157,7 +157,7 @@ pipeline.sh
 # RUN_ID 접두어 제거 후 timestamp 추가
 message="$(sed -E 's/^\[[0-9]{8}-[0-9]{6}-[0-9]+\][[:space:]]*//' <<< "$message")"
 stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
-# DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL로 POST
+# DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL로 POST
 ```
 
 추세 통합 알림(`combined_body`)은 `pipeline_stock.sh`에서 `send_dev_trend_webhook()`으로 직접 전송하므로 timestamp가 붙지 않는다.
@@ -174,5 +174,5 @@ stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
 - [x] 통합 메시지 포맷 (`# [관리자] 추세 변화 알림 ...`)
 
 **채널**
-- [x] 파이프라인 로그 → `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`
-- [x] 추세 신호 → `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`
+- [x] 파이프라인 로그 → `DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL`
+- [x] 추세 신호 → `DISCORD_ATCHU_DEV_TREND_SIGNAL_WEBHOOK_URL`

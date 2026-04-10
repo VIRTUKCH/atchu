@@ -602,7 +602,7 @@ data/
 | 변수 | 용도 |
 |------|------|
 | `EODHD_API_TOKEN` | EODHD API 인증 토큰 |
-| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | 관리자 채널 Discord 웹훅 |
+| `DISCORD_ATCHU_DEV_LOG_WEBHOOK_URL` | 개발자 파이프라인 로그 Discord 웹훅 |
 | `DISCORD_ATCHU_DAILY_SUMMARY_WEBHOOK_URL` | 일간 리포트 Discord 웹훅 |
 | `DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL` | 추세 변화 Discord 웹훅 |
 | `VERCEL_TOKEN` | Vercel 배포 토큰 |
