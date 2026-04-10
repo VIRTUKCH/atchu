@@ -25,13 +25,11 @@
 
 | 환경변수 | 알림 유형 |
 |---------|----------|
-| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | **시스템 알림** (파이프라인 상태) + **신호 알림** (추세 변화) |
+| `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL` | **시스템 알림** (파이프라인 로그) — `[타임스탬프] 이벤트명` 형식 |
+| `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` | **신호 알림** (추세 변화) — `# [관리자] 추세 변화 알림` 형식 |
 
-두 유형은 성격이 다르지만 같은 채널로 수신한다.
-- **시스템 알림**: `[타임스탬프] 이벤트명` 형식, 파이프라인 실행 흐름 추적용
-- **신호 알림**: `# [관리자] 추세 변화 알림` 형식, 투자 판단용 추세 신호
-
-> 이전에 사용하던 `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`(시스템 알림 전용)은 제거되었다.
+- **시스템 알림** (`DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`): 파이프라인 실행 흐름 추적용 로그 전용
+- **신호 알림** (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`): 투자 판단용 추세 신호만 수신
 
 ---
 
@@ -130,7 +128,7 @@
 
 | 파일 | 역할 |
 |------|------|
-| `02_fe_react/data/scripts/lib/common.sh` | `notify()` — 파이프라인 상태 메시지 전송 (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`) |
+| `02_fe_react/data/scripts/lib/common.sh` | `notify()` — 파이프라인 로그 전송 (`DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`) |
 | `02_fe_react/data/scripts/lib/notify.sh` | `send_trend_change_notifications()` — 레버리지·인버스 adminMarkdownBody 생성·저장 (전송 안 함) |
 | `02_fe_react/data/scripts/pipeline_stock.sh` | `generate_stock_trend_notifications_file()` — 개별주 + 레버리지·인버스 통합 메시지 생성 및 전송 (`DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`) |
 
@@ -176,4 +174,5 @@ stamped="[$(date '+%Y/%m/%d %H:%M:%S')] ${message}"
 - [x] 통합 메시지 포맷 (`# [관리자] 추세 변화 알림 ...`)
 
 **채널**
-- [x] 두 유형 모두 `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL` 단일 채널로 수신
+- [x] 파이프라인 로그 → `DISCORD_ATCHU_ADMIN_CHANNEL_WEBHOOK_URL`
+- [x] 추세 신호 → `DISCORD_ATCHU_DEV_TREND_WEBHOOK_URL`
