@@ -58,9 +58,9 @@ export default function AppTopNav() {
           className="topnav-brand"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img className="topnav-brand-mark" src="/logo_transparent.png" alt="Atchu" />
+          <img className="topnav-brand-mark" src="/logo_transparent.png" alt="앗추" />
           <div className="topnav-brand-text">
-            <strong>Atchu</strong>
+            <strong>앗추</strong>
           </div>
         </Link>
         <nav className="topnav-tabs">

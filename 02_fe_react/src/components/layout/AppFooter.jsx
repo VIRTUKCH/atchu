@@ -9,7 +9,7 @@ const discordInviteUrl =
 export default function AppFooter() {
   return (
     <footer className="app-footer">
-      <span className="app-footer-brand">Atchu</span>
+      <span className="app-footer-brand">앗추</span>
       <p className="app-footer-disclaimer">
         본 서비스는 투자 참고용 데이터이며, 매수·매도를 권유하지 않습니다.<br />
         과거 백테스트 결과이며 미래 수익을 보장하지 않습니다.<br />

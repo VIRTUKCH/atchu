@@ -30,7 +30,7 @@ export default function AppSidebar({ activeTab, onTabChange }) {
           {mobileOpen ? "✕" : "☰"}
         </button>
         <div className="mobile-appbar-brand">
-          <strong>Atchu</strong>
+          <strong>앗추</strong>
           <span>Trend Pulse Console</span>
         </div>
       </header>
@@ -40,7 +40,7 @@ export default function AppSidebar({ activeTab, onTabChange }) {
         <div className="brand-mark">A</div>
         {!collapsed && (
           <div className="brand-text">
-            <strong>Atchu</strong>
+            <strong>앗추</strong>
             <span>Trend Pulse Console</span>
           </div>
         )}
