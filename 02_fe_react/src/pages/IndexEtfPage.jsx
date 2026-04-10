@@ -2,7 +2,6 @@ import React, { useState, useMemo, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EtfSummaryCard from "../components/etf/EtfSummaryCard";
 import TypeFilter from "../components/etf/TypeFilter";
-import GuideTour from "../components/main/GuideTour";
 import { GROUP_PRIORITY_ORDER } from "../utils/tickerMeta";
 import "../styles/index-etf.css";
 
@@ -295,7 +294,6 @@ export default function IndexEtfPage({
       {!tickersLoading && !tickersError && list.length === 0 && (
         <div className="panel-subtitle">조건에 맞는 티커가 없습니다.</div>
       )}
-      {list.length > 0 && <GuideTour />}
       {list.length > 0 && (
         <p className="index-etf-page-disclaimer">
           ※ 표시된 수익률(연평균 수익률, CAGR)은 과거 역사적 데이터 백테스트 기준이며, 미래 수익을 보장하지 않습니다. 본 서비스는 투자 조언을 제공하지 않으며, 투자 결정과 그에 따른 책임은 전적으로 본인에게 있습니다.
