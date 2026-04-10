@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    allowedHosts: ["atchu.co.kr"],
+    allowedHosts: ["atchu.co.kr", "chaeho.store"],
     port: 5173,
     proxy: {
       "/api": {
