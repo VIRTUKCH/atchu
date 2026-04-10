@@ -378,14 +378,12 @@ send_trend_change_notifications() {
     log "Trend notification webhook skipped: DISCORD_ATCHU_NEW_TREND_NOTIFICATION_WEBHOOK_URL not set"
     return 0
   fi
-  if [[ "${has_any_changes}" != "true" ]]; then
-    log "Trend notification skipped: no trend changes"
-    return 0
-  fi
 
+  local notify_label
+  notify_label="$( [[ "${has_any_changes}" == "true" ]] && echo "TREND NOTIFY SENT" || echo "TREND NOTIFY SENT (no changes)" )"
   if send_trend_notification_webhook "${report_body}"; then
-    log "Trend notification webhook sent"
-    notify "[${RUN_ID}] TREND NOTIFY SENT"
+    log "Trend notification webhook sent (has_any_changes=${has_any_changes})"
+    notify "[${RUN_ID}] ${notify_label}"
   else
     log "Trend notification webhook failed"
     notify "[${RUN_ID}] TREND NOTIFY FAIL | reason=webhook_post_error"
