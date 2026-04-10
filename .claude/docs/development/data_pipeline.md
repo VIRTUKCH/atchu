@@ -380,7 +380,7 @@ CSV 변경이 감지되면 `lib/snapshot.sh`와 `lib/notify.sh`의 함수들이 
 ## 추세 이탈 감지
 - XLE (에너지) — 200일 추세 이탈
 
-자세히 보기: https://atchu-fe.vercel.app/market_overview
+자세히 보기: https://atchu.co.kr/market_overview
 ```
 
 **파일:** `summary/trend/trend_notifications.json`, `summary/trend_md/trend_notifications.md`
@@ -408,7 +408,7 @@ CSV 변경이 감지되면 `lib/snapshot.sh`와 `lib/notify.sh`의 함수들이 
 ## 오늘의 약세
 1. 원자재 -1.20% (1 상승 / 6 하락)
 
-자세히 보기: https://atchu-fe.vercel.app/market_overview
+자세히 보기: https://atchu.co.kr/market_overview
 ```
 
 **파일:** `summary/daily_md/daily_summary.md`, `summary/daily_md/YYYY-MM-DD_daily_summary.md`

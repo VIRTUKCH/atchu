@@ -265,7 +265,7 @@ if (!hasAnyChanges) {
   }
 }
 bodyLines.push("");
-bodyLines.push("자세히 보기: https://atchu-fe.vercel.app/market_overview");
+bodyLines.push("자세히 보기: https://atchu.co.kr/market_overview");
 bodyLines.push("");
 bodyLines.push("※ 참고용 지표이며 투자 조언이 아닙니다. 투자 결정과 책임은 본인에게 있습니다.");
 
@@ -615,7 +615,7 @@ send_daily_snapshot_summary() {
       fi
 
       echo
-      echo "자세히 보기: https://atchu-fe.vercel.app/market_overview"
+      echo "자세히 보기: https://atchu.co.kr/market_overview"
       echo
       echo "※ 참고용 지표이며 투자 조언이 아닙니다. 투자 결정과 책임은 본인에게 있습니다."
     }

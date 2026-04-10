@@ -104,7 +104,7 @@
 ## 개별주 추세 이탈
 - TSLA (Tesla, Inc.) — 03/13
 
-자세히 보기: https://atchu-fe.vercel.app/_stocks
+자세히 보기: https://atchu.co.kr/_stocks
 
 ※ 참고용 지표이며 투자 조언이 아닙니다.
 ```

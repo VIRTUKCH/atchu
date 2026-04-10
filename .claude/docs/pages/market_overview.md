@@ -74,7 +74,7 @@ Discord 알림 수신 (모바일 푸시)
 ## 이 페이지에 오는 사람
 
 **유입 경로:**
-- Discord 일간 리포트 하단 링크 ("자세히 보기: atchu-fe.vercel.app/market_overview")
+- Discord 일간 리포트 하단 링크 ("자세히 보기: atchu.co.kr/market_overview")
 - Discord 추세 알림 하단 링크
 - 앱 내 네비게이션 (기존 사용자)
 

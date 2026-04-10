@@ -308,7 +308,7 @@ if (!hasAnyChanges) {
   }
 }
 bodyLines.push("");
-bodyLines.push("자세히 보기: https://atchu-fe.vercel.app/_stocks");
+bodyLines.push("자세히 보기: https://atchu.co.kr/_stocks");
 bodyLines.push("");
 bodyLines.push("※ 참고용 지표이며 투자 조언이 아닙니다.");
 
@@ -388,7 +388,7 @@ NODE
     if [[ -n "${stock_body_raw}" ]]; then
       combined_body="${combined_body}"$'\n\n'"${stock_body_raw}"
     fi
-    combined_body="${combined_body}"$'\n\n'"자세히 보기: https://atchu-fe.vercel.app/_stocks"$'\n\n'"※ 참고용 지표이며 투자 조언이 아닙니다."
+    combined_body="${combined_body}"$'\n\n'"자세히 보기: https://atchu.co.kr/_stocks"$'\n\n'"※ 참고용 지표이며 투자 조언이 아닙니다."
 
     local chunk line max_len=1800
     chunk=""
