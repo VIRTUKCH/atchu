@@ -1,9 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FAQ_ITEMS } from "../config/faqItems";
+import JsonLd from "../components/common/JsonLd";
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    "name": item.label,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.heroDesc,
+    },
+  })),
+};
 
 export default function FaqPage() {
   return (
+    <>
+    <JsonLd schema={FAQ_SCHEMA} />
     <section className="panel-card">
       <div className="section-header">
         <div>
@@ -22,5 +38,6 @@ export default function FaqPage() {
         ))}
       </div>
     </section>
+    </>
   );
 }
