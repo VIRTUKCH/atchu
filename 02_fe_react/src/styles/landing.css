@@ -1069,19 +1069,19 @@
    ============================================================ */
 .landing-filter {
   padding: 100px 0;
-  background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
-  color: #e2e8f0;
+  background: linear-gradient(180deg, #f0f5ff 0%, #eef1ff 100%);
+  color: var(--ink);
 }
 .landing-filter .landing-section-label {
-  color: #60a5fa;
-  background: rgba(96, 165, 250, 0.12);
-  border-color: rgba(96, 165, 250, 0.25);
+  color: var(--accent);
+  background: rgba(26, 77, 255, 0.08);
+  border-color: rgba(26, 77, 255, 0.2);
 }
 .landing-filter .landing-section-title {
-  color: #f1f5f9;
+  color: var(--ink);
 }
 .landing-filter .landing-section-desc {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
 }
 
 /* Rule card */
@@ -1089,15 +1089,15 @@
   max-width: 520px;
   margin: 0 auto 48px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: var(--panel);
+  border: 1.5px solid var(--line);
   border-radius: 16px;
   text-align: center;
 }
 .filter-rule-title {
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin: 0 0 10px;
@@ -1105,11 +1105,11 @@
 .filter-rule-desc {
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
   margin: 0;
 }
 .filter-rule-desc strong {
-  color: #60a5fa;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -1117,21 +1117,21 @@
 .filter-frequency-block {
   margin-bottom: 48px;
   padding: 40px 32px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 16px;
   text-align: center;
 }
 .filter-frequency-question {
   font-size: clamp(20px, calc(15.3px + 1.26vw), 26px);
   font-weight: 700;
-  color: #fff;
+  color: var(--ink);
   margin: 0 0 8px;
 }
 .filter-frequency-period {
   font-size: clamp(14px, calc(11.9px + 0.56vw), 16px);
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--muted);
   letter-spacing: 0.02em;
   margin: 0 0 36px;
 }
@@ -1152,7 +1152,7 @@
   display: block;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 16px;
@@ -1171,14 +1171,15 @@
   letter-spacing: -0.02em;
 }
 .filter-stats-val--dim {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--muted);
 }
 .filter-stats-val--good {
-  color: #60a5fa;
+  color: var(--accent);
 }
 .filter-stats-vs {
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.2);
+  color: var(--muted);
+  opacity: 0.5;
 }
 
 /* Legend */
@@ -1190,17 +1191,17 @@
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
 }
 .filter-stats-legend-dim {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--muted);
 }
 .filter-stats-legend-highlight {
-  color: #60a5fa;
+  color: var(--accent);
   font-weight: 600;
 }
 
 .filter-stats-note {
   text-align: center;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--muted);
   margin: 24px 0 0;
 }
 
@@ -1219,7 +1220,7 @@
   text-align: center;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0 0 16px;
@@ -1228,16 +1229,17 @@
   text-align: center;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--muted);
   margin: 20px 0 8px;
 }
 .filter-table-note strong {
-  color: #60a5fa;
+  color: var(--accent);
 }
 .filter-table-disclaimer {
   text-align: center;
   font-size: clamp(15px, calc(12.4px + 0.7vw), 18px);
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--muted);
+  opacity: 0.6;
   margin: 0;
 }
 
@@ -1254,15 +1256,15 @@
   }
 }
 .filter-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 24px;
 }
 .filter-card-ticker {
   font-size: clamp(20px, calc(15.3px + 1.26vw), 26px);
   font-weight: 800;
-  color: #e2e8f0;
+  color: var(--ink);
   font-family: "Sora", sans-serif;
   margin: 0 0 16px;
   text-align: center;
@@ -1276,26 +1278,26 @@
 .filter-card-col-label {
   font-size: clamp(14px, calc(11.9px + 0.56vw), 16px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--muted);
   text-align: center;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--line);
 }
 .filter-card-col-label--atchu {
-  color: #7c8aff !important;
+  color: var(--accent) !important;
 }
 .filter-card-row-label {
   font-size: clamp(14px, calc(11.9px + 0.56vw), 16px);
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--muted);
 }
 .filter-card-val {
   font-size: clamp(16px, calc(13.4px + 0.7vw), 20px);
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
   text-align: center;
   font-family: "Sora", sans-serif;
 }
 .filter-card-val--atchu {
-  color: #4ade80;
+  color: #16a34a;
   font-weight: 700;
 }
 
@@ -1305,12 +1307,12 @@
   text-align: center;
   font-size: clamp(18px, calc(16.6px + 0.38vw), 22px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   letter-spacing: -0.02em;
 }
 
-/* ---- Filter section: dark mode (이미 어두운 배경이므로 최소 조정) ---- */
-/* landing-filter는 자체 다크 배경이라 [data-theme="dark"] 오버라이드 불필요 */
+/* ---- Filter section: dark mode ---- */
+/* (다크 모드 오버라이드는 파일 하단 [data-theme="dark"] 블록에 있음) */
 
 /* ---- Filter section: 모바일 ---- */
 @media (max-width: 900px) {
@@ -1812,6 +1814,108 @@
 [data-theme="dark"] .strategy-trade-table .col-date {
   color: rgba(255, 255, 255, 0.85);
 }
+
+/* ---- Filter section dark mode ---- */
+[data-theme="dark"] .landing-filter {
+  background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+  color: #e2e8f0;
+}
+[data-theme="dark"] .landing-filter .landing-section-label {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+[data-theme="dark"] .landing-filter .landing-section-title {
+  color: #f1f5f9;
+}
+[data-theme="dark"] .landing-filter .landing-section-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+[data-theme="dark"] .filter-rule-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .filter-rule-title {
+  color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="dark"] .filter-rule-desc {
+  color: rgba(255, 255, 255, 0.7);
+}
+[data-theme="dark"] .filter-rule-desc strong {
+  color: #60a5fa;
+}
+[data-theme="dark"] .filter-frequency-block {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+[data-theme="dark"] .filter-frequency-question {
+  color: #fff;
+}
+[data-theme="dark"] .filter-frequency-period {
+  color: rgba(255, 255, 255, 0.35);
+}
+[data-theme="dark"] .filter-stats-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="dark"] .filter-stats-val--dim {
+  color: rgba(255, 255, 255, 0.35);
+}
+[data-theme="dark"] .filter-stats-val--good {
+  color: #60a5fa;
+}
+[data-theme="dark"] .filter-stats-vs {
+  color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+[data-theme="dark"] .filter-stats-legend-dim {
+  color: rgba(255, 255, 255, 0.35);
+}
+[data-theme="dark"] .filter-stats-legend-highlight {
+  color: #60a5fa;
+}
+[data-theme="dark"] .filter-stats-note {
+  color: rgba(255, 255, 255, 0.55);
+}
+[data-theme="dark"] .filter-table-title {
+  color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="dark"] .filter-table-note {
+  color: rgba(255, 255, 255, 0.55);
+}
+[data-theme="dark"] .filter-table-note strong {
+  color: #60a5fa;
+}
+[data-theme="dark"] .filter-table-disclaimer {
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+[data-theme="dark"] .filter-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+[data-theme="dark"] .filter-card-ticker {
+  color: #e2e8f0;
+}
+[data-theme="dark"] .filter-card-col-label {
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+[data-theme="dark"] .filter-card-col-label--atchu {
+  color: #7c8aff !important;
+}
+[data-theme="dark"] .filter-card-row-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .filter-card-val {
+  color: rgba(255, 255, 255, 0.6);
+}
+[data-theme="dark"] .filter-card-val--atchu {
+  color: #4ade80;
+}
+[data-theme="dark"] .filter-section-transition {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 [data-theme="dark"] .landing-explore {
   background: linear-gradient(180deg, #12101e 0%, #0e0e1a 100%);
 }
