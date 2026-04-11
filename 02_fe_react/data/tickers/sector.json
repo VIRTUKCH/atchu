@@ -277,6 +277,29 @@
       ]
     },
     {
+      "type": "메모리반도체",
+      "asset_type": "섹터",
+      "ticker": "DRAM",
+      "name": "Roundhill Memory ETF",
+      "name_ko": "메모리반도체",
+      "business_area": "HBM·DRAM·NAND 플래시 메모리 제조사",
+      "heatmap_label": "메모리반도체",
+      "short_description": "HBM·DRAM·NAND 플래시 메모리 제조사 집중. AI 데이터센터 메모리 수요와 직결. 2026년 4월 상장.",
+      "trend_following": {
+        "suitability": "고위험",
+        "reason": "메모리 반도체 단일 서브섹터 집중. 업사이클/다운사이클 진폭이 SMH보다 크고, 상장 9일로 데이터 히스토리가 극히 짧다.",
+        "operation_notes": "위성 자산으로 낮은 비중, 200일선 신호 형성까지 충분한 기간 대기 후 진입 권장."
+      },
+      "tags": [
+        "섹터",
+        "반도체",
+        "메모리",
+        "HBM",
+        "AI",
+        "기술"
+      ]
+    },
+    {
       "type": "사이버보안",
       "asset_type": "섹터",
       "ticker": "CIBR",
