@@ -66,6 +66,29 @@
       ]
     },
     {
+      "type": "원유 탱커 해운",
+      "asset_type": "섹터",
+      "ticker": "BWET",
+      "name": "Breakwave Tanker Shipping ETF",
+      "name_ko": "원유 탱커 해운",
+      "business_area": "원유 탱커(VLCC) 운임 선물",
+      "heatmap_label": "탱커해운",
+      "short_description": "원유 탱커 운임 선물 추종. 지정학 이슈·유가 수요와 강한 상관관계.",
+      "trend_following": {
+        "suitability": "조건부",
+        "reason": "지정학 이벤트(분쟁·제재·운항로 변경)에 따라 급등락 반복. 강한 추세가 나타나지만 반전도 빠르다.",
+        "operation_notes": "위성 자산으로 낮은 비중 유지. 추세 확인 후 진입, 엄격한 손절 원칙."
+      },
+      "tags": [
+        "섹터",
+        "해운",
+        "원자재",
+        "에너지",
+        "지정학",
+        "선물"
+      ]
+    },
+    {
       "type": "금융",
       "asset_type": "섹터",
       "ticker": "XLF",
