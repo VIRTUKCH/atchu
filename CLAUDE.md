@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 ## 프로젝트 개요
-앗추(Atchu) — 섹터·국가·채권·원자재·중소형주 ETF 등 146개 자산의 추세추종 데이터 서비스. React + Vite 프론트엔드, EODHD API 기반 CSV 데이터 파이프라인. 한국어 서비스.
+앗추(Atchu) — 섹터·국가·채권·원자재·중소형주 ETF 등 N개 자산의 추세추종 데이터 서비스. React + Vite 프론트엔드, EODHD API 기반 CSV 데이터 파이프라인. 한국어 서비스.
 
 ## 필수 명령어
 - **파이프라인**: `02_fe_react/data/scripts/pipeline.sh`
